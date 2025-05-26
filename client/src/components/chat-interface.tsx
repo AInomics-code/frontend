@@ -122,22 +122,28 @@ export function ChatInterface() {
           
           {/* Vorta Logo */}
           <div className="flex justify-center mt-6 mb-4">
-            <img 
-              src={vortexLogo} 
-              alt="Vorta" 
-              className="w-12 h-12 opacity-90 shadow-[0_0_12px_rgba(215,25,32,0.35)]"
-            />
+            <div className="vortex-icon idle">
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+            </div>
           </div>
 
           <div className="space-y-3">
             {/* Initial Assistant Greeting */}
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
-                <img 
-                  src={vortexLogo} 
-                  alt="Vorta Assistant" 
-                  className="w-8 h-8 opacity-90 shadow-[0_0_12px_rgba(215,25,32,0.35)]"
-                />
+                <div className="vortex-icon idle scale-75">
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                </div>
               </div>
               <div className="flex-1">
                 <div className="bg-gray-50 rounded-xl px-4 py-3 inline-block max-w-md shadow-sm">
@@ -150,11 +156,14 @@ export function ChatInterface() {
             {isLoading && (
               <div className="flex items-start gap-3">
                 <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
-                  <img 
-                    src={vortexLogo} 
-                    alt="Vorta Assistant" 
-                    className="w-8 h-8 opacity-90 animate-pulse shadow-[0_0_12px_rgba(215,25,32,0.35)]"
-                  />
+                  <div className="vortex-icon active scale-75">
+                    <div className="vortex-blade"></div>
+                    <div className="vortex-blade"></div>
+                    <div className="vortex-blade"></div>
+                    <div className="vortex-blade"></div>
+                    <div className="vortex-blade"></div>
+                    <div className="vortex-blade"></div>
+                  </div>
                 </div>
                 <div className="flex-1">
                   <div className="bg-gray-50 rounded-xl px-4 py-3 inline-block shadow-sm">
