@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sidebar } from "./sidebar";
 import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
-import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin, ArrowRight, Search, Globe, Target, TrendingDown, Check, ArrowDown, Paperclip } from "lucide-react";
+import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin, ArrowRight, Search, Globe, Target, TrendingDown, Check, ArrowDown, Paperclip, MoreHorizontal, Copy, FileText, RotateCcw, Plus, BarChart, Brain, Info } from "lucide-react";
 import vortexLogo from "@assets/Screenshot 2025-05-26 alle 13.53.01.png";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
@@ -18,6 +18,8 @@ export function ChatInterface() {
   const [currentResponse, setCurrentResponse] = useState("");
   const [showResponse, setShowResponse] = useState(false);
   const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
+  const [typingText, setTypingText] = useState("");
+  const [showActions, setShowActions] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -28,15 +30,35 @@ export function ChatInterface() {
     scrollToBottom();
   }, [isLoading]);
 
+  const typewriterEffect = (text: string, callback: () => void) => {
+    let index = 0;
+    setTypingText("");
+    const timer = setInterval(() => {
+      if (index < text.length) {
+        setTypingText(prev => prev + text.charAt(index));
+        index++;
+      } else {
+        clearInterval(timer);
+        callback();
+      }
+    }, 30);
+  };
+
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
     setIsProcessing(true);
     setShowResponse(true);
+    setShowActions(false);
     
     // Simulate processing delay
     setTimeout(() => {
-      setCurrentResponse("Based on your La Doña regional performance data, I can see that Colón region is currently at 67% of target with some challenges in vinegar sales and delivery timelines. Would you like me to analyze the specific factors contributing to this performance gap?");
-      setIsProcessing(false);
+      const response = "Based on your La Doña regional performance data, I can see that Colón region is currently at 67% of target with some challenges in vinegar sales and delivery timelines. Would you like me to analyze the specific factors contributing to this performance gap?";
+      
+      typewriterEffect(response, () => {
+        setCurrentResponse(response);
+        setIsProcessing(false);
+        setTimeout(() => setShowActions(true), 500);
+      });
     }, 2000);
     
     setInputValue("");
@@ -218,24 +240,38 @@ export function ChatInterface() {
             <div className="mt-6 px-6">
               <div className="w-full max-w-[960px] mx-auto">
                 <div 
-                  className="bg-[#fafaf9] rounded-2xl shadow-[0_2px_6px_rgba(0,0,0,0.04)] border border-gray-200 p-6 transition-all duration-300 ease-in-out transform origin-top animate-[slideUp_0.3s_ease-out]"
+                  className="bg-[#fafaf9] rounded-3xl shadow-[0_6px_20px_rgba(0,0,0,0.04)] border border-gray-200 p-6 transition-all duration-300 ease-in-out transform origin-top animate-[slideUp_0.3s_ease-out]"
                 >
                   {/* Assistant Header */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`vortex-icon ${isProcessing ? 'active' : ''}`} style={{ width: '14px', height: '14px' }}>
-                      <div className="vortex-blade"></div>
-                      <div className="vortex-blade"></div>
-                      <div className="vortex-blade"></div>
-                      <div className="vortex-blade"></div>
-                      <div className="vortex-blade"></div>
-                      <div className="vortex-blade"></div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className={`vortex-icon ${isProcessing ? 'active' : currentResponse ? 'pulse-glow' : ''}`} style={{ width: '14px', height: '14px' }}>
+                        <div className="vortex-blade"></div>
+                        <div className="vortex-blade"></div>
+                        <div className="vortex-blade"></div>
+                        <div className="vortex-blade"></div>
+                        <div className="vortex-blade"></div>
+                        <div className="vortex-blade"></div>
+                      </div>
+                      <div>
+                        <span className="text-sm font-medium text-gray-800">🌀 Vorta AI</span>
+                        <div className="text-xs text-gray-500">Strategic Assistant</div>
+                      </div>
                     </div>
-                    <span className="text-sm font-medium text-gray-700">Vorta</span>
+                    
+                    {/* Quick Actions Dropdown */}
+                    {currentResponse && (
+                      <div className="relative">
+                        <button className="p-1 hover:bg-gray-100 rounded-full transition-colors duration-200">
+                          <MoreHorizontal className="w-4 h-4 text-gray-400" />
+                        </button>
+                      </div>
+                    )}
                   </div>
 
                   {/* Response Content */}
                   <div className="space-y-4">
-                    {isProcessing ? (
+                    {isProcessing && !typingText ? (
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
@@ -243,23 +279,50 @@ export function ChatInterface() {
                         <span className="text-gray-500 text-sm ml-2">Analyzing your data...</span>
                       </div>
                     ) : (
-                      <p className="text-[15px] leading-relaxed text-gray-800">
-                        {currentResponse}
-                      </p>
+                      <div className="text-base leading-relaxed text-gray-800">
+                        {isProcessing ? (
+                          <span className="inline-block border-r-2 border-gray-400 animate-pulse pr-1">
+                            {typingText}
+                          </span>
+                        ) : (
+                          <div className="space-y-3">
+                            <p>{currentResponse}</p>
+                            {currentResponse && (
+                              <div className="flex items-center gap-2 text-xs text-gray-500">
+                                <div className="w-3 h-3 border-2 border-green-500 rounded-full flex items-center justify-center">
+                                  <div className="w-1 h-1 bg-green-500 rounded-full"></div>
+                                </div>
+                                <span>High Confidence</span>
+                                <Info className="w-3 h-3 text-gray-400 cursor-help" />
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     )}
                   </div>
 
-                  {/* Suggestions (when not processing) */}
-                  {!isProcessing && currentResponse && (
+                  {/* Context Links */}
+                  {currentResponse && !isProcessing && (
+                    <div className="mt-4 text-xs text-gray-500">
+                      Context: <span className="text-blue-600 hover:underline cursor-pointer">Colón Region Dashboard</span> • <span className="text-blue-600 hover:underline cursor-pointer">Last Week's Trend</span>
+                    </div>
+                  )}
+
+                  {/* Animated Suggestion Chips */}
+                  {showActions && currentResponse && !isProcessing && (
                     <div className="mt-6 pt-4 border-t border-gray-200">
                       <div className="flex flex-wrap gap-2">
-                        <button className="px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors duration-200">
+                        <button className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 hover:scale-105 animate-[fadeInUp_0.3s_ease-out]">
+                          <BarChart className="w-3 h-3" />
                           Show detailed breakdown
                         </button>
-                        <button className="px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors duration-200">
-                          Compare with other regions
+                        <button className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 hover:scale-105 animate-[fadeInUp_0.3s_ease-out_0.1s_both]">
+                          <Globe className="w-3 h-3" />
+                          Compare with regions
                         </button>
-                        <button className="px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors duration-200">
+                        <button className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 hover:scale-105 animate-[fadeInUp_0.3s_ease-out_0.2s_both]">
+                          <Brain className="w-3 h-3" />
                           Suggest action plan
                         </button>
                       </div>
