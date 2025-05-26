@@ -31,7 +31,7 @@ export function ChatInterface() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img
-              src="/la-dona-logo.png"
+              src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
               alt="La Doña Logo"
               className="h-10 w-auto object-contain"
             />
@@ -126,7 +126,7 @@ export function ChatInterface() {
         <div className="bg-white rounded-xl shadow-sm p-6">
           <div className="flex items-center gap-2 mb-6">
             <img 
-              src="/la-dona-logo.png" 
+              src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
               alt="La Doña Avatar" 
               className="w-7 h-7 rounded-full object-cover"
             />
@@ -138,7 +138,7 @@ export function ChatInterface() {
 
           <div className="flex items-start gap-2">
             <img 
-              src="/la-dona-logo.png" 
+              src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
               alt="La Doña Avatar" 
               className="w-7 h-7 rounded-full object-cover flex-shrink-0 mt-1"
             />
