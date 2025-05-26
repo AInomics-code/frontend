@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sidebar } from "./sidebar";
 import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
-import { Menu, TrendingUp, AlertTriangle, Star } from "lucide-react";
+import { Menu, TrendingUp, AlertTriangle, Star, Mic } from "lucide-react";
 import vortexLogo from "@assets/Screenshot 2025-05-26 alle 13.53.01.png";
 
 export function ChatInterface() {
@@ -193,6 +193,13 @@ export function ChatInterface() {
                 className="w-full px-4 py-3 bg-white border border-gray-200 rounded-full text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#006400] focus:border-transparent"
               />
             </div>
+            <button 
+              aria-label="Voice input"
+              title="Hold to speak"
+              className="w-10 h-10 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-all duration-200"
+            >
+              <Mic className="w-4 h-4 text-[#D71920]" />
+            </button>
             <button 
               onClick={handleSendMessage}
               className="w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center hover:scale-105 hover:bg-[#E6C200] transition-all duration-200 shadow-sm"
