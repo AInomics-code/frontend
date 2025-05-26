@@ -200,40 +200,47 @@
 
 .vortex-segment {
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   background: #D71920;
-  transform-origin: 12px 12px;
+  transform-origin: 10px 10px;
   top: 50%;
   left: 50%;
-  margin-left: -12px;
-  margin-top: -12px;
-  opacity: 0.9;
+  margin-left: -10px;
+  margin-top: -10px;
 }
 
 .vortex-segment:nth-child(1) { 
-  clip-path: path('M 12 2 Q 22 8 20 12 Q 18 16 12 14 Q 8 12 6 8 Q 4 4 12 2 Z');
+  clip-path: path('M 10 1 A 9 9 0 0 1 19 10 A 4.5 4.5 0 0 0 14.5 10 A 4.5 4.5 0 0 0 10 5.5 Z');
   transform: rotate(0deg); 
 }
 .vortex-segment:nth-child(2) { 
-  clip-path: path('M 12 2 Q 22 8 20 12 Q 18 16 12 14 Q 8 12 6 8 Q 4 4 12 2 Z');
-  transform: rotate(60deg); 
+  clip-path: path('M 10 1 A 9 9 0 0 1 19 10 A 4.5 4.5 0 0 0 14.5 10 A 4.5 4.5 0 0 0 10 5.5 Z');
+  transform: rotate(45deg); 
 }
 .vortex-segment:nth-child(3) { 
-  clip-path: path('M 12 2 Q 22 8 20 12 Q 18 16 12 14 Q 8 12 6 8 Q 4 4 12 2 Z');
-  transform: rotate(120deg); 
+  clip-path: path('M 10 1 A 9 9 0 0 1 19 10 A 4.5 4.5 0 0 0 14.5 10 A 4.5 4.5 0 0 0 10 5.5 Z');
+  transform: rotate(90deg); 
 }
 .vortex-segment:nth-child(4) { 
-  clip-path: path('M 12 2 Q 22 8 20 12 Q 18 16 12 14 Q 8 12 6 8 Q 4 4 12 2 Z');
-  transform: rotate(180deg); 
+  clip-path: path('M 10 1 A 9 9 0 0 1 19 10 A 4.5 4.5 0 0 0 14.5 10 A 4.5 4.5 0 0 0 10 5.5 Z');
+  transform: rotate(135deg); 
 }
 .vortex-segment:nth-child(5) { 
-  clip-path: path('M 12 2 Q 22 8 20 12 Q 18 16 12 14 Q 8 12 6 8 Q 4 4 12 2 Z');
-  transform: rotate(240deg); 
+  clip-path: path('M 10 1 A 9 9 0 0 1 19 10 A 4.5 4.5 0 0 0 14.5 10 A 4.5 4.5 0 0 0 10 5.5 Z');
+  transform: rotate(180deg); 
 }
 .vortex-segment:nth-child(6) { 
-  clip-path: path('M 12 2 Q 22 8 20 12 Q 18 16 12 14 Q 8 12 6 8 Q 4 4 12 2 Z');
-  transform: rotate(300deg); 
+  clip-path: path('M 10 1 A 9 9 0 0 1 19 10 A 4.5 4.5 0 0 0 14.5 10 A 4.5 4.5 0 0 0 10 5.5 Z');
+  transform: rotate(225deg); 
+}
+.vortex-segment:nth-child(7) { 
+  clip-path: path('M 10 1 A 9 9 0 0 1 19 10 A 4.5 4.5 0 0 0 14.5 10 A 4.5 4.5 0 0 0 10 5.5 Z');
+  transform: rotate(270deg); 
+}
+.vortex-segment:nth-child(8) { 
+  clip-path: path('M 10 1 A 9 9 0 0 1 19 10 A 4.5 4.5 0 0 0 14.5 10 A 4.5 4.5 0 0 0 10 5.5 Z');
+  transform: rotate(315deg); 
 }
 
 /* Idle state - gentle pulse */
