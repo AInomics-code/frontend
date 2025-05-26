@@ -128,8 +128,8 @@ export function MessageList({ conversationId }: MessageListProps) {
                       <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                         <Bot className="h-4 w-4 text-white" />
                       </div>
-                      <div className="bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-2xl px-4 py-3 mr-12">
-                        <div className="message-content text-gray-900 dark:text-gray-100">
+                      <div className="bg-white border border-gray-200 rounded-2xl px-4 py-3 mr-12 shadow-enterprise">
+                        <div className="message-content text-body">
                           {message.content.split('\n').map((line, i) => (
                             <p key={i}>{line || '\u00A0'}</p>
                           ))}

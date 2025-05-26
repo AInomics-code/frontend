@@ -67,13 +67,18 @@ export function ChatInterface() {
       {/* Right Context Panel - 320px */}
       <div className="bg-white shadow-inner overflow-y-auto xl:block hidden">
         <div className="p-4">
-          <h3 className="text-sm font-semibold text-[#1A1A1A] mb-4">Context Panel</h3>
+          <h3 className="heading-primary mb-4">Context Panel</h3>
           <div className="space-y-3">
-            <div className="p-3 bg-gray-50 rounded-lg">
-              <p className="text-sm text-gray-600">Conversation context and settings will appear here.</p>
+            <div className="p-3 bg-info-blue rounded-lg shadow-enterprise">
+              <p className="text-sm text-body">Conversation context and settings will appear here.</p>
             </div>
-            <div className="p-3 bg-gray-50 rounded-lg">
-              <p className="text-sm text-gray-600">Additional features and tools.</p>
+            <div className="p-3 bg-warning-yellow rounded-lg shadow-enterprise">
+              <h4 className="text-sm font-semibold text-gray-800 mb-1">Active Features</h4>
+              <p className="text-sm text-body">Additional features and tools.</p>
+            </div>
+            <div className="p-3 bg-light-red rounded-lg shadow-enterprise">
+              <h4 className="text-sm font-semibold text-gray-800 mb-1">Risk Alerts</h4>
+              <p className="text-sm text-body">Safety and compliance notifications.</p>
             </div>
           </div>
         </div>

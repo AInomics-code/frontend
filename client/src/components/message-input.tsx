@@ -108,7 +108,7 @@ export function MessageInput({ conversationId, onSendMessage }: MessageInputProp
               size="sm"
               disabled={isDisabled}
               className={cn(
-                "p-2 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors flex-shrink-0",
+                "p-2 bg-la-dona-green hover:bg-la-dona-green/90 text-white rounded-lg transition-colors flex-shrink-0",
                 isDisabled && "opacity-50 cursor-not-allowed"
               )}
             >
