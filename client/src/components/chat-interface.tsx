@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sidebar } from "./sidebar";
 import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
-import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin } from "lucide-react";
+import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin, ArrowRight } from "lucide-react";
 import vortexLogo from "@assets/Screenshot 2025-05-26 alle 13.53.01.png";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
@@ -396,6 +396,167 @@ export function ChatInterface() {
             )}
         </section>
 
+        {/* Refined Alert Tags */}
+        <section className="px-6 pb-6">
+          <div className="flex flex-wrap gap-3 justify-start">
+            {/* Colón Region Alert */}
+            <div 
+              className={`flex items-center justify-between rounded-xl bg-white px-4 py-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-[200px] max-w-[220px] h-[48px] cursor-pointer hover:scale-[1.02] ${expandedCard === 'colon' ? 'ring-1 ring-red-400/50' : ''}`}
+              style={{ boxShadow: expandedCard === 'colon' ? 'inset 0 1px 2px rgba(0,0,0,0.03)' : undefined }}
+              onClick={() => setExpandedCard(expandedCard === 'colon' ? null : 'colon')}
+              title="Region below sales target – 3 reps affected"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-[14px] h-[14px] rounded-full bg-gradient-to-br from-red-400 to-red-600 shadow-red-300/50"></div>
+                <div>
+                  <div className="text-sm font-medium text-gray-900">Colón</div>
+                  <div className="text-xs text-gray-500">67% of goal</div>
+                </div>
+              </div>
+              <div className="text-gray-400 hover:text-red-400 text-sm cursor-pointer transition-colors duration-200 hover:scale-110">
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
+
+            {/* Oeste Region Alert */}
+            <div 
+              className={`flex items-center justify-between rounded-xl bg-white px-4 py-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-[200px] max-w-[220px] h-[48px] cursor-pointer hover:scale-[1.02] ${expandedCard === 'oeste' ? 'ring-1 ring-yellow-400/50' : ''}`}
+              style={{ boxShadow: expandedCard === 'oeste' ? 'inset 0 1px 2px rgba(0,0,0,0.03)' : undefined }}
+              onClick={() => setExpandedCard(expandedCard === 'oeste' ? null : 'oeste')}
+              title="Region approaching sales target – 2 reps affected"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-[14px] h-[14px] rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-yellow-300/50"></div>
+                <div>
+                  <div className="text-sm font-medium text-gray-900">Oeste</div>
+                  <div className="text-xs text-gray-500">74% of goal</div>
+                </div>
+              </div>
+              <div className="text-gray-400 hover:text-yellow-500 text-sm cursor-pointer transition-colors duration-200 hover:scale-110">
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
+
+            {/* Chiriquí Region Alert */}
+            <div 
+              className={`flex items-center justify-between rounded-xl bg-white px-4 py-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-[200px] max-w-[220px] h-[48px] cursor-pointer hover:scale-[1.02] ${expandedCard === 'chiriqui' ? 'ring-1 ring-red-400/50' : ''}`}
+              style={{ boxShadow: expandedCard === 'chiriqui' ? 'inset 0 1px 2px rgba(0,0,0,0.03)' : undefined }}
+              onClick={() => setExpandedCard(expandedCard === 'chiriqui' ? null : 'chiriqui')}
+              title="Critical region – supply chain delays affecting 2 reps"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-[14px] h-[14px] rounded-full bg-gradient-to-br from-red-400 to-red-600 shadow-red-300/50"></div>
+                <div>
+                  <div className="text-sm font-medium text-gray-900">Chiriquí</div>
+                  <div className="text-xs text-gray-500">72% of goal</div>
+                </div>
+              </div>
+              <div className="text-gray-400 hover:text-red-400 text-sm cursor-pointer transition-colors duration-200 hover:scale-110">
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
+          </div>
+
+          {/* Expanded Dropdown Details */}
+          {expandedCard === 'colon' && (
+            <div className="mt-4 bg-white rounded-lg border border-gray-100 shadow-lg p-4 animate-[chatDrop_200ms_ease-out]">
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-[14px] h-[14px] rounded-full bg-gradient-to-br from-red-400 to-red-600"></div>
+                  <h3 className="text-lg font-semibold text-gray-900">Colón Region</h3>
+                </div>
+                <div className="text-sm text-gray-500">Updated 2h ago</div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-700"><strong>Reps:</strong> María Santos, Carlos López, Ana Ruiz</p>
+                  <p className="text-sm text-gray-700"><strong>Key Issues:</strong> Low vinegar sales, delayed deliveries</p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-700"><strong>Trend:</strong> ↓ 12% vs last month</p>
+                  <p className="text-sm text-gray-700"><strong>Action:</strong> Focus on combo promotions</p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <button className="flex items-center gap-2 px-3 py-2 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100 transition-colors text-sm text-red-700">
+                  <Phone className="w-4 h-4" />
+                  Call Team Lead
+                </button>
+                <button className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors text-sm">
+                  View Dashboard
+                </button>
+              </div>
+            </div>
+          )}
+
+          {expandedCard === 'oeste' && (
+            <div className="mt-4 bg-white rounded-lg border border-gray-100 shadow-lg p-4 animate-[chatDrop_200ms_ease-out]">
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-[14px] h-[14px] rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600"></div>
+                  <h3 className="text-lg font-semibold text-gray-900">Oeste Region</h3>
+                </div>
+                <div className="text-sm text-gray-500">Updated 1h ago</div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-700"><strong>Reps:</strong> Diego Morales, Sofia Chen</p>
+                  <p className="text-sm text-gray-700"><strong>Key Focus:</strong> Specialty sauces, premium line</p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-700"><strong>Trend:</strong> ↗ 6% vs last month</p>
+                  <p className="text-sm text-gray-700"><strong>Action:</strong> Weekend promotions boost</p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <button className="flex items-center gap-2 px-3 py-2 bg-yellow-50 border border-yellow-200 rounded-lg hover:bg-yellow-100 transition-colors text-sm text-yellow-700">
+                  <Phone className="w-4 h-4" />
+                  Call Team Lead
+                </button>
+                <button className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors text-sm">
+                  View Dashboard
+                </button>
+              </div>
+            </div>
+          )}
+
+          {expandedCard === 'chiriqui' && (
+            <div className="mt-4 bg-white rounded-lg border border-gray-100 shadow-lg p-4 animate-[chatDrop_200ms_ease-out]">
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-[14px] h-[14px] rounded-full bg-gradient-to-br from-red-400 to-red-600"></div>
+                  <h3 className="text-lg font-semibold text-gray-900">Chiriquí Region</h3>
+                </div>
+                <div className="text-sm text-gray-500">Updated 3h ago</div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-700"><strong>Reps:</strong> Roberto Vega, Lucia Fernandez</p>
+                  <p className="text-sm text-gray-700"><strong>Key Issues:</strong> Supply chain delays, competitor pressure</p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-700"><strong>Trend:</strong> ↓ 18% vs last month</p>
+                  <p className="text-sm text-gray-700"><strong>Action:</strong> Emergency logistics coordination</p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <button className="flex items-center gap-2 px-3 py-2 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100 transition-colors text-sm text-red-700">
+                  <Phone className="w-4 h-4" />
+                  Call Team Lead
+                </button>
+                <button className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors text-sm">
+                  View Dashboard
+                </button>
+              </div>
+            </div>
+          )}
+        </section>
 
       </main>
     </div>
