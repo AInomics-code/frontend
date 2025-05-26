@@ -43,7 +43,7 @@ export function ChatInterface() {
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="vortex-icon idle">
+            <div className="vortex-icon idle scale-150">
               <div className="vortex-segment"></div>
               <div className="vortex-segment"></div>
               <div className="vortex-segment"></div>
@@ -122,8 +122,8 @@ export function ChatInterface() {
           <div className="space-y-3">
             {/* Initial Assistant Greeting */}
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <div className="vortex-icon idle">
+              <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
+                <div className="vortex-icon idle scale-125">
                   <div className="vortex-segment"></div>
                   <div className="vortex-segment"></div>
                   <div className="vortex-segment"></div>
@@ -142,8 +142,8 @@ export function ChatInterface() {
             {/* Loading Indicator */}
             {isLoading && (
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="vortex-icon active">
+                <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="vortex-icon active scale-125">
                     <div className="vortex-segment"></div>
                     <div className="vortex-segment"></div>
                     <div className="vortex-segment"></div>
