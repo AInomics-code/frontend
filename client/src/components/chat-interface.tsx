@@ -80,8 +80,10 @@ export function ChatInterface() {
               <h3 className="text-xs font-medium text-gray-600">Daily Sales Target</h3>
             </div>
             <div className="text-2xl font-bold text-green-600 mb-1">41%</div>
-            <p className="text-xs text-gray-500">Target: 46%</p>
-            <p className="text-xs text-gray-500">5% below expected daily pace</p>
+            <div className="text-left">
+              <p className="text-xs text-gray-500">Target: 46%</p>
+              <p className="text-xs text-gray-500">5% below expected daily pace</p>
+            </div>
           </div>
 
           {/* Zones at Risk */}
@@ -91,8 +93,10 @@ export function ChatInterface() {
               <h3 className="text-xs font-medium text-gray-600">Zones at Risk</h3>
             </div>
             <div className="text-2xl font-bold text-red-600 mb-1">3</div>
-            <p className="text-xs text-gray-500">7 Reps</p>
-            <p className="text-xs text-gray-500">Colón, Chiriquí, and Oeste below target</p>
+            <div className="text-left">
+              <p className="text-xs text-gray-500">7 Reps</p>
+              <p className="text-xs text-gray-500">Colón, Chiriquí, and Oeste below target</p>
+            </div>
           </div>
 
           {/* El Extra Campaign */}
@@ -102,8 +106,10 @@ export function ChatInterface() {
               <h3 className="text-xs font-medium text-gray-600">El Extra Campaign</h3>
             </div>
             <div className="text-2xl font-bold text-[#DAA520] mb-1">8.2%</div>
-            <p className="text-xs text-gray-500">ROI</p>
-            <p className="text-xs text-gray-500">$6,200 invested, recommend vinegar + aderezo combo</p>
+            <div className="text-left">
+              <p className="text-xs text-gray-500">ROI</p>
+              <p className="text-xs text-gray-500">$6,200 invested, recommend vinegar + aderezo combo</p>
+            </div>
           </div>
         </div>
 
