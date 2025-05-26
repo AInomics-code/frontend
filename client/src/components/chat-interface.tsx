@@ -240,8 +240,8 @@ export function ChatInterface() {
 
 
         {/* Horizontal Progress Pill Cards */}
-        <section className="px-6 pb-6">
-          <div className="flex gap-4">
+        <section className="pb-6">
+          <div className="flex gap-4 w-full max-w-[960px] mx-auto px-4">
             {/* Colón Region Card */}
             <div 
               className={`flex flex-col justify-between rounded-xl p-3 bg-white shadow-sm border w-[200px] cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all duration-200 ${expandedCard === 'colon' ? 'ring-1 ring-red-400/50' : ''}`}
