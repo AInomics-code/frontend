@@ -222,19 +222,13 @@ export function ChatInterface() {
                 >
                   {/* Assistant Header */}
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="relative">
-                      <img
-                        src={vortexLogo}
-                        alt="Vorta"
-                        className={`w-6 h-6 ${isProcessing ? 'animate-spin' : ''}`}
-                        style={{ 
-                          filter: 'hue-rotate(10deg) saturate(1.2)',
-                          animation: isProcessing ? 'spin 2s linear infinite' : 'none'
-                        }}
-                      />
-                      {isProcessing && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-red-400/20 to-red-600/20 rounded-full animate-pulse"></div>
-                      )}
+                    <div className={`vortex-icon ${isProcessing ? 'active' : ''}`} style={{ width: '24px', height: '24px' }}>
+                      <div className="vortex-blade"></div>
+                      <div className="vortex-blade"></div>
+                      <div className="vortex-blade"></div>
+                      <div className="vortex-blade"></div>
+                      <div className="vortex-blade"></div>
+                      <div className="vortex-blade"></div>
                     </div>
                     <span className="text-sm font-medium text-gray-700">Vorta</span>
                   </div>
