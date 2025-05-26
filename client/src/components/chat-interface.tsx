@@ -125,10 +125,7 @@ export function ChatInterface() {
             <img 
               src={vortexLogo} 
               alt="Vorta" 
-              className="w-12 h-12 opacity-90"
-              style={{
-                filter: 'drop-shadow(0 0 8px rgba(215, 25, 32, 0.3))'
-              }}
+              className="w-12 h-12 opacity-90 shadow-[0_0_12px_rgba(215,25,32,0.35)]"
             />
           </div>
 
@@ -139,10 +136,7 @@ export function ChatInterface() {
                 <img 
                   src={vortexLogo} 
                   alt="Vorta Assistant" 
-                  className="w-8 h-8 opacity-90"
-                  style={{
-                    filter: 'drop-shadow(0 0 4px rgba(215, 25, 32, 0.2))'
-                  }}
+                  className="w-8 h-8 opacity-90 shadow-[0_0_12px_rgba(215,25,32,0.35)]"
                 />
               </div>
               <div className="flex-1">
@@ -159,10 +153,7 @@ export function ChatInterface() {
                   <img 
                     src={vortexLogo} 
                     alt="Vorta Assistant" 
-                    className="w-8 h-8 opacity-90 animate-pulse"
-                    style={{
-                      filter: 'drop-shadow(0 0 4px rgba(215, 25, 32, 0.2))'
-                    }}
+                    className="w-8 h-8 opacity-90 animate-pulse shadow-[0_0_12px_rgba(215,25,32,0.35)]"
                   />
                 </div>
                 <div className="flex-1">
