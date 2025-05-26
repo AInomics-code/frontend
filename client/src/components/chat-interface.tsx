@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sidebar } from "./sidebar";
 import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
-import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin, ArrowRight, Search, Globe, Target, TrendingDown } from "lucide-react";
+import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin, ArrowRight, Search, Globe, Target, TrendingDown, Check, ArrowDown } from "lucide-react";
 import vortexLogo from "@assets/Screenshot 2025-05-26 alle 13.53.01.png";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
@@ -244,88 +244,106 @@ export function ChatInterface() {
           <div className="flex gap-4 px-6">
             {/* Colón Region Card */}
             <div 
-              className={`flex flex-col rounded-xl p-3 bg-white shadow-sm border w-[200px] cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all duration-200 ${expandedCard === 'colon' ? 'ring-1 ring-red-400/50' : ''}`}
+              className={`flex flex-col rounded-xl px-4 py-3 bg-white/80 shadow-xs border border-neutral-200 w-[220px] cursor-pointer hover:shadow-md hover:scale-[1.01] transition-all duration-200 ${expandedCard === 'colon' ? 'ring-1 ring-red-400/50' : ''}`}
               onClick={() => setExpandedCard(expandedCard === 'colon' ? null : 'colon')}
               title="Colón: $4,150 of $6,200 goal achieved"
             >
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="text-sm font-semibold text-gray-900">Colón</h3>
-                <div className="px-2 py-1 bg-red-100 rounded-full">
-                  <span className="text-xs font-medium text-red-600">🔴 At Risk</span>
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-medium text-base text-gray-800">Colón</h3>
+                <div className="px-2 py-1 text-red-600 bg-red-100 border border-red-200 rounded-full">
+                  <span className="text-xs font-medium flex items-center gap-1">
+                    <AlertTriangle className="w-3 h-3" />
+                    At Risk
+                  </span>
                 </div>
               </div>
               
-              <div className="space-y-1">
-                <div className="text-xs text-gray-600">67% Reached</div>
-                <div className="text-xs text-gray-500">33% Remaining</div>
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-1">
+                  <Check className="w-3 h-3 text-gray-900" />
+                  <span className="text-sm text-gray-900">67% reached</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <ArrowDown className="w-3 h-3 text-gray-500" />
+                  <span className="text-xs text-gray-500">33% to goal</span>
+                </div>
               </div>
 
-              <div className="mt-3 relative">
-                <div className="relative w-full h-2 bg-gray-200 rounded-full overflow-hidden hover:shadow-sm transition-shadow duration-200">
-                  <div 
-                    className="absolute h-full bg-red-500 rounded-full transition-all duration-300" 
-                    style={{ width: '67%' }}
-                  ></div>
-                </div>
-                <div className="text-xs text-gray-400 text-right mt-1">33% to go</div>
+              <div className="relative w-full h-2 bg-neutral-200 rounded-full overflow-hidden">
+                <div 
+                  className="absolute h-full bg-red-500 rounded-full transition-all duration-300" 
+                  style={{ width: '67%' }}
+                ></div>
               </div>
             </div>
 
             {/* Oeste Region Card */}
             <div 
-              className={`flex flex-col rounded-xl p-3 bg-white shadow-sm border w-[200px] cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all duration-200 ${expandedCard === 'oeste' ? 'ring-1 ring-yellow-400/50' : ''}`}
+              className={`flex flex-col rounded-xl px-4 py-3 bg-white/80 shadow-xs border border-neutral-200 w-[220px] cursor-pointer hover:shadow-md hover:scale-[1.01] transition-all duration-200 ${expandedCard === 'oeste' ? 'ring-1 ring-yellow-400/50' : ''}`}
               onClick={() => setExpandedCard(expandedCard === 'oeste' ? null : 'oeste')}
               title="Oeste: $6,660 of $9,000 goal achieved"
             >
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="text-sm font-semibold text-gray-900">Oeste</h3>
-                <div className="px-2 py-1 bg-yellow-100 rounded-full">
-                  <span className="text-xs font-medium text-yellow-600">🟡 Needs Attention</span>
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-medium text-base text-gray-800">Oeste</h3>
+                <div className="px-2 py-1 text-yellow-600 bg-yellow-100 border border-yellow-200 rounded-full">
+                  <span className="text-xs font-medium flex items-center gap-1">
+                    <AlertTriangle className="w-3 h-3" />
+                    Needs Attention
+                  </span>
                 </div>
               </div>
               
-              <div className="space-y-1">
-                <div className="text-xs text-gray-600">74% Reached</div>
-                <div className="text-xs text-gray-500">26% Remaining</div>
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-1">
+                  <Check className="w-3 h-3 text-gray-900" />
+                  <span className="text-sm text-gray-900">74% reached</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <ArrowDown className="w-3 h-3 text-gray-500" />
+                  <span className="text-xs text-gray-500">26% to goal</span>
+                </div>
               </div>
 
-              <div className="mt-3 relative">
-                <div className="relative w-full h-2 bg-gray-200 rounded-full overflow-hidden hover:shadow-sm transition-shadow duration-200">
-                  <div 
-                    className="absolute h-full bg-yellow-400 rounded-full transition-all duration-300" 
-                    style={{ width: '74%' }}
-                  ></div>
-                </div>
-                <div className="text-xs text-gray-400 text-right mt-1">26% to go</div>
+              <div className="relative w-full h-2 bg-neutral-200 rounded-full overflow-hidden">
+                <div 
+                  className="absolute h-full bg-yellow-500 rounded-full transition-all duration-300" 
+                  style={{ width: '74%' }}
+                ></div>
               </div>
             </div>
 
             {/* Chiriquí Region Card */}
             <div 
-              className={`flex flex-col rounded-xl p-3 bg-white shadow-sm border w-[200px] cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all duration-200 ${expandedCard === 'chiriqui' ? 'ring-1 ring-red-400/50' : ''}`}
+              className={`flex flex-col rounded-xl px-4 py-3 bg-white/80 shadow-xs border border-neutral-200 w-[220px] cursor-pointer hover:shadow-md hover:scale-[1.01] transition-all duration-200 ${expandedCard === 'chiriqui' ? 'ring-1 ring-red-400/50' : ''}`}
               onClick={() => setExpandedCard(expandedCard === 'chiriqui' ? null : 'chiriqui')}
               title="Chiriquí: $5,040 of $7,000 goal achieved"
             >
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="text-sm font-semibold text-gray-900">Chiriquí</h3>
-                <div className="px-2 py-1 bg-yellow-100 rounded-full">
-                  <span className="text-xs font-medium text-yellow-600">🟡 Needs Attention</span>
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-medium text-base text-gray-800">Chiriquí</h3>
+                <div className="px-2 py-1 text-yellow-600 bg-yellow-100 border border-yellow-200 rounded-full">
+                  <span className="text-xs font-medium flex items-center gap-1">
+                    <AlertTriangle className="w-3 h-3" />
+                    Needs Attention
+                  </span>
                 </div>
               </div>
               
-              <div className="space-y-1">
-                <div className="text-xs text-gray-600">72% Reached</div>
-                <div className="text-xs text-gray-500">28% Remaining</div>
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-1">
+                  <Check className="w-3 h-3 text-gray-900" />
+                  <span className="text-sm text-gray-900">72% reached</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <ArrowDown className="w-3 h-3 text-gray-500" />
+                  <span className="text-xs text-gray-500">28% to goal</span>
+                </div>
               </div>
 
-              <div className="mt-3 relative">
-                <div className="relative w-full h-2 bg-gray-200 rounded-full overflow-hidden hover:shadow-sm transition-shadow duration-200">
-                  <div 
-                    className="absolute h-full bg-yellow-400 rounded-full transition-all duration-300" 
-                    style={{ width: '72%' }}
-                  ></div>
-                </div>
-                <div className="text-xs text-gray-400 text-right mt-1">28% to go</div>
+              <div className="relative w-full h-2 bg-neutral-200 rounded-full overflow-hidden">
+                <div 
+                  className="absolute h-full bg-yellow-500 rounded-full transition-all duration-300" 
+                  style={{ width: '72%' }}
+                ></div>
               </div>
             </div>
           </div>
