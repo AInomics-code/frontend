@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sidebar } from "./sidebar";
 import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
-import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin, ArrowRight, Search, Globe } from "lucide-react";
+import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin, ArrowRight, Search, Globe, Target, TrendingDown } from "lucide-react";
 import vortexLogo from "@assets/Screenshot 2025-05-26 alle 13.53.01.png";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
@@ -249,8 +249,20 @@ export function ChatInterface() {
               title="Colón: $4,150 of $6,200 goal achieved"
             >
               <div>
-                <h3 className="text-sm font-semibold text-gray-900">Colón</h3>
-                <p className="text-xs text-gray-500">67% of goal</p>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-semibold text-gray-900">Colón</h3>
+                  <div className="flex items-center gap-1">
+                    <TrendingDown className="w-3 h-3 text-red-500" />
+                    <span className="text-xs font-medium text-red-600">33% gap</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 mt-1">
+                  <p className="text-xs text-gray-500">67% reached</p>
+                  <div className="flex items-center gap-1 px-2 py-0.5 bg-red-50 rounded-full">
+                    <Target className="w-3 h-3 text-red-500" />
+                    <span className="text-xs font-medium text-red-600">33% needed</span>
+                  </div>
+                </div>
               </div>
               <div className="flex items-center justify-between mt-2">
                 <div className="relative w-2/3 h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -270,8 +282,20 @@ export function ChatInterface() {
               title="Oeste: $6,660 of $9,000 goal achieved"
             >
               <div>
-                <h3 className="text-sm font-semibold text-gray-900">Oeste</h3>
-                <p className="text-xs text-gray-500">74% of goal</p>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-semibold text-gray-900">Oeste</h3>
+                  <div className="flex items-center gap-1">
+                    <TrendingDown className="w-3 h-3 text-yellow-500" />
+                    <span className="text-xs font-medium text-yellow-600">26% gap</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 mt-1">
+                  <p className="text-xs text-gray-500">74% reached</p>
+                  <div className="flex items-center gap-1 px-2 py-0.5 bg-yellow-50 rounded-full">
+                    <Target className="w-3 h-3 text-yellow-500" />
+                    <span className="text-xs font-medium text-yellow-600">26% needed</span>
+                  </div>
+                </div>
               </div>
               <div className="flex items-center justify-between mt-2">
                 <div className="relative w-2/3 h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -291,8 +315,20 @@ export function ChatInterface() {
               title="Chiriquí: $5,040 of $7,000 goal achieved"
             >
               <div>
-                <h3 className="text-sm font-semibold text-gray-900">Chiriquí</h3>
-                <p className="text-xs text-gray-500">72% of goal</p>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-semibold text-gray-900">Chiriquí</h3>
+                  <div className="flex items-center gap-1">
+                    <TrendingDown className="w-3 h-3 text-yellow-500" />
+                    <span className="text-xs font-medium text-yellow-600">28% gap</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 mt-1">
+                  <p className="text-xs text-gray-500">72% reached</p>
+                  <div className="flex items-center gap-1 px-2 py-0.5 bg-yellow-50 rounded-full">
+                    <Target className="w-3 h-3 text-yellow-500" />
+                    <span className="text-xs font-medium text-yellow-600">28% needed</span>
+                  </div>
+                </div>
               </div>
               <div className="flex items-center justify-between mt-2">
                 <div className="relative w-2/3 h-2 bg-gray-200 rounded-full overflow-hidden">
