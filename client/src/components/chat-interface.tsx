@@ -71,10 +71,10 @@ export function ChatInterface() {
 
       {/* Main Content */}
       <main className="px-6 py-6 space-y-8">
-        {/* KPI Cards - Compact Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* KPI Cards - Modern Clean Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4">
           {/* Daily Sales Target */}
-          <div className="bg-white rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border-l-4 border-[#38A169]">
+          <div className="bg-white rounded-lg p-4 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
               <TrendingUp className="w-4 h-4 text-green-600" />
               <h3 className="text-xs font-medium text-gray-600">Daily Sales Target</h3>
@@ -87,7 +87,7 @@ export function ChatInterface() {
           </div>
 
           {/* Zones at Risk */}
-          <div className="bg-white rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border-l-4 border-[#E53E3E]">
+          <div className="bg-white rounded-lg p-4 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
               <AlertTriangle className="w-4 h-4 text-red-600" />
               <h3 className="text-xs font-medium text-gray-600">Zones at Risk</h3>
@@ -100,7 +100,7 @@ export function ChatInterface() {
           </div>
 
           {/* El Extra Campaign */}
-          <div className="bg-white rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border-l-4 border-[#D69E2E]">
+          <div className="bg-white rounded-lg p-4 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
               <Star className="w-4 h-4 text-yellow-600" />
               <h3 className="text-xs font-medium text-gray-600">El Extra Campaign</h3>
