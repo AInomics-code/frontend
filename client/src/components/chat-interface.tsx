@@ -43,14 +43,11 @@ export function ChatInterface() {
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="vortex-icon idle scale-150">
-              <div className="vortex-segment"></div>
-              <div className="vortex-segment"></div>
-              <div className="vortex-segment"></div>
-              <div className="vortex-segment"></div>
-              <div className="vortex-segment"></div>
-              <div className="vortex-segment"></div>
-            </div>
+            <img 
+              src="/attached_assets/image_1748285035519.png" 
+              alt="La Doña Vortex Logo" 
+              className="w-12 h-12 mx-auto mt-6 opacity-90 shadow-[0_0_12px_rgba(215,25,32,0.3)]"
+            />
             <h1 className="text-gray-700 font-semibold text-lg">
               La Doña Business Intelligence
             </h1>
@@ -123,14 +120,11 @@ export function ChatInterface() {
             {/* Initial Assistant Greeting */}
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
-                <div className="vortex-icon idle scale-125">
-                  <div className="vortex-segment"></div>
-                  <div className="vortex-segment"></div>
-                  <div className="vortex-segment"></div>
-                  <div className="vortex-segment"></div>
-                  <div className="vortex-segment"></div>
-                  <div className="vortex-segment"></div>
-                </div>
+                <img 
+                  src="/attached_assets/image_1748285035519.png" 
+                  alt="La Doña Assistant" 
+                  className="w-8 h-8 opacity-90 shadow-[0_0_8px_rgba(215,25,32,0.2)]"
+                />
               </div>
               <div className="flex-1">
                 <div className="bg-gray-50 rounded-xl px-4 py-3 inline-block max-w-md shadow-sm">
@@ -143,14 +137,11 @@ export function ChatInterface() {
             {isLoading && (
               <div className="flex items-start gap-3">
                 <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="vortex-icon active scale-125">
-                    <div className="vortex-segment"></div>
-                    <div className="vortex-segment"></div>
-                    <div className="vortex-segment"></div>
-                    <div className="vortex-segment"></div>
-                    <div className="vortex-segment"></div>
-                    <div className="vortex-segment"></div>
-                  </div>
+                  <img 
+                    src="/attached_assets/image_1748285035519.png" 
+                    alt="La Doña Assistant" 
+                    className="w-8 h-8 opacity-90 shadow-[0_0_8px_rgba(215,25,32,0.2)] animate-pulse"
+                  />
                 </div>
                 <div className="flex-1">
                   <div className="bg-gray-50 rounded-xl px-4 py-3 inline-block shadow-sm">
