@@ -30,9 +30,11 @@ export function ChatInterface() {
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-red-600 rounded-sm flex items-center justify-center">
-              <span className="text-white font-bold text-sm">La</span>
-            </div>
+            <img 
+              src="/la-dona-logo.png" 
+              alt="La Doña Logo" 
+              className="h-10 w-auto"
+            />
             <div className="text-red-600 font-semibold">
               <span className="text-black">La</span> Doña Business Intelligence
             </div>
