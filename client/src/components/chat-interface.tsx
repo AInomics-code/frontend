@@ -205,6 +205,32 @@ export function ChatInterface() {
               </div>
             </div>
           </div>
+
+          {/* Input Area */}
+          <div className="flex items-center gap-3 mt-6 pt-4 border-t border-gray-100">
+            <div className="flex-1 relative">
+              <input
+                type="text"
+                placeholder="Ask about KPIs or sales performance..."
+                className="w-full px-4 py-3 bg-white border border-gray-200 rounded-full text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#006400] focus:border-transparent"
+              />
+            </div>
+            <button className="w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center hover:scale-105 hover:bg-[#E6C200] transition-all duration-200 shadow-sm">
+              <svg 
+                className="w-4 h-4 text-gray-700" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" 
+                />
+              </svg>
+            </button>
+          </div>
         </section>
       </main>
     </div>
