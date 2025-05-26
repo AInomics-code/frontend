@@ -201,16 +201,16 @@
 
 .vortex-blade {
   position: absolute;
-  width: 6px;
-  height: 20px;
+  width: 8px;
+  height: 18px;
   background: #D71920;
-  border-radius: 2% 98% 98% 2%;
-  transform-origin: 3px 24px;
+  border-radius: 50% 10% 50% 90%;
+  transform-origin: 4px 22px;
   top: 50%;
   left: 50%;
-  margin-left: -3px;
-  margin-top: -24px;
-  clip-path: ellipse(30% 100% at 50% 0%);
+  margin-left: -4px;
+  margin-top: -22px;
+  clip-path: path('M 0 18 Q 8 12 8 6 Q 8 0 4 0 Q 0 0 0 6 Q 0 12 0 18 Z');
 }
 
 .vortex-blade:nth-child(1) { 
