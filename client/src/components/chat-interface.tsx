@@ -72,9 +72,9 @@ export function ChatInterface() {
       {/* Main Content */}
       <main className="px-6 py-6 space-y-8">
         {/* KPI Cards Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Daily Sales Target */}
-          <div className="bg-white rounded-xl p-6 shadow-sm border-l-4 border-green-500">
+          <div className="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-green-500 min-h-[160px] flex flex-col">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -87,15 +87,15 @@ export function ChatInterface() {
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
               </svg>
             </div>
-            <div className="mb-2">
+            <div className="mb-4">
               <span className="text-3xl font-bold text-green-600">41%</span>
               <span className="text-red-500 text-sm ml-2">Target: 46%</span>
             </div>
-            <p className="text-gray-500 text-sm">5% below expected daily pace</p>
+            <p className="text-gray-500 text-sm mt-auto">5% below expected daily pace</p>
           </div>
 
           {/* Zones at Risk */}
-          <div className="bg-white rounded-xl p-6 shadow-sm border-l-4 border-red-500">
+          <div className="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-red-500 min-h-[160px] flex flex-col">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
@@ -107,15 +107,15 @@ export function ChatInterface() {
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
               </svg>
             </div>
-            <div className="mb-2">
+            <div className="mb-4">
               <span className="text-3xl font-bold text-red-600">3</span>
               <span className="text-gray-500 text-sm ml-2">7 Reps</span>
             </div>
-            <p className="text-gray-500 text-sm">Colón, Chiriquí, and Oeste below target</p>
+            <p className="text-gray-500 text-sm mt-auto">Colón, Chiriquí, and Oeste below target</p>
           </div>
 
           {/* El Extra Campaign */}
-          <div className="bg-yellow-50 rounded-xl p-6 shadow-sm border-l-4 border-yellow-500">
+          <div className="bg-yellow-50 rounded-2xl p-8 shadow-sm border-l-4 border-yellow-500 min-h-[160px] flex flex-col">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
@@ -127,11 +127,11 @@ export function ChatInterface() {
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
               </svg>
             </div>
-            <div className="mb-2">
+            <div className="mb-4">
               <span className="text-3xl font-bold text-yellow-700">8.2%</span>
               <span className="text-gray-600 text-sm ml-2">ROI</span>
             </div>
-            <p className="text-gray-600 text-sm">$6,200 invested, recommend vinegar + aderezo combo</p>
+            <p className="text-gray-600 text-sm mt-auto">$6,200 invested, recommend vinegar + aderezo combo</p>
           </div>
         </div>
 
