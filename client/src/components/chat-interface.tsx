@@ -76,7 +76,7 @@ export function ChatInterface() {
           {/* Top Row - Operational Metrics */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Daily Sales Target */}
-            <div className="bg-[#F0FFF4] rounded-2xl p-4 shadow-sm border-l-4 border-[#22C55E] min-h-[120px] flex flex-col">
+            <div className="bg-[#F0FFF4] rounded-2xl p-4 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border border-green-100 min-h-[120px] flex flex-col">
               <div className="mb-3">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">📊</span>
@@ -91,7 +91,7 @@ export function ChatInterface() {
             </div>
 
             {/* Zones at Risk */}
-            <div className="bg-[#FFF5F5] rounded-2xl p-4 shadow-sm border-l-4 border-[#E53E3E] min-h-[120px] flex flex-col">
+            <div className="bg-[#FFF5F5] rounded-2xl p-4 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border border-red-100 min-h-[120px] flex flex-col">
               <div className="mb-3">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">📉</span>
@@ -107,7 +107,7 @@ export function ChatInterface() {
           </div>
 
           {/* Bottom Row - Strategic Campaign (Full Width) */}
-          <div className="bg-[#FFFBEF] rounded-2xl p-4 shadow-sm border-l-4 border-[#DAA520] min-h-[120px]">
+          <div className="bg-[#FFFBEF] rounded-2xl p-4 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border border-yellow-100 min-h-[120px]">
             <div className="flex items-center justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
