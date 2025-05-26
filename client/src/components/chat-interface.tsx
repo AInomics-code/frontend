@@ -78,7 +78,7 @@ export function ChatInterface() {
         {/* KPI Cards - Modern Clean Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4">
           {/* Daily Sales Target */}
-          <div className="bg-white rounded-lg p-4 shadow-sm">
+          <div className="bg-white rounded-lg p-4 shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
             <div className="flex items-center gap-2 mb-2">
               <BarChart3 className="w-5 h-5 text-gray-600 mr-2" />
               <h3 className="text-xs font-medium text-gray-600">Daily Sales Target</h3>
@@ -91,7 +91,7 @@ export function ChatInterface() {
           </div>
 
           {/* Zones at Risk */}
-          <div className="bg-white rounded-lg p-4 shadow-sm">
+          <div className="bg-white rounded-lg p-4 shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
             <div className="flex items-center gap-2 mb-2">
               <AlertTriangle className="w-5 h-5 text-gray-600 mr-2" />
               <h3 className="text-xs font-medium text-gray-600">Zones at Risk</h3>
@@ -104,7 +104,7 @@ export function ChatInterface() {
           </div>
 
           {/* El Extra Campaign */}
-          <div className="bg-white rounded-lg p-4 shadow-sm">
+          <div className="bg-white rounded-lg p-4 shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
             <div className="flex items-center gap-2 mb-2">
               <TrendingUp className="w-5 h-5 text-gray-600 mr-2" />
               <h3 className="text-xs font-medium text-gray-600">El Extra Campaign</h3>
@@ -134,7 +134,7 @@ export function ChatInterface() {
 
           <div className="space-y-3">
             {/* Initial Assistant Greeting */}
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-3 animate-[chatDrop_200ms_ease-out]">
               <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
                 <div className="vortex-icon idle scale-75">
                   <div className="vortex-blade"></div>
@@ -154,7 +154,7 @@ export function ChatInterface() {
 
             {/* Loading Indicator */}
             {isLoading && (
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-3 animate-[chatDrop_200ms_ease-out]">
                 <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
                   <div className="vortex-icon active scale-75">
                     <div className="vortex-blade"></div>
@@ -167,14 +167,7 @@ export function ChatInterface() {
                 </div>
                 <div className="flex-1">
                   <div className="bg-gray-50 rounded-xl px-4 py-3 inline-block shadow-sm">
-                    <div className="flex items-center gap-2">
-                      <span className="text-gray-500 text-sm">Preparing insights</span>
-                      <div className="flex space-x-1">
-                        <div className="w-1 h-1 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
-                        <div className="w-1 h-1 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
-                        <div className="w-1 h-1 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
-                      </div>
-                    </div>
+                    <p className="text-sm text-gray-400 italic animate-pulse">Preparing insights…</p>
                   </div>
                 </div>
               </div>
