@@ -244,14 +244,14 @@ export function ChatInterface() {
           <div className="flex gap-4 px-6">
             {/* Colón Region Card */}
             <div 
-              className={`flex flex-col rounded-xl px-4 py-3 bg-white/80 shadow-xs border border-neutral-200 w-[220px] cursor-pointer hover:shadow-md hover:scale-[1.01] transition-all duration-200 ${expandedCard === 'colon' ? 'ring-1 ring-red-400/50' : ''}`}
+              className={`flex flex-col rounded-xl px-4 py-3 bg-white/80 shadow-xs border border-neutral-200 w-[260px] cursor-pointer hover:shadow-md hover:scale-[1.01] transition-all duration-200 ${expandedCard === 'colon' ? 'ring-1 ring-red-400/50' : ''}`}
               onClick={() => setExpandedCard(expandedCard === 'colon' ? null : 'colon')}
               title="Colón: $4,150 of $6,200 goal achieved"
             >
-              <div className="flex items-start justify-between mb-3">
-                <h3 className="font-medium text-base text-gray-800">Colón</h3>
-                <div className="px-2 py-0.5 text-red-600 bg-red-100 border border-red-200 rounded-full shrink-0">
-                  <span className="text-xs font-medium flex items-center gap-1 whitespace-nowrap">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-medium text-base text-gray-800 flex-1">Colón</h3>
+                <div className="px-2 py-0.5 text-red-600 bg-red-100 border border-red-200 rounded-full ml-2">
+                  <span className="text-xs font-medium flex items-center gap-1">
                     <AlertTriangle className="w-3 h-3" />
                     At Risk
                   </span>
@@ -279,14 +279,14 @@ export function ChatInterface() {
 
             {/* Oeste Region Card */}
             <div 
-              className={`flex flex-col rounded-xl px-4 py-3 bg-white/80 shadow-xs border border-neutral-200 w-[220px] cursor-pointer hover:shadow-md hover:scale-[1.01] transition-all duration-200 ${expandedCard === 'oeste' ? 'ring-1 ring-yellow-400/50' : ''}`}
+              className={`flex flex-col rounded-xl px-4 py-3 bg-white/80 shadow-xs border border-neutral-200 w-[260px] cursor-pointer hover:shadow-md hover:scale-[1.01] transition-all duration-200 ${expandedCard === 'oeste' ? 'ring-1 ring-yellow-400/50' : ''}`}
               onClick={() => setExpandedCard(expandedCard === 'oeste' ? null : 'oeste')}
               title="Oeste: $6,660 of $9,000 goal achieved"
             >
-              <div className="flex items-start justify-between mb-3">
-                <h3 className="font-medium text-base text-gray-800">Oeste</h3>
-                <div className="px-2 py-0.5 text-yellow-600 bg-yellow-100 border border-yellow-200 rounded-full shrink-0">
-                  <span className="text-xs font-medium flex items-center gap-1 whitespace-nowrap">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-medium text-base text-gray-800 flex-1">Oeste</h3>
+                <div className="px-2 py-0.5 text-yellow-600 bg-yellow-100 border border-yellow-200 rounded-full ml-2">
+                  <span className="text-xs font-medium flex items-center gap-1">
                     <AlertTriangle className="w-3 h-3" />
                     Needs Attention
                   </span>
@@ -314,14 +314,14 @@ export function ChatInterface() {
 
             {/* Chiriquí Region Card */}
             <div 
-              className={`flex flex-col rounded-xl px-4 py-3 bg-white/80 shadow-xs border border-neutral-200 w-[220px] cursor-pointer hover:shadow-md hover:scale-[1.01] transition-all duration-200 ${expandedCard === 'chiriqui' ? 'ring-1 ring-red-400/50' : ''}`}
+              className={`flex flex-col rounded-xl px-4 py-3 bg-white/80 shadow-xs border border-neutral-200 w-[260px] cursor-pointer hover:shadow-md hover:scale-[1.01] transition-all duration-200 ${expandedCard === 'chiriqui' ? 'ring-1 ring-red-400/50' : ''}`}
               onClick={() => setExpandedCard(expandedCard === 'chiriqui' ? null : 'chiriqui')}
               title="Chiriquí: $5,040 of $7,000 goal achieved"
             >
-              <div className="flex items-start justify-between mb-3">
-                <h3 className="font-medium text-base text-gray-800">Chiriquí</h3>
-                <div className="px-2 py-0.5 text-yellow-600 bg-yellow-100 border border-yellow-200 rounded-full shrink-0">
-                  <span className="text-xs font-medium flex items-center gap-1 whitespace-nowrap">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-medium text-base text-gray-800 flex-1">Chiriquí</h3>
+                <div className="px-2 py-0.5 text-yellow-600 bg-yellow-100 border border-yellow-200 rounded-full ml-2">
+                  <span className="text-xs font-medium flex items-center gap-1">
                     <AlertTriangle className="w-3 h-3" />
                     Needs Attention
                   </span>
