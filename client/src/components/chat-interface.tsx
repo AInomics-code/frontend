@@ -35,9 +35,9 @@ export function ChatInterface() {
               alt="La Doña Logo"
               className="h-10 w-auto object-contain"
             />
-            <div className="text-red-600 font-semibold">
-              <span className="text-black">La</span> Doña Business Intelligence
-            </div>
+            <h1 className="text-[#E50914] font-bold text-lg">
+              La Doña Business Intelligence
+            </h1>
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
