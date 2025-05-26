@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sidebar } from "./sidebar";
 import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
-import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin, ArrowRight, Search, Globe, Target, TrendingDown, Check, ArrowDown } from "lucide-react";
+import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin, ArrowRight, Search, Globe, Target, TrendingDown, Check, ArrowDown, Paperclip } from "lucide-react";
 import vortexLogo from "@assets/Screenshot 2025-05-26 alle 13.53.01.png";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
@@ -17,6 +17,7 @@ export function ChatInterface() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [currentResponse, setCurrentResponse] = useState("");
   const [showResponse, setShowResponse] = useState(false);
+  const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -43,6 +44,18 @@ export function ChatInterface() {
 
   const handleVoiceToggle = () => {
     setIsVoiceActive(!isVoiceActive);
+  };
+
+  const handleFileAttach = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files) {
+      const newFiles = Array.from(files);
+      setAttachedFiles(prev => [...prev, ...newFiles]);
+    }
+  };
+
+  const removeAttachedFile = (index: number) => {
+    setAttachedFiles(prev => prev.filter((_, i) => i !== index));
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -263,6 +276,29 @@ export function ChatInterface() {
             </div>
           )}
 
+          {/* Attached Files Display */}
+          {attachedFiles.length > 0 && (
+            <div className="mt-4 px-6">
+              <div className="w-full max-w-[960px] mx-auto">
+                <div className="flex flex-wrap gap-2">
+                  {attachedFiles.map((file, index) => (
+                    <div key={index} className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2 text-sm">
+                      <Paperclip className="w-4 h-4 text-gray-500" />
+                      <span className="text-gray-700 truncate max-w-[150px]">{file.name}</span>
+                      <button
+                        onClick={() => removeAttachedFile(index)}
+                        className="text-gray-400 hover:text-red-500 transition-colors duration-200 ml-1"
+                        title="Remove file"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Vorta Input Bar - Claude x Perplexity Inspired */}
           <div className="mt-6 pt-4 border-t border-gray-100">
             <div className="flex items-center gap-3 w-full max-w-[960px] mx-auto px-4 py-3 rounded-xl bg-white shadow-sm border border-gray-100 focus-within:ring-2 focus-within:ring-[#E10600]/30 focus-within:ring-offset-1 transition-all duration-200">
@@ -279,7 +315,19 @@ export function ChatInterface() {
               />
 
               {/* Optional Tools */}
-              <div className="flex items-center gap-3 text-gray-400">
+              <div className="flex items-center gap-2 text-gray-400">
+                {/* File Attach Button */}
+                <label className="cursor-pointer hover:text-gray-600 transition-colors duration-200 p-1 rounded-full hover:bg-gray-50" title="Attach files for analysis">
+                  <input
+                    type="file"
+                    multiple
+                    accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.png,.jpg,.jpeg"
+                    onChange={handleFileAttach}
+                    className="hidden"
+                  />
+                  <Paperclip className="w-4 h-4" />
+                </label>
+
                 <button 
                   className="hover:text-gray-600 transition-colors duration-200 p-1 rounded-full hover:bg-gray-50"
                   title="Search insights"
@@ -298,14 +346,14 @@ export function ChatInterface() {
               {/* CTA Button */}
               <button 
                 className={`px-4 py-2 rounded-lg text-sm font-medium shadow-md transition-all duration-200 ${
-                  inputValue.trim()
+                  (inputValue.trim() || attachedFiles.length > 0)
                     ? isProcessing 
                       ? 'bg-[#cc0500] text-white animate-pulse cursor-wait'
                       : 'bg-[#E10600] text-white hover:bg-[#cc0500] hover:scale-[1.03]'
                     : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                 }`}
                 onClick={handleSendMessage}
-                disabled={!inputValue.trim() || isProcessing}
+                disabled={(!inputValue.trim() && attachedFiles.length === 0) || isProcessing}
               >
                 {isProcessing ? 'Processing...' : 'Ask'}
               </button>
