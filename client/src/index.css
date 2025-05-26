@@ -237,7 +237,7 @@
 }
 
 .vortex-icon.active {
-  animation: vortex-spin 2s linear infinite;
+  animation: vortex-thinking 1.4s ease-in-out infinite;
 }
 
 @keyframes vortex-gentle-pulse {
@@ -248,6 +248,29 @@
   50% { 
     transform: scale(1.05) rotate(30deg); 
     filter: drop-shadow(0 0 12px rgba(215, 25, 32, 0.5));
+  }
+}
+
+@keyframes vortex-thinking {
+  0% { 
+    transform: scale(1) rotate(0deg); 
+    filter: drop-shadow(0 0 8px rgba(215, 25, 32, 0.4)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+  25% { 
+    transform: scale(1.08) rotate(90deg); 
+    filter: drop-shadow(0 0 16px rgba(215, 25, 32, 0.7)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
+  }
+  50% { 
+    transform: scale(1) rotate(180deg); 
+    filter: drop-shadow(0 0 12px rgba(215, 25, 32, 0.5)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+  75% { 
+    transform: scale(1.08) rotate(270deg); 
+    filter: drop-shadow(0 0 16px rgba(215, 25, 32, 0.7)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
+  }
+  100% { 
+    transform: scale(1) rotate(360deg); 
+    filter: drop-shadow(0 0 8px rgba(215, 25, 32, 0.4)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   }
 }
 
