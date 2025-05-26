@@ -36,8 +36,9 @@ export function ChatInterface() {
       </aside>
 
       {/* Center Main */}
-      <main className="p-6 space-y-6 max-w-4xl mx-auto w-full">
-        {/* Content will go here */}
+      <main className="p-6 space-y-6 max-w-4xl mx-auto w-full bg-white rounded-xl shadow-md">
+        <h1 className="text-2xl font-bold text-[#006400]">Hello, world</h1>
+        <p className="text-sm text-gray-600">If you see this, the layout is working. You're inside the main column.</p>
       </main>
 
       {/* Right Panel */}
