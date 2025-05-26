@@ -71,62 +71,39 @@ export function ChatInterface() {
 
       {/* Main Content */}
       <main className="px-6 py-6 space-y-8">
-        {/* KPI Cards - Staggered Layout */}
-        <div className="space-y-4">
-          {/* Top Row - Operational Metrics */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Daily Sales Target */}
-            <div className="bg-[#F0FFF4] rounded-2xl p-4 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border border-green-100 min-h-[100px] flex flex-col">
-              <div className="mb-3">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-2xl">📊</span>
-                  <h3 className="text-sm font-semibold text-gray-700">Daily Sales Target</h3>
-                </div>
-                <div className="text-3xl font-bold text-green-600 mb-2">41%</div>
-                <div className="space-y-1">
-                  <p className="text-xs text-gray-500">Target: 46%</p>
-                  <p className="text-xs text-gray-500">5% below expected daily pace</p>
-                </div>
-              </div>
+        {/* KPI Cards - Compact Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Daily Sales Target */}
+          <div className="bg-[#F0FFF4] rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border border-green-100">
+            <div className="flex items-center gap-1 mb-2">
+              <span className="text-lg">📊</span>
+              <h3 className="text-xs font-medium text-gray-600">Daily Sales Target</h3>
             </div>
-
-            {/* Zones at Risk */}
-            <div className="bg-[#FFF5F5] rounded-2xl p-4 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border border-red-100 min-h-[100px] flex flex-col">
-              <div className="mb-3">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-2xl">📉</span>
-                  <h3 className="text-sm font-semibold text-gray-700">Zones at Risk</h3>
-                </div>
-                <div className="text-3xl font-bold text-red-600 mb-2">3</div>
-                <div className="space-y-1">
-                  <p className="text-xs text-gray-500">7 Reps affected</p>
-                  <p className="text-xs text-gray-500">Colón, Chiriquí, and Oeste below target</p>
-                </div>
-              </div>
-            </div>
+            <div className="text-2xl font-bold text-green-600 mb-1">41%</div>
+            <p className="text-xs text-gray-500">Target: 46%</p>
+            <p className="text-xs text-gray-500">5% below expected daily pace</p>
           </div>
 
-          {/* Bottom Row - Strategic Campaign (Full Width) */}
-          <div className="bg-[#FFFBEF] rounded-2xl p-4 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border border-yellow-100 min-h-[100px]">
-            <div className="flex items-center justify-between">
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-2xl">⭐</span>
-                  <h3 className="text-sm font-semibold text-gray-700">El Extra Campaign Performance</h3>
-                </div>
-                <div className="flex items-baseline gap-4">
-                  <div className="text-3xl font-bold text-[#DAA520]">8.2%</div>
-                  <div className="text-sm text-gray-600">ROI</div>
-                </div>
-              </div>
-              <div className="flex-1 ml-8">
-                <div className="space-y-2">
-                  <p className="text-sm text-gray-700 font-medium">Strategic Recommendation</p>
-                  <p className="text-xs text-gray-500">$6,200 invested • Expand vinegar + aderezo combo</p>
-                  <p className="text-xs text-gray-500">High potential for Sur zone recovery</p>
-                </div>
-              </div>
+          {/* Zones at Risk */}
+          <div className="bg-[#FFF5F5] rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border border-red-100">
+            <div className="flex items-center gap-1 mb-2">
+              <span className="text-lg">📉</span>
+              <h3 className="text-xs font-medium text-gray-600">Zones at Risk</h3>
             </div>
+            <div className="text-2xl font-bold text-red-600 mb-1">3</div>
+            <p className="text-xs text-gray-500">7 Reps</p>
+            <p className="text-xs text-gray-500">Colón, Chiriquí, and Oeste below target</p>
+          </div>
+
+          {/* El Extra Campaign */}
+          <div className="bg-[#FFFBEF] rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border border-yellow-100">
+            <div className="flex items-center gap-1 mb-2">
+              <span className="text-lg">⭐</span>
+              <h3 className="text-xs font-medium text-gray-600">El Extra Campaign</h3>
+            </div>
+            <div className="text-2xl font-bold text-[#DAA520] mb-1">8.2%</div>
+            <p className="text-xs text-gray-500">ROI</p>
+            <p className="text-xs text-gray-500">$6,200 invested, recommend vinegar + aderezo combo</p>
           </div>
         </div>
 
