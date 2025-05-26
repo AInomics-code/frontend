@@ -120,17 +120,19 @@ export function ChatInterface() {
             <p className="text-xs text-gray-500 mt-1">Your personal ERP analyst. Ask anything about sales, planning, or performance.</p>
           </div>
           
-          <div className="space-y-4">
+          <div className="space-y-3">
             {/* Initial Assistant Greeting */}
             <div className="flex items-start gap-3">
-              <img 
-                src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
-                alt="La Doña Avatar" 
-                className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-1"
-              />
+              <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-1">
+                <img 
+                  src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
+                  alt="La Doña" 
+                  className="w-5 h-5 object-contain opacity-70"
+                />
+              </div>
               <div className="flex-1">
-                <div className="bg-gray-100 rounded-lg px-4 py-3 inline-block max-w-md shadow-sm">
-                  <p className="text-gray-700 text-sm">How can I help you today?</p>
+                <div className="bg-gray-50 rounded-xl px-4 py-3 inline-block max-w-md shadow-sm">
+                  <p className="text-sm text-gray-700">How can I help you today?</p>
                 </div>
               </div>
             </div>
@@ -138,15 +140,17 @@ export function ChatInterface() {
             {/* Loading Indicator */}
             {isLoading && (
               <div className="flex items-start gap-3">
-                <img 
-                  src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
-                  alt="La Doña Avatar" 
-                  className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-1"
-                />
+                <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-1">
+                  <img 
+                    src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
+                    alt="La Doña" 
+                    className="w-5 h-5 object-contain opacity-70"
+                  />
+                </div>
                 <div className="flex-1">
-                  <div className="bg-gray-100 rounded-lg px-4 py-3 inline-block shadow-sm">
+                  <div className="bg-gray-50 rounded-xl px-4 py-3 inline-block shadow-sm">
                     <div className="flex items-center gap-2">
-                      <span className="text-gray-500 text-sm">Doña is preparing insights</span>
+                      <span className="text-gray-500 text-sm">Preparing insights</span>
                       <div className="flex space-x-1">
                         <div className="w-1 h-1 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
                         <div className="w-1 h-1 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
