@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sidebar } from "./sidebar";
 import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
-import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User } from "lucide-react";
+import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin } from "lucide-react";
 import vortexLogo from "@assets/Screenshot 2025-05-26 alle 13.53.01.png";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
@@ -11,6 +11,7 @@ export function ChatInterface() {
   const [selectedConversationId, setSelectedConversationId] = useState<number | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -176,6 +177,192 @@ export function ChatInterface() {
 
             {/* Scroll anchor */}
             <div ref={messagesEndRef} />
+          </div>
+
+          {/* Interactive Insight Tiles */}
+          <div className="mt-6 space-y-4">
+            <div className="flex flex-wrap gap-3 justify-start">
+              {/* Colón Region Card */}
+              <div 
+                className={`bg-white rounded-xl shadow-sm px-4 py-3 w-[180px] h-[80px] cursor-pointer border-l-[3px] border-red-500 hover:shadow-md hover:scale-[1.03] transition-all duration-200 ease-in-out ${expandedCard === 'colon' ? 'ring-2 ring-red-200' : ''}`}
+                onClick={() => setExpandedCard(expandedCard === 'colon' ? null : 'colon')}
+              >
+                <div className="flex items-start justify-between h-full">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-red-500 text-sm">🔴</span>
+                      <span className="text-sm font-medium text-gray-800">Colón</span>
+                    </div>
+                    <div className="text-xs text-gray-500">67% of goal</div>
+                    <div className="text-xs text-gray-400 mt-1">Click for detail</div>
+                  </div>
+                  <div className="w-8 h-8 bg-red-50 rounded-full flex items-center justify-center">
+                    <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Oeste Region Card */}
+              <div 
+                className={`bg-white rounded-xl shadow-sm px-4 py-3 w-[180px] h-[80px] cursor-pointer border-l-[3px] border-yellow-500 hover:shadow-md hover:scale-[1.03] transition-all duration-200 ease-in-out ${expandedCard === 'oeste' ? 'ring-2 ring-yellow-200' : ''}`}
+                onClick={() => setExpandedCard(expandedCard === 'oeste' ? null : 'oeste')}
+              >
+                <div className="flex items-start justify-between h-full">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-yellow-500 text-sm">🟡</span>
+                      <span className="text-sm font-medium text-gray-800">Oeste</span>
+                    </div>
+                    <div className="text-xs text-gray-500">74% of goal</div>
+                    <div className="text-xs text-gray-400 mt-1">Click for detail</div>
+                  </div>
+                  <div className="w-8 h-8 bg-yellow-50 rounded-full flex items-center justify-center">
+                    <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Chiriquí Region Card */}
+              <div 
+                className={`bg-white rounded-xl shadow-sm px-4 py-3 w-[180px] h-[80px] cursor-pointer border-l-[3px] border-red-500 hover:shadow-md hover:scale-[1.03] transition-all duration-200 ease-in-out ${expandedCard === 'chiriqui' ? 'ring-2 ring-red-200' : ''}`}
+                onClick={() => setExpandedCard(expandedCard === 'chiriqui' ? null : 'chiriqui')}
+              >
+                <div className="flex items-start justify-between h-full">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-red-500 text-sm">🔴</span>
+                      <span className="text-sm font-medium text-gray-800">Chiriquí</span>
+                    </div>
+                    <div className="text-xs text-gray-500">72% of goal</div>
+                    <div className="text-xs text-gray-400 mt-1">Click for detail</div>
+                  </div>
+                  <div className="w-8 h-8 bg-red-50 rounded-full flex items-center justify-center">
+                    <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Expanded Detail Cards */}
+            {expandedCard === 'colon' && (
+              <div className="bg-red-50 border-t-[3px] border-red-500 rounded-xl px-6 py-4 max-h-[280px] opacity-100 transition-all duration-300 animate-[chatDrop_200ms_ease-out]">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <MapPin className="w-5 h-5 text-red-500" />
+                    <h3 className="text-lg font-semibold text-gray-800">Colón Region</h3>
+                  </div>
+                  <div className="text-sm text-gray-500">Updated 2h ago</div>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="space-y-2">
+                    <p className="text-sm text-gray-700"><strong>Current Performance:</strong> 67% of monthly goal</p>
+                    <p className="text-sm text-gray-700"><strong>Reps Affected:</strong> 3 sales representatives</p>
+                    <p className="text-sm text-gray-700"><strong>Key Issues:</strong> Low vinegar sales, delayed aderezo deliveries</p>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-sm text-gray-700"><strong>Recommendation:</strong> Focus on combo promotions</p>
+                    <p className="text-sm text-gray-700"><strong>Priority SKUs:</strong> Extra Virgin, Classic Vinegar</p>
+                    <p className="text-sm text-gray-700"><strong>Next Review:</strong> Tomorrow 9:00 AM</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                    <Phone className="w-4 h-4" />
+                    Contact Team Lead
+                  </button>
+                  <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                    <BarChart3 className="w-4 h-4" />
+                    View Sales Data
+                  </button>
+                  <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                    <Package className="w-4 h-4" />
+                    Check Inventory
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {expandedCard === 'oeste' && (
+              <div className="bg-yellow-50 border-t-[3px] border-yellow-500 rounded-xl px-6 py-4 max-h-[280px] opacity-100 transition-all duration-300 animate-[chatDrop_200ms_ease-out]">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <MapPin className="w-5 h-5 text-yellow-600" />
+                    <h3 className="text-lg font-semibold text-gray-800">Oeste Region</h3>
+                  </div>
+                  <div className="text-sm text-gray-500">Updated 1h ago</div>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="space-y-2">
+                    <p className="text-sm text-gray-700"><strong>Current Performance:</strong> 74% of monthly goal</p>
+                    <p className="text-sm text-gray-700"><strong>Reps Affected:</strong> 2 sales representatives</p>
+                    <p className="text-sm text-gray-700"><strong>Key Issues:</strong> Seasonal demand fluctuation</p>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-sm text-gray-700"><strong>Recommendation:</strong> Increase weekend promotions</p>
+                    <p className="text-sm text-gray-700"><strong>Priority SKUs:</strong> Specialty Sauces, Premium Line</p>
+                    <p className="text-sm text-gray-700"><strong>Next Review:</strong> Wednesday 2:00 PM</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                    <Phone className="w-4 h-4" />
+                    Contact Team Lead
+                  </button>
+                  <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                    <BarChart3 className="w-4 h-4" />
+                    View Sales Data
+                  </button>
+                  <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                    <Package className="w-4 h-4" />
+                    Check Inventory
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {expandedCard === 'chiriqui' && (
+              <div className="bg-red-50 border-t-[3px] border-red-500 rounded-xl px-6 py-4 max-h-[280px] opacity-100 transition-all duration-300 animate-[chatDrop_200ms_ease-out]">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <MapPin className="w-5 h-5 text-red-500" />
+                    <h3 className="text-lg font-semibold text-gray-800">Chiriquí Region</h3>
+                  </div>
+                  <div className="text-sm text-gray-500">Updated 3h ago</div>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="space-y-2">
+                    <p className="text-sm text-gray-700"><strong>Current Performance:</strong> 72% of monthly goal</p>
+                    <p className="text-sm text-gray-700"><strong>Reps Affected:</strong> 2 sales representatives</p>
+                    <p className="text-sm text-gray-700"><strong>Key Issues:</strong> Supply chain delays, competitor pressure</p>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-sm text-gray-700"><strong>Recommendation:</strong> Emergency stock redistribution</p>
+                    <p className="text-sm text-gray-700"><strong>Priority SKUs:</strong> Core Vinegar, Basic Aderezo</p>
+                    <p className="text-sm text-gray-700"><strong>Next Review:</strong> Today 4:00 PM</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                    <Phone className="w-4 h-4" />
+                    Contact Team Lead
+                  </button>
+                  <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                    <BarChart3 className="w-4 h-4" />
+                    View Sales Data
+                  </button>
+                  <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                    <Package className="w-4 h-4" />
+                    Check Inventory
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Input Area */}
