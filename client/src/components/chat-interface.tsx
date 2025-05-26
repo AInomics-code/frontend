@@ -44,14 +44,13 @@ export function ChatInterface() {
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img 
-              src={vortexLogo} 
-              alt="Vorta Logo" 
-              className="w-8 h-8 opacity-90"
-              style={{
-                filter: 'drop-shadow(0 0 6px rgba(215, 25, 32, 0.2))'
-              }}
-            />
+            <div className="vortex-icon idle scale-75">
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+            </div>
             <h1 className="text-gray-700 font-semibold text-lg">
               La Doña Business Intelligence
             </h1>
