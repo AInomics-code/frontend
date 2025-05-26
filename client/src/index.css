@@ -200,27 +200,41 @@
 
 .vortex-segment {
   position: absolute;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 12px 4px 0 4px;
-  border-color: #D71920 transparent transparent transparent;
-  border-radius: 60% 60% 0 0;
-  transform-origin: 4px 12px;
+  width: 14px;
+  height: 14px;
+  background: #D71920;
+  border-radius: 0 100% 0 100%;
+  transform-origin: center;
   top: 50%;
   left: 50%;
-  margin-left: -4px;
-  margin-top: -12px;
+  margin-left: -7px;
+  margin-top: -7px;
 }
 
-.vortex-segment:nth-child(1) { transform: rotate(0deg); }
-.vortex-segment:nth-child(2) { transform: rotate(45deg); }
-.vortex-segment:nth-child(3) { transform: rotate(90deg); }
-.vortex-segment:nth-child(4) { transform: rotate(135deg); }
-.vortex-segment:nth-child(5) { transform: rotate(180deg); }
-.vortex-segment:nth-child(6) { transform: rotate(225deg); }
-.vortex-segment:nth-child(7) { transform: rotate(270deg); }
-.vortex-segment:nth-child(8) { transform: rotate(315deg); }
+.vortex-segment:nth-child(1) { 
+  transform: rotate(0deg) translateX(8px) rotate(-45deg); 
+}
+.vortex-segment:nth-child(2) { 
+  transform: rotate(45deg) translateX(8px) rotate(-45deg); 
+}
+.vortex-segment:nth-child(3) { 
+  transform: rotate(90deg) translateX(8px) rotate(-45deg); 
+}
+.vortex-segment:nth-child(4) { 
+  transform: rotate(135deg) translateX(8px) rotate(-45deg); 
+}
+.vortex-segment:nth-child(5) { 
+  transform: rotate(180deg) translateX(8px) rotate(-45deg); 
+}
+.vortex-segment:nth-child(6) { 
+  transform: rotate(225deg) translateX(8px) rotate(-45deg); 
+}
+.vortex-segment:nth-child(7) { 
+  transform: rotate(270deg) translateX(8px) rotate(-45deg); 
+}
+.vortex-segment:nth-child(8) { 
+  transform: rotate(315deg) translateX(8px) rotate(-45deg); 
+}
 
 /* Idle state - gentle pulse */
 .vortex-icon.idle {
