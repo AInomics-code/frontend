@@ -140,7 +140,7 @@ export function ChatInterface() {
           <h2 className="text-xl font-semibold text-[#006400] mb-4">Doña Assistant</h2>
           
           <div className="space-y-4">
-            {/* Assistant Message */}
+            {/* Initial Assistant Greeting */}
             <div className="flex items-start gap-3">
               <img 
                 src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
@@ -149,86 +149,9 @@ export function ChatInterface() {
               />
               <div className="flex-1">
                 <div className="bg-gray-100 rounded-lg px-4 py-3 inline-block max-w-md shadow-sm">
-                  <p className="text-gray-700 text-sm">How can I help you today? I can assist with business analytics, sales data, and strategic insights for La Doña.</p>
+                  <p className="text-gray-700 text-sm">How can I help you today?</p>
                 </div>
               </div>
-            </div>
-
-            {/* User Message */}
-            <div className="flex items-start gap-3 justify-end">
-              <div className="flex-1 flex justify-end">
-                <div className="bg-blue-500 text-white rounded-lg px-4 py-3 inline-block max-w-md shadow-sm">
-                  <p className="text-sm">Show me today's sales performance for all zones</p>
-                </div>
-              </div>
-              <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                <span className="text-white font-bold text-xs">GM</span>
-              </div>
-            </div>
-
-            {/* Assistant Response */}
-            <div className="flex items-start gap-3">
-              <img 
-                src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
-                alt="La Doña Avatar" 
-                className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-1"
-              />
-              <div className="flex-1">
-                <div className="bg-gray-100 rounded-lg px-4 py-3 inline-block max-w-md shadow-sm">
-                  <p className="text-gray-700 text-sm">Here's today's performance summary:</p>
-                  <ul className="text-gray-700 text-sm mt-2 space-y-1">
-                    <li>• Norte Zone: $12,400 (Target: 87%)</li>
-                    <li>• Centro Zone: $8,900 (Target: 92%)</li>
-                    <li>• Sur Zone: $6,200 (Target: 76%)</li>
-                  </ul>
-                  <p className="text-gray-700 text-sm mt-2">Overall daily target: 85% achieved. Sur zone needs attention.</p>
-                </div>
-              </div>
-            </div>
-
-            {/* User Follow-up */}
-            <div className="flex items-start gap-3 justify-end">
-              <div className="flex-1 flex justify-end">
-                <div className="bg-blue-500 text-white rounded-lg px-4 py-3 inline-block max-w-md shadow-sm">
-                  <p className="text-sm">What's causing the low performance in Sur zone?</p>
-                </div>
-              </div>
-              <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                <span className="text-white font-bold text-xs">GM</span>
-              </div>
-            </div>
-
-            {/* Assistant Analysis */}
-            <div className="flex items-start gap-3">
-              <img 
-                src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
-                alt="La Doña Avatar" 
-                className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-1"
-              />
-              <div className="flex-1">
-                <div className="bg-gray-100 rounded-lg px-4 py-3 inline-block max-w-md shadow-sm">
-                  <p className="text-gray-700 text-sm">Based on the data analysis, Sur zone is facing:</p>
-                  <ul className="text-gray-700 text-sm mt-2 space-y-1">
-                    <li>• 15% inventory shortage in premium products</li>
-                    <li>• 2 key distributors reported delivery delays</li>
-                    <li>• Local competitor launched promotion this week</li>
-                  </ul>
-                  <p className="text-gray-700 text-sm mt-2">Recommendation: Focus on restocking and activate El Extra campaign in Sur zone.</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Follow-up Suggestion Chips */}
-            <div className="flex flex-wrap gap-2 ml-11 mt-2">
-              <button className="bg-white border border-gray-200 rounded-full px-3 py-1 text-xs text-gray-600 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">
-                Show top 3 SKUs
-              </button>
-              <button className="bg-white border border-gray-200 rounded-full px-3 py-1 text-xs text-gray-600 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">
-                Compare to last year
-              </button>
-              <button className="bg-white border border-gray-200 rounded-full px-3 py-1 text-xs text-gray-600 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">
-                El Extra campaign details
-              </button>
             </div>
 
             {/* Loading Indicator */}
