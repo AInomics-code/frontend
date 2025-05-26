@@ -54,14 +54,17 @@ export function ChatInterface() {
               La Doña Business Intelligence
             </h1>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-xs">GM</span>
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3 bg-gray-50 rounded-lg px-3 py-2 border border-gray-100">
+              <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-sm">
+                <span className="text-white text-sm font-semibold">GM</span>
               </div>
-              <span className="text-gray-700 text-sm">General Manager</span>
+              <div className="flex flex-col">
+                <span className="text-gray-800 text-sm font-medium">Carlos Mendoza</span>
+                <span className="text-gray-500 text-xs">General Manager</span>
+              </div>
             </div>
-            <button className="text-gray-500 text-sm flex items-center gap-1">
+            <button className="text-gray-500 hover:text-gray-700 text-sm flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-50 transition-all duration-200">
               <span>Logout</span>
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" />
