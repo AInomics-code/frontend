@@ -43,12 +43,15 @@ export function ChatInterface() {
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img
-              src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
-              alt="La Doña Logo"
-              className="h-10 w-auto object-contain"
-            />
-            <h1 className="text-[#E50914] font-bold text-lg">
+            <div className="vortex-icon idle">
+              <div className="vortex-segment"></div>
+              <div className="vortex-segment"></div>
+              <div className="vortex-segment"></div>
+              <div className="vortex-segment"></div>
+              <div className="vortex-segment"></div>
+              <div className="vortex-segment"></div>
+            </div>
+            <h1 className="text-gray-700 font-semibold text-lg">
               La Doña Business Intelligence
             </h1>
           </div>
@@ -113,12 +116,8 @@ export function ChatInterface() {
           </div>
         </div>
 
-        {/* Doña Assistant Section */}
+        {/* AI Assistant Chat */}
         <section className="bg-white rounded-xl shadow-md p-6 max-h-[70vh] overflow-y-auto space-y-4">
-          <div className="mb-4">
-            <h2 className="text-lg font-semibold text-gray-700 tracking-tight">La Doña AI Assistant</h2>
-            <p className="text-xs text-gray-500 mt-1">Your personal ERP analyst. Ask anything about sales, planning, or performance.</p>
-          </div>
           
           <div className="space-y-3">
             {/* Initial Assistant Greeting */}
