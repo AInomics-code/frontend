@@ -189,9 +189,9 @@ export function ChatInterface() {
             <button 
               aria-label="Voice input"
               title="Hold to speak"
-              className="w-10 h-10 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-all duration-200"
+              className="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center hover:bg-gray-50 hover:shadow-md hover:border-gray-200 transition-all duration-300 group"
             >
-              <Mic className="w-4 h-4 text-[#D71920]" />
+              <Mic className="w-4 h-4 text-[#D71920] group-hover:text-red-600 transition-colors duration-200" />
             </button>
             <button 
               onClick={handleSendMessage}
