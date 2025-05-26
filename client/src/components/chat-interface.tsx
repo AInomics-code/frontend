@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sidebar } from "./sidebar";
 import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
-import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send } from "lucide-react";
+import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3 } from "lucide-react";
 import vortexLogo from "@assets/Screenshot 2025-05-26 alle 13.53.01.png";
 
 export function ChatInterface() {
@@ -80,7 +80,7 @@ export function ChatInterface() {
           {/* Daily Sales Target */}
           <div className="bg-white rounded-lg p-4 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <TrendingUp className="w-4 h-4 text-green-600" />
+              <BarChart3 className="w-5 h-5 text-gray-600 mr-2" />
               <h3 className="text-xs font-medium text-gray-600">Daily Sales Target</h3>
             </div>
             <div className="text-2xl font-bold text-green-600 mb-1">41%</div>
@@ -93,7 +93,7 @@ export function ChatInterface() {
           {/* Zones at Risk */}
           <div className="bg-white rounded-lg p-4 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <AlertTriangle className="w-4 h-4 text-red-600" />
+              <AlertTriangle className="w-5 h-5 text-gray-600 mr-2" />
               <h3 className="text-xs font-medium text-gray-600">Zones at Risk</h3>
             </div>
             <div className="text-2xl font-bold text-red-600 mb-1">3</div>
@@ -106,7 +106,7 @@ export function ChatInterface() {
           {/* El Extra Campaign */}
           <div className="bg-white rounded-lg p-4 shadow-sm">
             <div className="flex items-center gap-2 mb-2">
-              <Star className="w-4 h-4 text-yellow-600" />
+              <TrendingUp className="w-5 h-5 text-gray-600 mr-2" />
               <h3 className="text-xs font-medium text-gray-600">El Extra Campaign</h3>
             </div>
             <div className="text-2xl font-bold text-[#DAA520] mb-1">8.2%</div>
