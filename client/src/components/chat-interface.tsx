@@ -5,6 +5,7 @@ import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
 import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3 } from "lucide-react";
 import vortexLogo from "@assets/Screenshot 2025-05-26 alle 13.53.01.png";
+import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
 export function ChatInterface() {
   const [selectedConversationId, setSelectedConversationId] = useState<number | null>(null);
@@ -44,14 +45,11 @@ export function ChatInterface() {
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 flex items-center justify-center">
-              <svg width="32" height="32" viewBox="0 0 32 32" className="text-[#D71920]">
-                <circle cx="16" cy="16" r="14" fill="currentColor" className="opacity-90"/>
-                <text x="16" y="20" textAnchor="middle" fontSize="12" fontWeight="bold" fill="white" fontFamily="serif">
-                  D
-                </text>
-              </svg>
-            </div>
+            <img 
+              src={laDonaLogo} 
+              alt="La Doña Logo" 
+              className="h-8 w-auto"
+            />
             <h1 className="text-gray-700 font-semibold text-lg">
               La Doña Business Intelligence
             </h1>
