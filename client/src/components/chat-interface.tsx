@@ -123,12 +123,15 @@ export function ChatInterface() {
           <div className="space-y-3">
             {/* Initial Assistant Greeting */}
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-1">
-                <img 
-                  src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
-                  alt="La Doña" 
-                  className="w-5 h-5 object-contain opacity-70"
-                />
+              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                <div className="vortex-icon idle">
+                  <div className="vortex-segment"></div>
+                  <div className="vortex-segment"></div>
+                  <div className="vortex-segment"></div>
+                  <div className="vortex-segment"></div>
+                  <div className="vortex-segment"></div>
+                  <div className="vortex-segment"></div>
+                </div>
               </div>
               <div className="flex-1">
                 <div className="bg-gray-50 rounded-xl px-4 py-3 inline-block max-w-md shadow-sm">
@@ -140,12 +143,15 @@ export function ChatInterface() {
             {/* Loading Indicator */}
             {isLoading && (
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-1">
-                  <img 
-                    src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
-                    alt="La Doña" 
-                    className="w-5 h-5 object-contain opacity-70"
-                  />
+                <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="vortex-icon active">
+                    <div className="vortex-segment"></div>
+                    <div className="vortex-segment"></div>
+                    <div className="vortex-segment"></div>
+                    <div className="vortex-segment"></div>
+                    <div className="vortex-segment"></div>
+                    <div className="vortex-segment"></div>
+                  </div>
                 </div>
                 <div className="flex-1">
                   <div className="bg-gray-50 rounded-xl px-4 py-3 inline-block shadow-sm">
