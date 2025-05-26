@@ -244,8 +244,8 @@ export function ChatInterface() {
                 >
                   {/* Assistant Header */}
                   <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                      <div className={`vortex-icon ${isProcessing ? 'active' : currentResponse ? 'pulse-glow' : ''}`} style={{ width: '8px', height: '8px' }}>
+                    <div className="flex items-center gap-2 text-sm text-gray-700 font-medium">
+                      <div className={`vortex-icon ring-1 ring-gray-200 rounded-full p-1 ${isProcessing ? 'active' : currentResponse ? 'pulse-glow' : ''}`} style={{ width: '20px', height: '20px' }}>
                         <div className="vortex-blade"></div>
                         <div className="vortex-blade"></div>
                         <div className="vortex-blade"></div>
@@ -253,9 +253,8 @@ export function ChatInterface() {
                         <div className="vortex-blade"></div>
                         <div className="vortex-blade"></div>
                       </div>
-                      <span className="text-sm font-medium text-gray-700">Vorta</span>
-                      <span className="text-xs text-gray-400">•</span>
-                      <span className="text-xs text-gray-500">Strategic Assistant</span>
+                      <span>Vorta</span>
+                      <span className="text-gray-400 font-normal">· Strategic Assistant</span>
                     </div>
                     
                     {/* Quick Actions Dropdown */}
