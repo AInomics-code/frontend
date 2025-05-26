@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sidebar } from "./sidebar";
 import { MessageList } from "./message-list";
@@ -8,6 +8,24 @@ import { Menu } from "lucide-react";
 export function ChatInterface() {
   const [selectedConversationId, setSelectedConversationId] = useState<number | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [isLoading]);
+
+  const handleSendMessage = () => {
+    setIsLoading(true);
+    // Simulate assistant thinking time
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  };
 
   const handleSelectConversation = (id: number | null) => {
     setSelectedConversationId(id);
@@ -17,12 +35,7 @@ export function ChatInterface() {
     }
   };
 
-  const handleSendMessage = () => {
-    // Auto-scroll to bottom when a new message is sent
-    setTimeout(() => {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }, 100);
-  };
+
 
   return (
     <div className="min-h-screen w-full bg-[#F9F9F6]">
@@ -204,6 +217,45 @@ export function ChatInterface() {
                 </div>
               </div>
             </div>
+
+            {/* Follow-up Suggestion Chips */}
+            <div className="flex flex-wrap gap-2 ml-11 mt-2">
+              <button className="bg-white border border-gray-200 rounded-full px-3 py-1 text-xs text-gray-600 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">
+                Show top 3 SKUs
+              </button>
+              <button className="bg-white border border-gray-200 rounded-full px-3 py-1 text-xs text-gray-600 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">
+                Compare to last year
+              </button>
+              <button className="bg-white border border-gray-200 rounded-full px-3 py-1 text-xs text-gray-600 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">
+                El Extra campaign details
+              </button>
+            </div>
+
+            {/* Loading Indicator */}
+            {isLoading && (
+              <div className="flex items-start gap-3">
+                <img 
+                  src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
+                  alt="La Doña Avatar" 
+                  className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-1"
+                />
+                <div className="flex-1">
+                  <div className="bg-gray-100 rounded-lg px-4 py-3 inline-block shadow-sm">
+                    <div className="flex items-center gap-2">
+                      <span className="text-gray-500 text-sm">Doña is preparing insights</span>
+                      <div className="flex space-x-1">
+                        <div className="w-1 h-1 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
+                        <div className="w-1 h-1 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
+                        <div className="w-1 h-1 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Scroll anchor */}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Input Area */}
@@ -215,7 +267,10 @@ export function ChatInterface() {
                 className="w-full px-4 py-3 bg-white border border-gray-200 rounded-full text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#006400] focus:border-transparent"
               />
             </div>
-            <button className="w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center hover:scale-105 hover:bg-[#E6C200] transition-all duration-200 shadow-sm">
+            <button 
+              onClick={handleSendMessage}
+              className="w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center hover:scale-105 hover:bg-[#E6C200] transition-all duration-200 shadow-sm"
+            >
               <svg 
                 className="w-4 h-4 text-gray-700" 
                 fill="none" 
