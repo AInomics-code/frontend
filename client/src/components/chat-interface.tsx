@@ -48,7 +48,7 @@ export function ChatInterface() {
           >
             <Menu className="h-5 w-5 text-gray-600" />
           </Button>
-          <h1 className="text-lg font-semibold text-[#1A1A1A]">
+          <h1 className="heading-primary">
             ChatGPT
           </h1>
           <div className="w-10"></div>

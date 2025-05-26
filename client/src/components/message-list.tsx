@@ -42,7 +42,7 @@ export function MessageList({ conversationId }: MessageListProps) {
           <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
             <Bot className="h-8 w-8 text-white" />
           </div>
-          <h2 className="text-lg font-semibold mb-2 text-[#1A1A1A]">
+          <h2 className="heading-secondary mb-2">
             How can I help you today?
           </h2>
           <p className="text-gray-600">
@@ -94,7 +94,7 @@ export function MessageList({ conversationId }: MessageListProps) {
             <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
               <Bot className="h-8 w-8 text-white" />
             </div>
-            <h2 className="text-lg font-semibold mb-2 text-[#1A1A1A]">
+            <h2 className="heading-secondary mb-2">
               Start the conversation
             </h2>
             <p className="text-gray-600">
@@ -107,8 +107,8 @@ export function MessageList({ conversationId }: MessageListProps) {
               {message.role === "user" ? (
                 <div className="flex justify-end">
                   <div className="max-w-3xl">
-                    <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl px-4 py-3 ml-12">
-                      <div className="message-content text-gray-900 dark:text-gray-100">
+                    <div className="bg-gray-50 rounded-2xl px-4 py-3 ml-12">
+                      <div className="message-content text-body">
                         {message.content.split('\n').map((line, i) => (
                           <p key={i}>{line || '\u00A0'}</p>
                         ))}

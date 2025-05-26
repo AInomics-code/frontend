@@ -89,7 +89,7 @@ export function Sidebar({
           <Button 
             onClick={handleNewChat}
             disabled={createConversationMutation.isPending}
-            className="w-full justify-start gap-2 bg-white border border-gray-200 hover:bg-gray-50 text-[#1A1A1A]"
+            className="w-full justify-start gap-2 bg-la-dona-green hover:bg-la-dona-green/90 text-white border-0"
             variant="outline"
           >
             <Plus className="h-4 w-4" />
@@ -122,7 +122,7 @@ export function Sidebar({
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium truncate text-[#1A1A1A]">
+                      <p className="text-sm font-medium truncate text-gray-800">
                         {conversation.title}
                       </p>
                       <p className="text-xs text-gray-500 mt-0.5">
@@ -154,7 +154,7 @@ export function Sidebar({
               <User className="h-4 w-4 text-white" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate text-[#1A1A1A]">
+              <p className="text-sm font-medium truncate text-gray-800">
                 John Doe
               </p>
               <p className="text-xs text-gray-500">

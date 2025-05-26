@@ -4,33 +4,34 @@
 
 :root {
   --background: 0 0% 100%;
-  --foreground: 20 14.3% 4.1%;
+  --foreground: 220 13% 18%; /* #2D3748 - Gray-800 instead of pure black */
   --muted: 60 4.8% 95.9%;
   --muted-foreground: 25 5.3% 44.7%;
   --popover: 0 0% 100%;
-  --popover-foreground: 20 14.3% 4.1%;
+  --popover-foreground: 220 13% 18%;
   --card: 0 0% 100%;
-  --card-foreground: 20 14.3% 4.1%;
+  --card-foreground: 220 13% 18%;
   --border: 20 5.9% 90%;
   --input: 20 5.9% 90%;
-  --primary: 161 94% 30%; /* ChatGPT Green #10a37f */
+  --primary: 120 100% 20%; /* La Doña Green #006400 */
   --primary-foreground: 0 0% 98%;
   --secondary: 60 4.8% 95.9%;
   --secondary-foreground: 24 9.8% 10%;
-  --accent: 60 4.8% 95.9%;
-  --accent-foreground: 24 9.8% 10%;
+  --accent: 51 100% 50%; /* La Doña Gold #FFD700 */
+  --accent-foreground: 220 13% 18%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 60 9.1% 97.8%;
-  --ring: 20 14.3% 4.1%;
+  --ring: 120 100% 20%;
   --radius: 0.5rem;
   
-  /* Custom ChatGPT colors */
-  --chatgpt-green: 161 94% 30%; /* #10a37f */
-  --light-surface: 0 0% 97%; /* #f7f7f8 */
-  --light-border: 0 0% 90%; /* #e5e5e7 */
-  --dark-bg: 0 0% 13%; /* #212121 */
-  --dark-surface: 0 0% 18%; /* #2f2f2f */
-  --dark-border: 0 0% 31%; /* #4d4d4f */
+  /* La Doña Enterprise Colors */
+  --la-dona-green: 120 100% 20%; /* #006400 */
+  --la-dona-gold: 51 100% 50%; /* #FFD700 */
+  --neutral-bg: 60 14% 97%; /* #F9F9F6 */
+  --light-red: 0 100% 95%; /* #FFECEC */
+  --info-blue: 199 100% 94%; /* #E0F2FE */
+  --warning-yellow: 54 100% 91%; /* #FFF9C4 */
+  --text-gray: 220 13% 18%; /* Gray-800 #2D3748 */
 }
 
 .dark {
@@ -62,10 +63,10 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background-color: #F9F9F6;
-    color: #1A1A1A;
+    color: #2D3748; /* Gray-800 instead of pure black */
   }
 
   /* Custom scrollbar styling */
@@ -88,14 +89,69 @@
 }
 
 @layer components {
+  /* La Doña Enterprise Typography */
+  .heading-primary {
+    @apply font-semibold text-lg text-gray-800; /* 18px */
+  }
+  
+  .heading-secondary {
+    @apply font-semibold text-xl text-gray-800; /* 20px */
+  }
+  
+  .heading-large {
+    @apply font-semibold text-2xl text-gray-800; /* 24px */
+  }
+  
+  .text-body {
+    @apply text-gray-800 leading-relaxed;
+  }
+
+  /* La Doña Color Classes */
+  .bg-la-dona-green {
+    background-color: #006400;
+  }
+  
+  .text-la-dona-green {
+    color: #006400;
+  }
+  
+  .bg-la-dona-gold {
+    background-color: #FFD700;
+  }
+  
+  .text-la-dona-gold {
+    color: #FFD700;
+  }
+  
+  .bg-light-red {
+    background-color: #FFECEC;
+  }
+  
+  .bg-info-blue {
+    background-color: #E0F2FE;
+  }
+  
+  .bg-warning-yellow {
+    background-color: #FFF9C4;
+  }
+
+  /* Enterprise Shadow Standards */
+  .shadow-enterprise {
+    @apply shadow-sm;
+  }
+  
+  .shadow-enterprise-md {
+    @apply shadow-md;
+  }
+
   /* Conversation item active state */
   .conversation-item.active {
-    @apply bg-white dark:bg-gray-800;
+    @apply bg-white;
   }
 
   /* Message content styling */
   .message-content {
-    @apply text-sm leading-relaxed;
+    @apply text-sm leading-relaxed text-body;
   }
 
   .message-content p {
@@ -111,7 +167,7 @@
   }
 
   .message-content code {
-    @apply bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono;
+    @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono;
   }
 
   .message-content strong {
