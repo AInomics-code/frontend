@@ -196,39 +196,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  filter: drop-shadow(0 0 12px rgba(215, 25, 32, 0.35));
 }
 
 .vortex-blade {
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 32px;
   background: #D71920;
-  transform-origin: 12px 12px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform-origin: 8px 24px;
   top: 50%;
   left: 50%;
-  margin-left: -12px;
-  margin-top: -12px;
+  margin-left: -8px;
+  margin-top: -24px;
 }
 
 .vortex-blade:nth-child(1) { 
-  clip-path: path('M 12 2 Q 22 6 20 12 Q 18 18 12 16 Q 6 14 4 8 Q 2 2 12 2 Z');
-  transform: rotate(0deg); 
+  transform: rotate(15deg) translateY(-4px);
 }
 .vortex-blade:nth-child(2) { 
-  clip-path: path('M 12 2 Q 22 6 20 12 Q 18 18 12 16 Q 6 14 4 8 Q 2 2 12 2 Z');
-  transform: rotate(72deg); 
+  transform: rotate(75deg) translateY(-4px);
 }
 .vortex-blade:nth-child(3) { 
-  clip-path: path('M 12 2 Q 22 6 20 12 Q 18 18 12 16 Q 6 14 4 8 Q 2 2 12 2 Z');
-  transform: rotate(144deg); 
+  transform: rotate(135deg) translateY(-4px);
 }
 .vortex-blade:nth-child(4) { 
-  clip-path: path('M 12 2 Q 22 6 20 12 Q 18 18 12 16 Q 6 14 4 8 Q 2 2 12 2 Z');
-  transform: rotate(216deg); 
+  transform: rotate(195deg) translateY(-4px);
 }
 .vortex-blade:nth-child(5) { 
-  clip-path: path('M 12 2 Q 22 6 20 12 Q 18 18 12 16 Q 6 14 4 8 Q 2 2 12 2 Z');
-  transform: rotate(288deg); 
+  transform: rotate(255deg) translateY(-4px);
+}
+.vortex-blade:nth-child(6) { 
+  transform: rotate(315deg) translateY(-4px);
 }
 
 .vortex-icon.idle {
