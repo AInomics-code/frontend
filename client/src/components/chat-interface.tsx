@@ -204,7 +204,7 @@ export function ChatInterface() {
               onClick={handleSendMessage}
               className="w-10 h-10 bg-[#D71920] rounded-full text-white flex items-center justify-center shadow-md hover:bg-red-600 hover:shadow-lg transition-all duration-200 ml-2 active:scale-95"
             >
-              <Send className="w-5 h-5" />
+              <Send className="w-4 h-4 ml-0.5" />
             </button>
           </div>
         </section>
