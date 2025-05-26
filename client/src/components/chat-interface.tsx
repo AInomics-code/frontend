@@ -248,10 +248,10 @@ export function ChatInterface() {
               onClick={() => setExpandedCard(expandedCard === 'colon' ? null : 'colon')}
               title="Colón: $4,150 of $6,200 goal achieved"
             >
-              <div className="flex items-center justify-between mb-3">
+              <div className="flex items-start justify-between mb-3">
                 <h3 className="font-medium text-base text-gray-800">Colón</h3>
-                <div className="px-2 py-1 text-red-600 bg-red-100 border border-red-200 rounded-full">
-                  <span className="text-xs font-medium flex items-center gap-1">
+                <div className="px-2 py-0.5 text-red-600 bg-red-100 border border-red-200 rounded-full shrink-0">
+                  <span className="text-xs font-medium flex items-center gap-1 whitespace-nowrap">
                     <AlertTriangle className="w-3 h-3" />
                     At Risk
                   </span>
@@ -283,10 +283,10 @@ export function ChatInterface() {
               onClick={() => setExpandedCard(expandedCard === 'oeste' ? null : 'oeste')}
               title="Oeste: $6,660 of $9,000 goal achieved"
             >
-              <div className="flex items-center justify-between mb-3">
+              <div className="flex items-start justify-between mb-3">
                 <h3 className="font-medium text-base text-gray-800">Oeste</h3>
-                <div className="px-2 py-1 text-yellow-600 bg-yellow-100 border border-yellow-200 rounded-full">
-                  <span className="text-xs font-medium flex items-center gap-1">
+                <div className="px-2 py-0.5 text-yellow-600 bg-yellow-100 border border-yellow-200 rounded-full shrink-0">
+                  <span className="text-xs font-medium flex items-center gap-1 whitespace-nowrap">
                     <AlertTriangle className="w-3 h-3" />
                     Needs Attention
                   </span>
@@ -318,10 +318,10 @@ export function ChatInterface() {
               onClick={() => setExpandedCard(expandedCard === 'chiriqui' ? null : 'chiriqui')}
               title="Chiriquí: $5,040 of $7,000 goal achieved"
             >
-              <div className="flex items-center justify-between mb-3">
+              <div className="flex items-start justify-between mb-3">
                 <h3 className="font-medium text-base text-gray-800">Chiriquí</h3>
-                <div className="px-2 py-1 text-yellow-600 bg-yellow-100 border border-yellow-200 rounded-full">
-                  <span className="text-xs font-medium flex items-center gap-1">
+                <div className="px-2 py-0.5 text-yellow-600 bg-yellow-100 border border-yellow-200 rounded-full shrink-0">
+                  <span className="text-xs font-medium flex items-center gap-1 whitespace-nowrap">
                     <AlertTriangle className="w-3 h-3" />
                     Needs Attention
                   </span>
