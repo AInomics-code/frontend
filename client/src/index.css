@@ -191,8 +191,8 @@
 /* La Doña Vortex Icon Animation */
 .vortex-icon {
   position: relative;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,19 +200,23 @@
 
 .vortex-segment {
   position: absolute;
-  width: 6px;
-  height: 6px;
-  background: radial-gradient(circle, #D71920 0%, rgba(215, 25, 32, 0.7) 70%, rgba(215, 25, 32, 0.2) 100%);
-  border-radius: 50% 0;
-  transform-origin: center;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 12px 4px 0 4px;
+  border-color: #D71920 transparent transparent transparent;
+  border-radius: 60% 60% 0 0;
+  transform-origin: 4px 16px;
 }
 
-.vortex-segment:nth-child(1) { transform: rotate(0deg) translateY(-8px); }
-.vortex-segment:nth-child(2) { transform: rotate(60deg) translateY(-8px); }
-.vortex-segment:nth-child(3) { transform: rotate(120deg) translateY(-8px); }
-.vortex-segment:nth-child(4) { transform: rotate(180deg) translateY(-8px); }
-.vortex-segment:nth-child(5) { transform: rotate(240deg) translateY(-8px); }
-.vortex-segment:nth-child(6) { transform: rotate(300deg) translateY(-8px); }
+.vortex-segment:nth-child(1) { transform: rotate(0deg); }
+.vortex-segment:nth-child(2) { transform: rotate(45deg); }
+.vortex-segment:nth-child(3) { transform: rotate(90deg); }
+.vortex-segment:nth-child(4) { transform: rotate(135deg); }
+.vortex-segment:nth-child(5) { transform: rotate(180deg); }
+.vortex-segment:nth-child(6) { transform: rotate(225deg); }
+.vortex-segment:nth-child(7) { transform: rotate(270deg); }
+.vortex-segment:nth-child(8) { transform: rotate(315deg); }
 
 /* Idle state - gentle pulse */
 .vortex-icon.idle {
