@@ -44,7 +44,7 @@ export function ChatInterface() {
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="vortex-icon idle scale-75">
+            <div className="vortex-icon scale-75">
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
