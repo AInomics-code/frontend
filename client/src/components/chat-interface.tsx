@@ -115,7 +115,10 @@ export function ChatInterface() {
 
         {/* Doña Assistant Section */}
         <section className="bg-white rounded-xl shadow-md p-6 max-h-[70vh] overflow-y-auto space-y-4">
-          <h2 className="text-xl font-semibold text-[#006400] mb-4">Doña Assistant</h2>
+          <div className="mb-4">
+            <h2 className="text-lg font-semibold text-gray-700 tracking-tight">La Doña AI Assistant</h2>
+            <p className="text-xs text-gray-500 mt-1">Your personal ERP analyst. Ask anything about sales, planning, or performance.</p>
+          </div>
           
           <div className="space-y-4">
             {/* Initial Assistant Greeting */}
