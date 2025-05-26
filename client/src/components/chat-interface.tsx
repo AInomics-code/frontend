@@ -74,7 +74,7 @@ export function ChatInterface() {
         {/* KPI Cards Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Daily Sales Target */}
-          <div className="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-green-500 min-h-[160px] flex flex-col">
+          <div className="bg-[#F0FFF4] rounded-2xl p-8 shadow-sm border-l-4 border-[#22C55E] min-h-[160px] flex flex-col">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -95,7 +95,7 @@ export function ChatInterface() {
           </div>
 
           {/* Zones at Risk */}
-          <div className="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-red-500 min-h-[160px] flex flex-col">
+          <div className="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-[#E53E3E] min-h-[160px] flex flex-col">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
@@ -115,7 +115,7 @@ export function ChatInterface() {
           </div>
 
           {/* El Extra Campaign */}
-          <div className="bg-yellow-50 rounded-2xl p-8 shadow-sm border-l-4 border-yellow-500 min-h-[160px] flex flex-col">
+          <div className="bg-[#FFF8F0] rounded-2xl p-8 shadow-sm border-l-4 border-[#DAA520] min-h-[160px] flex flex-col">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
@@ -128,7 +128,7 @@ export function ChatInterface() {
               </svg>
             </div>
             <div className="mb-4">
-              <span className="text-3xl font-bold text-yellow-700">8.2%</span>
+              <span className="text-3xl font-bold text-[#DAA520]">8.2%</span>
               <span className="text-gray-600 text-sm ml-2">ROI</span>
             </div>
             <p className="text-gray-600 text-sm mt-auto">$6,200 invested, recommend vinegar + aderezo combo</p>
