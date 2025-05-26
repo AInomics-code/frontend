@@ -14,6 +14,9 @@ export function ChatInterface() {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState("");
   const [isVoiceActive, setIsVoiceActive] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [currentResponse, setCurrentResponse] = useState("");
+  const [showResponse, setShowResponse] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -26,11 +29,15 @@ export function ChatInterface() {
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
-    setIsLoading(true);
-    // Simulate assistant thinking time
+    setIsProcessing(true);
+    setShowResponse(true);
+    
+    // Simulate processing delay
     setTimeout(() => {
-      setIsLoading(false);
+      setCurrentResponse("Based on your La Doña regional performance data, I can see that Colón region is currently at 67% of target with some challenges in vinegar sales and delivery timelines. Would you like me to analyze the specific factors contributing to this performance gap?");
+      setIsProcessing(false);
     }, 2000);
+    
     setInputValue("");
   };
 
@@ -193,6 +200,69 @@ export function ChatInterface() {
             <div ref={messagesEndRef} />
           </div>
 
+          {/* Dynamic Response Area */}
+          {showResponse && (
+            <div className="mt-6 px-6">
+              <div className="w-full max-w-[960px] mx-auto">
+                <div 
+                  className="bg-[#fafaf9] rounded-2xl shadow-[0_2px_6px_rgba(0,0,0,0.04)] border border-gray-200 p-6 transition-all duration-300 ease-in-out transform origin-top animate-[slideUp_0.3s_ease-out]"
+                >
+                  {/* Assistant Header */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="relative">
+                      <img
+                        src={vortexLogo}
+                        alt="Vorta"
+                        className={`w-6 h-6 ${isProcessing ? 'animate-spin' : ''}`}
+                        style={{ 
+                          filter: 'hue-rotate(10deg) saturate(1.2)',
+                          animation: isProcessing ? 'spin 2s linear infinite' : 'none'
+                        }}
+                      />
+                      {isProcessing && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-red-400/20 to-red-600/20 rounded-full animate-pulse"></div>
+                      )}
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">Vorta</span>
+                  </div>
+
+                  {/* Response Content */}
+                  <div className="space-y-4">
+                    {isProcessing ? (
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                        <span className="text-gray-500 text-sm ml-2">Analyzing your data...</span>
+                      </div>
+                    ) : (
+                      <p className="text-[15px] leading-relaxed text-gray-800">
+                        {currentResponse}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Suggestions (when not processing) */}
+                  {!isProcessing && currentResponse && (
+                    <div className="mt-6 pt-4 border-t border-gray-200">
+                      <div className="flex flex-wrap gap-2">
+                        <button className="px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors duration-200">
+                          Show detailed breakdown
+                        </button>
+                        <button className="px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors duration-200">
+                          Compare with other regions
+                        </button>
+                        <button className="px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors duration-200">
+                          Suggest action plan
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Vorta Input Bar - Claude x Perplexity Inspired */}
           <div className="mt-6 pt-4 border-t border-gray-100">
             <div className="flex items-center gap-3 w-full max-w-[960px] mx-auto px-4 py-3 rounded-xl bg-white shadow-sm border border-gray-100 focus-within:ring-2 focus-within:ring-[#E10600]/30 focus-within:ring-offset-1 transition-all duration-200">
@@ -227,11 +297,17 @@ export function ChatInterface() {
 
               {/* CTA Button */}
               <button 
-                className="px-4 py-2 rounded-lg bg-[#E10600] text-white text-sm font-medium shadow-md hover:bg-[#cc0500] hover:scale-[1.03] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`px-4 py-2 rounded-lg text-sm font-medium shadow-md transition-all duration-200 ${
+                  inputValue.trim()
+                    ? isProcessing 
+                      ? 'bg-[#cc0500] text-white animate-pulse cursor-wait'
+                      : 'bg-[#E10600] text-white hover:bg-[#cc0500] hover:scale-[1.03]'
+                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                }`}
                 onClick={handleSendMessage}
-                disabled={!inputValue.trim()}
+                disabled={!inputValue.trim() || isProcessing}
               >
-                Ask
+                {isProcessing ? 'Processing...' : 'Ask'}
               </button>
             </div>
           </div>
