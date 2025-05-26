@@ -204,12 +204,13 @@
   width: 6px;
   height: 20px;
   background: #D71920;
-  border-radius: 20% 80% 80% 20%;
+  border-radius: 5% 95% 95% 5%;
   transform-origin: 3px 24px;
   top: 50%;
   left: 50%;
   margin-left: -3px;
   margin-top: -24px;
+  clip-path: ellipse(50% 100% at 50% 0%);
 }
 
 .vortex-blade:nth-child(1) { 
