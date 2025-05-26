@@ -394,30 +394,6 @@ export function ChatInterface() {
                 </div>
               </div>
             )}
-
-          {/* Input Area */}
-          <div className="flex items-center gap-3 mt-6 pt-4 border-t border-gray-100">
-            <div className="flex-1 relative">
-              <input
-                type="text"
-                placeholder="Ask about KPIs or sales performance..."
-                className="w-full px-4 py-3 bg-white border border-gray-200 rounded-full text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#006400] focus:border-transparent"
-              />
-            </div>
-            <button 
-              aria-label="Voice input"
-              title="Hold to speak"
-              className="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center hover:bg-gray-50 hover:shadow-md hover:border-gray-200 transition-all duration-300 group"
-            >
-              <Mic className="w-4 h-4 text-[#D71920] group-hover:text-red-600 transition-colors duration-200" />
-            </button>
-            <button 
-              onClick={handleSendMessage}
-              className="w-10 h-10 bg-[#D71920] rounded-full text-white flex items-center justify-center shadow-md hover:bg-red-600 hover:shadow-lg transition-all duration-200 active:scale-95"
-            >
-              <Send className="w-4 h-4" />
-            </button>
-          </div>
         </section>
 
         {/* Interactive Alert Cards - Below Chat Interface */}
