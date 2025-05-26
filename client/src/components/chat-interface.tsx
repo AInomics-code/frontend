@@ -33,7 +33,7 @@ export function ChatInterface() {
             <img 
               src="/la-dona-logo.png" 
               alt="La Doña Logo" 
-              className="h-10 w-auto"
+              className="h-10 w-auto min-w-[32px]"
             />
             <div className="text-red-600 font-semibold">
               <span className="text-black">La</span> Doña Business Intelligence
@@ -124,20 +124,24 @@ export function ChatInterface() {
 
         {/* Doña Assistant Section */}
         <div className="bg-white rounded-xl shadow-sm p-6">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
-              <span className="text-2xl">🤖</span>
-            </div>
+          <div className="flex items-center gap-2 mb-6">
+            <img 
+              src="/la-dona-logo.png" 
+              alt="La Doña Avatar" 
+              className="w-7 h-7 rounded-full object-cover"
+            />
             <h2 className="text-xl font-semibold text-gray-800">Doña Assistant</h2>
             <div className="ml-auto">
               <span className="text-sm text-gray-400">AI/AI</span>
             </div>
           </div>
 
-          <div className="flex items-start gap-4">
-            <div className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0">
-              <span className="text-lg">🤖</span>
-            </div>
+          <div className="flex items-start gap-2">
+            <img 
+              src="/la-dona-logo.png" 
+              alt="La Doña Avatar" 
+              className="w-7 h-7 rounded-full object-cover flex-shrink-0 mt-1"
+            />
             <div className="flex-1">
               <div className="bg-gray-50 rounded-lg px-4 py-3 inline-block max-w-md">
                 <p className="text-gray-700 text-sm">How can I help you today?</p>
