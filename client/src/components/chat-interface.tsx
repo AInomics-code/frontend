@@ -56,8 +56,8 @@ export function ChatInterface() {
           </div>
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-3 bg-gray-50 rounded-lg px-3 py-2 border border-gray-100">
-              <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-sm">
-                <User className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-full flex items-center justify-center">
+                <User className="w-5 h-5 text-gray-600" />
               </div>
               <div className="flex flex-col">
                 <span className="text-gray-800 text-sm font-medium">Carlos Mendoza</span>
