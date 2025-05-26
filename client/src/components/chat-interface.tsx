@@ -122,7 +122,7 @@ export function ChatInterface() {
           
           {/* Vorta Logo */}
           <div className="flex justify-center mt-6 mb-4">
-            <div className="vortex-icon idle">
+            <div className="vortex-icon">
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
