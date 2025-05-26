@@ -112,6 +112,18 @@ export function ChatInterface() {
         {/* AI Assistant Chat */}
         <section className="bg-white rounded-xl shadow-md p-6 max-h-[70vh] overflow-y-auto space-y-4">
           
+          {/* Vorta Logo */}
+          <div className="flex justify-center mt-6 mb-4">
+            <img 
+              src="/attached_assets/Screenshot 2025-05-26 alle 13.53.01.png" 
+              alt="Vorta" 
+              className="w-12 h-12 opacity-90"
+              style={{
+                filter: 'drop-shadow(0 0 8px rgba(215, 25, 32, 0.3))'
+              }}
+            />
+          </div>
+
           <div className="space-y-3">
             {/* Initial Assistant Greeting */}
             <div className="flex items-start gap-3">
