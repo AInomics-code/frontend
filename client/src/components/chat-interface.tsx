@@ -47,7 +47,7 @@ export function ChatInterface() {
             ].map((item) => (
               <button
                 key={item}
-                className="bg-[#FFF9C4] text-gray-700 text-sm rounded-full px-4 py-1 hover:shadow transition-all"
+                className="bg-[#FFF9C4] text-gray-700 text-sm font-medium rounded-full px-4 py-1 shadow-sm hover:shadow-md transition-all duration-150"
               >
                 {item}
               </button>
