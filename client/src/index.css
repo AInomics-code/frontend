@@ -200,42 +200,34 @@
 
 .vortex-segment {
   position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 14px solid #D71920;
-  border-radius: 0 0 100% 100%;
-  transform-origin: 8px 0px;
+  width: 18px;
+  height: 6px;
+  background: #D71920;
+  border-radius: 50px;
+  transform-origin: 3px 3px;
   top: 50%;
   left: 50%;
-  margin-left: -8px;
-  margin-top: -7px;
+  margin-left: -3px;
+  margin-top: -3px;
 }
 
 .vortex-segment:nth-child(1) { 
-  transform: rotate(0deg) translateY(-10px); 
+  transform: rotate(0deg) translateX(9px) rotate(30deg); 
 }
 .vortex-segment:nth-child(2) { 
-  transform: rotate(45deg) translateY(-10px); 
+  transform: rotate(60deg) translateX(9px) rotate(30deg); 
 }
 .vortex-segment:nth-child(3) { 
-  transform: rotate(90deg) translateY(-10px); 
+  transform: rotate(120deg) translateX(9px) rotate(30deg); 
 }
 .vortex-segment:nth-child(4) { 
-  transform: rotate(135deg) translateY(-10px); 
+  transform: rotate(180deg) translateX(9px) rotate(30deg); 
 }
 .vortex-segment:nth-child(5) { 
-  transform: rotate(180deg) translateY(-10px); 
+  transform: rotate(240deg) translateX(9px) rotate(30deg); 
 }
 .vortex-segment:nth-child(6) { 
-  transform: rotate(225deg) translateY(-10px); 
-}
-.vortex-segment:nth-child(7) { 
-  transform: rotate(270deg) translateY(-10px); 
-}
-.vortex-segment:nth-child(8) { 
-  transform: rotate(315deg) translateY(-10px); 
+  transform: rotate(300deg) translateX(9px) rotate(30deg); 
 }
 
 /* Idle state - gentle pulse */
