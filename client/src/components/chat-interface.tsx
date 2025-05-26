@@ -71,49 +71,60 @@ export function ChatInterface() {
 
       {/* Main Content */}
       <main className="px-6 py-6 space-y-8">
-        {/* KPI Cards Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Daily Sales Target */}
-          <div className="bg-[#F0FFF4] rounded-2xl p-8 shadow-sm border-l-4 border-[#22C55E] min-h-[160px] flex flex-col">
-            <div className="mb-3">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl">📊</span>
-                <h3 className="text-sm font-semibold text-gray-700">Daily Sales Target</h3>
+        {/* KPI Cards - Staggered Layout */}
+        <div className="space-y-6">
+          {/* Top Row - Operational Metrics */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Daily Sales Target */}
+            <div className="bg-[#F0FFF4] rounded-2xl p-8 shadow-sm border-l-4 border-[#22C55E] min-h-[160px] flex flex-col">
+              <div className="mb-3">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-2xl">📊</span>
+                  <h3 className="text-sm font-semibold text-gray-700">Daily Sales Target</h3>
+                </div>
+                <div className="text-3xl font-bold text-green-600 mb-2">41%</div>
+                <div className="space-y-1">
+                  <p className="text-xs text-gray-500">Target: 46%</p>
+                  <p className="text-xs text-gray-500">5% below expected daily pace</p>
+                </div>
               </div>
-              <div className="text-3xl font-bold text-green-600 mb-2">41%</div>
-              <div className="space-y-1">
-                <p className="text-xs text-gray-500">Target: 46%</p>
-                <p className="text-xs text-gray-500">5% below expected daily pace</p>
+            </div>
+
+            {/* Zones at Risk */}
+            <div className="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-[#E53E3E] min-h-[160px] flex flex-col">
+              <div className="mb-3">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-2xl">📉</span>
+                  <h3 className="text-sm font-semibold text-gray-700">Zones at Risk</h3>
+                </div>
+                <div className="text-3xl font-bold text-red-600 mb-2">3</div>
+                <div className="space-y-1">
+                  <p className="text-xs text-gray-500">7 Reps affected</p>
+                  <p className="text-xs text-gray-500">Colón, Chiriquí, and Oeste below target</p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Zones at Risk */}
-          <div className="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-[#E53E3E] min-h-[160px] flex flex-col">
-            <div className="mb-3">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl">📉</span>
-                <h3 className="text-sm font-semibold text-gray-700">Zones at Risk</h3>
+          {/* Bottom Row - Strategic Campaign (Full Width) */}
+          <div className="bg-[#FFF8F0] rounded-2xl p-8 shadow-sm border-l-4 border-[#DAA520] min-h-[140px]">
+            <div className="flex items-center justify-between">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-2xl">⭐</span>
+                  <h3 className="text-sm font-semibold text-gray-700">El Extra Campaign Performance</h3>
+                </div>
+                <div className="flex items-baseline gap-4">
+                  <div className="text-3xl font-bold text-[#DAA520]">8.2%</div>
+                  <div className="text-sm text-gray-600">ROI</div>
+                </div>
               </div>
-              <div className="text-3xl font-bold text-red-600 mb-2">3</div>
-              <div className="space-y-1">
-                <p className="text-xs text-gray-500">7 Reps affected</p>
-                <p className="text-xs text-gray-500">Colón, Chiriquí, and Oeste below target</p>
-              </div>
-            </div>
-          </div>
-
-          {/* El Extra Campaign */}
-          <div className="bg-[#FFF8F0] rounded-2xl p-8 shadow-sm border-l-4 border-[#DAA520] min-h-[160px] flex flex-col">
-            <div className="mb-3">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl">⭐</span>
-                <h3 className="text-sm font-semibold text-gray-700">El Extra Campaign</h3>
-              </div>
-              <div className="text-3xl font-bold text-[#DAA520] mb-2">8.2%</div>
-              <div className="space-y-1">
-                <p className="text-xs text-gray-500">ROI on $6,200 invested</p>
-                <p className="text-xs text-gray-500">Recommend vinegar + aderezo combo</p>
+              <div className="flex-1 ml-8">
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-700 font-medium">Strategic Recommendation</p>
+                  <p className="text-xs text-gray-500">$6,200 invested • Expand vinegar + aderezo combo</p>
+                  <p className="text-xs text-gray-500">High potential for Sur zone recovery</p>
+                </div>
               </div>
             </div>
           </div>
