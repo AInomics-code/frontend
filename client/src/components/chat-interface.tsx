@@ -4,6 +4,7 @@ import { Sidebar } from "./sidebar";
 import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
 import { Menu, TrendingUp, AlertTriangle, Star } from "lucide-react";
+import vortexLogo from "@assets/Screenshot 2025-05-26 alle 13.53.01.png";
 
 export function ChatInterface() {
   const [selectedConversationId, setSelectedConversationId] = useState<number | null>(null);
@@ -43,7 +44,14 @@ export function ChatInterface() {
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-[#D71920] rounded-full"></div>
+            <img 
+              src={vortexLogo} 
+              alt="Vorta Logo" 
+              className="w-8 h-8 opacity-90"
+              style={{
+                filter: 'drop-shadow(0 0 6px rgba(215, 25, 32, 0.2))'
+              }}
+            />
             <h1 className="text-gray-700 font-semibold text-lg">
               La Doña Business Intelligence
             </h1>
@@ -115,7 +123,7 @@ export function ChatInterface() {
           {/* Vorta Logo */}
           <div className="flex justify-center mt-6 mb-4">
             <img 
-              src="/attached_assets/Screenshot 2025-05-26 alle 13.53.01.png" 
+              src={vortexLogo} 
               alt="Vorta" 
               className="w-12 h-12 opacity-90"
               style={{
@@ -128,7 +136,14 @@ export function ChatInterface() {
             {/* Initial Assistant Greeting */}
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
-                <div className="w-8 h-8 bg-[#D71920] rounded-full"></div>
+                <img 
+                  src={vortexLogo} 
+                  alt="Vorta Assistant" 
+                  className="w-8 h-8 opacity-90"
+                  style={{
+                    filter: 'drop-shadow(0 0 4px rgba(215, 25, 32, 0.2))'
+                  }}
+                />
               </div>
               <div className="flex-1">
                 <div className="bg-gray-50 rounded-xl px-4 py-3 inline-block max-w-md shadow-sm">
@@ -141,7 +156,14 @@ export function ChatInterface() {
             {isLoading && (
               <div className="flex items-start gap-3">
                 <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-8 h-8 bg-[#D71920] rounded-full animate-pulse"></div>
+                  <img 
+                    src={vortexLogo} 
+                    alt="Vorta Assistant" 
+                    className="w-8 h-8 opacity-90 animate-pulse"
+                    style={{
+                      filter: 'drop-shadow(0 0 4px rgba(215, 25, 32, 0.2))'
+                    }}
+                  />
                 </div>
                 <div className="flex-1">
                   <div className="bg-gray-50 rounded-xl px-4 py-3 inline-block shadow-sm">
