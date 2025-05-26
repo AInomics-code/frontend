@@ -232,8 +232,9 @@
   transform: rotate(300deg);
 }
 
-.vortex-icon.idle {
-  animation: vortex-gentle-pulse 4s ease-in-out infinite;
+/* Static state - no animation */
+.vortex-icon {
+  transition: all 0.3s ease-out;
 }
 
 .vortex-icon.active {

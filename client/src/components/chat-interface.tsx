@@ -136,7 +136,7 @@ export function ChatInterface() {
             {/* Initial Assistant Greeting */}
             <div className="flex items-start gap-3 animate-[chatDrop_200ms_ease-out]">
               <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
-                <div className="vortex-icon idle scale-75">
+                <div className="vortex-icon scale-75">
                   <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
