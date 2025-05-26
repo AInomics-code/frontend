@@ -244,58 +244,73 @@ export function ChatInterface() {
           <div className="flex flex-wrap gap-3 justify-start">
             {/* Colón Region Alert */}
             <div 
-              className={`flex items-center justify-between rounded-xl bg-white px-4 py-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-[200px] max-w-[220px] h-[48px] cursor-pointer hover:scale-[1.02] ${expandedCard === 'colon' ? 'ring-1 ring-red-400/50' : ''}`}
+              className={`flex items-center justify-between gap-3 w-full px-3 py-2 rounded-lg shadow-sm border bg-white cursor-pointer hover:shadow-md transition-all duration-200 hover:scale-[1.02] ${expandedCard === 'colon' ? 'ring-1 ring-red-400/50' : ''}`}
               style={{ boxShadow: expandedCard === 'colon' ? 'inset 0 1px 2px rgba(0,0,0,0.03)' : undefined }}
               onClick={() => setExpandedCard(expandedCard === 'colon' ? null : 'colon')}
-              title="Region below sales target – 3 reps affected"
+              title="Colón: 4,150 of 6,200 goal achieved"
             >
-              <div className="flex items-center gap-3">
-                <div className="w-[14px] h-[14px] rounded-full bg-gradient-to-br from-red-400 to-red-600 shadow-red-300/50"></div>
-                <div>
-                  <div className="text-sm font-medium text-gray-900">Colón</div>
-                  <div className="text-xs text-gray-500">67% of goal</div>
-                </div>
+              <div className="flex flex-col">
+                <span className="text-sm font-semibold text-gray-900">Colón</span>
+                <span className="text-xs text-gray-500">67% of goal</span>
               </div>
-              <div className="text-gray-400 hover:text-red-400 text-sm cursor-pointer transition-colors duration-200 hover:scale-110">
-                <ArrowRight className="w-4 h-4" />
+              <div className="flex items-center gap-3">
+                <div className="relative w-[64px] h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div 
+                    className="absolute h-full bg-red-500 rounded-full transition-all duration-300 animate-[progressGrow_500ms_ease-out]" 
+                    style={{ width: '67%' }}
+                  ></div>
+                </div>
+                <div className="text-gray-400 hover:text-red-400 text-sm cursor-pointer transition-colors duration-200 hover:scale-110">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
             </div>
 
             {/* Oeste Region Alert */}
             <div 
-              className={`flex items-center justify-between rounded-xl bg-white px-4 py-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-[200px] max-w-[220px] h-[48px] cursor-pointer hover:scale-[1.02] ${expandedCard === 'oeste' ? 'ring-1 ring-yellow-400/50' : ''}`}
+              className={`flex items-center justify-between gap-3 w-full px-3 py-2 rounded-lg shadow-sm border bg-white cursor-pointer hover:shadow-md transition-all duration-200 hover:scale-[1.02] ${expandedCard === 'oeste' ? 'ring-1 ring-yellow-400/50' : ''}`}
               style={{ boxShadow: expandedCard === 'oeste' ? 'inset 0 1px 2px rgba(0,0,0,0.03)' : undefined }}
               onClick={() => setExpandedCard(expandedCard === 'oeste' ? null : 'oeste')}
-              title="Region approaching sales target – 2 reps affected"
+              title="Oeste: 6,660 of 9,000 goal achieved"
             >
-              <div className="flex items-center gap-3">
-                <div className="w-[14px] h-[14px] rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-yellow-300/50"></div>
-                <div>
-                  <div className="text-sm font-medium text-gray-900">Oeste</div>
-                  <div className="text-xs text-gray-500">74% of goal</div>
-                </div>
+              <div className="flex flex-col">
+                <span className="text-sm font-semibold text-gray-900">Oeste</span>
+                <span className="text-xs text-gray-500">74% of goal</span>
               </div>
-              <div className="text-gray-400 hover:text-yellow-500 text-sm cursor-pointer transition-colors duration-200 hover:scale-110">
-                <ArrowRight className="w-4 h-4" />
+              <div className="flex items-center gap-3">
+                <div className="relative w-[64px] h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div 
+                    className="absolute h-full bg-yellow-400 rounded-full transition-all duration-300 animate-[progressGrow_500ms_ease-out]" 
+                    style={{ width: '74%' }}
+                  ></div>
+                </div>
+                <div className="text-gray-400 hover:text-yellow-500 text-sm cursor-pointer transition-colors duration-200 hover:scale-110">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
             </div>
 
             {/* Chiriquí Region Alert */}
             <div 
-              className={`flex items-center justify-between rounded-xl bg-white px-4 py-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-[200px] max-w-[220px] h-[48px] cursor-pointer hover:scale-[1.02] ${expandedCard === 'chiriqui' ? 'ring-1 ring-red-400/50' : ''}`}
+              className={`flex items-center justify-between gap-3 w-full px-3 py-2 rounded-lg shadow-sm border bg-white cursor-pointer hover:shadow-md transition-all duration-200 hover:scale-[1.02] ${expandedCard === 'chiriqui' ? 'ring-1 ring-red-400/50' : ''}`}
               style={{ boxShadow: expandedCard === 'chiriqui' ? 'inset 0 1px 2px rgba(0,0,0,0.03)' : undefined }}
               onClick={() => setExpandedCard(expandedCard === 'chiriqui' ? null : 'chiriqui')}
-              title="Critical region – supply chain delays affecting 2 reps"
+              title="Chiriquí: 5,040 of 7,000 goal achieved"
             >
-              <div className="flex items-center gap-3">
-                <div className="w-[14px] h-[14px] rounded-full bg-gradient-to-br from-red-400 to-red-600 shadow-red-300/50"></div>
-                <div>
-                  <div className="text-sm font-medium text-gray-900">Chiriquí</div>
-                  <div className="text-xs text-gray-500">72% of goal</div>
-                </div>
+              <div className="flex flex-col">
+                <span className="text-sm font-semibold text-gray-900">Chiriquí</span>
+                <span className="text-xs text-gray-500">72% of goal</span>
               </div>
-              <div className="text-gray-400 hover:text-red-400 text-sm cursor-pointer transition-colors duration-200 hover:scale-110">
-                <ArrowRight className="w-4 h-4" />
+              <div className="flex items-center gap-3">
+                <div className="relative w-[64px] h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div 
+                    className="absolute h-full bg-yellow-400 rounded-full transition-all duration-300 animate-[progressGrow_500ms_ease-out]" 
+                    style={{ width: '72%' }}
+                  ></div>
+                </div>
+                <div className="text-gray-400 hover:text-red-400 text-sm cursor-pointer transition-colors duration-200 hover:scale-110">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
             </div>
           </div>

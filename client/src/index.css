@@ -291,3 +291,9 @@
   }
 }
 
+@keyframes progressGrow {
+  0% {
+    width: 0%;
+  }
+}
+
