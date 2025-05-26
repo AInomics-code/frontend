@@ -222,7 +222,7 @@ export function ChatInterface() {
                 >
                   {/* Assistant Header */}
                   <div className="flex items-center gap-3 mb-4">
-                    <div className={`vortex-icon ${isProcessing ? 'active' : ''}`} style={{ width: '24px', height: '24px' }}>
+                    <div className={`vortex-icon ${isProcessing ? 'active' : ''}`} style={{ width: '18px', height: '18px' }}>
                       <div className="vortex-blade"></div>
                       <div className="vortex-blade"></div>
                       <div className="vortex-blade"></div>
