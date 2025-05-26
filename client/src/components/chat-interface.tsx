@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sidebar } from "./sidebar";
 import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
-import { Menu } from "lucide-react";
+import { Menu, TrendingUp, AlertTriangle, Star } from "lucide-react";
 
 export function ChatInterface() {
   const [selectedConversationId, setSelectedConversationId] = useState<number | null>(null);
@@ -75,8 +75,8 @@ export function ChatInterface() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Daily Sales Target */}
           <div className="bg-white rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border-l-4 border-[#38A169]">
-            <div className="flex items-center gap-1 mb-2">
-              <span className="text-lg">📊</span>
+            <div className="flex items-center gap-2 mb-2">
+              <TrendingUp className="w-4 h-4 text-green-600" />
               <h3 className="text-xs font-medium text-gray-600">Daily Sales Target</h3>
             </div>
             <div className="text-2xl font-bold text-green-600 mb-1">41%</div>
@@ -88,8 +88,8 @@ export function ChatInterface() {
 
           {/* Zones at Risk */}
           <div className="bg-white rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border-l-4 border-[#E53E3E]">
-            <div className="flex items-center gap-1 mb-2">
-              <span className="text-lg">📉</span>
+            <div className="flex items-center gap-2 mb-2">
+              <AlertTriangle className="w-4 h-4 text-red-600" />
               <h3 className="text-xs font-medium text-gray-600">Zones at Risk</h3>
             </div>
             <div className="text-2xl font-bold text-red-600 mb-1">3</div>
@@ -101,8 +101,8 @@ export function ChatInterface() {
 
           {/* El Extra Campaign */}
           <div className="bg-white rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border-l-4 border-[#D69E2E]">
-            <div className="flex items-center gap-1 mb-2">
-              <span className="text-lg">⭐</span>
+            <div className="flex items-center gap-2 mb-2">
+              <Star className="w-4 h-4 text-yellow-600" />
               <h3 className="text-xs font-medium text-gray-600">El Extra Campaign</h3>
             </div>
             <div className="text-2xl font-bold text-[#DAA520] mb-1">8.2%</div>
