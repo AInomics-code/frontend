@@ -123,32 +123,22 @@ export function ChatInterface() {
         </div>
 
         {/* Doña Assistant Section */}
-        <div className="bg-white rounded-xl shadow-sm p-6">
-          <div className="flex items-center gap-2 mb-6">
+        <section className="bg-white rounded-xl shadow-md p-6 max-h-[70vh] overflow-y-auto space-y-4">
+          <h2 className="text-xl font-semibold text-[#006400] mb-4">Doña Assistant</h2>
+          
+          <div className="flex items-start gap-3">
             <img 
               src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
               alt="La Doña Avatar" 
-              className="w-7 h-7 rounded-full object-cover"
-            />
-            <h2 className="text-xl font-semibold text-gray-800">Doña Assistant</h2>
-            <div className="ml-auto">
-              <span className="text-sm text-gray-400">AI/AI</span>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-2">
-            <img 
-              src={new URL('../assets/la-dona-logo.png', import.meta.url).href}
-              alt="La Doña Avatar" 
-              className="w-7 h-7 rounded-full object-cover flex-shrink-0 mt-1"
+              className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-1"
             />
             <div className="flex-1">
               <div className="bg-gray-50 rounded-lg px-4 py-3 inline-block max-w-md">
-                <p className="text-gray-700 text-sm">How can I help you today?</p>
+                <p className="text-gray-700 text-sm">How can I help you today? I can assist with business analytics, sales data, and strategic insights for La Doña.</p>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </main>
     </div>
   );
