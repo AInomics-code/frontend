@@ -30,11 +30,9 @@ export function ChatInterface() {
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img
-              src="/la-dona-logo.png"
-              alt="La Doña Logo"
-              className="h-10 w-auto object-contain"
-            />
+            <div className="w-10 h-10 bg-[#E50914] rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">LD</span>
+            </div>
             <h1 className="text-[#E50914] font-bold text-lg">
               La Doña Business Intelligence
             </h1>
@@ -125,11 +123,9 @@ export function ChatInterface() {
         {/* Doña Assistant Section */}
         <div className="bg-white rounded-xl shadow-sm p-6">
           <div className="flex items-center gap-2 mb-6">
-            <img 
-              src="/la-dona-logo.png" 
-              alt="La Doña Avatar" 
-              className="w-7 h-7 rounded-full object-cover"
-            />
+            <div className="w-7 h-7 bg-[#E50914] rounded-full flex items-center justify-center">
+              <span className="text-white font-bold text-xs">LD</span>
+            </div>
             <h2 className="text-xl font-semibold text-gray-800">Doña Assistant</h2>
             <div className="ml-auto">
               <span className="text-sm text-gray-400">AI/AI</span>
@@ -137,11 +133,9 @@ export function ChatInterface() {
           </div>
 
           <div className="flex items-start gap-2">
-            <img 
-              src="/la-dona-logo.png" 
-              alt="La Doña Avatar" 
-              className="w-7 h-7 rounded-full object-cover flex-shrink-0 mt-1"
-            />
+            <div className="w-7 h-7 bg-[#E50914] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <span className="text-white font-bold text-xs">LD</span>
+            </div>
             <div className="flex-1">
               <div className="bg-gray-50 rounded-lg px-4 py-3 inline-block max-w-md">
                 <p className="text-gray-700 text-sm">How can I help you today?</p>
