@@ -244,100 +244,88 @@ export function ChatInterface() {
           <div className="flex gap-4 px-6">
             {/* Colón Region Card */}
             <div 
-              className={`flex flex-col justify-between rounded-xl p-3 bg-white shadow-sm border w-[200px] cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all duration-200 ${expandedCard === 'colon' ? 'ring-1 ring-red-400/50' : ''}`}
+              className={`flex flex-col rounded-xl p-3 bg-white shadow-sm border w-[200px] cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all duration-200 ${expandedCard === 'colon' ? 'ring-1 ring-red-400/50' : ''}`}
               onClick={() => setExpandedCard(expandedCard === 'colon' ? null : 'colon')}
               title="Colón: $4,150 of $6,200 goal achieved"
             >
-              <div>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-gray-900">Colón</h3>
-                  <div className="flex items-center gap-1">
-                    <TrendingDown className="w-3 h-3 text-red-500" />
-                    <span className="text-xs font-medium text-red-600">33% gap</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 mt-1">
-                  <p className="text-xs text-gray-500">67% reached</p>
-                  <div className="flex items-center gap-1 px-2 py-0.5 bg-red-50 rounded-full">
-                    <Target className="w-3 h-3 text-red-500" />
-                    <span className="text-xs font-medium text-red-600">33% needed</span>
-                  </div>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-semibold text-gray-900">Colón</h3>
+                <div className="px-2 py-1 bg-red-100 rounded-full">
+                  <span className="text-xs font-medium text-red-600">🔴 At Risk</span>
                 </div>
               </div>
-              <div className="flex items-center justify-between mt-2">
-                <div className="relative w-2/3 h-2 bg-gray-200 rounded-full overflow-hidden">
+              
+              <div className="space-y-1">
+                <div className="text-xs text-gray-600">67% Reached</div>
+                <div className="text-xs text-gray-500">33% Remaining</div>
+              </div>
+
+              <div className="mt-3 relative">
+                <div className="relative w-full h-2 bg-gray-200 rounded-full overflow-hidden hover:shadow-sm transition-shadow duration-200">
                   <div 
                     className="absolute h-full bg-red-500 rounded-full transition-all duration-300" 
                     style={{ width: '67%' }}
                   ></div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-gray-400 ml-2 hover:text-red-400 transition-colors duration-200" />
+                <div className="text-xs text-gray-400 text-right mt-1">33% to go</div>
               </div>
             </div>
 
             {/* Oeste Region Card */}
             <div 
-              className={`flex flex-col justify-between rounded-xl p-3 bg-white shadow-sm border w-[200px] cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all duration-200 ${expandedCard === 'oeste' ? 'ring-1 ring-yellow-400/50' : ''}`}
+              className={`flex flex-col rounded-xl p-3 bg-white shadow-sm border w-[200px] cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all duration-200 ${expandedCard === 'oeste' ? 'ring-1 ring-yellow-400/50' : ''}`}
               onClick={() => setExpandedCard(expandedCard === 'oeste' ? null : 'oeste')}
               title="Oeste: $6,660 of $9,000 goal achieved"
             >
-              <div>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-gray-900">Oeste</h3>
-                  <div className="flex items-center gap-1">
-                    <TrendingDown className="w-3 h-3 text-yellow-500" />
-                    <span className="text-xs font-medium text-yellow-600">26% gap</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 mt-1">
-                  <p className="text-xs text-gray-500">74% reached</p>
-                  <div className="flex items-center gap-1 px-2 py-0.5 bg-yellow-50 rounded-full">
-                    <Target className="w-3 h-3 text-yellow-500" />
-                    <span className="text-xs font-medium text-yellow-600">26% needed</span>
-                  </div>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-semibold text-gray-900">Oeste</h3>
+                <div className="px-2 py-1 bg-yellow-100 rounded-full">
+                  <span className="text-xs font-medium text-yellow-600">🟡 Needs Attention</span>
                 </div>
               </div>
-              <div className="flex items-center justify-between mt-2">
-                <div className="relative w-2/3 h-2 bg-gray-200 rounded-full overflow-hidden">
+              
+              <div className="space-y-1">
+                <div className="text-xs text-gray-600">74% Reached</div>
+                <div className="text-xs text-gray-500">26% Remaining</div>
+              </div>
+
+              <div className="mt-3 relative">
+                <div className="relative w-full h-2 bg-gray-200 rounded-full overflow-hidden hover:shadow-sm transition-shadow duration-200">
                   <div 
                     className="absolute h-full bg-yellow-400 rounded-full transition-all duration-300" 
                     style={{ width: '74%' }}
                   ></div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-gray-400 ml-2 hover:text-yellow-500 transition-colors duration-200" />
+                <div className="text-xs text-gray-400 text-right mt-1">26% to go</div>
               </div>
             </div>
 
             {/* Chiriquí Region Card */}
             <div 
-              className={`flex flex-col justify-between rounded-xl p-3 bg-white shadow-sm border w-[200px] cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all duration-200 ${expandedCard === 'chiriqui' ? 'ring-1 ring-red-400/50' : ''}`}
+              className={`flex flex-col rounded-xl p-3 bg-white shadow-sm border w-[200px] cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all duration-200 ${expandedCard === 'chiriqui' ? 'ring-1 ring-red-400/50' : ''}`}
               onClick={() => setExpandedCard(expandedCard === 'chiriqui' ? null : 'chiriqui')}
               title="Chiriquí: $5,040 of $7,000 goal achieved"
             >
-              <div>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-gray-900">Chiriquí</h3>
-                  <div className="flex items-center gap-1">
-                    <TrendingDown className="w-3 h-3 text-yellow-500" />
-                    <span className="text-xs font-medium text-yellow-600">28% gap</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 mt-1">
-                  <p className="text-xs text-gray-500">72% reached</p>
-                  <div className="flex items-center gap-1 px-2 py-0.5 bg-yellow-50 rounded-full">
-                    <Target className="w-3 h-3 text-yellow-500" />
-                    <span className="text-xs font-medium text-yellow-600">28% needed</span>
-                  </div>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-semibold text-gray-900">Chiriquí</h3>
+                <div className="px-2 py-1 bg-yellow-100 rounded-full">
+                  <span className="text-xs font-medium text-yellow-600">🟡 Needs Attention</span>
                 </div>
               </div>
-              <div className="flex items-center justify-between mt-2">
-                <div className="relative w-2/3 h-2 bg-gray-200 rounded-full overflow-hidden">
+              
+              <div className="space-y-1">
+                <div className="text-xs text-gray-600">72% Reached</div>
+                <div className="text-xs text-gray-500">28% Remaining</div>
+              </div>
+
+              <div className="mt-3 relative">
+                <div className="relative w-full h-2 bg-gray-200 rounded-full overflow-hidden hover:shadow-sm transition-shadow duration-200">
                   <div 
                     className="absolute h-full bg-yellow-400 rounded-full transition-all duration-300" 
                     style={{ width: '72%' }}
                   ></div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-gray-400 ml-2 hover:text-yellow-500 transition-colors duration-200" />
+                <div className="text-xs text-gray-400 text-right mt-1">28% to go</div>
               </div>
             </div>
           </div>
