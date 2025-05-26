@@ -74,7 +74,7 @@ export function ChatInterface() {
         {/* KPI Cards - Compact Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Daily Sales Target */}
-          <div className="bg-[#F0FFF4] rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border border-green-100">
+          <div className="bg-white rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border-l-4 border-[#38A169]">
             <div className="flex items-center gap-1 mb-2">
               <span className="text-lg">📊</span>
               <h3 className="text-xs font-medium text-gray-600">Daily Sales Target</h3>
@@ -85,7 +85,7 @@ export function ChatInterface() {
           </div>
 
           {/* Zones at Risk */}
-          <div className="bg-[#FFF5F5] rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border border-red-100">
+          <div className="bg-white rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border-l-4 border-[#E53E3E]">
             <div className="flex items-center gap-1 mb-2">
               <span className="text-lg">📉</span>
               <h3 className="text-xs font-medium text-gray-600">Zones at Risk</h3>
@@ -96,7 +96,7 @@ export function ChatInterface() {
           </div>
 
           {/* El Extra Campaign */}
-          <div className="bg-[#FFFBEF] rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border border-yellow-100">
+          <div className="bg-white rounded-lg p-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)] border-l-4 border-[#D69E2E]">
             <div className="flex items-center gap-1 mb-2">
               <span className="text-lg">⭐</span>
               <h3 className="text-xs font-medium text-gray-600">El Extra Campaign</h3>
