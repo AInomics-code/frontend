@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sidebar } from "./sidebar";
 import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
-import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin, ArrowRight } from "lucide-react";
+import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin, ArrowRight, Search, Globe } from "lucide-react";
 import vortexLogo from "@assets/Screenshot 2025-05-26 alle 13.53.01.png";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
@@ -12,6 +12,8 @@ export function ChatInterface() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [inputValue, setInputValue] = useState("");
+  const [isVoiceActive, setIsVoiceActive] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -23,11 +25,23 @@ export function ChatInterface() {
   }, [isLoading]);
 
   const handleSendMessage = () => {
+    if (!inputValue.trim()) return;
     setIsLoading(true);
     // Simulate assistant thinking time
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
+    setInputValue("");
+  };
+
+  const handleVoiceToggle = () => {
+    setIsVoiceActive(!isVoiceActive);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSendMessage();
+    }
   };
 
   const handleSelectConversation = (id: number | null) => {
@@ -179,28 +193,47 @@ export function ChatInterface() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input Area */}
-          <div className="flex items-center gap-3 mt-6 pt-4 border-t border-gray-100">
-            <div className="flex-1 relative">
-              <input
-                type="text"
-                placeholder="Ask about KPIs or sales performance..."
-                className="w-full px-4 py-3 bg-white border border-gray-200 rounded-full text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#006400] focus:border-transparent"
+          {/* Vorta Input Bar - Claude x Perplexity Inspired */}
+          <div className="mt-6 pt-4 border-t border-gray-100">
+            <div className="flex items-center gap-3 w-full max-w-[960px] mx-auto px-4 py-3 rounded-xl bg-white shadow-sm border border-gray-100 focus-within:ring-2 focus-within:ring-[#E10600]/30 focus-within:ring-offset-1 transition-all duration-200">
+              {/* Left: Search Icon */}
+              <Search className="w-5 h-5 text-gray-400 flex-shrink-0" />
+
+              {/* Center: Input */}
+              <input 
+                className="flex-grow bg-transparent outline-none placeholder-gray-400 text-gray-800 text-base"
+                placeholder="Ask about KPIs or performance..."
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={handleKeyDown}
               />
+
+              {/* Optional Tools */}
+              <div className="flex items-center gap-3 text-gray-400">
+                <button 
+                  className="hover:text-gray-600 transition-colors duration-200 p-1 rounded-full hover:bg-gray-50"
+                  title="Search insights"
+                >
+                  <Globe className="w-4 h-4" />
+                </button>
+                <button 
+                  className={`hover:text-gray-600 transition-all duration-200 p-2 rounded-full ${isVoiceActive ? 'bg-red-100/30 text-red-500 animate-pulse' : 'hover:bg-gray-50'}`}
+                  onClick={handleVoiceToggle}
+                  title="Voice mode (beta)"
+                >
+                  <Mic className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* CTA Button */}
+              <button 
+                className="px-4 py-2 rounded-lg bg-[#E10600] text-white text-sm font-medium shadow-md hover:bg-[#cc0500] hover:scale-[1.03] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={handleSendMessage}
+                disabled={!inputValue.trim()}
+              >
+                Ask
+              </button>
             </div>
-            <button 
-              aria-label="Voice input"
-              title="Hold to speak"
-              className="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center hover:bg-gray-50 hover:shadow-md hover:border-gray-200 transition-all duration-300 group"
-            >
-              <Mic className="w-4 h-4 text-[#D71920] group-hover:text-red-600 transition-colors duration-200" />
-            </button>
-            <button 
-              onClick={handleSendMessage}
-              className="w-10 h-10 bg-[#D71920] rounded-full text-white flex items-center justify-center shadow-md hover:bg-red-600 hover:shadow-lg transition-all duration-200 active:scale-95"
-            >
-              <Send className="w-4 h-4" />
-            </button>
           </div>
         </section>
 
