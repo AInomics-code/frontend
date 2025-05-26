@@ -25,41 +25,77 @@ export function ChatInterface() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-white dark:bg-gray-950">
-      <Sidebar
-        selectedConversationId={selectedConversationId}
-        onSelectConversation={handleSelectConversation}
-        isOpen={sidebarOpen}
-        onToggle={() => setSidebarOpen(!sidebarOpen)}
-      />
+    <div className="min-h-screen w-full bg-[#F9F9F6] grid grid-cols-1 xl:grid-cols-[240px_1fr_320px]">
+      {/* Left Sidebar - 240px */}
+      <div className="bg-white border-r border-gray-200 overflow-y-auto xl:block hidden">
+        <Sidebar
+          selectedConversationId={selectedConversationId}
+          onSelectConversation={handleSelectConversation}
+          isOpen={true}
+          onToggle={() => {}}
+        />
+      </div>
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col">
+      {/* Center Chat Panel - Fluid with max-w-4xl */}
+      <div className="flex flex-col overflow-y-auto">
         {/* Mobile Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800 lg:hidden">
+        <div className="flex items-center justify-between p-4 border-b border-gray-200 xl:hidden bg-white">
           <Button 
             variant="ghost" 
             size="sm" 
             onClick={() => setSidebarOpen(true)}
-            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="p-2 hover:bg-gray-100"
           >
-            <Menu className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+            <Menu className="h-5 w-5 text-gray-600" />
           </Button>
-          <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <h1 className="text-lg font-semibold text-[#1A1A1A]">
             ChatGPT
           </h1>
           <div className="w-10"></div>
         </div>
 
-        {/* Chat Messages Area */}
-        <MessageList conversationId={selectedConversationId} />
-
-        {/* Input Area */}
-        <MessageInput 
-          conversationId={selectedConversationId}
-          onSendMessage={handleSendMessage}
-        />
+        {/* Chat Content with max-width constraint */}
+        <div className="flex-1 flex flex-col max-w-4xl mx-auto w-full">
+          <MessageList conversationId={selectedConversationId} />
+          <MessageInput 
+            conversationId={selectedConversationId}
+            onSendMessage={handleSendMessage}
+          />
+        </div>
       </div>
+
+      {/* Right Context Panel - 320px */}
+      <div className="bg-white shadow-inner overflow-y-auto xl:block hidden">
+        <div className="p-4">
+          <h3 className="text-sm font-semibold text-[#1A1A1A] mb-4">Context Panel</h3>
+          <div className="space-y-3">
+            <div className="p-3 bg-gray-50 rounded-lg">
+              <p className="text-sm text-gray-600">Conversation context and settings will appear here.</p>
+            </div>
+            <div className="p-3 bg-gray-50 rounded-lg">
+              <p className="text-sm text-gray-600">Additional features and tools.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Sidebar Overlay */}
+      {sidebarOpen && (
+        <>
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-20 xl:hidden"
+            onClick={() => setSidebarOpen(false)}
+          />
+          <div className="fixed inset-y-0 left-0 w-64 bg-white z-30 xl:hidden">
+            <Sidebar
+              selectedConversationId={selectedConversationId}
+              onSelectConversation={handleSelectConversation}
+              isOpen={sidebarOpen}
+              onToggle={() => setSidebarOpen(!sidebarOpen)}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

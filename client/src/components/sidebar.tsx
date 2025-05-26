@@ -75,11 +75,7 @@ export function Sidebar({
       )}
 
       {/* Sidebar */}
-      <div className={cn(
-        "w-64 bg-gray-50 dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 flex flex-col transition-all duration-300 z-30 h-full",
-        "lg:translate-x-0 lg:relative lg:z-auto",
-        isOpen ? "translate-x-0 absolute" : "-translate-x-full absolute"
-      )}>
+      <div className="w-full bg-white flex flex-col h-full">
         {/* Mobile header */}
         <div className="flex items-center justify-between p-4 lg:hidden">
           <h1 className="text-lg font-semibold">ChatGPT</h1>
@@ -89,11 +85,11 @@ export function Sidebar({
         </div>
 
         {/* Sidebar Header */}
-        <div className="p-4 border-b border-gray-200 dark:border-gray-800">
+        <div className="p-4 border-b border-gray-200">
           <Button 
             onClick={handleNewChat}
             disabled={createConversationMutation.isPending}
-            className="w-full justify-start gap-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
+            className="w-full justify-start gap-2 bg-white border border-gray-200 hover:bg-gray-50 text-[#1A1A1A]"
             variant="outline"
           >
             <Plus className="h-4 w-4" />
@@ -120,16 +116,16 @@ export function Sidebar({
                   key={conversation.id}
                   onClick={() => onSelectConversation(conversation.id)}
                   className={cn(
-                    "px-3 py-2.5 rounded-lg cursor-pointer transition-colors group hover:bg-white dark:hover:bg-gray-800",
-                    selectedConversationId === conversation.id && "bg-white dark:bg-gray-800"
+                    "px-3 py-2.5 rounded-lg cursor-pointer transition-colors group hover:bg-gray-50",
+                    selectedConversationId === conversation.id && "bg-gray-50"
                   )}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium truncate text-gray-900 dark:text-gray-100">
+                      <p className="text-sm font-medium truncate text-[#1A1A1A]">
                         {conversation.title}
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                      <p className="text-xs text-gray-500 mt-0.5">
                         {formatTime(conversation.updatedAt)}
                       </p>
                     </div>
@@ -139,7 +135,7 @@ export function Sidebar({
                         size="sm"
                         onClick={(e) => handleDeleteConversation(e, conversation.id)}
                         disabled={deleteConversationMutation.isPending}
-                        className="h-6 w-6 p-1 hover:bg-gray-200 dark:hover:bg-gray-600"
+                        className="h-6 w-6 p-1 hover:bg-gray-200"
                       >
                         <Trash2 className="h-3 w-3 text-gray-400" />
                       </Button>
@@ -152,16 +148,16 @@ export function Sidebar({
         </ScrollArea>
 
         {/* Sidebar Footer */}
-        <div className="p-4 border-t border-gray-200 dark:border-gray-800">
-          <div className="flex items-center gap-3 px-3 py-2 hover:bg-white dark:hover:bg-gray-800 rounded-lg cursor-pointer transition-colors">
+        <div className="p-4 border-t border-gray-200">
+          <div className="flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors">
             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
               <User className="h-4 w-4 text-white" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate text-gray-900 dark:text-gray-100">
+              <p className="text-sm font-medium truncate text-[#1A1A1A]">
                 John Doe
               </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-gray-500">
                 Free plan
               </p>
             </div>
@@ -169,7 +165,7 @@ export function Sidebar({
               variant="ghost"
               size="sm"
               onClick={toggleTheme}
-              className="h-8 w-8 p-1 hover:bg-gray-200 dark:hover:bg-gray-600"
+              className="h-8 w-8 p-1 hover:bg-gray-200"
             >
               {theme === "dark" ? (
                 <Sun className="h-4 w-4 text-yellow-400" />

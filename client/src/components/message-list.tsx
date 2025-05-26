@@ -42,10 +42,10 @@ export function MessageList({ conversationId }: MessageListProps) {
           <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
             <Bot className="h-8 w-8 text-white" />
           </div>
-          <h2 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
+          <h2 className="text-lg font-semibold mb-2 text-[#1A1A1A]">
             How can I help you today?
           </h2>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-gray-600">
             Ask me anything, and I'll do my best to help!
           </p>
         </div>
@@ -94,10 +94,10 @@ export function MessageList({ conversationId }: MessageListProps) {
             <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
               <Bot className="h-8 w-8 text-white" />
             </div>
-            <h2 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
+            <h2 className="text-lg font-semibold mb-2 text-[#1A1A1A]">
               Start the conversation
             </h2>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-gray-600">
               Send a message to begin chatting
             </p>
           </div>
