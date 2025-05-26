@@ -201,34 +201,34 @@
 
 .vortex-blade {
   position: absolute;
-  width: 16px;
-  height: 32px;
+  width: 6px;
+  height: 20px;
   background: #D71920;
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  transform-origin: 8px 24px;
+  border-radius: 40% 60% 60% 40%;
+  transform-origin: 3px 24px;
   top: 50%;
   left: 50%;
-  margin-left: -8px;
+  margin-left: -3px;
   margin-top: -24px;
 }
 
 .vortex-blade:nth-child(1) { 
-  transform: rotate(15deg) translateY(-4px);
+  transform: rotate(0deg);
 }
 .vortex-blade:nth-child(2) { 
-  transform: rotate(75deg) translateY(-4px);
+  transform: rotate(60deg);
 }
 .vortex-blade:nth-child(3) { 
-  transform: rotate(135deg) translateY(-4px);
+  transform: rotate(120deg);
 }
 .vortex-blade:nth-child(4) { 
-  transform: rotate(195deg) translateY(-4px);
+  transform: rotate(180deg);
 }
 .vortex-blade:nth-child(5) { 
-  transform: rotate(255deg) translateY(-4px);
+  transform: rotate(240deg);
 }
 .vortex-blade:nth-child(6) { 
-  transform: rotate(315deg) translateY(-4px);
+  transform: rotate(300deg);
 }
 
 .vortex-icon.idle {
