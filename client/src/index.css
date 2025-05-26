@@ -200,24 +200,37 @@
 
 .vortex-blade {
   position: absolute;
-  width: 16px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   background: linear-gradient(135deg, #D71920 0%, #B01419 50%, #8B0F14 100%);
-  border-radius: 60% 40% 60% 40%;
-  transform-origin: 8px 24px;
+  transform-origin: 12px 12px;
   top: 50%;
   left: 50%;
-  margin-left: -8px;
-  margin-top: -24px;
+  margin-left: -12px;
+  margin-top: -12px;
   box-shadow: 0 2px 8px rgba(215, 25, 32, 0.3);
 }
 
-.vortex-blade:nth-child(1) { transform: rotate(0deg) translateY(-6px); }
-.vortex-blade:nth-child(2) { transform: rotate(60deg) translateY(-6px); }
-.vortex-blade:nth-child(3) { transform: rotate(120deg) translateY(-6px); }
-.vortex-blade:nth-child(4) { transform: rotate(180deg) translateY(-6px); }
-.vortex-blade:nth-child(5) { transform: rotate(240deg) translateY(-6px); }
-.vortex-blade:nth-child(6) { transform: rotate(300deg) translateY(-6px); }
+.vortex-blade:nth-child(1) { 
+  clip-path: path('M 12 0 A 12 12 0 0 1 24 12 A 6 6 0 0 0 18 12 A 6 6 0 0 0 12 6 Z');
+  transform: rotate(0deg); 
+}
+.vortex-blade:nth-child(2) { 
+  clip-path: path('M 12 0 A 12 12 0 0 1 24 12 A 6 6 0 0 0 18 12 A 6 6 0 0 0 12 6 Z');
+  transform: rotate(72deg); 
+}
+.vortex-blade:nth-child(3) { 
+  clip-path: path('M 12 0 A 12 12 0 0 1 24 12 A 6 6 0 0 0 18 12 A 6 6 0 0 0 12 6 Z');
+  transform: rotate(144deg); 
+}
+.vortex-blade:nth-child(4) { 
+  clip-path: path('M 12 0 A 12 12 0 0 1 24 12 A 6 6 0 0 0 18 12 A 6 6 0 0 0 12 6 Z');
+  transform: rotate(216deg); 
+}
+.vortex-blade:nth-child(5) { 
+  clip-path: path('M 12 0 A 12 12 0 0 1 24 12 A 6 6 0 0 0 18 12 A 6 6 0 0 0 12 6 Z');
+  transform: rotate(288deg); 
+}
 
 .vortex-icon.idle {
   animation: vortex-gentle-pulse 4s ease-in-out infinite;

@@ -128,7 +128,6 @@ export function ChatInterface() {
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
             </div>
           </div>
 
@@ -137,7 +136,6 @@ export function ChatInterface() {
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
                 <div className="vortex-icon idle scale-75">
-                  <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
@@ -157,7 +155,6 @@ export function ChatInterface() {
               <div className="flex items-start gap-3">
                 <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
                   <div className="vortex-icon active scale-75">
-                    <div className="vortex-blade"></div>
                     <div className="vortex-blade"></div>
                     <div className="vortex-blade"></div>
                     <div className="vortex-blade"></div>
