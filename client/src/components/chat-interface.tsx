@@ -131,11 +131,11 @@ export function ChatInterface() {
         </div>
       </header>
 
-      {/* Main Content - Centered Layout */}
-      <main className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 space-y-6">
+      {/* Chat Container - Centered Layout */}
+      <main className="flex flex-col items-center pt-[10vh] bg-white">
 
-        {/* Refined Branding - Floating Vorta Logo */}
-        <div className="vortex-icon animate-pulse mb-6" style={{ width: '40px', height: '40px' }}>
+        {/* Floating Vorta Logo with Pulse */}
+        <div className="vortex-icon animate-pulse mb-4" style={{ width: '40px', height: '40px' }}>
           <div className="vortex-blade"></div>
           <div className="vortex-blade"></div>
           <div className="vortex-blade"></div>
@@ -144,48 +144,54 @@ export function ChatInterface() {
           <div className="vortex-blade"></div>
         </div>
 
-        {/* Elegant Simplicity - Centered Chat Experience */}
-        <div className="w-full max-w-4xl flex items-center px-6 py-4 bg-white rounded-full">
+        {/* Chat Input Container */}
+        <div className="flex items-center w-[640px] max-w-[90%] px-6 py-[14px] rounded-[40px] border border-gray-300 shadow-[0_8px_20px_rgba(0,0,0,0.05)] bg-white gap-3">
+          
+          {/* Text Input Field */}
           <input
             type="text"
-            placeholder="Ask about KPIs or performance…"
+            placeholder="Ask about KPIs or performance..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-grow text-gray-800 text-lg focus:outline-none placeholder:text-gray-400 bg-transparent"
+            className="flex-1 text-lg border-none outline-none text-gray-600 bg-transparent placeholder:text-gray-400"
           />
 
-          {/* Subtle Iconography - Inline Alignment */}
-          <div className="flex gap-4 text-gray-400 ml-6">
+          {/* Chat Actions - Icons and Ask Button */}
+          <div className="flex items-center gap-3">
+            
+            {/* Icon Buttons */}
             <button 
-              className="glow-icon hover:text-gray-600 transition-colors duration-200"
+              className="bg-none border-none text-lg text-gray-400 cursor-pointer transition-transform duration-200 hover:scale-110"
               title="Attachment"
             >
-              <Paperclip className="w-5 h-5" />
+              <Paperclip className="w-[18px] h-[18px]" />
             </button>
+            
             <button 
-              className="glow-icon hover:text-gray-600 transition-colors duration-200"
+              className="bg-none border-none text-lg text-gray-400 cursor-pointer transition-transform duration-200 hover:scale-110"
               title="Globe"
             >
-              <Globe className="w-5 h-5" />
+              <Globe className="w-[18px] h-[18px]" />
             </button>
+            
             <button 
-              className="glow-icon hover:text-rose-500 transition-colors duration-200"
+              className="bg-none border-none text-lg text-gray-400 cursor-pointer transition-transform duration-200 hover:scale-110"
               title="Voice"
               onClick={() => setIsVoiceActive(!isVoiceActive)}
             >
-              <Mic className={`w-5 h-5 ${isVoiceActive ? 'text-rose-500' : ''}`} />
+              <Mic className={`w-[18px] h-[18px] ${isVoiceActive ? 'text-rose-400' : ''}`} />
+            </button>
+
+            {/* Ask Button */}
+            <button 
+              onClick={handleSendMessage}
+              disabled={!inputValue.trim() || isProcessing}
+              className="bg-rose-300 text-white font-medium py-[10px] px-5 border-none rounded-[18px] cursor-pointer shadow-[0_4px_12px_rgba(249,168,168,0.4)] transition-colors duration-300 hover:bg-red-400 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isProcessing ? 'Processing...' : 'Ask'}
             </button>
           </div>
-
-          {/* Micro-interactions - Ask Button */}
-          <button 
-            onClick={handleSendMessage}
-            disabled={!inputValue.trim() || isProcessing}
-            className="ml-4 bg-rose-400 hover:bg-rose-500 text-white font-medium px-6 py-2 rounded-full transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-          >
-            {isProcessing ? 'Processing...' : 'Ask'}
-          </button>
         </div>
 
         {/* Loading Indicator */}
