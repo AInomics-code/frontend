@@ -4,6 +4,8 @@ import { useLocation } from "wouter";
 export default function Login() {
   const [, setLocation] = useLocation();
   const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = () => {
     setIsLoading(true);
@@ -26,11 +28,18 @@ export default function Login() {
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
-      <div className="bg-white p-10 rounded-3xl shadow-[0_12px_30px_rgba(0,0,0,0.08)] text-center max-w-md w-full border border-gray-100">
+      <div className="bg-white px-10 py-12 rounded-3xl shadow-xl shadow-gray-200 text-center max-w-md w-full border border-neutral-200">
         
         {/* Logo Animation */}
         <div className="mb-8 flex justify-center">
-          <div className={`vortex-icon ${isLoading ? 'active' : 'slow-spin'}`} style={{ width: '48px', height: '48px' }}>
+          <div 
+            className={`vortex-icon ${isLoading ? 'active' : 'slow-spin'}`} 
+            style={{ 
+              width: '40px', 
+              height: '40px',
+              filter: 'drop-shadow(0 0 5px rgba(229, 9, 20, 0.3))'
+            }}
+          >
             <div className="vortex-blade"></div>
             <div className="vortex-blade"></div>
             <div className="vortex-blade"></div>
@@ -46,14 +55,32 @@ export default function Login() {
           <p className="text-base text-gray-500 leading-relaxed">Sign in to access La Doña Intelligence</p>
         </div>
 
+        {/* Login Form */}
+        <div className="space-y-4 mb-8">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full py-2 px-4 rounded-lg border border-gray-300 focus:border-red-500 focus:shadow-inner focus:outline-none transition-all duration-200 text-gray-700 placeholder-gray-400"
+          />
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full py-2 px-4 rounded-lg border border-gray-300 focus:border-red-500 focus:shadow-inner focus:outline-none transition-all duration-200 text-gray-700 placeholder-gray-400"
+          />
+        </div>
+
         {/* Login Button */}
         <button 
           onClick={handleLogin}
           disabled={isLoading}
-          className={`w-full font-medium py-4 px-8 rounded-xl transition-all duration-300 transform ${
+          className={`w-full font-semibold tracking-wide py-3 px-6 rounded-xl transition-all duration-300 transform ${
             isLoading 
-              ? 'bg-[#cc0500] text-white scale-[0.98] animate-pulse cursor-wait' 
-              : 'bg-[#E10600] hover:bg-[#cc0500] text-white hover:scale-[1.02] shadow-lg hover:shadow-xl'
+              ? 'bg-gradient-to-r from-red-600 to-red-700 text-white scale-[0.98] animate-pulse cursor-wait' 
+              : 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white hover:scale-[1.02] shadow-md hover:shadow-lg'
           }`}
         >
           {isLoading ? (
@@ -66,11 +93,9 @@ export default function Login() {
           )}
         </button>
 
-        {/* Subtle Footer */}
-        <div className="mt-8 pt-6 border-t border-gray-100">
-          <p className="text-xs text-gray-400">
-            Powered by Vorta AI • Strategic Intelligence Platform
-          </p>
+        {/* Enhanced Footer */}
+        <div className="mt-6 text-xs text-gray-400 flex flex-col items-center gap-1">
+          <span>Powered by Ainomics Inc · Vorta Strategic Platform</span>
         </div>
       </div>
     </div>
