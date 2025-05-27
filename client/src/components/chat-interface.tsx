@@ -131,236 +131,58 @@ export function ChatInterface() {
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="px-6 py-6 space-y-8">
+      {/* Main Content - Centered Layout */}
+      <main className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6">
 
-        {/* AI Assistant Chat */}
-        <section className="space-y-4">
-          
-          {/* Vorta Logo */}
-          <div className="flex justify-center mb-8">
-            <div className="vortex-icon" style={{ width: '40px', height: '40px' }}>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-            </div>
+        {/* Vorta Logo */}
+        <div className="mb-6">
+          <div className="vortex-icon animate-pulse mx-auto" style={{ width: '32px', height: '32px' }}>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
           </div>
+        </div>
 
-          <div className="space-y-3">
-            {/* Loading Indicator */}
-            {isLoading && (
-              <div className="flex items-start gap-3 animate-[chatDrop_200ms_ease-out]">
-                <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="vortex-icon active scale-75">
-                    <div className="vortex-blade"></div>
-                    <div className="vortex-blade"></div>
-                    <div className="vortex-blade"></div>
-                    <div className="vortex-blade"></div>
-                    <div className="vortex-blade"></div>
-                    <div className="vortex-blade"></div>
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="bg-gray-50 rounded-xl px-4 py-3 inline-block shadow-sm">
-                    <p className="text-sm text-gray-400 italic animate-pulse">Preparing insights…</p>
-                  </div>
-                </div>
-              </div>
-            )}
+        {/* Chat Input Area */}
+        <div className="flex items-center w-full max-w-2xl rounded-2xl border border-gray-200 shadow-sm px-4 py-2">
+          <input
+            type="text"
+            placeholder="Ask about KPIs or performance..."
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="flex-1 bg-transparent outline-none placeholder-gray-400 text-gray-800 text-base"
+          />
+          <button 
+            onClick={handleSendMessage}
+            disabled={!inputValue.trim() || isProcessing}
+            className="ml-3 px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isProcessing ? 'Processing...' : 'Ask'}
+          </button>
+        </div>
 
-            {/* Scroll anchor */}
-            <div ref={messagesEndRef} />
+        {/* Loading Indicator */}
+        {isLoading && (
+          <div className="mt-4 flex items-center gap-2">
+            <div className="vortex-icon active scale-75">
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+            </div>
+            <p className="text-sm text-gray-400 italic animate-pulse">Preparing insights…</p>
           </div>
-
-          {/* Dynamic Response Area */}
-          {showResponse && (
-            <div className="mt-6 px-6">
-              <div className="w-full max-w-[960px] mx-auto">
-                <div 
-                  className="bg-[#fafaf9] rounded-3xl border border-gray-200 p-6 transition-all duration-300 ease-in-out transform origin-top animate-[slideUp_0.3s_ease-out] elevated-card"
-                >
-                  {/* Assistant Header */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2 text-sm text-gray-700 font-medium">
-                      <div className={`vortex-icon ring-1 ring-gray-200 rounded-full p-1 ${isProcessing ? 'active' : currentResponse ? 'pulse-glow' : ''}`} style={{ width: '20px', height: '20px' }}>
-                        <div className="vortex-blade"></div>
-                        <div className="vortex-blade"></div>
-                        <div className="vortex-blade"></div>
-                        <div className="vortex-blade"></div>
-                        <div className="vortex-blade"></div>
-                        <div className="vortex-blade"></div>
-                      </div>
-                      <span>Vorta</span>
-                      <span className="text-gray-400 font-normal">· Strategic Assistant</span>
-                    </div>
-                    
-                    {/* Quick Actions Dropdown */}
-                    {currentResponse && (
-                      <div className="relative">
-                        <button className="p-1 hover:bg-gray-100 rounded-full transition-colors duration-200">
-                          <MoreHorizontal className="w-4 h-4 text-gray-400" />
-                        </button>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Response Content */}
-                  <div className="space-y-4">
-                    {isProcessing && !typingText ? (
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
-                        <span className="text-gray-500 text-sm ml-2">Analyzing your data...</span>
-                      </div>
-                    ) : (
-                      <div className="text-base leading-relaxed text-gray-800">
-                        {isProcessing ? (
-                          <span className="inline-block border-r-2 border-gray-400 animate-pulse pr-1">
-                            {typingText}
-                          </span>
-                        ) : (
-                          <div className="space-y-3">
-                            <p>{currentResponse}</p>
-                            {currentResponse && (
-                              <div className="flex items-center gap-2 text-xs text-gray-500">
-                                <div className="w-3 h-3 border-2 border-green-500 rounded-full flex items-center justify-center">
-                                  <div className="w-1 h-1 bg-green-500 rounded-full"></div>
-                                </div>
-                                <span>High Confidence</span>
-                                <Info className="w-3 h-3 text-gray-400 cursor-help" />
-                              </div>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Context Links */}
-                  {currentResponse && !isProcessing && (
-                    <div className="mt-4 text-xs text-gray-500">
-                      Context: <span className="text-blue-600 hover:underline cursor-pointer">Colón Region Dashboard</span> • <span className="text-blue-600 hover:underline cursor-pointer">Last Week's Trend</span>
-                    </div>
-                  )}
-
-                  {/* Animated Suggestion Chips */}
-                  {showActions && currentResponse && !isProcessing && (
-                    <div className="mt-6 pt-4 border-t border-gray-200">
-                      <div className="flex flex-wrap gap-2">
-                        <button className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 hover:scale-105 animate-[fadeInUp_0.3s_ease-out]">
-                          <BarChart className="w-3 h-3" />
-                          Show detailed breakdown
-                        </button>
-                        <button className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 hover:scale-105 animate-[fadeInUp_0.3s_ease-out_0.1s_both]">
-                          <Globe className="w-3 h-3" />
-                          Compare with regions
-                        </button>
-                        <button className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 hover:scale-105 animate-[fadeInUp_0.3s_ease-out_0.2s_both]">
-                          <Brain className="w-3 h-3" />
-                          Suggest action plan
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Attached Files Display */}
-          {attachedFiles.length > 0 && (
-            <div className="mt-4 px-6">
-              <div className="w-full max-w-[960px] mx-auto">
-                <div className="flex flex-wrap gap-2">
-                  {attachedFiles.map((file, index) => (
-                    <div key={index} className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2 text-sm">
-                      <Paperclip className="w-4 h-4 text-gray-500" />
-                      <span className="text-gray-700 truncate max-w-[150px]">{file.name}</span>
-                      <button
-                        onClick={() => removeAttachedFile(index)}
-                        className="text-gray-400 hover:text-red-500 transition-colors duration-200 ml-1"
-                        title="Remove file"
-                      >
-                        ✕
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Vorta Input Bar - Claude x Perplexity Inspired */}
-          <div className="mt-6 pt-4 border-t border-gray-100">
-            <div className="flex items-center gap-3 w-full max-w-[960px] mx-auto px-4 py-3 rounded-xl bg-white shadow-sm border border-gray-100 focus-within:ring-2 focus-within:ring-[#E10600]/30 focus-within:ring-offset-1 transition-all duration-200">
-              {/* Left: Search Icon */}
-              <Search className="w-5 h-5 text-gray-400 flex-shrink-0" />
-
-              {/* Center: Input */}
-              <input 
-                className="flex-grow bg-transparent outline-none placeholder-gray-400 text-gray-800 text-base"
-                placeholder="Ask about KPIs or performance..."
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={handleKeyDown}
-              />
-
-              {/* Optional Tools */}
-              <div className="flex items-center gap-2 text-gray-400">
-                {/* File Attach Button */}
-                <label className="cursor-pointer hover:text-gray-600 transition-colors duration-200 p-1 rounded-full hover:bg-gray-50" title="Attach files for analysis">
-                  <input
-                    type="file"
-                    multiple
-                    accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.png,.jpg,.jpeg"
-                    onChange={handleFileAttach}
-                    className="hidden"
-                  />
-                  <Paperclip className="w-4 h-4" />
-                </label>
-
-                <button 
-                  className="hover:text-gray-600 transition-colors duration-200 p-1 rounded-full hover:bg-gray-50"
-                  title="Search insights"
-                >
-                  <Globe className="w-4 h-4" />
-                </button>
-                <button 
-                  className={`hover:text-gray-600 transition-all duration-200 p-2 rounded-full ${isVoiceActive ? 'bg-red-100/30 text-red-500 animate-pulse' : 'hover:bg-gray-50'}`}
-                  onClick={handleVoiceToggle}
-                  title="Voice mode (beta)"
-                >
-                  <Mic className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* CTA Button */}
-              <button 
-                className={`px-4 py-2 rounded-lg text-sm font-medium shadow-md transition-all duration-200 ${
-                  (inputValue.trim() || attachedFiles.length > 0)
-                    ? isProcessing 
-                      ? 'bg-[#cc0500] text-white animate-pulse cursor-wait'
-                      : 'bg-[#E10600] text-white hover:bg-[#cc0500] hover:scale-[1.03]'
-                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                }`}
-                onClick={handleSendMessage}
-                disabled={(!inputValue.trim() && attachedFiles.length === 0) || isProcessing}
-              >
-                {isProcessing ? 'Processing...' : 'Ask'}
-              </button>
-            </div>
-          </div>
-        </section>
-
-
-
-
+        )}
 
       </main>
     </div>
+
+
   );
 }
