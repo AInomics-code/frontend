@@ -136,7 +136,7 @@ export function ChatInterface() {
 
         {/* Vorta Logo */}
         <div>
-          <div className="vortex-icon animate-pulse mx-auto" style={{ width: '32px', height: '32px' }}>
+          <div className="vortex-icon animate-pulse mx-auto" style={{ width: '48px', height: '48px' }}>
             <div className="vortex-blade"></div>
             <div className="vortex-blade"></div>
             <div className="vortex-blade"></div>
@@ -147,19 +147,19 @@ export function ChatInterface() {
         </div>
 
         {/* Chat Input Area */}
-        <div className="flex items-center w-full max-w-xl rounded-xl border border-gray-200 shadow-md px-5 py-3 bg-white">
+        <div className="flex items-center w-full max-w-2xl rounded-2xl border-2 border-gray-200 shadow-lg px-6 py-4 bg-white">
           <input
             type="text"
             placeholder="Ask about KPIs or performance..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent outline-none placeholder-gray-400 text-gray-800 text-base"
+            className="flex-1 bg-transparent outline-none placeholder-gray-400 text-gray-800 text-lg"
           />
           <button 
             onClick={handleSendMessage}
             disabled={!inputValue.trim() || isProcessing}
-            className="ml-4 px-5 py-2 bg-red-500 text-white font-medium rounded-lg hover:bg-red-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="ml-5 px-6 py-3 bg-red-500 text-white font-semibold rounded-xl hover:bg-red-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isProcessing ? 'Processing...' : 'Ask'}
           </button>
