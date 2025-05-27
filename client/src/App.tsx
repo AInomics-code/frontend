@@ -17,13 +17,12 @@ function Router() {
       {/* Always show sidebar */}
       <div className="fixed top-0 left-0 h-screen w-20 bg-[#2a2a2a] border-r border-[#3a3a3a] flex flex-col items-center py-6" style={{ zIndex: 9999 }}>
         {/* La Doña logo */}
-        <div className="mb-8 text-center">
-          <div className="text-white font-bold text-sm tracking-wide">
-            La Doña
-          </div>
-          <div className="text-gray-400 text-xs mt-1">
-            BI
-          </div>
+        <div className="mb-8">
+          <img
+            src={laDonaLogo}
+            alt="La Doña"
+            className="w-16 h-auto object-contain"
+          />
         </div>
 
         {/* Plus Button */}
