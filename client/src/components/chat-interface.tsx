@@ -134,8 +134,8 @@ export function ChatInterface() {
       {/* Main Content - Centered Layout */}
       <main className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 space-y-6">
 
-        {/* Floating Vorta Logo with Pulse */}
-        <div className="vortex-icon animate-pulse opacity-80 mx-auto mb-4" style={{ width: '24px', height: '24px' }}>
+        {/* Vorta Logo */}
+        <div className="vortex-icon animate-pulse mb-4" style={{ width: '40px', height: '40px' }}>
           <div className="vortex-blade"></div>
           <div className="vortex-blade"></div>
           <div className="vortex-blade"></div>
@@ -144,50 +144,41 @@ export function ChatInterface() {
           <div className="vortex-blade"></div>
         </div>
 
-        {/* Glassmorphism Input Container */}
-        <div className="backdrop-blur-md bg-white/70 shadow-lg rounded-2xl px-6 py-5 w-full max-w-3xl transition-all duration-300 hover:shadow-xl focus-within:ring-1 focus-within:ring-red-100">
-          
-          {/* Input Row */}
-          <div className="flex items-center space-x-4 mb-4">
-            <input
-              type="text"
-              placeholder="Ask about KPIs or performance…"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="w-full text-xl text-gray-800 placeholder-gray-400 bg-transparent outline-none focus:ring-0"
-            />
-            
-            {/* Icons - Softer & Lighter */}
-            <div className="flex items-center space-x-4 text-gray-400">
-              <button 
-                className="hover:text-red-400 transition"
-                title="Attachment"
-              >
-                <Paperclip className="w-5 h-5" />
-              </button>
-              <button 
-                className="hover:text-red-400 transition"
-                title="Globe"
-              >
-                <Globe className="w-5 h-5" />
-              </button>
-              <button 
-                className="hover:text-red-400 transition"
-                title="Mic"
-                onClick={() => setIsVoiceActive(!isVoiceActive)}
-              >
-                <Mic className={`w-5 h-5 ${isVoiceActive ? 'text-red-500 animate-pulse' : ''}`} />
-              </button>
-            </div>
-          </div>
+        {/* Flat Input Design - Single Horizontal Line */}
+        <div className="flex items-center w-[60%] border border-gray-200 rounded-3xl px-5 py-4 shadow-sm">
+          <input
+            type="text"
+            placeholder="Ask about KPIs or performance..."
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="flex-grow text-gray-700 text-lg focus:outline-none placeholder:text-gray-400"
+          />
 
-          {/* Gradient Ask Button */}
-          <div className="flex justify-end">
+          <div className="flex items-center space-x-4 ml-4">
+            <button 
+              className="text-gray-400 hover:text-gray-600 transition"
+              title="Attachment"
+            >
+              <Paperclip className="w-5 h-5" />
+            </button>
+            <button 
+              className="text-gray-400 hover:text-gray-600 transition"
+              title="Globe"
+            >
+              <Globe className="w-5 h-5" />
+            </button>
+            <button 
+              className="text-gray-400 hover:text-red-500 transition"
+              title="Mic"
+              onClick={() => setIsVoiceActive(!isVoiceActive)}
+            >
+              <Mic className={`w-5 h-5 ${isVoiceActive ? 'text-red-500' : ''}`} />
+            </button>
             <button 
               onClick={handleSendMessage}
               disabled={!inputValue.trim() || isProcessing}
-              className="ml-3 px-6 py-2 rounded-xl text-white text-lg font-medium bg-gradient-to-r from-red-500 to-red-400 hover:from-red-600 hover:to-red-500 transition-all shadow-md hover:shadow-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="ml-4 px-5 py-2 bg-rose-500 hover:bg-rose-600 text-white font-medium rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isProcessing ? 'Processing...' : 'Ask'}
             </button>
