@@ -1,26 +1,33 @@
 import { useState } from "react";
-import { BarChart4, ShieldAlert, TrendingUp, Plus } from "lucide-react";
+import { BarChart4, ShieldAlert, TrendingUp, Plus, Trophy, Target, AlertTriangle, Users, Rocket, Zap } from "lucide-react";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
 type PanelType = 'performance' | 'risks' | 'opportunities' | null;
 
 const insights = {
   performance: [
-    "📊 Sales vs Budget (by Chain)",
-    "🏆 Top-Selling SKU (This Week)",
-    "📈 Client Goal Progress"
+    { icon: <BarChart4 size={16} />, label: "Sales vs Budget (by Chain)" },
+    { icon: <Trophy size={16} />, label: "Top-Selling SKU (This Week)" },
+    { icon: <Target size={16} />, label: "Client Goal Progress" }
   ],
   risks: [
-    "🚨 Backorders Today",
-    "❌ Out-of-Stock Products (by Store)",
-    "💸 Overdue Clients (120+ Days)"
+    { icon: <AlertTriangle size={16} />, label: "Backorders Today" },
+    { icon: <ShieldAlert size={16} />, label: "Out-of-Stock Products (by Store)" },
+    { icon: <Users size={16} />, label: "Overdue Clients (120+ Days)" }
   ],
   opportunities: [
-    "🎯 Promo ROI (Scanner/Tonga)",
-    "🕳️ Inactive Clients (30+ Days)",
-    "📉 Rep Underperformance"
+    { icon: <Target size={16} />, label: "Promo ROI (Scanner/Tonga)" },
+    { icon: <Users size={16} />, label: "Inactive Clients (30+ Days)" },
+    { icon: <Rocket size={16} />, label: "Rep Underperformance" }
   ]
 };
+
+const DropdownItem = ({ icon, label }: { icon: React.ReactNode; label: string }) => (
+  <div className="flex items-center gap-3 text-sm text-gray-800 hover:bg-gray-100/80 p-2 rounded-md transition cursor-pointer">
+    <div className="text-gray-500">{icon}</div>
+    <span>{label}</span>
+  </div>
+);
 
 const SidebarItem = ({ icon, label, isActive, onClick, hoverColor }: {
   icon: React.ReactNode;
@@ -103,36 +110,35 @@ export function BiSidebar() {
         </div>
       </div>
 
-      {/* Floating Card */}
+      {/* Elegant Floating Panel */}
       {activePanel && (
-        <div className="fixed top-20 left-20 bg-white shadow-xl rounded-xl p-4 w-80 border border-[#e0e0e0] z-50">
-          <h2 className="text-lg font-semibold mb-3 flex items-center">
+        <div className="fixed top-24 left-24 bg-white/70 backdrop-blur-sm rounded-xl shadow-xl shadow-gray-100/40 p-5 w-80 space-y-5 border border-gray-100 z-50">
+          <div className="flex items-center gap-2 text-sm text-gray-700 font-semibold">
             {activePanel === 'performance' && (
               <>
-                <span className="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                <span className="h-2 w-2 rounded-full bg-green-500"></span>
                 Performance
               </>
             )}
             {activePanel === 'risks' && (
               <>
-                <span className="w-3 h-3 bg-red-500 rounded-full mr-2"></span>
+                <span className="h-2 w-2 rounded-full bg-red-500"></span>
                 Risks & Issues
               </>
             )}
             {activePanel === 'opportunities' && (
               <>
-                <span className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></span>
+                <span className="h-2 w-2 rounded-full bg-yellow-500"></span>
                 Opportunities
               </>
             )}
-          </h2>
-          <ul className="space-y-3 text-sm text-gray-700">
+          </div>
+
+          <div className="space-y-3">
             {insights[activePanel].map((item, index) => (
-              <li key={index} className="hover:text-black transition-colors cursor-pointer p-2 hover:bg-gray-50 rounded-lg">
-                {item}
-              </li>
+              <DropdownItem key={index} icon={item.icon} label={item.label} />
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </>
