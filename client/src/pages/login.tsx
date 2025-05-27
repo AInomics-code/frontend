@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
+import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
 export default function Login() {
   const [, setLocation] = useLocation();
@@ -30,7 +31,16 @@ export default function Login() {
     >
       <div className="bg-white px-10 py-12 rounded-3xl shadow-xl shadow-gray-200 text-center max-w-md w-full border border-neutral-200">
         
-        {/* Logo Animation */}
+        {/* La Doña Brand Logo */}
+        <div className="mb-3 flex justify-center">
+          <img 
+            src={laDonaLogo} 
+            alt="La Doña" 
+            className="h-8 w-auto mx-auto"
+          />
+        </div>
+        
+        {/* Vorta Vortex Icon */}
         <div className="mb-8 flex justify-center">
           <div 
             className={`vortex-icon ${isLoading ? 'active' : 'slow-spin'}`} 
