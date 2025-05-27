@@ -73,7 +73,7 @@ export default function Chat() {
   ];
 
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-neutral-50 relative">
       {/* Top Header with Alert Bell */}
       <div className="absolute top-0 right-0 p-6 z-20">
         <div className="relative">
@@ -104,8 +104,15 @@ export default function Chat() {
       </div>
 
       {/* Main Container - Centered */}
-      <div className="flex flex-col items-center justify-center min-h-screen px-4">
+      <div className="flex flex-col items-center justify-center min-h-screen p-4">
         <div className="w-full max-w-2xl">
+          
+          {/* Vorta Logo - Only show when no messages */}
+          {messages.length === 0 && !isTyping && (
+            <div className="mb-8 flex justify-center">
+              <div className="animate-pulse text-red-500 text-4xl font-bold">＊</div>
+            </div>
+          )}
           
           {/* Messages Area */}
           {messages.length > 0 && (
@@ -179,107 +186,59 @@ export default function Chat() {
             </div>
           )}
 
-          {/* Central Input Area - Perplexity Style */}
+          {/* Chat Input Area - Clean Perplexity Style */}
           <div className="relative">
-            {/* Suggested Prompts - Above Input */}
-            {messages.length === 0 && !inputValue && (
-              <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-3 animate-[fadeIn_0.5s_ease-out]">
-                <button
-                  onClick={() => setInputValue("Clientes que no realizaron pedido hoy")}
-                  className="p-3 text-left text-sm text-gray-600 hover:bg-gray-50 rounded-lg border border-gray-200 transition-all duration-200 hover:border-gray-300"
-                >
-                  Clientes que no realizaron pedido hoy
-                </button>
-                <button
-                  onClick={() => setInputValue("Productos sin inventario")}
-                  className="p-3 text-left text-sm text-gray-600 hover:bg-gray-50 rounded-lg border border-gray-200 transition-all duration-200 hover:border-gray-300"
-                >
-                  Productos sin inventario
-                </button>
-                <button
-                  onClick={() => setInputValue("Ventas por PDV vs mes pasado")}
-                  className="p-3 text-left text-sm text-gray-600 hover:bg-gray-50 rounded-lg border border-gray-200 transition-all duration-200 hover:border-gray-300"
-                >
-                  Ventas por PDV vs mes pasado
-                </button>
-                <button
-                  onClick={() => setInputValue("Zonas con bajo rendimiento")}
-                  className="p-3 text-left text-sm text-gray-600 hover:bg-gray-50 rounded-lg border border-gray-200 transition-all duration-200 hover:border-gray-300"
-                >
-                  Zonas con bajo rendimiento
-                </button>
-              </div>
-            )}
-
-            {/* Main Input Bar - No containers, just the input */}
-            <div className={`relative transition-all duration-200 ease-in-out ${
-              isFocused ? 'transform scale-[1.02]' : ''
-            }`}>
-              <div className={`flex items-center gap-3 px-4 py-3 border-2 rounded-full transition-all duration-200 ${
-                isFocused 
-                  ? 'border-gray-300 shadow-[0_0_0_4px_rgba(0,0,0,0.05)]' 
-                  : 'border-gray-200 hover:border-gray-300'
-              }`}>
-                {/* Input */}
-                <textarea
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  onFocus={() => setIsFocused(true)}
-                  onBlur={() => setIsFocused(false)}
-                  placeholder="Ask me anything about your business..."
-                  className="flex-1 resize-none bg-transparent outline-none text-gray-800 placeholder-gray-400 text-base leading-relaxed min-h-[24px] max-h-32"
-                  rows={1}
-                  style={{
-                    height: 'auto',
-                    minHeight: '24px'
-                  }}
-                />
-                
-                {/* Right Side Icons */}
-                <div className={`flex items-center gap-1 transition-opacity duration-200 ${
-                  isFocused ? 'opacity-100' : 'opacity-60'
-                }`}>
-                  <button 
-                    className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200" 
-                    title="Attach files"
-                  >
-                    <Paperclip className="w-4 h-4 text-gray-500" />
-                  </button>
-                  
-                  <button 
-                    className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200" 
-                    title="Language"
-                  >
-                    <Globe className="w-4 h-4 text-gray-500" />
-                  </button>
-                  
-                  <button 
-                    onClick={() => setIsVoiceActive(!isVoiceActive)}
-                    className={`p-2 rounded-full transition-all duration-200 ${
-                      isVoiceActive 
-                        ? 'bg-red-50 text-red-600 shadow-[0_0_8px_rgba(225,6,0,0.3)] animate-pulse' 
-                        : 'hover:bg-gray-100 text-gray-500'
-                    }`}
-                    title="Voice input"
-                  >
-                    <Mic className="w-4 h-4" />
-                  </button>
-                  
-                  {/* Ask Button */}
-                  <button
-                    onClick={handleSendMessage}
-                    disabled={!inputValue.trim() || isTyping}
-                    className={`ml-2 px-4 py-2 rounded-full transition-all duration-200 font-medium text-sm ${
-                      inputValue.trim() && !isTyping
-                        ? 'bg-[#E10600] text-white hover:bg-[#cc0500] shadow-sm hover:shadow-md'
-                        : 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    }`}
-                  >
-                    Ask
-                  </button>
-                </div>
-              </div>
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              placeholder="Ask about KPIs, sales performance..."
+              className={`w-full px-6 py-4 rounded-full bg-white text-gray-800 shadow-md transition-all duration-200 placeholder-gray-400 outline-none ${
+                isFocused ? 'ring-2 ring-red-300' : ''
+              }`}
+            />
+            
+            {/* Inline Action Icons */}
+            <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1">
+              <button 
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200" 
+                title="Attach files"
+              >
+                <Paperclip className="w-4 h-4 text-gray-500" />
+              </button>
+              
+              <button 
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200" 
+                title="Language"
+              >
+                <Globe className="w-4 h-4 text-gray-500" />
+              </button>
+              
+              <button 
+                onClick={() => setIsVoiceActive(!isVoiceActive)}
+                className={`p-2 rounded-full transition-all duration-200 ${
+                  isVoiceActive 
+                    ? 'bg-red-50 text-red-600 shadow-[0_0_8px_rgba(225,6,0,0.3)] animate-pulse' 
+                    : 'hover:bg-gray-100 text-gray-500'
+                }`}
+                title="Voice input"
+              >
+                <Mic className="w-4 h-4" />
+              </button>
+              
+              {/* Ask Button */}
+              <button
+                onClick={handleSendMessage}
+                disabled={!inputValue.trim() || isTyping}
+                className={`ml-2 bg-red-500 hover:bg-red-600 text-white font-medium px-4 py-2 rounded-full transition-all ${
+                  inputValue.trim() && !isTyping ? '' : 'opacity-50 cursor-not-allowed'
+                }`}
+              >
+                Ask
+              </button>
             </div>
           </div>
 
