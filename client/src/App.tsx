@@ -15,7 +15,7 @@ function Router() {
   return (
     <div className="flex">
       {/* Always show sidebar */}
-      <div className="fixed top-0 left-0 h-screen w-[180px] bg-[#2a2a2a] border-r border-[#3a3a3a] flex flex-col items-center py-6" style={{ zIndex: 9999 }}>
+      <div className="fixed top-0 left-0 h-screen w-20 bg-[#2a2a2a] border-r border-[#3a3a3a] flex flex-col items-center py-6" style={{ zIndex: 9999 }}>
         {/* La Doña logo */}
         <img
           src={laDonaLogo}
@@ -77,7 +77,7 @@ function Router() {
     </div>
 
     {/* Main content with margin */}
-    <div className="ml-[180px] flex-1">
+    <div className="ml-20 flex-1">
       <Switch>
         <Route path="/" component={Login} />
         <Route path="/dashboard" component={Dashboard} />
