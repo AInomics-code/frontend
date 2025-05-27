@@ -73,62 +73,30 @@ export default function Chat() {
   ];
 
   return (
-    <div className="min-h-screen bg-white flex">
+    <div className="flex h-screen bg-white">
       
-      {/* Vertical Sidebar Navigation */}
-      <aside className="w-16 bg-gray-900 flex flex-col items-center py-6">
-        {/* La Doña Logo at Top */}
-        <div className="mb-8">
-          <img 
-            src={laDonaLogo} 
-            alt="La Doña" 
-            className="h-8 w-8 rounded"
-          />
+      {/* Slim Sidebar - Perplexity Style */}
+      <aside className="w-20 bg-[#111] border-r border-[#2a2a2a] flex flex-col items-center py-4 space-y-8">
+        <img 
+          src={laDonaLogo} 
+          className="w-10 h-10 rounded" 
+          alt="La Doña" 
+        />
+        
+        <div className="text-white text-xs text-center leading-tight">
+          La Doña <br /> Business <br /> Intelligence
         </div>
-
-        {/* Vertical Icon Stack */}
-        <nav className="flex flex-col gap-6 flex-1">
-          <button 
-            className="p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
-            title="Home"
-          >
-            <Home className="w-5 h-5" />
-          </button>
-          <button 
-            className="p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
-            title="Dashboard"
-          >
-            <BarChart2 className="w-5 h-5" />
-          </button>
-          <button 
-            className="p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
-            title="Notifications"
-          >
-            <Bell className="w-5 h-5" />
-          </button>
-          <button 
-            className="p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
-            title="Settings"
-          >
-            <Settings className="w-5 h-5" />
-          </button>
-        </nav>
-
-        {/* User Profile & Logout at Bottom */}
-        <div className="flex flex-col gap-4 mt-auto">
-          <button 
-            className="p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
-            title="Carlos Mendoza"
-          >
-            <User className="w-5 h-5" />
-          </button>
-          <button 
-            className="p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
-            title="Logout"
-          >
-            <LogOut className="w-5 h-5" />
-          </button>
+        
+        <div className="w-10 h-px bg-[#2a2a2a]" />
+        
+        <div className="text-white text-[10px] text-center">
+          Carlos <br /> Mendoza
+          <div className="text-gray-400 text-[9px]">General Manager</div>
         </div>
+        
+        <button className="text-white text-xs mt-auto mb-4 hover:opacity-70 transition-opacity">
+          Logout →
+        </button>
       </aside>
 
       {/* Main Content Area */}
