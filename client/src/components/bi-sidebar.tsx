@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BarChart4, ShieldAlert, TrendingUp, Plus, Trophy, Target, AlertTriangle, Users, Rocket, Clock, DollarSign, Package } from "lucide-react";
+import { BarChart4, ShieldAlert, TrendingUp, Plus, Trophy, Target, AlertTriangle, Users, Rocket, Clock, DollarSign, Package, LineChart, PieChart } from "lucide-react";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
 type PanelType = 'performance' | 'risks' | 'opportunities' | null;
@@ -90,6 +90,31 @@ const KPIBlock = ({ title, stat, icon, chart, color = "text-gray-600" }: {
       </div>
       <div className={`text-right font-semibold ${color}`}>{stat}</div>
     </div>
+    {chart && <div className="mt-2">{chart}</div>}
+  </div>
+);
+
+// Enhanced KPI Block with badges and deltas
+const EnhancedKPIBlock = ({ icon, title, value, delta, badge, accent, chart }: {
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+  delta?: string;
+  badge?: string;
+  accent: string;
+  chart?: React.ReactNode;
+}) => (
+  <div className="rounded-xl bg-white border hover:shadow-md p-3 transition space-y-1">
+    <div className="flex justify-between text-sm font-medium text-gray-600">
+      <div className="flex gap-2 items-center">{icon} {title}</div>
+      {badge && (
+        <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">
+          {badge}
+        </span>
+      )}
+    </div>
+    <div className={`text-lg font-bold ${accent}`}>{value}</div>
+    {delta && <div className="text-xs text-gray-500">{delta}</div>}
     {chart && <div className="mt-2">{chart}</div>}
   </div>
 );
@@ -279,51 +304,58 @@ export function BiSidebar() {
       )}
 
       {activePanel === 'opportunities' && (
-        <div className="fixed left-24 top-24 w-[460px] h-[360px] backdrop-blur-md bg-white/70 border border-gray-200/50 shadow-xl rounded-3xl p-6 sm:p-8 flex flex-col z-50">
-          {/* Header */}
-          <h2 className="text-xl font-semibold text-gray-800 tracking-tight flex items-center gap-2 mb-6">
-            <span className="h-2 w-2 bg-yellow-500 rounded-full animate-pulse" />
-            Growth Opportunities
-          </h2>
+        <div className="fixed left-24 top-24 w-[420px] backdrop-blur-md bg-white/80 border border-gray-200/50 shadow-xl rounded-3xl p-6 space-y-4 z-50">
+          {/* Header with Month Completion */}
+          <div className="flex justify-between items-center">
+            <h2 className="text-lg font-semibold text-gray-800 flex gap-2 items-center">
+              <span className="h-2 w-2 bg-yellow-500 rounded-full animate-pulse" />
+              Growth Opportunities
+            </h2>
+            <span className="text-xs text-gray-500 italic">🔘 65% of May complete</span>
+          </div>
 
-          {/* KPI Cards Grid */}
-          <div className="grid grid-cols-2 gap-4 mt-4 flex-1">
-            <KPIBlock 
-              title="Promo ROI" 
-              stat="340%" 
-              icon={<Rocket size={16} />} 
+          {/* Enhanced KPI Grid */}
+          <div className="grid grid-cols-2 gap-4">
+            <EnhancedKPIBlock
+              icon={<LineChart size={16} />}
+              title="Promo ROI"
+              value="340%"
+              delta="+240% vs LY"
+              badge="🔥 Highest ROI"
+              accent="text-green-600"
               chart={<Sparkline />}
-              color="text-green-600" 
             />
-            <KPIBlock 
-              title="Inactive Clients" 
-              stat="23 leads" 
-              icon={<Users size={16} />} 
+            <EnhancedKPIBlock
+              icon={<Users size={16} />}
+              title="Inactive Clients"
+              value="23 leads"
+              badge="⚠️ At Risk"
+              accent="text-blue-600"
               chart={<BarMini />}
-              color="text-blue-600" 
             />
-            <KPIBlock 
-              title="Upsell Potential" 
-              stat="$78K" 
-              icon={<TrendingUp size={16} />} 
+            <EnhancedKPIBlock
+              icon={<TrendingUp size={16} />}
+              title="Upsell Potential"
+              value="$78K"
+              accent="text-purple-600"
               chart={<RadialProgress percentage={85} />}
-              color="text-purple-600" 
             />
-            <KPIBlock 
-              title="Market Share" 
-              stat="+2.4%" 
-              icon={<Target size={16} />}
-              color="text-green-600" 
+            <EnhancedKPIBlock
+              icon={<PieChart size={16} />}
+              title="Market Share"
+              value="+2.4%"
+              delta="+1.1 pts"
+              accent="text-emerald-500"
             />
           </div>
 
-          {/* AI Insight */}
-          <p className="mt-4 italic text-sm text-gray-500 border-t pt-4">
-            "Scanner/Tonga promotions showing exceptional ROI. Recommend expanding to similar demographics."
+          {/* Summary Insight */}
+          <p className="text-sm italic text-gray-600 border-t pt-4">
+            "Scanner/Tonga campaigns showing exceptional lift. Target upsell in high-margin zones."
           </p>
 
-          {/* Ask Button */}
-          <button className="w-full text-white font-medium bg-gradient-to-r from-rose-500 to-rose-400 hover:from-rose-600 transition rounded-xl py-2.5 text-sm shadow-lg mt-4">
+          {/* CTA */}
+          <button className="w-full mt-2 text-white bg-gradient-to-r from-rose-500 to-rose-400 hover:brightness-110 transition rounded-xl py-2.5 text-sm shadow">
             Explore growth strategies
           </button>
         </div>
