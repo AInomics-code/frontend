@@ -21,7 +21,7 @@ function Router() {
           <img
             src={laDonaLogo}
             alt="La Doña"
-            className="h-12 w-auto object-contain"
+            className="h-12 w-auto object-contain rounded-lg"
           />
         </div>
 
