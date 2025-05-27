@@ -15,20 +15,20 @@ function Router() {
   return (
     <div className="flex">
       {/* Always show sidebar */}
-      <div className="fixed top-0 left-0 h-screen w-20 bg-[#2a2a2a] border-r border-[#3a3a3a] flex flex-col items-center py-6" style={{ zIndex: 9999 }}>
+      <div className="fixed top-0 left-0 h-screen w-20 bg-[#f5f5f5] border-r border-[#e0e0e0] flex flex-col items-center py-4" style={{ zIndex: 9999 }}>
         {/* La Doña logo */}
-        <div className="mb-8">
+        <div className="p-3 mb-6 bg-white rounded-2xl shadow-sm border border-[#e0e0e0]">
           <img
             src={laDonaLogo}
             alt="La Doña"
-            className="w-16 h-auto object-contain"
+            className="h-12 w-auto object-contain"
           />
         </div>
 
         {/* Plus Button */}
-        <div className="mb-12">
-          <button className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-200">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="mb-8">
+          <button className="w-12 h-12 rounded-xl bg-white hover:bg-[#f0f0f0] flex items-center justify-center text-[#7a7a7a] transition-all duration-300 shadow-sm border border-[#e0e0e0]">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
           </button>
@@ -36,8 +36,8 @@ function Router() {
 
         {/* Navigation Items */}
         <div className="flex flex-col space-y-6">
-          <button className="flex flex-col items-center space-y-2 text-gray-400 hover:text-white transition-colors group">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-white/10 transition-all">
+          <button className="flex flex-col items-center justify-center text-[#7a7a7a] hover:text-[#d32f2f] transition-colors duration-300 mb-6 hover:bg-white rounded-xl p-3 hover:shadow-sm group">
+            <div className="flex items-center justify-center mb-1">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
