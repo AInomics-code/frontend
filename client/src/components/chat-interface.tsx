@@ -182,7 +182,5 @@ export function ChatInterface() {
 
       </main>
     </div>
-
-
   );
 }
