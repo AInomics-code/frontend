@@ -135,11 +135,11 @@ export function ChatInterface() {
       <main className="px-6 py-6 space-y-8">
 
         {/* AI Assistant Chat */}
-        <section className="bg-white rounded-xl shadow-md p-6 max-h-[70vh] overflow-y-auto space-y-4">
+        <section className="space-y-4">
           
           {/* Vorta Logo */}
-          <div className="flex justify-center mt-6 mb-4">
-            <div className="vortex-icon">
+          <div className="flex justify-center mb-8">
+            <div className="vortex-icon" style={{ width: '40px', height: '40px' }}>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
@@ -150,25 +150,6 @@ export function ChatInterface() {
           </div>
 
           <div className="space-y-3">
-            {/* Initial Assistant Greeting */}
-            <div className="flex items-start gap-3 animate-[chatDrop_200ms_ease-out]">
-              <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 mt-1">
-                <div className="vortex-icon scale-75">
-                  <div className="vortex-blade"></div>
-                  <div className="vortex-blade"></div>
-                  <div className="vortex-blade"></div>
-                  <div className="vortex-blade"></div>
-                  <div className="vortex-blade"></div>
-                  <div className="vortex-blade"></div>
-                </div>
-              </div>
-              <div className="flex-1">
-                <div className="bg-gray-50 rounded-xl px-4 py-3 inline-block max-w-md shadow-sm">
-                  <p className="text-sm text-gray-700">How can I help you today?</p>
-                </div>
-              </div>
-            </div>
-
             {/* Loading Indicator */}
             {isLoading && (
               <div className="flex items-start gap-3 animate-[chatDrop_200ms_ease-out]">
