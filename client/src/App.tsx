@@ -17,7 +17,7 @@ function Router() {
       {/* Always show sidebar */}
       <div className="fixed top-0 left-0 h-screen w-20 bg-[#f5f5f5] border-r border-[#e0e0e0] flex flex-col items-center py-4" style={{ zIndex: 9999 }}>
         {/* La Doña logo */}
-        <div className="p-3 mb-6 bg-white rounded-2xl shadow-sm border border-[#e0e0e0]">
+        <div className="mb-6 p-2">
           <img
             src={laDonaLogo}
             alt="La Doña"
