@@ -51,13 +51,13 @@ export default function Login() {
         </div>
         
         {/* Welcome Content with La Doña Branding */}
-        <div className="mb-8 text-center space-y-2">
+        <div className="mb-8 text-center space-y-3">
           <h1 className="text-3xl font-semibold text-gray-800 tracking-tight">Welcome back</h1>
           <p className="text-base text-gray-500 leading-relaxed">Sign in to access La Doña Intelligence</p>
           <img 
             src={laDonaLogo} 
             alt="La Doña" 
-            className="mx-auto h-6 mt-2 opacity-80"
+            className="mx-auto h-8 mt-4 opacity-80"
           />
         </div>
 
