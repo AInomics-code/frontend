@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
+import ainomicsLogo from "@assets/Screenshot 2025-05-27 alle 11.21.46.png";
 
 export default function Login() {
   const [, setLocation] = useLocation();
@@ -93,9 +94,16 @@ export default function Login() {
           )}
         </button>
 
-        {/* Enhanced Footer */}
-        <div className="mt-6 text-xs text-gray-400 flex flex-col items-center gap-1">
-          <span>Powered by Ainomics Inc · Vorta Strategic Platform</span>
+        {/* Enhanced Footer with Ainomics Logo */}
+        <div className="mt-6 flex items-center justify-center space-x-2 text-xs text-gray-400">
+          <img 
+            src={ainomicsLogo} 
+            alt="Ainomics Logo" 
+            className="w-6 h-6 drop-shadow-[0_0_2px_rgba(0,0,0,0.05)]" 
+          />
+          <span>
+            Powered by <span className="font-medium text-gray-500">Ainomics Inc</span> · Vorta Strategic Platform
+          </span>
         </div>
       </div>
     </div>
