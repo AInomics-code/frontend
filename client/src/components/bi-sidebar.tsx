@@ -35,8 +35,8 @@ const SidebarItem = ({ icon, label, isActive, onClick, hoverColor }: {
     }`}
     onClick={onClick}
   >
-    <div className="mb-1">{icon}</div>
-    <span className="uppercase text-[7px] tracking-tight font-medium text-gray-500 hover:text-gray-800 transition-colors text-center leading-tight">
+    <div className="mb-0.5">{icon}</div>
+    <span className="uppercase text-[8px] tracking-tight font-medium text-gray-500 hover:text-gray-800 transition-colors text-center leading-tight">
       {label}
     </span>
   </div>
@@ -70,7 +70,7 @@ export function BiSidebar() {
         {/* BI Navigation Items */}
         <div className="flex flex-col gap-y-6">
           <SidebarItem 
-            icon={<BarChart4 size={20} />}
+            icon={<BarChart4 size={24} />}
             label="Performance"
             isActive={activePanel === 'performance'}
             onClick={() => handlePanelClick('performance')}
@@ -78,7 +78,7 @@ export function BiSidebar() {
           />
           
           <SidebarItem 
-            icon={<ShieldAlert size={20} />}
+            icon={<ShieldAlert size={24} />}
             label="Risks"
             isActive={activePanel === 'risks'}
             onClick={() => handlePanelClick('risks')}
@@ -86,7 +86,7 @@ export function BiSidebar() {
           />
           
           <SidebarItem 
-            icon={<TrendingUp size={20} />}
+            icon={<TrendingUp size={24} />}
             label="Opportunities"
             isActive={activePanel === 'opportunities'}
             onClick={() => handlePanelClick('opportunities')}
