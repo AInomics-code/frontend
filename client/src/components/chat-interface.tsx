@@ -240,7 +240,7 @@ export function ChatInterface() {
             <div className="mt-6 px-6">
               <div className="w-full max-w-[960px] mx-auto">
                 <div 
-                  className="bg-[#fafaf9] rounded-3xl shadow-[0_6px_20px_rgba(0,0,0,0.04)] border border-gray-200 p-6 transition-all duration-300 ease-in-out transform origin-top animate-[slideUp_0.3s_ease-out]"
+                  className="bg-[#fafaf9] rounded-3xl border border-gray-200 p-6 transition-all duration-300 ease-in-out transform origin-top animate-[slideUp_0.3s_ease-out] elevated-card"
                 >
                   {/* Assistant Header */}
                   <div className="flex items-center justify-between mb-4">
@@ -423,15 +423,15 @@ export function ChatInterface() {
           <div className="flex gap-4 px-6">
             {/* Colón Region Card */}
             <div 
-              className={`flex flex-col rounded-xl px-4 py-3 bg-white/80 shadow-xs border border-neutral-200 w-[260px] cursor-pointer hover:shadow-md hover:scale-[1.01] transition-all duration-200 ${expandedCard === 'colon' ? 'ring-1 ring-red-400/50' : ''}`}
+              className={`flex flex-col rounded-xl px-4 py-3 bg-white/80 border border-neutral-200 w-[260px] cursor-pointer elevated-card ${expandedCard === 'colon' ? 'ring-1 ring-red-400/50' : ''}`}
               onClick={() => setExpandedCard(expandedCard === 'colon' ? null : 'colon')}
               title="Colón: $4,150 of $6,200 goal achieved"
             >
               <div className="flex items-center justify-between mb-3">
                 <h3 className="font-medium text-base text-gray-800 flex-1">Colón</h3>
-                <div className="px-2 py-0.5 text-red-600 bg-red-100 border border-red-200 rounded-full ml-2">
+                <div className="px-2 py-0.5 text-red-600 status-at-risk border border-red-200 rounded-full ml-2">
                   <span className="text-xs font-medium flex items-center gap-1">
-                    <AlertTriangle className="w-3 h-3" />
+                    <AlertTriangle className="w-3 h-3 interactive-icon" />
                     At Risk
                   </span>
                 </div>
@@ -439,11 +439,11 @@ export function ChatInterface() {
               
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-1">
-                  <Check className="w-3 h-3 text-gray-900" />
+                  <Check className="w-3 h-3 text-gray-900 interactive-icon" />
                   <span className="text-sm text-gray-900">67% reached</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <ArrowDown className="w-3 h-3 text-gray-500" />
+                  <ArrowDown className="w-3 h-3 text-gray-500 interactive-icon" />
                   <span className="text-xs text-gray-500">33% to goal</span>
                 </div>
               </div>
@@ -458,7 +458,7 @@ export function ChatInterface() {
 
             {/* Oeste Region Card */}
             <div 
-              className={`flex flex-col rounded-xl px-4 py-3 bg-white/80 shadow-xs border border-neutral-200 w-[260px] cursor-pointer hover:shadow-md hover:scale-[1.01] transition-all duration-200 ${expandedCard === 'oeste' ? 'ring-1 ring-yellow-400/50' : ''}`}
+              className={`flex flex-col rounded-xl px-4 py-3 bg-white/80 border border-neutral-200 w-[260px] cursor-pointer elevated-card ${expandedCard === 'oeste' ? 'ring-1 ring-yellow-400/50' : ''}`}
               onClick={() => setExpandedCard(expandedCard === 'oeste' ? null : 'oeste')}
               title="Oeste: $6,660 of $9,000 goal achieved"
             >
