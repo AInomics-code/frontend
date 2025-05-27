@@ -132,7 +132,7 @@ export function ChatInterface() {
       </header>
 
       {/* Chat Container - Centered Layout */}
-      <main className="flex flex-col items-center pt-[10vh] bg-white">
+      <main className="flex flex-col items-center pt-[10vh] pb-[5vh] bg-white">
 
         {/* Floating Vorta Logo with Pulse */}
         <div className="vortex-icon animate-pulse mb-4" style={{ width: '40px', height: '40px' }}>
@@ -183,11 +183,15 @@ export function ChatInterface() {
               <Mic className={`w-[18px] h-[18px] ${isVoiceActive ? 'text-rose-400' : ''}`} />
             </button>
 
-            {/* Ask Button */}
+            {/* Ask Button - Dynamic Active State */}
             <button 
               onClick={handleSendMessage}
               disabled={!inputValue.trim() || isProcessing}
-              className="bg-rose-300 text-white font-medium py-[10px] px-5 border-none rounded-[18px] cursor-pointer shadow-[0_4px_12px_rgba(249,168,168,0.4)] transition-colors duration-300 hover:bg-red-400 disabled:opacity-50 disabled:cursor-not-allowed"
+              className={`text-white font-medium border-none rounded-[18px] cursor-pointer transition-all duration-[250ms] ease-in-out disabled:opacity-50 disabled:cursor-not-allowed ${
+                inputValue.trim().length > 0 
+                  ? 'bg-red-500 py-3 px-[26px] shadow-[0_6px_16px_rgba(239,68,68,0.35)]' 
+                  : 'bg-rose-300 py-[10px] px-5 shadow-[0_4px_12px_rgba(249,168,168,0.3)] hover:bg-red-400'
+              }`}
             >
               {isProcessing ? 'Processing...' : 'Ask'}
             </button>
