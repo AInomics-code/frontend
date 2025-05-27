@@ -134,8 +134,8 @@ export function ChatInterface() {
       {/* Main Content - Centered Layout */}
       <main className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 space-y-6">
 
-        {/* Vorta Logo */}
-        <div className="vortex-icon animate-pulse mb-4" style={{ width: '40px', height: '40px' }}>
+        {/* Refined Branding - Floating Vorta Logo */}
+        <div className="vortex-icon animate-pulse mb-6" style={{ width: '40px', height: '40px' }}>
           <div className="vortex-blade"></div>
           <div className="vortex-blade"></div>
           <div className="vortex-blade"></div>
@@ -144,45 +144,48 @@ export function ChatInterface() {
           <div className="vortex-blade"></div>
         </div>
 
-        {/* Flat Input Design - Single Horizontal Line */}
-        <div className="flex items-center w-[60%] border border-gray-200 rounded-3xl px-5 py-4 shadow-sm">
+        {/* Elegant Simplicity - Centered Chat Experience */}
+        <div className="w-full max-w-4xl flex items-center px-6 py-4 bg-white rounded-full">
           <input
             type="text"
-            placeholder="Ask about KPIs or performance..."
+            placeholder="Ask about KPIs or performance…"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-grow text-gray-700 text-lg focus:outline-none placeholder:text-gray-400"
+            className="flex-grow text-gray-800 text-lg focus:outline-none placeholder:text-gray-400 bg-transparent"
           />
 
-          <div className="flex items-center space-x-4 ml-4">
+          {/* Subtle Iconography - Inline Alignment */}
+          <div className="flex gap-4 text-gray-400 ml-6">
             <button 
-              className="text-gray-400 hover:text-gray-600 transition"
+              className="glow-icon hover:text-gray-600 transition-colors duration-200"
               title="Attachment"
             >
               <Paperclip className="w-5 h-5" />
             </button>
             <button 
-              className="text-gray-400 hover:text-gray-600 transition"
+              className="glow-icon hover:text-gray-600 transition-colors duration-200"
               title="Globe"
             >
               <Globe className="w-5 h-5" />
             </button>
             <button 
-              className="text-gray-400 hover:text-red-500 transition"
-              title="Mic"
+              className="glow-icon hover:text-rose-500 transition-colors duration-200"
+              title="Voice"
               onClick={() => setIsVoiceActive(!isVoiceActive)}
             >
-              <Mic className={`w-5 h-5 ${isVoiceActive ? 'text-red-500' : ''}`} />
-            </button>
-            <button 
-              onClick={handleSendMessage}
-              disabled={!inputValue.trim() || isProcessing}
-              className="ml-4 px-5 py-2 bg-rose-500 hover:bg-rose-600 text-white font-medium rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isProcessing ? 'Processing...' : 'Ask'}
+              <Mic className={`w-5 h-5 ${isVoiceActive ? 'text-rose-500' : ''}`} />
             </button>
           </div>
+
+          {/* Micro-interactions - Ask Button */}
+          <button 
+            onClick={handleSendMessage}
+            disabled={!inputValue.trim() || isProcessing}
+            className="ml-4 bg-rose-400 hover:bg-rose-500 text-white font-medium px-6 py-2 rounded-full transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+          >
+            {isProcessing ? 'Processing...' : 'Ask'}
+          </button>
         </div>
 
         {/* Loading Indicator */}
