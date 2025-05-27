@@ -75,32 +75,29 @@ export default function Chat() {
   return (
     <div className="flex h-screen bg-white">
       
-      {/* Slim Sidebar - Perplexity Style */}
-      <aside className="w-20 bg-[#111] border-r border-[#2a2a2a] flex flex-col items-center py-4 space-y-8">
+      {/* Sidebar */}
+      <aside className="w-60 bg-white border-r border-gray-200 p-4 flex flex-col items-start">
         <img 
           src={laDonaLogo} 
-          className="w-10 h-10 rounded" 
-          alt="La Doña" 
+          className="w-24 mb-2" 
+          alt="La Doña logo" 
         />
-        
-        <div className="text-white text-xs text-center leading-tight">
+        <h1 className="text-lg font-semibold text-gray-800 leading-tight">
           La Doña <br /> Business <br /> Intelligence
+        </h1>
+
+        <div className="mt-8 text-sm text-gray-600">
+          <div className="font-medium text-gray-900">Carlos Mendoza</div>
+          <div className="text-xs text-gray-500">General Manager</div>
         </div>
-        
-        <div className="w-10 h-px bg-[#2a2a2a]" />
-        
-        <div className="text-white text-[10px] text-center">
-          Carlos <br /> Mendoza
-          <div className="text-gray-400 text-[9px]">General Manager</div>
-        </div>
-        
-        <button className="text-white text-xs mt-auto mb-4 hover:opacity-70 transition-opacity">
+
+        <button className="mt-auto text-sm text-red-500 hover:text-red-700 transition-colors">
           Logout →
         </button>
       </aside>
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col items-center justify-center relative">
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col items-center justify-center p-10">
         {/* Alert Bell - Top Right */}
         <div className="absolute top-6 right-6 z-20">
           <button 
@@ -131,17 +128,15 @@ export default function Chat() {
       {/* Main Content Container */}
       <div className="w-full max-w-[600px] px-4">
         
-        {/* Logo - Only show when no messages */}
+        {/* Vorta Logo */}
         {messages.length === 0 && !isTyping && (
-          <div className="flex justify-center mb-4 animate-[fadeIn_1s_ease-in-out]">
-            <div className="vortex-icon" style={{ width: '40px', height: '40px', filter: 'drop-shadow(0 0 8px rgba(225, 29, 72, 0.3))' }}>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-            </div>
+          <div className="vortex-icon animate-pulse mb-4" style={{ width: '32px', height: '32px' }}>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
           </div>
         )}
           
