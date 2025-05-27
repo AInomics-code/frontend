@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BarChart4, ShieldAlert, TrendingUp, Plus, Trophy, Target, AlertTriangle, Users, Rocket, Clock, DollarSign, Package, LineChart, PieChart } from "lucide-react";
+import { BarChart4, ShieldAlert, TrendingUp, Plus, Trophy, Target, AlertTriangle, Users, Rocket, Clock, DollarSign, Package, LineChart, PieChart, InfoIcon } from "lucide-react";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
 type PanelType = 'performance' | 'risks' | 'opportunities' | null;
@@ -240,10 +240,10 @@ export function BiSidebar() {
             />
           </div>
 
-          {/* AI Insight */}
-          <p className="mt-4 italic text-sm text-gray-500 border-t pt-4">
-            "Sales are trending 6% above the chain-wide budget pace. Aderezo continues outperforming across 3 regions."
-          </p>
+          {/* Inline Smart Alert */}
+          <div className="bg-green-50 border-l-4 border-green-400 text-green-700 p-3 rounded-md text-sm mt-4">
+            📈 Aderezo outperforming +6% above budget across 3 regions
+          </div>
 
           {/* Ask Button */}
           <button className="w-full text-white font-medium bg-gradient-to-r from-rose-500 to-rose-400 hover:from-rose-600 transition rounded-xl py-2.5 text-sm shadow-lg mt-4">
@@ -291,10 +291,10 @@ export function BiSidebar() {
             />
           </div>
 
-          {/* AI Insight */}
-          <p className="mt-4 italic text-sm text-gray-500 border-t pt-4">
-            "Critical: 3 high-demand SKUs running low. Recommend immediate reorder for Zona Norte locations."
-          </p>
+          {/* Inline Smart Alert */}
+          <div className="bg-red-50 border-l-4 border-red-400 text-red-700 p-3 rounded-md text-sm mt-4">
+            ⚠️ Reorder urgently in Zona Norte — 3 top SKUs at risk
+          </div>
 
           {/* Ask Button */}
           <button className="w-full text-white font-medium bg-gradient-to-r from-rose-500 to-rose-400 hover:from-rose-600 transition rounded-xl py-2.5 text-sm shadow-lg mt-4">
@@ -349,10 +349,10 @@ export function BiSidebar() {
             />
           </div>
 
-          {/* Summary Insight */}
-          <p className="text-sm italic text-gray-600 border-t pt-4">
-            "Scanner/Tonga campaigns showing exceptional lift. Target upsell in high-margin zones."
-          </p>
+          {/* Smart Action Button */}
+          <button className="w-full bg-yellow-50 border border-yellow-200 text-yellow-700 p-3 rounded-lg text-sm mt-4 hover:bg-yellow-100 transition flex items-center justify-center gap-2">
+            🔎 Investigate Scanner/Tonga performance surge
+          </button>
 
           {/* CTA */}
           <button className="w-full mt-2 text-white bg-gradient-to-r from-rose-500 to-rose-400 hover:brightness-110 transition rounded-xl py-2.5 text-sm shadow">
