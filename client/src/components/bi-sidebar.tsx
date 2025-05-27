@@ -30,8 +30,8 @@ const SidebarItem = ({ icon, label, isActive, onClick, hoverColor }: {
   hoverColor: string;
 }) => (
   <div 
-    className={`flex flex-col items-center cursor-pointer transition-all duration-200 hover:bg-gray-100 rounded-lg px-1 py-2 pt-[28px] pb-[28px] ${
-      isActive ? `${hoverColor} bg-white shadow-sm` : 'text-gray-600 hover:text-black'
+    className={`flex flex-col items-center cursor-pointer transition-all duration-200 hover:bg-gray-100 rounded-lg px-1 py-2 text-gray-600 hover:text-black pt-[13px] pb-[13px] ${
+      isActive ? `${hoverColor} bg-white shadow-sm` : ''
     }`}
     onClick={onClick}
   >
