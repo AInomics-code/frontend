@@ -202,161 +202,166 @@ export function BiSidebar() {
 
       {/* Enhanced Dashboard Panels */}
       {activePanel === 'performance' && (
-        <div className="fixed left-24 top-24 w-[460px] h-[360px] backdrop-blur-md bg-white/70 border border-gray-200/50 shadow-xl rounded-3xl p-6 sm:p-8 flex flex-col z-50">
+        <div className="fixed left-24 top-24 rounded-2xl shadow-lg bg-white p-6 space-y-5 w-[500px] z-50">
           {/* Header */}
-          <h2 className="text-xl font-semibold text-gray-800 tracking-tight flex items-center gap-2 mb-6">
-            <span className="h-2 w-2 bg-green-500 rounded-full animate-pulse" />
-            Performance
-          </h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+              <span className="h-2 w-2 bg-green-500 rounded-full animate-pulse" />
+              Performance
+            </h2>
+            <span className="text-xs text-gray-500">🔘 65% of May complete</span>
+          </div>
 
           {/* KPI Cards Grid */}
-          <div className="grid grid-cols-2 gap-4 mt-4 flex-1">
-            <KPIBlock 
-              title="Sales vs Budget" 
-              stat="84%" 
-              icon={<BarChart4 size={16} />} 
-              chart={<Sparkline />}
-              color="text-green-600" 
-            />
-            <KPIBlock 
-              title="Top SKU (Wk)" 
-              stat="Aderezo" 
-              icon={<Trophy size={16} />} 
-              chart={<BarMini />}
-              color="text-amber-600" 
-            />
-            <KPIBlock 
-              title="Client Progress" 
-              stat="71%" 
-              icon={<Target size={16} />} 
-              chart={<RadialProgress percentage={71} />}
-              color="text-blue-600" 
-            />
-            <KPIBlock 
-              title="Last Update" 
-              stat="Today" 
-              icon={<Clock size={16} />}
-              color="text-gray-600" 
-            />
+          <div className="grid grid-cols-2 gap-4">
+            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p className="text-sm text-gray-500">Sales vs Budget</p>
+                <p className="text-lg font-semibold text-green-600">84%</p>
+              </div>
+              <BarChart4 size={20} className="text-gray-400" />
+            </div>
+            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p className="text-sm text-gray-500">Top SKU (Wk)</p>
+                <p className="text-lg font-semibold text-amber-600">Aderezo</p>
+              </div>
+              <Trophy size={20} className="text-gray-400" />
+            </div>
+            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p className="text-sm text-gray-500">Client Progress</p>
+                <p className="text-lg font-semibold text-blue-600">71%</p>
+              </div>
+              <Target size={20} className="text-gray-400" />
+            </div>
+            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p className="text-sm text-gray-500">Last Update</p>
+                <p className="text-lg font-semibold text-gray-600">Today</p>
+              </div>
+              <Clock size={20} className="text-gray-400" />
+            </div>
           </div>
 
-          {/* Inline Smart Alert */}
-          <div className="bg-green-50 border-l-4 border-green-400 text-green-700 p-3 rounded-md text-sm mt-4">
-            📈 Aderezo outperforming +6% above budget across 3 regions
+          {/* Micro-insight */}
+          <div className="text-sm text-green-700 bg-green-100 px-3 py-2 rounded-xl">
+            ✅ Aderezo tracking +6% above chain avg
           </div>
 
-          {/* Ask Button */}
-          <button className="w-full text-white font-medium bg-gradient-to-r from-rose-500 to-rose-400 hover:from-rose-600 transition rounded-xl py-2.5 text-sm shadow-lg mt-4">
-            Ask about these metrics
+          {/* CTA Button */}
+          <button className="w-full bg-rose-500 hover:bg-rose-600 text-white text-sm font-semibold rounded-xl py-3 mt-4 shadow">
+            Explore performance insights
           </button>
         </div>
       )}
 
       {activePanel === 'risks' && (
-        <div className="fixed left-24 top-24 w-[460px] h-[360px] backdrop-blur-md bg-white/70 border border-gray-200/50 shadow-xl rounded-3xl p-6 sm:p-8 flex flex-col z-50">
+        <div className="fixed left-24 top-24 rounded-2xl shadow-lg bg-white p-6 space-y-5 w-[500px] z-50">
           {/* Header */}
-          <h2 className="text-xl font-semibold text-gray-800 tracking-tight flex items-center gap-2 mb-6">
-            <span className="h-2 w-2 bg-red-500 rounded-full animate-pulse" />
-            Risk Analysis
-          </h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+              <span className="h-2 w-2 bg-red-500 rounded-full animate-pulse" />
+              Risks
+            </h2>
+            <span className="text-xs text-gray-500">🔘 65% of May complete</span>
+          </div>
 
           {/* KPI Cards Grid */}
-          <div className="grid grid-cols-2 gap-4 mt-4 flex-1">
-            <KPIBlock 
-              title="Backorders" 
-              stat="12 items" 
-              icon={<AlertTriangle size={16} />} 
-              chart={<BarMini />}
-              color="text-red-600" 
-            />
-            <KPIBlock 
-              title="Out of Stock" 
-              stat="8 stores" 
-              icon={<Package size={16} />} 
-              chart={<Sparkline />}
-              color="text-orange-600" 
-            />
-            <KPIBlock 
-              title="Overdue Clients" 
-              stat="$45K" 
-              icon={<DollarSign size={16} />} 
-              chart={<RadialProgress percentage={35} />}
-              color="text-red-600" 
-            />
-            <KPIBlock 
-              title="Priority Level" 
-              stat="Medium" 
-              icon={<ShieldAlert size={16} />}
-              color="text-yellow-600" 
-            />
+          <div className="grid grid-cols-2 gap-4">
+            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p className="text-sm text-gray-500">Backorders</p>
+                <p className="text-lg font-semibold text-red-600">12 items</p>
+              </div>
+              <AlertTriangle size={20} className="text-gray-400" />
+            </div>
+            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p className="text-sm text-gray-500">Out of Stock</p>
+                <p className="text-lg font-semibold text-orange-600">8 stores</p>
+              </div>
+              <Package size={20} className="text-gray-400" />
+            </div>
+            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p className="text-sm text-gray-500">Overdue Clients</p>
+                <p className="text-lg font-semibold text-red-600">$45K</p>
+              </div>
+              <DollarSign size={20} className="text-gray-400" />
+            </div>
+            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p className="text-sm text-gray-500">Priority Level</p>
+                <p className="text-lg font-semibold text-yellow-600">Medium</p>
+              </div>
+              <ShieldAlert size={20} className="text-gray-400" />
+            </div>
           </div>
 
-          {/* Inline Smart Alert */}
-          <div className="bg-red-50 border-l-4 border-red-400 text-red-700 p-3 rounded-md text-sm mt-4">
-            ⚠️ Reorder urgently in Zona Norte — 3 top SKUs at risk
+          {/* Micro-insight */}
+          <div className="text-sm text-red-700 bg-red-100 px-3 py-2 rounded-xl">
+            ⚠️ Zona Norte needs immediate reorder - 3 SKUs critical
           </div>
 
-          {/* Ask Button */}
-          <button className="w-full text-white font-medium bg-gradient-to-r from-rose-500 to-rose-400 hover:from-rose-600 transition rounded-xl py-2.5 text-sm shadow-lg mt-4">
-            Ask about risk mitigation
+          {/* CTA Button */}
+          <button className="w-full bg-rose-500 hover:bg-rose-600 text-white text-sm font-semibold rounded-xl py-3 mt-4 shadow">
+            Resolve high-risk issues
           </button>
         </div>
       )}
 
       {activePanel === 'opportunities' && (
-        <div className="fixed left-24 top-24 w-[420px] backdrop-blur-md bg-white/80 border border-gray-200/50 shadow-xl rounded-3xl p-6 space-y-4 z-50">
-          {/* Header with Month Completion */}
-          <div className="flex justify-between items-center">
-            <h2 className="text-lg font-semibold text-gray-800 flex gap-2 items-center">
+        <div className="fixed left-24 top-24 rounded-2xl shadow-lg bg-white p-6 space-y-5 w-[500px] z-50">
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
               <span className="h-2 w-2 bg-yellow-500 rounded-full animate-pulse" />
-              Growth Opportunities
+              Opportunities
             </h2>
-            <span className="text-xs text-gray-500 italic">🔘 65% of May complete</span>
+            <span className="text-xs text-gray-500">🔘 65% of May complete</span>
           </div>
 
-          {/* Enhanced KPI Grid */}
+          {/* KPI Cards Grid */}
           <div className="grid grid-cols-2 gap-4">
-            <EnhancedKPIBlock
-              icon={<LineChart size={16} />}
-              title="Promo ROI"
-              value="340%"
-              delta="+240% vs LY"
-              badge="🔥 Highest ROI"
-              accent="text-green-600"
-              chart={<Sparkline />}
-            />
-            <EnhancedKPIBlock
-              icon={<Users size={16} />}
-              title="Inactive Clients"
-              value="23 leads"
-              badge="⚠️ At Risk"
-              accent="text-blue-600"
-              chart={<BarMini />}
-            />
-            <EnhancedKPIBlock
-              icon={<TrendingUp size={16} />}
-              title="Upsell Potential"
-              value="$78K"
-              accent="text-purple-600"
-              chart={<RadialProgress percentage={85} />}
-            />
-            <EnhancedKPIBlock
-              icon={<PieChart size={16} />}
-              title="Market Share"
-              value="+2.4%"
-              delta="+1.1 pts"
-              accent="text-emerald-500"
-            />
+            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p className="text-sm text-gray-500">Promo ROI</p>
+                <p className="text-lg font-semibold text-green-600">340%</p>
+              </div>
+              <LineChart size={20} className="text-gray-400" />
+            </div>
+            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p className="text-sm text-gray-500">Inactive Clients</p>
+                <p className="text-lg font-semibold text-blue-600">23 leads</p>
+              </div>
+              <Users size={20} className="text-gray-400" />
+            </div>
+            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p className="text-sm text-gray-500">Upsell Potential</p>
+                <p className="text-lg font-semibold text-purple-600">$78K</p>
+              </div>
+              <TrendingUp size={20} className="text-gray-400" />
+            </div>
+            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p className="text-sm text-gray-500">Market Share</p>
+                <p className="text-lg font-semibold text-emerald-500">+2.4%</p>
+              </div>
+              <PieChart size={20} className="text-gray-400" />
+            </div>
           </div>
 
-          {/* Smart Action Button */}
-          <button className="w-full bg-yellow-50 border border-yellow-200 text-yellow-700 p-3 rounded-lg text-sm mt-4 hover:bg-yellow-100 transition flex items-center justify-center gap-2">
-            🔎 Investigate Scanner/Tonga performance surge
-          </button>
+          {/* Micro-insight */}
+          <div className="text-sm text-yellow-700 bg-yellow-100 px-3 py-2 rounded-xl">
+            🔥 Scanner/Tonga showing +240% ROI surge this quarter
+          </div>
 
-          {/* CTA */}
-          <button className="w-full mt-2 text-white bg-gradient-to-r from-rose-500 to-rose-400 hover:brightness-110 transition rounded-xl py-2.5 text-sm shadow">
-            Explore growth strategies
+          {/* CTA Button */}
+          <button className="w-full bg-rose-500 hover:bg-rose-600 text-white text-sm font-semibold rounded-xl py-3 mt-4 shadow">
+            Explore growth paths
           </button>
         </div>
       )}
