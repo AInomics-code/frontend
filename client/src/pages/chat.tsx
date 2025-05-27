@@ -73,13 +73,72 @@ export default function Chat() {
   ];
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center relative">
-      {/* Alert Bell - Top Right */}
-      <div className="absolute top-6 right-6 z-20">
-        <button 
-          onClick={() => setShowNotifications(!showNotifications)}
-          className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 relative"
-        >
+    <div className="min-h-screen bg-white flex">
+      
+      {/* Vertical Sidebar Navigation */}
+      <aside className="w-16 bg-gray-900 flex flex-col items-center py-6">
+        {/* La Doña Logo at Top */}
+        <div className="mb-8">
+          <img 
+            src={laDonaLogo} 
+            alt="La Doña" 
+            className="h-8 w-8 rounded"
+          />
+        </div>
+
+        {/* Vertical Icon Stack */}
+        <nav className="flex flex-col gap-6 flex-1">
+          <button 
+            className="p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
+            title="Home"
+          >
+            <Home className="w-5 h-5" />
+          </button>
+          <button 
+            className="p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
+            title="Dashboard"
+          >
+            <BarChart2 className="w-5 h-5" />
+          </button>
+          <button 
+            className="p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
+            title="Notifications"
+          >
+            <Bell className="w-5 h-5" />
+          </button>
+          <button 
+            className="p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
+            title="Settings"
+          >
+            <Settings className="w-5 h-5" />
+          </button>
+        </nav>
+
+        {/* User Profile & Logout at Bottom */}
+        <div className="flex flex-col gap-4 mt-auto">
+          <button 
+            className="p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
+            title="Carlos Mendoza"
+          >
+            <User className="w-5 h-5" />
+          </button>
+          <button 
+            className="p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
+            title="Logout"
+          >
+            <LogOut className="w-5 h-5" />
+          </button>
+        </div>
+      </aside>
+
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col items-center justify-center relative">
+        {/* Alert Bell - Top Right */}
+        <div className="absolute top-6 right-6 z-20">
+          <button 
+            onClick={() => setShowNotifications(!showNotifications)}
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 relative"
+          >
           <Bell className="w-5 h-5 text-gray-600" />
           <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
         </button>
@@ -247,6 +306,7 @@ export default function Chat() {
         </div>
 
         <div ref={messagesEndRef} />
+        </div>
       </div>
     </div>
   );
