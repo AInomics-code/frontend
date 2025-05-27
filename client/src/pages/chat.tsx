@@ -73,45 +73,29 @@ export default function Chat() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-      {/* Glassmorphism Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-gray-100/20 backdrop-blur-3xl"></div>
-      
-      {/* Top Header */}
-      <div className="relative z-10 flex justify-between items-center p-6">
-        <img 
-          src={laDonaLogo} 
-          alt="La Doña" 
-          className="h-6 opacity-60"
-        />
-        
-        {/* Notification Bell */}
+    <div className="min-h-screen bg-white relative">
+      {/* Top Header with Alert Bell */}
+      <div className="absolute top-0 right-0 p-6 z-20">
         <div className="relative">
           <button 
             onClick={() => setShowNotifications(!showNotifications)}
-            className="p-2 bg-white/80 backdrop-blur-md rounded-full shadow-sm hover:shadow-md transition-all duration-300 border border-white/50"
+            className="p-2 hover:bg-gray-50 rounded-full transition-colors duration-200 relative"
           >
-            <Bell className="w-4 h-4 text-gray-600" />
+            <Bell className="w-5 h-5 text-gray-600" />
             <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
           </button>
           
           {showNotifications && (
-            <div className="absolute right-0 mt-2 w-72 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/50 p-4 animate-[fadeInUp_0.3s_ease-out]">
-              <h3 className="font-semibold text-gray-800 mb-3">Business Alerts</h3>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between p-2 bg-red-50 rounded-lg">
-                  <div className="flex items-center gap-2">
-                    <span className="text-red-500">●</span>
-                    <span className="text-sm text-red-700">3 zones at risk</span>
-                  </div>
-                  <span className="text-xs text-red-600">High</span>
+            <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg border p-3 animate-[fadeInUp_0.2s_ease-out]">
+              <div className="text-xs text-gray-500 mb-2 font-medium">Business Alerts</div>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-red-600">3 Zones Below Target</span>
+                  <span className="text-xs text-red-500">●</span>
                 </div>
-                <div className="flex items-center justify-between p-2 bg-orange-50 rounded-lg">
-                  <div className="flex items-center gap-2">
-                    <span className="text-orange-500">●</span>
-                    <span className="text-sm text-orange-700">2 SKUs in backorder</span>
-                  </div>
-                  <span className="text-xs text-orange-600">Medium</span>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-orange-600">2 SKUs Missing</span>
+                  <span className="text-xs text-orange-500">●</span>
                 </div>
               </div>
             </div>
@@ -119,169 +103,187 @@ export default function Chat() {
         </div>
       </div>
 
-      {/* Main Chat Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-4">
-        {/* Floating Chat Box */}
-        <div className="w-full max-w-3xl mx-auto">
+      {/* Main Container - Centered */}
+      <div className="flex flex-col items-center justify-center min-h-screen px-4">
+        <div className="w-full max-w-2xl">
+          
           {/* Messages Area */}
-          <div className="mb-6 space-y-4 max-h-[60vh] overflow-y-auto">
-            {messages.length === 0 && !isTyping && (
-              <div className="text-center py-8">
-                <div className="mb-6">
-                  <h1 className="text-2xl font-light text-gray-700 mb-2">Ask Vorta anything</h1>
-                  <p className="text-gray-400 text-sm">Your business intelligence assistant</p>
-                </div>
-              </div>
-            )}
-
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex ${message.isUser ? 'justify-end' : 'justify-start'} animate-[slideUp_0.3s_ease-out]`}
-              >
-                <div
-                  className={`max-w-[75%] p-4 rounded-2xl shadow-md transition-all duration-300 hover:shadow-lg group ${
-                    message.isUser
-                      ? 'bg-[#E10600] text-white'
-                      : 'bg-white/90 backdrop-blur-md border border-white/50'
-                  }`}
-                  style={{
-                    animation: 'messageAppear 0.3s ease-out'
-                  }}
-                >
-                  <p className={`text-base leading-relaxed ${message.isUser ? 'text-white' : 'text-gray-800'}`}>
-                    {message.content}
-                  </p>
-                  
-                  {/* Message Utilities */}
-                  {!message.isUser && (
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 mt-2 flex gap-2">
-                      <button className="p-1 hover:bg-gray-100 rounded text-gray-400 hover:text-gray-600">
-                        <Copy className="w-3 h-3" />
-                      </button>
-                      <button className="p-1 hover:bg-gray-100 rounded text-gray-400 hover:text-gray-600">
-                        <Expand className="w-3 h-3" />
-                      </button>
-                      <button className="p-1 hover:bg-gray-100 rounded text-gray-400 hover:text-gray-600">
-                        <Pin className="w-3 h-3" />
-                      </button>
+          {messages.length > 0 && (
+            <div className="mb-8 space-y-6 max-h-[60vh] overflow-y-auto">
+              {messages.map((message) => (
+                <div key={message.id} className="animate-[fadeIn_0.3s_ease-out]">
+                  {message.isUser ? (
+                    /* User Message - Simple Text */
+                    <div className="text-xl text-gray-800 font-medium mb-4">
+                      {message.content}
+                    </div>
+                  ) : (
+                    /* AI Response */
+                    <div className="space-y-4">
+                      {/* Vorta Logo - Only appears with responses */}
+                      <div className="flex items-center gap-2 text-sm text-gray-500">
+                        <div className="vortex-icon active" style={{ width: '14px', height: '14px' }}>
+                          <div className="vortex-blade"></div>
+                          <div className="vortex-blade"></div>
+                          <div className="vortex-blade"></div>
+                          <div className="vortex-blade"></div>
+                          <div className="vortex-blade"></div>
+                          <div className="vortex-blade"></div>
+                        </div>
+                        <span>Vorta</span>
+                      </div>
+                      
+                      {/* Response Content */}
+                      <div className="text-gray-800 leading-relaxed">
+                        {message.content}
+                      </div>
+                      
+                      {/* Action Buttons */}
+                      <div className="flex gap-3 mt-4">
+                        <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm text-gray-700 transition-colors">
+                          View SKU List
+                        </button>
+                        <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm text-gray-700 transition-colors">
+                          Compare Chains
+                        </button>
+                        <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm text-gray-700 transition-colors">
+                          View Dashboard
+                        </button>
+                      </div>
                     </div>
                   )}
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          )}
 
-            {/* Typing Indicator */}
-            {isTyping && (
-              <div className="flex justify-start animate-[slideUp_0.3s_ease-out]">
-                <div className="bg-white/90 backdrop-blur-md border border-white/50 rounded-2xl p-4 shadow-md flex items-center gap-3">
-                  {/* Vorta Logo with Animation */}
-                  <div className="vortex-icon active" style={{ width: '16px', height: '16px', filter: 'drop-shadow(0 0 8px rgba(225, 6, 0, 0.4))' }}>
-                    <div className="vortex-blade"></div>
-                    <div className="vortex-blade"></div>
-                    <div className="vortex-blade"></div>
-                    <div className="vortex-blade"></div>
-                    <div className="vortex-blade"></div>
-                    <div className="vortex-blade"></div>
-                  </div>
-                  
-                  {/* Typing Dots */}
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
-                  </div>
+          {/* Typing Indicator */}
+          {isTyping && (
+            <div className="mb-8 animate-[fadeIn_0.3s_ease-out]">
+              <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
+                <div className="vortex-icon active" style={{ width: '14px', height: '14px', filter: 'drop-shadow(0 0 6px rgba(225, 6, 0, 0.3))' }}>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
                 </div>
+                <span>Vorta</span>
+              </div>
+              <div className="flex gap-1">
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+              </div>
+            </div>
+          )}
+
+          {/* Central Input Area - Perplexity Style */}
+          <div className="relative">
+            {/* Suggested Prompts - Above Input */}
+            {messages.length === 0 && !inputValue && (
+              <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-3 animate-[fadeIn_0.5s_ease-out]">
+                <button
+                  onClick={() => setInputValue("Clientes que no realizaron pedido hoy")}
+                  className="p-3 text-left text-sm text-gray-600 hover:bg-gray-50 rounded-lg border border-gray-200 transition-all duration-200 hover:border-gray-300"
+                >
+                  Clientes que no realizaron pedido hoy
+                </button>
+                <button
+                  onClick={() => setInputValue("Productos sin inventario")}
+                  className="p-3 text-left text-sm text-gray-600 hover:bg-gray-50 rounded-lg border border-gray-200 transition-all duration-200 hover:border-gray-300"
+                >
+                  Productos sin inventario
+                </button>
+                <button
+                  onClick={() => setInputValue("Ventas por PDV vs mes pasado")}
+                  className="p-3 text-left text-sm text-gray-600 hover:bg-gray-50 rounded-lg border border-gray-200 transition-all duration-200 hover:border-gray-300"
+                >
+                  Ventas por PDV vs mes pasado
+                </button>
+                <button
+                  onClick={() => setInputValue("Zonas con bajo rendimiento")}
+                  className="p-3 text-left text-sm text-gray-600 hover:bg-gray-50 rounded-lg border border-gray-200 transition-all duration-200 hover:border-gray-300"
+                >
+                  Zonas con bajo rendimiento
+                </button>
               </div>
             )}
 
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* Floating Input Area */}
-          <div className="relative">
-            <div className="bg-white/90 backdrop-blur-md border border-white/50 rounded-3xl shadow-xl focus-within:shadow-2xl focus-within:ring-2 focus-within:ring-[#E10600]/20 transition-all duration-300 p-4">
-              {/* Suggested Prompts Dropdown */}
-              {(showSuggestions || isFocused) && !inputValue && (
-                <div className="absolute bottom-full left-0 right-0 mb-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 p-3 max-h-64 overflow-y-auto animate-[fadeInUp_0.3s_ease-out]">
-                  <div className="text-xs text-gray-500 mb-2 font-medium">Suggested prompts</div>
-                  <div className="space-y-1">
-                    {suggestedPrompts.map((prompt, index) => (
-                      <button
-                        key={index}
-                        onClick={() => {
-                          setInputValue(prompt);
-                          setShowSuggestions(false);
-                        }}
-                        className="w-full text-left p-2 hover:bg-gray-50 rounded-lg transition-colors text-sm text-gray-700"
-                      >
-                        {prompt}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <div className="flex items-end gap-3">
-                <div className="flex-1">
-                  <textarea
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    onFocus={() => {
-                      setIsFocused(true);
-                      setShowSuggestions(true);
-                    }}
-                    onBlur={() => {
-                      setIsFocused(false);
-                      setTimeout(() => setShowSuggestions(false), 150);
-                    }}
-                    placeholder="Ask about KPIs, performance trends, or product insights..."
-                    className="w-full resize-none bg-transparent outline-none text-gray-800 placeholder-gray-400 text-base leading-relaxed min-h-[20px] max-h-32"
-                    rows={1}
-                    style={{
-                      height: 'auto',
-                      minHeight: '20px'
-                    }}
-                  />
-                </div>
+            {/* Main Input Bar - No containers, just the input */}
+            <div className={`relative transition-all duration-200 ease-in-out ${
+              isFocused ? 'transform scale-[1.02]' : ''
+            }`}>
+              <div className={`flex items-center gap-3 px-4 py-3 border-2 rounded-full transition-all duration-200 ${
+                isFocused 
+                  ? 'border-gray-300 shadow-[0_0_0_4px_rgba(0,0,0,0.05)]' 
+                  : 'border-gray-200 hover:border-gray-300'
+              }`}>
+                {/* Input */}
+                <textarea
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
+                  placeholder="Ask me anything about your business..."
+                  className="flex-1 resize-none bg-transparent outline-none text-gray-800 placeholder-gray-400 text-base leading-relaxed min-h-[24px] max-h-32"
+                  rows={1}
+                  style={{
+                    height: 'auto',
+                    minHeight: '24px'
+                  }}
+                />
                 
-                {/* Input Icons */}
-                <div className="flex items-center gap-1 text-gray-400">
-                  <button className="p-2 hover:bg-gray-100 rounded-xl transition-colors duration-200" title="Attach files">
-                    <Paperclip className="w-4 h-4" />
+                {/* Right Side Icons */}
+                <div className={`flex items-center gap-1 transition-opacity duration-200 ${
+                  isFocused ? 'opacity-100' : 'opacity-60'
+                }`}>
+                  <button 
+                    className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200" 
+                    title="Attach files"
+                  >
+                    <Paperclip className="w-4 h-4 text-gray-500" />
                   </button>
-                  <button className="p-2 hover:bg-gray-100 rounded-xl transition-colors duration-200" title="Language settings">
-                    <Globe className="w-4 h-4" />
+                  
+                  <button 
+                    className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200" 
+                    title="Language"
+                  >
+                    <Globe className="w-4 h-4 text-gray-500" />
                   </button>
+                  
                   <button 
                     onClick={() => setIsVoiceActive(!isVoiceActive)}
-                    className={`p-2 rounded-xl transition-all duration-200 ${
+                    className={`p-2 rounded-full transition-all duration-200 ${
                       isVoiceActive 
-                        ? 'bg-red-100 text-red-600 shadow-[0_0_12px_rgba(225,6,0,0.4)] animate-pulse' 
-                        : 'hover:bg-gray-100'
+                        ? 'bg-red-50 text-red-600 shadow-[0_0_8px_rgba(225,6,0,0.3)] animate-pulse' 
+                        : 'hover:bg-gray-100 text-gray-500'
                     }`}
                     title="Voice input"
                   >
                     <Mic className="w-4 h-4" />
                   </button>
                   
-                  {/* Send Button - iOS Style */}
+                  {/* Ask Button */}
                   <button
                     onClick={handleSendMessage}
                     disabled={!inputValue.trim() || isTyping}
-                    className={`px-4 py-2 rounded-full transition-all duration-200 font-medium text-sm ${
+                    className={`ml-2 px-4 py-2 rounded-full transition-all duration-200 font-medium text-sm ${
                       inputValue.trim() && !isTyping
-                        ? 'bg-[#E10600] text-white hover:bg-[#cc0500] hover:scale-105 shadow-lg hover:shadow-xl'
+                        ? 'bg-[#E10600] text-white hover:bg-[#cc0500] shadow-sm hover:shadow-md'
                         : 'bg-gray-100 text-gray-400 cursor-not-allowed'
                     }`}
                   >
-                    {isTyping ? '...' : 'Ask'}
+                    Ask
                   </button>
                 </div>
               </div>
             </div>
           </div>
+
+          <div ref={messagesEndRef} />
         </div>
       </div>
     </div>
