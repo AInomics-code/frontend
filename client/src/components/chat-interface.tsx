@@ -97,41 +97,9 @@ export function ChatInterface() {
 
 
   return (
-    <div className="min-h-screen bg-white flex">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img 
-              src={laDonaLogo} 
-              alt="La Doña Logo" 
-              className="h-8 w-auto"
-            />
-            <h1 className="text-gray-700 font-semibold text-lg">
-              La Doña Business Intelligence
-            </h1>
-          </div>
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-3 bg-gray-50 rounded-lg px-3 py-2 border border-gray-100">
-              <div className="w-8 h-8 rounded-full flex items-center justify-center">
-                <User className="w-5 h-5 text-gray-600" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-gray-800 text-sm font-medium">Carlos Mendoza</span>
-                <span className="text-gray-500 text-xs">General Manager</span>
-              </div>
-            </div>
-            <button className="text-gray-500 hover:text-gray-700 text-sm flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-50 transition-all duration-200">
-              <span>Logout</span>
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-white">
       {/* Chat Container - Centered Layout */}
-      <main className="flex flex-col items-center pt-[10vh] pb-[5vh] bg-white">
+      <main className="flex flex-col items-center pt-[10vh] pb-[5vh] bg-white min-h-screen justify-center">
 
         {/* Floating Vorta Logo with Pulse */}
         <div className="vortex-icon animate-pulse mb-4" style={{ width: '40px', height: '40px' }}>
