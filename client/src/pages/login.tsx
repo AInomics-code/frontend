@@ -59,18 +59,18 @@ export default function Login() {
         {/* Login Form */}
         <div className="space-y-4 mb-8">
           <input
-            type="email"
-            placeholder="Enter your email"
+            type="text"
+            placeholder="Login"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full py-2 px-4 rounded-lg border border-gray-300 focus:border-red-500 focus:shadow-inner focus:outline-none transition-all duration-200 text-gray-700 placeholder-gray-400"
+            className="w-full py-2 px-4 rounded-lg border border-gray-300 focus:border-red-400 focus:shadow-inner focus:outline-none transition-all duration-200 text-gray-700 placeholder-gray-400 shadow-sm"
           />
           <input
             type="password"
-            placeholder="Enter your password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full py-2 px-4 rounded-lg border border-gray-300 focus:border-red-500 focus:shadow-inner focus:outline-none transition-all duration-200 text-gray-700 placeholder-gray-400"
+            className="w-full py-2 px-4 rounded-lg border border-gray-300 focus:border-red-400 focus:shadow-inner focus:outline-none transition-all duration-200 text-gray-700 placeholder-gray-400 shadow-sm"
           />
         </div>
 
@@ -80,8 +80,8 @@ export default function Login() {
           disabled={isLoading}
           className={`w-full font-semibold tracking-wide py-3 px-6 rounded-xl transition-all duration-300 transform ${
             isLoading 
-              ? 'bg-gradient-to-r from-red-600 to-red-700 text-white scale-[0.98] animate-pulse cursor-wait' 
-              : 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white hover:scale-[1.02] shadow-md hover:shadow-lg'
+              ? 'bg-gradient-to-r from-[#d70000] to-[#ff4d4d] text-white scale-[0.98] animate-pulse cursor-wait' 
+              : 'bg-gradient-to-r from-[#d70000] to-[#ff4d4d] hover:from-red-700 hover:to-red-500 text-white hover:text-white/90 hover:scale-[1.02] shadow-md hover:shadow-lg'
           }`}
         >
           {isLoading ? (
@@ -90,19 +90,19 @@ export default function Login() {
               <span>Accessing Dashboard...</span>
             </div>
           ) : (
-            "Enter Dashboard"
+            "Login"
           )}
         </button>
 
         {/* Enhanced Footer with Ainomics Logo */}
-        <div className="mt-6 flex items-center justify-center space-x-2 text-xs text-gray-400">
+        <div className="flex items-center justify-center mt-6 space-x-2 text-xs text-gray-400">
           <img 
             src={ainomicsLogo} 
+            className="w-5 h-5 opacity-80" 
             alt="Ainomics Logo" 
-            className="w-6 h-6 drop-shadow-[0_0_2px_rgba(0,0,0,0.05)]" 
           />
           <span>
-            Powered by <span className="font-medium text-gray-500">Ainomics Inc</span> · Vorta Strategic Platform
+            Powered by <strong className="text-gray-500">Ainomics Inc</strong> · Vorta Strategic Platform
           </span>
         </div>
       </div>
