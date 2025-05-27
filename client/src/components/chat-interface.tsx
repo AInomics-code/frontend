@@ -134,8 +134,8 @@ export function ChatInterface() {
       {/* Main Content - Centered Layout */}
       <main className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 space-y-6">
 
-        {/* Vorta Logo */}
-        <div className="vortex-icon animate-pulse" style={{ width: '32px', height: '32px' }}>
+        {/* Floating Vorta Logo with Pulse */}
+        <div className="vortex-icon animate-pulse opacity-80 mx-auto mb-4" style={{ width: '24px', height: '24px' }}>
           <div className="vortex-blade"></div>
           <div className="vortex-blade"></div>
           <div className="vortex-blade"></div>
@@ -144,42 +144,50 @@ export function ChatInterface() {
           <div className="vortex-blade"></div>
         </div>
 
-        {/* Chat Input Area */}
-        <div className="w-full max-w-2xl bg-white border border-gray-200 shadow-xl rounded-2xl p-5 flex flex-col space-y-4">
+        {/* Glassmorphism Input Container */}
+        <div className="backdrop-blur-md bg-white/70 shadow-lg rounded-2xl px-6 py-5 w-full max-w-3xl transition-all duration-300 hover:shadow-xl focus-within:ring-1 focus-within:ring-red-100">
           
           {/* Input Row */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-4 mb-4">
             <input
               type="text"
-              placeholder="Ask about KPIs or performance..."
+              placeholder="Ask about KPIs or performance…"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="flex-1 bg-transparent placeholder-gray-400 text-gray-800 text-lg focus:outline-none"
+              className="w-full text-xl text-gray-800 placeholder-gray-400 bg-transparent outline-none focus:ring-0"
             />
-            <div className="flex items-center space-x-3">
-              <button title="Attachment">
-                <Paperclip className="h-5 w-5 text-gray-400 hover:text-red-400 transition" />
-              </button>
-              <button title="Globe">
-                <Globe className="h-5 w-5 text-gray-400 hover:text-red-400 transition" />
+            
+            {/* Icons - Softer & Lighter */}
+            <div className="flex items-center space-x-4 text-gray-400">
+              <button 
+                className="hover:text-red-400 transition"
+                title="Attachment"
+              >
+                <Paperclip className="w-5 h-5" />
               </button>
               <button 
-                title="Mic" 
-                className={`hover:animate-pulse ${isVoiceActive ? 'animate-pulse' : ''}`}
+                className="hover:text-red-400 transition"
+                title="Globe"
+              >
+                <Globe className="w-5 h-5" />
+              </button>
+              <button 
+                className="hover:text-red-400 transition"
+                title="Mic"
                 onClick={() => setIsVoiceActive(!isVoiceActive)}
               >
-                <Mic className={`h-5 w-5 transition ${isVoiceActive ? 'text-red-500' : 'text-gray-400 hover:text-red-500'}`} />
+                <Mic className={`w-5 h-5 ${isVoiceActive ? 'text-red-500 animate-pulse' : ''}`} />
               </button>
             </div>
           </div>
 
-          {/* Ask Button */}
+          {/* Gradient Ask Button */}
           <div className="flex justify-end">
             <button 
               onClick={handleSendMessage}
               disabled={!inputValue.trim() || isProcessing}
-              className="bg-red-500 text-white font-medium px-6 py-2 rounded-xl hover:bg-red-600 shadow-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="ml-3 px-6 py-2 rounded-xl text-white text-lg font-medium bg-gradient-to-r from-red-500 to-red-400 hover:from-red-600 hover:to-red-500 transition-all shadow-md hover:shadow-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isProcessing ? 'Processing...' : 'Ask'}
             </button>
