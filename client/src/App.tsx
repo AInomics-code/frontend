@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Dashboard from "@/pages/dashboard";
 import Login from "@/pages/login";
 import Chat from "@/pages/chat-perplexity";
+import SidebarLayout from "@/components/sidebar-layout";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -14,7 +15,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Login} />
       <Route path="/dashboard" component={Dashboard} />
-      <Route path="/chat" component={Chat} />
+      <Route path="/chat" component={SidebarLayout} />
       <Route component={NotFound} />
     </Switch>
   );
