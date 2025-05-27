@@ -31,15 +31,6 @@ export default function Login() {
     >
       <div className="bg-white px-10 py-12 rounded-3xl shadow-xl shadow-gray-200 text-center max-w-md w-full border border-neutral-200">
         
-        {/* La Doña Brand Logo */}
-        <div className="mb-3 flex justify-center">
-          <img 
-            src={laDonaLogo} 
-            alt="La Doña" 
-            className="h-8 w-auto mx-auto"
-          />
-        </div>
-        
         {/* Vorta Vortex Icon */}
         <div className="mb-8 flex justify-center">
           <div 
@@ -59,10 +50,15 @@ export default function Login() {
           </div>
         </div>
         
-        {/* Welcome Content */}
-        <div className="mb-8 space-y-3">
+        {/* Welcome Content with La Doña Branding */}
+        <div className="mb-8 text-center space-y-2">
           <h1 className="text-3xl font-semibold text-gray-800 tracking-tight">Welcome back</h1>
           <p className="text-base text-gray-500 leading-relaxed">Sign in to access La Doña Intelligence</p>
+          <img 
+            src={laDonaLogo} 
+            alt="La Doña" 
+            className="mx-auto h-6 mt-2 opacity-80"
+          />
         </div>
 
         {/* Login Form */}
