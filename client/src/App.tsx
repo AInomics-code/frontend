@@ -20,7 +20,7 @@ function Router() {
         <img
           src={laDonaLogo}
           alt="La Doña"
-          className="w-10 h-10 mb-8 filter brightness-0 invert"
+          className="w-10 h-10 mb-8"
         />
 
         {/* Plus Button */}
