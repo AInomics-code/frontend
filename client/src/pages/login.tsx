@@ -7,13 +7,22 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
 
   const handleLogin = () => {
     setIsLoading(true);
+    setIsError(false);
     
     // Simulate login process with elegant animation
     setTimeout(() => {
-      setLocation("/dashboard");
+      // Start fade out animation
+      setFadeOut(true);
+      
+      // Navigate after fade animation completes
+      setTimeout(() => {
+        setLocation("/dashboard");
+      }, 500);
     }, 1500);
   };
 
@@ -29,7 +38,7 @@ export default function Login() {
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
-      <div className="bg-white px-10 py-12 rounded-3xl shadow-xl shadow-gray-200 text-center max-w-md w-full border border-neutral-200">
+      <div className={`bg-white px-10 py-12 rounded-3xl shadow-xl shadow-gray-200 text-center max-w-md w-full border border-neutral-200 transition-all duration-500 ${fadeOut ? 'fade-out-login' : ''} ${isError ? 'invalid-login' : ''}`}>
         
         {/* Vorta Vortex Icon */}
         <div className="mb-8 flex justify-center">
@@ -85,14 +94,15 @@ export default function Login() {
           disabled={isLoading}
           className={`w-full font-semibold tracking-wide py-3 px-6 rounded-xl transition-all duration-300 transform ${
             isLoading 
-              ? 'bg-gradient-to-r from-[#d70000] to-[#ff4d4d] text-white scale-[0.98] animate-pulse cursor-wait' 
-              : 'bg-gradient-to-r from-[#d70000] to-[#ff4d4d] hover:from-red-700 hover:to-red-500 text-white hover:text-white/90 hover:scale-[1.02] shadow-md hover:shadow-lg'
+              ? 'bg-gradient-to-r from-[#d70000] to-[#ff4d4d] text-white scale-[0.98] cursor-wait' 
+              : 'bg-gradient-to-r from-[#d70000] to-[#ff4d4d] hover:from-red-700 hover:to-red-500 text-white hover:text-white/90 hover:scale-[1.02] shadow-md hover:shadow-lg active:shadow-[0_0_12px_rgba(255,0,0,0.25)]'
           }`}
         >
           {isLoading ? (
-            <div className="flex items-center justify-center gap-3">
-              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-              <span>Accessing Dashboard...</span>
+            <div className="flex items-center justify-center gap-2">
+              <div className="login-loading-dot"></div>
+              <div className="login-loading-dot"></div>
+              <div className="login-loading-dot"></div>
             </div>
           ) : (
             "Login"
