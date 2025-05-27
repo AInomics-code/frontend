@@ -62,7 +62,7 @@ export default function Chat() {
     <div className="flex h-screen bg-white">
       
       {/* Fixed Vertical Sidebar - Perplexity Style */}
-      <aside className="fixed left-0 top-0 h-full w-[180px] bg-[#2a2a2a] border-r border-[#3a3a3a] flex flex-col py-6 z-50">
+      <aside className="fixed left-0 top-0 h-full w-[180px] bg-[#2a2a2a] border-r border-[#3a3a3a] flex flex-col py-6" style={{ zIndex: 9999 }}>
         
         {/* Logo at Top */}
         <div className="flex justify-center mb-8">
