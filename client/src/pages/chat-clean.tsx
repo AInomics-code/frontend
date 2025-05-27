@@ -62,22 +62,29 @@ export default function Chat() {
     <div className="flex h-screen bg-white">
       
       {/* Sidebar */}
-      <aside className="w-60 bg-white border-r border-gray-200 p-4 flex flex-col items-start">
+      <aside className="w-60 bg-white border-r border-gray-200 p-6 flex flex-col">
+        {/* Logo */}
         <img 
           src={laDonaLogo} 
-          className="w-24 mb-2" 
+          className="w-24 mb-4" 
           alt="La Doña logo" 
         />
-        <h1 className="text-lg font-semibold text-gray-800 leading-tight">
-          La Doña <br /> Business <br /> Intelligence
+        
+        {/* Title */}
+        <h1 className="text-lg font-semibold text-gray-800 leading-tight mb-8">
+          La Doña<br />
+          Business<br />
+          Intelligence
         </h1>
 
-        <div className="mt-8 text-sm text-gray-600">
-          <div className="font-medium text-gray-900">Carlos Mendoza</div>
+        {/* User Info */}
+        <div className="mb-8">
+          <div className="font-medium text-gray-900 text-sm">Carlos Mendoza</div>
           <div className="text-xs text-gray-500">General Manager</div>
         </div>
 
-        <button className="mt-auto text-sm text-red-500 hover:text-red-700 transition-colors">
+        {/* Logout Button */}
+        <button className="mt-auto text-sm text-red-500 hover:text-red-700 transition-colors self-start">
           Logout →
         </button>
       </aside>
