@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
-import ainomicsLogo from "@assets/Screenshot 2025-05-27 alle 11.21.46.png";
 
 export default function Login() {
   const [, setLocation] = useLocation();
@@ -96,10 +95,11 @@ export default function Login() {
 
         {/* Enhanced Footer with Ainomics Logo */}
         <div className="flex items-center justify-center mt-6 space-x-2 text-xs text-gray-400">
-          <img 
-            src={ainomicsLogo} 
-            className="w-5 h-5 opacity-80" 
-            alt="Ainomics Logo" 
+          <img
+            src="/assets/ainomics-logo.svg"
+            alt="Ainomics Logo"
+            className="w-4 h-4 opacity-80"
+            style={{ borderRadius: '0.25rem' }}
           />
           <span>
             Powered by <strong className="text-gray-500">Ainomics Inc</strong> · Vorta Strategic Platform
