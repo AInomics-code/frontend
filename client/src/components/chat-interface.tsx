@@ -135,34 +135,55 @@ export function ChatInterface() {
       <main className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 space-y-6">
 
         {/* Vorta Logo */}
-        <div>
-          <div className="vortex-icon animate-pulse mx-auto" style={{ width: '48px', height: '48px' }}>
-            <div className="vortex-blade"></div>
-            <div className="vortex-blade"></div>
-            <div className="vortex-blade"></div>
-            <div className="vortex-blade"></div>
-            <div className="vortex-blade"></div>
-            <div className="vortex-blade"></div>
-          </div>
+        <div className="vortex-icon animate-pulse" style={{ width: '32px', height: '32px' }}>
+          <div className="vortex-blade"></div>
+          <div className="vortex-blade"></div>
+          <div className="vortex-blade"></div>
+          <div className="vortex-blade"></div>
+          <div className="vortex-blade"></div>
+          <div className="vortex-blade"></div>
         </div>
 
         {/* Chat Input Area */}
-        <div className="flex items-center w-full max-w-2xl rounded-2xl border-2 border-gray-200 shadow-lg px-6 py-4 bg-white">
-          <input
-            type="text"
-            placeholder="Ask about KPIs or performance..."
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent outline-none placeholder-gray-400 text-gray-800 text-lg"
-          />
-          <button 
-            onClick={handleSendMessage}
-            disabled={!inputValue.trim() || isProcessing}
-            className="ml-5 px-6 py-3 bg-red-500 text-white font-semibold rounded-xl hover:bg-red-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isProcessing ? 'Processing...' : 'Ask'}
-          </button>
+        <div className="w-full max-w-2xl bg-white border border-gray-200 shadow-xl rounded-2xl p-5 flex flex-col space-y-4">
+          
+          {/* Input Row */}
+          <div className="flex items-center space-x-3">
+            <input
+              type="text"
+              placeholder="Ask about KPIs or performance..."
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="flex-1 bg-transparent placeholder-gray-400 text-gray-800 text-lg focus:outline-none"
+            />
+            <div className="flex items-center space-x-3">
+              <button title="Attachment">
+                <Paperclip className="h-5 w-5 text-gray-400 hover:text-red-400 transition" />
+              </button>
+              <button title="Globe">
+                <Globe className="h-5 w-5 text-gray-400 hover:text-red-400 transition" />
+              </button>
+              <button 
+                title="Mic" 
+                className={`hover:animate-pulse ${isVoiceActive ? 'animate-pulse' : ''}`}
+                onClick={() => setIsVoiceActive(!isVoiceActive)}
+              >
+                <Mic className={`h-5 w-5 transition ${isVoiceActive ? 'text-red-500' : 'text-gray-400 hover:text-red-500'}`} />
+              </button>
+            </div>
+          </div>
+
+          {/* Ask Button */}
+          <div className="flex justify-end">
+            <button 
+              onClick={handleSendMessage}
+              disabled={!inputValue.trim() || isProcessing}
+              className="bg-red-500 text-white font-medium px-6 py-2 rounded-xl hover:bg-red-600 shadow-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isProcessing ? 'Processing...' : 'Ask'}
+            </button>
+          </div>
         </div>
 
         {/* Loading Indicator */}
