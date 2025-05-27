@@ -51,24 +51,24 @@ export function BiSidebar() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 h-screen w-20 bg-[#F9FAFB] border-r border-gray-200 flex flex-col items-center py-4 text-gray-600" style={{ zIndex: 9999 }}>
+      <div className="fixed top-0 left-0 h-screen w-20 bg-[#F9FAFB] border-r border-gray-200 flex flex-col items-center py-8 text-gray-600" style={{ zIndex: 9999 }}>
         {/* La Doña logo */}
-        <div className="flex flex-col items-center mb-4">
+        <div className="flex flex-col items-center mb-8">
           <img 
             src={laDonaLogo} 
             alt="La Doña" 
             className="h-6 w-auto rounded-sm" 
           />
-          <span className="text-[7px] text-gray-400 mt-0.5 tracking-wide font-medium">BI</span>
+          <span className="text-[7px] text-gray-400 mt-1 tracking-wide font-medium">BI</span>
         </div>
 
         {/* Plus Button */}
-        <button className="w-8 h-8 rounded-md bg-white hover:bg-gray-50 flex items-center justify-center text-gray-500 hover:text-gray-700 transition-all duration-200 shadow-sm border border-gray-200 mb-4">
+        <button className="w-8 h-8 rounded-md bg-white hover:bg-gray-50 flex items-center justify-center text-gray-500 hover:text-gray-700 transition-all duration-200 shadow-sm border border-gray-200 mb-8">
           <Plus size={14} />
         </button>
 
         {/* BI Navigation Items */}
-        <div className="flex flex-col gap-y-3">
+        <div className="flex flex-col gap-y-6">
           <SidebarItem 
             icon={<BarChart4 size={16} />}
             label="Performance"
@@ -95,8 +95,8 @@ export function BiSidebar() {
         </div>
 
         {/* User badge at bottom */}
-        <div className="mt-auto flex flex-col items-center">
-          <div className="bg-gradient-to-br from-teal-500 to-cyan-500 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs mb-1">
+        <div className="mt-auto mb-4 flex flex-col items-center">
+          <div className="bg-gradient-to-br from-teal-500 to-cyan-500 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs mb-2">
             E
           </div>
           <span className="text-[8px] font-semibold text-blue-600 tracking-wide">PRO</span>
