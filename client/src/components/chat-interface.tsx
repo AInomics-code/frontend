@@ -132,10 +132,10 @@ export function ChatInterface() {
       </header>
 
       {/* Main Content - Centered Layout */}
-      <main className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6">
+      <main className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 space-y-6">
 
         {/* Vorta Logo */}
-        <div className="mb-6">
+        <div>
           <div className="vortex-icon animate-pulse mx-auto" style={{ width: '32px', height: '32px' }}>
             <div className="vortex-blade"></div>
             <div className="vortex-blade"></div>
@@ -147,7 +147,7 @@ export function ChatInterface() {
         </div>
 
         {/* Chat Input Area */}
-        <div className="flex items-center w-full max-w-2xl rounded-2xl border border-gray-200 shadow-sm px-4 py-2">
+        <div className="flex items-center w-full max-w-xl rounded-xl border border-gray-200 shadow-md px-5 py-3 bg-white">
           <input
             type="text"
             placeholder="Ask about KPIs or performance..."
@@ -159,7 +159,7 @@ export function ChatInterface() {
           <button 
             onClick={handleSendMessage}
             disabled={!inputValue.trim() || isProcessing}
-            className="ml-3 px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="ml-4 px-5 py-2 bg-red-500 text-white font-medium rounded-lg hover:bg-red-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isProcessing ? 'Processing...' : 'Ask'}
           </button>
