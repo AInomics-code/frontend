@@ -95,12 +95,9 @@ export default function Login() {
 
         {/* Enhanced Footer with Ainomics Logo */}
         <div className="flex items-center justify-center mt-6 space-x-2 text-xs text-gray-400">
-          <img
-            src="/assets/ainomics-logo.svg"
-            alt="Ainomics Logo"
-            className="w-4 h-4 opacity-80"
-            style={{ borderRadius: '0.25rem' }}
-          />
+          <div className="w-4 h-4 bg-gradient-to-br from-blue-400 to-blue-600 rounded-sm opacity-80 flex items-center justify-center">
+            <div className="w-2 h-2 bg-white rounded-full"></div>
+          </div>
           <span>
             Powered by <strong className="text-gray-500">Ainomics Inc</strong> · Vorta Strategic Platform
           </span>
