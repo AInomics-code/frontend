@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sidebar } from "./sidebar";
 import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
-import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin, ArrowRight, Search, Globe, Target, TrendingDown, Check, ArrowDown, Paperclip, MoreHorizontal, Copy, FileText, RotateCcw, Plus, BarChart, Brain, Info } from "lucide-react";
+import { Menu, TrendingUp, AlertTriangle, Star, Mic, Send, BarChart3, User, Phone, Package, MapPin, ArrowRight, Search, Globe, Target, TrendingDown, Check, ArrowDown, Paperclip, MoreHorizontal, Copy, FileText, RotateCcw, Plus, BarChart, Brain, Info, Home, BarChart2, Bell, Settings, LogOut } from "lucide-react";
 import vortexLogo from "@assets/Screenshot 2025-05-26 alle 13.53.01.png";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
@@ -97,7 +97,7 @@ export function ChatInterface() {
 
 
   return (
-    <div className="min-h-screen w-full bg-white">
+    <div className="min-h-screen bg-white flex">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
@@ -130,7 +130,6 @@ export function ChatInterface() {
           </div>
         </div>
       </header>
-
       {/* Chat Container - Centered Layout */}
       <main className="flex flex-col items-center pt-[10vh] pb-[5vh] bg-white">
 
@@ -145,7 +144,7 @@ export function ChatInterface() {
         </div>
 
         {/* Chat Input Container */}
-        <div className="flex items-center w-[640px] max-w-[90%] px-6 py-[14px] rounded-[40px] border border-gray-300 shadow-[0_8px_20px_rgba(0,0,0,0.05)] bg-white gap-3">
+        <div className="flex items-center w-[640px] max-w-[90%] px-6 py-[14px] rounded-[40px] border border-gray-300 shadow-[0_8px_20px_rgba(0,0,0,0.05)] bg-white gap-3 pt-[23px] pb-[23px]">
           
           {/* Text Input Field */}
           <input

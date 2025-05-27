@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Paperclip, Globe, Mic, Send, Copy, Expand, Pin, Bell } from "lucide-react";
+import { Paperclip, Globe, Mic, Send, Copy, Expand, Pin, Bell, Home, BarChart2, Settings, LogOut, User } from "lucide-react";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
 interface Message {
