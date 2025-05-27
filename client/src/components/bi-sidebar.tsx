@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BarChart4, ShieldAlert, TrendingUp, Plus } from "lucide-react";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
 
 type PanelType = 'performance' | 'risks' | 'opportunities' | null;
@@ -21,6 +22,24 @@ const insights = {
   ]
 };
 
+const SidebarItem = ({ icon, label, isActive, onClick, hoverColor }: {
+  icon: React.ReactNode;
+  label: string;
+  isActive: boolean;
+  onClick: () => void;
+  hoverColor: string;
+}) => (
+  <div 
+    className={`flex flex-col items-center space-y-1 cursor-pointer transition-colors py-2 ${
+      isActive ? `${hoverColor} bg-white shadow-sm rounded-lg px-3` : 'text-gray-600 hover:text-black'
+    }`}
+    onClick={onClick}
+  >
+    <div className="text-xl">{icon}</div>
+    <div className="text-[10px] tracking-wide uppercase font-medium">{label}</div>
+  </div>
+);
+
 export function BiSidebar() {
   const [activePanel, setActivePanel] = useState<PanelType>(null);
 
@@ -30,90 +49,52 @@ export function BiSidebar() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 h-screen w-20 bg-[#f5f5f5] border-r border-[#e0e0e0] flex flex-col items-center py-4" style={{ zIndex: 9999 }}>
+      <div className="fixed top-0 left-0 h-screen w-20 bg-[#F9FAFB] border-r border-gray-200 flex flex-col items-center py-6 space-y-6 text-gray-600" style={{ zIndex: 9999 }}>
         {/* La Doña logo */}
-        <div className="mb-6 p-2">
-          <img
-            src={laDonaLogo}
-            alt="La Doña"
-            className="h-12 w-auto object-contain rounded-lg"
+        <img 
+          src={laDonaLogo} 
+          alt="La Doña" 
+          className="h-8 w-auto mb-4 rounded-md" 
+        />
+
+        {/* Plus Button */}
+        <button className="w-10 h-10 rounded-lg bg-white hover:bg-gray-50 flex items-center justify-center text-gray-500 hover:text-gray-700 transition-all duration-200 shadow-sm border border-gray-200">
+          <Plus size={18} />
+        </button>
+
+        {/* BI Navigation Items */}
+        <div className="flex flex-col space-y-4">
+          <SidebarItem 
+            icon={<BarChart4 size={20} />}
+            label="Performance"
+            isActive={activePanel === 'performance'}
+            onClick={() => handlePanelClick('performance')}
+            hoverColor="text-green-600"
+          />
+          
+          <SidebarItem 
+            icon={<ShieldAlert size={20} />}
+            label="Risks"
+            isActive={activePanel === 'risks'}
+            onClick={() => handlePanelClick('risks')}
+            hoverColor="text-red-600"
+          />
+          
+          <SidebarItem 
+            icon={<TrendingUp size={20} />}
+            label="Opportunities"
+            isActive={activePanel === 'opportunities'}
+            onClick={() => handlePanelClick('opportunities')}
+            hoverColor="text-yellow-600"
           />
         </div>
 
-        {/* Plus Button */}
-        <div className="mb-8">
-          <button className="w-12 h-12 rounded-xl bg-white hover:bg-[#f0f0f0] flex items-center justify-center text-[#7a7a7a] transition-all duration-300 shadow-sm border border-[#e0e0e0]">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-            </svg>
-          </button>
-        </div>
-
-        {/* BI Navigation Items */}
-        <div className="flex flex-col space-y-6">
-          {/* Performance */}
-          <button 
-            className={`flex flex-col items-center justify-center transition-colors duration-300 mb-6 hover:bg-white rounded-xl p-3 hover:shadow-sm group relative ${
-              activePanel === 'performance' 
-                ? 'text-green-600 bg-white shadow-sm' 
-                : 'text-[#7a7a7a] hover:text-green-600'
-            }`}
-            onClick={() => handlePanelClick('performance')}
-          >
-            <div className="flex items-center justify-center mb-1">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-            </div>
-            <span className="text-xs">Performance</span>
-          </button>
-
-          {/* Risks & Issues */}
-          <button 
-            className={`flex flex-col items-center justify-center transition-colors duration-300 mb-6 hover:bg-white rounded-xl p-3 hover:shadow-sm group relative ${
-              activePanel === 'risks' 
-                ? 'text-red-600 bg-white shadow-sm' 
-                : 'text-[#7a7a7a] hover:text-red-600'
-            }`}
-            onClick={() => handlePanelClick('risks')}
-          >
-            <div className="flex items-center justify-center mb-1">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
-              </svg>
-            </div>
-            <span className="text-xs">Risks</span>
-          </button>
-
-          {/* Opportunities */}
-          <button 
-            className={`flex flex-col items-center justify-center transition-colors duration-300 mb-6 hover:bg-white rounded-xl p-3 hover:shadow-sm group relative ${
-              activePanel === 'opportunities' 
-                ? 'text-yellow-600 bg-white shadow-sm' 
-                : 'text-[#7a7a7a] hover:text-yellow-600'
-            }`}
-            onClick={() => handlePanelClick('opportunities')}
-          >
-            <div className="flex items-center justify-center mb-1">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <span className="text-xs">Opportunities</span>
-          </button>
-        </div>
-
         {/* User badge at bottom */}
-        <div className="mt-auto">
-          <div className="relative mb-4">
-            <div className="w-10 h-10 bg-gradient-to-r from-[#0aa2c0] to-[#0077a8] rounded-full flex items-center justify-center text-white font-bold text-sm">
-              E
-            </div>
-            <div className="absolute -bottom-1 -right-1 bg-blue-500 text-white text-xs px-1.5 py-0.5 rounded text-[10px] font-bold">
-              PRO
-            </div>
+        <div className="mt-auto flex flex-col items-center">
+          <div className="rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 w-10 h-10 flex items-center justify-center text-white font-bold text-sm mb-1">
+            E
           </div>
-          <div className="w-3 h-3 rounded-full bg-orange-500 mx-auto"></div>
+          <span className="text-[10px] font-semibold text-blue-600">PRO</span>
         </div>
       </div>
 
