@@ -30,13 +30,15 @@ const SidebarItem = ({ icon, label, isActive, onClick, hoverColor }: {
   hoverColor: string;
 }) => (
   <div 
-    className={`flex flex-col items-center space-y-1 cursor-pointer transition-colors py-2 ${
-      isActive ? `${hoverColor} bg-white shadow-sm rounded-lg px-3` : 'text-gray-600 hover:text-black'
+    className={`flex flex-col items-center gap-y-1 cursor-pointer transition-all duration-200 hover:bg-gray-100 rounded-md px-2 py-1 ${
+      isActive ? `${hoverColor} bg-white shadow-sm` : 'text-gray-600 hover:text-black'
     }`}
     onClick={onClick}
   >
     <div className="text-xl">{icon}</div>
-    <div className="text-[10px] tracking-wide uppercase font-medium">{label}</div>
+    <span className="uppercase text-[10px] tracking-wide font-medium text-gray-500 hover:text-gray-800 transition-colors">
+      {label}
+    </span>
   </div>
 );
 
@@ -49,13 +51,16 @@ export function BiSidebar() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 h-screen w-20 bg-[#F9FAFB] border-r border-gray-200 flex flex-col items-center py-6 space-y-6 text-gray-600" style={{ zIndex: 9999 }}>
+      <div className="fixed top-0 left-0 h-screen w-20 bg-[#F9FAFB] border-r border-gray-200 flex flex-col items-center py-6 gap-y-8 text-gray-600" style={{ zIndex: 9999 }}>
         {/* La Doña logo */}
-        <img 
-          src={laDonaLogo} 
-          alt="La Doña" 
-          className="h-8 w-auto mb-4 rounded-md" 
-        />
+        <div className="flex flex-col items-center">
+          <img 
+            src={laDonaLogo} 
+            alt="La Doña" 
+            className="h-8 w-auto rounded-md" 
+          />
+          <span className="text-[8px] text-gray-400 mt-1 tracking-widest font-medium">INTELLIGENCE</span>
+        </div>
 
         {/* Plus Button */}
         <button className="w-10 h-10 rounded-lg bg-white hover:bg-gray-50 flex items-center justify-center text-gray-500 hover:text-gray-700 transition-all duration-200 shadow-sm border border-gray-200">
@@ -63,7 +68,7 @@ export function BiSidebar() {
         </button>
 
         {/* BI Navigation Items */}
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col gap-y-6">
           <SidebarItem 
             icon={<BarChart4 size={20} />}
             label="Performance"
@@ -90,11 +95,11 @@ export function BiSidebar() {
         </div>
 
         {/* User badge at bottom */}
-        <div className="mt-auto flex flex-col items-center">
-          <div className="rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 w-10 h-10 flex items-center justify-center text-white font-bold text-sm mb-1">
+        <div className="mt-auto mb-2 flex flex-col items-center space-y-1">
+          <div className="bg-gradient-to-br from-teal-500 to-cyan-500 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
             E
           </div>
-          <span className="text-[10px] font-semibold text-blue-600">PRO</span>
+          <span className="text-[10px] font-semibold text-blue-600 tracking-widest">PRO</span>
         </div>
       </div>
 
