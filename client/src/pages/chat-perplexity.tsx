@@ -61,67 +61,81 @@ export default function Chat() {
   return (
     <div className="flex h-screen bg-white">
       
-      {/* Fixed Vertical Sidebar - Perplexity Pro Style */}
-      <aside className="fixed left-0 top-0 h-full w-20 bg-[#1E1E1E] border-r border-[#2C2C2C] flex flex-col items-center py-6 z-50">
+      {/* Fixed Vertical Sidebar - Perplexity Style */}
+      <aside className="fixed left-0 top-0 h-full w-[180px] bg-[#2a2a2a] border-r border-[#3a3a3a] flex flex-col py-6 z-50">
         
-        {/* Top Section - Branding + Navigation */}
-        <div className="flex flex-col items-center space-y-6">
-          {/* La Doña Logo */}
-          <div className="w-10 h-10 rounded-full overflow-hidden bg-white/10 flex items-center justify-center">
+        {/* Logo at Top */}
+        <div className="flex justify-center mb-8">
+          <div className="w-12 h-12 flex items-center justify-center">
             <img 
               src={laDonaLogo} 
-              className="w-8 h-8 object-cover rounded-full" 
+              className="w-10 h-10 object-contain filter brightness-0 invert" 
               alt="La Doña" 
             />
           </div>
-          
-          {/* Navigation Icons */}
-          <div className="flex flex-col space-y-4">
-            <button 
-              className="w-10 h-10 rounded-md bg-transparent hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200"
-              title="Search"
-            >
-              <Search className="w-5 h-5" />
-            </button>
-            
-            <button 
-              className="w-10 h-10 rounded-md bg-transparent hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200"
-              title="Discover"
-            >
-              <Compass className="w-5 h-5" />
-            </button>
-            
-            <button 
-              className="w-10 h-10 rounded-md bg-transparent hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200"
-              title="Reports"
-            >
-              <BarChart2 className="w-5 h-5" />
-            </button>
-          </div>
         </div>
 
-        {/* Bottom Section - User/Utility */}
+        {/* Plus Button */}
+        <div className="flex justify-center mb-12">
+          <button className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-200">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+          </button>
+        </div>
+        
+        {/* Navigation Items */}
+        <div className="flex flex-col space-y-6 px-4">
+          {/* Home */}
+          <button className="flex flex-col items-center space-y-2 text-gray-400 hover:text-white transition-colors group">
+            <div className="w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-white/10 transition-all">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+            </div>
+            <span className="text-xs">Home</span>
+          </button>
+
+          {/* Scopri */}
+          <button className="flex flex-col items-center space-y-2 text-gray-400 hover:text-white transition-colors group">
+            <div className="w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-white/10 transition-all">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9" />
+              </svg>
+            </div>
+            <span className="text-xs">Scopri</span>
+          </button>
+
+          {/* Spazi */}
+          <button className="flex flex-col items-center space-y-2 text-gray-400 hover:text-white transition-colors group">
+            <div className="w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-white/10 transition-all">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            </div>
+            <span className="text-xs">Spazi</span>
+          </button>
+        </div>
+
+        {/* Bottom Section - User */}
         <div className="mt-auto flex flex-col items-center space-y-4">
-          {/* User Badge */}
-          <div className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-semibold text-sm">
-            C
+          {/* User Badge with PRO indicator */}
+          <div className="relative">
+            <div className="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center text-white font-semibold text-lg">
+              E
+            </div>
+            <div className="absolute -bottom-1 -right-1 bg-blue-500 text-white text-xs px-1.5 py-0.5 rounded text-[10px] font-bold">
+              PRO
+            </div>
           </div>
           
-          {/* Dropdown Icon */}
-          <button 
-            className="w-8 h-8 rounded-md bg-transparent hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200"
-            title="Settings"
-          >
-            <ChevronDown className="w-4 h-4" />
-          </button>
-          
-          {/* Version/Status */}
-          <div className="w-2 h-2 rounded-full bg-green-400"></div>
+          {/* Status Indicator */}
+          <div className="w-3 h-3 rounded-full bg-orange-500"></div>
         </div>
       </aside>
 
       {/* Main Content with Left Margin */}
-      <div className="flex-1 ml-20">
+      <div className="flex-1 ml-[180px]">
         <main className="flex flex-col items-center justify-center p-10 min-h-screen">
           
           {/* Vorta Logo */}
