@@ -74,7 +74,7 @@ const RadialProgress = ({ percentage = 71 }: { percentage?: number }) => (
   </div>
 );
 
-// KPI Block component
+// Enhanced KPI Block component
 const KPIBlock = ({ title, stat, icon, chart, color = "text-gray-600" }: {
   title: string;
   stat: string;
@@ -82,13 +82,13 @@ const KPIBlock = ({ title, stat, icon, chart, color = "text-gray-600" }: {
   chart?: React.ReactNode;
   color?: string;
 }) => (
-  <div className="bg-white border border-gray-100 rounded-lg p-3 shadow-sm hover:shadow-md transition">
-    <div className="flex items-center justify-between text-sm text-gray-600 mb-1">
-      <div className={`flex items-center gap-2 ${color}`}>
-        {icon} 
-        <span className="font-medium">{title}</span>
+  <div className="rounded-xl bg-white/90 hover:shadow-md transition-all border border-gray-100 p-4 hover:shadow-[0_0_0_4px_rgba(0,0,0,0.02)]">
+    <div className="flex items-center justify-between text-sm font-medium mb-3">
+      <div className={`flex items-center gap-2 text-gray-600`}>
+        {icon}
+        <span>{title}</span>
       </div>
-      <span className="font-semibold text-gray-800">{stat}</span>
+      <div className={`text-right font-semibold ${color}`}>{stat}</div>
     </div>
     {chart && <div className="mt-2">{chart}</div>}
   </div>
@@ -177,18 +177,15 @@ export function BiSidebar() {
 
       {/* Enhanced Dashboard Panels */}
       {activePanel === 'performance' && (
-        <div className="fixed left-24 top-24 w-[460px] h-[360px] bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-200 p-6 flex flex-col justify-between space-y-4 z-50">
+        <div className="fixed left-24 top-24 w-[460px] h-[360px] backdrop-blur-md bg-white/70 border border-gray-200/50 shadow-xl rounded-3xl p-6 sm:p-8 flex flex-col z-50">
           {/* Header */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3 text-lg font-semibold text-gray-800">
-              <span className="h-3 w-3 bg-green-500 rounded-full animate-pulse" />
-              Performance Metrics
-            </div>
-            <button className="text-xs text-gray-500 hover:underline">View Full Report</button>
-          </div>
+          <h2 className="text-xl font-semibold text-gray-800 tracking-tight flex items-center gap-2 mb-6">
+            <span className="h-2 w-2 bg-green-500 rounded-full animate-pulse" />
+            Performance
+          </h2>
 
-          {/* KPI Cards */}
-          <div className="grid grid-cols-2 gap-4">
+          {/* KPI Cards Grid */}
+          <div className="grid grid-cols-2 gap-4 mt-4 flex-1">
             <KPIBlock 
               title="Sales vs Budget" 
               stat="84%" 
@@ -219,30 +216,27 @@ export function BiSidebar() {
           </div>
 
           {/* AI Insight */}
-          <p className="text-xs text-gray-500 italic bg-gray-50 p-3 rounded-lg">
+          <p className="mt-4 italic text-sm text-gray-500 border-t pt-4">
             "Sales are trending 6% above the chain-wide budget pace. Aderezo continues outperforming across 3 regions."
           </p>
 
-          {/* Bottom Action */}
-          <button className="w-full bg-red-500 text-white text-sm rounded-xl py-2 hover:bg-red-600 transition">
-            Ask insights about performance
+          {/* Ask Button */}
+          <button className="w-full text-white font-medium bg-gradient-to-r from-rose-500 to-rose-400 hover:from-rose-600 transition rounded-xl py-2.5 text-sm shadow-lg mt-4">
+            Ask about these metrics
           </button>
         </div>
       )}
 
       {activePanel === 'risks' && (
-        <div className="fixed left-24 top-24 w-[460px] h-[360px] bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-200 p-6 flex flex-col justify-between space-y-4 z-50">
+        <div className="fixed left-24 top-24 w-[460px] h-[360px] backdrop-blur-md bg-white/70 border border-gray-200/50 shadow-xl rounded-3xl p-6 sm:p-8 flex flex-col z-50">
           {/* Header */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3 text-lg font-semibold text-gray-800">
-              <span className="h-3 w-3 bg-red-500 rounded-full animate-pulse" />
-              Risk Analysis
-            </div>
-            <button className="text-xs text-gray-500 hover:underline">View All Alerts</button>
-          </div>
+          <h2 className="text-xl font-semibold text-gray-800 tracking-tight flex items-center gap-2 mb-6">
+            <span className="h-2 w-2 bg-red-500 rounded-full animate-pulse" />
+            Risk Analysis
+          </h2>
 
-          {/* KPI Cards */}
-          <div className="grid grid-cols-2 gap-4">
+          {/* KPI Cards Grid */}
+          <div className="grid grid-cols-2 gap-4 mt-4 flex-1">
             <KPIBlock 
               title="Backorders" 
               stat="12 items" 
@@ -273,30 +267,27 @@ export function BiSidebar() {
           </div>
 
           {/* AI Insight */}
-          <p className="text-xs text-gray-500 italic bg-red-50 p-3 rounded-lg">
+          <p className="mt-4 italic text-sm text-gray-500 border-t pt-4">
             "Critical: 3 high-demand SKUs running low. Recommend immediate reorder for Zona Norte locations."
           </p>
 
-          {/* Bottom Action */}
-          <button className="w-full bg-red-500 text-white text-sm rounded-xl py-2 hover:bg-red-600 transition">
+          {/* Ask Button */}
+          <button className="w-full text-white font-medium bg-gradient-to-r from-rose-500 to-rose-400 hover:from-rose-600 transition rounded-xl py-2.5 text-sm shadow-lg mt-4">
             Ask about risk mitigation
           </button>
         </div>
       )}
 
       {activePanel === 'opportunities' && (
-        <div className="fixed left-24 top-24 w-[460px] h-[360px] bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-200 p-6 flex flex-col justify-between space-y-4 z-50">
+        <div className="fixed left-24 top-24 w-[460px] h-[360px] backdrop-blur-md bg-white/70 border border-gray-200/50 shadow-xl rounded-3xl p-6 sm:p-8 flex flex-col z-50">
           {/* Header */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3 text-lg font-semibold text-gray-800">
-              <span className="h-3 w-3 bg-yellow-500 rounded-full animate-pulse" />
-              Growth Opportunities
-            </div>
-            <button className="text-xs text-gray-500 hover:underline">Strategy Report</button>
-          </div>
+          <h2 className="text-xl font-semibold text-gray-800 tracking-tight flex items-center gap-2 mb-6">
+            <span className="h-2 w-2 bg-yellow-500 rounded-full animate-pulse" />
+            Growth Opportunities
+          </h2>
 
-          {/* KPI Cards */}
-          <div className="grid grid-cols-2 gap-4">
+          {/* KPI Cards Grid */}
+          <div className="grid grid-cols-2 gap-4 mt-4 flex-1">
             <KPIBlock 
               title="Promo ROI" 
               stat="340%" 
@@ -327,12 +318,12 @@ export function BiSidebar() {
           </div>
 
           {/* AI Insight */}
-          <p className="text-xs text-gray-500 italic bg-yellow-50 p-3 rounded-lg">
+          <p className="mt-4 italic text-sm text-gray-500 border-t pt-4">
             "Scanner/Tonga promotions showing exceptional ROI. Recommend expanding to similar demographics."
           </p>
 
-          {/* Bottom Action */}
-          <button className="w-full bg-red-500 text-white text-sm rounded-xl py-2 hover:bg-red-600 transition">
+          {/* Ask Button */}
+          <button className="w-full text-white font-medium bg-gradient-to-r from-rose-500 to-rose-400 hover:from-rose-600 transition rounded-xl py-2.5 text-sm shadow-lg mt-4">
             Explore growth strategies
           </button>
         </div>
