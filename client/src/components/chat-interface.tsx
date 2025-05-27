@@ -97,7 +97,7 @@ export function ChatInterface() {
 
 
   return (
-    <div className="min-h-screen w-full bg-[#F9F9F6]">
+    <div className="min-h-screen w-full bg-white">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
