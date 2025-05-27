@@ -6,7 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import Dashboard from "@/pages/dashboard";
 import Login from "@/pages/login";
-import Chat from "@/pages/chat-clean";
+import Chat from "@/pages/chat-perplexity";
 import NotFound from "@/pages/not-found";
 
 function Router() {
