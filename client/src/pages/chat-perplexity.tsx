@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { Paperclip, Globe, Mic, Search, Compass, BarChart2, ChevronDown } from "lucide-react";
+import { Paperclip, Globe, Mic, Search, Compass, BarChart2, ChevronDown, Target, TrendingUp } from "lucide-react";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
-import { KPIDashboard } from "@/components/kpi-dashboard";
 
 interface Message {
   id: string;
@@ -136,24 +135,64 @@ export default function Chat() {
       </aside>
 
       {/* Main Content with Left Margin */}
-      <div className="flex-1 ml-[180px]">
-        <main className="flex flex-col items-center justify-center p-10 min-h-screen">
-          
-          {/* Vorta Logo and KPI Dashboard */}
+      <div className="flex-1 ml-[180px] flex flex-col">
+        {/* Top KPI Dashboard - Always Visible */}
+        <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
+          <h3 className="text-sm font-medium text-gray-600 mb-4">Most Relevant Insights</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Sales Performance Card */}
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                  <BarChart2 size={16} className="text-green-600" />
+                </div>
+                <h4 className="text-sm font-medium text-gray-800">Sales vs Target</h4>
+              </div>
+              <p className="text-2xl font-bold text-gray-900 mb-1">82%</p>
+              <p className="text-xs text-gray-500">Aderezo outperforming +6% above budget</p>
+            </div>
+
+            {/* Risk Alert Card */}
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                  <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 18.5c-.77.833.192 2.5 1.732 2.5z" />
+                  </svg>
+                </div>
+                <h4 className="text-sm font-medium text-gray-800">Critical Backorders</h4>
+              </div>
+              <p className="text-2xl font-bold text-gray-900 mb-1">28 orders</p>
+              <p className="text-xs text-gray-500">Zona Norte needs immediate reorder</p>
+            </div>
+
+            {/* Opportunity Card */}
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
+                  <svg className="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                </div>
+                <h4 className="text-sm font-medium text-gray-800">Growth Opportunity</h4>
+              </div>
+              <p className="text-2xl font-bold text-gray-900 mb-1">+26% ROI</p>
+              <p className="text-xs text-gray-500">Scanner/Tonga campaigns surge this quarter</p>
+            </div>
+          </div>
+        </div>
+
+        <main className="flex flex-col items-center justify-center p-10 flex-1">
+          {/* Vorta Logo */}
           {messages.length === 0 && !isTyping && (
-            <>
-              <div className="vortex-icon animate-pulse mb-8" style={{ width: '32px', height: '32px' }}>
-                <div className="vortex-blade"></div>
-                <div className="vortex-blade"></div>
-                <div className="vortex-blade"></div>
-                <div className="vortex-blade"></div>
-                <div className="vortex-blade"></div>
-                <div className="vortex-blade"></div>
-              </div>
-              <div className="w-full max-w-6xl mb-8">
-                <KPIDashboard />
-              </div>
-            </>
+            <div className="vortex-icon animate-pulse mb-4" style={{ width: '32px', height: '32px' }}>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+            </div>
           )}
 
           {/* Messages Area */}
