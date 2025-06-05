@@ -199,14 +199,14 @@
 
 .vortex-blade {
   position: absolute;
-  width: calc(var(--vortex-size, 48px) * 0.167); /* 8px for 48px base */
+  width: calc(var(--vortex-size, 48px) * 0.125); /* 6px for 48px base */
   height: calc(var(--vortex-size, 48px) * 0.375); /* 18px for 48px base */
   background: #D71920;
   border-radius: 80% 20% 70% 30%;
-  transform-origin: calc(var(--vortex-size, 48px) * 0.083) calc(var(--vortex-size, 48px) * 0.458);
+  transform-origin: calc(var(--vortex-size, 48px) * 0.0625) calc(var(--vortex-size, 48px) * 0.458);
   top: 50%;
   left: 50%;
-  margin-left: calc(var(--vortex-size, 48px) * -0.083);
+  margin-left: calc(var(--vortex-size, 48px) * -0.0625);
   margin-top: calc(var(--vortex-size, 48px) * -0.458);
 }
 
