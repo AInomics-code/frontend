@@ -80,7 +80,7 @@ export default function Chat() {
           >
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Performance Score</h4>
               </div>
               <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
@@ -117,7 +117,7 @@ export default function Chat() {
           >
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 bg-orange-500 rotate-45 rounded-sm"></div>
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                 <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Zones at Risk</h4>
               </div>
               <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
@@ -154,7 +154,7 @@ export default function Chat() {
           >
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 bg-blue-500 rounded-sm"></div>
+                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                 <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Product Opportunity</h4>
               </div>
               <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
