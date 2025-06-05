@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Paperclip, Globe, Mic, Search, Compass, BarChart2, ChevronDown } from "lucide-react";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
+import { KPIDashboard } from "@/components/kpi-dashboard";
 
 interface Message {
   id: string;
@@ -138,16 +139,21 @@ export default function Chat() {
       <div className="flex-1 ml-[180px]">
         <main className="flex flex-col items-center justify-center p-10 min-h-screen">
           
-          {/* Vorta Logo */}
+          {/* Vorta Logo and KPI Dashboard */}
           {messages.length === 0 && !isTyping && (
-            <div className="vortex-icon animate-pulse mb-4" style={{ width: '32px', height: '32px' }}>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-            </div>
+            <>
+              <div className="vortex-icon animate-pulse mb-8" style={{ width: '32px', height: '32px' }}>
+                <div className="vortex-blade"></div>
+                <div className="vortex-blade"></div>
+                <div className="vortex-blade"></div>
+                <div className="vortex-blade"></div>
+                <div className="vortex-blade"></div>
+                <div className="vortex-blade"></div>
+              </div>
+              <div className="w-full max-w-6xl mb-8">
+                <KPIDashboard />
+              </div>
+            </>
           )}
 
           {/* Messages Area */}
