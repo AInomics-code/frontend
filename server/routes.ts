@@ -4,6 +4,8 @@ import { storage } from "./storage";
 import { insertConversationSchema, insertMessageSchema } from "@shared/schema";
 import { z } from "zod";
 import OpenAI from "openai";
+import { buildBusinessContext } from "./business-context";
+import { getBusinessInsights, generateDailyBriefing, analyzeRegion, analyzeProduct, analyzeClient } from "./ai-functions";
 
 // Initialize OpenAI client only when API key is available
 const getOpenAIClient = () => {
@@ -123,6 +125,9 @@ You are fluent in both Spanish and English. ALWAYS respond in the same language 
 
 Your primary role is to be PROACTIVE in helping users drive business success by identifying insights, recommending specific actions, and anticipating business needs using COMPREHENSIVE CONTEXT from multiple data sources.
 
+COMPLETE BUSINESS CONTEXT - Use ALL of this data to provide comprehensive responses:
+${JSON.stringify(buildBusinessContext(), null, 2)}
+
 CONTEXT INTEGRATION GUIDELINES:
 1. ALWAYS cross-reference multiple data sources when answering:
    - Internal La Doña data (sales, inventory, production)
@@ -194,6 +199,87 @@ Always lead with the most urgent issues requiring attention, followed by medium 
       } else {
         res.status(500).json({ message: "Failed to create message" });
       }
+    }
+  });
+
+  // Business Intelligence API routes
+  app.get("/api/business-context", async (req, res) => {
+    try {
+      const context = buildBusinessContext();
+      res.json(context);
+    } catch (error) {
+      console.error("Error getting business context:", error);
+      res.status(500).json({ error: "Failed to get business context" });
+    }
+  });
+
+  app.post("/api/insights", async (req, res) => {
+    try {
+      const { question } = req.body;
+      if (!question) {
+        return res.status(400).json({ error: "Question is required" });
+      }
+      
+      const insights = await getBusinessInsights(question);
+      res.json({ insights });
+    } catch (error) {
+      console.error("Error generating insights:", error);
+      res.status(500).json({ error: "Failed to generate insights" });
+    }
+  });
+
+  app.get("/api/daily-briefing", async (req, res) => {
+    try {
+      const briefing = await generateDailyBriefing();
+      res.json({ briefing });
+    } catch (error) {
+      console.error("Error generating daily briefing:", error);
+      res.status(500).json({ error: "Failed to generate daily briefing" });
+    }
+  });
+
+  app.post("/api/analyze-region", async (req, res) => {
+    try {
+      const { regionName } = req.body;
+      if (!regionName) {
+        return res.status(400).json({ error: "Region name is required" });
+      }
+      
+      const analysis = await analyzeRegion(regionName);
+      res.json({ analysis });
+    } catch (error) {
+      console.error("Error analyzing region:", error);
+      res.status(500).json({ error: "Failed to analyze region" });
+    }
+  });
+
+  app.post("/api/analyze-product", async (req, res) => {
+    try {
+      const { productName } = req.body;
+      if (!productName) {
+        return res.status(400).json({ error: "Product name is required" });
+      }
+      
+      const analysis = await analyzeProduct(productName);
+      res.json({ analysis });
+    } catch (error) {
+      console.error("Error analyzing product:", error);
+      res.status(500).json({ error: "Failed to analyze product" });
+    }
+  });
+
+  app.post("/api/analyze-client", async (req, res) => {
+    try {
+      const { clientName } = req.body;
+      if (!clientName) {
+        return res.status(400).json({ error: "Client name is required" });
+      }
+      
+      const analysis = await analyzeClient(clientName);
+      res.json({ analysis });
+    } catch (error) {
+      console.error("Error analyzing client:", error);
+      res.status(500).json({ error: "Failed to analyze client" });
     }
   });
 
