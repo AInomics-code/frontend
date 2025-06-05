@@ -162,7 +162,7 @@ export default function Chat() {
             
             {expandedCard !== 'opportunities' ? (
               <>
-                <p className="text-lg font-semibold text-green-700">↑ Vinagre Premium</p>
+                <p className="text-lg font-semibold text-gray-900">↑ Vinagre Premium</p>
                 <p className="text-xs text-gray-500">High potential • Low performer: Mango Salsa</p>
                 <p className="text-xs text-gray-400 mt-2 italic">Click to view details</p>
               </>
