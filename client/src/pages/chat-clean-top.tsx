@@ -162,23 +162,23 @@ export default function Chat() {
             
             {expandedCard !== 'opportunities' ? (
               <>
-                <p className="text-lg font-semibold text-gray-900">Aderezo Premium</p>
-                <p className="text-xs text-gray-500">+18% lift • Low: Mango Salsa</p>
+                <p className="text-lg font-semibold text-green-700">↑ Vinagre Premium</p>
+                <p className="text-xs text-gray-500">High potential • Low performer: Mango Salsa</p>
                 <p className="text-xs text-gray-400 mt-2 italic">Click to view details</p>
               </>
             ) : (
               <div className="mt-2 text-sm text-gray-700 space-y-2">
-                <div className="bg-blue-50 p-2 rounded-lg border-l-2 border-blue-200">
-                  <p><strong>High ROI Product:</strong> Aderezo Premium (+26% lift potential)</p>
-                  <p className="text-xs text-gray-500">Strong demand in premium market segment</p>
+                <div className="bg-green-50 p-3 rounded-lg border-l-4 border-green-400">
+                  <p className="font-semibold text-green-800">↗ HIGH POTENTIAL: Vinagre Premium</p>
+                  <p className="text-sm text-gray-700 mt-1">+47% demand growth in past 3 months</p>
+                  <p className="text-xs text-gray-600">Trending in Chiriquí, David, and Santiago regions</p>
+                  <p className="text-xs text-green-700 font-medium mt-1">Action: Increase inventory by 35%</p>
                 </div>
-                <div className="bg-green-50 p-2 rounded-lg border-l-2 border-green-200">
-                  <p><strong>Inactive Clients:</strong> 17 accounts ready for re-engagement</p>
-                  <p className="text-xs text-gray-500">Average order value: $8,400 per reactivated client</p>
-                </div>
-                <div className="bg-purple-50 p-2 rounded-lg border-l-2 border-purple-200">
-                  <p><strong>Sales Team:</strong> 3 reps under quota need coaching</p>
-                  <p className="text-xs text-gray-500">Opportunity to reach 105% target with support</p>
+                <div className="bg-red-50 p-3 rounded-lg border-l-4 border-red-400">
+                  <p className="font-semibold text-red-800">↘ POOR PERFORMER: Mango Salsa Verde</p>
+                  <p className="text-sm text-gray-700 mt-1">-23% sales decline, 18% return rate</p>
+                  <p className="text-xs text-gray-600">High production cost vs low market acceptance</p>
+                  <p className="text-xs text-red-700 font-medium mt-1">Action: Discontinue or reformulate</p>
                 </div>
               </div>
             )}
