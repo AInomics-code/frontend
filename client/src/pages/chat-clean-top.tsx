@@ -257,8 +257,8 @@ export default function Chat() {
           )}
 
           {/* Chat Input */}
-          <div className="w-full max-w-3xl">
-            <div className="relative flex items-center bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-gray-300 transition-all duration-200 focus-within:shadow-md focus-within:border-gray-500 focus-within:ring-1 focus-within:ring-gray-200">
+          <div className="w-full max-w-4xl">
+            <div className="relative flex items-center bg-white border border-gray-200 rounded-2xl shadow-lg hover:border-gray-300 transition-all duration-200 focus-within:shadow-xl focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-200">
               {/* Input field */}
               <input
                 type="text"
@@ -266,44 +266,44 @@ export default function Chat() {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask anything…"
-                className="flex-1 bg-transparent border-none outline-none px-5 py-3.5 text-gray-800 placeholder-gray-400 text-base"
+                className="flex-1 bg-transparent border-none outline-none px-6 py-5 text-gray-800 placeholder-gray-400 text-lg"
               />
 
               {/* Action buttons */}
-              <div className="flex items-center gap-1 pr-3">
+              <div className="flex items-center gap-2 pr-4">
                 {/* Attachment button */}
                 <button 
-                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150"
+                  className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150"
                   title="Attach file"
                 >
-                  <Paperclip size={18} strokeWidth={1.5} />
+                  <Paperclip size={20} strokeWidth={1.5} />
                 </button>
 
                 {/* Voice button */}
                 <button
                   onClick={toggleVoice}
                   title="Use voice"
-                  className={`p-2 transition-all duration-200 ${
+                  className={`p-3 transition-all duration-200 ${
                     isVoiceActive
                       ? 'text-red-500 bg-red-50 rounded-lg'
                       : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg'
                   }`}
                 >
-                  <Mic size={18} strokeWidth={1.5} />
+                  <Mic size={20} strokeWidth={1.5} />
                 </button>
 
                 {/* Send arrow button */}
                 <button
                   onClick={handleSendMessage}
                   title="Send message"
-                  className={`p-2 transition-all duration-200 ${
+                  className={`p-3 transition-all duration-200 ${
                     inputValue.trim()
                       ? 'text-white bg-red-500 hover:bg-red-600 rounded-lg shadow-sm hover:shadow-md'
                       : 'text-gray-300 bg-gray-100 rounded-lg cursor-not-allowed'
                   }`}
                   disabled={!inputValue.trim()}
                 >
-                  <ArrowUp size={18} strokeWidth={1.5} />
+                  <ArrowUp size={20} strokeWidth={1.5} />
                 </button>
               </div>
             </div>
