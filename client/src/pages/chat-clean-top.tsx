@@ -72,45 +72,69 @@ export default function Chat() {
           <div className="bg-white rounded-xl shadow-sm p-5 w-full max-w-sm">
             <div className="flex items-center gap-2 mb-3">
               <div className="p-2 rounded-full bg-green-100">
-                <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 10l6 6L18 4" />
                 </svg>
               </div>
               <h4 className="text-sm font-semibold text-green-700">Performance</h4>
             </div>
-            <h3 className="text-sm text-gray-600">Top-Selling SKU (This Week)</h3>
-            <p className="text-2xl font-bold text-gray-900 mt-1">SKU 183 – Bananas</p>
-            <p className="text-sm text-gray-500 mt-1">Leading in 4 regions this week</p>
+            <ul className="text-sm text-gray-800 space-y-2">
+              <li>
+                <strong>Sales vs Target:</strong> 82% of monthly goal achieved
+              </li>
+              <li>
+                <strong>Top-Selling SKU:</strong> SKU 183 – Bananas (leading in 4 regions)
+              </li>
+              <li>
+                <strong>Client Goal Progress:</strong> Chiriquí +8% above target
+              </li>
+            </ul>
           </div>
 
           {/* Risk Card */}
           <div className="bg-white rounded-xl shadow-sm p-5 w-full max-w-sm">
             <div className="flex items-center gap-2 mb-3">
               <div className="p-2 rounded-full bg-red-100">
-                <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 18.5c-.77.833.192 2.5 1.732 2.5z" />
+                <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM8.9 4h2.2l-.3 6H9.2L8.9 4zm1.1 8a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/>
                 </svg>
               </div>
               <h4 className="text-sm font-semibold text-red-700">Risks</h4>
             </div>
-            <h3 className="text-sm text-gray-600">Out-of-Stock Products (by Store)</h3>
-            <p className="text-2xl font-bold text-gray-900 mt-1">14 urgent items</p>
-            <p className="text-sm text-gray-500 mt-1">Top priority for high-selling stores</p>
+            <ul className="text-sm text-gray-800 space-y-2">
+              <li>
+                <strong>Backorders Today:</strong> 28 total – most in Super Xtra
+              </li>
+              <li>
+                <strong>Out-of-Stock Products:</strong> 14 urgent items across key stores
+              </li>
+              <li>
+                <strong>Overdue Clients:</strong> $24,300 unpaid (120+ days)
+              </li>
+            </ul>
           </div>
 
           {/* Opportunity Card */}
           <div className="bg-white rounded-xl shadow-sm p-5 w-full max-w-sm">
             <div className="flex items-center gap-2 mb-3">
               <div className="p-2 rounded-full bg-yellow-100">
-                <svg className="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                <svg className="w-4 h-4 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 12h2V9H9v3zm1-8a8 8 0 100 16 8 8 0 000-16z" />
                 </svg>
               </div>
               <h4 className="text-sm font-semibold text-yellow-700">Opportunities</h4>
             </div>
-            <h3 className="text-sm text-gray-600">Inactive Clients (30+ Days)</h3>
-            <p className="text-2xl font-bold text-gray-900 mt-1">17 accounts</p>
-            <p className="text-sm text-gray-500 mt-1">Ready for reactivation campaigns</p>
+            <ul className="text-sm text-gray-800 space-y-2">
+              <li>
+                <strong>Promo ROI:</strong> +26% from Scanner/Tonga campaigns
+              </li>
+              <li>
+                <strong>Inactive Clients:</strong> 17 accounts dormant 30+ days
+              </li>
+              <li>
+                <strong>Rep Underperformance:</strong> 3 reps below quota
+              </li>
+            </ul>
           </div>
 
         </div>
