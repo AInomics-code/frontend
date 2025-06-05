@@ -134,8 +134,8 @@ export default function Chat() {
         </div>
       </aside>
 
-      {/* Main Content with Left Margin */}
-      <div className="flex-1 ml-[180px] flex flex-col">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col">
         {/* Top KPI Dashboard - Always Visible */}
         <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
           <h3 className="text-sm font-medium text-gray-600 mb-4">Most Relevant Insights</h3>
