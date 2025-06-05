@@ -63,50 +63,39 @@ export default function Chat() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Top KPI Dashboard - Always Visible */}
-      <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
-        <h3 className="text-sm font-medium text-gray-600 mb-4">Most Relevant Insights</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Sales Performance Card */}
-          <div className="bg-white rounded-lg p-4 shadow-sm">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                <BarChart2 size={16} className="text-green-600" />
-              </div>
-              <h4 className="text-sm font-medium text-gray-800">Sales vs Target</h4>
-            </div>
-            <p className="text-2xl font-bold text-gray-900 mb-1">82%</p>
-            <p className="text-xs text-gray-500">Aderezo outperforming +6% above budget</p>
-          </div>
-
-          {/* Risk Alert Card */}
-          <div className="bg-white rounded-lg p-4 shadow-sm">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-                <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 18.5c-.77.833.192 2.5 1.732 2.5z" />
-                </svg>
-              </div>
-              <h4 className="text-sm font-medium text-gray-800">Critical Backorders</h4>
-            </div>
-            <p className="text-2xl font-bold text-gray-900 mb-1">28 orders</p>
-            <p className="text-xs text-gray-500">Zona Norte needs immediate reorder</p>
-          </div>
-
-          {/* Opportunity Card */}
-          <div className="bg-white rounded-lg p-4 shadow-sm">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
-                <svg className="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-              </div>
-              <h4 className="text-sm font-medium text-gray-800">Growth Opportunity</h4>
-            </div>
-            <p className="text-2xl font-bold text-gray-900 mb-1">+26% ROI</p>
-            <p className="text-xs text-gray-500">Scanner/Tonga campaigns surge this quarter</p>
+      {/* Top KPI Dashboard - Category-Based Layout */}
+      <div className="bg-gray-50 border-b border-gray-200 px-6 py-6 space-y-6">
+        
+        {/* 🟢 PERFORMANCE */}
+        <div>
+          <h2 className="text-sm font-semibold text-green-600 mb-2">Performance</h2>
+          <div className="bg-white rounded-xl shadow-md p-4">
+            <h4 className="text-sm text-gray-600 font-medium mb-1">Top-Selling SKU (This Week)</h4>
+            <p className="text-lg font-semibold text-gray-800">SKU 183 – Bananas</p>
+            <p className="text-xs text-gray-500">Leading in 4 regions this week</p>
           </div>
         </div>
+
+        {/* 🔴 RISKS */}
+        <div>
+          <h2 className="text-sm font-semibold text-red-600 mb-2">Risks</h2>
+          <div className="bg-white rounded-xl shadow-md p-4">
+            <h4 className="text-sm text-gray-600 font-medium mb-1">Out-of-Stock Products (by Store)</h4>
+            <p className="text-lg font-semibold text-gray-800">14 urgent items</p>
+            <p className="text-xs text-gray-500">Top priority for high-selling stores</p>
+          </div>
+        </div>
+
+        {/* 🟡 OPPORTUNITIES */}
+        <div>
+          <h2 className="text-sm font-semibold text-yellow-500 mb-2">Opportunities</h2>
+          <div className="bg-white rounded-xl shadow-md p-4">
+            <h4 className="text-sm text-gray-600 font-medium mb-1">Inactive Clients (30+ Days)</h4>
+            <p className="text-lg font-semibold text-gray-800">17 accounts</p>
+            <p className="text-xs text-gray-500">Ready for reactivation campaigns</p>
+          </div>
+        </div>
+
       </div>
 
       {/* Main Chat Interface */}
