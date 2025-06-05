@@ -279,23 +279,31 @@ export default function Chat() {
                   <Paperclip size={18} strokeWidth={1.5} />
                 </button>
 
-                {/* Voice/Search button */}
+                {/* Voice button */}
                 <button
-                  onClick={inputValue.trim() ? handleSendMessage : toggleVoice}
-                  title={inputValue.trim() ? "Send message" : "Use voice"}
+                  onClick={toggleVoice}
+                  title="Use voice"
                   className={`p-2 transition-all duration-200 ${
-                    inputValue.trim()
-                      ? 'text-white bg-red-500 hover:bg-red-600 rounded-lg shadow-sm hover:shadow-md'
-                      : isVoiceActive
+                    isVoiceActive
                       ? 'text-red-500 bg-red-50 rounded-lg'
                       : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg'
                   }`}
                 >
-                  {inputValue.trim() ? (
-                    <ArrowUp size={18} strokeWidth={1.5} />
-                  ) : (
-                    <Mic size={18} strokeWidth={1.5} />
-                  )}
+                  <Mic size={18} strokeWidth={1.5} />
+                </button>
+
+                {/* Send arrow button */}
+                <button
+                  onClick={handleSendMessage}
+                  title="Send message"
+                  className={`p-2 transition-all duration-200 ${
+                    inputValue.trim()
+                      ? 'text-white bg-red-500 hover:bg-red-600 rounded-lg shadow-sm hover:shadow-md'
+                      : 'text-gray-300 bg-gray-100 rounded-lg cursor-not-allowed'
+                  }`}
+                  disabled={!inputValue.trim()}
+                >
+                  <ArrowUp size={18} strokeWidth={1.5} />
                 </button>
               </div>
             </div>
