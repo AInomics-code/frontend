@@ -121,16 +121,10 @@ export default function Chat() {
                 <p className="text-xs text-gray-400 mt-2 italic">Click to view details</p>
               </>
             ) : (
-              <div className="mt-2 text-sm text-gray-700 space-y-2">
-                <div className="bg-red-50 p-2 rounded-lg border-l-2 border-red-200">
-                  <p><strong>Backorders:</strong> 28 total (Super Xtra: 12, El Rey: 8)</p>
-                </div>
-                <div className="bg-orange-50 p-2 rounded-lg border-l-2 border-orange-200">
-                  <p><strong>Out-of-Stock:</strong> 14 urgent items</p>
-                </div>
-                <div className="bg-yellow-50 p-2 rounded-lg border-l-2 border-yellow-200">
-                  <p><strong>Overdue:</strong> $24,300 unpaid (120+ days)</p>
-                </div>
+              <div className="mt-2 text-sm text-gray-700 space-y-1">
+                <p><strong>Backorders:</strong> 28 total</p>
+                <p><strong>Out-of-Stock:</strong> 14 urgent items</p>
+                <p><strong>Overdue:</strong> $24,300 (120+ days)</p>
               </div>
             )}
           </div>
@@ -138,7 +132,7 @@ export default function Chat() {
           {/* Opportunity Card */}
           <div 
             onClick={() => toggleCard('opportunities')}
-            className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 w-full max-w-xs min-h-[130px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
+            className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-3 w-full max-w-xs min-h-[100px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
           >
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
@@ -155,18 +149,9 @@ export default function Chat() {
                 <p className="text-xs text-gray-400 mt-2 italic">Click to view details</p>
               </>
             ) : (
-              <div className="mt-4 space-y-5 text-sm">
-                <div className="space-y-2">
-                  <p className="font-medium text-gray-900">Vinagre Premium</p>
-                  <p className="text-gray-600 leading-relaxed"><span className="font-medium text-green-600">+47% demand growth</span> in past 3 months across Chiriquí, David, and Santiago</p>
-                  <p className="text-xs text-green-700 font-medium">Suggested: Increase stock</p>
-                </div>
-                <div className="h-px bg-gray-100 my-4"></div>
-                <div className="space-y-2">
-                  <p className="font-medium text-gray-900">Mango Salsa Verde</p>
-                  <p className="text-gray-600 leading-relaxed"><span className="font-medium text-red-600">-23% sales decline</span> with <span className="font-medium text-red-600">18% return rate</span>, high production costs</p>
-                  <p className="text-xs text-red-700 font-medium">Suggested: Cut back or rework</p>
-                </div>
+              <div className="mt-2 text-sm text-gray-700 space-y-1">
+                <p><strong>High potential:</strong> <span className="text-green-600">Vinagre Premium +47%</span></p>
+                <p><strong>Poor performer:</strong> <span className="text-red-600">Mango Salsa -23%</span></p>
               </div>
             )}
           </div>
@@ -174,8 +159,8 @@ export default function Chat() {
         </div>
       </div>
       {/* Main Chat Interface */}
-      <div className="flex flex-col h-[calc(100vh-200px)]">
-        <main className="flex flex-col items-center justify-center p-10 flex-1">
+      <div className="flex flex-col h-[calc(100vh-160px)]">
+        <main className="flex flex-col items-center justify-center p-8 flex-1">
           {/* Vorta Logo */}
           {messages.length === 0 && !isTyping && (
             <div className="vortex-icon mb-4" style={{ width: '48px', height: '48px', animation: 'vortex-slow-rotate 20s linear infinite' }}>
