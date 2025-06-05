@@ -301,10 +301,10 @@ export default function Chat() {
       </div>
       {/* Main Chat Interface */}
       <div className="flex flex-col h-[calc(100vh-160px)]">
-        <main className="flex flex-col items-center p-8 flex-1 relative">
+        <main className="flex flex-col items-center p-8 flex-1 relative pt-16">
           {/* Vorta Logo */}
           {messages.length === 0 && !isTyping && (
-            <div className="vortex-icon mb-4" style={{ width: '48px', height: '48px', animation: 'vortex-slow-rotate 20s linear infinite' }}>
+            <div className="vortex-icon mb-6 mt-8" style={{ width: '48px', height: '48px', animation: 'vortex-slow-rotate 20s linear infinite' }}>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
@@ -385,13 +385,13 @@ export default function Chat() {
 
           {/* Welcome Text */}
           {messages.length === 0 && !isTyping && (
-            <div className="text-center mb-12">
-              <p className="text-gray-500 text-base mb-8">Ask anything. Optimize everything.</p>
+            <div className="text-center mb-16">
+              <p className="text-gray-500 text-base mb-12">Ask anything. Optimize everything.</p>
             </div>
           )}
 
           {/* Chat Input Container */}
-          <div className="w-full max-w-4xl px-4 sticky bottom-0 bg-gray-50 pb-4">
+          <div className="w-full max-w-4xl px-4 sticky bottom-0 bg-gray-50 pb-6 pt-4">
             <div className="bg-white rounded-3xl shadow-sm border border-gray-200/60 p-2">
               <div className="relative flex items-center bg-white rounded-2xl hover:bg-gray-50/50 transition-all duration-200 focus-within:bg-white">
                 {/* Input field */}
