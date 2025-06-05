@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Paperclip, Globe, Mic, Search, BarChart2 } from "lucide-react";
+import { Paperclip, Globe, Mic, Search, BarChart2, ChevronDown, ChevronUp } from "lucide-react";
 
 interface Message {
   id: string;
@@ -13,6 +13,7 @@ export default function Chat() {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [isVoiceActive, setIsVoiceActive] = useState(false);
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -61,6 +62,10 @@ export default function Chat() {
     setIsVoiceActive(!isVoiceActive);
   };
 
+  const toggleCard = (cardId: string) => {
+    setExpandedCard(expandedCard === cardId ? null : cardId);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Top KPI Dashboard - Elegant Layout */}
@@ -69,72 +74,129 @@ export default function Chat() {
         <div className="flex flex-col md:flex-row gap-4">
           
           {/* Performance Card */}
-          <div className="bg-white rounded-xl shadow-sm p-5 w-full max-w-sm">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="p-2 rounded-full bg-green-100">
-                <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2 10l6 6L18 4" />
-                </svg>
+          <div 
+            onClick={() => toggleCard('performance')}
+            className="bg-white rounded-xl shadow-sm p-4 w-full max-w-sm cursor-pointer transition-all duration-300 hover:shadow-md"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <div className="p-2 rounded-full bg-green-100">
+                  <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 10l6 6L18 4" />
+                  </svg>
+                </div>
+                <h4 className="text-sm font-semibold text-green-700">Performance</h4>
               </div>
-              <h4 className="text-sm font-semibold text-green-700">Performance</h4>
+              {expandedCard === 'performance' ? (
+                <ChevronUp size={16} className="text-gray-400" />
+              ) : (
+                <ChevronDown size={16} className="text-gray-400" />
+              )}
             </div>
-            <ul className="text-sm text-gray-800 space-y-2">
-              <li>
+
+            {expandedCard !== 'performance' ? (
+              <p className="text-sm text-gray-800">
                 <strong>Sales vs Target:</strong> 82% of monthly goal achieved
-              </li>
-              <li>
-                <strong>Top-Selling SKU:</strong> SKU 183 – Bananas (leading in 4 regions)
-              </li>
-              <li>
-                <strong>Client Goal Progress:</strong> Chiriquí +8% above target
-              </li>
-            </ul>
+              </p>
+            ) : (
+              <div className="overflow-hidden transition-all duration-300">
+                <ul className="text-sm text-gray-800 space-y-2 mt-2">
+                  <li>
+                    <strong>Sales vs Target:</strong> 82% of monthly goal achieved
+                  </li>
+                  <li>
+                    <strong>Top-Selling SKU:</strong> SKU 183 – Bananas (leading in 4 regions)
+                  </li>
+                  <li>
+                    <strong>Client Goal Progress:</strong> Chiriquí +8% above target
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
 
           {/* Risk Card */}
-          <div className="bg-white rounded-xl shadow-sm p-5 w-full max-w-sm">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="p-2 rounded-full bg-red-100">
-                <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM8.9 4h2.2l-.3 6H9.2L8.9 4zm1.1 8a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/>
-                </svg>
+          <div 
+            onClick={() => toggleCard('risks')}
+            className="bg-white rounded-xl shadow-sm p-4 w-full max-w-sm cursor-pointer transition-all duration-300 hover:shadow-md"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <div className="p-2 rounded-full bg-red-100">
+                  <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM8.9 4h2.2l-.3 6H9.2L8.9 4zm1.1 8a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/>
+                  </svg>
+                </div>
+                <h4 className="text-sm font-semibold text-red-700">Risks</h4>
               </div>
-              <h4 className="text-sm font-semibold text-red-700">Risks</h4>
+              {expandedCard === 'risks' ? (
+                <ChevronUp size={16} className="text-gray-400" />
+              ) : (
+                <ChevronDown size={16} className="text-gray-400" />
+              )}
             </div>
-            <ul className="text-sm text-gray-800 space-y-2">
-              <li>
+
+            {expandedCard !== 'risks' ? (
+              <p className="text-sm text-gray-800">
                 <strong>Backorders Today:</strong> 28 total – most in Super Xtra
-              </li>
-              <li>
-                <strong>Out-of-Stock Products:</strong> 14 urgent items across key stores
-              </li>
-              <li>
-                <strong>Overdue Clients:</strong> $24,300 unpaid (120+ days)
-              </li>
-            </ul>
+              </p>
+            ) : (
+              <div className="overflow-hidden transition-all duration-300">
+                <ul className="text-sm text-gray-800 space-y-2 mt-2">
+                  <li>
+                    <strong>Backorders Today:</strong> 28 total – most in Super Xtra
+                  </li>
+                  <li>
+                    <strong>Out-of-Stock Products:</strong> 14 urgent items across key stores
+                  </li>
+                  <li>
+                    <strong>Overdue Clients:</strong> $24,300 unpaid (120+ days)
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
 
           {/* Opportunity Card */}
-          <div className="bg-white rounded-xl shadow-sm p-5 w-full max-w-sm">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="p-2 rounded-full bg-yellow-100">
-                <svg className="w-4 h-4 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 12h2V9H9v3zm1-8a8 8 0 100 16 8 8 0 000-16z" />
-                </svg>
+          <div 
+            onClick={() => toggleCard('opportunities')}
+            className="bg-white rounded-xl shadow-sm p-4 w-full max-w-sm cursor-pointer transition-all duration-300 hover:shadow-md"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <div className="p-2 rounded-full bg-yellow-100">
+                  <svg className="w-4 h-4 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12h2V9H9v3zm1-8a8 8 0 100 16 8 8 0 000-16z" />
+                  </svg>
+                </div>
+                <h4 className="text-sm font-semibold text-yellow-700">Opportunities</h4>
               </div>
-              <h4 className="text-sm font-semibold text-yellow-700">Opportunities</h4>
+              {expandedCard === 'opportunities' ? (
+                <ChevronUp size={16} className="text-gray-400" />
+              ) : (
+                <ChevronDown size={16} className="text-gray-400" />
+              )}
             </div>
-            <ul className="text-sm text-gray-800 space-y-2">
-              <li>
+
+            {expandedCard !== 'opportunities' ? (
+              <p className="text-sm text-gray-800">
                 <strong>Promo ROI:</strong> +26% from Scanner/Tonga campaigns
-              </li>
-              <li>
-                <strong>Inactive Clients:</strong> 17 accounts dormant 30+ days
-              </li>
-              <li>
-                <strong>Rep Underperformance:</strong> 3 reps below quota
-              </li>
-            </ul>
+              </p>
+            ) : (
+              <div className="overflow-hidden transition-all duration-300">
+                <ul className="text-sm text-gray-800 space-y-2 mt-2">
+                  <li>
+                    <strong>Promo ROI:</strong> +26% from Scanner/Tonga campaigns
+                  </li>
+                  <li>
+                    <strong>Inactive Clients:</strong> 17 accounts dormant 30+ days
+                  </li>
+                  <li>
+                    <strong>Rep Underperformance:</strong> 3 reps below quota
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
 
         </div>
