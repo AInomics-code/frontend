@@ -192,7 +192,7 @@ export default function Chat() {
       </div>
       {/* Main Chat Interface */}
       <div className="flex flex-col h-[calc(100vh-160px)]">
-        <main className="flex flex-col items-center justify-center p-8 flex-1">
+        <main className="flex flex-col items-center p-8 flex-1 relative">
           {/* Vorta Logo */}
           {messages.length === 0 && !isTyping && (
             <div className="vortex-icon mb-4" style={{ width: '48px', height: '48px', animation: 'vortex-slow-rotate 20s linear infinite' }}>
@@ -207,44 +207,48 @@ export default function Chat() {
 
           {/* Messages Area */}
           {messages.length > 0 && (
-            <div className="mb-8 space-y-6 max-h-[60vh] overflow-y-auto w-full max-w-3xl">
-              {messages.map((message) => (
-                <div key={message.id} className="animate-[fadeIn_0.3s_ease-out]">
-                  {message.isUser ? (
-                    <div className="text-xl text-gray-800 font-medium mb-4">
-                      {message.content}
-                    </div>
-                  ) : (
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-500">
-                        <div className="vortex-icon active" style={{ width: '14px', height: '14px' }}>
-                          <div className="vortex-blade"></div>
-                          <div className="vortex-blade"></div>
-                          <div className="vortex-blade"></div>
-                          <div className="vortex-blade"></div>
-                          <div className="vortex-blade"></div>
-                          <div className="vortex-blade"></div>
+            <div className="flex-1 w-full max-w-4xl overflow-y-auto mb-6 px-4">
+              <div className="space-y-6">
+                {messages.map((message) => (
+                  <div key={message.id} className="animate-[fadeIn_0.3s_ease-out]">
+                    {message.isUser ? (
+                      <div className="flex justify-end">
+                        <div className="bg-gray-900 text-white rounded-3xl px-6 py-4 max-w-[85%] text-lg">
+                          {message.content}
                         </div>
-                        <span>La Doña AI</span>
                       </div>
-                      <div 
-                        className="text-gray-800 leading-relaxed prose prose-gray max-w-none"
-                        dangerouslySetInnerHTML={{ 
-                          __html: message.content
-                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                            .replace(/🔎 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-blue-700 font-semibold">🔎 $1</div>')
-                            .replace(/✅ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-green-700 font-semibold">✅ $1</div>')
-                            .replace(/📊 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-purple-700 font-semibold">📊 $1</div>')
-                            .replace(/⚖️ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-orange-700 font-semibold">⚖️ $1</div>')
-                            .replace(/- 🔸 \*\*(.*?)\*\*/g, '<div class="ml-4 mb-1">• <strong>$1</strong>')
-                            .replace(/\n\n/g, '</p><p>')
-                            .replace(/\n/g, '<br>')
-                        }}
-                      />
-                    </div>
-                  )}
-                </div>
-              ))}
+                    ) : (
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-2 text-sm text-gray-500">
+                          <div className="vortex-icon active" style={{ width: '14px', height: '14px' }}>
+                            <div className="vortex-blade"></div>
+                            <div className="vortex-blade"></div>
+                            <div className="vortex-blade"></div>
+                            <div className="vortex-blade"></div>
+                            <div className="vortex-blade"></div>
+                            <div className="vortex-blade"></div>
+                          </div>
+                          <span>La Doña AI</span>
+                        </div>
+                        <div 
+                          className="text-gray-800 leading-relaxed prose prose-gray max-w-none [&>*]:mb-3 [&>*:last-child]:mb-0"
+                          dangerouslySetInnerHTML={{ 
+                            __html: message.content
+                              .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                              .replace(/🔎 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-blue-700 font-semibold">🔎 $1</div>')
+                              .replace(/✅ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-green-700 font-semibold">✅ $1</div>')
+                              .replace(/📊 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-purple-700 font-semibold">📊 $1</div>')
+                              .replace(/⚖️ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-orange-700 font-semibold">⚖️ $1</div>')
+                              .replace(/- 🔸 \*\*(.*?)\*\*/g, '<div class="ml-4 mb-1">• <strong>$1</strong>')
+                              .replace(/\n\n/g, '</p><p>')
+                              .replace(/\n/g, '<br>')
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
@@ -278,7 +282,7 @@ export default function Chat() {
           )}
 
           {/* Chat Input Container */}
-          <div className="w-full max-w-4xl px-4">
+          <div className="w-full max-w-4xl px-4 sticky bottom-0 bg-gray-50 pb-4">
             <div className="bg-white rounded-3xl shadow-sm border border-gray-200/60 p-2">
               <div className="relative flex items-center bg-white rounded-2xl hover:bg-gray-50/50 transition-all duration-200 focus-within:bg-white">
                 {/* Input field */}
