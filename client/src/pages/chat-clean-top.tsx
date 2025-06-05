@@ -67,7 +67,7 @@ export default function Chat() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       {/* Top KPI Dashboard - Elegant Layout */}
       <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
         <h3 className="text-sm font-medium text-gray-600 mb-4">Most Relevant Insights</h3>
@@ -234,51 +234,53 @@ export default function Chat() {
             </div>
           )}
 
-          {/* Chat Input */}
-          <div className="w-full max-w-4xl">
-            <div className="relative flex items-center bg-white border border-gray-200 rounded-2xl hover:border-gray-300 transition-all duration-200 focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-200">
-              {/* Input field */}
-              <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Ask anything…"
-                className="flex-1 bg-transparent border-none outline-none px-6 py-5 text-gray-800 placeholder-gray-400 text-lg"
-              />
+          {/* Chat Input Container */}
+          <div className="w-full max-w-4xl px-4">
+            <div className="bg-white rounded-3xl shadow-sm border border-gray-200/60 p-2">
+              <div className="relative flex items-center bg-white rounded-2xl hover:bg-gray-50/50 transition-all duration-200 focus-within:bg-white">
+                {/* Input field */}
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Ask anything…"
+                  className="flex-1 bg-transparent border-none outline-none px-6 py-5 text-gray-800 placeholder-gray-400 text-lg"
+                />
 
-              {/* Action buttons */}
-              <div className="flex items-center gap-2 pr-4">
-                {/* Attachment button */}
-                <button 
-                  className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150 pl-[0px] pr-[0px]"
-                  title="Attach file"
-                >
-                  <Paperclip size={20} strokeWidth={1.5} />
-                </button>
+                {/* Action buttons */}
+                <div className="flex items-center gap-2 pr-4">
+                  {/* Attachment button */}
+                  <button 
+                    className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150 pl-[0px] pr-[0px]"
+                    title="Attach file"
+                  >
+                    <Paperclip size={20} strokeWidth={1.5} />
+                  </button>
 
-                {/* Voice button */}
-                <button
-                  onClick={toggleVoice}
-                  title="Use voice"
-                  className="p-3 transition-all duration-200 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg pl-[9px] pr-[9px]"
-                >
-                  <Mic size={20} strokeWidth={1.5} />
-                </button>
+                  {/* Voice button */}
+                  <button
+                    onClick={toggleVoice}
+                    title="Use voice"
+                    className="p-3 transition-all duration-200 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg pl-[9px] pr-[9px]"
+                  >
+                    <Mic size={20} strokeWidth={1.5} />
+                  </button>
 
-                {/* Send arrow button */}
-                <button
-                  onClick={handleSendMessage}
-                  title="Send message"
-                  className={`p-3 transition-all duration-200 ${
-                    inputValue.trim()
-                      ? 'text-white bg-red-500 hover:bg-red-600 rounded-lg shadow-sm hover:shadow-md'
-                      : 'text-gray-300 bg-gray-100 rounded-lg cursor-not-allowed'
-                  }`}
-                  disabled={!inputValue.trim()}
-                >
-                  <ArrowUp size={20} strokeWidth={1.5} />
-                </button>
+                  {/* Send arrow button */}
+                  <button
+                    onClick={handleSendMessage}
+                    title="Send message"
+                    className={`p-3 transition-all duration-200 ${
+                      inputValue.trim()
+                        ? 'text-white bg-red-500 hover:bg-red-600 rounded-lg shadow-sm hover:shadow-md'
+                        : 'text-gray-300 bg-gray-100 rounded-lg cursor-not-allowed'
+                    }`}
+                    disabled={!inputValue.trim()}
+                  >
+                    <ArrowUp size={20} strokeWidth={1.5} />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
