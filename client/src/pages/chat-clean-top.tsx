@@ -250,8 +250,8 @@ export default function Chat() {
 
           {/* Welcome Text */}
           {messages.length === 0 && !isTyping && (
-            <div className="text-center mb-8">
-              <p className="text-gray-500 text-sm mb-6">Ask anything. Optimize everything.</p>
+            <div className="text-center mb-12">
+              <p className="text-gray-500 text-lg mb-8">Ask anything. Optimize everything.</p>
             </div>
           )}
 
