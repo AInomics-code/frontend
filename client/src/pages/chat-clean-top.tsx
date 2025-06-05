@@ -78,21 +78,34 @@ export default function Chat() {
             onClick={() => toggleCard('performance')}
             className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 w-full max-w-xs min-h-[130px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
           >
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-              <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Performance Score</h4>
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Performance Score</h4>
+              </div>
+              <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
             </div>
             
             {expandedCard !== 'performance' ? (
               <>
                 <p className="text-3xl font-semibold text-gray-900">88</p>
                 <p className="text-xs text-gray-500 mt-1">82% of sales target met</p>
+                <p className="text-xs text-gray-400 mt-2 italic">Click to view details</p>
               </>
             ) : (
-              <div className="mt-2 text-sm text-gray-700 space-y-1">
-                <p><strong>Sales vs Target:</strong> 82%</p>
-                <p><strong>Top SKU:</strong> SKU 183 – Bananas</p>
-                <p><strong>Client Progress:</strong> Chiriquí +8%</p>
+              <div className="mt-2 text-sm text-gray-700 space-y-2">
+                <div className="bg-gray-50 p-2 rounded-lg">
+                  <p><strong>Sales vs Target:</strong> 82% (Goal: $450K, Current: $369K)</p>
+                  <p className="text-xs text-gray-500">Strong performance across most regions</p>
+                </div>
+                <div className="bg-gray-50 p-2 rounded-lg">
+                  <p><strong>Top SKU:</strong> SKU 183 – Bananas</p>
+                  <p className="text-xs text-gray-500">Leading in Chiriquí, Colón, David, Santiago</p>
+                </div>
+                <div className="bg-gray-50 p-2 rounded-lg">
+                  <p><strong>Client Progress:</strong> Chiriquí +8% above target</p>
+                  <p className="text-xs text-gray-500">Best performing region this month</p>
+                </div>
               </div>
             )}
           </div>
@@ -102,21 +115,34 @@ export default function Chat() {
             onClick={() => toggleCard('risks')}
             className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 w-full max-w-xs min-h-[130px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
           >
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-4 h-4 bg-orange-500 rotate-45 rounded-sm"></div>
-              <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Zones at Risk</h4>
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 bg-orange-500 rotate-45 rounded-sm"></div>
+                <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Zones at Risk</h4>
+              </div>
+              <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
             </div>
             
             {expandedCard !== 'risks' ? (
               <>
                 <p className="text-2xl font-semibold text-gray-900">3 Zones</p>
                 <p className="text-xs text-gray-500">Chiriquí, Colón, San Miguelito</p>
+                <p className="text-xs text-gray-400 mt-2 italic">Click to view details</p>
               </>
             ) : (
-              <div className="mt-2 text-sm text-gray-700 space-y-1">
-                <p><strong>Backorders:</strong> 28 total</p>
-                <p><strong>Out-of-Stock:</strong> 14 urgent items</p>
-                <p><strong>Overdue:</strong> $24,300 (120+ days)</p>
+              <div className="mt-2 text-sm text-gray-700 space-y-2">
+                <div className="bg-red-50 p-2 rounded-lg border-l-2 border-red-200">
+                  <p><strong>Backorders:</strong> 28 total (Super Xtra: 12, El Rey: 8, Riba Smith: 8)</p>
+                  <p className="text-xs text-gray-500">Priority: Vinegar and cooking oils</p>
+                </div>
+                <div className="bg-orange-50 p-2 rounded-lg border-l-2 border-orange-200">
+                  <p><strong>Out-of-Stock:</strong> 14 urgent items across key stores</p>
+                  <p className="text-xs text-gray-500">Most critical: Aderezo Premium, Salsa Verde</p>
+                </div>
+                <div className="bg-yellow-50 p-2 rounded-lg border-l-2 border-yellow-200">
+                  <p><strong>Overdue:</strong> $24,300 unpaid (120+ days)</p>
+                  <p className="text-xs text-gray-500">3 major clients requiring immediate attention</p>
+                </div>
               </div>
             )}
           </div>
@@ -126,21 +152,34 @@ export default function Chat() {
             onClick={() => toggleCard('opportunities')}
             className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 w-full max-w-xs min-h-[130px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
           >
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-4 h-4 bg-blue-500 rounded-sm"></div>
-              <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Product Opportunity</h4>
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 bg-blue-500 rounded-sm"></div>
+                <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Product Opportunity</h4>
+              </div>
+              <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
             </div>
             
             {expandedCard !== 'opportunities' ? (
               <>
                 <p className="text-lg font-semibold text-gray-900">Aderezo Premium</p>
                 <p className="text-xs text-gray-500">+18% lift • Low: Mango Salsa</p>
+                <p className="text-xs text-gray-400 mt-2 italic">Click to view details</p>
               </>
             ) : (
-              <div className="mt-2 text-sm text-gray-700 space-y-1">
-                <p><strong>High ROI:</strong> +26% lift</p>
-                <p><strong>Inactive Clients:</strong> 17 accounts</p>
-                <p><strong>Rep Performance:</strong> 3 under quota</p>
+              <div className="mt-2 text-sm text-gray-700 space-y-2">
+                <div className="bg-blue-50 p-2 rounded-lg border-l-2 border-blue-200">
+                  <p><strong>High ROI Product:</strong> Aderezo Premium (+26% lift potential)</p>
+                  <p className="text-xs text-gray-500">Strong demand in premium market segment</p>
+                </div>
+                <div className="bg-green-50 p-2 rounded-lg border-l-2 border-green-200">
+                  <p><strong>Inactive Clients:</strong> 17 accounts ready for re-engagement</p>
+                  <p className="text-xs text-gray-500">Average order value: $8,400 per reactivated client</p>
+                </div>
+                <div className="bg-purple-50 p-2 rounded-lg border-l-2 border-purple-200">
+                  <p><strong>Sales Team:</strong> 3 reps under quota need coaching</p>
+                  <p className="text-xs text-gray-500">Opportunity to reach 105% target with support</p>
+                </div>
               </div>
             )}
           </div>
