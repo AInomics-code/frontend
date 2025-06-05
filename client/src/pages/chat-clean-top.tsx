@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Paperclip, Globe, Mic, Search, BarChart2, ChevronDown, ChevronUp } from "lucide-react";
+import { Paperclip, Globe, Mic, Search, BarChart2, ChevronDown, ChevronUp, ArrowUp } from "lucide-react";
 
 interface Message {
   id: string;
@@ -292,7 +292,7 @@ export default function Chat() {
                   }`}
                 >
                   {inputValue.trim() ? (
-                    <Search size={18} strokeWidth={1.5} />
+                    <ArrowUp size={18} strokeWidth={1.5} />
                   ) : (
                     <Mic size={18} strokeWidth={1.5} />
                   )}
