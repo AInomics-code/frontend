@@ -79,7 +79,7 @@ export default function Chat() {
             className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 w-full max-w-xs min-h-[130px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
           >
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xl">📊</span>
+              <div className="w-4 h-4 bg-green-500 rounded-full"></div>
               <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Performance Score</h4>
             </div>
             
@@ -103,7 +103,7 @@ export default function Chat() {
             className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 w-full max-w-xs min-h-[130px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
           >
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xl">🔺</span>
+              <div className="w-4 h-4 bg-orange-500 rotate-45 rounded-sm"></div>
               <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Zones at Risk</h4>
             </div>
             
@@ -127,7 +127,7 @@ export default function Chat() {
             className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 w-full max-w-xs min-h-[130px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
           >
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xl">✨</span>
+              <div className="w-4 h-4 bg-blue-500 rounded-sm"></div>
               <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Product Opportunity</h4>
             </div>
             
