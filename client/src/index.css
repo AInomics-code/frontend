@@ -199,14 +199,14 @@
 
 .vortex-blade {
   position: absolute;
-  width: calc(var(--vortex-size, 48px) * 0.145); /* 7px for 48px base */
+  width: calc(var(--vortex-size, 48px) * 0.175); /* 8.5px for 48px base */
   height: calc(var(--vortex-size, 48px) * 0.375); /* 18px for 48px base */
   background: #D71920;
   border-radius: 85% 15% 85% 15%;
-  transform-origin: calc(var(--vortex-size, 48px) * 0.0725) calc(var(--vortex-size, 48px) * 0.458);
+  transform-origin: calc(var(--vortex-size, 48px) * 0.0875) calc(var(--vortex-size, 48px) * 0.458);
   top: 50%;
   left: 50%;
-  margin-left: calc(var(--vortex-size, 48px) * -0.0725);
+  margin-left: calc(var(--vortex-size, 48px) * -0.0875);
   margin-top: calc(var(--vortex-size, 48px) * -0.458);
 }
 
@@ -214,19 +214,16 @@
   transform: rotate(0deg);
 }
 .vortex-blade:nth-child(2) { 
-  transform: rotate(60deg);
+  transform: rotate(72deg);
 }
 .vortex-blade:nth-child(3) { 
-  transform: rotate(120deg);
+  transform: rotate(144deg);
 }
 .vortex-blade:nth-child(4) { 
-  transform: rotate(180deg);
+  transform: rotate(216deg);
 }
 .vortex-blade:nth-child(5) { 
-  transform: rotate(240deg);
-}
-.vortex-blade:nth-child(6) { 
-  transform: rotate(300deg);
+  transform: rotate(288deg);
 }
 
 /* Static state - no animation */

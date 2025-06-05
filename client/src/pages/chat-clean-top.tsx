@@ -310,7 +310,6 @@ export default function Chat() {
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
             </div>
           )}
 
@@ -329,8 +328,7 @@ export default function Chat() {
                     ) : (
                       <div className="space-y-3">
                         <div className="flex items-center gap-2 text-sm text-gray-500">
-                          <div className="vortex-icon active" style={{ width: '14px', height: '14px' }}>
-                            <div className="vortex-blade"></div>
+                          <div className="vortex-icon active" style={{ width: '14px', height: '14px', '--vortex-size': '14px' } as React.CSSProperties}>
                             <div className="vortex-blade"></div>
                             <div className="vortex-blade"></div>
                             <div className="vortex-blade"></div>
@@ -365,8 +363,7 @@ export default function Chat() {
           {isTyping && (
             <div className="mb-8 animate-[fadeIn_0.3s_ease-out]">
               <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                <div className="vortex-icon active" style={{ width: '14px', height: '14px' }}>
-                  <div className="vortex-blade"></div>
+                <div className="vortex-icon active" style={{ width: '14px', height: '14px', '--vortex-size': '14px' } as React.CSSProperties}>
                   <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
