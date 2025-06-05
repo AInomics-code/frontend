@@ -63,42 +63,54 @@ export default function Chat() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Top KPI Dashboard - Horizontal Layout */}
-      <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
+      {/* Top KPI Dashboard - Elegant Layout */}
+      <div className="bg-gray-50 border-b border-gray-200 px-6 py-6">
         <h3 className="text-sm font-medium text-gray-600 mb-4">Most Relevant Insights</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="flex flex-col md:flex-row gap-4">
           
           {/* Performance Card */}
-          <div className="bg-white rounded-lg p-4 shadow-sm">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-lg">📈</span>
-              <h4 className="text-sm font-medium text-green-600">Performance</h4>
+          <div className="bg-white rounded-xl shadow-sm p-5 w-full max-w-sm">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="p-2 rounded-full bg-green-100">
+                <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <h4 className="text-sm font-semibold text-green-700">Performance</h4>
             </div>
-            <h5 className="text-sm text-gray-600 font-medium mb-1">Top-Selling SKU (This Week)</h5>
-            <p className="text-lg font-semibold text-gray-800">SKU 183 – Bananas</p>
-            <p className="text-xs text-gray-500">Leading in 4 regions this week</p>
+            <h3 className="text-sm text-gray-600">Top-Selling SKU (This Week)</h3>
+            <p className="text-2xl font-bold text-gray-900 mt-1">SKU 183 – Bananas</p>
+            <p className="text-sm text-gray-500 mt-1">Leading in 4 regions this week</p>
           </div>
 
           {/* Risk Card */}
-          <div className="bg-white rounded-lg p-4 shadow-sm">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-lg">⚠️</span>
-              <h4 className="text-sm font-medium text-red-600">Risks</h4>
+          <div className="bg-white rounded-xl shadow-sm p-5 w-full max-w-sm">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="p-2 rounded-full bg-red-100">
+                <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 18.5c-.77.833.192 2.5 1.732 2.5z" />
+                </svg>
+              </div>
+              <h4 className="text-sm font-semibold text-red-700">Risks</h4>
             </div>
-            <h5 className="text-sm text-gray-600 font-medium mb-1">Out-of-Stock Products (by Store)</h5>
-            <p className="text-lg font-semibold text-gray-800">14 urgent items</p>
-            <p className="text-xs text-gray-500">Top priority for high-selling stores</p>
+            <h3 className="text-sm text-gray-600">Out-of-Stock Products (by Store)</h3>
+            <p className="text-2xl font-bold text-gray-900 mt-1">14 urgent items</p>
+            <p className="text-sm text-gray-500 mt-1">Top priority for high-selling stores</p>
           </div>
 
           {/* Opportunity Card */}
-          <div className="bg-white rounded-lg p-4 shadow-sm">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-lg">💡</span>
-              <h4 className="text-sm font-medium text-yellow-600">Opportunities</h4>
+          <div className="bg-white rounded-xl shadow-sm p-5 w-full max-w-sm">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="p-2 rounded-full bg-yellow-100">
+                <svg className="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h4 className="text-sm font-semibold text-yellow-700">Opportunities</h4>
             </div>
-            <h5 className="text-sm text-gray-600 font-medium mb-1">Inactive Clients (30+ Days)</h5>
-            <p className="text-lg font-semibold text-gray-800">17 accounts</p>
-            <p className="text-xs text-gray-500">Ready for reactivation campaigns</p>
+            <h3 className="text-sm text-gray-600">Inactive Clients (30+ Days)</h3>
+            <p className="text-2xl font-bold text-gray-900 mt-1">17 accounts</p>
+            <p className="text-sm text-gray-500 mt-1">Ready for reactivation campaigns</p>
           </div>
 
         </div>
