@@ -257,7 +257,7 @@ export default function Chat() {
 
           {/* Chat Input */}
           <div className="w-full max-w-4xl">
-            <div className="relative flex items-center bg-white border border-gray-200 rounded-2xl shadow-lg hover:border-gray-300 transition-all duration-200 focus-within:shadow-xl focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-200">
+            <div className="relative flex items-center bg-white border border-gray-200 rounded-2xl hover:border-gray-300 transition-all duration-200 focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-200">
               {/* Input field */}
               <input
                 type="text"
