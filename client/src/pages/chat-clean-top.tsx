@@ -170,14 +170,14 @@ export default function Chat() {
               <div className="mt-4 space-y-5 text-sm">
                 <div className="space-y-2">
                   <p className="font-medium text-gray-900">Vinagre Premium</p>
-                  <p className="text-gray-600 leading-relaxed">47% demand growth in past 3 months across Chiriquí, David, and Santiago</p>
-                  <p className="text-xs text-gray-500">Suggested: Increase stock</p>
+                  <p className="text-gray-600 leading-relaxed"><span className="font-medium text-green-600">+47% demand growth</span> in past 3 months across Chiriquí, David, and Santiago</p>
+                  <p className="text-xs text-green-700 font-medium">Suggested: Increase stock</p>
                 </div>
                 <div className="h-px bg-gray-100 my-4"></div>
                 <div className="space-y-2">
                   <p className="font-medium text-gray-900">Mango Salsa Verde</p>
-                  <p className="text-gray-600 leading-relaxed">23% sales decline with 18% return rate, high production costs</p>
-                  <p className="text-xs text-gray-500">Suggested: Cut back or rework</p>
+                  <p className="text-gray-600 leading-relaxed"><span className="font-medium text-red-600">-23% sales decline</span> with <span className="font-medium text-red-600">18% return rate</span>, high production costs</p>
+                  <p className="text-xs text-red-700 font-medium">Suggested: Cut back or rework</p>
                 </div>
               </div>
             )}
