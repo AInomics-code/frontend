@@ -258,39 +258,43 @@ export default function Chat() {
 
           {/* Chat Input */}
           <div className="w-full max-w-3xl">
-            <div className="relative flex items-center bg-white border border-gray-200 rounded-3xl shadow-sm hover:shadow-md transition-all duration-200 focus-within:shadow-lg focus-within:border-red-300">
+            <div className="relative flex items-center bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-gray-300 transition-all duration-200 focus-within:shadow-md focus-within:border-gray-500 focus-within:ring-1 focus-within:ring-gray-200">
               {/* Input field */}
               <input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Ask me anything about La Doña's performance..."
-                className="flex-1 bg-transparent border-none outline-none px-6 py-4 text-gray-800 placeholder-gray-400 text-base"
+                placeholder="Ask anything…"
+                className="flex-1 bg-transparent border-none outline-none px-5 py-3.5 text-gray-800 placeholder-gray-400 text-base"
               />
 
               {/* Action buttons */}
-              <div className="flex items-center gap-2 pr-4">
+              <div className="flex items-center gap-1 pr-3">
                 {/* Attachment button */}
-                <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors">
-                  <Paperclip size={20} />
+                <button 
+                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150"
+                  title="Attach file"
+                >
+                  <Paperclip size={18} strokeWidth={1.5} />
                 </button>
 
                 {/* Voice/Search button */}
                 <button
                   onClick={inputValue.trim() ? handleSendMessage : toggleVoice}
+                  title={inputValue.trim() ? "Send message" : "Use voice"}
                   className={`p-2 transition-all duration-200 ${
                     inputValue.trim()
-                      ? 'text-white bg-red-500 hover:bg-red-600 rounded-full shadow-lg hover:shadow-xl'
+                      ? 'text-white bg-gray-800 hover:bg-gray-900 rounded-lg shadow-sm hover:shadow-md'
                       : isVoiceActive
-                      ? 'text-red-500 bg-red-50 rounded-full'
-                      : 'text-gray-400 hover:text-gray-600'
+                      ? 'text-red-500 bg-red-50 rounded-lg'
+                      : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg'
                   }`}
                 >
                   {inputValue.trim() ? (
-                    <Search size={20} />
+                    <Search size={18} strokeWidth={1.5} />
                   ) : (
-                    <Mic size={20} />
+                    <Mic size={18} strokeWidth={1.5} />
                   )}
                 </button>
               </div>
