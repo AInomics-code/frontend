@@ -304,7 +304,7 @@ export default function Chat() {
         <main className="flex flex-col items-center p-8 flex-1 relative pt-16">
           {/* Vorta Logo */}
           {messages.length === 0 && !isTyping && (
-            <div className="vortex-icon mb-8 mt-12" style={{ width: '120px', height: '120px', animation: 'vortex-slow-rotate 20s linear infinite' }}>
+            <div className="vortex-icon mb-8 mt-12" style={{ width: '180px', height: '180px', animation: 'vortex-slow-rotate 20s linear infinite' }}>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
@@ -383,12 +383,7 @@ export default function Chat() {
             </div>
           )}
 
-          {/* Welcome Text */}
-          {messages.length === 0 && !isTyping && (
-            <div className="text-center mb-16">
-              <p className="text-gray-500 text-base mb-12">Ask anything. Optimize everything.</p>
-            </div>
-          )}
+
 
           {/* Chat Input Container */}
           <div className="w-full max-w-4xl px-4 sticky bottom-0 bg-gray-50 pb-6 pt-4">
