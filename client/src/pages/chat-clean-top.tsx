@@ -179,7 +179,6 @@ export default function Chat() {
 
         </div>
       </div>
-
       {/* Main Chat Interface */}
       <div className="flex flex-col h-[calc(100vh-200px)]">
         <main className="flex flex-col items-center justify-center p-10 flex-1">
@@ -273,7 +272,7 @@ export default function Chat() {
               <div className="flex items-center gap-2 pr-4">
                 {/* Attachment button */}
                 <button 
-                  className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150"
+                  className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150 pl-[0px] pr-[0px]"
                   title="Attach file"
                 >
                   <Paperclip size={20} strokeWidth={1.5} />
