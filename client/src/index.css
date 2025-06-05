@@ -191,8 +191,6 @@
 /* La Doña Vortex Icon */
 .vortex-icon {
   position: relative;
-  width: 48px;
-  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -201,16 +199,15 @@
 
 .vortex-blade {
   position: absolute;
-  width: 8px;
-  height: 18px;
+  width: calc(var(--vortex-size, 48px) * 0.167); /* 8px for 48px base */
+  height: calc(var(--vortex-size, 48px) * 0.375); /* 18px for 48px base */
   background: #D71920;
   border-radius: 50% 10% 50% 90%;
-  transform-origin: 4px 22px;
+  transform-origin: calc(var(--vortex-size, 48px) * 0.083) calc(var(--vortex-size, 48px) * 0.458);
   top: 50%;
   left: 50%;
-  margin-left: -4px;
-  margin-top: -22px;
-  clip-path: path('M 0 18 Q 8 12 8 6 Q 8 0 4 0 Q 0 0 0 6 Q 0 12 0 18 Z');
+  margin-left: calc(var(--vortex-size, 48px) * -0.083);
+  margin-top: calc(var(--vortex-size, 48px) * -0.458);
 }
 
 .vortex-blade:nth-child(1) { 
