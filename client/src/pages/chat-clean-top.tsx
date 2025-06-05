@@ -76,22 +76,27 @@ export default function Chat() {
           {/* Performance Card */}
           <div 
             onClick={() => toggleCard('performance')}
-            className="bg-white rounded-xl shadow-sm p-5 text-center w-full max-w-sm cursor-pointer transition-all duration-300 hover:shadow-md"
+            className="bg-white rounded-xl shadow-sm p-4 w-full max-w-xs min-h-[140px] cursor-pointer transition-all duration-300 hover:shadow-md"
           >
             {expandedCard !== 'performance' ? (
               <>
-                <h4 className="text-xs uppercase font-medium text-green-600 mb-2">Performance Score</h4>
-                <p className="text-4xl font-extrabold text-gray-900">88</p>
-                <p className="text-sm text-gray-500 mt-1">82% of sales target met</p>
-                <ChevronDown size={16} className="text-gray-400 mx-auto mt-2" />
+                <div className="flex items-center gap-2 mb-1">
+                  <span>✅</span>
+                  <h4 className="text-sm font-medium text-gray-700">Performance Score</h4>
+                </div>
+                <p className="text-xl font-bold text-gray-900">88</p>
+                <p className="text-xs text-gray-500">82% of sales target met</p>
               </>
             ) : (
               <div className="overflow-hidden transition-all duration-300">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-xs uppercase font-medium text-green-600">Performance Details</h4>
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <span>✅</span>
+                    <h4 className="text-sm font-medium text-gray-700">Performance Details</h4>
+                  </div>
                   <ChevronUp size={16} className="text-gray-400" />
                 </div>
-                <ul className="text-sm text-gray-800 space-y-2 text-left">
+                <ul className="text-sm text-gray-800 space-y-1">
                   <li>
                     <strong>Sales vs Target:</strong> 82% of monthly goal achieved
                   </li>
@@ -109,22 +114,27 @@ export default function Chat() {
           {/* Risk Card */}
           <div 
             onClick={() => toggleCard('risks')}
-            className="bg-white rounded-xl shadow-sm p-5 text-center w-full max-w-sm cursor-pointer transition-all duration-300 hover:shadow-md"
+            className="bg-white rounded-xl shadow-sm p-4 w-full max-w-xs min-h-[140px] cursor-pointer transition-all duration-300 hover:shadow-md"
           >
             {expandedCard !== 'risks' ? (
               <>
-                <h4 className="text-xs uppercase font-medium text-red-600 mb-2">Zones at Risk</h4>
-                <p className="text-3xl font-bold text-gray-900">3 Zones</p>
-                <p className="text-sm text-gray-500 mt-1">Chiriquí, Colón, San Miguelito</p>
-                <ChevronDown size={16} className="text-gray-400 mx-auto mt-2" />
+                <div className="flex items-center gap-2 mb-1">
+                  <span>⚠️</span>
+                  <h4 className="text-sm font-medium text-gray-700">Zones at Risk</h4>
+                </div>
+                <p className="text-xl font-bold text-gray-900">3 Zones</p>
+                <p className="text-xs text-gray-500">Chiriquí, Colón, San Miguelito</p>
               </>
             ) : (
               <div className="overflow-hidden transition-all duration-300">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-xs uppercase font-medium text-red-600">Risk Details</h4>
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <span>⚠️</span>
+                    <h4 className="text-sm font-medium text-gray-700">Risk Details</h4>
+                  </div>
                   <ChevronUp size={16} className="text-gray-400" />
                 </div>
-                <ul className="text-sm text-gray-800 space-y-2 text-left">
+                <ul className="text-sm text-gray-800 space-y-1">
                   <li>
                     <strong>Backorders Today:</strong> 28 total – most in Super Xtra
                   </li>
@@ -142,24 +152,27 @@ export default function Chat() {
           {/* Opportunity Card */}
           <div 
             onClick={() => toggleCard('opportunities')}
-            className="bg-white rounded-xl shadow-sm p-5 text-center w-full max-w-sm cursor-pointer transition-all duration-300 hover:shadow-md"
+            className="bg-white rounded-xl shadow-sm p-4 w-full max-w-xs min-h-[140px] cursor-pointer transition-all duration-300 hover:shadow-md"
           >
             {expandedCard !== 'opportunities' ? (
               <>
-                <h4 className="text-xs uppercase font-medium text-yellow-600 mb-2">Product Opportunity</h4>
-                <p className="text-lg font-bold text-gray-900">Aderezo Premium</p>
-                <p className="text-sm text-gray-500">+18% sales lift potential</p>
-                <hr className="my-2 border-gray-200" />
-                <p className="text-xs text-gray-500">Low Performer: Mango Salsa</p>
-                <ChevronDown size={16} className="text-gray-400 mx-auto mt-2" />
+                <div className="flex items-center gap-2 mb-1">
+                  <span>💡</span>
+                  <h4 className="text-sm font-medium text-gray-700">Product Opportunity</h4>
+                </div>
+                <p className="text-xl font-bold text-gray-900">Aderezo Premium</p>
+                <p className="text-xs text-gray-500">+18% sales lift • Low: Mango Salsa</p>
               </>
             ) : (
               <div className="overflow-hidden transition-all duration-300">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-xs uppercase font-medium text-yellow-600">Opportunity Details</h4>
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <span>💡</span>
+                    <h4 className="text-sm font-medium text-gray-700">Opportunity Details</h4>
+                  </div>
                   <ChevronUp size={16} className="text-gray-400" />
                 </div>
-                <ul className="text-sm text-gray-800 space-y-2 text-left">
+                <ul className="text-sm text-gray-800 space-y-1">
                   <li>
                     <strong>Promo ROI:</strong> +26% from Scanner/Tonga campaigns
                   </li>
