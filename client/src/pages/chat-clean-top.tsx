@@ -69,14 +69,14 @@ export default function Chat() {
   return (
     <div className="min-h-screen bg-white">
       {/* Top KPI Dashboard - Elegant Layout */}
-      <div className="bg-gray-50 border-b border-gray-200 px-6 py-6 pt-[11px] pb-[11px]">
+      <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
         <h3 className="text-sm font-medium text-gray-600 mb-4">Most Relevant Insights</h3>
         <div className="flex flex-col md:flex-row gap-4">
           
           {/* Performance Card */}
           <div 
             onClick={() => toggleCard('performance')}
-            className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 w-full max-w-xs min-h-[130px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
+            className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-3 w-full max-w-xs min-h-[100px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
           >
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
@@ -93,16 +93,10 @@ export default function Chat() {
                 <p className="text-xs text-gray-400 mt-2 italic">Click to view details</p>
               </>
             ) : (
-              <div className="mt-2 text-sm text-gray-700 space-y-2">
-                <div className="bg-gray-50 p-2 rounded-lg">
-                  <p><strong>Sales vs Target:</strong> 82% (Goal: $450K, Current: $369K)</p>
-                </div>
-                <div className="bg-gray-50 p-2 rounded-lg">
-                  <p><strong>Top SKU:</strong> SKU 183 – Bananas</p>
-                </div>
-                <div className="bg-gray-50 p-2 rounded-lg">
-                  <p><strong>Best Region:</strong> Chiriquí +8% above target</p>
-                </div>
+              <div className="mt-2 text-sm text-gray-700 space-y-1">
+                <p><strong>Sales:</strong> 82% of target ($369K/$450K)</p>
+                <p><strong>Top SKU:</strong> SKU 183 – Bananas</p>
+                <p><strong>Best Region:</strong> Chiriquí +8%</p>
               </div>
             )}
           </div>
@@ -110,7 +104,7 @@ export default function Chat() {
           {/* Risk Card */}
           <div 
             onClick={() => toggleCard('risks')}
-            className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 w-full max-w-xs min-h-[130px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
+            className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-3 w-full max-w-xs min-h-[100px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
           >
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">

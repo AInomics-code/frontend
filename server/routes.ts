@@ -5,10 +5,15 @@ import { insertConversationSchema, insertMessageSchema } from "@shared/schema";
 import { z } from "zod";
 import OpenAI from "openai";
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Initialize OpenAI client only when API key is available
+const getOpenAIClient = () => {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error("OpenAI API key not configured");
+  }
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+};
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Get all conversations
@@ -106,6 +111,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         try {
           // Call OpenAI API
+          const openai = getOpenAIClient();
           const completion = await openai.chat.completions.create({
             model: "gpt-4o", // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
             messages: [
