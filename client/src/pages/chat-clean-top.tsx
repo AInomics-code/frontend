@@ -282,11 +282,7 @@ export default function Chat() {
                 <button
                   onClick={toggleVoice}
                   title="Use voice"
-                  className={`p-3 transition-all duration-200 ${
-                    isVoiceActive
-                      ? 'text-red-500 bg-red-50 rounded-lg'
-                      : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg'
-                  }`}
+                  className="p-3 transition-all duration-200 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg pl-[9px] pr-[9px]"
                 >
                   <Mic size={20} strokeWidth={1.5} />
                 </button>
