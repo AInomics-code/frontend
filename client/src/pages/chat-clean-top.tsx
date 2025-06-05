@@ -69,7 +69,7 @@ export default function Chat() {
   return (
     <div className="min-h-screen bg-white">
       {/* Top KPI Dashboard - Elegant Layout */}
-      <div className="bg-gray-50 border-b border-gray-200 px-6 py-6">
+      <div className="bg-gray-50 border-b border-gray-200 px-6 py-6 pt-[11px] pb-[11px]">
         <h3 className="text-sm font-medium text-gray-600 mb-4">Most Relevant Insights</h3>
         <div className="flex flex-col md:flex-row gap-4">
           

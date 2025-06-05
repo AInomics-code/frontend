@@ -3,6 +3,12 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertConversationSchema, insertMessageSchema } from "@shared/schema";
 import { z } from "zod";
+import OpenAI from "openai";
+
+// Initialize OpenAI client
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Get all conversations
@@ -87,17 +93,48 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedData = insertMessageSchema.parse(messageData);
       const message = await storage.createMessage(validatedData);
 
-      // Simulate AI response for user messages
+      // Generate AI response for user messages
       if (validatedData.role === "user") {
-        // Create assistant response after a delay
-        setTimeout(async () => {
+        // Get conversation history for context
+        const conversationMessages = await storage.getMessages(conversationId);
+        
+        // Format messages for OpenAI API
+        const openaiMessages = conversationMessages.map(msg => ({
+          role: msg.role as "user" | "assistant",
+          content: msg.content
+        }));
+
+        try {
+          // Call OpenAI API
+          const completion = await openai.chat.completions.create({
+            model: "gpt-4o", // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
+            messages: [
+              {
+                role: "system",
+                content: "You are Vorta, an AI assistant specialized in business intelligence and analytics for La Doña, a food distribution company. You help analyze performance metrics, identify risks and opportunities, and provide actionable insights for business optimization. Be professional, concise, and data-driven in your responses."
+              },
+              ...openaiMessages
+            ],
+            max_tokens: 1000,
+            temperature: 0.7,
+          });
+
           const assistantMessage = {
             conversationId,
             role: "assistant",
-            content: "Thank you for your message. This is a simulated response from the ChatGPT-like interface. In a real implementation, this would connect to an AI service to provide actual responses based on your input.",
+            content: completion.choices[0].message.content || "I apologize, but I couldn't generate a response. Please try again.",
           };
+          
           await storage.createMessage(assistantMessage);
-        }, 1000 + Math.random() * 2000); // Random delay between 1-3 seconds
+        } catch (error) {
+          console.error("OpenAI API error:", error);
+          const errorMessage = {
+            conversationId,
+            role: "assistant",
+            content: "I'm experiencing technical difficulties connecting to my AI service. Please check your API configuration and try again.",
+          };
+          await storage.createMessage(errorMessage);
+        }
       }
 
       res.status(201).json(message);
