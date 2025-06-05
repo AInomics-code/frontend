@@ -298,6 +298,28 @@ export const marketIntelligence = {
   }
 };
 
+// Historical performance data for forecasting
+export const historicalData = {
+  promotionPerformance: [
+    { product: "Vinagre Premium", store: "Super99", promoType: "15% discount", lift: 23, duration: "1 week", date: "2024-04-15" },
+    { product: "Salsa de Tomate Original", store: "Rey", promoType: "Bundle offer", lift: 18, duration: "2 weeks", date: "2024-04-01" },
+    { product: "Mayonesa 400g", store: "Super99", promoType: "Buy 2 get 1", lift: 31, duration: "1 week", date: "2024-03-20" },
+    { product: "BBQ Sauce", store: "Super99", promoType: "End cap display", lift: 11, duration: "1 week", date: "2024-03-10" },
+    { product: "Chimichurri", store: "Rey David", promoType: "Price reduction", lift: 6, duration: "2 weeks", date: "2024-02-28" }
+  ],
+  seasonalTrends: {
+    "Vinagre Premium": { q1: 1.2, q2: 0.9, q3: 0.8, q4: 1.1 },
+    "BBQ Sauce": { q1: 0.8, q2: 1.3, q3: 1.4, q4: 0.9 },
+    "Mayonesa 400g": { q1: 1.0, q2: 1.1, q3: 1.0, q4: 1.2 },
+    "Chimichurri": { q1: 0.9, q2: 1.0, q3: 1.1, q4: 1.0 }
+  },
+  competitorImpact: [
+    { competitor: "Kraft", action: "promotion", impactOnLaDona: -8, recoveryDays: 14 },
+    { competitor: "Maggi", action: "new product launch", impactOnLaDona: -5, recoveryDays: 21 },
+    { competitor: "Knorr", action: "price reduction", impactOnLaDona: -12, recoveryDays: 10 }
+  ]
+};
+
 // Daily sales activity tracking
 export const recentActivity = {
   yesterdaySales: [
@@ -325,6 +347,7 @@ export function buildBusinessContext() {
     clients,
     salesReps,
     storePerformance,
+    historicalData,
     recentActivity,
     marketIntelligence,
     keyMetrics: {
@@ -335,7 +358,7 @@ export function buildBusinessContext() {
       highRiskClients: clients.filter(c => c.riskLevel === 'high').length,
       zeroSalesProducts: recentActivity.yesterdaySales.filter(s => s.sales === 0 && s.inventory > 0).length
     },
-    currentDate: new Date().toISOString().split('T')[0], // 2024-06-05
+    currentDate: new Date().toISOString().split('T')[0],
     timestamp: new Date().toISOString()
   };
 }
