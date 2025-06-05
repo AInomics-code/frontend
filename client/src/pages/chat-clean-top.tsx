@@ -96,15 +96,12 @@ export default function Chat() {
               <div className="mt-2 text-sm text-gray-700 space-y-2">
                 <div className="bg-gray-50 p-2 rounded-lg">
                   <p><strong>Sales vs Target:</strong> 82% (Goal: $450K, Current: $369K)</p>
-                  <p className="text-xs text-gray-500">Strong performance across most regions</p>
                 </div>
                 <div className="bg-gray-50 p-2 rounded-lg">
                   <p><strong>Top SKU:</strong> SKU 183 – Bananas</p>
-                  <p className="text-xs text-gray-500">Leading in Chiriquí, Colón, David, Santiago</p>
                 </div>
                 <div className="bg-gray-50 p-2 rounded-lg">
-                  <p><strong>Client Progress:</strong> Chiriquí +8% above target</p>
-                  <p className="text-xs text-gray-500">Best performing region this month</p>
+                  <p><strong>Best Region:</strong> Chiriquí +8% above target</p>
                 </div>
               </div>
             )}
@@ -132,16 +129,13 @@ export default function Chat() {
             ) : (
               <div className="mt-2 text-sm text-gray-700 space-y-2">
                 <div className="bg-red-50 p-2 rounded-lg border-l-2 border-red-200">
-                  <p><strong>Backorders:</strong> 28 total (Super Xtra: 12, El Rey: 8, Riba Smith: 8)</p>
-                  <p className="text-xs text-gray-500">Priority: Vinegar and cooking oils</p>
+                  <p><strong>Backorders:</strong> 28 total (Super Xtra: 12, El Rey: 8)</p>
                 </div>
                 <div className="bg-orange-50 p-2 rounded-lg border-l-2 border-orange-200">
-                  <p><strong>Out-of-Stock:</strong> 14 urgent items across key stores</p>
-                  <p className="text-xs text-gray-500">Most critical: Aderezo Premium, Salsa Verde</p>
+                  <p><strong>Out-of-Stock:</strong> 14 urgent items</p>
                 </div>
                 <div className="bg-yellow-50 p-2 rounded-lg border-l-2 border-yellow-200">
                   <p><strong>Overdue:</strong> $24,300 unpaid (120+ days)</p>
-                  <p className="text-xs text-gray-500">3 major clients requiring immediate attention</p>
                 </div>
               </div>
             )}
