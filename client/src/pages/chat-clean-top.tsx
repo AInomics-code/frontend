@@ -24,12 +24,13 @@ export default function Chat() {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
+    const messageContent = inputValue.trim();
     const userMessage: Message = {
       id: Date.now().toString(),
-      content: inputValue,
+      content: messageContent,
       isUser: true,
       timestamp: new Date(),
     };
@@ -38,17 +39,48 @@ export default function Chat() {
     setInputValue("");
     setIsTyping(true);
 
-    // Simulate AI response
-    setTimeout(() => {
-      const aiResponse: Message = {
+    try {
+      // Send message to API
+      const response = await fetch('/api/conversations/1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: messageContent,
+          role: 'user'
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      // Get updated messages including AI response
+      const messagesResponse = await fetch('/api/conversations/1/messages');
+      if (messagesResponse.ok) {
+        const data = await messagesResponse.json();
+        setMessages(data.map((msg: any) => ({
+          id: msg.id.toString(),
+          content: msg.content,
+          isUser: msg.role === 'user',
+          timestamp: new Date(msg.timestamp),
+        })));
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      
+      // Show error message
+      const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: "Based on your La Doña sales data, I can see several areas requiring attention. The Colón region shows a 33% gap to target, primarily due to declining vinegar sales and delivery delays. Would you like me to provide a detailed breakdown of the underperforming SKUs or suggest specific action items?",
+        content: "I'm experiencing connection issues. Please check your network and try again.",
         isUser: false,
         timestamp: new Date(),
       };
-      setMessages(prev => [...prev, aiResponse]);
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
       setIsTyping(false);
-    }, 2000);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -193,11 +225,22 @@ export default function Chat() {
                           <div className="vortex-blade"></div>
                           <div className="vortex-blade"></div>
                         </div>
-                        <span>Vorta</span>
+                        <span>La Doña AI</span>
                       </div>
-                      <div className="text-gray-800 leading-relaxed">
-                        {message.content}
-                      </div>
+                      <div 
+                        className="text-gray-800 leading-relaxed prose prose-gray max-w-none"
+                        dangerouslySetInnerHTML={{ 
+                          __html: message.content
+                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/🔎 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-blue-700 font-semibold">🔎 $1</div>')
+                            .replace(/✅ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-green-700 font-semibold">✅ $1</div>')
+                            .replace(/📊 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-purple-700 font-semibold">📊 $1</div>')
+                            .replace(/⚖️ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-orange-700 font-semibold">⚖️ $1</div>')
+                            .replace(/- 🔸 \*\*(.*?)\*\*/g, '<div class="ml-4 mb-1">• <strong>$1</strong>')
+                            .replace(/\n\n/g, '</p><p>')
+                            .replace(/\n/g, '<br>')
+                        }}
+                      />
                     </div>
                   )}
                 </div>

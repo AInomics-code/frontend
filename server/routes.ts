@@ -114,16 +114,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         try {
           // First check if this is a specialized business intelligence query
-          const queryAnalysis = analyzeQuery(content);
+          const queryAnalysis = analyzeQuery(message.content);
           
           if (queryAnalysis.confidence > 0.8) {
             // Use specialized response for high-confidence BI queries
             const specializedResponse = generateSpecializedResponse(queryAnalysis.type, queryAnalysis.parameters);
             
-            const aiMessage: Message = {
+            const aiMessage = {
               id: Date.now() + 1,
               conversationId,
-              role: "assistant",
+              role: "assistant" as const,
               content: specializedResponse,
               timestamp: new Date()
             };
