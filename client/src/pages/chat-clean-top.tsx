@@ -304,7 +304,7 @@ export default function Chat() {
         <main className="flex flex-col items-center p-8 flex-1 relative pt-16">
           {/* Vorta Logo */}
           {messages.length === 0 && !isTyping && (
-            <div className="vortex-icon mb-8 mt-12" style={{ width: '240px', height: '240px', '--vortex-size': '240px', animation: 'vortex-slow-rotate 20s linear infinite' } as React.CSSProperties}>
+            <div className="vortex-icon mb-8 mt-12" style={{ width: '60px', height: '60px', '--vortex-size': '60px', animation: 'vortex-slow-rotate 20s linear infinite' } as React.CSSProperties}>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
