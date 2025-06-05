@@ -285,7 +285,7 @@ export default function Chat() {
                   title={inputValue.trim() ? "Send message" : "Use voice"}
                   className={`p-2 transition-all duration-200 ${
                     inputValue.trim()
-                      ? 'text-white bg-gray-800 hover:bg-gray-900 rounded-lg shadow-sm hover:shadow-md'
+                      ? 'text-white bg-red-500 hover:bg-red-600 rounded-lg shadow-sm hover:shadow-md'
                       : isVoiceActive
                       ? 'text-red-500 bg-red-50 rounded-lg'
                       : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg'
