@@ -76,37 +76,23 @@ export default function Chat() {
           {/* Performance Card */}
           <div 
             onClick={() => toggleCard('performance')}
-            className="bg-white rounded-xl shadow-sm p-4 w-full max-w-xs min-h-[140px] cursor-pointer transition-all duration-300 hover:shadow-md"
+            className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 w-full max-w-xs min-h-[130px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
           >
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-xl">✅</span>
+              <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Performance Score</h4>
+            </div>
+            
             {expandedCard !== 'performance' ? (
               <>
-                <div className="flex items-center gap-2 mb-1">
-                  <span>✅</span>
-                  <h4 className="text-sm font-medium text-gray-700">Performance Score</h4>
-                </div>
-                <p className="text-xl font-bold text-gray-900">88</p>
-                <p className="text-xs text-gray-500">82% of sales target met</p>
+                <p className="text-3xl font-semibold text-gray-900">88</p>
+                <p className="text-xs text-gray-500 mt-1">82% of sales target met</p>
               </>
             ) : (
-              <div className="overflow-hidden transition-all duration-300">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <span>✅</span>
-                    <h4 className="text-sm font-medium text-gray-700">Performance Details</h4>
-                  </div>
-                  <ChevronUp size={16} className="text-gray-400" />
-                </div>
-                <ul className="text-sm text-gray-800 space-y-1">
-                  <li>
-                    <strong>Sales vs Target:</strong> 82% of monthly goal achieved
-                  </li>
-                  <li>
-                    <strong>Top-Selling SKU:</strong> SKU 183 – Bananas (leading in 4 regions)
-                  </li>
-                  <li>
-                    <strong>Client Goal Progress:</strong> Chiriquí +8% above target
-                  </li>
-                </ul>
+              <div className="mt-2 text-sm text-gray-700 space-y-1">
+                <p><strong>Sales vs Target:</strong> 82%</p>
+                <p><strong>Top SKU:</strong> SKU 183 – Bananas</p>
+                <p><strong>Client Progress:</strong> Chiriquí +8%</p>
               </div>
             )}
           </div>
@@ -114,37 +100,23 @@ export default function Chat() {
           {/* Risk Card */}
           <div 
             onClick={() => toggleCard('risks')}
-            className="bg-white rounded-xl shadow-sm p-4 w-full max-w-xs min-h-[140px] cursor-pointer transition-all duration-300 hover:shadow-md"
+            className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 w-full max-w-xs min-h-[130px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
           >
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-xl">⚠️</span>
+              <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Zones at Risk</h4>
+            </div>
+            
             {expandedCard !== 'risks' ? (
               <>
-                <div className="flex items-center gap-2 mb-1">
-                  <span>⚠️</span>
-                  <h4 className="text-sm font-medium text-gray-700">Zones at Risk</h4>
-                </div>
-                <p className="text-xl font-bold text-gray-900">3 Zones</p>
+                <p className="text-2xl font-semibold text-gray-900">3 Zones</p>
                 <p className="text-xs text-gray-500">Chiriquí, Colón, San Miguelito</p>
               </>
             ) : (
-              <div className="overflow-hidden transition-all duration-300">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <span>⚠️</span>
-                    <h4 className="text-sm font-medium text-gray-700">Risk Details</h4>
-                  </div>
-                  <ChevronUp size={16} className="text-gray-400" />
-                </div>
-                <ul className="text-sm text-gray-800 space-y-1">
-                  <li>
-                    <strong>Backorders Today:</strong> 28 total – most in Super Xtra
-                  </li>
-                  <li>
-                    <strong>Out-of-Stock Products:</strong> 14 urgent items across key stores
-                  </li>
-                  <li>
-                    <strong>Overdue Clients:</strong> $24,300 unpaid (120+ days)
-                  </li>
-                </ul>
+              <div className="mt-2 text-sm text-gray-700 space-y-1">
+                <p><strong>Backorders:</strong> 28 total</p>
+                <p><strong>Out-of-Stock:</strong> 14 urgent items</p>
+                <p><strong>Overdue:</strong> $24,300 (120+ days)</p>
               </div>
             )}
           </div>
@@ -152,37 +124,23 @@ export default function Chat() {
           {/* Opportunity Card */}
           <div 
             onClick={() => toggleCard('opportunities')}
-            className="bg-white rounded-xl shadow-sm p-4 w-full max-w-xs min-h-[140px] cursor-pointer transition-all duration-300 hover:shadow-md"
+            className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 w-full max-w-xs min-h-[130px] cursor-pointer transition-all duration-300 border border-gray-100 hover:border-gray-200"
           >
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-xl">💡</span>
+              <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Product Opportunity</h4>
+            </div>
+            
             {expandedCard !== 'opportunities' ? (
               <>
-                <div className="flex items-center gap-2 mb-1">
-                  <span>💡</span>
-                  <h4 className="text-sm font-medium text-gray-700">Product Opportunity</h4>
-                </div>
-                <p className="text-xl font-bold text-gray-900">Aderezo Premium</p>
-                <p className="text-xs text-gray-500">+18% sales lift • Low: Mango Salsa</p>
+                <p className="text-lg font-semibold text-gray-900">Aderezo Premium</p>
+                <p className="text-xs text-gray-500">+18% lift • Low: Mango Salsa</p>
               </>
             ) : (
-              <div className="overflow-hidden transition-all duration-300">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <span>💡</span>
-                    <h4 className="text-sm font-medium text-gray-700">Opportunity Details</h4>
-                  </div>
-                  <ChevronUp size={16} className="text-gray-400" />
-                </div>
-                <ul className="text-sm text-gray-800 space-y-1">
-                  <li>
-                    <strong>Promo ROI:</strong> +26% from Scanner/Tonga campaigns
-                  </li>
-                  <li>
-                    <strong>Inactive Clients:</strong> 17 accounts dormant 30+ days
-                  </li>
-                  <li>
-                    <strong>Rep Underperformance:</strong> 3 reps below quota
-                  </li>
-                </ul>
+              <div className="mt-2 text-sm text-gray-700 space-y-1">
+                <p><strong>High ROI:</strong> +26% lift</p>
+                <p><strong>Inactive Clients:</strong> 17 accounts</p>
+                <p><strong>Rep Performance:</strong> 3 under quota</p>
               </div>
             )}
           </div>
