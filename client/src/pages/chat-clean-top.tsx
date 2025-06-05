@@ -288,7 +288,8 @@ export default function Chat() {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask anything…"
-                  className="flex-1 bg-transparent border-none outline-none px-6 py-5 text-gray-800 placeholder-gray-400 text-lg"
+                  className="flex-1 bg-transparent border-none outline-none px-6 py-5 text-gray-800 placeholder-gray-400 text-lg resize-none"
+                  disabled={isTyping}
                 />
 
                 {/* Action buttons */}
@@ -315,11 +316,11 @@ export default function Chat() {
                     onClick={handleSendMessage}
                     title="Send message"
                     className={`p-3 transition-all duration-200 ${
-                      inputValue.trim()
+                      inputValue.trim() && !isTyping
                         ? 'text-white bg-red-500 hover:bg-red-600 rounded-lg shadow-sm hover:shadow-md'
                         : 'text-gray-300 bg-gray-100 rounded-lg cursor-not-allowed'
                     }`}
-                    disabled={!inputValue.trim()}
+                    disabled={!inputValue.trim() || isTyping}
                   >
                     <ArrowUp size={20} strokeWidth={1.5} />
                   </button>
