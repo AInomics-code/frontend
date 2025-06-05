@@ -1,12 +1,50 @@
 // Business Context Data for La Doña AI
 export interface Product {
+  id: string;
   name: string;
   category: string;
+  sku: string;
+  barcode: string;
   currentStock: number;
   targetStock: number;
   margin: number;
   salesTrend: number;
   backorders?: number;
+  unitCost: number;
+  sellingPrice: number;
+  profitability: number;
+  channel: string;
+  visualArt: string;
+  isMaquila: boolean;
+}
+
+export interface SalesData {
+  date: string;
+  product: string;
+  store: string;
+  chain: string;
+  quantity: number;
+  revenue: number;
+  promotion?: string;
+}
+
+export interface ClientData {
+  id: string;
+  name: string;
+  type: 'national' | 'export' | 'epa';
+  chain: string;
+  region: string;
+  monthlyVolume: number;
+  paymentTerms: string;
+  lastOrder: string;
+  riskLevel: 'low' | 'medium' | 'high';
+  overdueDays: number;
+  overdueAmount: number;
+  latitude: number;
+  longitude: number;
+  isActive: boolean;
+  lastVisit: string;
+  billingToday: number;
 }
 
 export interface Region {
@@ -28,77 +66,187 @@ export interface Client {
 }
 
 export interface SalesRep {
+  id: string;
   name: string;
   region: string;
   target: number;
   achieved: number;
   performance: number;
+  phone: string;
+  email: string;
+  extension: string;
+  dailyRoute: string[];
+  lateArrivals: number;
+  visitedToday: string[];
+  missedVisits: string[];
+  clientsWithoutOrders: Array<{client: string, reason: string}>;
+}
+
+export interface PromotionData {
+  id: string;
+  name: string;
+  product: string;
+  type: 'scanner' | 'display' | 'discount' | 'bundle';
+  startDate: string;
+  endDate: string;
+  investment: number;
+  totalSales: number;
+  roi: number;
+  stores: string[];
+}
+
+export interface StockData {
+  product: string;
+  store: string;
+  currentStock: number;
+  isOutOfStock: boolean;
+  lastRestockDate: string;
+  reorderPoint: number;
+}
+
+export interface InvoiceData {
+  id: string;
+  date: string;
+  client: string;
+  amount: number;
+  products: Array<{sku: string, quantity: number, unitPrice: number}>;
+  status: 'pending' | 'paid' | 'overdue';
+}
+
+export interface ChannelData {
+  name: string;
+  totalSKUs: number;
+  activeClients: number;
+  branches: number;
 }
 
 // Business data - represents real business metrics
 export const products: Product[] = [
   {
+    id: "VP001",
     name: "Vinagre Premium",
     category: "Vinegars",
+    sku: "VP-500ML",
+    barcode: "7891234567890",
     currentStock: 450,
     targetStock: 600,
     margin: 32.5,
     salesTrend: 47,
-    backorders: 0
+    backorders: 0,
+    unitCost: 1.85,
+    sellingPrice: 2.75,
+    profitability: 0.90,
+    channel: "retail",
+    visualArt: "/assets/vinagre-premium.jpg",
+    isMaquila: false
   },
   {
+    id: "STO001",
     name: "Salsa de Tomate Original",
     category: "Sauces",
+    sku: "STO-400G",
+    barcode: "7891234567891",
     currentStock: 280,
     targetStock: 400,
     margin: 28.0,
     salesTrend: 12,
-    backorders: 15
+    backorders: 15,
+    unitCost: 1.20,
+    sellingPrice: 1.68,
+    profitability: 0.48,
+    channel: "retail",
+    visualArt: "/assets/salsa-tomate.jpg",
+    isMaquila: false
   },
   {
+    id: "MSV001",
     name: "Mango Salsa Verde",
     category: "Specialty Sauces",
+    sku: "MSV-350ML",
+    barcode: "7891234567892",
     currentStock: 120,
     targetStock: 200,
     margin: 18.5,
     salesTrend: -23,
-    backorders: 8
+    backorders: 8,
+    unitCost: 2.10,
+    sellingPrice: 2.58,
+    profitability: 0.48,
+    channel: "gourmet",
+    visualArt: "/assets/mango-salsa.jpg",
+    isMaquila: true
   },
   {
+    id: "CSX001",
     name: "Condimento Super Xtra",
     category: "Seasonings",
+    sku: "CSX-250G",
+    barcode: "7891234567893",
     currentStock: 90,
     targetStock: 300,
     margin: 35.0,
     salesTrend: 8,
-    backorders: 12
+    backorders: 12,
+    unitCost: 0.95,
+    sellingPrice: 1.46,
+    profitability: 0.51,
+    channel: "retail",
+    visualArt: "/assets/condimento-xtra.jpg",
+    isMaquila: false
   },
   {
+    id: "AER001",
     name: "Aderezo El Rey",
     category: "Dressings",
+    sku: "AER-300ML",
+    barcode: "7891234567894",
     currentStock: 180,
     targetStock: 250,
     margin: 25.5,
     salesTrend: 5,
-    backorders: 8
+    backorders: 8,
+    unitCost: 1.45,
+    sellingPrice: 1.95,
+    profitability: 0.50,
+    channel: "retail",
+    visualArt: "/assets/aderezo-rey.jpg",
+    isMaquila: false
   },
   {
+    id: "MAY001",
     name: "Mayonesa 400g",
     category: "Condiments",
+    sku: "MAY-400G",
+    barcode: "7891234567895",
     currentStock: 340,
     targetStock: 500,
     margin: 24.0,
     salesTrend: -25,
-    backorders: 22
+    backorders: 22,
+    unitCost: 1.15,
+    sellingPrice: 1.52,
+    profitability: 0.37,
+    channel: "retail",
+    visualArt: "/assets/mayonesa.jpg",
+    isMaquila: false
   },
   {
+    id: "STY001",
     name: "Salsa Teriyaki 300ml",
     category: "Specialty Sauces",
+    sku: "STY-300ML",
+    barcode: "7891234567896",
     currentStock: 85,
     targetStock: 150,
     margin: 31.5,
     salesTrend: -15,
-    backorders: 0
+    backorders: 0,
+    unitCost: 1.80,
+    sellingPrice: 2.65,
+    profitability: 0.85,
+    channel: "gourmet",
+    visualArt: "/assets/teriyaki.jpg",
+    isMaquila: true
   }
 ];
 
@@ -234,32 +382,68 @@ export const storePerformance: StoreData[] = [
 
 export const salesReps: SalesRep[] = [
   {
+    id: "REP001",
     name: "María González",
     region: "Chiriquí",
     target: 150000,
     achieved: 125000,
-    performance: 83.3
+    performance: 83.3,
+    phone: "+507 6789-1234",
+    email: "maria.gonzalez@ladona.com",
+    extension: "1234",
+    dailyRoute: ["Rey David", "Mini Super Chiriquí", "Distribuidora Oeste"],
+    lateArrivals: 3,
+    visitedToday: ["Rey David", "Mini Super Chiriquí"],
+    missedVisits: ["Distribuidora Oeste"],
+    clientsWithoutOrders: [{client: "Mini Super Chiriquí", reason: "Budget constraints"}]
   },
   {
+    id: "REP002",
     name: "Carlos Mendoza",
     region: "Colón",
     target: 120000,
     achieved: 80000,
-    performance: 66.7
+    performance: 66.7,
+    phone: "+507 6789-5678",
+    email: "carlos.mendoza@ladona.com",
+    extension: "1235",
+    dailyRoute: ["El Extra Colón", "Distribuidora Atlántico", "Super Central"],
+    lateArrivals: 7,
+    visitedToday: ["El Extra Colón"],
+    missedVisits: ["Distribuidora Atlántico", "Super Central"],
+    clientsWithoutOrders: [{client: "El Extra Colón", reason: "Inventory full"}, {client: "Distribuidora Atlántico", reason: "Payment delay"}]
   },
   {
+    id: "REP003",
     name: "Ana Patricia Ruiz",
     region: "San Miguelito",
     target: 100000,
     achieved: 95000,
-    performance: 95.0
+    performance: 95.0,
+    phone: "+507 6789-9012",
+    email: "ana.ruiz@ladona.com",
+    extension: "1236",
+    dailyRoute: ["Super99", "Metro Plus", "Supermercado Nacional"],
+    lateArrivals: 1,
+    visitedToday: ["Super99", "Metro Plus", "Supermercado Nacional"],
+    missedVisits: [],
+    clientsWithoutOrders: []
   },
   {
+    id: "REP004",
     name: "José Luis Vargas",
     region: "Santiago",
     target: 80000,
     achieved: 78000,
-    performance: 97.5
+    performance: 97.5,
+    phone: "+507 6789-3456",
+    email: "jose.vargas@ladona.com",
+    extension: "1237",
+    dailyRoute: ["Rey Santiago", "Supermercado Central", "Mini Market"],
+    lateArrivals: 0,
+    visitedToday: ["Rey Santiago", "Supermercado Central"],
+    missedVisits: ["Mini Market"],
+    clientsWithoutOrders: [{client: "Mini Market", reason: "Competitor exclusive deal"}]
   }
 ];
 
@@ -320,6 +504,97 @@ export const historicalData = {
   ]
 };
 
+// Comprehensive sales data for analytics
+export const salesData: SalesData[] = [
+  { date: "2024-06-04", product: "Vinagre Premium", store: "Super99 San Miguelito", chain: "Super99", quantity: 18, revenue: 49.50, promotion: "15% discount" },
+  { date: "2024-06-04", product: "Mayonesa 400g", store: "Rey David", chain: "Rey", quantity: 24, revenue: 36.48 },
+  { date: "2024-06-04", product: "Salsa Teriyaki 300ml", store: "Super99 San Miguelito", chain: "Super99", quantity: 0, revenue: 0 },
+  { date: "2024-06-04", product: "Salsa Teriyaki 300ml", store: "Super99 Tocumen", chain: "Super99", quantity: 0, revenue: 0 },
+  { date: "2024-06-04", product: "Condimento Super Xtra", store: "El Extra Colón", chain: "El Extra", quantity: 12, revenue: 17.52 },
+  { date: "2024-06-03", product: "Vinagre Premium", store: "Rey Santiago", chain: "Rey", quantity: 22, revenue: 60.50 },
+  { date: "2024-06-03", product: "Mango Salsa Verde", store: "Gourmet Market", chain: "Independent", quantity: 8, revenue: 20.64, promotion: "bundle offer" }
+];
+
+export const promotions: PromotionData[] = [
+  {
+    id: "PROMO001",
+    name: "Scanner Vinagre Premium May",
+    product: "Vinagre Premium",
+    type: "scanner",
+    startDate: "2024-05-01",
+    endDate: "2024-05-31",
+    investment: 2500,
+    totalSales: 15800,
+    roi: 532,
+    stores: ["Super99", "Rey", "El Extra"]
+  },
+  {
+    id: "PROMO002", 
+    name: "BBQ Display Campaign",
+    product: "BBQ Sauce",
+    type: "display",
+    startDate: "2024-05-15",
+    endDate: "2024-05-29",
+    investment: 1800,
+    totalSales: 8950,
+    roi: 397,
+    stores: ["Super99"]
+  },
+  {
+    id: "PROMO003",
+    name: "Mayonesa Bundle Offer",
+    product: "Mayonesa 400g",
+    type: "bundle",
+    startDate: "2024-04-01",
+    endDate: "2024-04-30",
+    investment: 3200,
+    totalSales: 21450,
+    roi: 570,
+    stores: ["Rey", "Mini Super", "El Extra"]
+  }
+];
+
+export const stockStatus: StockData[] = [
+  { product: "Mayonesa 400g", store: "Rey David", currentStock: 0, isOutOfStock: true, lastRestockDate: "2024-05-28", reorderPoint: 50 },
+  { product: "Mayonesa 400g", store: "Rey Bugaba", currentStock: 0, isOutOfStock: true, lastRestockDate: "2024-05-30", reorderPoint: 30 },
+  { product: "Condimento Super Xtra", store: "El Extra Colón", currentStock: 0, isOutOfStock: true, lastRestockDate: "2024-06-01", reorderPoint: 25 },
+  { product: "Salsa Teriyaki 300ml", store: "Super99 San Miguelito", currentStock: 12, isOutOfStock: false, lastRestockDate: "2024-05-25", reorderPoint: 10 },
+  { product: "Vinagre Premium", store: "Rey Santiago", currentStock: 45, isOutOfStock: false, lastRestockDate: "2024-06-02", reorderPoint: 30 }
+];
+
+export const todayInvoices: InvoiceData[] = [
+  {
+    id: "INV-20240605-001",
+    date: "2024-06-05",
+    client: "Super99",
+    amount: 4580.50,
+    products: [
+      { sku: "VP-500ML", quantity: 48, unitPrice: 2.75 },
+      { sku: "STO-400G", quantity: 72, unitPrice: 1.68 },
+      { sku: "MAY-400G", quantity: 96, unitPrice: 1.52 }
+    ],
+    status: "pending"
+  },
+  {
+    id: "INV-20240605-002",
+    date: "2024-06-05",
+    client: "Rey David",
+    amount: 2340.80,
+    products: [
+      { sku: "AER-300ML", quantity: 60, unitPrice: 1.95 },
+      { sku: "CSX-250G", quantity: 84, unitPrice: 1.46 }
+    ],
+    status: "pending"
+  }
+];
+
+export const channels: ChannelData[] = [
+  { name: "Retail", totalSKUs: 24, activeClients: 156, branches: 89 },
+  { name: "Gourmet", totalSKUs: 8, activeClients: 34, branches: 12 },
+  { name: "Export", totalSKUs: 15, activeClients: 8, branches: 0 },
+  { name: "EPA", totalSKUs: 12, activeClients: 23, branches: 15 }
+];
+
 // Daily sales activity tracking
 export const recentActivity = {
   yesterdaySales: [
@@ -340,25 +615,136 @@ export const recentActivity = {
   ]
 };
 
+// Extended client data with full analytics support
+export const extendedClients: ClientData[] = [
+  {
+    id: "CLI001",
+    name: "Super99",
+    type: "national",
+    chain: "Super99",
+    region: "San Miguelito",
+    monthlyVolume: 38000,
+    paymentTerms: "30 days",
+    lastOrder: "2024-06-04",
+    riskLevel: "medium",
+    overdueDays: 45,
+    overdueAmount: 12500,
+    latitude: 9.0333,
+    longitude: -79.5167,
+    isActive: true,
+    lastVisit: "2024-06-05",
+    billingToday: 4580.50
+  },
+  {
+    id: "CLI002",
+    name: "Rey David",
+    type: "national",
+    chain: "Rey",
+    region: "Chiriquí",
+    monthlyVolume: 45000,
+    paymentTerms: "30 days",
+    lastOrder: "2024-06-03",
+    riskLevel: "low",
+    overdueDays: 0,
+    overdueAmount: 0,
+    latitude: 8.4177,
+    longitude: -82.4333,
+    isActive: true,
+    lastVisit: "2024-06-05",
+    billingToday: 2340.80
+  },
+  {
+    id: "CLI003",
+    name: "Distribuidora Atlántico",
+    type: "national",
+    chain: "El Extra",
+    region: "Colón",
+    monthlyVolume: 22000,
+    paymentTerms: "60 days",
+    lastOrder: "2024-05-28",
+    riskLevel: "high",
+    overdueDays: 135,
+    overdueAmount: 24300,
+    latitude: 9.3547,
+    longitude: -79.9000,
+    isActive: true,
+    lastVisit: "2024-06-02",
+    billingToday: 0
+  },
+  {
+    id: "CLI004",
+    name: "Exportadora Panama Inc",
+    type: "export",
+    chain: "Export",
+    region: "Panama City",
+    monthlyVolume: 15000,
+    paymentTerms: "15 days",
+    lastOrder: "2024-06-04",
+    riskLevel: "low",
+    overdueDays: 0,
+    overdueAmount: 0,
+    latitude: 8.9833,
+    longitude: -79.5167,
+    isActive: true,
+    lastVisit: "2024-06-04",
+    billingToday: 0
+  },
+  {
+    id: "CLI005",
+    name: "EPA Chiriquí",
+    type: "epa",
+    chain: "EPA",
+    region: "Chiriquí",
+    monthlyVolume: 8500,
+    paymentTerms: "45 days",
+    lastOrder: "2024-06-03",
+    riskLevel: "medium",
+    overdueDays: 20,
+    overdueAmount: 3200,
+    latitude: 8.4333,
+    longitude: -82.4167,
+    isActive: true,
+    lastVisit: "2024-06-03",
+    billingToday: 0
+  }
+];
+
 export function buildBusinessContext() {
+  const currentDate = new Date().toISOString().split('T')[0];
+  const totalBilling = todayInvoices.reduce((sum, inv) => sum + inv.amount, 0);
+  const totalBackorders = products.reduce((sum, p) => sum + (p.backorders || 0), 0);
+  const outOfStockCount = stockStatus.filter(s => s.isOutOfStock).length;
+  
   return {
     products,
     regions,
     clients,
+    extendedClients,
     salesReps,
     storePerformance,
+    salesData,
+    promotions,
+    stockStatus,
+    todayInvoices,
+    channels,
     historicalData,
     recentActivity,
     marketIntelligence,
     keyMetrics: {
-      totalBackorders: products.reduce((sum, p) => sum + (p.backorders || 0), 0),
+      totalBackorders,
+      totalBillingToday: totalBilling,
+      outOfStockProducts: outOfStockCount,
       averageMargin: products.reduce((sum, p) => sum + p.margin, 0) / products.length,
       underperformingRegions: regions.filter(r => r.performance < 80).length,
       underperformingStores: storePerformance.filter(s => (s.currentPerformance / s.monthlyTarget) < 0.9).length,
-      highRiskClients: clients.filter(c => c.riskLevel === 'high').length,
-      zeroSalesProducts: recentActivity.yesterdaySales.filter(s => s.sales === 0 && s.inventory > 0).length
+      highRiskClients: extendedClients.filter(c => c.riskLevel === 'high').length,
+      overdueClients: extendedClients.filter(c => c.overdueDays > 120).length,
+      zeroSalesProducts: recentActivity.yesterdaySales.filter(s => s.sales === 0 && s.inventory > 0).length,
+      totalActiveClients: extendedClients.filter(c => c.isActive).length,
+      totalSKUs: channels.reduce((sum, ch) => sum + ch.totalSKUs, 0),
+      lateArrivalsThisMonth: salesReps.reduce((sum, rep) => sum + rep.lateArrivals, 0)
     },
-    currentDate: new Date().toISOString().split('T')[0],
+    currentDate,
     timestamp: new Date().toISOString()
   };
 }

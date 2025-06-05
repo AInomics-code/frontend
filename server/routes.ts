@@ -6,6 +6,7 @@ import { z } from "zod";
 import OpenAI from "openai";
 import { buildBusinessContext } from "./business-context";
 import { getBusinessInsights, generateDailyBriefing, analyzeRegion, analyzeProduct, analyzeClient } from "./ai-functions";
+import { analyzeQuery, generateSpecializedResponse } from "./query-analyzer";
 
 // Initialize OpenAI client only when API key is available
 const getOpenAIClient = () => {
@@ -112,7 +113,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }));
 
         try {
-          // Call OpenAI API
+          // First check if this is a specialized business intelligence query
+          const queryAnalysis = analyzeQuery(content);
+          
+          if (queryAnalysis.confidence > 0.8) {
+            // Use specialized response for high-confidence BI queries
+            const specializedResponse = generateSpecializedResponse(queryAnalysis.type, queryAnalysis.parameters);
+            
+            const aiMessage: Message = {
+              id: Date.now() + 1,
+              conversationId,
+              role: "assistant",
+              content: specializedResponse,
+              timestamp: new Date()
+            };
+            await storage.createMessage(aiMessage);
+            
+            res.status(201).json(message);
+            return;
+          }
+
+          // Fall back to OpenAI for general queries
           const openai = getOpenAIClient();
           const completion = await openai.chat.completions.create({
             model: "gpt-4o", // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
