@@ -202,7 +202,7 @@
   width: calc(var(--vortex-size, 48px) * 0.167); /* 8px for 48px base */
   height: calc(var(--vortex-size, 48px) * 0.375); /* 18px for 48px base */
   background: #D71920;
-  border-radius: 50%;
+  border-radius: 60% 40% 60% 40%;
   transform-origin: calc(var(--vortex-size, 48px) * 0.083) calc(var(--vortex-size, 48px) * 0.458);
   top: 50%;
   left: 50%;
