@@ -162,23 +162,22 @@ export default function Chat() {
             
             {expandedCard !== 'opportunities' ? (
               <>
-                <p className="text-lg font-semibold text-gray-900">↑ Vinagre Premium</p>
-                <p className="text-xs text-gray-500">High potential • Low performer: Mango Salsa</p>
+                <p className="text-lg font-semibold text-gray-900">Vinagre Premium</p>
+                <p className="text-xs text-gray-500">High potential • Poor: Mango Salsa</p>
                 <p className="text-xs text-gray-400 mt-2 italic">Click to view details</p>
               </>
             ) : (
-              <div className="mt-2 text-sm text-gray-700 space-y-2">
-                <div className="bg-green-50 p-3 rounded-lg border-l-4 border-green-400">
-                  <p className="font-semibold text-green-800">↗ HIGH POTENTIAL: Vinagre Premium</p>
-                  <p className="text-sm text-gray-700 mt-1">+47% demand growth in past 3 months</p>
-                  <p className="text-xs text-gray-600">Trending in Chiriquí, David, and Santiago regions</p>
-                  <p className="text-xs text-green-700 font-medium mt-1">Action: Increase inventory by 35%</p>
+              <div className="mt-4 space-y-5 text-sm">
+                <div className="space-y-2">
+                  <p className="font-medium text-gray-900">Vinagre Premium</p>
+                  <p className="text-gray-600 leading-relaxed">47% demand growth in past 3 months across Chiriquí, David, and Santiago</p>
+                  <p className="text-xs text-gray-500">Suggested: Increase stock</p>
                 </div>
-                <div className="bg-red-50 p-3 rounded-lg border-l-4 border-red-400">
-                  <p className="font-semibold text-red-800">↘ POOR PERFORMER: Mango Salsa Verde</p>
-                  <p className="text-sm text-gray-700 mt-1">-23% sales decline, 18% return rate</p>
-                  <p className="text-xs text-gray-600">High production cost vs low market acceptance</p>
-                  <p className="text-xs text-red-700 font-medium mt-1">Action: Discontinue or reformulate</p>
+                <div className="h-px bg-gray-100 my-4"></div>
+                <div className="space-y-2">
+                  <p className="font-medium text-gray-900">Mango Salsa Verde</p>
+                  <p className="text-gray-600 leading-relaxed">23% sales decline with 18% return rate, high production costs</p>
+                  <p className="text-xs text-gray-500">Suggested: Cut back or rework</p>
                 </div>
               </div>
             )}
