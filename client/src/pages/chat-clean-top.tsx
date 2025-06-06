@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Paperclip, Globe, Mic, Search, BarChart2, ChevronDown, ChevronUp, ArrowUp } from "lucide-react";
+import { TypingMessage } from "@/components/typing-message";
 
 interface Message {
   id: string;
@@ -338,19 +339,9 @@ export default function Chat() {
                           <span>La Doña AI</span>
                         </div>
                         <div className="bot-bubble bg-gray-50 text-gray-800 px-4 py-3 rounded-2xl rounded-bl-md max-w-[60%] animate-[fadeInSlide_0.5s_ease-out_forwards]">
-                          <div 
-                            className="leading-relaxed prose prose-gray max-w-none [&>*]:mb-3 [&>*:last-child]:mb-0"
-                            dangerouslySetInnerHTML={{ 
-                              __html: message.content
-                                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                                .replace(/🔎 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-blue-700 font-semibold">🔎 $1</div>')
-                                .replace(/✅ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-green-700 font-semibold">✅ $1</div>')
-                                .replace(/📊 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-purple-700 font-semibold">📊 $1</div>')
-                                .replace(/⚖️ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-orange-700 font-semibold">⚖️ $1</div>')
-                                .replace(/- 🔸 \*\*(.*?)\*\*/g, '<div class="ml-4 mb-1">• <strong>$1</strong>')
-                                .replace(/\n\n/g, '</p><p>')
-                                .replace(/\n/g, '<br>')
-                            }}
+                          <TypingMessage 
+                            content={message.content}
+                            isLatestMessage={messages.indexOf(message) === messages.length - 1 && !message.isUser}
                           />
                         </div>
                       </div>
