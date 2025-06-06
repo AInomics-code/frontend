@@ -154,7 +154,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
 - Suggest who should be contacted and when
 - Focus on business impact and urgency
 
-For general knowledge questions unrelated to business, answer politely but briefly, then redirect to how you can help with sales analysis.`;
+**RESPONSE APPROACH:**
+You respond to ALL questions—whether general, casual, or business-related—but prioritize delivering expert, structured answers to La Doña's internal performance and sales data.
+
+For all other questions, respond helpfully and professionally. Always try to be useful.`;
 
           const messages = [
             { role: "system" as const, content: systemPrompt },
