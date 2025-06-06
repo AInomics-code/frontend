@@ -94,6 +94,68 @@
   animation: pulse 1s infinite;
 }
 
+/* Enhanced Chat Message Styling */
+.chat-message {
+  max-width: 80%;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin: 10px 0;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  font-size: 15px;
+  word-wrap: break-word;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background: #e9ecf1;
+  color: #111;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-message.bot {
+  align-self: flex-start;
+  background: #f6f6f6;
+  color: #222;
+  border-left: 4px solid #e23d28; /* La Doña red branding stripe */
+}
+
+/* Table styling for business data */
+.chat-message table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.chat-message table th, 
+.chat-message table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.chat-message table th {
+  background: #f8f8f8;
+  font-weight: 600;
+}
+
+/* Code blocks for technical content */
+.chat-message code, 
+.chat-message pre {
+  font-family: monospace;
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 8px;
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
 .dark {
   --background: 240 10% 3.9%;
   --foreground: 0 0% 98%;
