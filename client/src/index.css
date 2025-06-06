@@ -34,6 +34,66 @@
   --text-gray: 220 13% 18%; /* Gray-800 #2D3748 */
 }
 
+/* Smooth Chat Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.3s ease-out forwards;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.3s ease-out forwards;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+/* Smooth scroll behavior */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Typing indicator pulse */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: currentColor;
+  animation: pulse 1s infinite;
+}
+
 .dark {
   --background: 240 10% 3.9%;
   --foreground: 0 0% 98%;
