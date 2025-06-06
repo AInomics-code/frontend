@@ -124,7 +124,7 @@ export function ChartGenerator({ content, messageId }: ChartGeneratorProps) {
 
 function parseChartData(text: string): ChartData | null {
   // Look for "Render Chart:" pattern with structured data
-  const renderMatch = text.match(/Render Chart:\s*\n?Labels:\s*\[(.*?)\]\s*\n?Values:\s*\[(.*?)\]\s*\n?Label Name:\s*['"](.*?)['"]?/m);
+  const renderMatch = text.match(/Render Chart:[\s\S]*?Labels:\s*\[(.*?)\][\s\S]*?Values:\s*\[(.*?)\][\s\S]*?Label Name:\s*['"](.*?)['"]?/);
   if (renderMatch) {
     const labels = renderMatch[1].split(',').map(l => l.trim().replace(/['"]/g, ''));
     const values = renderMatch[2].split(',').map(v => parseFloat(v.trim()));
