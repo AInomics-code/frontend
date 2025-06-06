@@ -385,10 +385,9 @@ export default function Chat() {
 
 
           {/* Chat Input Container */}
-          <div className="w-full max-w-4xl px-8 sticky bottom-0 bg-gray-50 pb-6 pt-4 border-t border-gray-100 shadow-lg">
-            <div className="bg-white rounded-3xl shadow-md border border-gray-200/60 p-2">
-              <div className="relative flex items-center bg-white rounded-2xl hover:bg-gray-50/50 transition-all duration-200 focus-within:bg-white">
-                {/* Input field */}
+          <div className="w-full max-w-4xl px-8 sticky bottom-0 bg-gray-50 pb-6 pt-4">
+            <div className="relative flex items-center bg-white rounded-3xl border border-gray-200/60 shadow-md hover:bg-gray-50/50 transition-all duration-200 focus-within:bg-white p-2">
+              {/* Input field */}
                 <input
                   type="text"
                   value={inputValue}
@@ -432,7 +431,6 @@ export default function Chat() {
                     <ArrowUp size={20} strokeWidth={1.5} />
                   </button>
                 </div>
-              </div>
             </div>
           </div>
 
