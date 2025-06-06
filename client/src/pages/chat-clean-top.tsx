@@ -135,7 +135,10 @@ export default function Chat() {
             ) : (
               <div className="mt-4 space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-gray-50 rounded-lg p-3">
+                  <div 
+                    className="bg-gray-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("What is our current sales performance and how close are we to target?")}
+                  >
                     <h5 className="text-sm font-semibold text-gray-800 mb-2">Sales Performance</h5>
                     <p className="text-2xl font-bold text-green-600">82%</p>
                     <p className="text-sm text-gray-600">$369K of $450K target</p>
@@ -143,14 +146,20 @@ export default function Chat() {
                       <div className="bg-green-500 h-2 rounded-full" style={{width: '82%'}}></div>
                     </div>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-3">
+                  <div 
+                    className="bg-gray-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("Which region, rep, and SKU are driving the strongest results and why?")}
+                  >
                     <h5 className="text-sm font-semibold text-gray-800 mb-2">Top Performers</h5>
                     <p className="text-sm text-gray-700 mb-1"><strong>Best SKU:</strong> SKU 183 – Bananas</p>
                     <p className="text-sm text-gray-700 mb-1"><strong>Best Region:</strong> Chiriquí (+8%)</p>
                     <p className="text-sm text-gray-700"><strong>Best Rep:</strong> Carlos Mendez</p>
                   </div>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-3">
+                <div 
+                  className="bg-blue-50 rounded-lg p-3 intelligence-clickable"
+                  onClick={() => setInputValue("Explain this month's key insights and what actions we should take.")}
+                >
                   <h5 className="text-sm font-semibold text-blue-800 mb-2">Key Insights</h5>
                   <ul className="text-sm text-blue-700 space-y-1">
                     <li>• Revenue up 12% vs last month</li>
@@ -192,23 +201,35 @@ export default function Chat() {
             ) : (
               <div className="mt-4 space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-red-50 rounded-lg p-3">
+                  <div 
+                    className="bg-red-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("What are our critical issues and backorders? How can we resolve them?")}
+                  >
                     <h5 className="text-sm font-semibold text-red-800 mb-2">Critical Issues</h5>
                     <p className="text-xl font-bold text-red-600">28</p>
                     <p className="text-sm text-red-700">Total backorders</p>
                   </div>
-                  <div className="bg-orange-50 rounded-lg p-3">
+                  <div 
+                    className="bg-orange-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("Which products are out of stock and what's the urgency level?")}
+                  >
                     <h5 className="text-sm font-semibold text-orange-800 mb-2">Out of Stock</h5>
                     <p className="text-xl font-bold text-orange-600">14</p>
                     <p className="text-sm text-orange-700">Urgent items</p>
                   </div>
-                  <div className="bg-yellow-50 rounded-lg p-3">
+                  <div 
+                    className="bg-yellow-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("Show me details about overdue payments and recovery strategies.")}
+                  >
                     <h5 className="text-sm font-semibold text-yellow-800 mb-2">Overdue</h5>
                     <p className="text-lg font-bold text-yellow-700">$24.3K</p>
                     <p className="text-sm text-yellow-700">120+ days</p>
                   </div>
                 </div>
-                <div className="bg-gray-50 rounded-lg p-3">
+                <div 
+                  className="bg-gray-50 rounded-lg p-3 intelligence-clickable"
+                  onClick={() => setInputValue("Analyze risk zones Chiriquí, Colón, and San Miguelito. What actions should we take?")}
+                >
                   <h5 className="text-sm font-semibold text-gray-800 mb-2">Risk Zones Details</h5>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between items-center">
@@ -258,7 +279,10 @@ export default function Chat() {
             ) : (
               <div className="mt-4 space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-green-50 rounded-lg p-3">
+                  <div 
+                    className="bg-green-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("Tell me about Vinagre Premium opportunity and how to maximize the $45K potential revenue.")}
+                  >
                     <h5 className="text-sm font-semibold text-green-800 mb-2">High Opportunity</h5>
                     <p className="text-lg font-bold text-green-600">Vinagre Premium</p>
                     <p className="text-sm text-green-700 mb-2">+$45K potential revenue</p>
@@ -267,7 +291,10 @@ export default function Chat() {
                       <p>• Focus on premium market segment</p>
                     </div>
                   </div>
-                  <div className="bg-red-50 rounded-lg p-3">
+                  <div 
+                    className="bg-red-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("Analyze Mango Salsa underperformance and suggest solutions or discontinuation strategy.")}
+                  >
                     <h5 className="text-sm font-semibold text-red-800 mb-2">Underperforming</h5>
                     <p className="text-lg font-bold text-red-600">Mango Salsa</p>
                     <p className="text-sm text-red-700 mb-2">-$12K revenue impact</p>
@@ -277,7 +304,10 @@ export default function Chat() {
                     </div>
                   </div>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-3">
+                <div 
+                  className="bg-blue-50 rounded-lg p-3 intelligence-clickable"
+                  onClick={() => setInputValue("Detail the strategic actions for Vinagre Premium launch and Aceite de Coco promotion timeline.")}
+                >
                   <h5 className="text-sm font-semibold text-blue-800 mb-2">Strategic Actions</h5>
                   <div className="space-y-2 text-sm text-blue-700">
                     <div className="flex items-center gap-2">

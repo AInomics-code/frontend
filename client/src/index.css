@@ -641,6 +641,22 @@ body {
   animation: spin 1.2s ease-in-out infinite;
 }
 
+/* Invisible Intelligence - Clickable Area Hover Effects */
+.intelligence-clickable {
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.intelligence-clickable:hover {
+  background-color: rgba(0, 128, 0, 0.04);
+  transform: scale(1.002);
+}
+
+.intelligence-clickable:active {
+  transform: scale(0.998);
+}
+
 /* Chat Message Animations */
 @keyframes messageAppear {
   0% {
