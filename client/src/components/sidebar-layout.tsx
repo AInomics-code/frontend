@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { ArrowUp, Paperclip, Globe, Mic } from "lucide-react";
 import laDonaLogo from "@assets/Screenshot 2025-05-19 alle 15.08.46.png";
+import { TypingMessage } from "./typing-message";
 
 function Sidebar() {
   return (
@@ -69,35 +71,209 @@ function Sidebar() {
   );
 }
 
+interface Message {
+  id: string;
+  content: string;
+  isUser: boolean;
+  timestamp: Date;
+}
+
 function ChatLayout() {
-  return (
-    <div className="ml-[180px] flex flex-col items-center justify-center min-h-screen bg-white px-8">
-      {/* Vorta Logo */}
-      <div className="mb-6">
-        <div className="vortex-icon animate-pulse" style={{ width: '32px', height: '32px' }}>
-          <div className="vortex-blade"></div>
-          <div className="vortex-blade"></div>
-          <div className="vortex-blade"></div>
-          <div className="vortex-blade"></div>
-          <div className="vortex-blade"></div>
-          <div className="vortex-blade"></div>
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [inputValue, setInputValue] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isTyping]);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
+  const handleSendMessage = async () => {
+    if (!inputValue.trim()) return;
+
+    const messageContent = inputValue.trim();
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      content: messageContent,
+      isUser: true,
+      timestamp: new Date(),
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+    setInputValue("");
+    setIsTyping(true);
+
+    try {
+      // Send message to API
+      const response = await fetch('/api/conversations/1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: messageContent,
+          role: 'user'
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      // Get updated messages including AI response
+      const messagesResponse = await fetch('/api/conversations/1/messages');
+      if (messagesResponse.ok) {
+        const data = await messagesResponse.json();
+        setMessages(data.map((msg: any) => ({
+          id: msg.id.toString(),
+          content: msg.content,
+          isUser: msg.role === 'user',
+          timestamp: new Date(msg.timestamp),
+        })));
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      
+      // Show error message
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        content: "I'm experiencing connection issues. Please check your network and try again.",
+        isUser: false,
+        timestamp: new Date(),
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsTyping(false);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
+
+  if (messages.length === 0 && !isTyping) {
+    return (
+      <div className="ml-[180px] flex flex-col items-center justify-center min-h-screen bg-white px-8">
+        {/* Vorta Logo */}
+        <div className="mb-6">
+          <div className="vortex-icon animate-pulse" style={{ width: '32px', height: '32px' }}>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
+            <div className="vortex-blade"></div>
+          </div>
+        </div>
+
+        {/* Chat input */}
+        <div className="flex items-center justify-between w-full max-w-3xl bg-white border border-gray-300 rounded-full shadow px-6 py-4">
+          <input
+            ref={inputRef}
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="Ask about KPIs or performance..."
+            className="flex-grow bg-transparent outline-none text-gray-600 text-lg placeholder:text-gray-400"
+          />
+          <div className="flex items-center gap-4">
+            <button className="text-gray-500 hover:text-gray-700 transition-colors">
+              <Paperclip className="w-5 h-5" />
+            </button>
+            <button className="text-gray-500 hover:text-gray-700 transition-colors">
+              <Globe className="w-5 h-5" />
+            </button>
+            <button className="text-gray-500 hover:text-gray-700 transition-colors">
+              <Mic className="w-5 h-5" />
+            </button>
+            <button 
+              onClick={handleSendMessage}
+              disabled={!inputValue.trim() || isTyping}
+              className="bg-rose-400 hover:bg-rose-500 disabled:bg-gray-300 transition px-4 py-2 rounded-full text-white font-semibold"
+            >
+              Ask
+            </button>
+          </div>
         </div>
       </div>
+    );
+  }
 
-      {/* Chat input */}
-      <div className="flex items-center justify-between w-full max-w-3xl bg-white border border-gray-300 rounded-full shadow px-6 py-4">
-        <input
-          type="text"
-          placeholder="Ask about KPIs or performance..."
-          className="flex-grow bg-transparent outline-none text-gray-600 text-lg placeholder:text-gray-400"
-        />
-        <div className="flex items-center gap-4">
-          <button className="text-gray-500 hover:text-gray-700 transition-colors">📎</button>
-          <button className="text-gray-500 hover:text-gray-700 transition-colors">🌐</button>
-          <button className="text-gray-500 hover:text-gray-700 transition-colors">🎤</button>
-          <button className="bg-rose-400 hover:bg-rose-500 transition px-4 py-2 rounded-full text-white font-semibold">
-            Ask
-          </button>
+  return (
+    <div className="ml-[180px] flex flex-col h-screen bg-white">
+      {/* Messages */}
+      <div className="flex-1 overflow-y-auto px-8 py-6">
+        {messages.map((message, index) => (
+          <TypingMessage
+            key={message.id}
+            content={message.content}
+            isLatestMessage={index === messages.length - 1}
+            messageId={message.id}
+          />
+        ))}
+        
+        {isTyping && (
+          <div className="flex items-center gap-3 mb-4">
+            <div className="bg-gray-100 rounded-2xl px-4 py-3">
+              <div className="flex items-center gap-2">
+                <div className="flex space-x-1">
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                </div>
+                <span className="text-gray-500 text-sm ml-2">La Doña AI is thinking...</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div ref={messagesEndRef} />
+      </div>
+
+      {/* Input Area */}
+      <div className="border-t border-gray-200 px-8 py-4">
+        <div className="flex items-center justify-between w-full max-w-4xl bg-white border border-gray-300 rounded-full shadow px-6 py-4">
+          <input
+            ref={inputRef}
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="Ask about KPIs or performance..."
+            className="flex-grow bg-transparent outline-none text-gray-600 text-lg placeholder:text-gray-400"
+            disabled={isTyping}
+          />
+          <div className="flex items-center gap-4">
+            <button className="text-gray-500 hover:text-gray-700 transition-colors">
+              <Paperclip className="w-5 h-5" />
+            </button>
+            <button className="text-gray-500 hover:text-gray-700 transition-colors">
+              <Globe className="w-5 h-5" />
+            </button>
+            <button className="text-gray-500 hover:text-gray-700 transition-colors">
+              <Mic className="w-5 h-5" />
+            </button>
+            <button 
+              onClick={handleSendMessage}
+              disabled={!inputValue.trim() || isTyping}
+              className="bg-rose-400 hover:bg-rose-500 disabled:bg-gray-300 transition px-4 py-2 rounded-full text-white font-semibold"
+            >
+              <ArrowUp className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
