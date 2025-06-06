@@ -322,7 +322,7 @@ export default function Chat() {
                   <div key={message.id} className="animate-[fadeIn_0.3s_ease-out]">
                     {message.isUser ? (
                       <div className="flex justify-end">
-                        <div className="user-bubble bg-gradient-to-br from-blue-600 to-blue-700 text-white font-medium px-4 py-3 rounded-2xl rounded-br-md max-w-[60%] animate-[fadeInSlide_0.4s_ease-out_forwards]">
+                        <div className="user-bubble bg-gradient-to-br from-orange-500 to-red-600 text-white font-medium px-5 py-4 rounded-2xl rounded-br-md max-w-[65%] shadow-sm animate-[fadeInSlide_0.4s_ease-out_forwards]">
                           {message.content}
                         </div>
                       </div>
@@ -338,7 +338,7 @@ export default function Chat() {
                           </div>
                           <span>La Doña AI</span>
                         </div>
-                        <div className="bot-bubble bg-gray-50 text-gray-800 px-4 py-3 rounded-2xl rounded-bl-md max-w-[60%] animate-[fadeInSlide_0.5s_ease-out_forwards]">
+                        <div className="bot-bubble bg-gradient-to-br from-amber-50 to-orange-50 border border-orange-100 text-gray-800 px-5 py-4 rounded-2xl rounded-bl-md max-w-[65%] shadow-sm animate-[fadeInSlide_0.5s_ease-out_forwards]">
                           <TypingMessage 
                             content={message.content}
                             isLatestMessage={messages.indexOf(message) === messages.length - 1 && !message.isUser}
