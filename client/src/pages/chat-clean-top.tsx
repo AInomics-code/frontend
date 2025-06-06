@@ -57,16 +57,21 @@ export default function Chat() {
         throw new Error('Failed to send message');
       }
 
-      // Get updated messages including AI response
+      // Get only the latest AI response instead of all messages
       const messagesResponse = await fetch('/api/conversations/1/messages');
       if (messagesResponse.ok) {
         const data = await messagesResponse.json();
-        setMessages(data.map((msg: any) => ({
-          id: msg.id.toString(),
-          content: msg.content,
-          isUser: msg.role === 'user',
-          timestamp: new Date(msg.timestamp),
-        })));
+        // Find the latest AI response
+        const latestAiMessage = data.filter((msg: any) => msg.role === 'assistant').pop();
+        if (latestAiMessage) {
+          const aiMessage: Message = {
+            id: latestAiMessage.id.toString(),
+            content: latestAiMessage.content,
+            isUser: false,
+            timestamp: new Date(latestAiMessage.timestamp),
+          };
+          setMessages(prev => [...prev, aiMessage]);
+        }
       }
     } catch (error) {
       console.error('Error sending message:', error);
