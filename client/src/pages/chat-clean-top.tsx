@@ -315,13 +315,13 @@ export default function Chat() {
 
           {/* Messages Area */}
           {messages.length > 0 && (
-            <div className="flex-1 w-full max-w-4xl overflow-y-auto mb-6 px-4">
-              <div className="space-y-6">
+            <div className="flex-1 w-full max-w-4xl overflow-y-auto mb-6 px-8">
+              <div className="space-y-3">
                 {messages.map((message) => (
                   <div key={message.id} className="animate-[fadeIn_0.3s_ease-out]">
                     {message.isUser ? (
                       <div className="flex justify-end">
-                        <div className="bg-gray-900 text-white rounded-3xl px-6 py-4 max-w-[85%] text-lg">
+                        <div className="user-bubble bg-gradient-to-br from-blue-600 to-blue-700 text-white font-medium px-4 py-3 rounded-2xl rounded-br-md max-w-[60%] animate-[fadeInSlide_0.4s_ease-out_forwards]">
                           {message.content}
                         </div>
                       </div>
@@ -337,20 +337,22 @@ export default function Chat() {
                           </div>
                           <span>La Doña AI</span>
                         </div>
-                        <div 
-                          className="text-gray-800 leading-relaxed prose prose-gray max-w-none [&>*]:mb-3 [&>*:last-child]:mb-0"
-                          dangerouslySetInnerHTML={{ 
-                            __html: message.content
-                              .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                              .replace(/🔎 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-blue-700 font-semibold">🔎 $1</div>')
-                              .replace(/✅ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-green-700 font-semibold">✅ $1</div>')
-                              .replace(/📊 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-purple-700 font-semibold">📊 $1</div>')
-                              .replace(/⚖️ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-orange-700 font-semibold">⚖️ $1</div>')
-                              .replace(/- 🔸 \*\*(.*?)\*\*/g, '<div class="ml-4 mb-1">• <strong>$1</strong>')
-                              .replace(/\n\n/g, '</p><p>')
-                              .replace(/\n/g, '<br>')
-                          }}
-                        />
+                        <div className="bot-bubble bg-gray-50 text-gray-800 px-4 py-3 rounded-2xl rounded-bl-md max-w-[60%] animate-[fadeInSlide_0.5s_ease-out_forwards]">
+                          <div 
+                            className="leading-relaxed prose prose-gray max-w-none [&>*]:mb-3 [&>*:last-child]:mb-0"
+                            dangerouslySetInnerHTML={{ 
+                              __html: message.content
+                                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                                .replace(/🔎 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-blue-700 font-semibold">🔎 $1</div>')
+                                .replace(/✅ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-green-700 font-semibold">✅ $1</div>')
+                                .replace(/📊 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-purple-700 font-semibold">📊 $1</div>')
+                                .replace(/⚖️ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-orange-700 font-semibold">⚖️ $1</div>')
+                                .replace(/- 🔸 \*\*(.*?)\*\*/g, '<div class="ml-4 mb-1">• <strong>$1</strong>')
+                                .replace(/\n\n/g, '</p><p>')
+                                .replace(/\n/g, '<br>')
+                            }}
+                          />
+                        </div>
                       </div>
                     )}
                   </div>
@@ -362,7 +364,7 @@ export default function Chat() {
           {/* Typing Indicator */}
           {isTyping && (
             <div className="mb-8 animate-[fadeIn_0.3s_ease-out]">
-              <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
+              <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
                 <div className="vortex-icon active" style={{ width: '14px', height: '14px', '--vortex-size': '14px' } as React.CSSProperties}>
                   <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
@@ -370,12 +372,12 @@ export default function Chat() {
                   <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
                 </div>
-                <span>Vorta</span>
+                <span>La Doña AI</span>
               </div>
-              <div className="flex gap-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+              <div className="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
             </div>
           )}
@@ -383,8 +385,8 @@ export default function Chat() {
 
 
           {/* Chat Input Container */}
-          <div className="w-full max-w-4xl px-4 sticky bottom-0 bg-gray-50 pb-6 pt-4">
-            <div className="bg-white rounded-3xl shadow-sm border border-gray-200/60 p-2 pt-[8px] pb-[8px] mt-[-20px] mb-[-20px]">
+          <div className="w-full max-w-4xl px-8 sticky bottom-0 bg-gray-50 pb-6 pt-4 border-t border-gray-100 shadow-lg">
+            <div className="bg-white rounded-3xl shadow-md border border-gray-200/60 p-2">
               <div className="relative flex items-center bg-white rounded-2xl hover:bg-gray-50/50 transition-all duration-200 focus-within:bg-white">
                 {/* Input field */}
                 <input
