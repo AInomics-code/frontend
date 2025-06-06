@@ -106,16 +106,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
         try {
           const openai = getOpenAIClient();
           
-          const systemPrompt = `You are La Doña AI, a business assistant.
-You ONLY respond based on the following sales dashboard:
+          const systemPrompt = `You are La Doña AI, a smart assistant that helps with the La Doña brand and business operations.
 
+You specialize in answering questions about:
+- Sales dashboard data
+- Performance score
+- Sales zones
+- Product performance
+- Opportunities and risks
+
+If the question is about general knowledge (like coding, history, weather, etc.), you can answer politely — but keep it short and helpful.
+
+Always prefer answers related to La Doña's business.
+
+Here's the current dashboard data:
 - Performance Score: 88
 - Sales Target Met: 82%
 - Zones at Risk: Chiriquí, Colón, San Miguelito
-- Product Opportunities: Vinagre Premium (High), Mango Salsa (Low)
-
-If the user asks anything outside this context, say: 
-"Sorry, I can only help with sales dashboard-related questions."`;
+- Product Opportunities: Vinagre Premium (High), Mango Salsa (Low)`;
 
           const messages = [
             { role: "system" as const, content: systemPrompt },
