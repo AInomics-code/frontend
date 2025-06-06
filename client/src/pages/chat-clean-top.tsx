@@ -107,16 +107,16 @@ export default function Chat() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Top KPI Dashboard - Elegant Layout */}
-      <div className="bg-gray-50 px-6 py-4">
-        <div className="flex flex-col md:flex-row gap-4">
+      <div className="bg-gray-50 px-6 py-3">
+        <div className="flex flex-col md:flex-row gap-6 justify-between">
           
           {/* Performance Card */}
           <div 
             onClick={() => toggleCard('performance')}
-            className={`group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 ${
+            className={`group bg-white rounded-xl shadow-sm hover:shadow-md p-3 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
               expandedCard === 'performance' 
-                ? 'w-full max-w-2xl min-h-[320px] shadow-lg' 
-                : 'w-full max-w-xs min-h-[100px]'
+                ? 'min-h-[280px] shadow-lg' 
+                : 'min-h-[80px]'
             }`}
           >
             <div className="flex items-center justify-between mb-3">
@@ -179,10 +179,10 @@ export default function Chat() {
           {/* Risk Card */}
           <div 
             onClick={() => toggleCard('risks')}
-            className={`group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 ${
+            className={`group bg-white rounded-xl shadow-sm hover:shadow-md p-3 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
               expandedCard === 'risks' 
-                ? 'w-full max-w-2xl min-h-[320px] shadow-lg' 
-                : 'w-full max-w-xs min-h-[100px]'
+                ? 'min-h-[280px] shadow-lg' 
+                : 'min-h-[80px]'
             }`}
           >
             <div className="flex items-center justify-between mb-3">
@@ -257,10 +257,10 @@ export default function Chat() {
           {/* Opportunity Card */}
           <div 
             onClick={() => toggleCard('opportunities')}
-            className={`group bg-white rounded-2xl shadow-sm hover:shadow-md p-4 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 ${
+            className={`group bg-white rounded-xl shadow-sm hover:shadow-md p-3 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
               expandedCard === 'opportunities' 
-                ? 'w-full max-w-2xl min-h-[320px] shadow-lg' 
-                : 'w-full max-w-xs min-h-[100px]'
+                ? 'min-h-[280px] shadow-lg' 
+                : 'min-h-[80px]'
             }`}
           >
             <div className="flex items-center justify-between mb-3">
