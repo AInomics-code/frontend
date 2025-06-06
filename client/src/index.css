@@ -137,9 +137,8 @@ body {
 
 .bot {
   align-self: flex-start;
-  background: #f6f6f6;
+  background: #ffffff;
   color: #222;
-  border-left: 4px solid #e23d28;
 }
 
 /* Text content in bot replies */
