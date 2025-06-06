@@ -36,17 +36,18 @@ export function TypingMessage({ content, isLatestMessage, onComplete, messageId 
   }, [content, isLatestMessage, isComplete, onComplete]);
 
   return (
-    <div>
+    <div className="message bot">
       <div 
         className="leading-relaxed prose prose-gray max-w-none [&>*]:mb-3 [&>*:last-child]:mb-0"
         dangerouslySetInnerHTML={{ 
           __html: displayedContent
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/🔎 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-blue-700 font-semibold">🔎 $1</div>')
-            .replace(/✅ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-green-700 font-semibold">✅ $1</div>')
-            .replace(/📊 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-purple-700 font-semibold">📊 $1</div>')
-            .replace(/⚖️ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-orange-700 font-semibold">⚖️ $1</div>')
+            .replace(/🔎 \*\*(.*?)\*\*/g, '<h3 class="section-header">🔎 $1</h3>')
+            .replace(/✅ \*\*(.*?)\*\*/g, '<h3 class="section-header">✅ $1</h3>')
+            .replace(/📊 \*\*(.*?)\*\*/g, '<h3 class="section-header">📊 $1</h3>')
+            .replace(/⚖️ \*\*(.*?)\*\*/g, '<h3 class="section-header">⚖️ $1</h3>')
             .replace(/- 🔸 \*\*(.*?)\*\*/g, '<div class="ml-4 mb-1">• <strong>$1</strong>')
+            .replace(/\|([^|]+)\|([^|]+)\|([^|]+)\|([^|]+)\|/g, '<table><tr><th>$1</th><th>$2</th><th>$3</th><th>$4</th></tr></table>')
             .replace(/\n/g, '<br/>')
         }}
       />

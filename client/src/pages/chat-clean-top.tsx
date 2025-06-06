@@ -338,13 +338,11 @@ export default function Chat() {
                           </div>
                           <span>La Doña AI</span>
                         </div>
-                        <div className="bot-bubble bg-white text-gray-800 px-5 py-4 rounded-2xl rounded-bl-md max-w-[65%] animate-[fadeInSlide_0.5s_ease-out_forwards]">
-                          <TypingMessage 
-                            content={message.content}
-                            isLatestMessage={messages.indexOf(message) === messages.length - 1 && !message.isUser}
-                            messageId={message.id}
-                          />
-                        </div>
+                        <TypingMessage 
+                          content={message.content}
+                          isLatestMessage={messages.indexOf(message) === messages.length - 1 && !message.isUser}
+                          messageId={message.id}
+                        />
                       </div>
                     )}
                   </div>

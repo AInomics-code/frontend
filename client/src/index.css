@@ -94,6 +94,104 @@
   animation: pulse 1s infinite;
 }
 
+/* Professional Report-Style Chat Interface */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 15px;
+  background: #fafafa;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#chatbox {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+.message {
+  max-width: 90%;
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin: 12px 0;
+  white-space: pre-wrap;
+  line-height: 1.7;
+  font-size: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  word-wrap: break-word;
+  animation: fadeIn 0.3s ease;
+}
+
+.user {
+  align-self: flex-end;
+  background: #eef1f4;
+  color: #111;
+  border-bottom-right-radius: 4px;
+}
+
+.bot {
+  align-self: flex-start;
+  background: #f6f6f6;
+  color: #222;
+  border-left: 4px solid #e23d28;
+}
+
+/* Text content in bot replies */
+.message.bot h3 {
+  font-size: 16px;
+  margin: 24px 0 8px;
+  font-weight: 600;
+  color: #111;
+}
+
+.message.bot p, .message.bot li {
+  line-height: 1.6;
+  margin: 4px 0;
+}
+
+.message.bot ul {
+  padding-left: 20px;
+  margin: 10px 0 20px;
+}
+
+.message.bot strong {
+  font-weight: 600;
+  color: #111;
+}
+
+/* Table styling */
+.message.bot table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 18px 0;
+  font-size: 14px;
+  border: 1px solid #ddd;
+}
+
+.message.bot th, .message.bot td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.message.bot th {
+  background-color: #f4f4f4;
+  font-weight: 600;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Enhanced Chat Message Styling */
 .chat-message {
   max-width: 80%;
