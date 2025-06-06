@@ -342,6 +342,7 @@ export default function Chat() {
                           <TypingMessage 
                             content={message.content}
                             isLatestMessage={messages.indexOf(message) === messages.length - 1 && !message.isUser}
+                            messageId={message.id}
                           />
                         </div>
                       </div>

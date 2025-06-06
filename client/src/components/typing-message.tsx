@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
+import { ChartGenerator } from "./chart-generator";
 
 interface TypingMessageProps {
   content: string;
   isLatestMessage: boolean;
   onComplete?: () => void;
+  messageId?: string;
 }
 
-export function TypingMessage({ content, isLatestMessage, onComplete }: TypingMessageProps) {
+export function TypingMessage({ content, isLatestMessage, onComplete, messageId }: TypingMessageProps) {
   const [displayedContent, setDisplayedContent] = useState("");
   const [isComplete, setIsComplete] = useState(false);
 
@@ -34,18 +36,23 @@ export function TypingMessage({ content, isLatestMessage, onComplete }: TypingMe
   }, [content, isLatestMessage, isComplete, onComplete]);
 
   return (
-    <div 
-      className="leading-relaxed prose prose-gray max-w-none [&>*]:mb-3 [&>*:last-child]:mb-0"
-      dangerouslySetInnerHTML={{ 
-        __html: displayedContent
-          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-          .replace(/🔎 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-blue-700 font-semibold">🔎 $1</div>')
-          .replace(/✅ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-green-700 font-semibold">✅ $1</div>')
-          .replace(/📊 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-purple-700 font-semibold">📊 $1</div>')
-          .replace(/⚖️ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-orange-700 font-semibold">⚖️ $1</div>')
-          .replace(/- 🔸 \*\*(.*?)\*\*/g, '<div class="ml-4 mb-1">• <strong>$1</strong>')
-          .replace(/\n/g, '<br/>')
-      }}
-    />
+    <div>
+      <div 
+        className="leading-relaxed prose prose-gray max-w-none [&>*]:mb-3 [&>*:last-child]:mb-0"
+        dangerouslySetInnerHTML={{ 
+          __html: displayedContent
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/🔎 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-blue-700 font-semibold">🔎 $1</div>')
+            .replace(/✅ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-green-700 font-semibold">✅ $1</div>')
+            .replace(/📊 \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-purple-700 font-semibold">📊 $1</div>')
+            .replace(/⚖️ \*\*(.*?)\*\*/g, '<div class="mt-4 mb-2 text-orange-700 font-semibold">⚖️ $1</div>')
+            .replace(/- 🔸 \*\*(.*?)\*\*/g, '<div class="ml-4 mb-1">• <strong>$1</strong>')
+            .replace(/\n/g, '<br/>')
+        }}
+      />
+      {isComplete && messageId && (
+        <ChartGenerator content={content} messageId={messageId} />
+      )}
+    </div>
   );
 }
