@@ -107,19 +107,19 @@ export default function Chat() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Top KPI Dashboard - Elegant Layout */}
-      <div className="bg-gray-50 px-6 py-3">
-        <div className="flex flex-col md:flex-row gap-6 justify-between">
+      <div className="bg-gray-50 px-6 py-2">
+        <div className="flex flex-col md:flex-row gap-4 justify-between">
           
           {/* Performance Card */}
           <div 
             onClick={() => toggleCard('performance')}
-            className={`group bg-white rounded-xl shadow-sm hover:shadow-md p-3 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
+            className={`group bg-white rounded-lg shadow-sm hover:shadow-md p-2.5 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
               expandedCard === 'performance' 
-                ? 'min-h-[280px] shadow-lg' 
-                : 'min-h-[80px]'
+                ? 'min-h-[240px] shadow-lg' 
+                : 'min-h-[65px]'
             }`}
           >
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Performance Score</h4>
@@ -179,13 +179,13 @@ export default function Chat() {
           {/* Risk Card */}
           <div 
             onClick={() => toggleCard('risks')}
-            className={`group bg-white rounded-xl shadow-sm hover:shadow-md p-3 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
+            className={`group bg-white rounded-lg shadow-sm hover:shadow-md p-2.5 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
               expandedCard === 'risks' 
-                ? 'min-h-[280px] shadow-lg' 
-                : 'min-h-[80px]'
+                ? 'min-h-[240px] shadow-lg' 
+                : 'min-h-[65px]'
             }`}
           >
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                 <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Zones at Risk</h4>
@@ -257,13 +257,13 @@ export default function Chat() {
           {/* Opportunity Card */}
           <div 
             onClick={() => toggleCard('opportunities')}
-            className={`group bg-white rounded-xl shadow-sm hover:shadow-md p-3 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
+            className={`group bg-white rounded-lg shadow-sm hover:shadow-md p-2.5 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
               expandedCard === 'opportunities' 
-                ? 'min-h-[280px] shadow-lg' 
-                : 'min-h-[80px]'
+                ? 'min-h-[240px] shadow-lg' 
+                : 'min-h-[65px]'
             }`}
           >
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                 <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Product Opportunity</h4>
