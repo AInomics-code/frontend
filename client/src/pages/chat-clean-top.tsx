@@ -322,7 +322,7 @@ export default function Chat() {
                   <div key={message.id} className="animate-[fadeIn_0.3s_ease-out]">
                     {message.isUser ? (
                       <div className="flex justify-end">
-                        <div className="user-bubble bg-gradient-to-br from-orange-500 to-red-600 text-white font-medium px-5 py-4 rounded-2xl rounded-br-md max-w-[65%] shadow-sm animate-[fadeInSlide_0.4s_ease-out_forwards]">
+                        <div className="user-bubble bg-gradient-to-br from-blue-500 to-blue-600 text-white font-medium px-4 py-3 rounded-full max-w-[60%] animate-[fadeInSlide_0.4s_ease-out_forwards]">
                           {message.content}
                         </div>
                       </div>
