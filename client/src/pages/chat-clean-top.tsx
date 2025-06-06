@@ -335,11 +335,11 @@ export default function Chat() {
         </div>
       </div>
       {/* Main Chat Interface */}
-      <div className="flex flex-col h-[calc(100vh-160px)]">
-        <main className="flex flex-col items-center p-8 flex-1 relative pt-16">
+      <div className="flex flex-col h-[calc(100vh-120px)]">
+        <main className="flex flex-col items-center justify-center p-8 flex-1 relative">
           {/* Vorta Logo */}
           {messages.length === 0 && !isTyping && (
-            <div className="vortex-icon mb-8 mt-12" style={{ width: '60px', height: '60px', '--vortex-size': '60px', animation: 'vortex-slow-rotate 20s linear infinite' } as React.CSSProperties}>
+            <div className="vortex-icon mb-12" style={{ width: '60px', height: '60px', '--vortex-size': '60px', animation: 'vortex-slow-rotate 20s linear infinite' } as React.CSSProperties}>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
               <div className="vortex-blade"></div>
@@ -350,7 +350,7 @@ export default function Chat() {
 
           {/* Messages Area */}
           {messages.length > 0 && (
-            <div className="flex-1 w-full max-w-4xl overflow-y-auto mb-6 px-8">
+            <div className="flex-1 w-full max-w-4xl overflow-y-auto mb-8 px-8">
               <div className="space-y-3">
                 {messages.map((message) => (
                   <div key={message.id} className="animate-[fadeIn_0.3s_ease-out]">
@@ -409,7 +409,7 @@ export default function Chat() {
 
 
           {/* Chat Input Container */}
-          <div className="w-full max-w-4xl px-8 sticky bottom-0 bg-gray-50 pb-6 pt-4">
+          <div className="w-full max-w-4xl px-8 bg-gray-50 pb-8 pt-4">
             <div className="relative flex items-center bg-white rounded-3xl border border-gray-200/60 hover:bg-gray-50/50 transition-all duration-200 focus-within:bg-white p-2">
               {/* Input field */}
                 <input
