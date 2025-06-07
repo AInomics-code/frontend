@@ -20,18 +20,18 @@ export async function getBusinessInsights(question: string): Promise<string> {
 
 **REAL SALES DATA - USE THIS AUTHENTIC DATA:**
 Regional Net Sales (Current Period):
-- Panamá: $5,837,497.97 (highest performing region)
-- Panamá Oeste: $5,733,133.50 
-- Chiriquí: $5,290,210.38
-- Colón: $5,126,457.57
+- Panama: $5,837,497.97 (highest performing region)
+- West Panama: $5,733,133.50 
+- Chiriqui: $5,290,210.38
+- Colon: $5,126,457.57
 - San Miguelito: $5,072,047.47
 
 Monthly Net Sales 2025:
-- Enero: $4,752,268.85
-- Febrero: $4,968,259.78
-- Marzo: $5,040,877.80
-- Abril: $5,072,047.47
-- Mayo: $5,205,821.79
+- January: $4,752,268.85
+- February: $4,968,259.78
+- March: $5,040,877.80
+- April: $5,072,047.47
+- May: $5,205,821.79
 
 Product Performance (YoY):
 - "AJO EN POLVO 30 GRS": Previous = 396.00, Current = 253.44, Δ = -36%, BO = 512.16
