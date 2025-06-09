@@ -33,11 +33,37 @@ Monthly Net Sales 2025:
 - April: $5,072,047.47
 - May: $5,205,821.79
 
-Product Performance (YoY):
-- "AJO EN POLVO 30 GRS": Previous = 396.00, Current = 253.44, Δ = -36%, BO = 512.16
-- "AJI CHOMBO 14 GRS": Previous = 71.39, Current = 60.60, Δ = -15%, BO = 130.64
-- "ARROCERO DOC 65GRS": +25% growth, BO = 792.48
-- "AVENA CANELA": +195% YoY growth
+Product Performance (YoY Detailed Data):
+- "ACHIOTE $0.25/14 GRS": Previous = 15.91, Current = 27.60, Δ = +73.48%, BO = 8/11.59
+- "ADOBO PARA TODO 175 GRS": Previous = 16.00, Current = 0, Δ = -100.00%, BO = -8/16.00
+- "AJI CHOMBO $0.30/14 GRS": Previous = 71.39, Current = 60.60, Δ = -15.11%, BO = -8/10.79, $130.64
+- "AJO EN POLVO $0.55/30 GRS": Previous = 396.00, Current = 253.44, Δ = -36.00%, BO = -8/142.56, $512.16
+- "AJO EN POLVO $0.30/14 GRS": Previous = 183.76, Current = 106.08, Δ = -42.27%, BO = -8/77.68, $256.27
+- "AJO EN POLVO $0.85/75GRS": Previous = 431.80, Current = -1.36, Δ = -100.31%, BO = -8/433.16, $9,065.76
+- "AJO EN POLVO 175 GRS": Previous = 120.00, Current = 430.00, Δ = +258.33%, BO = 8/310.00, $456.00
+- "AJO EN POLVO 5 SOBRES": Previous = 548.35, Current = 770.00, Δ = +40.42%, BO = 8/221.65
+- "AJO EN POLVO FCO/72 GRS": Previous = 158.50, Current = 46.23, Δ = -70.83%, BO = -8/112.27
+- "AJO MOLIDO FC GRANDE/565 GRS": Previous = 184.80, Current = 79.20, Δ = -57.14%, BO = -8/105.60
+- "AJONJOLI $0.45/14 GRS": Previous = 17.28, Current = 34.56, Δ = +100.00%, BO = 8/17.28, $64.80
+- "ALBAHACA $0.45/5 GRS": Previous = 30.24, Current = 0, Δ = -100.00%, BO = -8/30.24
+- "ANIS $0.30/14 GRS": Previous = 27.54, Current = 11.02, Δ = -59.99%, BO = -8/16.52
+- "ANIS ESTRELLA $0.50/12GRS": Previous = 4.40, Current = 86.00, Δ = +1854.55%, BO = 8/81.60, $648.00
+- "ARROCERO 175 GRS": Previous = 123.00, Current = 36.00, Δ = -70.73%, BO = -8/87.00
+- "ARROCERO 5 SOBRES": Previous = 525.36, Current = 439.56, Δ = -16.33%, BO = -8/85.80
+- "ARROCERO DOC $0.65/75 GRS": Previous = 199.68, Current = 370.76, Δ = +85.68%, BO = 8/171.08, $792.48
+- "ARROCERO FC GRANDE/1054 GRS": Previous = 306.00, Current = 102.00, Δ = -66.67%, BO = -8/204.00
+- "AVENA CANELA 320 GRS": Previous = 17.51, Current = 51.80, Δ = +195.83%, BO = 8/34.29
+- "AVENA CON CHIA FCO 415 GRS": Previous = 25.56, Current = 8.52, Δ = -66.67%, BO = -8/17.04
+- "AVENA CON LINAZA FCO 415 GRS": Previous = 34.08, Current = 0, Δ = -100.00%, BO = -9/34.08
+
+Sales Projections by Area (June 2025):
+- PANAMA: Projected $2,435,906.02, Actual $389,744.96, Target $470,017.48, Achievement 19.30%/19.30%, Difference -$1,965,888.54, Projected BO $2,937,609.25, BO 40% $75,381.03, Total $500,169.89, % Achievement 20.53%
+- SANTIAGO: Projected $924,752.38, Actual $150,863.73, Target $13,725.79, Achievement 21.93%/21.93%, Difference -$761,943.44, Projected BO $332,766.19, BO 40% $30,643.31, Total $522,063.12, % Achievement 59.78%
+- DAVID: Projected $791,151.26, Actual $126,564.20, Target $106,004.26, Achievement 13.40%/13.40%, Difference -$685,147.00, Projected BO $662,526.63, BO 40% $10,380.38, Total $110,156.41, % Achievement 13.92%
+- OFICINA PANAMA: Projected $732,095.31, Actual $117,135.25, Target $272,014.57, Achievement 37.16%/37.16%, Difference -$600,800.74, Projected BO $1,700,591.06, BO 40% $2.00, Total $272,015.37, % Achievement 37.16%
+- FOOD SERVICE PANAMA: Projected $707,185.67, Actual $113,149.71, Target $134,758.34, Achievement 17.64%/17.64%, Difference -$582,637.33, Projected BO $779,739.63, BO 40% $5,389.84, Total $126,914.28, % Achievement 17.95%
+
+Total Performance: Projected $5,641,111.39, Actual $902,577.85, Target $1,186,520.44, Achievement 21.03%/21.03%, Difference -$4,454,391.15, Total BO $7,415,752.75, Total Achievement 21.03%
 
 **DATA HANDLING POLICY:**
 - For questions about regional sales, monthly 2025 figures, or the specific products listed above: USE THE REAL DATA PROVIDED
