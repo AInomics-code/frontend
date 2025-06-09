@@ -15,7 +15,9 @@ export default function Chat() {
   const [isTyping, setIsTyping] = useState(false);
   const [isVoiceActive, setIsVoiceActive] = useState(false);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [isListening, setIsListening] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<any>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -24,6 +26,35 @@ export default function Chat() {
   useEffect(() => {
     scrollToBottom();
   }, [messages, isTyping]);
+
+  // Initialize speech recognition
+  useEffect(() => {
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
+      recognitionRef.current = new SpeechRecognition();
+      recognitionRef.current.continuous = false;
+      recognitionRef.current.interimResults = false;
+      recognitionRef.current.lang = 'es-ES'; // Spanish for La Doña
+      
+      recognitionRef.current.onstart = () => {
+        setIsListening(true);
+      };
+      
+      recognitionRef.current.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        setInputValue(transcript);
+        setIsListening(false);
+      };
+      
+      recognitionRef.current.onerror = () => {
+        setIsListening(false);
+      };
+      
+      recognitionRef.current.onend = () => {
+        setIsListening(false);
+      };
+    }
+  }, []);
 
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
@@ -97,7 +128,21 @@ export default function Chat() {
   };
 
   const toggleVoice = () => {
-    setIsVoiceActive(!isVoiceActive);
+    if (!recognitionRef.current) {
+      alert('Speech recognition not supported in this browser');
+      return;
+    }
+
+    if (isListening) {
+      recognitionRef.current.stop();
+    } else {
+      try {
+        recognitionRef.current.start();
+      } catch (error) {
+        console.error('Speech recognition error:', error);
+        setIsListening(false);
+      }
+    }
   };
 
   const toggleCard = (cardId: string) => {
@@ -435,8 +480,12 @@ export default function Chat() {
                   {/* Voice button */}
                   <button
                     onClick={toggleVoice}
-                    title="Use voice"
-                    className="p-3 transition-all duration-200 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg pl-[9px] pr-[9px]"
+                    title={isListening ? "Stop recording" : "Use voice"}
+                    className={`p-3 transition-all duration-200 rounded-lg pl-[9px] pr-[9px] ${
+                      isListening 
+                        ? 'text-red-500 bg-red-50 hover:bg-red-100' 
+                        : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'
+                    }`}
                   >
                     <Mic size={20} strokeWidth={1.5} />
                   </button>
