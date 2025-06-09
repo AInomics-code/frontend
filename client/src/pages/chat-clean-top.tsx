@@ -33,21 +33,38 @@ export default function Chat() {
       const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
       recognitionRef.current = new SpeechRecognition();
       recognitionRef.current.continuous = false;
-      recognitionRef.current.interimResults = false;
-      recognitionRef.current.lang = 'es-ES'; // Spanish for La Doña
+      recognitionRef.current.interimResults = true;
+      recognitionRef.current.lang = 'en-US'; // English for broader compatibility
       
       recognitionRef.current.onstart = () => {
         setIsListening(true);
       };
       
       recognitionRef.current.onresult = (event: any) => {
-        const transcript = event.results[0][0].transcript;
-        setInputValue(transcript);
-        setIsListening(false);
+        let transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          transcript += event.results[i][0].transcript;
+        }
+        setInputValue(transcript.trim());
+        
+        // If final result, stop listening
+        if (event.results[event.results.length - 1].isFinal) {
+          setIsListening(false);
+        }
       };
       
-      recognitionRef.current.onerror = () => {
+      recognitionRef.current.onerror = (event: any) => {
+        console.error('Speech recognition error:', event.error);
         setIsListening(false);
+        
+        // Handle specific errors
+        if (event.error === 'not-allowed') {
+          alert('Microphone access denied. Please allow microphone access and try again.');
+        } else if (event.error === 'no-speech') {
+          // Silent error for no speech detected
+        } else {
+          console.warn('Speech recognition error:', event.error);
+        }
       };
       
       recognitionRef.current.onend = () => {
