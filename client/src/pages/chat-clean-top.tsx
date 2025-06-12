@@ -269,6 +269,80 @@ export default function Chat() {
     setExpandedCard(expandedCard === cardId ? null : cardId);
   };
 
+  // Chart generation functions
+  const detectChartableData = (content: string): boolean => {
+    const indicators = [
+      /\d+%.*(?:target|performance|goal)/i,
+      /sales.*\$[\d,]+/i,
+      /revenue.*\$[\d,]+/i,
+      /growth.*\d+%/i,
+      /region.*\d+/i,
+      /store.*performance/i,
+      /product.*sales/i,
+      /inventory.*\d+/i,
+      /(?:january|february|march|april|may|june|july|august|september|october|november|december)/i,
+      /(?:q1|q2|q3|q4|quarter)/i,
+      /vs\.?\s+\d+/i,
+      /compared.*\d+/i
+    ];
+    return indicators.some(pattern => pattern.test(content));
+  };
+
+  const extractDataFromContent = (content: string): ChartData => {
+    // Extract meaningful data from La Doña business context
+    const values = extractNumbers(content);
+    const labels = extractLabels(content);
+    
+    return {
+      title: extractTitle(content),
+      values: values.length > 0 ? values : [67, 85, 92, 78], // Default to regional performance
+      labels: labels.length > 0 ? labels : ['Colón', 'Coclé', 'Chiriquí', 'Panamá'],
+      isMonetary: /\$|revenue|sales|profit/i.test(content),
+      isPercentage: /%|percent|performance|target/i.test(content)
+    };
+  };
+
+  const extractNumbers = (content: string): number[] => {
+    const numberPattern = /\$?(\d+(?:,\d{3})*(?:\.\d+)?)/g;
+    const matches = Array.from(content.matchAll(numberPattern));
+    return matches.map(match => parseFloat(match[1].replace(/,/g, ''))).slice(0, 8);
+  };
+
+  const extractLabels = (content: string): string[] => {
+    const regionPattern = /(?:región|region|store|product|client)\s+([A-Za-z\s]+)/gi;
+    const monthPattern = /(?:january|february|march|april|may|june|july|august|september|october|november|december)/gi;
+    
+    const labels = [
+      ...Array.from(content.matchAll(regionPattern)).map(m => m[1].trim()),
+      ...Array.from(content.matchAll(monthPattern)).map(m => m[0])
+    ];
+    return labels.slice(0, 8);
+  };
+
+  const extractTitle = (content: string): string => {
+    if (content.includes('performance')) return 'Regional Performance Analysis';
+    if (content.includes('sales')) return 'Sales Performance Data';
+    if (content.includes('revenue')) return 'Revenue Analysis';
+    if (content.includes('inventory')) return 'Inventory Levels';
+    return 'Business Analytics';
+  };
+
+  const handleGenerateChart = (type: string, data?: ChartData) => {
+    setChartType(type);
+    setChartData(data || getDefaultChartData());
+    setShowChart(true);
+  };
+
+  const getDefaultChartData = (): ChartData => {
+    return {
+      title: 'Regional Performance vs Target',
+      labels: ['Colón', 'Coclé', 'Chiriquí', 'Panamá'],
+      values: [67, 85, 92, 78],
+      isMonetary: false,
+      isPercentage: true
+    };
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Top KPI Dashboard - Elegant Layout */}
@@ -542,11 +616,62 @@ export default function Chat() {
                           isLatestMessage={messages.indexOf(message) === messages.length - 1 && !message.isUser}
                           messageId={message.id}
                         />
+                        
+                        {/* Chart suggestion for AI messages with data */}
+                        {detectChartableData(message.content) && (
+                          <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                            <div className="flex items-center gap-2 mb-2">
+                              <BarChart3 size={16} className="text-blue-600" />
+                              <span className="text-sm font-medium text-blue-800">Visualize this data</span>
+                            </div>
+                            <div className="grid grid-cols-4 gap-2">
+                              <button
+                                onClick={() => handleGenerateChart('bar', extractDataFromContent(message.content))}
+                                className="flex flex-col items-center p-2 text-xs bg-white border border-blue-200 rounded hover:bg-blue-50 transition-colors"
+                              >
+                                <BarChart3 size={14} className="mb-1 text-blue-600" />
+                                Bar Chart
+                              </button>
+                              <button
+                                onClick={() => handleGenerateChart('line', extractDataFromContent(message.content))}
+                                className="flex flex-col items-center p-2 text-xs bg-white border border-blue-200 rounded hover:bg-blue-50 transition-colors"
+                              >
+                                <LineChart size={14} className="mb-1 text-blue-600" />
+                                Line Chart
+                              </button>
+                              <button
+                                onClick={() => handleGenerateChart('pie', extractDataFromContent(message.content))}
+                                className="flex flex-col items-center p-2 text-xs bg-white border border-blue-200 rounded hover:bg-blue-50 transition-colors"
+                              >
+                                <PieChart size={14} className="mb-1 text-blue-600" />
+                                Pie Chart
+                              </button>
+                              <button
+                                onClick={() => handleGenerateChart('trend', extractDataFromContent(message.content))}
+                                className="flex flex-col items-center p-2 text-xs bg-white border border-blue-200 rounded hover:bg-blue-50 transition-colors"
+                              >
+                                <TrendingUp size={14} className="mb-1 text-blue-600" />
+                                Trend
+                              </button>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* Chart Display Area */}
+          {showChart && chartData && (
+            <div className="w-full max-w-4xl px-8 mb-4">
+              <ChartGenerator 
+                data={chartData}
+                chartType={chartType}
+                onClose={() => setShowChart(false)}
+              />
             </div>
           )}
 
@@ -624,6 +749,15 @@ export default function Chat() {
                       {speechLanguage === 'es-ES' ? 'ES' : 'EN'}
                     </button>
                   )}
+
+                  {/* Chart generation button */}
+                  <button 
+                    onClick={() => handleGenerateChart('bar')}
+                    className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150"
+                    title="Generate chart with current data"
+                  >
+                    <BarChart3 size={20} strokeWidth={1.5} />
+                  </button>
 
                   {/* Attachment button */}
                   <button 
