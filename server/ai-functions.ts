@@ -18,12 +18,12 @@ function getDirectBusinessResponse(question: string): string {
   // Product performance queries
   if (lowerQuestion.includes('anis estrella') || lowerQuestion.includes('worst') || lowerQuestion.includes('underperform')) {
     return `**Current Performance Overview**
-Looking at our product portfolio, we have some areas that need attention. ANIS ESTRELLA has declined significantly from $86.00 to $4.40, while ADOBO PARA TODO 175 GRS shows minimal market engagement. A/O EN POLVO 175 GRS has dropped from $430.00 to $120.00, which is below our typical performance range for spice products.
+Looking at our product portfolio, we have some areas that need attention. Our Anís Estrella seasoning has declined significantly from $86.00 to $4.40, while our Adobo seasoning (175g) shows minimal market engagement. The garlic powder (175g) has dropped from $430.00 to $120.00, which is below our typical performance range for spice products.
 
 **Understanding the Context**
 - Where we are: These three products are performing below our standard benchmarks compared to our successful lines
-- How this developed: ADOBO PARA TODO faced market acceptance challenges that weren't addressed quickly enough. ANIS ESTRELLA experienced supply chain disruptions without backup sourcing in place. Our monitoring systems didn't catch these declines early enough for preventive action.
-- Performance targets: Typically, ANIS ESTRELLA maintains around $80+ monthly performance, while A/O EN POLVO usually stays in the $400+ range similar to other spice products in our portfolio.
+- How this developed: The Adobo seasoning faced market acceptance challenges that weren't addressed quickly enough. Anís Estrella experienced supply chain disruptions without backup sourcing in place. Our monitoring systems didn't catch these declines early enough for preventive action.
+- Performance targets: Typically, Anís Estrella maintains around $80+ monthly performance, while garlic powder usually stays in the $400+ range similar to other spice products in our portfolio.
 
 **Key Contributing Factors**
 - Primary: Our product lifecycle management process needs refinement to exit underperforming products more efficiently
@@ -35,8 +35,8 @@ Looking at our product portfolio, we have some areas that need attention. ANIS E
 These performance gaps represent approximately $1,500 in monthly revenue opportunity. We're also carrying inventory costs that could be better allocated to our higher-performing products.
 
 **Recommended Path Forward**
-- Immediate focus: Redirect ADOBO PARA TODO production resources to more promising products
-- Near-term planning: Develop alternative supplier relationships for ANIS ESTRELLA within the next 48 hours
+- Immediate focus: Redirect Adobo seasoning production resources to more promising products
+- Near-term planning: Develop alternative supplier relationships for Anís Estrella within the next 48 hours
 - Strategic development: Create performance monitoring with review triggers at 70% and exit considerations at 50%
 
 **Success Indicators**
@@ -50,7 +50,7 @@ Our June billing totaled $1,201,456.36 compared to May's stronger performance of
 
 **Understanding the Situation**
 - Current position: Operating at approximately 19% of normal monthly capacity with constrained cash flow
-- Contributing factors: Back-order fulfillment challenges ($39,118.09 outstanding) have impacted our ability to complete orders. Production output reached only $564.71 versus expected volumes. Our SUPERMERCADOS XTRA relationship has created a -$54,000 variance that requires attention.
+- Contributing factors: Back-order fulfillment challenges ($39,118.09 outstanding) have impacted our ability to complete orders. Production output reached only $564.71 versus expected volumes. Our relationship with Supermercados Xtra has created a -$54,000 variance that requires attention.
 - Expected performance: June typically generates around $5.2M with a 2.4 margin. Food manufacturing industry standards suggest maintaining 2.0+ margins even during seasonal adjustments.
 
 **Key Factors Influencing Performance**
@@ -64,7 +64,7 @@ Current performance represents constrained operating liquidity, with fixed costs
 
 **Strategic Recommendations**
 - Immediate focus: Activate available credit facilities and prioritize highest-margin order fulfillment
-- Near-term development: Apply our successful PRODUCTOS ALIMENTICIOS SPACIAL performance model (95.96% achievement) to other key accounts
+- Near-term development: Apply our successful Spacial Foods performance model (95.96% achievement) to other key accounts
 - Long-term enhancement: Implement integrated production and financial forecasting with proactive variance monitoring
 
 **Performance Targets**
@@ -74,25 +74,25 @@ Achieve $2.4M+ billing recovery within two weeks (representing 50% improvement t
   // Sales performance queries
   if (lowerQuestion.includes('sales') || lowerQuestion.includes('poor') || lowerQuestion.includes('low')) {
     return `**Sales Performance Analysis**
-Our current sales achievement stands at 13.40% versus our budget target of 791,151.26, which indicates room for improvement from our typical 70%+ performance standard. The SUPERMERCADOS XTRA chain locations show varying results: BUGABA at 17.87%, SX-DAVID at 24.29%, and M.F.DAVID at 24.40%. Notably, PRODUCTOS ALIMENTICIOS SPACIAL is performing well at 95.96%, demonstrating our capability for strong results.
+Our current sales achievement stands at 13.40% versus our budget target of 791,151.26, which indicates room for improvement from our typical 70%+ performance standard. The Supermercados Xtra chain locations show varying results: Bugaba at 17.87%, David branch at 24.29%, and M.F. David at 24.40%. Notably, Spacial Foods is performing well at 95.96%, demonstrating our capability for strong results.
 
 **Understanding the Performance Context**
 - Current status: Operating at 13% achievement compared to industry benchmarks of 70%+ for established food manufacturers
-- Contributing factors: Back-order fulfillment challenges have affected service capabilities across 39 XTRA locations. Sales execution has been constrained by inventory availability. Our response protocols during supply challenges need enhancement.
-- Performance expectations: Healthy food manufacturers typically achieve 70-85% of sales targets monthly. XTRA chain locations should perform at 75%+ given their established customer base.
+- Contributing factors: Back-order fulfillment challenges have affected service capabilities across 39 Xtra locations. Sales execution has been constrained by inventory availability. Our response protocols during supply challenges need enhancement.
+- Performance expectations: Healthy food manufacturers typically achieve 70-85% of sales targets monthly. Xtra chain locations should perform at 75%+ given their established customer base.
 
 **Factors Influencing Current Results**
 - Primary: Supply chain coordination affecting systematic fulfillment across our major account network
 - Secondary: Account management during challenging periods requires enhanced proactive customer engagement
-- External: XTRA chain management may be evaluating supplier alternatives for consistent delivery
+- External: Xtra chain management may be evaluating supplier alternatives for consistent delivery
 - Internal: Sales targets could benefit from supply-adjusted expectations during operational transitions
 
 **Revenue Impact**
-Current performance represents approximately $680,000 in monthly revenue opportunity. The XTRA partnership variance of -$54,000 requires focused attention to maintain this valuable relationship.
+Current performance represents approximately $680,000 in monthly revenue opportunity. The Xtra partnership variance of -$54,000 requires focused attention to maintain this valuable relationship.
 
 **Strategic Development Plan**
-- Priority focus: Schedule partnership discussions with XTRA management to strengthen our collaboration and address service concerns
-- Implementation phase: Apply the successful PRODUCTOS ALIMENTICIOS SPACIAL performance framework to our top 5 developing accounts
+- Priority focus: Schedule partnership discussions with Xtra management to strengthen our collaboration and address service concerns
+- Implementation phase: Apply the successful Spacial Foods performance framework to our top 5 developing accounts
 - Systems enhancement: Create supply-adjusted sales targets with integrated performance monitoring and proactive engagement protocols
 
 **Achievement Targets**
