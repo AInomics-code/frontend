@@ -47,7 +47,7 @@ function getDataAnalystInsights(question: string): string {
     const lowStockProduct = lowStockProducts[0] || products.find(p => p.currentStock < p.targetStock);
     const poorProduct = poorProducts[0] || products.find(p => p.salesTrend < 10);
     
-    return `Jefe, let me walk you through what's happening with our product portfolio right now.
+    return `Here's the current product portfolio situation that needs executive attention.
 
 **What We're Seeing:**
 We've got <span class="metric-highlight">${poorProducts.length} products with declining sales</span> - that's concerning. The worst performer, ${poorProduct?.name || 'Mayonesa 400g'}, is down <span class="key-point">${Math.abs(poorProduct?.salesTrend || 15)}%</span> from last period. Meanwhile, our best margin makers are <span class="performance-positive">${topMarginProducts[0]?.name} at ${topMarginProducts[0]?.margin}%</span> and <span class="performance-positive">${topMarginProducts[1]?.name} at ${topMarginProducts[1]?.margin}%</span> - these are our golden geese.
@@ -78,30 +78,30 @@ The bottom line: we can recover <span class="performance-positive">$${(poorProdu
     const overdueValue = overdueClients.reduce((sum, c) => sum + c.overdueAmount, 0);
     const biggestDebtor = overdueClients.sort((a,b) => b.overdueAmount - a.overdueAmount)[0];
     
-    return `Jefe, we need to talk about our cash situation - there are some red flags here.
+    return `The financial analysis reveals critical cash flow issues requiring immediate attention.
 
-**What I'm Seeing in the Numbers:**
+**Current Financial Position:**
 Today we billed <span class="metric-highlight">$${totalBilling.toLocaleString()}</span> across ${todayInvoices.length} invoices, which gives us an average order of <span class="performance-positive">$${avgOrderValue.toFixed(2)}</span>. That's actually not bad - shows our customers are buying decent volumes.
 
 But here's the problem: we've got <span class="key-point">$${pendingInvoices.reduce((sum, inv) => sum + inv.amount, 0).toLocaleString()} still pending collection</span> from just today's sales, and much worse - we're carrying <span class="metric-highlight">$${overdueValue.toLocaleString()} in overdue receivables</span> across ${overdueClients.length} accounts.
 
-**Why This Happened:**
-The biggest culprit is ${biggestDebtor?.name || 'our largest client'} - they owe us <span class="metric-highlight">$${biggestDebtor?.overdueAmount.toLocaleString() || '24,300'}</span> and it's been sitting there for <span class="key-point">${biggestDebtor?.overdueDays || 135} days</span>. That's almost 5 months, jefe! 
+**Root Cause Analysis:**
+The biggest concern is ${biggestDebtor?.name || 'our largest client'} - they owe <span class="metric-highlight">$${biggestDebtor?.overdueAmount.toLocaleString() || '24,300'}</span> and it's been outstanding for <span class="key-point">${biggestDebtor?.overdueDays || 135} days</span>. That's nearly 5 months overdue.
 
-Looking at the pattern, our average collection period is <span class="metric-highlight">${Math.round(overdueClients.reduce((sum, c) => sum + c.overdueDays, 0) / overdueClients.length)} days</span> when it should be 30 days max. This tells me we're either too lenient with credit terms or not following up aggressively enough.
+The data shows our average collection period is <span class="metric-highlight">${Math.round(overdueClients.reduce((sum, c) => sum + c.overdueDays, 0) / overdueClients.length)} days</span> when industry standard is 30 days maximum. This indicates either inadequate credit policies or insufficient collection follow-up procedures.
 
-**Why This Hurts Us:**
-Every day that money sits in receivables instead of our bank account, we're losing opportunities. That <span class="performance-positive">$${overdueValue.toLocaleString()}</span> could be working for us - buying inventory, investing in growth, or at minimum earning interest.
+**Business Impact:**
+Working capital of <span class="performance-positive">$${overdueValue.toLocaleString()}</span> is tied up in receivables instead of generating returns through inventory investment or growth initiatives.
 
-At our current pace, we're projecting <span class="performance-positive">$${(totalBilling * 25).toLocaleString()} for the month</span>, but if we can collect even 85% of those overdue amounts, that's <span class="performance-positive">$${(overdueValue * 0.85).toFixed(0)} immediate cash injection</span>.
+Current billing trends project <span class="performance-positive">$${(totalBilling * 25).toLocaleString()} monthly revenue</span>, but collecting 85% of overdue amounts would provide <span class="performance-positive">$${(overdueValue * 0.85).toFixed(0)} immediate cash injection</span>.
 
-**Here's My Action Plan:**
-1. **Today:** I'm calling ${biggestDebtor?.name || 'our biggest debtor'} personally about that $${biggestDebtor?.overdueAmount.toLocaleString() || '24,300'} - no more delays
-2. **This Week:** Implement 2/10 net 30 terms for all major clients - early payment discount, late payment penalties
-3. **This Month:** Deploy $${(overdueValue * 0.4).toFixed(0)} of recovered cash into fast-moving inventory
-4. **Goal:** Get our collection period down to 15 days average - this frees up <span class="key-point">$${(overdueValue * 0.6).toFixed(0)} for growth investments</span>
+**Recommended Action Plan:**
+1. **Immediate:** Contact ${biggestDebtor?.name || 'largest debtor'} regarding $${biggestDebtor?.overdueAmount.toLocaleString() || '24,300'} outstanding balance
+2. **Week 1:** Implement 2/10 net 30 payment terms with early payment discounts and late penalties
+3. **Month 1:** Reinvest $${(overdueValue * 0.4).toFixed(0)} of collected funds into high-velocity inventory
+4. **Target:** Achieve 15-day average collection period, freeing <span class="key-point">$${(overdueValue * 0.6).toFixed(0)} for strategic investments</span>
 
-Bottom line: if we can get collections under control, we're looking at <span class="performance-positive">$${(totalBilling * 75).toLocaleString()} quarterly potential</span> with much healthier cash flow.`;
+Successful collection optimization could drive quarterly revenue to <span class="performance-positive">$${(totalBilling * 75).toLocaleString()}</span> with significantly improved cash flow management.`;
   }
   
   // Sales Performance Analysis
@@ -111,30 +111,30 @@ Bottom line: if we can get collections under control, we're looking at <span cla
     const activeClients = extendedClients.filter(c => c.isActive).length;
     const highRiskClients = extendedClients.filter(c => c.riskLevel === 'high').length;
     
-    return `Jefe, let me give you the real story on our sales team - we've got some stars and some problems.
+    return `The sales performance analysis reveals significant opportunities for team optimization.
 
-**What's Really Happening:**
+**Current Team Performance:**
 ${topPerformer.name} in ${topPerformer.region} is absolutely crushing it at <span class="performance-positive">${topPerformer.performance}% of target</span>. This guy is making <span class="performance-positive">${topPerformer.visitedToday.length} client visits daily</span> and pulling in <span class="metric-highlight">$${((topPerformer.achieved || 0) / Math.max(topPerformer.visitedToday.length, 1)).toFixed(0)} per visit</span>. That's what excellence looks like.
 
 ${underperformers.length > 0 ? `But we've got ${underperformers.length} reps struggling below 50% target. The gap between our best and worst performer is ${(topPerformer.performance - underperformers[0]?.performance || 0).toFixed(1)}% - that's a massive difference in productivity.` : 'The good news is everyone on the team is hitting at least 50% of target, but we still have room to optimize.'}
 
-**Why Some Are Winning and Others Aren't:**
-${topPerformer.name} has figured out the formula: consistent daily client visits (${topPerformer.visitedToday.length} today), strategic account management, and he's clearly building real relationships. Look at his phone number in our system - he's accessible to clients.
+**Performance Analysis:**
+${topPerformer.name} demonstrates the optimal approach: <span class="performance-positive">${topPerformer.visitedToday.length} daily client visits</span>, systematic account management, and strong client accessibility. His methodology generates <span class="metric-highlight">$${((topPerformer.achieved || 0) / Math.max(topPerformer.visitedToday.length, 1)).toFixed(0)} revenue per visit</span>.
 
-${underperformers.length > 0 ? `The underperformers are making fewer visits, probably not following up properly, and missing the relationship-building piece. In sales, activity drives results - it's that simple.` : 'Our team is maintaining good activity levels, but we can still learn from our top performer\'s approach.'}
+${underperformers.length > 0 ? `Performance gaps exist with ${underperformers.length} representatives below 50% target. The variance between top and bottom performers is ${(topPerformer.performance - underperformers[0]?.performance || 0).toFixed(1)}%, indicating inconsistent execution of sales processes.` : 'Team performance is stable above 50% target, with optimization opportunities available through best practice adoption.'}
 
-**Why This Matters:**
-We've got <span class="performance-positive">${activeClients} active accounts</span> out of ${extendedClients.length} total, but <span class="metric-highlight">${highRiskClients} are at high risk</span> of churning. Every lost client costs us their monthly volume.
+**Strategic Impact:**
+Current portfolio shows <span class="performance-positive">${activeClients} active accounts</span> from ${extendedClients.length} total clients, with <span class="metric-highlight">${highRiskClients} classified as high-risk</span> for retention issues.
 
-If we could get ${underperformers.length > 0 ? 'our struggling reps' : 'the whole team'} to perform like ${topPerformer.name}, we're talking about <span class="performance-positive">$${(underperformers.length * 25000 || salesReps.length * 5000).toLocaleString()} additional monthly revenue</span>. That's real money.
+Scaling ${topPerformer.name}'s methodology across the team could generate <span class="performance-positive">$${(underperformers.length * 25000 || salesReps.length * 5000).toLocaleString()} additional monthly revenue</span> through improved conversion rates and client retention.
 
-**My Action Plan:**
-1. **Tomorrow:** ${topPerformer.name} starts mentoring ${underperformers[0]?.name || 'the team'} - one-on-one ride-alongs
-2. **This Week:** Daily visit tracking for everyone - no exceptions, full transparency
-3. **This Month:** Launch intensive coaching for our ${extendedClients.filter(c => c.monthlyVolume > 30000).length} highest-value accounts
-4. **Target:** Get everyone above 65% performance in 4 weeks
+**Implementation Strategy:**
+1. **Immediate:** Deploy ${topPerformer.name} as mentor for ${underperformers[0]?.name || 'team development'} with structured coaching sessions
+2. **Week 1:** Implement comprehensive visit tracking system for performance transparency
+3. **Month 1:** Focus intensive training on ${extendedClients.filter(c => c.monthlyVolume > 30000).length} high-value account management
+4. **90-Day Goal:** Achieve 65%+ performance across all territories through proven methodology adoption
 
-The math is simple: better activity + better technique = better results. ${topPerformer.name} proved it works.`;
+Success metrics indicate that systematic activity improvement directly correlates with revenue growth, as validated by ${topPerformer.name}'s performance data.`;
   }
   
   // Regional Analysis
@@ -175,27 +175,27 @@ Top region drivers:
   }
   
   // Default comprehensive business overview
-  return `Jefe, you asked for the big picture - here's what the numbers are telling us about La Doña right now.
+  return `Here's the comprehensive business intelligence overview based on current La Doña operations data.
 
-**What We're Looking At Today:**
+**Current Business Position:**
 Our revenue pipeline is sitting at <span class="metric-highlight">$${totalRevenue.toLocaleString()}</span> from ${salesData.length} transactions. Our star product is <span class="performance-positive">${topMarginProducts[0]?.name}</span> with a beautiful ${topMarginProducts[0]?.margin}% margin, and ${topPerformer.name} is leading the sales charge at <span class="performance-positive">${topPerformer.performance}% of target</span>.
 
-**The Problems I'm Seeing:**
-We've got <span class="metric-highlight">${outOfStockCount} products out of stock</span> - that's money walking out the door. Worse, we're carrying <span class="key-point">$${totalOverdue.toLocaleString()} in overdue receivables</span>. But the good news? Our promotions are averaging <span class="performance-positive">${avgPromotionROI.toFixed(1)}% ROI</span> - that's solid.
+**Critical Issues Identified:**
+Current operations show <span class="metric-highlight">${outOfStockCount} products out of stock</span>, representing immediate revenue loss. Additionally, <span class="key-point">$${totalOverdue.toLocaleString()} in overdue receivables</span> ties up working capital. However, promotional campaigns demonstrate strong performance with <span class="performance-positive">${avgPromotionROI.toFixed(1)}% average ROI</span>.
 
-**Why This Happened:**
-The stockouts are killing us because customers don't wait - they go to our competitors. The receivables problem tells me we're not being aggressive enough with collections. But our promotional success shows we know how to move product when we focus.
+**Root Cause Analysis:**
+Inventory stockouts result from supply chain timing misalignment with demand patterns, causing customer defection to competitors. Extended receivables indicate insufficient collection procedures or overly lenient credit terms. Promotional success validates effective marketing execution when properly resourced.
 
-**What This Means for Our Business:**
-Every day we're out of stock on key items, we're losing daily sales. Every day that money sits in receivables, it's not working for us. But we've got ${extendedClients.filter(c => !c.isActive).length} dormant accounts that could be reactivated.
+**Business Impact Assessment:**
+Daily inventory shortages compound revenue losses through customer acquisition by competitors. Receivables delays prevent capital deployment for growth initiatives. The company maintains ${extendedClients.filter(c => !c.isActive).length} inactive accounts representing reactivation opportunities.
 
-**My Priority Action List:**
-1. **Today:** ${lowStockProducts[0]?.name ? `Get ${lowStockProducts[0].name} restocked (only ${lowStockProducts[0].currentStock} units left)` : 'Address critical inventory shortages'}
-2. **This Week:** Call ${overdueClients[0]?.name || 'our biggest debtors'} for that $${overdueClients[0]?.overdueAmount.toLocaleString() || '24,300'} collection
-3. **This Month:** Have ${topPerformer.name} train the team - we could add <span class="performance-positive">$${((topPerformer.performance - 45) * salesReps.length * 1000).toFixed(0)} monthly</span> revenue
+**Strategic Action Framework:**
+1. **Immediate:** ${lowStockProducts[0]?.name ? `Restock ${lowStockProducts[0].name} (current: ${lowStockProducts[0].currentStock} units vs target: ${lowStockProducts[0].targetStock})` : 'Address critical inventory shortages through expedited procurement'}
+2. **Week 1:** Initiate collection procedures for ${overdueClients[0]?.name || 'primary debtors'} regarding $${overdueClients[0]?.overdueAmount.toLocaleString() || '24,300'} outstanding balance
+3. **Month 1:** Implement ${topPerformer.name} training methodology across sales team for potential <span class="performance-positive">$${((topPerformer.performance - 45) * salesReps.length * 1000).toFixed(0)} monthly revenue increase</span>
 
-**The Bottom Line:**
-We can optimize <span class="performance-positive">$${(topMarginProducts.slice(0,3).reduce((sum, p) => sum + (p.sellingPrice * p.targetStock * 0.3), 0)).toFixed(0)} monthly</span> through better product mix, collect <span class="key-point">$${(totalOverdue * 0.7).toFixed(0)}</span> faster, and reactivate those dormant accounts. The potential is there - we just need to execute.`;
+**Financial Recovery Potential:**
+Product mix optimization could yield <span class="performance-positive">$${(topMarginProducts.slice(0,3).reduce((sum, p) => sum + (p.sellingPrice * p.targetStock * 0.3), 0)).toFixed(0)} monthly additional revenue</span>. Accelerated collections target <span class="key-point">$${(totalOverdue * 0.7).toFixed(0)} recovery</span>. Dormant account reactivation provides supplementary growth opportunities through existing relationship leverage.`;
 }
 
 /**
