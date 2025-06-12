@@ -1,12 +1,22 @@
 import { useState, useRef, useEffect } from "react";
-import { Paperclip, Globe, Mic, Search, BarChart2, ChevronDown, ChevronUp, ArrowUp } from "lucide-react";
+import { Paperclip, Globe, Mic, Search, BarChart2, ChevronDown, ChevronUp, ArrowUp, BarChart3, LineChart, PieChart, TrendingUp } from "lucide-react";
 import { TypingMessage } from "@/components/typing-message";
+import { ChartSuggestion } from "@/components/chart-suggestion";
+import { ChartGenerator } from "@/components/chart-generator";
 
 interface Message {
   id: string;
   content: string;
   isUser: boolean;
   timestamp: Date;
+}
+
+interface ChartData {
+  title: string;
+  labels: string[];
+  values: number[];
+  isMonetary: boolean;
+  isPercentage: boolean;
 }
 
 export default function Chat() {
@@ -19,6 +29,9 @@ export default function Chat() {
   const [speechSupported, setSpeechSupported] = useState(false);
   const [interimTranscript, setInterimTranscript] = useState("");
   const [speechLanguage, setSpeechLanguage] = useState('es-ES');
+  const [showChart, setShowChart] = useState(false);
+  const [chartData, setChartData] = useState<ChartData | null>(null);
+  const [chartType, setChartType] = useState<string>('bar');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
   const speechTimeoutRef = useRef<NodeJS.Timeout | null>(null);
