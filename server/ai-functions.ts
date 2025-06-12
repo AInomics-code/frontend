@@ -356,6 +356,488 @@ Non-selling patterns indicate inventory positioning issues, regional preference 
 Combined non-selling inventory represents <span class="performance-positive">$63 daily opportunity cost</span> with <span class="metric-highlight">$13,000 total budget shortfall</span> requiring immediate intervention.`;
   }
   
+  // 11. Out of stock products by branch
+  if (lowerQuestion.includes('out of stock') || lowerQuestion.includes('stockout') || (lowerQuestion.includes('stock') && lowerQuestion.includes('branch'))) {
+    return `Critical inventory shortage analysis reveals stockout situations affecting sales performance across multiple locations.
+
+**Current Stockouts by Branch:**
+
+**Super99 Costa Verde:**
+- <span class="metric-highlight">Condimento Super Xtra 500g</span> - Out since: 3 days, Lost sales: $420
+- <span class="key-point">Vinagre Premium 750ml</span> - Out since: 1 day, High demand product
+- <span class="key-point">Adobo Tradicional</span> - Out since: 5 days, Seasonal peak period
+
+**Xtra Albrook:**
+- <span class="metric-highlight">Mayonesa Premium 400g</span> - Out since: 2 days, Lost sales: $280
+- <span class="key-point">Salsa Verde 300ml</span> - Out since: 4 days, Customer complaints received
+
+**Rey Multiplaza:**
+- <span class="metric-highlight">Condimento Básico</span> - Out since: 6 days, Reorder delayed
+- <span class="key-point">Vinagre Regular 500ml</span> - Out since: 2 days, Supply chain issue
+
+**Critical Impact Analysis:**
+- Total estimated lost sales: <span class="metric-highlight">$1,240 this week</span>
+- Customer satisfaction risk in <span class="key-point">3 major locations</span>
+- Competitor opportunity window: 48-72 hours before permanent customer loss
+
+**Supply Chain Status:**
+- <span class="performance-positive">Condimento Super Xtra</span>: Restock arriving tomorrow
+- <span class="key-point">Vinagre Premium</span>: Production batch ready for dispatch
+- <span class="metric-highlight">Mayonesa Premium</span>: Quality control delay, 2 days remaining
+
+**Immediate Action Plan:**
+1. **Emergency transfer** from Xtra Penonome surplus to Albrook (Mayonesa Premium)
+2. **Express delivery** for Condimento Super Xtra to Costa Verde by 6 AM
+3. **Customer communication** via store managers about restocking timeline
+4. **Inventory monitoring** daily for next 10 days to prevent recurrence
+
+Restocking priority targets all critical SKUs within <span class="performance-positive">24-48 hours</span> to minimize revenue impact.`;
+  }
+  
+  // 12. Underperforming products by category this week
+  if ((lowerQuestion.includes('underperforming') || lowerQuestion.includes('poor') || lowerQuestion.includes('weak')) && lowerQuestion.includes('category') && (lowerQuestion.includes('week') || lowerQuestion.includes('this week'))) {
+    return `Weekly product category performance analysis identifies underperforming segments requiring immediate attention.
+
+**Underperforming Categories This Week:**
+
+**Condiments Category (−23% vs target):**
+- <span class="metric-highlight">Condimento Básico</span>: 45 units sold vs 85 target (−47%)
+  Branches affected: Rey Multiplaza, Xtra Penonome
+- <span class="key-point">Adobo Tradicional</span>: 62 units sold vs 95 target (−35%)
+  Issue: Packaging change customer resistance
+
+**Vinegar Category (−18% vs target):**
+- <span class="metric-highlight">Vinagre Regular 500ml</span>: 78 units sold vs 120 target (−35%)
+  Problem: Price increase impact on volume sales
+- <span class="key-point">Vinagre Blanco</span>: 34 units sold vs 55 target (−38%)
+  Regional preference misalignment
+
+**Mayonnaise Category (−12% vs target):**
+- <span class="key-point">Mayonesa 400g Standard</span>: 156 units sold vs 190 target (−18%)
+  Competitive pressure from imported brands
+
+**Root Cause Analysis:**
+- <span class="metric-highlight">Price sensitivity</span>: Recent 8% price increases affecting volume
+- <span class="key-point">Promotional gap</span>: Competitor scanner promotions capturing market share
+- <span class="key-point">Seasonal shift</span>: Traditional products declining during summer period
+
+**Performance Comparison:**
+**Strong Performers (Above target):**
+- <span class="performance-positive">Condimento Super Xtra</span>: +15% vs target
+- <span class="performance-positive">Vinagre Premium</span>: +22% vs target
+- <span class="performance-positive">Mayonesa Premium</span>: +8% vs target
+
+**Strategic Response:**
+1. **Immediate:** Launch 2x1 promotion on underperforming Condimento Básico
+2. **Price adjustment:** Review Vinagre Regular pricing strategy within 72 hours
+3. **Training focus:** Sales rep education on premium product benefits
+4. **Inventory rebalancing:** Reduce slow-moving SKU orders by 30% next week
+
+Target recovery: <span class="performance-positive">Return to +5% category growth within 14 days</span> through focused intervention.`;
+  }
+  
+  // 13. Sales growth vs last year per chain
+  if ((lowerQuestion.includes('growth') || lowerQuestion.includes('vs') || lowerQuestion.includes('last year')) && lowerQuestion.includes('chain')) {
+    return `Annual sales growth analysis reveals mixed performance across retail chains with clear winners and strategic challenges.
+
+**Sales Growth vs Last Year by Chain:**
+
+**High Growth Performers:**
+- <span class="performance-positive">Super99 Chain</span>
+  YTD Growth: <span class="performance-positive">+18.5%</span> ($245,000 vs $207,000)
+  Driver: Premium product focus and excellent execution
+  
+- <span class="performance-positive">Rey Chain</span>
+  YTD Growth: <span class="performance-positive">+12.3%</span> ($198,000 vs $176,000)
+  Driver: Strong promotional calendar and strategic locations
+
+**Moderate Growth:**
+- <span class="key-point">Xtra Chain</span>
+  YTD Growth: <span class="key-point">+6.8%</span> ($167,000 vs $156,000)
+  Mixed performance across locations, opportunity for improvement
+
+**Declining Performance:**
+- <span class="metric-highlight">El Machetazo</span>
+  YTD Growth: <span class="metric-highlight">−8.2%</span> ($89,000 vs $97,000)
+  Issue: Market positioning and competitive pressure
+  
+- <span class="metric-highlight">Novey</span>
+  YTD Growth: <span class="metric-highlight">−15.4%</span> ($34,000 vs $40,000)
+  Issue: Category space reduction and focus shift
+
+**Growth Analysis by Performance Drivers:**
+
+**Premium Strategy Success:**
+Super99's focus on <span class="performance-positive">high-margin premium products</span> drives both volume and value growth.
+
+**Traditional Market Challenges:**
+El Machetazo and Novey reflect broader <span class="metric-highlight">traditional retail channel pressures</span> from modern trade expansion.
+
+**Market Share Evolution:**
+- <span class="performance-positive">Super99</span>: 34.5% share (+2.8% vs last year)
+- <span class="key-point">Rey</span>: 27.8% share (+1.2% vs last year)
+- <span class="key-point">Xtra</span>: 23.5% share (−0.5% vs last year)
+- <span class="metric-highlight">El Machetazo</span>: 12.5% share (−2.1% vs last year)
+- <span class="metric-highlight">Novey</span>: 4.8% share (−1.4% vs last year)
+
+**Strategic Recommendations:**
+1. **Double down** on Super99 and Rey partnerships with expanded premium SKUs
+2. **Restructure** El Machetazo relationship: focus on value positioning
+3. **Evaluate** Novey channel viability for continued investment
+4. **Xtra optimization:** Implement best practices from top-performing locations
+
+Overall portfolio growth: <span class="performance-positive">+8.7%</span> with opportunity to reach <span class="performance-positive">+12% through strategic focus</span>.`;
+  }
+  
+  // 14. Export and EPA client growth vs last year
+  if ((lowerQuestion.includes('export') || lowerQuestion.includes('epa')) && (lowerQuestion.includes('growth') || lowerQuestion.includes('last year'))) {
+    return `International business segment analysis shows strong export performance with EPA presenting strategic opportunities.
+
+**Export Clients Performance vs Last Year:**
+
+**Outstanding Export Growth:**
+- <span class="performance-positive">Total Export Revenue</span>: <span class="performance-positive">+24.8%</span> ($186,000 vs $149,000)
+- <span class="performance-positive">Container shipments</span>: 14 vs 11 last year (+27.3%)
+- <span class="key-point">Average order value</span>: +18.5% improvement per shipment
+
+**Top Export Clients:**
+- <span class="performance-positive">Distribuidora Guatemala</span>: $45,000 (+31% vs last year)
+  Growth driver: Condimento Super Xtra market expansion
+- <span class="performance-positive">Costa Rica Premium Foods</span>: $38,000 (+28% vs last year)
+  Success: Vinagre Premium regional acceptance
+- <span class="key-point">El Salvador Trading Co.</span>: $29,000 (+15% vs last year)
+  Steady growth in traditional products
+
+**EPA (Economic Partnership Agreement) Clients:**
+
+**EPA Performance Analysis:**
+- <span class="key-point">Total EPA Revenue</span>: <span class="key-point">+8.2%</span> ($94,000 vs $87,000)
+- <span class="metric-highlight">Client base</span>: 8 active vs 6 last year (+33% growth)
+- <span class="key-point">Average client value</span>: $11,750 (slight decline due to new client onboarding)
+
+**EPA Market Breakdown:**
+- <span class="performance-positive">European Union buyers</span>: $52,000 (+12.5% vs last year)
+  Premium positioning success in Germany and Netherlands
+- <span class="key-point">Caribbean markets</span>: $28,000 (+6.8% vs last year)
+  Traditional product demand remains steady
+- <span class="key-point">Pacific Alliance</span>: $14,000 (new market entry)
+  Colombia and Chile showing initial traction
+
+**Competitive Analysis:**
+**Export Advantages:**
+- <span class="performance-positive">Quality certifications</span> opening premium market segments
+- <span class="performance-positive">Product authenticity</span> valued in international markets
+- <span class="key-point">Competitive pricing</span> vs regional competitors
+
+**EPA Strategic Opportunities:**
+- <span class="metric-highlight">Organic certification</span> could unlock 40% price premium in EU
+- <span class="key-point">Private label partnerships</span> with European retailers
+- <span class="performance-positive">Product innovation</span> for health-conscious international consumers
+
+**Growth Projections:**
+- Export target 2024: <span class="performance-positive">$230,000 (+23.7%)</span>
+- EPA target 2024: <span class="key-point">$115,000 (+22.3%)</span>
+- Combined international: <span class="performance-positive">23% of total company revenue</span>
+
+International expansion represents our <span class="performance-positive">fastest-growing and highest-margin business segment</span> with significant scaling potential.`;
+  }
+  
+  // 15. SKUs per channel and total company
+  if (lowerQuestion.includes('sku') && (lowerQuestion.includes('channel') || lowerQuestion.includes('total'))) {
+    return `Product portfolio distribution analysis across sales channels reveals strategic SKU allocation and optimization opportunities.
+
+**SKUs per Sales Channel:**
+
+**Modern Trade Channels:**
+- <span class="performance-positive">Super99</span>: <span class="performance-positive">28 SKUs</span>
+  Full premium and traditional range, highest variety
+- <span class="key-point">Rey</span>: <span class="key-point">24 SKUs</span>
+  Focus on fast-moving consumer goods
+- <span class="key-point">Xtra</span>: <span class="key-point">22 SKUs</span>
+  Value-oriented product mix
+
+**Traditional Trade:**
+- <span class="key-point">El Machetazo</span>: <span class="key-point">18 SKUs</span>
+  Traditional products and bulk sizes
+- <span class="metric-highlight">Novey</span>: <span class="metric-highlight">12 SKUs</span>
+  Limited space, core products only
+
+**Specialized Channels:**
+- <span class="performance-positive">Export</span>: <span class="performance-positive">16 SKUs</span>
+  Premium products adapted for international markets
+- <span class="key-point">EPA</span>: <span class="key-point">14 SKUs</span>
+  Certified products meeting international standards
+- <span class="key-point">Food Service</span>: <span class="key-point">8 SKUs</span>
+  Bulk packaging for restaurants and hotels
+
+**Company-Wide SKU Analysis:**
+
+**Total Active SKUs:** <span class="performance-positive">32 unique products</span>
+- <span class="key-point">Condiments</span>: 12 SKUs (37.5% of portfolio)
+- <span class="key-point">Vinegars</span>: 8 SKUs (25% of portfolio)
+- <span class="key-point">Mayonnaise</span>: 6 SKUs (18.8% of portfolio)
+- <span class="key-point">Sauces</span>: 4 SKUs (12.5% of portfolio)
+- <span class="key-point">Specialty</span>: 2 SKUs (6.2% of portfolio)
+
+**SKU Performance Categories:**
+- <span class="performance-positive">Premium SKUs</span>: 8 products (25% of portfolio, 45% of revenue)
+- <span class="key-point">Standard SKUs</span>: 18 products (56% of portfolio, 42% of revenue)
+- <span class="metric-highlight">Value SKUs</span>: 6 products (19% of portfolio, 13% of revenue)
+
+**Channel-Specific Insights:**
+**High SKU Density Channels:**
+Super99 and Rey carry <span class="performance-positive">75% of total SKU range</span>, indicating strong partnership and shelf space optimization.
+
+**Limited Assortment Channels:**
+Novey's 12 SKUs represent <span class="metric-highlight">37.5% of portfolio</span>, suggesting either space constraints or strategic focus opportunity.
+
+**International Diversification:**
+Export and EPA channels carry <span class="key-point">50% of SKU range</span> with premium product bias, indicating successful international positioning.
+
+**Portfolio Optimization Opportunities:**
+1. **Expand** high-performing SKUs to underrepresented channels
+2. **Rationalize** slow-moving SKUs in traditional trade
+3. **Develop** channel-specific SKUs for foodservice growth
+4. **Create** private label versions for international expansion
+
+Optimal SKU distribution supports <span class="performance-positive">revenue maximization while maintaining operational efficiency</span> across all channels.`;
+  }
+  
+  // 16. Active clients total and per branch
+  if (lowerQuestion.includes('active client') || (lowerQuestion.includes('client') && (lowerQuestion.includes('total') || lowerQuestion.includes('branch')))) {
+    return `Client portfolio analysis reveals comprehensive coverage with strategic opportunities for expansion and optimization.
+
+**Total Active Clients: <span class="performance-positive">247 clients</span>**
+
+**Clients by Channel Distribution:**
+
+**National Chains (Large Format):**
+- <span class="performance-positive">Super99</span>: <span class="performance-positive">18 branches</span>
+  Geographic coverage: Panama City, Colon, David, Santiago
+- <span class="key-point">Rey</span>: <span class="key-point">15 branches</span>
+  Focus: Urban centers and shopping centers
+- <span class="key-point">Xtra</span>: <span class="key-point">12 branches</span>
+  Regional distribution across interior provinces
+
+**Traditional Trade:**
+- <span class="key-point">El Machetazo</span>: <span class="key-point">28 branches</span>
+  Rural and suburban penetration
+- <span class="metric-highlight">Independent retailers</span>: <span class="metric-highlight">124 clients</span>
+  Small format stores and corner shops
+
+**Specialized Segments:**
+- <span class="performance-positive">Export clients</span>: <span class="performance-positive">12 active importers</span>
+  6 countries: Guatemala, Costa Rica, Colombia, El Salvador, Honduras, Nicaragua
+- <span class="key-point">EPA clients</span>: <span class="key-point">8 certified buyers</span>
+  European Union (4), Caribbean (3), Pacific Alliance (1)
+- <span class="key-point">Food Service</span>: <span class="key-point">38 establishments</span>
+  Hotels, restaurants, institutional buyers
+
+**Regional Client Distribution:**
+
+**Panama City Metropolitan:**
+- Total clients: <span class="performance-positive">89 clients</span> (36% of portfolio)
+- Modern trade: 28 locations
+- Traditional/Independent: 45 clients
+- Food service: 16 establishments
+
+**Interior Provinces:**
+- <span class="key-point">Chiriqui</span>: 42 clients (David region concentration)
+- <span class="key-point">Cocle</span>: 28 clients (Santiago and Penonome)
+- <span class="key-point">Colon</span>: 31 clients (Atlantic corridor)
+- <span class="key-point">Los Santos</span>: 24 clients (Interior market)
+- <span class="key-point">Veraguas</span>: 21 clients (Central provinces)
+- <span class="key-point">Other provinces</span>: 12 clients
+
+**Client Performance Segmentation:**
+
+**High-Value Clients (>$5,000 monthly):**
+- <span class="performance-positive">23 clients</span> generating <span class="performance-positive">68% of total revenue</span>
+- Average monthly volume: $8,400 per client
+- Payment terms: 45-60 days average
+
+**Medium-Value Clients ($1,000-$5,000 monthly):**
+- <span class="key-point">87 clients</span> generating <span class="key-point">26% of total revenue</span>
+- Growth potential through SKU expansion
+- Payment terms: 30-45 days average
+
+**Small-Value Clients (<$1,000 monthly):**
+- <span class="metric-highlight">137 clients</span> generating <span class="metric-highlight">6% of total revenue</span>
+- High service cost, optimization needed
+- Payment terms: 15-30 days average
+
+**Client Acquisition & Retention:**
+- <span class="performance-positive">New clients this year</span>: 31 additions (+14.3% growth)
+- <span class="key-point">Client retention rate</span>: 94.2% (industry leading)
+- <span class="metric-highlight">Inactive/lost clients</span>: 14 accounts (payment issues or closure)
+
+**Strategic Optimization:**
+1. **Focus expansion** on medium-value clients with SKU diversification
+2. **Consolidate service** for small-value clients through distributor model
+3. **Deepen penetration** in high-value accounts with premium products
+4. **Geographic expansion** in underserved rural markets with traditional trade
+
+Client portfolio represents <span class="performance-positive">strong market coverage with balanced risk distribution</span> across segments and regions.`;
+  }
+  
+  // 17. Points of sale visits per rep per day
+  if ((lowerQuestion.includes('point') || lowerQuestion.includes('visit')) && lowerQuestion.includes('rep') && lowerQuestion.includes('day')) {
+    return `Sales representative productivity analysis reveals optimal visit patterns and route efficiency opportunities.
+
+**Daily Visit Requirements by Territory:**
+
+**Urban Routes (Panama City, David, Santiago):**
+- **Optimal visits per day:** <span class="performance-positive">8-10 clients</span>
+- **Travel time factor:** 15-20 minutes between locations
+- **Visit duration:** 45-60 minutes per client
+- **Coverage cycle:** 5-day rotation for territory completion
+
+**Regional Routes (Interior Provinces):**
+- **Optimal visits per day:** <span class="key-point">6-8 clients</span>
+- **Travel time factor:** 25-35 minutes between locations
+- **Visit duration:** 60-75 minutes per client (relationship focus)
+- **Coverage cycle:** 7-day rotation for territory completion
+
+**Current Representative Performance:**
+
+**High Performers:**
+- <span class="performance-positive">Ana Morales</span> (Panama Centro): <span class="performance-positive">9.2 visits/day average</span>
+  Efficiency rating: 95%, Client satisfaction: Excellent
+- <span class="performance-positive">José Luis Vargas</span> (Santiago): <span class="performance-positive">8.8 visits/day average</span>
+  Rural route optimization expert, strong relationship builder
+
+**Standard Performers:**
+- <span class="key-point">María González</span> (Coclé): <span class="key-point">7.4 visits/day average</span>
+  Consistent performance, opportunity for efficiency improvement
+- <span class="key-point">Roberto Silva</span> (Panamá Oeste): <span class="key-point">7.1 visits/day average</span>
+  Morning punctuality affecting daily capacity
+
+**Improvement Opportunities:**
+- <span class="metric-highlight">Carlos Mendoza</span> (Chiriquí): <span class="metric-highlight">5.8 visits/day average</span>
+  Rural territory challenges, route optimization needed
+
+**Visit Quality vs Quantity Analysis:**
+
+**High-Impact Visit Components:**
+- <span class="performance-positive">Order generation</span>: 75% of visits should result in orders
+- <span class="key-point">Inventory assessment</span>: Stock level verification and rotation
+- <span class="key-point">Promotional execution</span>: Display setup and pricing verification
+- <span class="key-point">Relationship building</span>: Manager engagement and issue resolution
+
+**Revenue per Visit Benchmarks:**
+- **Urban clients:** <span class="performance-positive">$485 average order value</span>
+- **Regional clients:** <span class="key-point">$320 average order value</span>
+- **Traditional trade:** <span class="key-point">$180 average order value</span>
+
+**Route Optimization Recommendations:**
+
+**Technology Integration:**
+1. **GPS route planning** to reduce travel time by 15-20%
+2. **Mobile ordering system** to increase visit efficiency
+3. **Client priority scoring** based on revenue potential and payment history
+
+**Territory Adjustments:**
+- **Rebalance** Carlos Mendoza's Chiriquí territory (reduce by 12 clients)
+- **Expand** Ana Morales territory with high-potential Panama Este clients
+- **Create specialist route** for large format chains requiring deeper engagement
+
+**Performance Targets:**
+- Urban territories: <span class="performance-positive">8+ visits per day minimum</span>
+- Regional territories: <span class="key-point">6+ visits per day minimum</span>
+- Order success rate: <span class="performance-positive">70%+ per territory</span>
+- Monthly territory coverage: <span class="performance-positive">100% client contact</span>
+
+Optimal visit frequency balances <span class="performance-positive">relationship quality with territorial coverage efficiency</span> to maximize revenue generation.`;
+  }
+  
+  // 18. Profitability per SKU
+  if (lowerQuestion.includes('profitability') && lowerQuestion.includes('sku')) {
+    return `SKU-level profitability analysis reveals significant variance in margin contribution and strategic product positioning opportunities.
+
+**High-Profitability SKUs (>30% margin):**
+
+**Premium Tier Champions:**
+- <span class="performance-positive">Condimento Super Xtra 500g</span>
+  Gross margin: <span class="performance-positive">35.2%</span> | Monthly volume: 2,400 units
+  Profit contribution: $4,230/month | Market position: Premium leader
+  
+- <span class="performance-positive">Vinagre Premium 750ml</span>
+  Gross margin: <span class="performance-positive">32.8%</span> | Monthly volume: 1,800 units
+  Profit contribution: $3,150/month | International success driver
+
+- <span class="performance-positive">Mayonesa Premium 400g</span>
+  Gross margin: <span class="performance-positive">31.5%</span> | Monthly volume: 1,200 units
+  Profit contribution: $2,520/month | Quality differentiation
+
+**Medium-Profitability SKUs (20-30% margin):**
+
+**Standard Performance Products:**
+- <span class="key-point">Adobo Tradicional 250g</span>
+  Gross margin: <span class="key-point">24.8%</span> | Monthly volume: 3,200 units
+  Profit contribution: $3,180/month | High volume compensates margin
+  
+- <span class="key-point">Salsa Verde 300ml</span>
+  Gross margin: <span class="key-point">22.5%</span> | Monthly volume: 1,600 units
+  Profit contribution: $1,800/month | Seasonal demand pattern
+
+- <span class="key-point">Vinagre Blanco 500ml</span>
+  Gross margin: <span class="key-point">21.2%</span> | Monthly volume: 2,800 units
+  Profit contribution: $2,950/month | Bulk volume driver
+
+**Low-Profitability SKUs (<20% margin):**
+
+**Challenge Products:**
+- <span class="metric-highlight">Condimento Básico 300g</span>
+  Gross margin: <span class="metric-highlight">18.4%</span> | Monthly volume: 4,800 units
+  Profit contribution: $2,650/month | Volume vs margin trade-off
+  
+- <span class="metric-highlight">Mayonesa Standard 400g</span>
+  Gross margin: <span class="metric-highlight">15.8%</span> | Monthly volume: 3,600 units
+  Profit contribution: $2,280/month | Competitive pricing pressure
+
+**Profitability Matrix Analysis:**
+
+**Star Performers (High Margin + High Volume):**
+- <span class="performance-positive">Condimento Super Xtra</span>: Premium pricing with strong demand
+- <span class="performance-positive">Adobo Tradicional</span>: Volume leadership with acceptable margins
+
+**Cash Cows (High Volume + Medium Margin):**
+- <span class="key-point">Vinagre Blanco</span>: Steady demand with consistent profitability
+- <span class="key-point">Condimento Básico</span>: Market share defender with volume focus
+
+**Question Marks (Low Volume + High Margin):**
+- <span class="key-point">Mayonesa Premium</span>: Growth potential through market education
+- <span class="key-point">Specialty sauces</span>: Niche positioning opportunity
+
+**Dogs (Low Volume + Low Margin):**
+- <span class="metric-highlight">Budget-tier products</span>: Rationalization candidates
+- <span class="metric-highlight">Seasonal items</span>: Limited contribution periods
+
+**Strategic Profitability Optimization:**
+
+**Revenue Enhancement:**
+1. **Price optimization** on medium-margin SKUs with inelastic demand
+2. **Premium product expansion** leveraging successful Condimento Super Xtra model
+3. **Bundle strategies** combining high and low margin products
+
+**Cost Reduction:**
+1. **Ingredient sourcing** optimization for top-volume SKUs
+2. **Packaging efficiency** improvements on standard products
+3. **Production scale** benefits for high-volume low-margin items
+
+**Portfolio Decisions:**
+- **Invest heavily** in premium SKUs driving 45% of profit from 25% of volume
+- **Maintain efficiently** standard SKUs providing volume stability
+- **Evaluate discontinuation** of sub-15% margin products unless strategic
+
+**Profitability Targets:**
+- Portfolio average margin: <span class="performance-positive">26.5%</span> (current: 24.8%)
+- Premium SKU contribution: <span class="performance-positive">50%</span> of total profit
+- Minimum viable margin: <span class="key-point">18%</span> for continued investment
+
+Strategic focus on <span class="performance-positive">premium product development and value-based pricing</span> will optimize overall portfolio profitability.`;
+  }
+  
   // 2. Scanner promotion performance analysis
   if (lowerQuestion.includes('scanner') || (lowerQuestion.includes('promotion') && lowerQuestion.includes('last month')) || lowerQuestion.includes('sold the most')) {
     const scannerPromotions = [
