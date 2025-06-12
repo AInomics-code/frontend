@@ -232,11 +232,42 @@ Cash Flow Analysis:
 - Q2 trend: May peak at $6.34M, June drop requires investigation
 - Devolución impact: -$509K YTD affecting net performance
 
-Production Metrics:
-- Line efficiency: 87% (target: 90%), packaging bottleneck identified
-- Quality control: 99.1% pass rate, minor labeling adjustment needed
-- Equipment: Filling machine #2 scheduled maintenance Friday
-- Labor productivity: 847 units/hour (up 3% vs last month)
+SISCOM BI Back-Order Analysis:
+
+Back-Order by Product Summary:
+- Total Back-Order Amount: $39,118.09
+- Total Delivered Amount: $564.71
+
+Critical Back-Order Items:
+- VINACETWO) KETCHUP 78 OZ (1/2 GAL): 15.00 Entregado: 0.00, Back-Order: 15.00, Precio: $0.00, Total: $0.00
+- 3925-AETMOD: 15.00 Entregado: 0.00, Back-Order: 15.00, Precio: $0.00, Total: $0.00
+- BIRACETVO) MIEL DE ABEJA 325 GRS/24 UDS: 9.00 Entregado: 0.00, Back-Order: 9.00, Precio: $0.00, Total: $0.00
+- INACETVO) SALSA MARINA A/O: 1.00 Entregado: 0.00, Back-Order: 1.00, Precio: $0.00, Total: $0.00
+- MOLLINELLO/75GRS/8U: 1.00 Entregado: 0.00, Back-Order: 1.00, Precio: $0.00, Total: $0.00
+- MOSACETVO) MOSTAZA GRANULLADA FC: 2.00 Entregado: 0.00, Back-Order: 2.00, Precio: $0.00, Total: $0.00
+- ADEREZO PARA PAVO 190 GRS/24: 3.00 Entregado: 0.00, Back-Order: 3.00, Precio: $0.00, Total: $135.00
+
+Total Units Analysis: 3,839.24 Expected, 84.06 Delivered, 551.60 Back-Order, $564.71 Value, $39,118.09 Back-Order Value
+
+Client Back-Order Distribution:
+- 6540: 365 MARKET
+- 6262: A & R MINI MARKET (RIO GRANDE)
+- 5656: ABA CARNICERIA Y BODEGA LA MILAGROSA
+- 16482: ABOHORA 2
+- 21124: ALMACENES LAS PACHICAS
+- 620698: CASA ESPERANZA (CALIDONIA)
+- N-3784: CENTRO COMERCIAL VIVA
+- CD123: CENTRO DOLLAR 1,2,3
+- 10003: CIA. GOLY & E. MACHETEADO SA- COCLÉSANO
+- 39995: COMPANÍA GOLY EL MACHETAZO AZTECA
+- UNISOM: COMPANÍA GOLY EL MACHETAZO CALIDONIA
+- 10087: COMPANÍA GOLY EL MACHETAZO CAPISACHI
+
+Production Alert Summary:
+- Critical inventory shortage affecting 39 client locations
+- Key products completely out of stock: KETCHUP 78 OZ, MIEL DE ABEJA
+- Back-order value of $39,118.09 represents significant revenue impact
+- Only $564.71 in deliveries completed vs expected production schedule
 
 Market Intelligence:
 - Consumer trend: Organic demand up 18% in Central region
