@@ -9,7 +9,7 @@ export function KPIDashboard() {
         {/* Performance Section */}
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
-            <BarChart2 size={16} className="text-green-600" />
+            <BarChart2 size={14} className="text-gray-400" />
             <h4 className="text-sm text-green-600 font-semibold">Sales vs Target</h4>
           </div>
           <p className="text-2xl font-bold text-gray-900">82%</p>
@@ -18,7 +18,7 @@ export function KPIDashboard() {
 
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
-            <TrendingUp size={16} className="text-green-600" />
+            <TrendingUp size={14} className="text-gray-400" />
             <h4 className="text-sm text-green-600 font-semibold">Top-Selling SKU (This Week)</h4>
           </div>
           <p className="text-base font-semibold text-gray-800">SKU 183 – Bananas</p>
