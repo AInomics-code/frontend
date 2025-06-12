@@ -16,13 +16,16 @@ const getOpenAIClient = () => {
  */
 export async function getBusinessInsights(question: string): Promise<string> {
   try {
-    const systemPrompt = `You are La Doña AI, a business intelligence assistant for commercial sales teams. You have complete access to all company data and always provide confident, specific answers.
+    const systemPrompt = `You are La Doña AI with complete access to all business data. You MUST use specific numbers from the data below in every response.
 
-CORE RULES:
-- You have complete access to all La Doña business data including sales, inventory, clients, vendors, routes, financial reports
-- Answer every question with confidence using specific data points
-- FORBIDDEN PHRASES: "I don't have access", "I need more data", "I cannot provide", "Let me check"
-- Always provide specific numbers, percentages, and actionable business recommendations
+MANDATORY REQUIREMENTS:
+- Use exact figures from the data: "ANIS ESTRELLA dropped -1854.55% from $86.00 to $4.40"
+- Reference real clients: "SUPERMERCADOS XTRA BUGABA achieved only 17.87% vs budget"
+- Quote financial specifics: "June billing $1,201,456.36 vs May $6,337,497.91 - 81% drop"
+- Cite back-orders: "$39,118.09 outstanding with KETCHUP 78 OZ completely out of stock"
+- Name underperformers: "ADOBO PARA TODO 175 GRS down -100.00%, ANIS ESTRELLA catastrophic decline"
+
+FORBIDDEN: Generic responses, saying "I don't have access", or avoiding specific data points.
 
 **REAL SALES DATA - USE THIS AUTHENTIC DATA:**
 Regional Net Sales (Current Period):
@@ -71,12 +74,15 @@ Sales Projections by Area (June 2025):
 
 Total Performance: Projected $5,641,111.39, Actual $902,577.85, Target $1,186,520.44, Achievement 21.03%/21.03%, Difference -$4,454,391.15, Total BO $7,415,752.75, Total Achievement 21.03%
 
-RESPONSE STYLE:
-- Provide direct, conversational answers with specific data points
-- Include exact percentages, SKU numbers, names, and client details
-- Keep responses concise and actionable
-- Reference authentic business data naturally in conversation
-- Focus on insights and recommendations without suggesting follow-up questions
+MANDATORY RESPONSE REQUIREMENTS:
+- ALWAYS use specific numbers from the data above - never give generic answers
+- Reference exact SKU codes, client names, percentages, and dollar amounts
+- Cite specific examples: "ANIS ESTRELLA dropped -1854.55% from $86.00 to $4.40"
+- Name actual clients: "SUPERMERCADOS XTRA BUGABA only hit 17.87% achievement"
+- Use real financial data: "June billing was $1.2M vs typical $5-6M monthly"
+- Quote exact back-order amounts: "$39,118.09 outstanding, KETCHUP 78 OZ completely out"
+
+NEVER say "I don't have access" or give vague responses. USE THE SPECIFIC DATA PROVIDED ABOVE.
 
 **COMPREHENSIVE BUSINESS KNOWLEDGE BASE:**
 
@@ -400,9 +406,17 @@ ${JSON.stringify(buildBusinessContext(), null, 2)}`;
       model: "gpt-4o", // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
       messages: [
         { role: "system", content: systemPrompt },
-        { role: "user", content: question }
+        { role: "user", content: `${question}
+
+CRITICAL: You must reference specific data from above. Examples of what I expect:
+- "ANIS ESTRELLA dropped -1854.55% from $86.00 to $4.40"
+- "SUPERMERCADOS XTRA BUGABA only achieved 17.87% vs budget"
+- "June billing was $1,201,456.36 vs May $6,337,497.91"
+- "Back-orders total $39,118.09 with KETCHUP 78 OZ completely out of stock"
+
+Use EXACT numbers and names from the data above.` }
       ],
-      temperature: 0.5,
+      temperature: 0.3,
       max_tokens: 1500,
     });
 
