@@ -646,7 +646,7 @@ export default function Chat() {
             <div className="w-full max-w-4xl px-8 mb-4">
               <ChartGenerator 
                 data={chartData}
-                chartType={chartType}
+                chartType="bar"
                 onClose={() => setShowChart(false)}
               />
             </div>
