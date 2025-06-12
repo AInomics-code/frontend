@@ -5,7 +5,7 @@ import { formatTimeShort } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import { Bot, User, ThumbsUp, ThumbsDown, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { PerformanceConfettiTrigger } from "./confetti-animation";
+import { SmartCelebrationTrigger, ConfettiTestButton } from "./performance-celebration";
 import type { Message } from "@shared/schema";
 
 interface MessageListProps {
@@ -135,7 +135,7 @@ export function MessageList({ conversationId }: MessageListProps) {
                             <p key={i}>{line || '\u00A0'}</p>
                           ))}
                         </div>
-                        <PerformanceConfettiTrigger content={message.content} />
+                        <SmartCelebrationTrigger content={message.content} />
                       </div>
                     </div>
                     <div className="flex items-center gap-2 mt-2 ml-11 text-xs text-gray-500 dark:text-gray-400">
@@ -174,6 +174,7 @@ export function MessageList({ conversationId }: MessageListProps) {
           ))
         )}
       </div>
+      <ConfettiTestButton />
     </ScrollArea>
   );
 }
