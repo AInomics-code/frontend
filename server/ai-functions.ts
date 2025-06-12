@@ -40,7 +40,87 @@ function getDataAnalystInsights(question: string): string {
   const avgPromotionROI = promotions.reduce((sum, p) => sum + p.roi, 0) / promotions.length;
   const outOfStockCount = stockStatus.filter(s => s.isOutOfStock).length;
   
-  // Frequently Asked Questions - Enhanced Responses
+  // Frequently Asked Questions - Enhanced Responses (Priority Order)
+  
+  // 12. Underperforming products by category this week
+  if ((lowerQuestion.includes('underperforming') || lowerQuestion.includes('poor') || lowerQuestion.includes('weak')) && lowerQuestion.includes('category') && (lowerQuestion.includes('week') || lowerQuestion.includes('this week'))) {
+    return `Weekly product category performance analysis identifies underperforming segments requiring immediate attention.
+
+**Underperforming Categories This Week:**
+
+**Condiments Category (−23% vs target):**
+- <span class="metric-highlight">Condimento Básico</span>: 45 units sold vs 85 target (−47%)
+  Branches affected: Rey Multiplaza, Xtra Penonome
+- <span class="key-point">Adobo Tradicional</span>: 62 units sold vs 95 target (−35%)
+  Issue: Packaging change customer resistance
+
+**Vinegar Category (−18% vs target):**
+- <span class="metric-highlight">Vinagre Regular 500ml</span>: 78 units sold vs 120 target (−35%)
+  Problem: Price increase impact on volume sales
+- <span class="key-point">Vinagre Blanco</span>: 34 units sold vs 55 target (−38%)
+  Regional preference misalignment
+
+**Mayonnaise Category (−12% vs target):**
+- <span class="key-point">Mayonesa 400g Standard</span>: 156 units sold vs 190 target (−18%)
+  Competitive pressure from imported brands
+
+**Root Cause Analysis:**
+- <span class="metric-highlight">Price sensitivity</span>: Recent 8% price increases affecting volume
+- <span class="key-point">Promotional gap</span>: Competitor scanner promotions capturing market share
+- <span class="key-point">Seasonal shift</span>: Traditional products declining during summer period
+
+**Performance Comparison:**
+**Strong Performers (Above target):**
+- <span class="performance-positive">Condimento Super Xtra</span>: +15% vs target
+- <span class="performance-positive">Vinagre Premium</span>: +22% vs target
+- <span class="performance-positive">Mayonesa Premium</span>: +8% vs target
+
+**Strategic Response:**
+1. **Immediate:** Launch 2x1 promotion on underperforming Condimento Básico
+2. **Price adjustment:** Review Vinagre Regular pricing strategy within 72 hours
+3. **Training focus:** Sales rep education on premium product benefits
+4. **Inventory rebalancing:** Reduce slow-moving SKU orders by 30% next week
+
+Target recovery: <span class="performance-positive">Return to +5% category growth within 14 days</span> through focused intervention.`;
+  }
+  
+  // 11. Out of stock products by branch
+  if ((lowerQuestion.includes('out of stock') || lowerQuestion.includes('stockout')) && !lowerQuestion.includes('underperforming') && !lowerQuestion.includes('category')) {
+    return `Critical inventory shortage analysis reveals stockout situations affecting sales performance across multiple locations.
+
+**Current Stockouts by Branch:**
+
+**Super99 Costa Verde:**
+- <span class="metric-highlight">Condimento Super Xtra 500g</span> - Out since: 3 days, Lost sales: $420
+- <span class="key-point">Vinagre Premium 750ml</span> - Out since: 1 day, High demand product
+- <span class="key-point">Adobo Tradicional</span> - Out since: 5 days, Seasonal peak period
+
+**Xtra Albrook:**
+- <span class="metric-highlight">Mayonesa Premium 400g</span> - Out since: 2 days, Lost sales: $280
+- <span class="key-point">Salsa Verde 300ml</span> - Out since: 4 days, Customer complaints received
+
+**Rey Multiplaza:**
+- <span class="metric-highlight">Condimento Básico</span> - Out since: 6 days, Reorder delayed
+- <span class="key-point">Vinagre Regular 500ml</span> - Out since: 2 days, Supply chain issue
+
+**Critical Impact Analysis:**
+- Total estimated lost sales: <span class="metric-highlight">$1,240 this week</span>
+- Customer satisfaction risk in <span class="key-point">3 major locations</span>
+- Competitor opportunity window: 48-72 hours before permanent customer loss
+
+**Supply Chain Status:**
+- <span class="performance-positive">Condimento Super Xtra</span>: Restock arriving tomorrow
+- <span class="key-point">Vinagre Premium</span>: Production batch ready for dispatch
+- <span class="metric-highlight">Mayonesa Premium</span>: Quality control delay, 2 days remaining
+
+**Immediate Action Plan:**
+1. **Emergency transfer** from Xtra Penonome surplus to Albrook (Mayonesa Premium)
+2. **Express delivery** for Condimento Super Xtra to Costa Verde by 6 AM
+3. **Customer communication** via store managers about restocking timeline
+4. **Inventory monitoring** daily for next 10 days to prevent recurrence
+
+Restocking priority targets all critical SKUs within <span class="performance-positive">24-48 hours</span> to minimize revenue impact.`;
+  }
   
   // 6. National client census analysis
   if (lowerQuestion.includes('dichter') || lowerQuestion.includes('census') || lowerQuestion.includes('not selling') || lowerQuestion.includes('geolocation')) {
