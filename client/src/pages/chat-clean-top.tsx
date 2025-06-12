@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Paperclip, Globe, Mic, Search, BarChart2, ChevronDown, ChevronUp, ArrowUp } from "lucide-react";
 import { TypingMessage } from "@/components/typing-message";
 import { AnimatedCounter, PulseIndicator, HoverCard, ProgressBar, FeedbackToast } from "@/components/micro-interactions";
+import { PromptGenerator } from "@/components/prompt-generator";
 
 interface Message {
   id: string;
@@ -25,6 +26,7 @@ export default function Chat() {
   const [inputFeedback, setInputFeedback] = useState<'success' | 'error' | null>(null);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
+  const [showPromptGenerator, setShowPromptGenerator] = useState(false);
 
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -273,6 +275,14 @@ export default function Chat() {
 
   const toggleCard = (cardId: string) => {
     setExpandedCard(expandedCard === cardId ? null : cardId);
+  };
+
+  const handlePromptSelect = (prompt: string) => {
+    setInputValue(prompt);
+    // Automatically send the selected prompt
+    setTimeout(() => {
+      handleSendMessage();
+    }, 100);
   };
 
 
@@ -710,6 +720,13 @@ export default function Chat() {
           <div ref={messagesEndRef} />
         </main>
       </div>
+
+      {/* AI Prompt Generator */}
+      <PromptGenerator 
+        onPromptSelect={handlePromptSelect}
+        isVisible={showPromptGenerator}
+        onToggle={() => setShowPromptGenerator(!showPromptGenerator)}
+      />
     </div>
   );
 }
