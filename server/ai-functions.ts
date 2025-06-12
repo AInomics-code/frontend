@@ -94,11 +94,39 @@ Sales & Performance:
 - 10 sales reps across 5 regions: Central (108%), Chiriquí (74%), Oeste (76%), Colón (68%), Este (98%)
 - Major clients: Supermercados Rey ($125K, Central), El Extra ($85K, Chiriquí), Food Service Pro ($150K, Central)
 
-Product Portfolio:
-- Salsas: Mayonesa, Ketchup, BBQ, Mostaza, Mostaza Dijon (sizes from 100ml sachets to 1-gallon)
-- Vinagres: Blanco, Manzana, Balsámico, Tinto
-- Aderezos: Ranch, César, Italiano, Mil Islas, Vinagreta  
-- Especias: Sazón Completo, Masquilas, Comino, Orégano, Pimienta
+Complete Product Portfolio (67 SKUs):
+
+SALSAS (42% margin category):
+- Mayonesa: 100ml sachets, 200ml squeeze, 500ml, 1L, 4L, 1 galón (MAYO-1GL top seller)
+- Ketchup: 200ml squeeze, 340g, 500ml, 1L, 4L (KET-500ML popular retail)
+- BBQ: 200ml, 340g, 500ml, 1L bottles
+- Mostaza: 200ml, 250g, 500ml squeeze bottles
+- Mostaza Dijon: 200ml, 250g premium positioning
+
+VINAGRES (38% margin category):
+- Vinagre Blanco: 500ml, 1L, 4L, 1 galón (VIN-1L highest margin 32.7%)
+- Vinagre de Manzana: 500ml, 1L glass bottles
+- Vinagre Balsámico: 250ml, 500ml premium glass (high margin performer)
+- Vinagre Tinto: 500ml, 1L specialty product
+
+ADEREZOS (45% margin category):
+- Ranch: 200ml, 500ml, 1L (premium margin performer)
+- César: 200ml, 500ml restaurant favorite
+- Italiano: 200ml, 500ml classic variety
+- Mil Islas: 200ml, 500ml traditional option
+- Vinagreta: 200ml, 500ml light option
+
+ESPECIAS Y CONDIMENTOS (52% margin category - highest):
+- Sazón Completo: 100g, 200g, 500g, 1kg bulk (institutional favorite)
+- Masquilas: 100g, 200g traditional seasoning
+- Comino: 50g, 100g, 200g whole/ground
+- Orégano: 25g, 50g, 100g dried leaves
+- Pimienta: 50g, 100g, 200g black/white varieties
+
+Target Markets by Product:
+- Food Service: Mayo 1 galón, Sazón 1kg, Ketchup 4L, Vinagre 1 galón
+- Retail: 500ml-1L sizes across all categories, squeeze bottles
+- Institucional: Bulk sizes 4L+, industrial packaging
 
 Inventory Status:
 - Current backorders: Mayo 1 galón (42 units short), Ketchup 500ml (28 units short)
@@ -119,11 +147,12 @@ Root Cause Analysis Framework:
 - Chiriquí underperformance: Rep productivity (high impact), competitor activity (medium), product availability (low)
 - Mayo backorders: Production delays, unexpected demand spikes, inventory planning gaps
 
-Product Specifications:
-- 67 total SKUs across 4 categories
-- Category margins: Especias (52%), Aderezos (45%), Salsas (42%), Vinagres (38%)
-- Top margin performers: Vinagre Balsámico, Mostaza Dijon, Aderezo Ranch
-- Highest margin product: Vinagre 1L at 32.7%
+Detailed Product Intelligence:
+- 67 total SKUs across 4 categories with specific size variations and packaging types
+- Category margins: Especias (52% highest), Aderezos (45%), Salsas (42%), Vinagres (38%)
+- Top performers: MAYO-1GL (food service leader), VIN-1L (32.7% margin), Sazón 1kg (institutional)
+- Packaging types: Sachets (100ml), squeeze bottles, glass bottles, bulk containers
+- SKU codes: MAYO-1GL, KET-500ML, VIN-1L, SAZON-1KG for inventory tracking
 
 Daily Business Status:
 - Sales achievement: 41% vs 46% target
