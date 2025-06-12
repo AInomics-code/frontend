@@ -196,7 +196,7 @@ Implement stricter credit controls with 90-day maximum terms and mandatory credi
   }
   
   // 10. Sales rep punctuality analysis
-  if (lowerQuestion.includes('late') || lowerQuestion.includes('arrive') || lowerQuestion.includes('punctual') || lowerQuestion.includes('fortnight') || lowerQuestion.includes('month') || lowerQuestion.includes('quarter')) {
+  if ((lowerQuestion.includes('late') || lowerQuestion.includes('arrive') || lowerQuestion.includes('punctual')) && (lowerQuestion.includes('fortnight') || lowerQuestion.includes('month') || lowerQuestion.includes('quarter')) && !lowerQuestion.includes('scanner') && !lowerQuestion.includes('promotion')) {
     const period = lowerQuestion.includes('fortnight') ? 'last 14 days' : 
                    lowerQuestion.includes('quarter') ? 'last 3 months' : 'last month';
     
@@ -357,7 +357,7 @@ Combined non-selling inventory represents <span class="performance-positive">$63
   }
   
   // 2. Scanner promotion performance analysis
-  if (lowerQuestion.includes('scanner') || lowerQuestion.includes('promotion') && lowerQuestion.includes('last month') || lowerQuestion.includes('sold the most')) {
+  if (lowerQuestion.includes('scanner') || (lowerQuestion.includes('promotion') && lowerQuestion.includes('last month')) || lowerQuestion.includes('sold the most')) {
     const scannerPromotions = [
       { name: 'Condimento Super Xtra 2x1', investment: 8500, units: 2400, revenue: 18600, roi: 118.8, stores: 12 },
       { name: 'Vinagre Premium 30% Off', investment: 6200, units: 1800, revenue: 14200, roi: 129.0, stores: 8 },
