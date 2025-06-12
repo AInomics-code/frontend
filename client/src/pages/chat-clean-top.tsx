@@ -605,7 +605,7 @@ export default function Chat() {
                   {speechSupported && (
                     <button
                       onClick={toggleLanguage}
-                      title={`Cambiar idioma a ${speechLanguage === 'es-ES' ? 'Inglés' : 'Español'}`}
+                      title={`Cambiar idioma a ${speechLanguage === 'es-ES' ? 'Inglés' : 'Español'} (Ctrl+L)`}
                       className="px-2 py-1 text-xs font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md transition-all duration-150"
                     >
                       {speechLanguage === 'es-ES' ? 'ES' : 'EN'}
@@ -627,8 +627,8 @@ export default function Chat() {
                       !speechSupported 
                         ? "Reconocimiento de voz no disponible" 
                         : isListening 
-                          ? "Hacer clic para detener grabación" 
-                          : "Hacer clic y hablar"
+                          ? "Hacer clic para detener grabación (Ctrl+M)" 
+                          : "Hacer clic y hablar (Ctrl+M)"
                     }
                     disabled={!speechSupported}
                     className={`relative p-3 transition-all duration-200 rounded-lg pl-[9px] pr-[9px] ${
