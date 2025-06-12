@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { ChartGenerator } from "./chart-generator";
 
 interface TypingMessageProps {
   content: string;
@@ -51,9 +50,7 @@ export function TypingMessage({ content, isLatestMessage, onComplete, messageId 
             .replace(/\n/g, '<br/>')
         }}
       />
-      {isComplete && messageId && (
-        <ChartGenerator content={content} messageId={messageId} />
-      )}
+      {/* Chart generation removed */}
     </div>
   );
 }
