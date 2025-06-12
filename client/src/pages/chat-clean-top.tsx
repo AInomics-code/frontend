@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Paperclip, Globe, Mic, Search, BarChart2, ChevronDown, ChevronUp, ArrowUp } from "lucide-react";
 import { TypingMessage } from "@/components/typing-message";
+import { AnimatedCounter, PulseIndicator, HoverCard, ProgressBar, FeedbackToast } from "@/components/micro-interactions";
 
 interface Message {
   id: string;
@@ -22,6 +23,8 @@ export default function Chat() {
   const [interimTranscript, setInterimTranscript] = useState("");
   const [speechLanguage, setSpeechLanguage] = useState('es-ES');
   const [inputFeedback, setInputFeedback] = useState<'success' | 'error' | null>(null);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
 
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -142,6 +145,11 @@ export default function Chat() {
     if (!inputValue.trim()) return;
 
     const messageContent = inputValue.trim();
+    
+    // Show success feedback
+    setInputFeedback('success');
+    setTimeout(() => setInputFeedback(null), 600);
+    
     const userMessage: Message = {
       id: Date.now().toString(),
       content: messageContent,
@@ -291,8 +299,15 @@ export default function Chat() {
             
             {expandedCard !== 'performance' ? (
               <>
-                <p className="text-3xl font-semibold text-gray-900">88</p>
-                <p className="text-xs text-gray-500 mt-1">82% of sales target met</p>
+                <p className="text-3xl font-semibold text-gray-900">
+                  <AnimatedCounter value={88} duration={1500} />
+                </p>
+                <div className="flex items-center gap-2 mt-1">
+                  <p className="text-xs text-gray-500">
+                    <AnimatedCounter value={82} duration={1200} suffix="%" /> of sales target met
+                  </p>
+                  <PulseIndicator color="green" size="sm" />
+                </div>
                 <p className="text-xs text-gray-400 mt-2 italic">Click to view details</p>
               </>
             ) : (
@@ -303,10 +318,14 @@ export default function Chat() {
                     onClick={() => setInputValue("What is our current sales performance and how close are we to target?")}
                   >
                     <h5 className="text-sm font-semibold text-gray-800 mb-2">Sales Performance</h5>
-                    <p className="text-2xl font-bold text-green-600">82%</p>
-                    <p className="text-sm text-gray-600">$369K of $450K target</p>
-                    <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
-                      <div className="bg-green-500 h-2 rounded-full" style={{width: '82%'}}></div>
+                    <p className="text-2xl font-bold text-green-600">
+                      <AnimatedCounter value={82} duration={1300} suffix="%" />
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      $<AnimatedCounter value={369} duration={1500} />K of $450K target
+                    </p>
+                    <div className="mt-2">
+                      <ProgressBar value={82} max={100} color="green" />
                     </div>
                   </div>
                   <div 
@@ -573,9 +592,11 @@ export default function Chat() {
 
           {/* Chat Input Container */}
           <div className="w-full max-w-4xl px-8 bg-gray-50 pb-8 pt-4">
-            <div className={`relative flex items-center bg-white rounded-3xl border transition-all duration-200 focus-within:bg-white p-2 ${
+            <div className={`relative flex items-center bg-white rounded-3xl border transition-all duration-200 focus-within:bg-white p-2 interactive-hover ${
+              inputFeedback === 'success' ? 'feedback-success border-green-300' :
+              inputFeedback === 'error' ? 'feedback-error border-red-300' :
               isListening 
-                ? 'border-red-300 bg-red-50/30 shadow-lg shadow-red-100/50' 
+                ? 'border-red-300 bg-red-50/30 shadow-lg shadow-red-100/50 animate-glow' 
                 : 'border-gray-200/60 hover:bg-gray-50/50'
             }`}>
               {/* Input field with speech overlay */}
