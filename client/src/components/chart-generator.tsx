@@ -521,5 +521,185 @@ function detectAndGenerateChart(content: string): ChartData | null {
     };
   }
 
+  // Sales Rep Territory Performance
+  if (lowerContent.includes('territory') || lowerContent.includes('coverage') || lowerContent.includes('route')) {
+    return {
+      type: 'bar',
+      title: 'Sales Rep Territory Performance - La Doña',
+      data: {
+        labels: ['Carlos Mendez (Chiriquí)', 'Ana Morales (Panama Centro)', 'María González (Coclé)', 'José Luis Vargas (Santiago)', 'Roberto Silva (Panama Oeste)'],
+        datasets: [
+          {
+            label: 'Performance Achievement (%)',
+            data: [105, 92, 88, 95, 87],
+            backgroundColor: [
+              'rgba(34, 197, 94, 0.8)',  // Above target - Green
+              'rgba(245, 158, 11, 0.8)', // Good - Orange
+              'rgba(239, 68, 68, 0.8)',  // Below target - Red
+              'rgba(59, 130, 246, 0.8)', // Good - Blue
+              'rgba(168, 85, 247, 0.8)'  // Fair - Purple
+            ],
+            borderColor: [
+              'rgb(34, 197, 94)',
+              'rgb(245, 158, 11)',
+              'rgb(239, 68, 68)',
+              'rgb(59, 130, 246)',
+              'rgb(168, 85, 247)'
+            ],
+            borderWidth: 1,
+          },
+          {
+            label: 'Target (90%)',
+            data: [90, 90, 90, 90, 90],
+            type: 'line',
+            borderColor: 'rgba(156, 163, 175, 0.8)',
+            borderDash: [5, 5],
+            fill: false,
+            pointRadius: 0,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 120,
+            ticks: {
+              callback: function(value: any) {
+                return value + '%';
+              },
+            },
+          },
+        },
+      },
+    };
+  }
+
+  // Overdue Payments Analysis
+  if (lowerContent.includes('overdue') || lowerContent.includes('payment') || lowerContent.includes('collection')) {
+    return {
+      type: 'doughnut',
+      title: 'Overdue Payments by Risk Level - La Doña',
+      data: {
+        labels: ['Current (0-30 days)', 'Moderate Risk (31-90 days)', 'High Risk (90+ days)'],
+        datasets: [
+          {
+            data: [85, 10, 5],
+            backgroundColor: [
+              'rgba(34, 197, 94, 0.8)',
+              'rgba(245, 158, 11, 0.8)',
+              'rgba(239, 68, 68, 0.8)',
+            ],
+            borderColor: [
+              'rgb(34, 197, 94)',
+              'rgb(245, 158, 11)',
+              'rgb(239, 68, 68)',
+            ],
+            borderWidth: 2,
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          tooltip: {
+            callbacks: {
+              afterLabel: function(context: any) {
+                const amounts = ['$128,500', '$24,300', '$12,100'];
+                return 'Outstanding: ' + amounts[context.dataIndex];
+              },
+            },
+          },
+        },
+      },
+    };
+  }
+
+  // Competitive Analysis
+  if (lowerContent.includes('competitor') || lowerContent.includes('market') || lowerContent.includes('competition')) {
+    return {
+      type: 'bar',
+      title: 'Market Share Analysis - Condiment Category',
+      data: {
+        labels: ['La Doña', 'Kraft', 'Maggi', 'Knorr', 'Others'],
+        datasets: [
+          {
+            label: 'Market Share (%)',
+            data: [35, 25, 18, 12, 10],
+            backgroundColor: [
+              'rgba(34, 197, 94, 0.8)',  // La Doña - Green
+              'rgba(239, 68, 68, 0.8)',  // Kraft - Red
+              'rgba(245, 158, 11, 0.8)', // Maggi - Orange
+              'rgba(59, 130, 246, 0.8)', // Knorr - Blue
+              'rgba(156, 163, 175, 0.8)' // Others - Gray
+            ],
+            borderColor: [
+              'rgb(34, 197, 94)',
+              'rgb(239, 68, 68)',
+              'rgb(245, 158, 11)',
+              'rgb(59, 130, 246)',
+              'rgb(156, 163, 175)'
+            ],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 40,
+            ticks: {
+              callback: function(value: any) {
+                return value + '%';
+              },
+            },
+          },
+        },
+      },
+    };
+  }
+
+  // Promotion ROI Analysis
+  if (lowerContent.includes('promotion') || lowerContent.includes('roi') || lowerContent.includes('campaign')) {
+    return {
+      type: 'line',
+      title: 'Promotion ROI Performance - La Doña',
+      data: {
+        labels: ['Scanner Promo', 'Display Campaign', 'Volume Discount', 'Bundle Offer', 'Seasonal Push'],
+        datasets: [
+          {
+            label: 'ROI (%)',
+            data: [185, 156, 142, 198, 167],
+            borderColor: 'rgb(34, 197, 94)',
+            backgroundColor: 'rgba(34, 197, 94, 0.1)',
+            fill: true,
+            tension: 0.4,
+          },
+          {
+            label: 'Target ROI (150%)',
+            data: [150, 150, 150, 150, 150],
+            borderColor: 'rgba(156, 163, 175, 0.8)',
+            backgroundColor: 'transparent',
+            borderDash: [5, 5],
+            fill: false,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 220,
+            ticks: {
+              callback: function(value: any) {
+                return value + '%';
+              },
+            },
+          },
+        },
+      },
+    };
+  }
+
   return null;
 }

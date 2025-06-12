@@ -12,7 +12,8 @@ import {
   storePerformance,
   recentActivity,
   historicalData,
-  marketIntelligence
+  marketIntelligence,
+  buildBusinessContext
 } from './business-context.js';
 
 const getOpenAIInstance = () => {
@@ -2062,10 +2063,91 @@ Product mix optimization could yield <span class="performance-positive">$${(topM
 }
 
 /**
- * Gets business insights based on a specific question using expert data analysis
+ * Universal business intelligence function that can answer any question
  */
 export async function getBusinessInsights(question: string): Promise<string> {
-  return getDataAnalystInsights(question);
+  // First try the comprehensive pre-built intelligence for frequently asked questions
+  const prebuiltResponse = getDataAnalystInsights(question);
+  if (prebuiltResponse && prebuiltResponse !== "I can provide specific insights about La Doña's business operations. Try asking about regional performance, client analysis, product profitability, sales rep performance, or inventory management.") {
+    return prebuiltResponse;
+  }
+
+  // Use AI for any other business question with complete context
+  try {
+    const openai = getOpenAIInstance();
+    const businessContext = {
+      products,
+      regions,
+      extendedClients,
+      salesReps,
+      storePerformance,
+      salesData,
+      promotions,
+      stockStatus,
+      todayInvoices,
+      channels,
+      historicalData,
+      recentActivity,
+      marketIntelligence,
+      currentDate: new Date().toISOString().split('T')[0],
+      timestamp: new Date().toISOString()
+    };
+    
+    const systemPrompt = `You are La Doña AI, the most advanced business intelligence assistant for La Doña, a Panama-based food manufacturer. You have comprehensive access to all business data and can answer ANY business question with expert-level analysis.
+
+COMPLETE LA DOÑA BUSINESS DATA:
+${JSON.stringify(businessContext, null, 2)}
+
+CORE CAPABILITIES:
+- Real-time sales performance analysis across regions (Colón 67%, Coclé 85%, Chiriquí 92%, Panamá 78%)
+- Client risk assessment and payment behavior (Super99: $4,580.50 billed today, Rey David: $2,340.80)
+- Product portfolio optimization and SKU performance (SKU 183 Bananas leading, Vinagre Premium strong margins)
+- Sales representative performance monitoring (Carlos Mendez top performer in Chiriquí)
+- Inventory management and stockout prevention
+- Financial analysis including margins, profitability, and cash flow
+- Predictive analytics for demand forecasting and strategic planning
+
+RESPONSE STANDARDS:
+- Answer ANY business question using the authentic La Doña data provided
+- Include specific metrics, percentages, dollar amounts, and concrete data points
+- Provide actionable recommendations with clear next steps
+- Reference actual clients, products, regions, and sales reps by name
+- Explain business impact and strategic implications
+- Use HTML formatting: <span class="metric-highlight">$value</span>, <span class="key-point">insight</span>, <span class="performance-positive">positive metric</span>
+- Structure complex analyses with clear sections
+- Ground all responses in actual data, never use hypothetical examples
+
+ANALYSIS FRAMEWORK:
+1. Identify core business question and analysis type needed
+2. Extract relevant data points from comprehensive business context
+3. Perform calculations, comparisons, and trend analysis
+4. Deliver strategic insights with actionable recommendations
+5. Highlight risks, opportunities, and immediate action items
+
+Answer the following question with comprehensive business intelligence:`;
+
+    const response = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: question }
+      ],
+      temperature: 0.2,
+      max_tokens: 2000
+    });
+
+    return response.choices[0]?.message?.content || "Unable to process the business intelligence request at this time.";
+  } catch (error) {
+    console.error('Error generating AI insights:', error);
+    
+    // Check for API key configuration
+    if (error instanceof Error && error.message.includes('OPENAI_API_KEY')) {
+      return "Advanced AI analysis requires OpenAI API configuration. The system provides comprehensive pre-built analysis for common business questions. For unlimited AI-powered insights, please provide the OpenAI API key.";
+    }
+    
+    // Fallback to suggesting specific topics
+    return "Connection issue with AI services. I can provide detailed analysis on specific topics: regional performance (Colón, Coclé, Chiriquí, Panamá), client analysis (Super99, Rey David, etc.), product profitability, sales rep performance, inventory management, or billing analysis.";
+  }
 }
 
 /**
