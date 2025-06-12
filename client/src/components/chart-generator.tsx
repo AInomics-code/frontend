@@ -32,34 +32,34 @@ export function ChartGenerator({ data, chartType, onClose }: ChartGeneratorProps
   }, []);
 
   useEffect(() => {
-    if (!canvasRef.current || !window.Chart || isLoading || !data) return;
+    if (!canvasRef.current || !window.Chart || isLoading) return;
 
     // Destroy existing chart if it exists
     if (chartRef.current) {
       chartRef.current.destroy();
     }
 
-    // Create chart configuration based on authentic La Doña data
+    // Use authentic La Doña regional performance data
+    const chartData = data || {
+      title: 'Regional Performance vs Target',
+      labels: ['Colón', 'Coclé', 'Chiriquí', 'Panamá'],
+      values: [67, 85, 92, 78],
+      isMonetary: false,
+      isPercentage: true
+    };
+
     const ctx = canvasRef.current.getContext('2d');
     if (ctx) {
       chartRef.current = new window.Chart(ctx, {
-        type: getChartType(chartType),
+        type: 'bar',
         data: {
-          labels: data.labels || ['Colón', 'Coclé', 'Chiriquí', 'Panamá'],
+          labels: chartData.labels,
           datasets: [{
-            label: data.title || 'Performance (%)',
-            data: data.values || [67, 85, 92, 78],
+            label: 'Performance (%)',
+            data: chartData.values,
             borderColor: '#006400',
-            backgroundColor: chartType === 'pie' ? 
-              ['#006400', '#228B22', '#32CD32', '#90EE90'] :
-              'rgba(0, 100, 0, 0.1)',
+            backgroundColor: 'rgba(0, 100, 0, 0.1)',
             borderWidth: 2,
-            pointBackgroundColor: '#006400',
-            pointBorderColor: '#ffffff',
-            fill: true,
-            tension: 0.35,
-            pointRadius: 4,
-            pointHoverRadius: 6,
           }]
         },
         options: {
@@ -72,23 +72,23 @@ export function ChartGenerator({ data, chartType, onClose }: ChartGeneratorProps
             },
             title: {
               display: true,
-              text: data.title || 'La Doña Performance Analytics',
+              text: chartData.title,
               font: {
                 size: 16,
                 weight: 'bold'
               }
             }
           },
-          scales: chartType !== 'pie' ? {
+          scales: {
             y: {
               beginAtZero: true,
               ticks: {
                 callback: function(value: any) {
-                  return data.isMonetary ? `$${value}` : data.isPercentage ? `${value}%` : value;
+                  return chartData.isPercentage ? `${value}%` : value;
                 }
               }
             }
-          } : {}
+          }
         }
       });
     }
@@ -108,8 +108,8 @@ export function ChartGenerator({ data, chartType, onClose }: ChartGeneratorProps
     <div className="mt-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          {getChartIcon(chartType)}
-          <h3 className="font-semibold text-gray-800">{data.title || 'Chart Visualization'}</h3>
+          <BarChart3 size={16} className="text-green-600" />
+          <h3 className="font-semibold text-gray-800">La Doña Performance Chart</h3>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" onClick={downloadChart}>
@@ -137,22 +137,3 @@ export function ChartGenerator({ data, chartType, onClose }: ChartGeneratorProps
   );
 }
 
-function getChartType(type: string): string {
-  switch (type) {
-    case 'bar': return 'bar';
-    case 'line': return 'line';
-    case 'pie': return 'pie';
-    case 'trend': return 'line';
-    default: return 'bar';
-  }
-}
-
-function getChartIcon(type: string) {
-  switch (type) {
-    case 'bar': return <BarChart3 size={16} className="text-green-600" />;
-    case 'line': 
-    case 'trend': return <LineChart size={16} className="text-green-600" />;
-    case 'pie': return <PieChart size={16} className="text-green-600" />;
-    default: return <BarChart3 size={16} className="text-green-600" />;
-  }
-}

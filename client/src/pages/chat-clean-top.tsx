@@ -31,7 +31,7 @@ export default function Chat() {
   const [speechLanguage, setSpeechLanguage] = useState('es-ES');
   const [showChart, setShowChart] = useState(false);
   const [chartData, setChartData] = useState<ChartData | null>(null);
-  const [chartType, setChartType] = useState<string>('bar');
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
   const speechTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -327,8 +327,7 @@ export default function Chat() {
     return 'Business Analytics';
   };
 
-  const handleGenerateChart = (type: string, data?: ChartData) => {
-    setChartType(type);
+  const handleGenerateChart = (data?: ChartData) => {
     setChartData(data || getDefaultChartData());
     setShowChart(true);
   };
@@ -617,41 +616,19 @@ export default function Chat() {
                           messageId={message.id}
                         />
                         
-                        {/* Chart suggestion for AI messages with data */}
+                        {/* Simplified chart suggestion for AI messages with data */}
                         {detectChartableData(message.content) && (
                           <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                            <div className="flex items-center gap-2 mb-2">
-                              <BarChart3 size={16} className="text-blue-600" />
-                              <span className="text-sm font-medium text-blue-800">Visualize this data</span>
-                            </div>
-                            <div className="grid grid-cols-4 gap-2">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <BarChart3 size={16} className="text-blue-600" />
+                                <span className="text-sm font-medium text-blue-800">Create chart from this data</span>
+                              </div>
                               <button
-                                onClick={() => handleGenerateChart('bar', extractDataFromContent(message.content))}
-                                className="flex flex-col items-center p-2 text-xs bg-white border border-blue-200 rounded hover:bg-blue-50 transition-colors"
+                                onClick={() => handleGenerateChart(extractDataFromContent(message.content))}
+                                className="px-3 py-1.5 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
                               >
-                                <BarChart3 size={14} className="mb-1 text-blue-600" />
-                                Bar Chart
-                              </button>
-                              <button
-                                onClick={() => handleGenerateChart('line', extractDataFromContent(message.content))}
-                                className="flex flex-col items-center p-2 text-xs bg-white border border-blue-200 rounded hover:bg-blue-50 transition-colors"
-                              >
-                                <LineChart size={14} className="mb-1 text-blue-600" />
-                                Line Chart
-                              </button>
-                              <button
-                                onClick={() => handleGenerateChart('pie', extractDataFromContent(message.content))}
-                                className="flex flex-col items-center p-2 text-xs bg-white border border-blue-200 rounded hover:bg-blue-50 transition-colors"
-                              >
-                                <PieChart size={14} className="mb-1 text-blue-600" />
-                                Pie Chart
-                              </button>
-                              <button
-                                onClick={() => handleGenerateChart('trend', extractDataFromContent(message.content))}
-                                className="flex flex-col items-center p-2 text-xs bg-white border border-blue-200 rounded hover:bg-blue-50 transition-colors"
-                              >
-                                <TrendingUp size={14} className="mb-1 text-blue-600" />
-                                Trend
+                                Generate Chart
                               </button>
                             </div>
                           </div>
@@ -752,7 +729,7 @@ export default function Chat() {
 
                   {/* Chart generation button */}
                   <button 
-                    onClick={() => handleGenerateChart('bar')}
+                    onClick={() => handleGenerateChart()}
                     className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150"
                     title="Generate chart with current data"
                   >
