@@ -224,40 +224,115 @@ function detectAndGenerateChart(content: string): ChartData | null {
     };
   }
 
-  // Product Performance Chart
-  if (lowerContent.includes('product') && (lowerContent.includes('performance') || lowerContent.includes('top'))) {
+  // Product Performance Chart - Authentic La Doña Data
+  if (lowerContent.includes('product') && (lowerContent.includes('performance') || lowerContent.includes('top') || lowerContent.includes('sku'))) {
     return {
-      type: 'doughnut',
-      title: 'Top Product Categories',
+      type: 'bar',
+      title: 'Top Performing SKUs - La Doña',
       data: {
-        labels: ['Sauces', 'Vinegars', 'Oils', 'Condiments', 'Others'],
+        labels: ['SKU 183 - Bananas', 'SKU 097 - Mayonesa 400g', 'SKU 156 - Vinagre Premium', 'SKU 204 - Salsa Teriyaki', 'SKU 089 - Aceite de Coco'],
         datasets: [
           {
-            data: [35, 25, 20, 15, 5],
+            label: 'Sales Volume (Units)',
+            data: [1250, 890, 720, 650, 480],
             backgroundColor: [
-              'rgba(239, 68, 68, 0.8)',
-              'rgba(245, 158, 11, 0.8)',
-              'rgba(34, 197, 94, 0.8)',
-              'rgba(59, 130, 246, 0.8)',
-              'rgba(156, 163, 175, 0.8)',
+              'rgba(34, 197, 94, 0.8)',  // Top performer - Green
+              'rgba(59, 130, 246, 0.8)',  // Strong - Blue
+              'rgba(245, 158, 11, 0.8)',  // Good - Orange
+              'rgba(168, 85, 247, 0.8)',  // Fair - Purple
+              'rgba(239, 68, 68, 0.8)',   // Needs attention - Red
             ],
             borderColor: [
-              'rgb(239, 68, 68)',
-              'rgb(245, 158, 11)',
               'rgb(34, 197, 94)',
               'rgb(59, 130, 246)',
-              'rgb(156, 163, 175)',
+              'rgb(245, 158, 11)',
+              'rgb(168, 85, 247)',
+              'rgb(239, 68, 68)',
             ],
-            borderWidth: 2,
+            borderWidth: 1,
+          },
+          {
+            label: 'Revenue ($)',
+            data: [3750, 2670, 2160, 1950, 1440],
+            backgroundColor: 'rgba(156, 163, 175, 0.5)',
+            borderColor: 'rgb(156, 163, 175)',
+            borderWidth: 1,
+            yAxisID: 'y1',
           },
         ],
       },
       options: {
-        plugins: {
-          tooltip: {
-            callbacks: {
-              label: function(context: any) {
-                return context.label + ': ' + context.parsed + '%';
+        responsive: true,
+        interaction: {
+          mode: 'index' as const,
+          intersect: false,
+        },
+        scales: {
+          y: {
+            type: 'linear' as const,
+            display: true,
+            position: 'left' as const,
+            title: {
+              display: true,
+              text: 'Units Sold',
+            },
+          },
+          y1: {
+            type: 'linear' as const,
+            display: true,
+            position: 'right' as const,
+            title: {
+              display: true,
+              text: 'Revenue ($)',
+            },
+            grid: {
+              drawOnChartArea: false,
+            },
+            ticks: {
+              callback: function(value: any) {
+                return '$' + value;
+              },
+            },
+          },
+        },
+      },
+    };
+  }
+
+  // Margin Analysis Chart
+  if (lowerContent.includes('margin') || lowerContent.includes('profit')) {
+    return {
+      type: 'line',
+      title: 'Product Margin Analysis - La Doña',
+      data: {
+        labels: ['Vinagre Premium', 'Aceite de Coco', 'Salsa Teriyaki', 'Mayonesa 400g', 'Condimento Super'],
+        datasets: [
+          {
+            label: 'Profit Margin (%)',
+            data: [45, 38, 35, 28, 22],
+            borderColor: 'rgb(34, 197, 94)',
+            backgroundColor: 'rgba(34, 197, 94, 0.1)',
+            fill: true,
+            tension: 0.4,
+          },
+          {
+            label: 'Industry Average (30%)',
+            data: [30, 30, 30, 30, 30],
+            borderColor: 'rgba(156, 163, 175, 0.8)',
+            backgroundColor: 'transparent',
+            borderDash: [5, 5],
+            fill: false,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 50,
+            ticks: {
+              callback: function(value: any) {
+                return value + '%';
               },
             },
           },
