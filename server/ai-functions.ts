@@ -205,12 +205,32 @@ Customer Behavior Intelligence:
 - Cross-sell success: Mayo + Ketchup combo 31% attach rate
 - Churn risk: 4 clients haven't ordered in 45+ days
 
-Financial Real-Time (Authentic Format):
-- Current receivables: $2,847,659.23 total outstanding
-- Overdue analysis: $847,230 (29.8% over 45 days)
-- Weekly cash flow: +$431,856 projected inflow
-- Payment terms impact: SISCOM 45-day terms vs direct clients 15-day
-- Channel profitability: SISCOM 18.2%, Retail chains 14.7%, Direct sales 22.1%
+Monthly Billing Summary (Facturación Neta Mensual):
+
+January: Facturación: $5,196,457.77, Facturas: +11,385.51, Devolución: -105,668.47, Venta_Real: $5,085,770.19
+February: Facturación: $5,816,703.07, Facturas: +3,194.16, Devolución: -164,175.50, Venta_Real: $5,248,866.75
+March: Facturación: $5,983,693.67, Facturas: -8,205.79, Devolución: -75,719.56, Venta_Real: $5,259,916.35
+April: Facturación: $5,793,133.50, Facturas: -30,754.49, Devolución: -77,955.14, Venta_Real: $5,624,535.87
+May: Facturación: $6,337,497.91, Facturas: -15,726.51, Devolución: -100,697.53, Venta_Real: $5,644,562.59
+June: Facturación: $1,201,456.36, Facturas: -3,971.39, Devolución: -31,964.87, Venta_Real: $1,185,520.44
+
+YTD Total: Facturación: $30,329,103.33, Facturas: -217,367.39, Devolución: -509,352.39, Venta_Real: $28,121,015.16
+
+Monthly Performance Metrics:
+- Enero: Fact.Real $4,763,271.79, Costos $3,943,568.65, Margen 2.94
+- Febrero: Fact.Real $4,960,870.89, Costos $4,012,252.76, Margen 2.62
+- Marzo: Fact.Real $5,246,877.90, Costos $4,306,364.77, Margen 2.19
+- Abril: Fact.Real $5,072,947.47, Costos $4,306,525.08, Margen 7.61
+- Mayo: Fact.Real $5,305,821.79, Costos $4,320,433.20, Margen 2.46
+- Junio: Fact.Real $1,037,913.67, Costos $944,914.23, Margen 0.66
+
+Total Performance: Fact.Real $26,677,226.75, Total Costos $22,833,058.69, Overall Margen 35.49
+
+Cash Flow Analysis:
+- June significantly underperforming at $1.2M vs $5-6M typical monthly billing
+- Q1 average: $5.67M monthly billing with stable 2.6 margin
+- Q2 trend: May peak at $6.34M, June drop requires investigation
+- Devolución impact: -$509K YTD affecting net performance
 
 Production Metrics:
 - Line efficiency: 87% (target: 90%), packaging bottleneck identified
