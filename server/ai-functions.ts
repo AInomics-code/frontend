@@ -263,11 +263,38 @@ Client Back-Order Distribution:
 - UNISOM: COMPANÍA GOLY EL MACHETAZO CALIDONIA
 - 10087: COMPANÍA GOLY EL MACHETAZO CAPISACHI
 
+Back-Order by Province Analysis:
+
+Regional Distribution:
+- CHIRIQUÍ: 13.4% (purple segment)
+- PANAMÁ: 62.6% (blue dominant segment)
+- PANAMÁ OESTE: 13.6% (orange segment)
+- COCLÉ: 5.4% (yellow segment)
+- COLÓN: 5.0% (green segment)
+
+Detailed Back-Order by Product & Client:
+- VINACETVO ACIDO PARA TODO (CDA) 6 GRS/12 UDS: Multiple clients affected
+- VINACETVO BALSÁMICO BLAYO 14 GRS/12 UDS: Regional shortage
+- VINACETVO CEBOLLA EN POLVO 5 SOBRES/100 UDS: Supply chain issue
+- VINACETVO JUGO DE LIMÓN 200 GRS/24 UDS: Production backlog
+
+Vendor & Supervisor Analysis:
+- MIGUEL CRUZ (Carlos Rojas Sur., Santiago): Multiple MERCADERISTA assignments
+- ELIZABETH CAMPBELL (Efrain Cuarti): SUPER CARNES # 1 affected
+- NO TIENE assignments: Several unassigned territories
+- DAVID JULIO (Carlos Valencia, Food Service): Regional coverage gaps
+
+Critical Locations by Type:
+- SUPER CARNES locations (multiple outlets affected)
+- INTERCHINANO food service network
+- MINISUPER CHAO (Food Service) chains
+- ALMACÉN GUAYMAREÑO distribution issues
+
 Production Alert Summary:
-- Critical inventory shortage affecting 39 client locations
-- Key products completely out of stock: KETCHUP 78 OZ, MIEL DE ABEJA
-- Back-order value of $39,118.09 represents significant revenue impact
-- Only $564.71 in deliveries completed vs expected production schedule
+- Panama Province represents 62.6% of total back-orders (critical focus area)
+- VINAGRE OSCUR products showing consistent shortages across regions
+- Multiple food service chains affected: SUPER CARNES, CHAO outlets
+- Supervisor coverage gaps in key territories creating fulfillment delays
 
 Market Intelligence:
 - Consumer trend: Organic demand up 18% in Central region
