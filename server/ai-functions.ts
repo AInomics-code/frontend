@@ -1227,7 +1227,9 @@ Strategic pricing maintains <span class="performance-positive">competitive posit
   }
   
   // 24. Today's backorders
-  if (lowerQuestion.includes('backorder') || lowerQuestion.includes('bo') || lowerQuestion.includes('today')) {
+  if (lowerQuestion.includes('backorder') || lowerQuestion.includes('back order') || 
+      lowerQuestion.includes('backordered') || 
+      (lowerQuestion.includes('order') && (lowerQuestion.includes('back') || lowerQuestion.includes('pending')))) {
     return `Current backorder analysis reveals supply chain pressures and priority fulfillment requirements for immediate action.
 
 **Today's Backorder Summary:**
