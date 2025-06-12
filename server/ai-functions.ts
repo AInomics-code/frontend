@@ -296,11 +296,38 @@ Production Alert Summary:
 - Multiple food service chains affected: SUPER CARNES, CHAO outlets
 - Supervisor coverage gaps in key territories creating fulfillment delays
 
-Market Intelligence:
-- Consumer trend: Organic demand up 18% in Central region
-- Competitor alert: Maggi launched new BBQ variant targeting our premium segment
-- Price sensitivity: 8% price increase on vinegars shows minimal volume impact
-- Brand perception: 4.2/5 average rating across digital platforms
+SISCOM MOVIL Sales Performance Dashboard:
+
+Projected vs Actual Sales Analysis:
+- PPTO (Budget): 791,151.26
+- VENTAS (Actual Sales): 106,004.26  
+- %Cumpl% (Achievement): 13.40%
+- Clientes (Active Clients): 1,359
+
+Client Performance Details:
+- PRODUCTOS ALIMENTICIOS SPACIAL (DAVID): PPTO 46,635.60, Ventas 43,214.44, %Cumpl% 95.96%, Diferencia -3,423.96
+- SUPERMERCADOS XTRA, S.A. (SX-DAVID): PPTO 37,118.87, Ventas 9,017.66, %Cumpl% 24.29%, Diferencia -28,101.21
+- SUPERMERCADOS XTRA, S.A. (BUGABA): PPTO 24,258.19, Ventas 4,335.75, %Cumpl% 17.87%, Diferencia -19,922.44
+- SUPERMERCADOS XTRA, S.A. (M.F.DAVID): PPTO 9,939.59, Ventas 2,425.54, %Cumpl% 24.40%, Diferencia -6,514.05
+- SUPERMERCADOS XTRA, S.A. SUPER 99 PLAZA DOROTOI DAVID: PPTO 7,276.60, Ventas 3,055.79, %Cumpl% 41.99%, Diferencia -4,220.81
+- GRAN CAMPO S.A (BOLAÑOS): PPTO 10,119.54, Ventas 2,451.27, %Cumpl% 24.24%, Diferencia -7,668.27
+- SUPERMERCADO XTRA S.A (M.F. SAN FELIX): PPTO 10,940.60, Ventas 2,396.44, %Cumpl% 21.90%, Diferencia -8,544.16
+- CENTRO DOLLAR 1,2,3: PPTO 4,312.22, Ventas 2,356.22, %Cumpl% 54.65%, Diferencia -2,066.00
+- GRAN CAMPO S.A. (BUGABA): PPTO 6,117.53, Ventas 2,198.57, %Cumpl% 35.93%, Diferencia -3,917.66
+- DORADO CENTER (TERMINAL): PPTO 5,150.24, Ventas 1,982.26, %Cumpl% 38.49%, Diferencia -3,167.98
+
+Regional Performance Summary:
+- Overall achievement at critical 13.40% vs budget target
+- Top performer: PRODUCTOS ALIMENTICIOS SPACIAL at 95.96% achievement
+- Major underperformers: Multiple XTRA locations showing 17-24% achievement
+- Chiriquí region showing systematic underperformance across major chains
+- Active client base of 1,359 customers with significant engagement gaps
+
+Critical Market Intelligence:
+- SUPERMERCADOS XTRA chain severely underperforming across all locations
+- GRAN CAMPO S.A. showing mixed results (24-36% achievement range)
+- Regional concentration in David/Chiriquí area showing structural challenges
+- Budget variance of -685,147.00 requiring immediate intervention
 
 Regulatory & Compliance:
 - Food safety: All certifications current, next audit September 2025
