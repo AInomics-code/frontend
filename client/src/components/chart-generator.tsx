@@ -92,6 +92,14 @@ export function ChartGenerator({ content, messageId }: ChartGeneratorProps) {
 
 function detectAndGenerateChart(content: string): ChartData | null {
   const lowerContent = content.toLowerCase();
+  
+  // Only generate charts when explicitly requested
+  const chartKeywords = ['chart', 'graph', 'visualize', 'show me', 'display', 'plot', 'generate chart', 'create graph'];
+  const hasChartRequest = chartKeywords.some(keyword => lowerContent.includes(keyword));
+  
+  if (!hasChartRequest) {
+    return null;
+  }
 
   // Billing Analysis for "Which clients have been billed today?"
   if (lowerContent.includes('billed') || lowerContent.includes('billing')) {
