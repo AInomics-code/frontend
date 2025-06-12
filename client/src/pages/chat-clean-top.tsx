@@ -16,6 +16,8 @@ export default function Chat() {
   const [isVoiceActive, setIsVoiceActive] = useState(false);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [isListening, setIsListening] = useState(false);
+  const [speechSupported, setSpeechSupported] = useState(false);
+  const [interimTranscript, setInterimTranscript] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
 
@@ -30,46 +32,70 @@ export default function Chat() {
   // Initialize speech recognition
   useEffect(() => {
     if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      setSpeechSupported(true);
       const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
       recognitionRef.current = new SpeechRecognition();
-      recognitionRef.current.continuous = false;
+      recognitionRef.current.continuous = true;
       recognitionRef.current.interimResults = true;
-      recognitionRef.current.lang = 'en-US'; // English for broader compatibility
+      recognitionRef.current.lang = 'es-ES'; // Spanish for La Doña (Panama)
+      recognitionRef.current.maxAlternatives = 1;
       
       recognitionRef.current.onstart = () => {
         setIsListening(true);
+        setInterimTranscript("");
       };
       
       recognitionRef.current.onresult = (event: any) => {
-        let transcript = '';
-        for (let i = event.resultIndex; i < event.results.length; i++) {
-          transcript += event.results[i][0].transcript;
-        }
-        setInputValue(transcript.trim());
+        let finalTranscript = '';
+        let interimText = '';
         
-        // If final result, stop listening
-        if (event.results[event.results.length - 1].isFinal) {
-          setIsListening(false);
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            finalTranscript += transcript;
+          } else {
+            interimText += transcript;
+          }
+        }
+        
+        if (finalTranscript) {
+          setInputValue(prev => prev + finalTranscript);
+          setInterimTranscript("");
+        } else {
+          setInterimTranscript(interimText);
         }
       };
       
       recognitionRef.current.onerror = (event: any) => {
         console.error('Speech recognition error:', event.error);
         setIsListening(false);
+        setInterimTranscript("");
         
-        // Handle specific errors
+        // Handle specific errors with user-friendly messages
         if (event.error === 'not-allowed') {
-          alert('Microphone access denied. Please allow microphone access and try again.');
+          alert('Acceso al micrófono denegado. Por favor permite el acceso al micrófono e intenta de nuevo.');
         } else if (event.error === 'no-speech') {
-          // Silent error for no speech detected
-        } else {
-          console.warn('Speech recognition error:', event.error);
+          // Restart listening automatically if no speech detected
+          setTimeout(() => {
+            if (recognitionRef.current && isListening) {
+              try {
+                recognitionRef.current.start();
+              } catch (e) {
+                console.log('Recognition restart failed:', e);
+              }
+            }
+          }, 100);
+        } else if (event.error === 'network') {
+          alert('Error de conexión. Verifica tu conexión a internet.');
         }
       };
       
       recognitionRef.current.onend = () => {
         setIsListening(false);
+        setInterimTranscript("");
       };
+    } else {
+      setSpeechSupported(false);
     }
   }, []);
 
