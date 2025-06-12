@@ -45,52 +45,58 @@ Target elimination of negative variance products within 30 days. New product int
   
   // Financial performance queries
   if (lowerQuestion.includes('june') || lowerQuestion.includes('financial') || lowerQuestion.includes('billing')) {
-    return `**SITUATION:** June billing collapsed to $1,201,456.36 compared to May's $6,337,497.91 - an 81% decline (NEGATIVE - June should maintain $5.2M baseline). Monthly performance dropped from typical $5-6M range to barely $1.2M. Margin crashed to 0.66 vs normal 2.6 range (NEGATIVE - food manufacturing standard is 2.0+ margins).
+    return `**Financial Performance Review**
+Our June billing totaled $1,201,456.36 compared to May's stronger performance of $6,337,497.91, representing an 81% monthly decline. This places us below our typical $5.2M baseline for this period, with margins at 0.66 versus our standard 2.6 range.
 
-**COMPARATIVE ANALYSIS:**
-- Current State: Operating at 19% of normal capacity with critical cash flow shortage
-- How We Got Here: Back-order crisis ($39,118.09 outstanding) prevented order fulfillment. Production delivered only $564.71 vs expected volumes. SUPERMERCADOS XTRA systematic underperformance created -$54,000 variance cascade.
-- What It Should Be: June typically generates $5.2M with 2.4 margin. Food manufacturers maintain 2.0+ margins during seasonal dips. Back-orders should never exceed $15K (3% of monthly volume).
+**Understanding the Situation**
+- Current position: Operating at approximately 19% of normal monthly capacity with constrained cash flow
+- Contributing factors: Back-order fulfillment challenges ($39,118.09 outstanding) have impacted our ability to complete orders. Production output reached only $564.71 versus expected volumes. Our SUPERMERCADOS XTRA relationship has created a -$54,000 variance that requires attention.
+- Expected performance: June typically generates around $5.2M with a 2.4 margin. Food manufacturing industry standards suggest maintaining 2.0+ margins even during seasonal adjustments.
 
-**ROOT CAUSE ANALYSIS:**
-- Primary: Production schedule management failure - deliveries collapsed to $564.71 vs normal $400K+ weekly
-- Secondary: Supply chain disruption preventing order fulfillment across major accounts
-- External: Competitor pricing pressure during our supply shortage period
-- Internal: No back-order escalation protocols allowing crisis to compound
+**Key Factors Influencing Performance**
+- Primary: Production scheduling requires refinement - current output significantly below our $400K+ weekly capacity
+- Secondary: Supply chain coordination needs strengthening to ensure consistent order fulfillment
+- External: Market pricing pressures during supply adjustments have created competitive challenges
+- Internal: Enhanced monitoring protocols would help identify and address fulfillment issues earlier
 
-**IMPACT:** Operating liquidity threatened with fixed costs representing 80%+ of revenue vs normal 40%. Credit rating at risk. Customer relationships deteriorating due to unfulfilled commitments.
+**Financial Impact**
+Current performance represents constrained operating liquidity, with fixed costs representing a higher percentage of revenue than our standard 40% target. This affects our operational flexibility and customer service capabilities.
 
-**ACTIONS:**
-- IMMEDIATE: Activate emergency credit line and focus all production on highest-margin fulfilled orders (today)
-- SHORT-TERM: Replicate PRODUCTOS ALIMENTICIOS SPACIAL success model (95.96% performance) across top accounts (next 7 days)
-- LONG-TERM: Implement production-linked financial forecasting with daily variance alerts (next 30 days)
+**Strategic Recommendations**
+- Immediate focus: Activate available credit facilities and prioritize highest-margin order fulfillment
+- Near-term development: Apply our successful PRODUCTOS ALIMENTICIOS SPACIAL performance model (95.96% achievement) to other key accounts
+- Long-term enhancement: Implement integrated production and financial forecasting with proactive variance monitoring
 
-**SUCCESS METRICS:** Achieve $2.4M+ billing recovery within 14 days (50% of normal). Restore margin to 1.8+ within 30 days. Reduce back-orders below $10K maximum.`;
+**Performance Targets**
+Achieve $2.4M+ billing recovery within two weeks (representing 50% improvement toward normal levels). Restore margin performance to 1.8+ within 30 days. Maintain back-order levels below $10K maximum going forward.`;
   }
   
   // Sales performance queries
   if (lowerQuestion.includes('sales') || lowerQuestion.includes('poor') || lowerQuestion.includes('low')) {
-    return `**SITUATION:** Overall sales achievement critically low at 13.40% vs budget target of 791,151.26 (NEGATIVE - should achieve 70%+ minimum). SUPERMERCADOS XTRA chain severely underperforming: BUGABA 17.87%, SX-DAVID 24.29%, M.F.DAVID 24.40% (all NEGATIVE vs 75%+ chain standard). Only PRODUCTOS ALIMENTICIOS SPACIAL achieving 95.96% (POSITIVE - meeting benchmark).
+    return `**Sales Performance Analysis**
+Our current sales achievement stands at 13.40% versus our budget target of 791,151.26, which indicates room for improvement from our typical 70%+ performance standard. The SUPERMERCADOS XTRA chain locations show varying results: BUGABA at 17.87%, SX-DAVID at 24.29%, and M.F.DAVID at 24.40%. Notably, PRODUCTOS ALIMENTICIOS SPACIAL is performing well at 95.96%, demonstrating our capability for strong results.
 
-**COMPARATIVE ANALYSIS:**
-- Current State: Operating at 13% achievement vs industry standard 70%+ for established food manufacturers
-- How We Got Here: Back-order crisis prevented fulfillment across 39 XTRA locations. Sales execution breakdown as reps couldn't service accounts without inventory. No escalation protocols activated during supply crisis.
-- What It Should Be: Healthy food manufacturers achieve 70-85% of sales targets monthly. XTRA chain should perform at 75%+ across all locations. Back-order impact should never drop achievement below 50%.
+**Understanding the Performance Context**
+- Current status: Operating at 13% achievement compared to industry benchmarks of 70%+ for established food manufacturers
+- Contributing factors: Back-order fulfillment challenges have affected service capabilities across 39 XTRA locations. Sales execution has been constrained by inventory availability. Our response protocols during supply challenges need enhancement.
+- Performance expectations: Healthy food manufacturers typically achieve 70-85% of sales targets monthly. XTRA chain locations should perform at 75%+ given their established customer base.
 
-**ROOT CAUSE ANALYSIS:**
-- Primary: Supply chain failure creating systematic fulfillment inability across major account network
-- Secondary: Account management breakdown during crisis - no proactive customer retention protocols
-- External: XTRA chain likely evaluating alternative suppliers with reliable delivery
-- Internal: Sales targets not adjusted for supply constraints, creating unrealistic expectations
+**Factors Influencing Current Results**
+- Primary: Supply chain coordination affecting systematic fulfillment across our major account network
+- Secondary: Account management during challenging periods requires enhanced proactive customer engagement
+- External: XTRA chain management may be evaluating supplier alternatives for consistent delivery
+- Internal: Sales targets could benefit from supply-adjusted expectations during operational transitions
 
-**IMPACT:** 86% below target equals $680,000+ monthly revenue shortfall. Market share permanently lost to competitors. XTRA partnership ($54,000 negative variance) at critical risk. Sales team effectiveness compromised.
+**Revenue Impact**
+Current performance represents approximately $680,000 in monthly revenue opportunity. The XTRA partnership variance of -$54,000 requires focused attention to maintain this valuable relationship.
 
-**ACTIONS:**
-- IMMEDIATE: Emergency XTRA management meeting to secure partnership and prevent supplier replacement (next 24 hours)
-- SHORT-TERM: Implement PRODUCTOS ALIMENTICIOS SPACIAL success framework across top 5 underperforming accounts (next 7 days)
-- LONG-TERM: Create supply-adjusted sales targets with daily performance monitoring and automatic escalation protocols
+**Strategic Development Plan**
+- Priority focus: Schedule partnership discussions with XTRA management to strengthen our collaboration and address service concerns
+- Implementation phase: Apply the successful PRODUCTOS ALIMENTICIOS SPACIAL performance framework to our top 5 developing accounts
+- Systems enhancement: Create supply-adjusted sales targets with integrated performance monitoring and proactive engagement protocols
 
-**SUCCESS METRICS:** Achieve 45%+ sales achievement within 14 days. Recover XTRA variance to -$15,000 maximum. Establish 3+ accounts at 85%+ performance within 30 days.`;
+**Achievement Targets**
+Reach 45%+ sales achievement within two weeks. Improve XTRA variance to -$15,000 or better. Establish 3+ additional accounts performing at 85%+ within 30 days.`;
   }
   
   // Back-order queries
