@@ -235,6 +235,51 @@ body {
   margin-top: 0;
 }
 
+/* Key point highlighting with red underlines */
+.key-point {
+  text-decoration: underline;
+  text-decoration-color: #dc2626;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+  font-weight: 500;
+  background: linear-gradient(rgba(220, 38, 38, 0.08), rgba(220, 38, 38, 0.08));
+  padding: 1px 3px;
+  border-radius: 3px;
+}
+
+/* Metric highlighting */
+.metric-highlight {
+  text-decoration: underline;
+  text-decoration-color: #dc2626;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+  font-weight: 600;
+  color: #dc2626;
+}
+
+/* Performance indicator styling */
+.performance-negative {
+  text-decoration: underline;
+  text-decoration-color: #dc2626;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+  background: linear-gradient(rgba(220, 38, 38, 0.1), rgba(220, 38, 38, 0.1));
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.performance-positive {
+  text-decoration: underline;
+  text-decoration-color: #059669;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+  background: linear-gradient(rgba(5, 150, 105, 0.1), rgba(5, 150, 105, 0.1));
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
 /* Chat message container */
 .chat-message {
   max-width: 80%;

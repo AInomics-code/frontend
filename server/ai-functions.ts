@@ -18,36 +18,36 @@ function getDirectBusinessResponse(question: string): string {
   // Product performance queries
   if (lowerQuestion.includes('anis estrella') || lowerQuestion.includes('worst') || lowerQuestion.includes('underperform')) {
     return `**Product Performance Deep Analysis**
-Our underperforming segment reveals critical market dynamics. Anís Estrella seasoning has experienced a dramatic 94.9% revenue decline from $86.00 to $4.40 monthly, representing a 1,854% negative variance that signals complete market rejection or severe supply disruption. The Adobo seasoning (175g) shows zero market traction with -100% performance, indicating fundamental product-market misfit. Garlic powder (175g) dropped 72% from $430 to $120, falling below the $400+ threshold that defines successful spice category performance in our portfolio.
+Our underperforming segment reveals critical market dynamics. Anís Estrella seasoning has experienced a dramatic <span class="metric-highlight">94.9% revenue decline</span> from $86.00 to $4.40 monthly, representing a <span class="performance-negative">1,854% negative variance</span> that signals complete market rejection or severe supply disruption. The Adobo seasoning (175g) shows <span class="performance-negative">zero market traction with -100% performance</span>, indicating fundamental product-market misfit. Garlic powder (175g) dropped <span class="metric-highlight">72% from $430 to $120</span>, falling below the $400+ threshold that defines successful spice category performance in our portfolio.
 
 **Contextual Market Intelligence**
-- Competitive landscape: During our Anís Estrella supply gap, competitors like Maggi and Knorr captured 67% of the star anise seasoning market share in Panama's central provinces, based on retail scanner data
-- Consumer behavior shift: Focus groups indicate 73% preference for single-ingredient seasonings over complex blends, explaining Adobo's poor reception
-- Distribution insight: Our garlic powder competes against imported McCormick products priced 15% lower, while our quality testing shows comparable flavor profiles
-- Seasonal factor: Anís Estrella demand peaks during December holiday baking season (300% volume increase), making current timing critical for market recovery
+- Competitive landscape: During our Anís Estrella supply gap, competitors like <span class="key-point">Maggi and Knorr captured 67% of the star anise seasoning market share</span> in Panama's central provinces, based on retail scanner data
+- Consumer behavior shift: Focus groups indicate <span class="metric-highlight">73% preference for single-ingredient seasonings</span> over complex blends, explaining Adobo's poor reception
+- Distribution insight: Our garlic powder competes against imported McCormick products <span class="performance-negative">priced 15% lower</span>, while our quality testing shows comparable flavor profiles
+- Seasonal factor: Anís Estrella demand peaks during December holiday baking season (<span class="performance-positive">300% volume increase</span>), making current timing critical for market recovery
 
 **Root Cause Precision Analysis**
-- Primary: Anís Estrella supplier (Especias del Caribe) discontinued our preferred star anise grade without notification, forcing us to substitute lower-quality product that failed consumer taste tests
-- Secondary: Adobo blend formulation contains 23% salt content versus competitor average of 18%, creating perceived oversalting that drives customer rejection
-- Market timing: Garlic powder launch coincided with McCormick's aggressive promotional pricing campaign offering 25% discounts across Panama's top 15 supermarket chains
-- Internal execution: Product management team lacks SKU performance dashboards, causing 4-month delay in identifying Anís Estrella quality issues
+- Primary: <span class="key-point">Anís Estrella supplier (Especias del Caribe) discontinued our preferred star anise grade</span> without notification, forcing us to substitute lower-quality product that failed consumer taste tests
+- Secondary: <span class="performance-negative">Adobo blend formulation contains 23% salt content versus competitor average of 18%</span>, creating perceived oversalting that drives customer rejection
+- Market timing: Garlic powder launch coincided with <span class="performance-negative">McCormick's aggressive promotional pricing campaign offering 25% discounts</span> across Panama's top 15 supermarket chains
+- Internal execution: Product management team lacks SKU performance dashboards, causing <span class="metric-highlight">4-month delay in identifying Anís Estrella quality issues</span>
 
 **Financial Impact Breakdown**
-Lost revenue opportunity totals $1,847 monthly across three SKUs. Anís Estrella alone represents $86 monthly capacity that could generate $1,032 annually. Inventory carrying costs for slow-moving Adobo stock consume $340 monthly in warehouse space that could accommodate our high-velocity ketchup production. Additionally, retailer shelf space lost to competitors requires 6-month minimum commitment periods to reclaim.
+Lost revenue opportunity totals <span class="metric-highlight">$1,847 monthly across three SKUs</span>. Anís Estrella alone represents $86 monthly capacity that could generate <span class="performance-positive">$1,032 annually</span>. Inventory carrying costs for slow-moving Adobo stock consume <span class="performance-negative">$340 monthly in warehouse space</span> that could accommodate our high-velocity ketchup production. Additionally, retailer shelf space lost to competitors requires <span class="key-point">6-month minimum commitment periods to reclaim</span>.
 
 **Strategic Recovery Plan**
-- Week 1-2: Source premium star anise from backup supplier (Condimentos Tropicales) at 12% higher cost but maintains quality standards. Reformulate Adobo to 18% salt content and conduct taste panel validation.
-- Month 1: Launch targeted sampling campaign for reformulated Adobo in top 5 Xtra locations where we maintain strongest relationships. Negotiate promotional pricing match with McCormick for garlic powder in 3-month trial.
-- Quarter 2: Implement SKU performance alerts triggered at 20% decline (early warning) and 40% decline (intervention required). Establish quarterly supplier audits to prevent quality disruptions.
+- Week 1-2: Source premium star anise from <span class="key-point">backup supplier (Condimentos Tropicales) at 12% higher cost</span> but maintains quality standards. <span class="key-point">Reformulate Adobo to 18% salt content</span> and conduct taste panel validation.
+- Month 1: Launch targeted sampling campaign for reformulated Adobo in <span class="performance-positive">top 5 Xtra locations</span> where we maintain strongest relationships. Negotiate promotional pricing match with McCormick for garlic powder in 3-month trial.
+- Quarter 2: Implement SKU performance alerts triggered at <span class="metric-highlight">20% decline (early warning) and 40% decline (intervention required)</span>. Establish quarterly supplier audits to prevent quality disruptions.
 
 **Performance Recovery Targets**
-Anís Estrella: Achieve $65+ monthly revenue within 60 days (75% of historical performance). Adobo: Target 40% market acceptance rate in test locations by month-end. Garlic powder: Regain $350+ monthly revenue through competitive pricing strategy. Overall portfolio: Eliminate negative variance SKUs and achieve 95%+ performance consistency across all seasoning products by Q2 end.`;
+Anís Estrella: Achieve <span class="performance-positive">$65+ monthly revenue within 60 days (75% of historical performance)</span>. Adobo: Target <span class="metric-highlight">40% market acceptance rate</span> in test locations by month-end. Garlic powder: Regain <span class="performance-positive">$350+ monthly revenue</span> through competitive pricing strategy. Overall portfolio: Eliminate negative variance SKUs and achieve <span class="performance-positive">95%+ performance consistency</span> across all seasoning products by Q2 end.`;
   }
   
   // Financial performance queries
   if (lowerQuestion.includes('june') || lowerQuestion.includes('financial') || lowerQuestion.includes('billing')) {
     return `**Financial Performance Deep Dive**
-June billing collapsed to $1,201,456.36 from May's $6,337,497.91, representing a catastrophic 81% monthly decline that puts us at 23% of our Q2 target. This performance sits 77% below our 5-year June average of $5.2M and indicates systematic operational breakdown. Our margin compression to 0.66 versus the standard 2.6 reflects fixed cost absorption crisis, with facilities costs now consuming 78% of revenue versus our target 30%.
+June billing collapsed to <span class="metric-highlight">$1,201,456.36 from May's $6,337,497.91</span>, representing a <span class="performance-negative">catastrophic 81% monthly decline</span> that puts us at <span class="performance-negative">23% of our Q2 target</span>. This performance sits <span class="metric-highlight">77% below our 5-year June average of $5.2M</span> and indicates systematic operational breakdown. Our <span class="performance-negative">margin compression to 0.66 versus the standard 2.6</span> reflects fixed cost absorption crisis, with facilities costs now consuming <span class="performance-negative">78% of revenue versus our target 30%</span>.
 
 **Granular Financial Analysis**
 - Cash flow velocity: Daily receipts averaged $40,048 in June versus May's $204,435, creating 23-day operational runway at current burn rate
