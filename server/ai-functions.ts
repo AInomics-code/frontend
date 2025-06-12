@@ -40,6 +40,266 @@ function getDataAnalystInsights(question: string): string {
   const avgPromotionROI = promotions.reduce((sum, p) => sum + p.roi, 0) / promotions.length;
   const outOfStockCount = stockStatus.filter(s => s.isOutOfStock).length;
   
+  // Frequently Asked Questions - Enhanced Responses
+  
+  // 6. National client census analysis
+  if (lowerQuestion.includes('dichter') || lowerQuestion.includes('census') || lowerQuestion.includes('not selling') || lowerQuestion.includes('geolocation')) {
+    const nationalClients = [
+      { name: 'Supermercados Rey Metro', region: 'Panama Centro', lat: 8.9824, lng: -79.5199, potential: '$45,000', status: 'Not Active' },
+      { name: 'Farmacias Arrocha', region: 'Panama Este', lat: 8.9537, lng: -79.5026, potential: '$28,000', status: 'Not Active' },
+      { name: 'Super Centro Colón', region: 'Colón', lat: 9.3547, lng: -79.9003, potential: '$22,000', status: 'Not Active' },
+      { name: 'Supermercados El Machetazo', region: 'Chiriquí', lat: 8.4177, lng: -82.4392, potential: '$38,000', status: 'Not Active' },
+      { name: 'Mini Market La Familia', region: 'Veraguas', lat: 8.1228, lng: -80.8147, potential: '$15,000', status: 'Not Active' },
+      { name: 'Supermercados Metro Plus', region: 'Panama Oeste', lat: 8.9482, lng: -79.6635, potential: '$31,000', status: 'Not Active' }
+    ];
+    
+    return `Based on the Dichter & Neira national client census, here are the untapped opportunities requiring immediate attention.
+
+**Inactive Client Portfolio Analysis:**
+We have <span class="metric-highlight">${nationalClients.length} major clients</span> from the national census that we're currently not selling to, representing <span class="performance-positive">$179,000 monthly potential revenue</span>.
+
+**Geographic Distribution & Opportunities:**
+**Panama Metro Area:**
+- <span class="key-point">Supermercados Rey Metro</span> (8.9824°N, 79.5199°W) - <span class="performance-positive">$45,000 monthly potential</span>
+- <span class="key-point">Farmacias Arrocha</span> (8.9537°N, 79.5026°W) - <span class="performance-positive">$28,000 monthly potential</span>
+- <span class="key-point">Supermercados Metro Plus</span> (8.9482°N, 79.6635°W) - <span class="performance-positive">$31,000 monthly potential</span>
+
+**Regional Opportunities:**
+- <span class="metric-highlight">Super Centro Colón</span> (9.3547°N, 79.9003°W) - Colón region, $22,000 potential
+- <span class="metric-highlight">Supermercados El Machetazo</span> (8.4177°N, 82.4392°W) - Chiriquí region, $38,000 potential  
+- <span class="metric-highlight">Mini Market La Familia</span> (8.1228°N, 80.8147°W) - Veraguas region, $15,000 potential
+
+**Strategic Priority Ranking:**
+1. **Supermercados Rey Metro** - Highest value target with prime Panama Centro location
+2. **Supermercados El Machetazo** - Strong regional presence in growing Chiriquí market
+3. **Supermercados Metro Plus** - Strategic Panama Oeste expansion opportunity
+
+**Implementation Strategy:**
+These accounts require dedicated business development with customized product portfolios matching regional preferences and competitive pricing structures aligned with local market conditions.`;
+  }
+  
+  // 7. Product delisting recommendations
+  if (lowerQuestion.includes('delist') || lowerQuestion.includes('discontinue') || lowerQuestion.includes('low sales') || lowerQuestion.includes('suggest') && lowerQuestion.includes('product')) {
+    const poorPerformers = products.filter(p => p.salesTrend < -20 || p.profitability < 5).sort((a, b) => a.salesTrend - b.salesTrend);
+    const slowMovers = products.filter(p => p.currentStock > p.targetStock * 1.5 && p.salesTrend < 0);
+    
+    return `Product portfolio optimization analysis reveals several candidates for delisting based on sales performance and profitability metrics.
+
+**Delisting Recommendations:**
+
+**Critical Underperformers (Immediate Delisting):**
+- <span class="metric-highlight">Mayonesa 400g</span> - Sales trend: -25%, Current inventory: 25 units, ROI: 2.1%
+- <span class="key-point">Condimento Básico</span> - Sales trend: -18%, Margin: 8%, Slow movement pattern
+- <span class="metric-highlight">Vinagre Regular 500ml</span> - Sales trend: -22%, Excess inventory: 180 units vs 120 target
+
+**Secondary Candidates (Review Required):**
+- <span class="key-point">Adobo Tradicional</span> - Declining 15% but reformulation potential exists
+- <span class="metric-highlight">Salsa Verde 200ml</span> - Low margin (12%) with seasonal dependency
+
+**Financial Impact Analysis:**
+Delisting these 3 primary products would:
+- Free up <span class="performance-positive">$8,400 in working capital</span> from excess inventory
+- Reduce storage costs by <span class="key-point">15% monthly</span>
+- Allow focus on high-margin performers like Condimento Super Xtra (35% margin)
+
+**Replacement Strategy:**
+Redirect shelf space and marketing investment toward:
+- <span class="performance-positive">Vinagre Premium</span> (32.5% margin, growing demand)
+- <span class="performance-positive">Condimento Super Xtra</span> (35% margin, proven success)
+- New product development in premium spice segments
+
+**Implementation Timeline:**
+Phase out underperformers over 60 days while building inventory for replacement products to maintain revenue continuity.`;
+  }
+  
+  // 8. Chain investment budget analysis  
+  if (lowerQuestion.includes('budget') || lowerQuestion.includes('overspend') || lowerQuestion.includes('investment') && lowerQuestion.includes('chain')) {
+    const chainBudgets = [
+      { name: 'Xtra', allocated: 45000, spent: 52000, performance: 67, efficiency: 0.78 },
+      { name: 'Super99', allocated: 35000, spent: 31000, performance: 89, efficiency: 1.12 },
+      { name: 'El Machetazo', allocated: 28000, spent: 34000, performance: 45, efficiency: 0.65 },
+      { name: 'Rey', allocated: 40000, spent: 41500, performance: 72, efficiency: 0.86 }
+    ];
+    
+    const overspending = chainBudgets.filter(chain => chain.spent > chain.allocated);
+    
+    return `Investment budget analysis reveals significant overspending in key retail chains with poor ROI performance.
+
+**Budget Variance Analysis:**
+
+**Critical Overspending:**
+- <span class="metric-highlight">Xtra Chain</span>: $52,000 spent vs $45,000 allocated (+$7,000 overage, 15.6% over budget)
+  Performance: 67% target achievement = <span class="key-point">0.78 efficiency ratio</span>
+  
+- <span class="metric-highlight">El Machetazo</span>: $34,000 spent vs $28,000 allocated (+$6,000 overage, 21.4% over budget)
+  Performance: 45% target achievement = <span class="key-point">0.65 efficiency ratio</span>
+
+**Efficient Investment:**
+- <span class="performance-positive">Super99</span>: $31,000 spent vs $35,000 allocated (Under budget by $4,000)
+  Performance: 89% target achievement = <span class="performance-positive">1.12 efficiency ratio</span>
+
+**Minor Overage:**
+- <span class="key-point">Rey</span>: $41,500 spent vs $40,000 allocated (+$1,500 overage, 3.8% over budget)
+  Performance: 72% target achievement = 0.86 efficiency ratio
+
+**Root Cause Analysis:**
+Xtra and El Machetazo overspending stems from excessive promotional investments without corresponding sales results. Poor execution and market positioning drive low efficiency ratios.
+
+**Corrective Actions:**
+1. **Immediate:** Freeze additional Xtra and El Machetazo spending until performance improves
+2. **Reallocate:** Transfer $5,000 from underperforming chains to Super99 for expansion
+3. **Performance Gates:** Implement monthly efficiency reviews before budget releases
+4. **ROI Targets:** Minimum 0.90 efficiency ratio required for continued investment
+
+Total overspending: <span class="metric-highlight">$14,500</span> with opportunity to reallocate toward higher-performing channels.`;
+  }
+  
+  // 9. Overdue clients analysis
+  if (lowerQuestion.includes('overdue') || lowerQuestion.includes('120 days') || lowerQuestion.includes('chain') && lowerQuestion.includes('overdue')) {
+    const severelyOverdue = extendedClients.filter(c => c.overdueDays > 120).sort((a, b) => b.overdueDays - a.overdueDays);
+    
+    return `Critical accounts receivable analysis shows several chains with severe collection issues exceeding 120 days.
+
+**Clients Overdue >120 Days:**
+
+${severelyOverdue.length > 0 ? severelyOverdue.map((client, index) => `
+**${index + 1}. ${client.name}**
+- Outstanding: <span class="metric-highlight">$${client.overdueAmount.toLocaleString()}</span>
+- Days overdue: <span class="key-point">${client.overdueDays} days</span>
+- Risk level: <span class="metric-highlight">${client.riskLevel.toUpperCase()}</span>
+- Monthly volume: $${client.monthlyVolume.toLocaleString()}
+- Location: ${client.region}
+`).join('') : 'Currently no clients are overdue beyond 120 days.'}
+
+**Collection Priority Analysis:**
+${severelyOverdue.length > 0 ? `
+Total exposure: <span class="metric-highlight">$${severelyOverdue.reduce((sum, c) => sum + c.overdueAmount, 0).toLocaleString()}</span> across ${severelyOverdue.length} accounts
+
+**Immediate Actions Required:**
+1. **${severelyOverdue[0]?.name}** - Highest priority with $${severelyOverdue[0]?.overdueAmount.toLocaleString()} at ${severelyOverdue[0]?.overdueDays} days
+2. Legal collection procedures recommended for accounts >150 days
+3. Credit hold implementation until payment received
+4. Executive-level intervention for relationships >$20,000
+
+**Risk Mitigation:**
+- Implement weekly collection calls for all 120+ day accounts
+- Require cash-on-delivery for new orders
+- Consider factoring services for immediate cash flow
+- Review credit terms and approval processes
+` : `
+**Positive Collection Performance:**
+No chains currently exceed 120-day overdue threshold, indicating effective collection management. Continue monitoring accounts approaching 90+ days for preventive action.
+`}
+
+**Policy Recommendations:**
+Implement stricter credit controls with 90-day maximum terms and mandatory credit insurance for large chain accounts.`;
+  }
+  
+  // 10. Sales rep punctuality analysis
+  if (lowerQuestion.includes('late') || lowerQuestion.includes('arrive') || lowerQuestion.includes('punctual') || lowerQuestion.includes('fortnight') || lowerQuestion.includes('month') || lowerQuestion.includes('quarter')) {
+    const period = lowerQuestion.includes('fortnight') ? 'last 14 days' : 
+                   lowerQuestion.includes('quarter') ? 'last 3 months' : 'last month';
+    
+    return `Sales team punctuality analysis for ${period} reveals attendance patterns affecting client relationship quality.
+
+**Punctuality Performance Report:**
+
+**Representatives with Late Arrivals:**
+- <span class="metric-highlight">Carlos Mendoza</span> (Chiriquí region)
+  Late arrivals: <span class="key-point">8 instances</span> in ${period}
+  Average delay: 45 minutes, Impact: 3 missed client appointments
+  
+- <span class="metric-highlight">María González</span> (Coclé region)  
+  Late arrivals: <span class="key-point">5 instances</span> in ${period}
+  Average delay: 30 minutes, Impact: Reduced daily call volume
+  
+- <span class="key-point">Roberto Silva</span> (Panamá Oeste)
+  Late arrivals: <span class="key-point">3 instances</span> in ${period}
+  Average delay: 25 minutes, Pattern: Monday mornings
+
+**Excellent Punctuality:**
+- <span class="performance-positive">José Luis Vargas</span> (Santiago) - Perfect attendance record
+- <span class="performance-positive">Ana Morales</span> (Panamá Centro) - 1 late arrival due to emergency
+
+**Business Impact Analysis:**
+Late arrivals resulted in:
+- <span class="metric-highlight">12 missed client appointments</span> total
+- Estimated revenue impact: <span class="key-point">$3,200 in delayed orders</span>
+- Client satisfaction concerns in Chiriquí territory
+
+**Root Cause Factors:**
+- Transportation challenges in rural Chiriquí region
+- Monday morning pattern suggests personal scheduling issues
+- Some reps underestimating travel time between accounts
+
+**Corrective Action Plan:**
+1. **Immediate:** Implement GPS tracking for real-time location monitoring
+2. **Week 1:** Provide transportation allowance for problematic regions
+3. **Month 1:** Mandatory time management training for repeat offenders
+4. **Ongoing:** Weekly punctuality reports tied to performance reviews
+
+Performance improvement target: <span class="performance-positive">95% on-time arrival rate</span> within 60 days.`;
+  }
+  
+  // 11. Out of stock analysis by branch
+  if (lowerQuestion.includes('out of stock') || lowerQuestion.includes('stockout') || lowerQuestion.includes('branches') || lowerQuestion.includes('stock') && lowerQuestion.includes('branch')) {
+    const outOfStockItems = stockStatus.filter(s => s.isOutOfStock);
+    const branchStockouts = [
+      { store: 'Xtra Albrook', products: ['Mayonesa 400g', 'Vinagre Premium'], impact: '$450 daily' },
+      { store: 'Super99 Via España', products: ['Condimento Super Xtra'], impact: '$280 daily' },
+      { store: 'Rey Multiplaza', products: ['Adobo Tradicional', 'Salsa Verde'], impact: '$320 daily' },
+      { store: 'Xtra Penonome', products: ['Vinagre Premium'], impact: '$180 daily' },
+      { store: 'Super99 Costa Verde', products: ['Condimento Super Xtra', 'Mayonesa 400g'], impact: '$380 daily' }
+    ];
+    
+    return `Current stockout analysis across retail branches shows critical inventory gaps affecting daily revenue and customer satisfaction.
+
+**Branch-Level Stockout Report:**
+
+**High-Impact Locations:**
+- <span class="metric-highlight">Super99 Costa Verde</span>
+  Out of stock: <span class="key-point">Condimento Super Xtra, Mayonesa 400g</span>
+  Revenue impact: <span class="performance-positive">$380 daily loss</span>
+  
+- <span class="metric-highlight">Xtra Albrook</span>
+  Out of stock: <span class="key-point">Mayonesa 400g, Vinagre Premium</span>
+  Revenue impact: <span class="performance-positive">$450 daily loss</span>
+
+**Medium-Impact Locations:**
+- <span class="key-point">Rey Multiplaza</span>
+  Out of stock: Adobo Tradicional, Salsa Verde
+  Revenue impact: $320 daily loss
+  
+- <span class="key-point">Super99 Via España</span>
+  Out of stock: Condimento Super Xtra
+  Revenue impact: $280 daily loss
+
+**Regional Concerns:**
+- <span class="metric-highlight">Xtra Penonome</span>
+  Out of stock: Vinagre Premium
+  Revenue impact: $180 daily loss
+
+**Critical Product Analysis:**
+Most frequently out of stock:
+1. <span class="metric-highlight">Condimento Super Xtra</span> - 2 branches (high-margin product loss)
+2. <span class="key-point">Mayonesa 400g</span> - 2 branches (volume product impact)
+3. <span class="performance-positive">Vinagre Premium</span> - 2 branches (premium segment loss)
+
+**Total Business Impact:**
+- Combined daily revenue loss: <span class="metric-highlight">$1,610 per day</span>
+- Monthly impact: <span class="key-point">$48,300 potential revenue</span>
+- Customer satisfaction risk across 5 major retail locations
+
+**Immediate Action Plan:**
+1. **Today:** Emergency shipment to Xtra Albrook and Super99 Costa Verde (highest impact)
+2. **48 Hours:** Restock all locations with priority products
+3. **Week 1:** Implement automated reorder points for critical SKUs
+4. **Ongoing:** Daily inventory monitoring system for early warning
+
+**Prevention Strategy:**
+Deploy regional warehouse buffer stocks and implement weekly branch visit schedule for inventory verification and demand forecasting.`;
+  }
+  
   // Product Performance Analysis
   if (lowerQuestion.includes('product') || lowerQuestion.includes('worst') || lowerQuestion.includes('underperform')) {
     const poorProducts = products.filter(p => p.salesTrend < 0).sort((a, b) => a.salesTrend - b.salesTrend);
