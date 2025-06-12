@@ -16,6 +16,11 @@ const getOpenAIClient = () => {
  */
 export async function getBusinessInsights(question: string): Promise<string> {
   try {
+    // If OpenAI API is not available, provide direct responses using our loaded data
+    if (!process.env.OPENAI_API_KEY) {
+      return getDirectBusinessResponse(question);
+    }
+    
     const systemPrompt = `You are La Doña AI with complete access to all business data. You MUST use specific numbers from the data below in every response.
 
 MANDATORY REQUIREMENTS:
@@ -420,12 +425,14 @@ Use EXACT numbers and names from the data above.` }
       max_tokens: 1500,
     });
 
-    return response.choices[0].message.content || "I'm having trouble generating insights right now.";
+    return response.choices[0].message.content || getDirectBusinessResponse(question);
   } catch (error) {
     console.error("Error generating business insights:", error);
-    return "I encountered an error while generating insights. Please try again or contact support if the issue persists.";
+    return getDirectBusinessResponse(question);
   }
 }
+
+
 
 /**
  * Generates daily business briefing with key metrics and recommendations
