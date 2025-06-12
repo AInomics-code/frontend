@@ -21,6 +21,7 @@ export default function Chat() {
   const [speechSupported, setSpeechSupported] = useState(false);
   const [interimTranscript, setInterimTranscript] = useState("");
   const [speechLanguage, setSpeechLanguage] = useState('es-ES');
+  const [inputFeedback, setInputFeedback] = useState<'success' | 'error' | null>(null);
 
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -271,9 +272,9 @@ export default function Chat() {
           {/* Performance Card */}
           <div 
             onClick={() => toggleCard('performance')}
-            className={`group bg-white rounded-lg shadow-sm hover:shadow-md p-2 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
+            className={`group bg-white rounded-lg shadow-sm hover:shadow-md p-2 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 interactive-hover button-press ripple-effect ${
               expandedCard === 'performance' 
-                ? 'min-h-[200px] shadow-lg' 
+                ? 'min-h-[200px] shadow-lg animate-scaleIn' 
                 : 'min-h-[50px]'
             }`}
           >
@@ -337,9 +338,9 @@ export default function Chat() {
           {/* Risk Card */}
           <div 
             onClick={() => toggleCard('risks')}
-            className={`group bg-white rounded-lg shadow-sm hover:shadow-md p-2 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
+            className={`group bg-white rounded-lg shadow-sm hover:shadow-md p-2 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 interactive-hover button-press ripple-effect ${
               expandedCard === 'risks' 
-                ? 'min-h-[200px] shadow-lg' 
+                ? 'min-h-[200px] shadow-lg animate-scaleIn' 
                 : 'min-h-[50px]'
             }`}
           >
@@ -510,11 +511,11 @@ export default function Chat() {
           {messages.length > 0 && (
             <div className="flex-1 w-full max-w-4xl overflow-y-auto mb-8 px-8">
               <div className="space-y-3">
-                {messages.map((message) => (
-                  <div key={message.id} className="animate-[fadeIn_0.3s_ease-out]">
+                {messages.map((message, index) => (
+                  <div key={message.id} className="animate-fadeInUp" style={{ animationDelay: `${index * 0.1}s` }}>
                     {message.isUser ? (
                       <div className="flex justify-end">
-                        <div className="user-bubble bg-gradient-to-br from-blue-600 to-blue-700 text-white px-4 py-2.5 rounded-2xl rounded-bl-md max-w-[70%] animate-[fadeInSlide_0.4s_ease-out_forwards] text-sm font-normal leading-relaxed shadow-sm">
+                        <div className="user-bubble bg-gradient-to-br from-blue-600 to-blue-700 text-white px-4 py-2.5 rounded-2xl rounded-bl-md max-w-[70%] animate-slideInRight text-sm font-normal leading-relaxed shadow-sm interactive-hover">
                           {message.content}
                         </div>
                       </div>
@@ -547,23 +548,23 @@ export default function Chat() {
 
 
 
-          {/* Typing Indicator */}
+          {/* Enhanced Typing Indicator */}
           {isTyping && (
-            <div className="mb-8 animate-[fadeIn_0.3s_ease-out]">
-              <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                <div className="vortex-icon active" style={{ width: '14px', height: '14px', '--vortex-size': '14px' } as React.CSSProperties}>
+            <div className="mb-8 animate-bounceIn">
+              <div className="flex items-center gap-2 text-sm text-gray-500 mb-3 animate-slideInLeft">
+                <div className="vortex-icon active animate-glow" style={{ width: '14px', height: '14px', '--vortex-size': '14px' } as React.CSSProperties}>
                   <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
                 </div>
-                <span>La Doña AI</span>
+                <span className="shimmer-loading">La Doña AI está analizando...</span>
               </div>
-              <div className="typing-indicator">
-                <span></span>
-                <span></span>
-                <span></span>
+              <div className="typing-indicator animate-fadeInUp">
+                <span className="animate-bounce" style={{ animationDelay: '0ms' }}></span>
+                <span className="animate-bounce" style={{ animationDelay: '150ms' }}></span>
+                <span className="animate-bounce" style={{ animationDelay: '300ms' }}></span>
               </div>
             </div>
           )}
@@ -616,7 +617,7 @@ export default function Chat() {
                     <button
                       onClick={toggleLanguage}
                       title={`Cambiar idioma a ${speechLanguage === 'es-ES' ? 'Inglés' : 'Español'} (Ctrl+L)`}
-                      className="px-2 py-1 text-xs font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md transition-all duration-150"
+                      className="px-2 py-1 text-xs font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md transition-all duration-150 button-press ripple-effect"
                     >
                       {speechLanguage === 'es-ES' ? 'ES' : 'EN'}
                     </button>
@@ -624,7 +625,7 @@ export default function Chat() {
 
                   {/* Attachment button */}
                   <button 
-                    className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150 pl-[0px] pr-[0px]"
+                    className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150 pl-[0px] pr-[0px] button-press ripple-effect interactive-hover"
                     title="Attach file"
                   >
                     <Paperclip size={20} strokeWidth={1.5} />
@@ -641,12 +642,12 @@ export default function Chat() {
                           : "Hacer clic y hablar (Ctrl+M)"
                     }
                     disabled={!speechSupported}
-                    className={`relative p-3 transition-all duration-200 rounded-lg pl-[9px] pr-[9px] ${
+                    className={`relative p-3 transition-all duration-200 rounded-lg pl-[9px] pr-[9px] button-press ripple-effect ${
                       !speechSupported
                         ? 'text-gray-300 bg-gray-50 cursor-not-allowed'
                         : isListening 
-                          ? 'text-white bg-red-500 hover:bg-red-600 shadow-lg shadow-red-200/50 scale-105' 
-                          : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'
+                          ? 'text-white bg-red-500 hover:bg-red-600 shadow-lg shadow-red-200/50 scale-105 animate-glow' 
+                          : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50 interactive-hover'
                     }`}
                   >
                     <Mic size={20} strokeWidth={1.5} />
@@ -659,9 +660,9 @@ export default function Chat() {
                   <button
                     onClick={handleSendMessage}
                     title="Send message"
-                    className={`p-3 transition-all duration-200 ${
+                    className={`p-3 transition-all duration-200 button-press ripple-effect ${
                       inputValue.trim() && !isTyping
-                        ? 'text-white bg-red-500 hover:bg-red-600 rounded-lg shadow-sm hover:shadow-md'
+                        ? 'text-white bg-red-500 hover:bg-red-600 rounded-lg shadow-sm hover:shadow-md interactive-hover animate-pulse-success'
                         : 'text-gray-300 bg-gray-100 rounded-lg cursor-not-allowed'
                     }`}
                     disabled={!inputValue.trim() || isTyping}
