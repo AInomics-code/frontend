@@ -17,63 +17,47 @@ function getDirectBusinessResponse(question: string): string {
   
   // Product performance queries
   if (lowerQuestion.includes('anis estrella') || lowerQuestion.includes('worst') || lowerQuestion.includes('underperform')) {
-    return `**Product Performance Deep Analysis**
-Our underperforming segment reveals critical market dynamics. Anís Estrella seasoning has experienced a dramatic <span class="metric-highlight">94.9% revenue decline</span> from $86.00 to $4.40 monthly, representing a <span class="performance-negative">1,854% negative variance</span> that signals complete market rejection or severe supply disruption. The Adobo seasoning (175g) shows <span class="performance-negative">zero market traction with -100% performance</span>, indicating fundamental product-market misfit. Garlic powder (175g) dropped <span class="metric-highlight">72% from $430 to $120</span>, falling below the $400+ threshold that defines successful spice category performance in our portfolio.
+    return `**Product Performance Analysis**
+Three critical SKUs are underperforming: Anís Estrella with <span class="performance-negative">94.9% revenue decline</span> ($86→$4.40), Adobo seasoning at <span class="performance-negative">zero performance</span>, and Garlic powder down <span class="metric-highlight">72% to $120</span>.
 
-**Contextual Market Intelligence**
-- Competitive landscape: During our Anís Estrella supply gap, competitors like <span class="key-point">Maggi and Knorr captured 67% of the star anise seasoning market share</span> in Panama's central provinces, based on retail scanner data
-- Consumer behavior shift: Focus groups indicate <span class="metric-highlight">73% preference for single-ingredient seasonings</span> over complex blends, explaining Adobo's poor reception
-- Distribution insight: Our garlic powder competes against imported McCormick products <span class="performance-negative">priced 15% lower</span>, while our quality testing shows comparable flavor profiles
-- Seasonal factor: Anís Estrella demand peaks during December holiday baking season (<span class="performance-positive">300% volume increase</span>), making current timing critical for market recovery
+**Root Causes**
+- <span class="key-point">Anís Estrella supplier (Especias del Caribe) discontinued preferred grade</span> without notice
+- <span class="performance-negative">Adobo contains 23% salt vs competitor 18%</span>
+- Garlic powder hit by <span class="performance-negative">McCormick's 25% promotional campaign</span>
 
-**Root Cause Precision Analysis**
-- Primary: <span class="key-point">Anís Estrella supplier (Especias del Caribe) discontinued our preferred star anise grade</span> without notification, forcing us to substitute lower-quality product that failed consumer taste tests
-- Secondary: <span class="performance-negative">Adobo blend formulation contains 23% salt content versus competitor average of 18%</span>, creating perceived oversalting that drives customer rejection
-- Market timing: Garlic powder launch coincided with <span class="performance-negative">McCormick's aggressive promotional pricing campaign offering 25% discounts</span> across Panama's top 15 supermarket chains
-- Internal execution: Product management team lacks SKU performance dashboards, causing <span class="metric-highlight">4-month delay in identifying Anís Estrella quality issues</span>
+**Recovery Actions**
+- Week 1: Source from <span class="key-point">Condimentos Tropicales (+12% cost)</span>, reformulate Adobo to 18% salt
+- Month 1: Test reformulated Adobo in <span class="performance-positive">top 5 Xtra locations</span>
+- Target: <span class="performance-positive">$65+ monthly for Anís Estrella within 60 days</span>
 
-**Financial Impact Breakdown**
-Lost revenue opportunity totals <span class="metric-highlight">$1,847 monthly across three SKUs</span>. Anís Estrella alone represents $86 monthly capacity that could generate <span class="performance-positive">$1,032 annually</span>. Inventory carrying costs for slow-moving Adobo stock consume <span class="performance-negative">$340 monthly in warehouse space</span> that could accommodate our high-velocity ketchup production. Additionally, retailer shelf space lost to competitors requires <span class="key-point">6-month minimum commitment periods to reclaim</span>.
-
-**Strategic Recovery Plan**
-- Week 1-2: Source premium star anise from <span class="key-point">backup supplier (Condimentos Tropicales) at 12% higher cost</span> but maintains quality standards. <span class="key-point">Reformulate Adobo to 18% salt content</span> and conduct taste panel validation.
-- Month 1: Launch targeted sampling campaign for reformulated Adobo in <span class="performance-positive">top 5 Xtra locations</span> where we maintain strongest relationships. Negotiate promotional pricing match with McCormick for garlic powder in 3-month trial.
-- Quarter 2: Implement SKU performance alerts triggered at <span class="metric-highlight">20% decline (early warning) and 40% decline (intervention required)</span>. Establish quarterly supplier audits to prevent quality disruptions.
-
-**Performance Recovery Targets**
-Anís Estrella: Achieve <span class="performance-positive">$65+ monthly revenue within 60 days (75% of historical performance)</span>. Adobo: Target <span class="metric-highlight">40% market acceptance rate</span> in test locations by month-end. Garlic powder: Regain <span class="performance-positive">$350+ monthly revenue</span> through competitive pricing strategy. Overall portfolio: Eliminate negative variance SKUs and achieve <span class="performance-positive">95%+ performance consistency</span> across all seasoning products by Q2 end.`;
+**Recommended Next Steps**
+→ Check supplier contracts and backup options
+→ Review customer feedback on reformulated products
+→ Analyze competitor pricing strategies
+→ Evaluate production capacity for ketchup expansion`;
   }
   
   // Financial performance queries
   if (lowerQuestion.includes('june') || lowerQuestion.includes('financial') || lowerQuestion.includes('billing')) {
-    return `**Financial Performance Deep Dive**
-June billing collapsed to <span class="metric-highlight">$1,201,456.36 from May's $6,337,497.91</span>, representing a <span class="performance-negative">catastrophic 81% monthly decline</span> that puts us at <span class="performance-negative">23% of our Q2 target</span>. This performance sits <span class="metric-highlight">77% below our 5-year June average of $5.2M</span> and indicates systematic operational breakdown. Our <span class="performance-negative">margin compression to 0.66 versus the standard 2.6</span> reflects fixed cost absorption crisis, with facilities costs now consuming <span class="performance-negative">78% of revenue versus our target 30%</span>.
+    return `**Financial Performance Overview**
+June billing collapsed <span class="performance-negative">81% to $1.2M from May's $6.3M</span>, putting us at <span class="performance-negative">23% of Q2 target</span>. Cash flow at <span class="performance-negative">23-day runway</span> with <span class="key-point">$127,000 overdue from Xtra</span>.
 
-**Granular Financial Analysis**
-- Cash flow velocity: Daily receipts averaged <span class="metric-highlight">$40,048 in June versus May's $204,435</span>, creating <span class="performance-negative">23-day operational runway at current burn rate</span>
-- Accounts receivable aging: <span class="performance-negative">67% of outstanding invoices exceed 45 days</span> (industry standard is 25%), with <span class="key-point">Supermercados Xtra representing $127,000 in overdue payments</span>
-- Working capital impact: Inventory turnover dropped to <span class="performance-negative">0.3x monthly versus our target 2.1x</span>, tying up <span class="metric-highlight">$890,000 in slow-moving stock</span>
-- Cost structure breakdown: Variable costs held steady at <span class="metric-highlight">$1.4M while fixed costs remained at $2.1M</span>, creating unsustainable operating leverage
+**Critical Issues**
+- <span class="key-point">Back-order crisis blocked $39,118 in invoices (156 orders)</span>
+- <span class="performance-negative">Production line #2 breakdown eliminated 40% ketchup capacity</span>
+- Operating at <span class="performance-negative">12% capacity vs 68% break-even</span>
+- Finance delays: <span class="performance-negative">8.3 days average invoicing</span>
 
-**Operational Intelligence**
-- Production capacity utilization: June operated at <span class="performance-negative">12% capacity versus our break-even threshold of 68%</span>, with machinery idle time costing <span class="metric-highlight">$15,200 daily</span>
-- Customer concentration risk: <span class="key-point">Top 5 accounts represent 73% of revenue</span>, with <span class="performance-negative">Xtra alone accounting for 31% before variance issues</span>
-- Seasonal patterns: June typically represents <span class="metric-highlight">85% of May performance</span> due to school vacation impact on food service sales, but current <span class="performance-negative">23% indicates crisis beyond seasonality</span>
-- Regional variance: <span class="performance-negative">Panama City operations declined 85%</span> while <span class="metric-highlight">Colon facility dropped only 62%</span>, suggesting localized execution issues
+**Recovery Plan**
+- Week 1: Activate <span class="key-point">$1.2M credit line</span>, restructure supplier terms
+- Month 1: Deploy automated invoicing (<span class="performance-positive">8→2 days</span>), collect <span class="metric-highlight">$67,000 overdue</span>
+- Target: <span class="performance-positive">$2.8M July billing, 1.9 margin by August</span>
 
-**Root Cause Financial Forensics**
-- Primary catalyst: <span class="key-point">Back-order crisis of $39,118.09 prevented invoice completion for 156 orders</span>, blocking revenue recognition under our accrual accounting
-- Secondary driver: <span class="performance-negative">Production line #2 breakdown during week 2 eliminated 40% of ketchup capacity</span>, our highest-margin product line contributing <span class="metric-highlight">34% of gross profit</span>
-- External pressure: <span class="performance-negative">Competitor price wars in garlic powder and seasoning categories compressed margins by 23%</span> across our spice portfolio
-- Internal execution: Finance team delayed invoicing by <span class="performance-negative">average 8.3 days due to manual processes</span>, extending cash conversion cycle
-
-**Strategic Financial Recovery Framework**
-- Week 1: Activate <span class="key-point">$1.2M credit line and implement daily cash management</span>. Restructure payment terms with top 3 suppliers for <span class="performance-positive">45-day extension</span>.
-- Month 1: Deploy automated invoicing system reducing processing time from <span class="performance-negative">8 days to 2 days</span>. Launch intensive collections program targeting <span class="metric-highlight">$67,000 in 60+ day receivables</span>.
-- Quarter 3: Implement cost-flexible operating model scaling variable costs to <span class="performance-positive">85% of revenue during low periods</span>. Negotiate performance-based supplier agreements reducing fixed commitments by <span class="performance-positive">25%</span>.
-
-**Financial Recovery Metrics**
-Cash flow positive by <span class="performance-positive">day 15 through collections and credit activation</span>. Monthly billing recovery to <span class="metric-highlight">$2.8M by July 31 (representing 54% of May levels)</span>. Margin restoration to <span class="performance-positive">1.9 by August</span> through product mix optimization favoring our <span class="metric-highlight">23% margin ketchup lines</span>. Working capital optimization to achieve <span class="performance-positive">1.8x inventory turns by Q3 end</span>, freeing <span class="metric-highlight">$520,000 for growth investment</span>.`;
+**Recommended Next Steps**
+→ Review credit line terms and activation process
+→ Analyze production line repair costs vs replacement
+→ Evaluate accounts receivable collection strategies
+→ Assess supplier payment term renegotiation options`;
   }
   
   // Sales performance queries
@@ -158,28 +142,68 @@ Week 2: Achieve 25% sales performance through emergency inventory allocation and
 **SUCCESS METRICS:** Recover XTRA average performance to 65%+ within 30 days. Reduce combined variance to -$20,000 maximum. Secure written partnership extension despite current crisis.`;
   }
   
+  // Sales performance queries
+  if (lowerQuestion.includes('sales') || lowerQuestion.includes('poor') || lowerQuestion.includes('low')) {
+    return `**Sales Performance Overview**
+Sales achievement at <span class="performance-negative">13.40% vs budget target</span>, representing <span class="metric-highlight">$680,734 lost revenue</span>. Xtra chain crisis: Bugaba <span class="performance-negative">17.87% (-$19,922)</span>, David <span class="performance-negative">24.29% (-$28,101)</span>. However, <span class="performance-positive">Spacial Foods achieves 95.96%</span>, proving our capabilities.
+
+**Critical Issues**
+- <span class="performance-negative">Back-order crisis eliminated sales team credibility</span>
+- Sales calls dropped from <span class="metric-highlight">8.2 to 3.1 daily</span> due to apology meetings
+- <span class="performance-negative">Lost 23% ketchup market share to Heinz</span>
+- <span class="key-point">Territory realignment disrupted 15 key relationships</span>
+
+**Recovery Actions**
+- Week 1: Deploy emergency Xtra account manager, crisis communication scripts
+- Month 1: Reallocate inventory to <span class="performance-positive">high-margin customers first</span>
+- Target: <span class="performance-positive">45% achievement by month-end</span>
+
+**Recommended Next Steps**
+→ Review Xtra contract terms and relationship recovery strategies
+→ Analyze successful Spacial Foods management approach
+→ Evaluate sales team territory optimization
+→ Assess commission structure alignment with profitability`;
+  }
+
+  // Client performance queries  
+  if (lowerQuestion.includes('xtra') || lowerQuestion.includes('client') || lowerQuestion.includes('customer')) {
+    return `**Client Performance Analysis**
+Xtra chain showing critical underperformance: Bugaba <span class="performance-negative">17.87% (-$19,922)</span>, David <span class="performance-negative">24.29% (-$28,101)</span>, M.F. David <span class="performance-negative">24.40% (-$6,514)</span>. Combined <span class="metric-highlight">-$54,537 variance threatens partnership</span>.
+
+**Root Causes**
+- <span class="key-point">Back-order crisis prevented order fulfillment across 39 locations</span>
+- <span class="performance-negative">No VIP client protection protocols during crisis</span>
+- Account management breakdown with <span class="performance-negative">no executive escalation triggered</span>
+
+**Recovery Plan**
+- Week 1: <span class="key-point">CEO-level emergency meeting with Xtra executives</span>
+- Deploy dedicated account manager with <span class="performance-positive">daily reporting protocols</span>
+- Target: <span class="performance-positive">65%+ performance within 30 days</span>
+
+**Recommended Next Steps**
+→ Schedule immediate executive meeting with Xtra leadership
+→ Review contract terms and partnership commitments
+→ Evaluate VIP client protection system implementation
+→ Analyze other major client vulnerability assessments`;
+  }
+
   // Default comprehensive response
-  return `**SITUATION:** La Doña facing multiple critical issues: Sales achievement 13.40% vs target (NEGATIVE - should maintain 70%+), June billing crashed 81% to $1.2M (NEGATIVE vs $5.2M baseline), ANIS ESTRELLA down -1854.55% (NEGATIVE vs stable $80+ performance), SUPERMERCADOS XTRA chain underperforming across all locations (NEGATIVE vs 75%+ standard).
+  return `**Business Overview**
+La Doña facing multiple critical issues: Sales at <span class="performance-negative">13.40% vs target</span>, June billing crashed <span class="performance-negative">81% to $1.2M</span>, Anís Estrella down <span class="performance-negative">94.9%</span>, Xtra chain underperforming across all locations.
 
-**COMPARATIVE ANALYSIS:**
-- Current State: Operating in crisis mode with all major metrics 50-80% below industry standards for established food manufacturers
-- How We Got Here: Back-order crisis ($39,118.09) triggered cascade failure across systems. Production collapsed to $564.71 vs $400K+ expected weekly output. Management systems failed to escalate multiple simultaneous failures before reaching critical levels.
-- What It Should Be: Food manufacturers maintain 70%+ sales achievement, $5M+ monthly billing with 2.0+ margins, product variance within ±20%, and major chain partnerships at 75%+ performance consistently.
+**Critical Actions Needed**
+- Immediate: <span class="key-point">CEO-level crisis intervention across departments</span>
+- Short-term: Apply <span class="performance-positive">Spacial Foods success framework (95.96%)</span>
+- Long-term: Install integrated early warning dashboard
 
-**ROOT CAUSE ANALYSIS:**
-- Primary: Production system collapse creating systematic fulfillment failure across all business units
-- Secondary: Management escalation protocols non-existent - multiple crises reached critical mass without intervention
-- External: Competitors capturing market share during extended supply disruptions and customer service failures
-- Internal: No integrated monitoring connecting production capacity to sales targets and customer commitments
+**Recovery Targets**
+<span class="performance-positive">60% recovery within 30 days</span>, restore billing to <span class="metric-highlight">$3.5M+ monthly</span>, achieve <span class="performance-positive">50%+ sales performance</span>
 
-**IMPACT:** Business sustainability threatened with revenue compression of 81%. Fixed costs overwhelming reduced income. Market position deteriorating permanently. Key partnerships at immediate termination risk.
-
-**ACTIONS:**
-- IMMEDIATE: Activate emergency management protocols with CEO-level crisis intervention across all departments (next 24 hours)
-- SHORT-TERM: Implement PRODUCTOS ALIMENTICIOS SPACIAL success framework (95.96% achievement) across all underperforming units (next 7 days)
-- LONG-TERM: Install integrated early warning dashboard linking production capacity, inventory levels, sales performance, and customer satisfaction with automatic escalation triggers
-
-**SUCCESS METRICS:** Achieve 60% recovery across all metrics within 30 days. Restore billing to $3.5M+ monthly minimum. Increase sales achievement to 50%+. Eliminate all critical back-orders and establish 15-day minimum inventory buffers.`;
+**Recommended Next Steps**
+→ Activate emergency management protocols immediately
+→ Analyze production capacity vs demand requirements
+→ Review major client relationship status
+→ Evaluate supply chain backup options`;
   }
 
 /**
