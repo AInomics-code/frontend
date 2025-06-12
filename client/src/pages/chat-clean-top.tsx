@@ -18,8 +18,10 @@ export default function Chat() {
   const [isListening, setIsListening] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(false);
   const [interimTranscript, setInterimTranscript] = useState("");
+  const [speechLanguage, setSpeechLanguage] = useState('es-ES');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
+  const speechTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -29,6 +31,25 @@ export default function Chat() {
     scrollToBottom();
   }, [messages, isTyping]);
 
+  // Keyboard shortcuts for voice control
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ctrl/Cmd + M to toggle voice
+      if ((e.ctrlKey || e.metaKey) && e.key === 'm') {
+        e.preventDefault();
+        toggleVoice();
+      }
+      // Ctrl/Cmd + L to toggle language
+      if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
+        e.preventDefault();
+        toggleLanguage();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [speechSupported, isListening, speechLanguage]);
+
   // Initialize speech recognition
   useEffect(() => {
     if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
@@ -37,12 +58,19 @@ export default function Chat() {
       recognitionRef.current = new SpeechRecognition();
       recognitionRef.current.continuous = true;
       recognitionRef.current.interimResults = true;
-      recognitionRef.current.lang = 'es-ES'; // Spanish for La Doña (Panama)
+      recognitionRef.current.lang = speechLanguage;
       recognitionRef.current.maxAlternatives = 1;
       
       recognitionRef.current.onstart = () => {
         setIsListening(true);
         setInterimTranscript("");
+        
+        // Set a timeout to automatically stop listening after 30 seconds
+        speechTimeoutRef.current = setTimeout(() => {
+          if (recognitionRef.current && isListening) {
+            recognitionRef.current.stop();
+          }
+        }, 30000);
       };
       
       recognitionRef.current.onresult = (event: any) => {
@@ -93,6 +121,12 @@ export default function Chat() {
       recognitionRef.current.onend = () => {
         setIsListening(false);
         setInterimTranscript("");
+        
+        // Clear timeout
+        if (speechTimeoutRef.current) {
+          clearTimeout(speechTimeoutRef.current);
+          speechTimeoutRef.current = null;
+        }
       };
     } else {
       setSpeechSupported(false);
@@ -170,21 +204,51 @@ export default function Chat() {
     }
   };
 
-  const toggleVoice = () => {
+  const toggleVoice = async () => {
+    if (!speechSupported) {
+      alert('Reconocimiento de voz no compatible con este navegador. Prueba con Chrome o Firefox.');
+      return;
+    }
+
     if (!recognitionRef.current) {
-      alert('Speech recognition not supported in this browser');
+      alert('Error al inicializar el reconocimiento de voz. Recarga la página e intenta de nuevo.');
       return;
     }
 
     if (isListening) {
       recognitionRef.current.stop();
+      if (speechTimeoutRef.current) {
+        clearTimeout(speechTimeoutRef.current);
+        speechTimeoutRef.current = null;
+      }
     } else {
       try {
+        // Request microphone permission first
+        await navigator.mediaDevices.getUserMedia({ audio: true });
+        // Update language setting before starting
+        recognitionRef.current.lang = speechLanguage;
         recognitionRef.current.start();
       } catch (error) {
         console.error('Speech recognition error:', error);
         setIsListening(false);
+        alert('No se pudo acceder al micrófono. Verifica los permisos del navegador.');
       }
+    }
+  };
+
+  const toggleLanguage = () => {
+    const newLang = speechLanguage === 'es-ES' ? 'en-US' : 'es-ES';
+    setSpeechLanguage(newLang);
+    
+    // If currently listening, restart with new language
+    if (isListening && recognitionRef.current) {
+      recognitionRef.current.stop();
+      setTimeout(() => {
+        if (recognitionRef.current) {
+          recognitionRef.current.lang = newLang;
+          recognitionRef.current.start();
+        }
+      }, 100);
     }
   };
 
@@ -498,20 +562,56 @@ export default function Chat() {
 
           {/* Chat Input Container */}
           <div className="w-full max-w-4xl px-8 bg-gray-50 pb-8 pt-4">
-            <div className="relative flex items-center bg-white rounded-3xl border border-gray-200/60 hover:bg-gray-50/50 transition-all duration-200 focus-within:bg-white p-2">
-              {/* Input field */}
+            <div className={`relative flex items-center bg-white rounded-3xl border transition-all duration-200 focus-within:bg-white p-2 ${
+              isListening 
+                ? 'border-red-300 bg-red-50/30 shadow-lg shadow-red-100/50' 
+                : 'border-gray-200/60 hover:bg-gray-50/50'
+            }`}>
+              {/* Input field with speech overlay */}
+              <div className="flex-1 relative">
                 <input
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Ask anything…"
-                  className="flex-1 bg-transparent border-none outline-none px-6 py-5 text-gray-800 placeholder-gray-400 text-lg resize-none"
+                  placeholder={isListening ? "Escuchando..." : "Pregunta lo que quieras…"}
+                  className="w-full bg-transparent border-none outline-none px-6 py-5 text-gray-800 placeholder-gray-400 text-lg resize-none"
                   disabled={isTyping}
                 />
+                
+                {/* Interim speech results overlay */}
+                {isListening && interimTranscript && (
+                  <div className="absolute inset-0 px-6 py-5 text-lg text-gray-400 italic pointer-events-none">
+                    {inputValue}{interimTranscript}
+                  </div>
+                )}
+                
+                {/* Voice recording indicator */}
+                {isListening && (
+                  <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
+                    <div className="flex gap-1">
+                      <div className="w-1 h-3 bg-red-400 rounded-full animate-pulse" style={{animationDelay: '0ms'}}></div>
+                      <div className="w-1 h-4 bg-red-500 rounded-full animate-pulse" style={{animationDelay: '150ms'}}></div>
+                      <div className="w-1 h-2 bg-red-400 rounded-full animate-pulse" style={{animationDelay: '300ms'}}></div>
+                    </div>
+                    <span className="text-xs text-red-500 font-medium">REC</span>
+                  </div>
+                )}
+              </div>
 
                 {/* Action buttons */}
                 <div className="flex items-center gap-2 pr-4">
+                  {/* Language toggle for speech recognition */}
+                  {speechSupported && (
+                    <button
+                      onClick={toggleLanguage}
+                      title={`Cambiar idioma a ${speechLanguage === 'es-ES' ? 'Inglés' : 'Español'}`}
+                      className="px-2 py-1 text-xs font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md transition-all duration-150"
+                    >
+                      {speechLanguage === 'es-ES' ? 'ES' : 'EN'}
+                    </button>
+                  )}
+
                   {/* Attachment button */}
                   <button 
                     className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150 pl-[0px] pr-[0px]"
@@ -523,14 +623,26 @@ export default function Chat() {
                   {/* Voice button */}
                   <button
                     onClick={toggleVoice}
-                    title={isListening ? "Stop recording" : "Use voice"}
-                    className={`p-3 transition-all duration-200 rounded-lg pl-[9px] pr-[9px] ${
-                      isListening 
-                        ? 'text-red-500 bg-red-50 hover:bg-red-100' 
-                        : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'
+                    title={
+                      !speechSupported 
+                        ? "Reconocimiento de voz no disponible" 
+                        : isListening 
+                          ? "Hacer clic para detener grabación" 
+                          : "Hacer clic y hablar"
+                    }
+                    disabled={!speechSupported}
+                    className={`relative p-3 transition-all duration-200 rounded-lg pl-[9px] pr-[9px] ${
+                      !speechSupported
+                        ? 'text-gray-300 bg-gray-50 cursor-not-allowed'
+                        : isListening 
+                          ? 'text-white bg-red-500 hover:bg-red-600 shadow-lg shadow-red-200/50 scale-105' 
+                          : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'
                     }`}
                   >
                     <Mic size={20} strokeWidth={1.5} />
+                    {isListening && (
+                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-600 rounded-full animate-ping"></div>
+                    )}
                   </button>
 
                   {/* Send arrow button */}
