@@ -357,7 +357,7 @@ Combined non-selling inventory represents <span class="performance-positive">$63
   }
   
   // 11. Out of stock products by branch
-  if (lowerQuestion.includes('out of stock') || lowerQuestion.includes('stockout') || (lowerQuestion.includes('stock') && lowerQuestion.includes('branch'))) {
+  if ((lowerQuestion.includes('out of stock') || lowerQuestion.includes('stockout') || (lowerQuestion.includes('stock') && lowerQuestion.includes('branch'))) && !lowerQuestion.includes('underperforming') && !lowerQuestion.includes('category')) {
     return `Critical inventory shortage analysis reveals stockout situations affecting sales performance across multiple locations.
 
 **Current Stockouts by Branch:**
