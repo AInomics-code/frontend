@@ -197,6 +197,12 @@ export default function Chat() {
     } catch (error) {
       console.error('Error sending message:', error);
       
+      // Show error feedback
+      setInputFeedback('error');
+      setToastMessage('Error de conexión. Verifica tu red e intenta de nuevo.');
+      setShowToast(true);
+      setTimeout(() => setInputFeedback(null), 600);
+      
       // Show error message
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -273,6 +279,13 @@ export default function Chat() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Feedback Toast */}
+      <FeedbackToast 
+        type="error"
+        message={toastMessage}
+        show={showToast}
+        onHide={() => setShowToast(false)}
+      />
       {/* Top KPI Dashboard - Elegant Layout */}
       <div className="bg-gray-50 px-6 py-1">
         <div className="flex flex-col md:flex-row gap-3 justify-between">
@@ -492,16 +505,16 @@ export default function Chat() {
                 >
                   <h5 className="text-sm font-semibold text-blue-800 mb-2">Strategic Actions</h5>
                   <div className="space-y-2 text-sm text-blue-700">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div className="flex items-center gap-2 animate-slideInLeft" style={{ animationDelay: '0ms' }}>
+                      <PulseIndicator color="blue" size="sm" />
                       <span>Launch Vinagre Premium in Panamá Centro (+8 stores)</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div className="flex items-center gap-2 animate-slideInLeft" style={{ animationDelay: '150ms' }}>
+                      <PulseIndicator color="green" size="sm" />
                       <span>Promotional campaign for Aceite de Coco</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div className="flex items-center gap-2 animate-slideInLeft" style={{ animationDelay: '300ms' }}>
+                      <PulseIndicator color="yellow" size="sm" />
                       <span>Review Mango Salsa pricing strategy</span>
                     </div>
                   </div>

@@ -50,9 +50,7 @@ export function TypingMessage({ content, isLatestMessage, onComplete, messageId 
             .replace(/\n/g, '<br/>')
         }}
       />
-      {isComplete && messageId && (
-        <ChartGenerator content={content} messageId={messageId} />
-      )}
+      {/* Chart generation removed per user request for simplicity */}
     </div>
   );
 }
