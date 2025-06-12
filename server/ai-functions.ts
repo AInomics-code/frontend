@@ -300,6 +300,280 @@ Most frequently out of stock:
 Deploy regional warehouse buffer stocks and implement weekly branch visit schedule for inventory verification and demand forecasting.`;
   }
   
+  // 1. Product sales performance by period and store
+  if (lowerQuestion.includes('didn\'t sell') || lowerQuestion.includes('not sell') || (lowerQuestion.includes('product') && (lowerQuestion.includes('yesterday') || lowerQuestion.includes('week') || lowerQuestion.includes('store') || lowerQuestion.includes('pdv')))) {
+    const period = lowerQuestion.includes('yesterday') ? 'yesterday' : 
+                   lowerQuestion.includes('week') ? 'this week' : 'recent period';
+    
+    const nonSellingProducts = [
+      { product: 'Salsa Verde 200ml', store: 'Xtra Albrook', days: 3, lastSale: '$12', impact: 'Low margin product' },
+      { product: 'Condimento Básico', store: 'Super99 Via España', days: 5, lastSale: '$8', impact: 'Declining trend' },
+      { product: 'Mayonesa 400g', store: 'Rey Multiplaza', days: 2, lastSale: '$15', impact: 'Volume concern' },
+      { product: 'Adobo Tradicional', store: 'Xtra Penonome', days: 4, lastSale: '$18', impact: 'Regional preference' },
+      { product: 'Vinagre Regular', store: 'El Machetazo David', days: 6, lastSale: '$10', impact: 'Premium preference' }
+    ];
+    
+    const chainBudgetPerformance = [
+      { chain: 'El Machetazo', budget: 28000, actual: 21000, variance: -25, status: 'Below Budget' },
+      { chain: 'Xtra', budget: 45000, actual: 38000, variance: -15.6, status: 'Below Budget' },
+      { chain: 'Super99', budget: 35000, actual: 36500, variance: +4.3, status: 'Above Budget' },
+      { chain: 'Rey', budget: 40000, actual: 39200, variance: -2, status: 'On Target' }
+    ];
+    
+    const belowBudgetChains = chainBudgetPerformance.filter(chain => chain.variance < 0);
+    
+    return `Product sales performance analysis for ${period} reveals specific SKUs with zero movement across key retail locations.
+
+**Non-Selling Products by Store (${period.charAt(0).toUpperCase() + period.slice(1)}):**
+
+**Critical Concerns:**
+- <span class="metric-highlight">Vinagre Regular</span> at El Machetazo David - <span class="key-point">6 days no sales</span>, last transaction: $10
+- <span class="metric-highlight">Condimento Básico</span> at Super99 Via España - <span class="key-point">5 days no sales</span>, declining trend evident
+- <span class="key-point">Adobo Tradicional</span> at Xtra Penonome - 4 days no sales, regional preference issue
+
+**Medium Priority:**
+- <span class="key-point">Salsa Verde 200ml</span> at Xtra Albrook - 3 days no movement, low margin impact
+- <span class="metric-highlight">Mayonesa 400g</span> at Rey Multiplaza - 2 days no sales, volume product concern
+
+**Chain Budget Performance Analysis:**
+
+**Chains Below Budget:**
+${belowBudgetChains.map(chain => `
+- <span class="metric-highlight">${chain.chain}</span>: $${chain.actual.toLocaleString()} vs $${chain.budget.toLocaleString()} target
+  Variance: <span class="key-point">${chain.variance}% below budget</span>
+  Gap: $${(chain.budget - chain.actual).toLocaleString()} shortfall`).join('')}
+
+**Root Cause Analysis:**
+Non-selling patterns indicate inventory positioning issues, regional preference mismatches, and product lifecycle concerns. El Machetazo's -25% budget variance correlates with premium product preference shift away from regular lines.
+
+**Immediate Actions:**
+1. **Today:** Relocate slow-moving products to high-traffic store sections
+2. **Week 1:** Implement promotional pricing for 6+ day non-sellers
+3. **Month 1:** Review product mix alignment with regional preferences
+4. **Budget Recovery:** Focus El Machetazo and Xtra on high-velocity SKUs to close budget gaps
+
+**Impact Assessment:**
+Combined non-selling inventory represents <span class="performance-positive">$63 daily opportunity cost</span> with <span class="metric-highlight">$13,000 total budget shortfall</span> requiring immediate intervention.`;
+  }
+  
+  // 2. Scanner promotion performance analysis
+  if (lowerQuestion.includes('scanner') || lowerQuestion.includes('promotion') && lowerQuestion.includes('last month') || lowerQuestion.includes('sold the most')) {
+    const scannerPromotions = [
+      { name: 'Condimento Super Xtra 2x1', investment: 8500, units: 2400, revenue: 18600, roi: 118.8, stores: 12 },
+      { name: 'Vinagre Premium 30% Off', investment: 6200, units: 1800, revenue: 14200, roi: 129.0, stores: 8 },
+      { name: 'Mayonesa Bundle Pack', investment: 5800, units: 1200, revenue: 9800, roi: 69.0, stores: 6 },
+      { name: 'Adobo Triple Pack', investment: 4300, units: 950, revenue: 7200, roi: 67.4, stores: 5 },
+      { name: 'Salsa Verde Flash Sale', investment: 3200, units: 600, revenue: 4800, roi: 50.0, stores: 4 }
+    ];
+    
+    const topPromotion = scannerPromotions[0];
+    const bestROI = scannerPromotions.reduce((prev, curr) => curr.roi > prev.roi ? curr : prev);
+    
+    return `Scanner promotion performance analysis for last month shows clear winners and optimization opportunities.
+
+**Top-Selling Scanner Promotions (Units Moved):**
+
+**#1 Best Seller:**
+- <span class="performance-positive">${topPromotion.name}</span>
+  Units sold: <span class="metric-highlight">${topPromotion.units.toLocaleString()}</span>
+  Revenue generated: <span class="performance-positive">$${topPromotion.revenue.toLocaleString()}</span>
+  Investment: $${topPromotion.investment.toLocaleString()}
+  ROI: ${topPromotion.roi}%
+  Store coverage: ${topPromotion.stores} locations
+
+**Performance Ranking:**
+${scannerPromotions.map((promo, index) => `
+${index + 1}. <span class="${index === 0 ? 'performance-positive' : 'key-point'}">${promo.name}</span>
+   Units: ${promo.units.toLocaleString()} | Revenue: $${promo.revenue.toLocaleString()} | ROI: ${promo.roi}%`).join('')}
+
+**Best ROI Performance:**
+<span class="performance-positive">${bestROI.name}</span> achieved the highest ROI at <span class="metric-highlight">${bestROI.roi}%</span>, demonstrating optimal pricing strategy and customer demand alignment.
+
+**Strategic Analysis:**
+- <span class="performance-positive">Premium products (Condimento Super Xtra, Vinagre Premium)</span> drive highest volume and ROI
+- <span class="key-point">Bundle strategies</span> show mixed results - 2x1 outperforms triple packs
+- <span class="metric-highlight">Store coverage correlation</span>: Higher store count directly impacts total volume
+
+**Investment Efficiency:**
+Total promotion investment: <span class="metric-highlight">$${scannerPromotions.reduce((sum, p) => sum + p.investment, 0).toLocaleString()}</span>
+Total revenue generated: <span class="performance-positive">$${scannerPromotions.reduce((sum, p) => sum + p.revenue, 0).toLocaleString()}</span>
+Average ROI: <span class="performance-positive">${(scannerPromotions.reduce((sum, p) => sum + p.roi, 0) / scannerPromotions.length).toFixed(1)}%</span>
+
+**Optimization Recommendations:**
+1. Scale ${topPromotion.name} to additional 8 stores for maximum impact
+2. Replicate ${bestROI.name} pricing model across premium product line
+3. Discontinue promotions with <70% ROI for budget reallocation
+4. Focus scanner investments on proven high-ROI product categories`;
+  }
+  
+  // 3. Tonga/Display investment profitability by store
+  if (lowerQuestion.includes('tonga') || lowerQuestion.includes('display') || lowerQuestion.includes('investment') && lowerQuestion.includes('profitable') || lowerQuestion.includes('most profitable')) {
+    const storeDisplayData = [
+      { store: 'Super99 Costa Verde', investment: 4200, revenue: 8800, profit: 4600, roi: 109.5, products: 'Condimento Super Xtra, Vinagre Premium' },
+      { store: 'Xtra Albrook', investment: 3800, revenue: 7200, profit: 3400, roi: 89.5, products: 'Mayonesa Bundle, Adobo Display' },
+      { store: 'Rey Multiplaza', investment: 3500, revenue: 6800, profit: 3300, roi: 94.3, products: 'Premium Vinagre, Salsa Verde' },
+      { store: 'Super99 Via España', investment: 2900, revenue: 6100, profit: 3200, roi: 110.3, products: 'Condimento Mix Display' },
+      { store: 'Xtra Penonome', investment: 2200, revenue: 3800, profit: 1600, roi: 72.7, products: 'Regional Mix Display' }
+    ];
+    
+    const mostProfitable = storeDisplayData.reduce((prev, curr) => curr.profit > prev.profit ? curr : prev);
+    const bestROI = storeDisplayData.reduce((prev, curr) => curr.roi > prev.roi ? curr : prev);
+    
+    return `Display investment profitability analysis reveals significant variance in store-level ROI performance and profit generation.
+
+**Most Profitable Store (Absolute Profit):**
+<span class="performance-positive">${mostProfitable.store}</span>
+- Investment: <span class="metric-highlight">$${mostProfitable.investment.toLocaleString()}</span>
+- Revenue generated: <span class="performance-positive">$${mostProfitable.revenue.toLocaleString()}</span>
+- Net profit: <span class="performance-positive">$${mostProfitable.profit.toLocaleString()}</span>
+- ROI: ${mostProfitable.roi}%
+- Display focus: ${mostProfitable.products}
+
+**Highest ROI Performance:**
+<span class="performance-positive">${bestROI.store}</span> achieves <span class="metric-highlight">${bestROI.roi}% ROI</span> with optimized investment-to-return ratio.
+
+**Store Profitability Ranking:**
+${storeDisplayData.map((store, index) => `
+${index + 1}. <span class="${index === 0 ? 'performance-positive' : 'key-point'}">${store.store}</span>
+   Profit: $${store.profit.toLocaleString()} | ROI: ${store.roi}% | Investment: $${store.investment.toLocaleString()}`).join('')}
+
+**Performance Analysis:**
+**High Performers (>100% ROI):**
+- <span class="performance-positive">Super99 Costa Verde & Via España</span>: Premium product focus drives superior returns
+- Strategic placement of high-margin SKUs maximizes display effectiveness
+
+**Underperformers (<90% ROI):**
+- <span class="metric-highlight">Xtra Albrook</span>: 89.5% ROI suggests suboptimal product mix or placement
+- <span class="key-point">Xtra Penonome</span>: 72.7% ROI indicates regional preference misalignment
+
+**Investment Efficiency:**
+Total display investment: <span class="metric-highlight">$${storeDisplayData.reduce((sum, s) => sum + s.investment, 0).toLocaleString()}</span>
+Total profit generated: <span class="performance-positive">$${storeDisplayData.reduce((sum, s) => sum + s.profit, 0).toLocaleString()}</span>
+Portfolio ROI: <span class="performance-positive">${((storeDisplayData.reduce((sum, s) => sum + s.profit, 0) / storeDisplayData.reduce((sum, s) => sum + s.investment, 0)) * 100).toFixed(1)}%</span>
+
+**Optimization Strategy:**
+1. **Immediate:** Replicate Super99 Costa Verde's premium product mix across underperforming locations
+2. **Budget Reallocation:** Transfer $500 from Xtra Penonome to expand Super99 Via España displays
+3. **Product Focus:** Prioritize Condimento Super Xtra and Vinagre Premium in all high-traffic displays
+4. **Performance Monitoring:** Monthly ROI reviews with 90% minimum threshold for continued investment`;
+  }
+  
+  // 4. Product growth/decline trends vs historical periods
+  if (lowerQuestion.includes('declining') || lowerQuestion.includes('growing') || lowerQuestion.includes('vs') || lowerQuestion.includes('trend') || (lowerQuestion.includes('product') && (lowerQuestion.includes('month') || lowerQuestion.includes('quarter') || lowerQuestion.includes('year')))) {
+    const period = lowerQuestion.includes('year') ? 'vs last year' : 
+                   lowerQuestion.includes('quarter') ? 'vs last quarter' : 'vs last month';
+    
+    const productTrends = [
+      { product: 'Condimento Super Xtra', currentSales: 2400, previousSales: 1800, growth: 33.3, status: 'Growing', factor: 'Premium positioning success' },
+      { product: 'Vinagre Premium', currentSales: 1650, previousSales: 1200, growth: 37.5, status: 'Growing', factor: 'Health trend alignment' },
+      { product: 'Mayonesa 400g', currentSales: 800, previousSales: 1200, growth: -33.3, status: 'Declining', factor: 'Formula preference shift' },
+      { product: 'Adobo Tradicional', currentSales: 950, previousSales: 1100, growth: -13.6, status: 'Declining', factor: 'Competition pressure' },
+      { product: 'Salsa Verde 200ml', currentSales: 400, previousSales: 600, growth: -33.3, status: 'Declining', factor: 'Seasonal dependency' },
+      { product: 'Condimento Básico', currentSales: 720, previousSales: 900, growth: -20.0, status: 'Declining', factor: 'Premium migration' },
+      { product: 'Vinagre Regular', currentSales: 650, previousSales: 850, growth: -23.5, status: 'Declining', factor: 'Premium preference' }
+    ];
+    
+    const growing = productTrends.filter(p => p.growth > 0).sort((a, b) => b.growth - a.growth);
+    const declining = productTrends.filter(p => p.growth < 0).sort((a, b) => a.growth - b.growth);
+    
+    return `Product performance trend analysis ${period} reveals clear winners and losers in our portfolio.
+
+**Growing Products (${period}):**
+${growing.map((product, index) => `
+${index + 1}. <span class="performance-positive">${product.product}</span>
+   Growth: <span class="metric-highlight">+${product.growth}%</span> (${product.previousSales} → ${product.currentSales} units)
+   Driver: ${product.factor}`).join('')}
+
+**Declining Products (${period}):**
+${declining.map((product, index) => `
+${index + 1}. <span class="metric-highlight">${product.product}</span>
+   Decline: <span class="key-point">${product.growth}%</span> (${product.previousSales} → ${product.currentSales} units)
+   Cause: ${product.factor}`).join('')}
+
+**Growth Analysis:**
+**High Performers:**
+- <span class="performance-positive">Vinagre Premium (+37.5%)</span>: Health-conscious trends driving premium segment growth
+- <span class="performance-positive">Condimento Super Xtra (+33.3%)</span>: Premium positioning and quality perception success
+
+**Concerning Declines:**
+- <span class="metric-highlight">Mayonesa 400g (-33.3%)</span>: Significant volume loss due to formula preference changes
+- <span class="key-point">Salsa Verde 200ml (-33.3%)</span>: Seasonal dependency creates vulnerability
+
+**Strategic Insights:**
+- <span class="performance-positive">Premium category surge</span>: +35.4% average growth shows market evolution
+- <span class="metric-highlight">Traditional products pressure</span>: -23.1% average decline in basic lines
+- <span class="key-point">Consumer migration</span>: Clear shift from regular to premium variants
+
+**Portfolio Impact:**
+Growing products added: <span class="performance-positive">+1,050 units</span> (${growing.reduce((sum, p) => sum + (p.currentSales - p.previousSales), 0)} total growth)
+Declining products lost: <span class="metric-highlight">-1,250 units</span> (${Math.abs(declining.reduce((sum, p) => sum + (p.currentSales - p.previousSales), 0))} total decline)
+Net portfolio change: <span class="key-point">-200 units</span> requiring strategic intervention
+
+**Action Framework:**
+1. **Accelerate Growth:** Expand Vinagre Premium and Condimento Super Xtra distribution by 20%
+2. **Address Declines:** Reformulate Mayonesa 400g and develop seasonal strategy for Salsa Verde
+3. **Portfolio Shift:** Gradually phase out underperforming regular lines for premium alternatives
+4. **Market Positioning:** Capitalize on health and premium trends with targeted product development`;
+  }
+  
+  // 5. Top-selling product per chain analysis
+  if (lowerQuestion.includes('top-selling') || lowerQuestion.includes('top selling') || (lowerQuestion.includes('product') && lowerQuestion.includes('chain'))) {
+    const chainTopProducts = [
+      { chain: 'Super99', topProduct: 'Condimento Super Xtra', units: 1200, revenue: 8400, margin: 35, share: 42, secondPlace: 'Vinagre Premium' },
+      { chain: 'Xtra', topProduct: 'Mayonesa 400g', units: 800, revenue: 4800, margin: 15, share: 38, secondPlace: 'Adobo Tradicional' },
+      { chain: 'Rey', topProduct: 'Vinagre Premium', units: 650, revenue: 5200, margin: 32.5, share: 35, secondPlace: 'Condimento Super Xtra' },
+      { chain: 'El Machetazo', topProduct: 'Adobo Tradicional', units: 450, revenue: 3600, margin: 28, share: 41, secondPlace: 'Condimento Básico' }
+    ];
+    
+    const totalRevenue = chainTopProducts.reduce((sum, chain) => sum + chain.revenue, 0);
+    const bestPerformer = chainTopProducts.reduce((prev, curr) => curr.revenue > prev.revenue ? curr : prev);
+    
+    return `Top-selling product analysis by chain reveals distinct customer preferences and optimization opportunities across retail partners.
+
+**Chain-Specific Top Sellers:**
+
+${chainTopProducts.map((chain, index) => `
+**${chain.chain}:**
+- Top product: <span class="performance-positive">${chain.topProduct}</span>
+- Units sold: <span class="metric-highlight">${chain.units.toLocaleString()}</span>
+- Revenue: <span class="performance-positive">$${chain.revenue.toLocaleString()}</span>
+- Margin: ${chain.margin}%
+- Market share: <span class="key-point">${chain.share}%</span> of chain volume
+- Runner-up: ${chain.secondPlace}`).join('')}
+
+**Best Overall Performance:**
+<span class="performance-positive">${bestPerformer.topProduct}</span> at <span class="metric-highlight">${bestPerformer.chain}</span> leads with <span class="performance-positive">$${bestPerformer.revenue.toLocaleString()} revenue</span> and <span class="key-point">${bestPerformer.margin}% margin</span>.
+
+**Chain Preference Analysis:**
+**Premium Focused:**
+- <span class="performance-positive">Super99 & Rey</span>: Premium products (Condimento Super Xtra, Vinagre Premium) dominate with 30%+ margins
+- Consumer profile: Quality-conscious, price-tolerant customers
+
+**Volume Focused:**
+- <span class="key-point">Xtra & El Machetazo</span>: Traditional products lead despite lower margins
+- Consumer profile: Price-sensitive, bulk purchasers
+
+**Revenue Concentration:**
+Total top-product revenue: <span class="metric-highlight">$${totalRevenue.toLocaleString()}</span>
+Average margin across chains: <span class="performance-positive">${(chainTopProducts.reduce((sum, c) => sum + c.margin, 0) / chainTopProducts.length).toFixed(1)}%</span>
+Market share concentration: <span class="key-point">${(chainTopProducts.reduce((sum, c) => sum + c.share, 0) / chainTopProducts.length).toFixed(1)}%</span> average dominance
+
+**Strategic Optimization:**
+**Immediate Opportunities:**
+1. **Super99 Expansion:** Scale Condimento Super Xtra success to other premium chains
+2. **Xtra Premium Push:** Introduce premium alternatives to capture margin uplift
+3. **Rey Diversification:** Leverage Vinagre Premium success for category expansion
+4. **El Machetazo Focus:** Strengthen Adobo Tradicional positioning while introducing premium options
+
+**Cross-Chain Strategies:**
+- <span class="performance-positive">Premium Product Migration:</span> Test Condimento Super Xtra in Xtra locations
+- <span class="key-point">Volume Optimization:</span> Improve Mayonesa 400g margins through formula or packaging innovation
+- <span class="metric-highlight">Category Leadership:</span> Establish product-chain specialization for maximum efficiency
+
+**Performance Targets:**
+Increase average chain margin from ${(chainTopProducts.reduce((sum, c) => sum + c.margin, 0) / chainTopProducts.length).toFixed(1)}% to 30% through strategic product mix optimization.`;
+  }
+  
   // Product Performance Analysis
   if (lowerQuestion.includes('product') || lowerQuestion.includes('worst') || lowerQuestion.includes('underperform')) {
     const poorProducts = products.filter(p => p.salesTrend < 0).sort((a, b) => a.salesTrend - b.salesTrend);
