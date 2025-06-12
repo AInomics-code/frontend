@@ -727,15 +727,6 @@ export default function Chat() {
                     </button>
                   )}
 
-                  {/* Chart generation button */}
-                  <button 
-                    onClick={() => handleGenerateChart()}
-                    className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150"
-                    title="Generate chart with current data"
-                  >
-                    <BarChart3 size={20} strokeWidth={1.5} />
-                  </button>
-
                   {/* Attachment button */}
                   <button 
                     className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150 pl-[0px] pr-[0px]"
