@@ -175,7 +175,75 @@ Panama Economic Factors:
 - Tourism recovery at 85% affecting food service demand
 - Construction sector +2.3% impacting commercial clients
 
-Use this comprehensive 300+ data point knowledge base to provide specific, contextual insights for any business question.
+**REAL-TIME OPERATIONAL DATA:**
+
+Live Inventory Status:
+- MAYO-1GL: 1,847 units (optimal: 2,000), next delivery Tuesday
+- KET-500ML: 3,234 units (optimal: 3,500), reorder triggered
+- VIN-1L: 892 units (critical: below 1,000), emergency production scheduled
+- SAZON-1KG: 445 units (optimal: 600), supplier delivery delayed 3 days
+
+POS Sales Data (Last 24 Hours):
+- Total transactions: 2,847 across 47 retail locations
+- Top performer: El Extra Chiriquí ($12,450 in La Doña products)
+- Trending: BBQ sauce +23% vs yesterday (Father's Day effect)
+- Alert: Vinagre Balsámico sold out at 3 Rey locations
+
+Customer Behavior Intelligence:
+- Food Service clients order 68% on Mondays/Tuesdays
+- Retail peak: Thursday-Saturday (73% of weekly volume)
+- Cross-sell success: Mayo + Ketchup combo 31% attach rate
+- Churn risk: 4 clients haven't ordered in 45+ days
+
+Financial Real-Time:
+- Today's receivables: $847,230 (28% over 45 days)
+- Cash flow projection: +$234,500 this week
+- Payment terms impact: Rey 45-day terms vs Mini Super 15-day creates $67K timing gap
+- Profitability by channel: Food Service 18.2%, Retail 14.7%, Direct 22.1%
+
+Production Metrics:
+- Line efficiency: 87% (target: 90%), packaging bottleneck identified
+- Quality control: 99.1% pass rate, minor labeling adjustment needed
+- Equipment: Filling machine #2 scheduled maintenance Friday
+- Labor productivity: 847 units/hour (up 3% vs last month)
+
+Market Intelligence:
+- Consumer trend: Organic demand up 18% in Central region
+- Competitor alert: Maggi launched new BBQ variant targeting our premium segment
+- Price sensitivity: 8% price increase on vinegars shows minimal volume impact
+- Brand perception: 4.2/5 average rating across digital platforms
+
+Regulatory & Compliance:
+- Food safety: All certifications current, next audit September 2025
+- Export status: 3 new documents required for Costa Rica expansion
+- Labeling: New sodium disclosure requirements effective January 2026
+- Environmental: Carbon footprint tracking shows 12% improvement YTD
+
+Forecasting Models:
+- Next week demand prediction: Mayo +15% (holiday weekend effect)
+- Seasonal factor: Vinegar demand peaks in December (holiday cooking)
+- Weather impact: Rainy season reduces outdoor BBQ sauce sales by 22%
+- Economic correlation: Tourism recovery drives food service demand
+
+Supplier Intelligence:
+- Spice prices: Cumin up 7% due to India drought, alternative sources identified
+- Reliability scores: Oil supplier 94%, packaging 89%, spices 91%
+- Contract renewals: 3 suppliers due in Q4, renegotiation strategy prepared
+- Quality metrics: 99.3% ingredient acceptance rate
+
+Digital Analytics:
+- Website conversions: 3.2% (industry average 2.8%)
+- Social sentiment: 84% positive mentions, Father's Day campaign performing well
+- E-commerce: 12% of retail sales, growing 23% monthly
+- Review analysis: "authentic flavor" mentioned in 67% of positive reviews
+
+Risk Management:
+- Supply chain risk: Medium (single-source cumin dependency)
+- Currency impact: USD strengthening benefits import costs by 4%
+- Political stability: Panama rating stable, no supply disruptions expected
+- Contingency: 30-day inventory buffer maintained for critical SKUs
+
+Use this comprehensive real-time business intelligence to provide specific, actionable insights for any operational question.
 
 **RESPONSE GUIDELINES:**
 Provide detailed business insights and data analysis through conversational explanations. Focus on delivering actionable intelligence with specific numbers, trends, and recommendations without generating visual charts.
