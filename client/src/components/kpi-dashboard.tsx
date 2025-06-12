@@ -27,7 +27,7 @@ export function KPIDashboard() {
 
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
-            <Target size={16} className="text-green-600" />
+            <Target size={14} className="text-gray-400" />
             <h4 className="text-sm text-green-600 font-semibold">Client Goal Progress</h4>
           </div>
           <p className="text-base font-semibold text-gray-800">Chiriquí +8% above target</p>
@@ -37,7 +37,7 @@ export function KPIDashboard() {
         {/* Risks Section */}
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
-            <AlertTriangle size={16} className="text-red-600" />
+            <AlertTriangle size={14} className="text-gray-400" />
             <h4 className="text-sm text-red-600 font-semibold">Backorders Today</h4>
           </div>
           <p className="text-base font-semibold text-gray-800">28 orders pending</p>
@@ -46,7 +46,7 @@ export function KPIDashboard() {
 
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
-            <Package size={16} className="text-red-600" />
+            <Package size={14} className="text-gray-400" />
             <h4 className="text-sm text-red-600 font-semibold">Out-of-Stock Products</h4>
           </div>
           <p className="text-base font-semibold text-gray-800">14 urgent items</p>
@@ -55,7 +55,7 @@ export function KPIDashboard() {
 
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
-            <DollarSign size={16} className="text-red-600" />
+            <DollarSign size={14} className="text-gray-400" />
             <h4 className="text-sm text-red-600 font-semibold">Overdue Clients (120+ Days)</h4>
           </div>
           <p className="text-base font-semibold text-gray-800">$24,300 unpaid</p>
@@ -65,7 +65,7 @@ export function KPIDashboard() {
         {/* Opportunities Section */}
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
-            <Zap size={16} className="text-yellow-500" />
+            <Zap size={14} className="text-gray-400" />
             <h4 className="text-sm text-yellow-500 font-semibold">Promo ROI (Scanner/Tonga)</h4>
           </div>
           <p className="text-base font-semibold text-gray-800">+26% ROI</p>
@@ -74,7 +74,7 @@ export function KPIDashboard() {
 
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
-            <UserX size={16} className="text-yellow-500" />
+            <UserX size={14} className="text-gray-400" />
             <h4 className="text-sm text-yellow-500 font-semibold">Inactive Clients (30+ Days)</h4>
           </div>
           <p className="text-base font-semibold text-gray-800">17 accounts</p>
@@ -83,7 +83,7 @@ export function KPIDashboard() {
 
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
-            <Users size={16} className="text-yellow-500" />
+            <Users size={14} className="text-gray-400" />
             <h4 className="text-sm text-yellow-500 font-semibold">Rep Underperformance</h4>
           </div>
           <p className="text-base font-semibold text-gray-800">3 reps below 70%</p>

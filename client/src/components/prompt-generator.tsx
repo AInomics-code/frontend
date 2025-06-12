@@ -24,21 +24,21 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
       id: 'cash-flow',
       text: "What is our current cash flow situation and which clients pose the highest collection risk?",
       category: 'financial',
-      icon: <DollarSign size={16} className="text-red-600" />,
+      icon: <DollarSign size={14} className="text-gray-400" />,
       priority: 'high'
     },
     {
       id: 'stock-alerts',
       text: "Which products are experiencing stockouts and what is the revenue impact?",
       category: 'inventory',
-      icon: <AlertTriangle size={16} className="text-red-600" />,
+      icon: <AlertTriangle size={14} className="text-gray-400" />,
       priority: 'high'
     },
     {
       id: 'underperforming-regions',
       text: "Which regions are underperforming and what specific actions should we take?",
       category: 'performance',
-      icon: <TrendingUp size={16} className="text-red-600" />,
+      icon: <TrendingUp size={14} className="text-gray-400" />,
       priority: 'high'
     },
 
@@ -47,28 +47,28 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
       id: 'top-performers',
       text: "Which sales reps, products, and regions are driving our strongest results?",
       category: 'performance',
-      icon: <Target size={16} className="text-blue-600" />,
+      icon: <Target size={14} className="text-gray-400" />,
       priority: 'medium'
     },
     {
       id: 'client-analysis',
       text: "Analyze our top 5 clients by revenue and identify growth opportunities",
       category: 'clients',
-      icon: <Users size={16} className="text-blue-600" />,
+      icon: <Users size={14} className="text-gray-400" />,
       priority: 'medium'
     },
     {
       id: 'product-margins',
       text: "Which products have the highest profit margins and should we focus on promoting them?",
       category: 'products',
-      icon: <Package size={16} className="text-blue-600" />,
+      icon: <Package size={14} className="text-gray-400" />,
       priority: 'medium'
     },
     {
       id: 'promotion-roi',
       text: "What is the ROI of our current promotional campaigns and which should we expand?",
       category: 'marketing',
-      icon: <BarChart3 size={16} className="text-blue-600" />,
+      icon: <BarChart3 size={14} className="text-gray-400" />,
       priority: 'medium'
     },
 
@@ -77,14 +77,14 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
       id: 'daily-summary',
       text: "Give me a comprehensive summary of today's business performance",
       category: 'operations',
-      icon: <Lightbulb size={16} className="text-green-600" />,
+      icon: <Lightbulb size={14} className="text-gray-400" />,
       priority: 'low'
     },
     {
       id: 'territory-routes',
       text: "How can we optimize sales rep routes to improve territory coverage?",
       category: 'operations',
-      icon: <Zap size={16} className="text-green-600" />,
+      icon: <Zap size={14} className="text-gray-400" />,
       priority: 'low'
     },
     {
