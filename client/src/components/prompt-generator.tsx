@@ -91,21 +91,21 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
       id: 'new-opportunities',
       text: "What new market opportunities should La Doña consider based on current trends?",
       category: 'strategy',
-      icon: <TrendingUp size={16} className="text-green-600" />,
+      icon: <TrendingUp size={14} className="text-gray-400" />,
       priority: 'low'
     },
     {
       id: 'competitive-analysis',
       text: "How does La Doña's market position compare to our main competitors?",
       category: 'strategy',
-      icon: <BarChart3 size={16} className="text-green-600" />,
+      icon: <BarChart3 size={14} className="text-gray-400" />,
       priority: 'low'
     },
     {
       id: 'backorder-impact',
       text: "What is the impact of current backorders on customer satisfaction and revenue?",
       category: 'inventory',
-      icon: <Package size={16} className="text-orange-600" />,
+      icon: <Package size={14} className="text-gray-400" />,
       priority: 'medium'
     }
   ];
