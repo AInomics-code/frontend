@@ -918,6 +918,697 @@ Optimal visit frequency balances <span class="performance-positive">relationship
 Strategic focus on <span class="performance-positive">premium product development and value-based pricing</span> will optimize overall portfolio profitability.`;
   }
   
+  // 19. Maquila products growth in specific chain vs last year
+  if (lowerQuestion.includes('maquila') && (lowerQuestion.includes('growth') || lowerQuestion.includes('growing') || lowerQuestion.includes('vs') || lowerQuestion.includes('last year'))) {
+    return `Maquila product performance analysis reveals strong growth trajectory in modern retail chains with significant expansion opportunities.
+
+**Maquila Products Growth Analysis:**
+
+**Super99 Chain Performance:**
+- <span class="performance-positive">YTD Growth: +34.8%</span> ($78,000 vs $58,000 last year)
+- Volume increase: <span class="performance-positive">+41% units sold</span>
+- Key drivers: Premium positioning and exclusive product launches
+
+**Maquila SKUs in Super99:**
+- <span class="performance-positive">Condimento Super Xtra Premium</span>: +45% growth ($28,000 revenue)
+- <span class="key-point">Vinagre Gourmet Selection</span>: +38% growth ($22,000 revenue)
+- <span class="key-point">Mayonesa Artesanal</span>: +29% growth ($18,000 revenue)
+- <span class="performance-positive">Salsa Especial Blend</span>: +52% growth ($10,000 revenue)
+
+**Rey Chain Performance:**
+- <span class="key-point">YTD Growth: +28.5%</span> ($45,000 vs $35,000 last year)
+- Strategic focus on premium maquila line expansion
+
+**Xtra Chain Performance:**
+- <span class="key-point">YTD Growth: +22.1%</span> ($32,000 vs $26,000 last year)
+- Value-oriented maquila products performing well
+
+**Growth Driver Analysis:**
+**Premium Market Positioning:**
+Maquila products command <span class="performance-positive">42% higher margins</span> than standard products, driving both revenue and profitability growth.
+
+**Customer Preference Shift:**
+<span class="metric-highlight">68% of customers</span> prefer artisanal/maquila products when available, indicating strong market demand for authentic positioning.
+
+**Chain-Specific Performance:**
+- **Super99**: Premium maquila strategy delivering highest growth
+- **Rey**: Balanced portfolio with maquila as differentiation
+- **Xtra**: Value maquila variants gaining traction
+
+**Market Opportunity:**
+Total maquila segment represents <span class="performance-positive">$155,000 current revenue</span> with potential to reach <span class="performance-positive">$220,000 (+42% growth)</span> through expanded chain distribution.
+
+**Strategic Recommendations:**
+1. **Accelerate** maquila SKU rollout across all Super99 locations
+2. **Develop** exclusive maquila variants for Rey partnership
+3. **Create** value-tier maquila options for Xtra expansion
+4. **Invest** in artisanal production capacity to meet growing demand
+
+Maquila product growth represents <span class="performance-positive">fastest-growing segment with premium pricing power</span> across all retail channels.`;
+  }
+  
+  // 20. Employee contact information
+  if (lowerQuestion.includes('extension') || lowerQuestion.includes('cell') || lowerQuestion.includes('email') || lowerQuestion.includes('employee') || lowerQuestion.includes('contact')) {
+    return `Employee contact directory for La Doña sales and operations team members.
+
+**Sales Representatives:**
+
+**Carlos Mendoza** (Chiriquí Region)
+- <span class="key-point">Extension:</span> 2101
+- <span class="key-point">Cell:</span> +507 6234-5678
+- <span class="key-point">Email:</span> carlos.mendoza@ladona.com
+- <span class="metric-highlight">Territory:</span> David, Boquete, Volcán
+
+**María González** (Coclé Region)
+- <span class="key-point">Extension:</span> 2102
+- <span class="key-point">Cell:</span> +507 6345-7890
+- <span class="key-point">Email:</span> maria.gonzalez@ladona.com
+- <span class="metric-highlight">Territory:</span> Penonomé, Santiago, Aguadulce
+
+**José Luis Vargas** (Santiago Region)
+- <span class="key-point">Extension:</span> 2103
+- <span class="key-point">Cell:</span> +507 6456-8901
+- <span class="key-point">Email:</span> jose.vargas@ladona.com
+- <span class="metric-highlight">Territory:</span> Santiago, Chitré, Las Tablas
+
+**Ana Morales** (Panama Centro)
+- <span class="key-point">Extension:</span> 2104
+- <span class="key-point">Cell:</span> +507 6567-9012
+- <span class="key-point">Email:</span> ana.morales@ladona.com
+- <span class="metric-highlight">Territory:</span> Via España, El Cangrejo, Costa Verde
+
+**Roberto Silva** (Panama Oeste)
+- <span class="key-point">Extension:</span> 2105
+- <span class="key-point">Cell:</span> +507 6678-0123
+- <span class="key-point">Email:</span> roberto.silva@ladona.com
+- <span class="metric-highlight">Territory:</span> Chorrera, Arraiján, Capira
+
+**Management Team:**
+
+**Luis Fernando Martínez** (Commercial Director)
+- <span class="performance-positive">Extension:</span> 2001
+- <span class="performance-positive">Cell:</span> +507 6789-1234
+- <span class="performance-positive">Email:</span> lf.martinez@ladona.com
+
+**Carmen Patricia Vega** (Sales Manager)
+- <span class="key-point">Extension:</span> 2002
+- <span class="key-point">Cell:</span> +507 6890-2345
+- <span class="key-point">Email:</span> cp.vega@ladona.com
+
+**Operations Team:**
+
+**Miguel Angel Torres** (Logistics Coordinator)
+- <span class="key-point">Extension:</span> 2201
+- <span class="key-point">Cell:</span> +507 6901-3456
+- <span class="key-point">Email:</span> ma.torres@ladona.com
+
+**Sandra Milena Cruz** (Customer Service)
+- <span class="key-point">Extension:</span> 2301
+- <span class="key-point">Cell:</span> +507 6012-4567
+- <span class="key-point">Email:</span> sm.cruz@ladona.com
+
+**Emergency Contacts:**
+- <span class="metric-highlight">After Hours Sales Support:</span> +507 6123-5678
+- <span class="metric-highlight">Logistics Emergency:</span> +507 6234-6789
+- <span class="metric-highlight">Customer Service 24/7:</span> +507 6345-7890
+
+All employees are available during business hours <span class="performance-positive">Monday-Friday 7:30 AM - 5:30 PM</span> with emergency support available for critical client issues.`;
+  }
+  
+  // 21. Product visual art
+  if (lowerQuestion.includes('art') || lowerQuestion.includes('visual') || lowerQuestion.includes('image') || lowerQuestion.includes('design')) {
+    return `Product visual assets and packaging design specifications for La Doña product portfolio.
+
+**Premium Product Line Visuals:**
+
+**Condimento Super Xtra 500g:**
+- <span class="performance-positive">Visual Art Code:</span> CSXT-500-2024-V3
+- <span class="key-point">Design Elements:</span> Gold foil premium finish, traditional Panamanian patterns
+- <span class="key-point">Color Scheme:</span> Deep red (#C41E3A), gold accents (#FFD700)
+- <span class="metric-highlight">Logo Placement:</span> Center top with heritage seal
+
+**Vinagre Premium 750ml:**
+- <span class="performance-positive">Visual Art Code:</span> VP-750-2024-V2
+- <span class="key-point">Design Elements:</span> Elegant glass bottle mockup, premium cork imagery
+- <span class="key-point">Color Scheme:</span> Forest green (#228B22), silver trim (#C0C0C0)
+- <span class="metric-highlight">Logo Placement:</span> Vertical center with quality guarantee
+
+**Mayonesa Premium 400g:**
+- <span class="key-point">Visual Art Code:</span> MP-400-2024-V1
+- <span class="key-point">Design Elements:</span> Fresh ingredient imagery, artisanal styling
+- <span class="key-point">Color Scheme:</span> Cream white (#FFFDD0), blue accents (#4169E1)
+
+**Traditional Product Line:**
+
+**Adobo Tradicional 250g:**
+- <span class="key-point">Visual Art Code:</span> AT-250-2023-V4
+- <span class="key-point">Design Elements:</span> Heritage family recipe seal, traditional spice imagery
+- <span class="key-point">Color Scheme:</span> Warm brown (#8B4513), orange highlights (#FF8C00)
+
+**Salsa Verde 300ml:**
+- <span class="key-point">Visual Art Code:</span> SV-300-2023-V2
+- <span class="key-point">Design Elements:</span> Fresh herb visuals, authentic recipe badge
+- <span class="key-point">Color Scheme:</span> Vibrant green (#32CD32), white background
+
+**Display Marketing Materials:**
+
+**Scanner Promotion Graphics:**
+- <span class="performance-positive">Promotion Banner:</span> PROMO-SCAN-2024-V5
+- <span class="key-point">2x1 Offer Design:</span> Bold red callouts with savings emphasis
+- <span class="key-point">Bundle Pack Visual:</span> Product grouping with value messaging
+
+**Point of Sale Materials:**
+- <span class="metric-highlight">Shelf Talkers:</span> Premium product differentiators
+- <span class="key-point">Recipe Cards:</span> Traditional Panamanian cooking applications
+- <span class="key-point">Brand Story Placards:</span> Family heritage and quality messaging
+
+**Digital Assets:**
+All product visuals available in <span class="performance-positive">high-resolution PNG/JPG formats</span> optimized for print and digital applications, with specific versions for export markets including bilingual packaging designs.
+
+Visual consistency maintains <span class="performance-positive">La Doña brand heritage while emphasizing premium quality positioning</span> across all retail channels.`;
+  }
+  
+  // 22. Product barcode information
+  if (lowerQuestion.includes('barcode') || lowerQuestion.includes('sku') || lowerQuestion.includes('code')) {
+    return `Product barcode directory and SKU specifications for La Doña complete product portfolio.
+
+**Premium Product Line Barcodes:**
+
+**Condimento Super Xtra 500g:**
+- <span class="performance-positive">Barcode:</span> 7 506194 823471
+- <span class="key-point">Internal SKU:</span> CSXT-500-2024
+- <span class="key-point">Case Code:</span> 7 506194 823488 (12 units)
+
+**Vinagre Premium 750ml:**
+- <span class="performance-positive">Barcode:</span> 7 506194 845672
+- <span class="key-point">Internal SKU:</span> VP-750-2024
+- <span class="key-point">Case Code:</span> 7 506194 845689 (6 units)
+
+**Mayonesa Premium 400g:**
+- <span class="key-point">Barcode:</span> 7 506194 867123
+- <span class="key-point">Internal SKU:</span> MP-400-2024
+- <span class="key-point">Case Code:</span> 7 506194 867130 (24 units)
+
+**Standard Product Line:**
+
+**Adobo Tradicional 250g:**
+- <span class="key-point">Barcode:</span> 7 506194 734562
+- <span class="key-point">Internal SKU:</span> AT-250-2023
+- <span class="key-point">Case Code:</span> 7 506194 734579 (36 units)
+
+**Condimento Básico 300g:**
+- <span class="key-point">Barcode:</span> 7 506194 756834
+- <span class="key-point">Internal SKU:</span> CB-300-2023
+- <span class="key-point">Case Code:</span> 7 506194 756841 (30 units)
+
+**Vinagre Regular 500ml:**
+- <span class="key-point">Barcode:</span> 7 506194 778945
+- <span class="key-point">Internal SKU:</span> VR-500-2023
+- <span class="key-point">Case Code:</span> 7 506194 778952 (12 units)
+
+**Mayonesa Standard 400g:**
+- <span class="key-point">Barcode:</span> 7 506194 790156
+- <span class="key-point">Internal SKU:</span> MS-400-2023
+- <span class="key-point">Case Code:</span> 7 506194 790163 (24 units)
+
+**Sauce Line:**
+
+**Salsa Verde 300ml:**
+- <span class="key-point">Barcode:</span> 7 506194 812367
+- <span class="key-point">Internal SKU:</span> SV-300-2023
+- <span class="key-point">Case Code:</span> 7 506194 812374 (12 units)
+
+**Salsa Picante 250ml:**
+- <span class="key-point">Barcode:</span> 7 506194 834578
+- <span class="key-point">Internal SKU:</span> SP-250-2023
+- <span class="key-point">Case Code:</span> 7 506194 834585 (18 units)
+
+**Export Versions:**
+
+**Condimento Super Xtra Export 500g:**
+- <span class="performance-positive">Barcode:</span> 7 506194 856789
+- <span class="key-point">Internal SKU:</span> CSXT-EX-500-2024
+- <span class="metric-highlight">Certification:</span> EPA compliant for European markets
+
+**Vinagre Premium Export 750ml:**
+- <span class="performance-positive">Barcode:</span> 7 506194 878901
+- <span class="key-point">Internal SKU:</span> VP-EX-750-2024
+- <span class="metric-highlight">Certification:</span> Organic certified for premium export
+
+**Barcode Management:**
+All barcodes registered with <span class="performance-positive">GS1 Panama</span> and compatible with international retail scanning systems. Case codes enable efficient inventory management and distributor ordering processes.
+
+Barcode verification system ensures <span class="performance-positive">99.9% scan accuracy</span> across all retail partner point-of-sale systems.`;
+  }
+  
+  // 23. Product pricing by chain/client
+  if (lowerQuestion.includes('price') && (lowerQuestion.includes('chain') || lowerQuestion.includes('client'))) {
+    return `Product pricing matrix across retail chains and key client segments reveals strategic pricing differentiation.
+
+**Super99 Chain Pricing:**
+
+**Premium Products:**
+- <span class="performance-positive">Condimento Super Xtra 500g:</span> $4.95 retail / $3.20 wholesale
+- <span class="performance-positive">Vinagre Premium 750ml:</span> $3.85 retail / $2.50 wholesale
+- <span class="key-point">Mayonesa Premium 400g:</span> $3.25 retail / $2.10 wholesale
+
+**Standard Products:**
+- <span class="key-point">Adobo Tradicional 250g:</span> $2.45 retail / $1.60 wholesale
+- <span class="key-point">Condimento Básico 300g:</span> $1.95 retail / $1.25 wholesale
+
+**Rey Chain Pricing:**
+
+**Premium Products:**
+- <span class="performance-positive">Condimento Super Xtra 500g:</span> $4.85 retail / $3.15 wholesale
+- <span class="performance-positive">Vinagre Premium 750ml:</span> $3.75 retail / $2.45 wholesale
+- <span class="key-point">Mayonesa Premium 400g:</span> $3.15 retail / $2.05 wholesale
+
+**Xtra Chain Pricing:**
+
+**Value Focus Products:**
+- <span class="key-point">Condimento Básico 300g:</span> $1.89 retail / $1.22 wholesale
+- <span class="key-point">Vinagre Regular 500ml:</span> $2.25 retail / $1.45 wholesale
+- <span class="key-point">Mayonesa Standard 400g:</span> $2.45 retail / $1.58 wholesale
+
+**Export Client Pricing (FOB Panama):**
+
+**Distribuidora Guatemala:**
+- <span class="performance-positive">Condimento Super Xtra 500g:</span> $2.85 per unit (premium positioning)
+- <span class="key-point">Volume discount:</span> 5% on orders >500 units
+
+**Costa Rica Premium Foods:**
+- <span class="performance-positive">Vinagre Premium 750ml:</span> $2.25 per unit
+- <span class="key-point">Exclusive SKU pricing:</span> 8% premium for market exclusivity
+
+**EPA Client Pricing (EUR):**
+
+**European Union Buyers:**
+- <span class="performance-positive">Organic Condimento Export:</span> €3.20 per unit
+- <span class="key-point">Certification premium:</span> 25% above standard export pricing
+
+**Pricing Strategy Analysis:**
+
+**Chain Differentiation:**
+- <span class="performance-positive">Super99:</span> Premium pricing reflecting upmarket positioning
+- <span class="key-point">Rey:</span> Competitive pricing with moderate premiums
+- <span class="key-point">Xtra:</span> Value pricing strategy for price-sensitive segments
+
+**Volume Incentives:**
+- <span class="metric-highlight">Orders >$5,000:</span> 3% discount
+- <span class="metric-highlight">Orders >$10,000:</span> 5% discount
+- <span class="performance-positive">Annual contracts:</span> Up to 8% discount for committed volume
+
+**Payment Terms Impact:**
+- <span class="key-point">15 days:</span> 2% discount
+- <span class="key-point">30 days:</span> Standard pricing
+- <span class="metric-highlight">60+ days:</span> 1.5% surcharge
+
+Strategic pricing maintains <span class="performance-positive">competitive positioning while optimizing margin contribution</span> across diverse retail channels and client segments.`;
+  }
+  
+  // 24. Today's backorders
+  if (lowerQuestion.includes('backorder') || lowerQuestion.includes('bo') || lowerQuestion.includes('today')) {
+    return `Current backorder analysis reveals supply chain pressures and priority fulfillment requirements for immediate action.
+
+**Today's Backorder Summary:**
+<span class="metric-highlight">Total Backorders: 847 units</span> across <span class="key-point">12 different SKUs</span>
+<span class="performance-positive">Total Value: $3,240</span>
+
+**Critical Backorders (High Priority):**
+
+**Super99 Costa Verde:**
+- <span class="metric-highlight">Condimento Super Xtra 500g:</span> 120 units (3 days overdue)
+  Client impact: Premium product stockout affecting $580 daily sales
+- <span class="key-point">Vinagre Premium 750ml:</span> 85 units (2 days overdue)
+  Production delay due to quality control requirements
+
+**Xtra Albrook:**
+- <span class="metric-highlight">Mayonesa Premium 400g:</span> 95 units (4 days overdue)
+  Supply chain bottleneck in raw material delivery
+- <span class="key-point">Adobo Tradicional 250g:</span> 150 units (1 day overdue)
+  High demand exceeding production capacity
+
+**Export Clients:**
+
+**Distribuidora Guatemala:**
+- <span class="performance-positive">Condimento Super Xtra Export:</span> 200 units (container shipping delay)
+  Value: $570, Priority: Container departure scheduled tomorrow
+- <span class="key-point">Vinagre Premium Export:</span> 75 units
+  EPA certification documentation pending
+
+**Regional Backorders:**
+
+**Rey Multiplaza:**
+- <span class="key-point">Condimento Básico 300g:</span> 65 units
+  Standard product with 24-hour fulfillment target
+- <span class="key-point">Salsa Verde 300ml:</span> 45 units
+  Seasonal demand spike affecting inventory levels
+
+**Root Cause Analysis:**
+
+**Production Constraints:**
+- <span class="metric-highlight">Manufacturing capacity:</span> Operating at 94% utilization
+- <span class="key-point">Quality control delays:</span> Extended testing for premium products
+- <span class="key-point">Raw material supply:</span> Vinegar base 3-day delivery delay
+
+**Logistics Challenges:**
+- <span class="metric-highlight">Transportation:</span> Limited truck availability during peak season
+- <span class="key-point">Warehouse capacity:</span> Premium products require temperature control
+
+**Priority Action Plan:**
+
+**Immediate (Today):**
+1. **Express production run** for Condimento Super Xtra (200 units by 6 PM)
+2. **Emergency transfer** from Penonome warehouse to Albrook (Mayonesa Premium)
+3. **Customer communication** for export container departure confirmation
+
+**48 Hours:**
+1. **Production scaling** for Adobo Tradicional to clear 150-unit backlog
+2. **Quality expedite** for Vinagre Premium batch approval
+3. **Logistics coordination** for multi-stop delivery optimization
+
+**Weekly Target:**
+Clear <span class="performance-positive">100% of current backorders</span> while maintaining 24-hour fulfillment for new orders through enhanced production scheduling and inventory buffers.
+
+Backorder reduction represents <span class="performance-positive">immediate $3,240 revenue recovery</span> with improved client satisfaction across critical accounts.`;
+  }
+  
+  // 25. Today's billing/invoices
+  if (lowerQuestion.includes('billing') || lowerQuestion.includes('invoice') || lowerQuestion.includes('billed') || lowerQuestion.includes('invoiced')) {
+    return `Daily billing analysis shows strong revenue performance with strategic account activity across all channels.
+
+**Today's Billing Summary:**
+<span class="performance-positive">Total Invoiced: $18,450</span> across <span class="key-point">23 invoices</span>
+<span class="metric-highlight">Average Invoice Value: $802</span>
+
+**Large Account Billing:**
+
+**Super99 Chain:**
+- <span class="performance-positive">Invoice #INV-2024-3421:</span> $3,200
+  Location: Costa Verde | Products: Premium line restock
+- <span class="performance-positive">Invoice #INV-2024-3422:</span> $2,850
+  Location: Via España | Products: Mixed SKU order
+
+**Rey Chain:**
+- <span class="key-point">Invoice #INV-2024-3423:</span> $2,400
+  Location: Multiplaza | Products: Standard + premium mix
+- <span class="key-point">Invoice #INV-2024-3424:</span> $1,950
+  Location: Altos del Chase | Products: Volume order
+
+**Export Billing:**
+
+**International Shipments:**
+- <span class="performance-positive">Invoice #EX-2024-0156:</span> $4,200
+  Client: Distribuidora Guatemala | Container partial shipment
+- <span class="key-point">Invoice #EX-2024-0157:</span> $1,680
+  Client: Costa Rica Premium Foods | Premium product order
+
+**Regional Accounts:**
+
+**Traditional Trade:**
+- <span class="key-point">El Machetazo David:</span> $950 (Invoice #INV-2024-3425)
+- <span class="key-point">El Machetazo Santiago:</span> $720 (Invoice #INV-2024-3426)
+- <span class="key-point">Independent Retailers:</span> $1,890 (7 small invoices)
+
+**Product Category Breakdown:**
+
+**Premium Products (45% of daily billing):**
+- <span class="performance-positive">Condimento Super Xtra:</span> $3,480 revenue
+- <span class="performance-positive">Vinagre Premium:</span> $2,820 revenue
+- <span class="key-point">Mayonesa Premium:</span> $1,980 revenue
+
+**Standard Products (55% of daily billing):**
+- <span class="key-point">Adobo Tradicional:</span> $3,240 revenue
+- <span class="key-point">Condimento Básico:</span> $2,850 revenue
+- <span class="key-point">Standard sauces/vinegars:</span> $4,080 revenue
+
+**Payment Terms Analysis:**
+
+**Immediate Payment (15 days):**
+- <span class="performance-positive">7 invoices:</span> $5,640 total
+- <span class="key-point">Discount applied:</span> 2% early payment incentive
+
+**Standard Terms (30 days):**
+- <span class="key-point">12 invoices:</span> $8,920 total
+- <span class="key-point">Mix:</span> Chain accounts and established clients
+
+**Extended Terms (45-60 days):**
+- <span class="metric-highlight">4 invoices:</span> $3,890 total
+- <span class="metric-highlight">Clients:</span> Large format chains with credit agreements
+
+**Revenue Performance:**
+
+**Daily Target Achievement:**
+Today's billing represents <span class="performance-positive">112% of daily target</span> ($16,500 goal vs $18,450 actual)
+
+**Month-to-Date Performance:**
+- <span class="performance-positive">Current MTD:</span> $285,600
+- <span class="key-point">Target MTD:</span> $270,000
+- <span class="performance-positive">Variance:</span> +5.8% above target
+
+**Outstanding Considerations:**
+- <span class="metric-highlight">Pending invoices:</span> 3 export orders awaiting documentation
+- <span class="key-point">Tomorrow's scheduled:</span> $12,800 confirmed orders for processing
+
+Daily billing performance demonstrates <span class="performance-positive">strong revenue momentum with balanced channel distribution</span> across premium and standard product categories.`;
+  }
+  
+  // 26. Clients billed today
+  if (lowerQuestion.includes('clients') && (lowerQuestion.includes('billed') || lowerQuestion.includes('invoiced')) && lowerQuestion.includes('today')) {
+    return `Today's client billing report shows comprehensive account coverage across all market segments and geographic regions.
+
+**Clients Billed Today: <span class="performance-positive">23 accounts</span>**
+
+**Major Chain Accounts:**
+
+**Super99 Locations:**
+- <span class="performance-positive">Super99 Costa Verde</span> - Invoice: $3,200 (Premium product restock)
+- <span class="performance-positive">Super99 Via España</span> - Invoice: $2,850 (Mixed SKU order)
+- <span class="key-point">Super99 Multiplaza</span> - Invoice: $1,680 (Standard replenishment)
+
+**Rey Chain:**
+- <span class="key-point">Rey Multiplaza</span> - Invoice: $2,400 (Standard + premium mix)
+- <span class="key-point">Rey Altos del Chase</span> - Invoice: $1,950 (Volume order)
+
+**Xtra Locations:**
+- <span class="key-point">Xtra Albrook</span> - Invoice: $1,420 (Value product focus)
+- <span class="key-point">Xtra Penonome</span> - Invoice: $980 (Regional standard order)
+
+**Export Clients:**
+
+**International Accounts:**
+- <span class="performance-positive">Distribuidora Guatemala</span> - Invoice: $4,200 (Container partial)
+- <span class="key-point">Costa Rica Premium Foods</span> - Invoice: $1,680 (Premium export)
+- <span class="key-point">El Salvador Trading Co.</span> - Invoice: $950 (Traditional products)
+
+**Traditional Trade:**
+
+**El Machetazo Network:**
+- <span class="key-point">El Machetazo David</span> - Invoice: $950
+- <span class="key-point">El Machetazo Santiago</span> - Invoice: $720
+- <span class="key-point">El Machetazo Chitré</span> - Invoice: $580
+
+**Independent Retailers:**
+- <span class="metric-highlight">Mini Super La Familia</span> (Veraguas) - Invoice: $340
+- <span class="metric-highlight">Comercial San José</span> (Coclé) - Invoice: $280
+- <span class="metric-highlight">Distribuidora Regional</span> (Los Santos) - Invoice: $420
+- <span class="metric-highlight">Super Centro Colón</span> - Invoice: $380
+- <span class="metric-highlight">Mercado Express</span> (Chiriquí) - Invoice: $310
+- <span class="metric-highlight">Abastecedora del Este</span> - Invoice: $240
+- <span class="metric-highlight">Minimarket Central</span> (Panama Oeste) - Invoice: $190
+
+**Food Service Sector:**
+
+**Hotel & Restaurant Clients:**
+- <span class="key-point">Hotel Continental</span> - Invoice: $680 (Bulk condiments)
+- <span class="key-point">Restaurante Tinajas</span> - Invoice: $450 (Specialty sauces)
+- <span class="key-point">Catering Services SA</span> - Invoice: $320 (Volume mayonnaise)
+
+**Geographic Distribution:**
+
+**Panama City Metropolitan: 8 clients**
+- Revenue: $7,890 (42.8% of daily billing)
+- Mix: Modern trade and food service
+
+**Interior Provinces: 15 clients**
+- Revenue: $6,360 (34.5% of daily billing)
+- Focus: Traditional trade and regional chains
+
+**International: 3 clients**
+- Revenue: $6,830 (37.0% of daily billing)
+- Premium export positioning
+
+**Client Performance Analysis:**
+
+**High-Value Invoices (>$2,000):**
+- <span class="performance-positive">6 clients</span> representing <span class="performance-positive">61% of daily revenue</span>
+- Average invoice: $2,863
+
+**Medium-Value Invoices ($500-$2,000):**
+- <span class="key-point">10 clients</span> representing <span class="key-point">28% of daily revenue</span>
+- Growth segment focus
+
+**Small-Value Invoices (<$500):**
+- <span class="metric-highlight">7 clients</span> representing <span class="metric-highlight">11% of daily revenue</span>
+- Service efficiency opportunity
+
+**Payment Terms Breakdown:**
+- <span class="performance-positive">Immediate (15 days):</span> 7 clients, $5,640
+- <span class="key-point">Standard (30 days):</span> 12 clients, $8,920
+- <span class="metric-highlight">Extended (45-60 days):</span> 4 clients, $3,890
+
+Today's billing demonstrates <span class="performance-positive">excellent market coverage with balanced risk distribution</span> across all client segments and payment terms.`;
+  }
+  
+  // 27. Sales rep route today
+  if (lowerQuestion.includes('route') && lowerQuestion.includes('rep') && lowerQuestion.includes('today')) {
+    return `Daily route assignments and territory coverage for sales representatives show comprehensive market reach and client engagement.
+
+**Today's Route Assignments:**
+
+**Carlos Mendoza (Chiriquí Region):**
+<span class="key-point">Route: CHIR-07-2024</span>
+- **8:00 AM:** El Machetazo David (Order: $950, Status: Completed)
+- **9:30 AM:** Super Centro Boquete (Order: $420, Status: Completed)
+- **11:00 AM:** Minimarket Volcán (Order: $280, Status: Completed)
+- **1:00 PM:** Distribuidora Frontera (Order: $340, Status: Completed)
+- **2:30 PM:** Comercial La Esperanza (Visit: No order, Reason: Overstocked)
+- **4:00 PM:** Mini Super Patricia (Order: $190, Status: Completed)
+- **5:00 PM:** Route summary and planning
+
+**María González (Coclé Region):**
+<span class="key-point">Route: COCL-05-2024</span>
+- **7:45 AM:** Xtra Penonome (Order: $980, Status: Completed)
+- **9:15 AM:** El Machetazo Santiago (Order: $720, Status: Completed)
+- **10:45 AM:** Super La Central (Order: $310, Status: Completed)
+- **12:30 PM:** Comercial San José (Order: $280, Status: Completed)
+- **2:00 PM:** Mini Market Aguadulce (Visit: No order, Reason: Payment pending)
+- **3:30 PM:** Distribuidora Valle (Order: $450, Status: Completed)
+- **4:45 PM:** Client follow-up calls
+
+**José Luis Vargas (Santiago Region):**
+<span class="key-point">Route: SANT-04-2024</span>
+- **8:30 AM:** El Machetazo Chitré (Order: $580, Status: Completed)
+- **10:00 AM:** Super Centro Las Tablas (Order: $380, Status: Completed)
+- **11:30 AM:** Minimarket Herrera (Order: $240, Status: Completed)
+- **1:15 PM:** Comercial Los Santos (Order: $320, Status: Completed)
+- **2:45 PM:** Abastecedora Regional (Visit: No order, Reason: Budget exhausted)
+- **4:15 PM:** New client prospecting: Farmacia Nacional
+
+**Ana Morales (Panama Centro):**
+<span class="key-point">Route: PCE-09-2024</span>
+- **8:00 AM:** Super99 Costa Verde (Order: $3,200, Status: Completed)
+- **9:45 AM:** Rey Multiplaza (Order: $2,400, Status: Completed)
+- **11:30 AM:** Hotel Continental (Order: $680, Status: Completed)
+- **1:00 PM:** Restaurante Tinajas (Order: $450, Status: Completed)
+- **2:30 PM:** Super99 Via España (Order: $2,850, Status: Completed)
+- **4:00 PM:** Minimarket Central (Order: $190, Status: Completed)
+
+**Roberto Silva (Panama Oeste):**
+<span class="key-point">Route: POE-06-2024</span>
+- **8:15 AM:** Xtra Albrook (Order: $1,420, Status: Completed)
+- **10:00 AM:** Rey Altos del Chase (Order: $1,950, Status: Completed)
+- **11:45 AM:** Super Centro Chorrera (Order: $340, Status: Completed)
+- **1:30 PM:** Distribuidora del Oeste (Visit: No order, Reason: Competitor promotion)
+- **3:00 PM:** Mini Super Arraiján (Order: $280, Status: Completed)
+- **4:30 PM:** Prospecting: New plaza shopping center
+
+**Route Performance Summary:**
+
+**Completed Orders: 19 successful visits**
+- Total revenue generated: <span class="performance-positive">$16,620</span>
+- Average order value: <span class="key-point">$875</span>
+
+**No-Order Visits: 4 visits**
+- Overstocked: 1 client (inventory management issue)
+- Payment pending: 1 client (credit terms review needed)
+- Budget exhausted: 1 client (monthly allocation consumed)
+- Competitor promotion: 1 client (pricing pressure analysis required)
+
+**Territory Efficiency:**
+- <span class="performance-positive">Ana Morales (Panama Centro):</span> 100% conversion rate, 6/6 orders
+- <span class="performance-positive">Carlos Mendoza (Chiriquí):</span> 83% conversion rate, 5/6 orders
+- <span class="key-point">María González (Coclé):</span> 83% conversion rate, 5/6 orders
+- <span class="key-point">José Luis Vargas (Santiago):</span> 80% conversion rate, 4/5 orders
+- <span class="key-point">Roberto Silva (Panama Oeste):</span> 80% conversion rate, 4/5 orders
+
+**Geographic Coverage:**
+- <span class="performance-positive">Total clients visited:</span> 23 locations
+- <span class="key-point">New prospect meetings:</span> 2 potential clients
+- <span class="metric-highlight">Follow-up required:</span> 4 clients for next visit cycle
+
+Route optimization demonstrates <span class="performance-positive">strong territorial coverage with high order conversion rates</span> across all regions.`;
+  }
+  
+  // 28. Clients without orders today and reasons
+  if ((lowerQuestion.includes('client') || lowerQuestion.includes('visit')) && (lowerQuestion.includes('no order') || lowerQuestion.includes("didn't") || lowerQuestion.includes('without order')) && lowerQuestion.includes('why')) {
+    return `Analysis of today's client visits that did not result in orders reveals specific business challenges requiring targeted intervention.
+
+**Clients Visited Without Orders: <span class="metric-highlight">4 locations</span>**
+
+**Comercial La Esperanza (Chiriquí - Carlos Mendoza):**
+- <span class="key-point">Reason:</span> Overstocked on premium products
+- <span class="metric-highlight">Current inventory:</span> 45-day supply of Condimento Super Xtra
+- <span class="key-point">Issue analysis:</span> Slow premium product rotation in rural market
+- <span class="performance-positive">Action plan:</span> Product mix adjustment to focus on traditional SKUs
+- <span class="key-point">Next visit:</span> 2 weeks (inventory assessment)
+- <span class="metric-highlight">Potential loss:</span> $340 expected order
+
+**Mini Market Aguadulce (Coclé - María González):**
+- <span class="key-point">Reason:</span> Payment pending on previous invoice
+- <span class="metric-highlight">Outstanding amount:</span> $890 (Invoice #INV-2024-3398, 35 days overdue)
+- <span class="key-point">Issue analysis:</span> Cash flow challenge, owner hospitalized last month
+- <span class="performance-positive">Action plan:</span> Credit terms extension approved, family meeting scheduled
+- <span class="key-point">Next visit:</span> Friday (payment arrangement confirmation)
+- <span class="metric-highlight">Potential loss:</span> $280 expected order
+
+**Abastecedora Regional (Santiago - José Luis Vargas):**
+- <span class="key-point">Reason:</span> Monthly purchasing budget exhausted
+- <span class="metric-highlight">Budget status:</span> $2,400 monthly limit reached on day 18
+- <span class="key-point">Issue analysis:</span> Early month bulk purchases, poor cash flow planning
+- <span class="performance-positive">Action plan:</span> Monthly budget planning assistance, smaller frequent orders
+- <span class="key-point">Next visit:</span> Next month cycle start
+- <span class="metric-highlight">Potential loss:</span> $320 expected order
+
+**Distribuidora del Oeste (Panama Oeste - Roberto Silva):**
+- <span class="key-point">Reason:</span> Active competitor promotion (Rival brand 30% discount)
+- <span class="metric-highlight">Competitor offer:</span> Mayonnaise and condiments at aggressive pricing
+- <span class="key-point">Issue analysis:</span> Price war in Panama Oeste corridor
+- <span class="performance-positive">Action plan:</span> Scanner promotion counter-offer, volume incentive
+- <span class="key-point">Next visit:</span> Tomorrow (competitive response implementation)
+- <span class="metric-highlight">Potential loss:</span> $450 expected order
+
+**Impact Analysis:**
+
+**Revenue Impact:**
+- <span class="metric-highlight">Total missed revenue today:</span> $1,390
+- <span class="key-point">Monthly projection:</span> $27,800 if issues persist
+- <span class="performance-positive">Recovery potential:</span> 75% through targeted intervention
+
+**Root Cause Breakdown:**
+- <span class="key-point">Inventory management:</span> 25% (1 client) - Product mix optimization needed
+- <span class="key-point">Credit/payment issues:</span> 25% (1 client) - Credit policy review
+- <span class="key-point">Budget constraints:</span> 25% (1 client) - Client financial planning support
+- <span class="metric-highlight">Competitive pressure:</span> 25% (1 client) - Pricing strategy response
+
+**Strategic Response Plan:**
+
+**Immediate Actions (24-48 hours):**
+1. **Competitive response** to Distribuidora del Oeste with promotional counter-offer
+2. **Credit terms meeting** with Mini Market Aguadulce family
+3. **Inventory consultation** for Comercial La Esperanza product mix
+
+**Medium-term Solutions (1-2 weeks):**
+1. **Regional pricing strategy** review for competitive markets
+2. **Client financial planning** workshops for budget management
+3. **Inventory optimization** program for rural/traditional accounts
+
+**Performance Recovery Target:**
+Recover <span class="performance-positive">$1,040 of the $1,390 missed revenue</span> within current month through targeted account management and competitive positioning adjustments.
+
+Client retention focus maintains <span class="performance-positive">long-term relationship value over short-term order pressure</span> while addressing underlying business challenges.`;
+  }
+  
   // 2. Scanner promotion performance analysis
   if (lowerQuestion.includes('scanner') || (lowerQuestion.includes('promotion') && lowerQuestion.includes('last month')) || lowerQuestion.includes('sold the most')) {
     const scannerPromotions = [
