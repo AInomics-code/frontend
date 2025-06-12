@@ -50,30 +50,30 @@ Anís Estrella: Achieve <span class="performance-positive">$65+ monthly revenue 
 June billing collapsed to <span class="metric-highlight">$1,201,456.36 from May's $6,337,497.91</span>, representing a <span class="performance-negative">catastrophic 81% monthly decline</span> that puts us at <span class="performance-negative">23% of our Q2 target</span>. This performance sits <span class="metric-highlight">77% below our 5-year June average of $5.2M</span> and indicates systematic operational breakdown. Our <span class="performance-negative">margin compression to 0.66 versus the standard 2.6</span> reflects fixed cost absorption crisis, with facilities costs now consuming <span class="performance-negative">78% of revenue versus our target 30%</span>.
 
 **Granular Financial Analysis**
-- Cash flow velocity: Daily receipts averaged $40,048 in June versus May's $204,435, creating 23-day operational runway at current burn rate
-- Accounts receivable aging: 67% of outstanding invoices exceed 45 days (industry standard is 25%), with Supermercados Xtra representing $127,000 in overdue payments
-- Working capital impact: Inventory turnover dropped to 0.3x monthly versus our target 2.1x, tying up $890,000 in slow-moving stock
-- Cost structure breakdown: Variable costs held steady at $1.4M while fixed costs remained at $2.1M, creating unsustainable operating leverage
+- Cash flow velocity: Daily receipts averaged <span class="metric-highlight">$40,048 in June versus May's $204,435</span>, creating <span class="performance-negative">23-day operational runway at current burn rate</span>
+- Accounts receivable aging: <span class="performance-negative">67% of outstanding invoices exceed 45 days</span> (industry standard is 25%), with <span class="key-point">Supermercados Xtra representing $127,000 in overdue payments</span>
+- Working capital impact: Inventory turnover dropped to <span class="performance-negative">0.3x monthly versus our target 2.1x</span>, tying up <span class="metric-highlight">$890,000 in slow-moving stock</span>
+- Cost structure breakdown: Variable costs held steady at <span class="metric-highlight">$1.4M while fixed costs remained at $2.1M</span>, creating unsustainable operating leverage
 
 **Operational Intelligence**
-- Production capacity utilization: June operated at 12% capacity versus our break-even threshold of 68%, with machinery idle time costing $15,200 daily
-- Customer concentration risk: Top 5 accounts represent 73% of revenue, with Xtra alone accounting for 31% before variance issues
-- Seasonal patterns: June typically represents 85% of May performance due to school vacation impact on food service sales, but current 23% indicates crisis beyond seasonality
-- Regional variance: Panama City operations declined 85% while Colon facility dropped only 62%, suggesting localized execution issues
+- Production capacity utilization: June operated at <span class="performance-negative">12% capacity versus our break-even threshold of 68%</span>, with machinery idle time costing <span class="metric-highlight">$15,200 daily</span>
+- Customer concentration risk: <span class="key-point">Top 5 accounts represent 73% of revenue</span>, with <span class="performance-negative">Xtra alone accounting for 31% before variance issues</span>
+- Seasonal patterns: June typically represents <span class="metric-highlight">85% of May performance</span> due to school vacation impact on food service sales, but current <span class="performance-negative">23% indicates crisis beyond seasonality</span>
+- Regional variance: <span class="performance-negative">Panama City operations declined 85%</span> while <span class="metric-highlight">Colon facility dropped only 62%</span>, suggesting localized execution issues
 
 **Root Cause Financial Forensics**
-- Primary catalyst: Back-order crisis of $39,118.09 prevented invoice completion for 156 orders, blocking revenue recognition under our accrual accounting
-- Secondary driver: Production line #2 breakdown during week 2 eliminated 40% of ketchup capacity, our highest-margin product line contributing 34% of gross profit
-- External pressure: Competitor price wars in garlic powder and seasoning categories compressed margins by 23% across our spice portfolio
-- Internal execution: Finance team delayed invoicing by average 8.3 days due to manual processes, extending cash conversion cycle
+- Primary catalyst: <span class="key-point">Back-order crisis of $39,118.09 prevented invoice completion for 156 orders</span>, blocking revenue recognition under our accrual accounting
+- Secondary driver: <span class="performance-negative">Production line #2 breakdown during week 2 eliminated 40% of ketchup capacity</span>, our highest-margin product line contributing <span class="metric-highlight">34% of gross profit</span>
+- External pressure: <span class="performance-negative">Competitor price wars in garlic powder and seasoning categories compressed margins by 23%</span> across our spice portfolio
+- Internal execution: Finance team delayed invoicing by <span class="performance-negative">average 8.3 days due to manual processes</span>, extending cash conversion cycle
 
 **Strategic Financial Recovery Framework**
-- Week 1: Activate $1.2M credit line and implement daily cash management. Restructure payment terms with top 3 suppliers for 45-day extension.
-- Month 1: Deploy automated invoicing system reducing processing time from 8 days to 2 days. Launch intensive collections program targeting $67,000 in 60+ day receivables.
-- Quarter 3: Implement cost-flexible operating model scaling variable costs to 85% of revenue during low periods. Negotiate performance-based supplier agreements reducing fixed commitments by 25%.
+- Week 1: Activate <span class="key-point">$1.2M credit line and implement daily cash management</span>. Restructure payment terms with top 3 suppliers for <span class="performance-positive">45-day extension</span>.
+- Month 1: Deploy automated invoicing system reducing processing time from <span class="performance-negative">8 days to 2 days</span>. Launch intensive collections program targeting <span class="metric-highlight">$67,000 in 60+ day receivables</span>.
+- Quarter 3: Implement cost-flexible operating model scaling variable costs to <span class="performance-positive">85% of revenue during low periods</span>. Negotiate performance-based supplier agreements reducing fixed commitments by <span class="performance-positive">25%</span>.
 
 **Financial Recovery Metrics**
-Cash flow positive by day 15 through collections and credit activation. Monthly billing recovery to $2.8M by July 31 (representing 54% of May levels). Margin restoration to 1.9 by August through product mix optimization favoring our 23% margin ketchup lines. Working capital optimization to achieve 1.8x inventory turns by Q3 end, freeing $520,000 for growth investment.`;
+Cash flow positive by <span class="performance-positive">day 15 through collections and credit activation</span>. Monthly billing recovery to <span class="metric-highlight">$2.8M by July 31 (representing 54% of May levels)</span>. Margin restoration to <span class="performance-positive">1.9 by August</span> through product mix optimization favoring our <span class="metric-highlight">23% margin ketchup lines</span>. Working capital optimization to achieve <span class="performance-positive">1.8x inventory turns by Q3 end</span>, freeing <span class="metric-highlight">$520,000 for growth investment</span>.`;
   }
   
   // Sales performance queries
