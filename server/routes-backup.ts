@@ -3,7 +3,20 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertConversationSchema, insertMessageSchema } from "@shared/schema";
 import { z } from "zod";
+import OpenAI from "openai";
+import { buildBusinessContext } from "./business-context";
 import { getBusinessInsights, generateDailyBriefing, analyzeRegion, analyzeProduct, analyzeClient } from "./ai-functions";
+import { analyzeQuery, generateSpecializedResponse } from "./query-analyzer";
+
+// Initialize OpenAI client only when API key is available
+const getOpenAIClient = () => {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error("OpenAI API key not configured");
+  }
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+};
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Get all conversations
@@ -38,6 +51,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (isNaN(id)) {
         return res.status(400).json({ message: "Invalid conversation ID" });
       }
+      
+      const conversation = await storage.getConversation(id);
+      if (!conversation) {
+        return res.status(404).json({ message: "Conversation not found" });
+      }
 
       await storage.deleteConversation(id);
       res.status(204).send();
@@ -52,6 +70,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const id = parseInt(req.params.id);
       if (isNaN(id)) {
         return res.status(400).json({ message: "Invalid conversation ID" });
+      }
+
+      const conversation = await storage.getConversation(id);
+      if (!conversation) {
+        return res.status(404).json({ message: "Conversation not found" });
       }
 
       const messages = await storage.getMessages(id);
@@ -96,7 +119,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           const errorMessage = {
             conversationId,
             role: "assistant",
-            content: "I'm experiencing technical difficulties. Please try again.",
+            content: "I'm experiencing technical difficulties connecting to my AI service. Please check your API configuration and try again.",
           };
           await storage.createMessage(errorMessage);
         }
@@ -112,8 +135,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Generate daily briefing
-  app.post("/api/daily-briefing", async (req, res) => {
+  // Business Intelligence API routes
+  app.get("/api/business-context", async (req, res) => {
+    try {
+      const context = buildBusinessContext();
+      res.json(context);
+    } catch (error) {
+      console.error("Error getting business context:", error);
+      res.status(500).json({ error: "Failed to get business context" });
+    }
+  });
+
+  app.post("/api/insights", async (req, res) => {
+    try {
+      const { question } = req.body;
+      if (!question) {
+        return res.status(400).json({ error: "Question is required" });
+      }
+      
+      const insights = await getBusinessInsights(question);
+      res.json({ insights });
+    } catch (error) {
+      console.error("Error generating insights:", error);
+      res.status(500).json({ error: "Failed to generate insights" });
+    }
+  });
+
+  app.get("/api/daily-briefing", async (req, res) => {
     try {
       const briefing = await generateDailyBriefing();
       res.json({ briefing });
@@ -123,7 +171,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Analyze region
   app.post("/api/analyze-region", async (req, res) => {
     try {
       const { regionName } = req.body;
@@ -139,7 +186,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Analyze product
   app.post("/api/analyze-product", async (req, res) => {
     try {
       const { productName } = req.body;
@@ -155,7 +201,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Analyze client
   app.post("/api/analyze-client", async (req, res) => {
     try {
       const { clientName } = req.body;
