@@ -1711,8 +1711,82 @@ Portfolio ROI: <span class="performance-positive">${((storeDisplayData.reduce((s
 4. **Performance Monitoring:** Monthly ROI reviews with 90% minimum threshold for continued investment`;
   }
   
+  // 25. Pricing matrix for traditional vs modern trade (MUST BE BEFORE any condition with 'vs')
+  if ((lowerQuestion.includes('pricing') && (lowerQuestion.includes('traditional') || lowerQuestion.includes('modern'))) || 
+      (lowerQuestion.includes('price') && lowerQuestion.includes('matrix')) ||
+      (lowerQuestion.includes('traditional') && lowerQuestion.includes('modern') && lowerQuestion.includes('trade'))) {
+    return `Pricing strategy analysis reveals strategic differentiation between traditional and modern trade channels to optimize market penetration.
+
+**Modern Trade Pricing Matrix:**
+
+**Super99 (Premium Positioning):**
+- <span class="performance-positive">Condimento Super Xtra 500g:</span> $4.95 retail / $3.20 wholesale (38% margin)
+- <span class="performance-positive">Vinagre Premium 750ml:</span> $3.85 retail / $2.50 wholesale (35% margin)
+- <span class="key-point">Mayonesa Premium 400g:</span> $3.25 retail / $2.10 wholesale (35% margin)
+- <span class="key-point">Adobo Tradicional 250g:</span> $2.45 retail / $1.60 wholesale (35% margin)
+
+**Rey (Competitive Premium):**
+- <span class="performance-positive">Condimento Super Xtra 500g:</span> $4.85 retail / $3.15 wholesale
+- <span class="performance-positive">Vinagre Premium 750ml:</span> $3.75 retail / $2.45 wholesale
+- <span class="key-point">Adobo Tradicional 250g:</span> $2.35 retail / $1.55 wholesale
+
+**Xtra (Value Focus):**
+- <span class="key-point">Condimento Básico 300g:</span> $1.89 retail / $1.22 wholesale (35% margin)
+- <span class="key-point">Vinagre Regular 500ml:</span> $2.25 retail / $1.45 wholesale (36% margin)
+- <span class="key-point">Mayonesa Standard 400g:</span> $2.45 retail / $1.58 wholesale (35% margin)
+
+**Traditional Trade Pricing Matrix:**
+
+**El Machetazo (Volume Focus):**
+- <span class="key-point">Adobo Tradicional 250g:</span> $2.25 retail / $1.45 wholesale (36% margin)
+- <span class="key-point">Condimento Básico 300g:</span> $1.79 retail / $1.15 wholesale (36% margin)
+- <span class="key-point">Vinagre Regular 500ml:</span> $2.15 retail / $1.38 wholesale (36% margin)
+- <span class="metric-highlight">Mayonesa Standard 400g:</span> $2.35 retail / $1.50 wholesale (36% margin)
+
+**Independent Retailers:**
+- <span class="key-point">Standard discount:</span> 32-35% off suggested retail
+- <span class="key-point">Volume incentives:</span> Additional 2-3% for orders >$500
+- <span class="metric-highlight">Payment terms:</span> 15-30 days with 2% early pay discount
+
+**Pricing Strategy Differentiation:**
+
+**Modern Trade Advantages:**
+- <span class="performance-positive">Premium product access:</span> Exclusive SKUs and packaging
+- <span class="performance-positive">Marketing support:</span> Scanner promotions and displays
+- <span class="key-point">Extended terms:</span> 45-60 day payment options
+- <span class="key-point">Category management:</span> Planogram optimization support
+
+**Traditional Trade Benefits:**
+- <span class="key-point">Competitive wholesale rates:</span> 3-5% better margins than modern trade
+- <span class="key-point">Flexible ordering:</span> Smaller minimum orders and mixed cases
+- <span class="metric-highlight">Direct service:</span> Personal sales rep relationships
+- <span class="metric-highlight">Local adaptation:</span> Regional preference accommodation
+
+**Market Positioning Analysis:**
+
+**Premium Products (Modern Trade Focus):**
+Modern trade commands <span class="performance-positive">$0.10-$0.15 premium per unit</span> due to consumer willingness to pay for convenience and brand positioning.
+
+**Standard Products (Traditional Trade Competitive):**
+Traditional trade offers <span class="key-point">5-8% lower retail pricing</span> to compete with modern trade convenience premium.
+
+**Volume Economics:**
+- **Modern trade:** Lower unit margins but higher volume per location
+- **Traditional trade:** Higher unit margins but broader distribution network
+
+**Strategic Recommendations:**
+1. **Maintain premium positioning** in modern trade with exclusive product lines
+2. **Optimize traditional trade margins** through efficient distribution and packaging
+3. **Develop channel-specific promotions** to avoid direct price competition
+4. **Implement dynamic pricing** based on local competitive landscape
+
+Pricing differentiation ensures <span class="performance-positive">optimal channel performance while maintaining brand equity</span> across all market segments.`;
+  }
+
   // 4. Product growth/decline trends vs historical periods
-  if (lowerQuestion.includes('declining') || lowerQuestion.includes('growing') || lowerQuestion.includes('vs') || lowerQuestion.includes('trend') || (lowerQuestion.includes('product') && (lowerQuestion.includes('month') || lowerQuestion.includes('quarter') || lowerQuestion.includes('year')))) {
+  if ((lowerQuestion.includes('declining') || lowerQuestion.includes('growing') || lowerQuestion.includes('trend')) && 
+      (lowerQuestion.includes('product') && (lowerQuestion.includes('month') || lowerQuestion.includes('quarter') || lowerQuestion.includes('year'))) &&
+      !lowerQuestion.includes('pricing') && !lowerQuestion.includes('matrix') && !lowerQuestion.includes('traditional') && !lowerQuestion.includes('modern')) {
     const period = lowerQuestion.includes('year') ? 'vs last year' : 
                    lowerQuestion.includes('quarter') ? 'vs last quarter' : 'vs last month';
     
