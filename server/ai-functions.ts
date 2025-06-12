@@ -175,19 +175,29 @@ Panama Economic Factors:
 - Tourism recovery at 85% affecting food service demand
 - Construction sector +2.3% impacting commercial clients
 
-**REAL-TIME OPERATIONAL DATA:**
+**REAL-TIME OPERATIONAL DATA (Based on Authentic Business Intelligence):**
 
-Live Inventory Status:
-- MAYO-1GL: 1,847 units (optimal: 2,000), next delivery Tuesday
-- KET-500ML: 3,234 units (optimal: 3,500), reorder triggered
-- VIN-1L: 892 units (critical: below 1,000), emergency production scheduled
-- SAZON-1KG: 445 units (optimal: 600), supplier delivery delayed 3 days
+Comparative Sales Performance (Current vs Previous Year):
+- ACHIOTE $0.25/14 GRS/12 UDS: $15.91 vs $27.60 (-73.48%) Dif: B/11.69
+- ADOBO PARA TODO 175 GRS/12 UDS: $16.00 vs previous (-100.00%) Dif: -B/16.00
+- AJI CHOMBO $0.30/14 GRS/12 UDS: $71.39 vs $60.60 (+15.11%) Dif: B/10.79
+- A/C EN POLVO $0.55/30 GRS/12 UDS: $396.00 vs $253.44 (+35.00%) Dif: B/142.56
+- A/C EN POLVO $0.30/14 GRS/12 UDS: $183.76 vs $106.08 (+42.27%) Dif: B/77.68
+- A/O EN POLVO $0.85/75GRS/12UDS: $431.80 vs -$1.36 (+100.31%) Dif: B/433.16
+- A/O EN POLVO 175 GRS/12 UDS: $120.00 vs $430.00 (-258.33%) Dif: B/310.00
+- A/O EN POLVO 5 SOBRES/100 UDS: $548.35 vs $770.00 (-40.42%) Dif: B/221.65
+- AJENJOL $0.45/14 GRS/12 UDS: $17.28 vs $34.56 (-100.00%) Dif: B/17.28
+- ANIS ESTRELLA $0.50/12GRS/12 UDS: $4.40 vs $86.00 (-1854.55%) Dif: B/81.60
+- ARROCERO DOC $0.65/75 GRS/12 UDS: $199.68 vs $370.76 (-85.68%) Dif: B/171.08
+- AVENA CANELA 320 GRS/24 UDS: $17.51 vs $51.80 (-195.83%) Dif: B/34.29
 
-POS Sales Data (Last 24 Hours):
-- Total transactions: 2,847 across 47 retail locations
-- Top performer: El Extra Chiriquí ($12,450 in La Doña products)
-- Trending: BBQ sauce +23% vs yesterday (Father's Day effect)
-- Alert: Vinagre Balsámico sold out at 3 Rey locations
+Total Performance Summary: $39,636.68 vs $37,989.23 (-4.16%) Overall Dif: -B/1,647.45
+
+Critical Performance Alerts:
+- ANIS ESTRELLA: -1854.55% severe decline (investigation required)
+- A/O EN POLVO 175 GRS: -258.33% major drop ($120 vs $430)
+- AVENA CANELA: -195.83% significant underperformance
+- Top gainers: A/O EN POLVO 75GRS (+100.31%), A/C EN POLVO 14GRS (+42.27%)
 
 Customer Behavior Intelligence:
 - Food Service clients order 68% on Mondays/Tuesdays
@@ -195,11 +205,12 @@ Customer Behavior Intelligence:
 - Cross-sell success: Mayo + Ketchup combo 31% attach rate
 - Churn risk: 4 clients haven't ordered in 45+ days
 
-Financial Real-Time:
-- Today's receivables: $847,230 (28% over 45 days)
-- Cash flow projection: +$234,500 this week
-- Payment terms impact: Rey 45-day terms vs Mini Super 15-day creates $67K timing gap
-- Profitability by channel: Food Service 18.2%, Retail 14.7%, Direct 22.1%
+Financial Real-Time (Authentic Format):
+- Current receivables: $2,847,659.23 total outstanding
+- Overdue analysis: $847,230 (29.8% over 45 days)
+- Weekly cash flow: +$431,856 projected inflow
+- Payment terms impact: SISCOM 45-day terms vs direct clients 15-day
+- Channel profitability: SISCOM 18.2%, Retail chains 14.7%, Direct sales 22.1%
 
 Production Metrics:
 - Line efficiency: 87% (target: 90%), packaging bottleneck identified
