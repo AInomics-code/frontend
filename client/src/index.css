@@ -205,18 +205,49 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Enhanced Chat Message Styling */
+/* Enhanced GPT-like Message Styling */
+.message-content {
+  font-family: 'Söhne', 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #374151;
+  word-wrap: break-word;
+}
+
+.message-content p {
+  margin: 0 0 12px 0;
+}
+
+.message-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Section headers styling */
+.message-content strong {
+  font-weight: 600;
+  color: #1f2937;
+  display: block;
+  margin: 16px 0 8px 0;
+  font-size: 15px;
+}
+
+.message-content strong:first-child {
+  margin-top: 0;
+}
+
+/* Chat message container */
 .chat-message {
   max-width: 80%;
-  padding: 14px 18px;
-  border-radius: 12px;
+  padding: 16px 20px;
+  border-radius: 16px;
   margin: 10px 0;
   white-space: pre-wrap;
-  line-height: 1.6;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  line-height: 1.65;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   font-size: 15px;
   word-wrap: break-word;
   animation: fadeIn 0.3s ease-out;
+  font-family: 'Söhne', 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 .chat-message.user {

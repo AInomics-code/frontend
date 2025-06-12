@@ -17,27 +17,30 @@ function getDirectBusinessResponse(question: string): string {
   
   // Product performance queries
   if (lowerQuestion.includes('anis estrella') || lowerQuestion.includes('worst') || lowerQuestion.includes('underperform')) {
-    return `**SITUATION:** ANIS ESTRELLA dropped -1854.55% from $86.00 to $4.40 (NEGATIVE - should maintain $80+ baseline). ADOBO PARA TODO 175 GRS completely disappeared (-100.00% vs target 15% growth). A/O EN POLVO 175 GRS fell -258.33% from $430.00 to $120.00 (NEGATIVE - benchmark performers maintain $400+ range).
+    return `**Current Performance Overview**
+Looking at our product portfolio, we have some areas that need attention. ANIS ESTRELLA has declined significantly from $86.00 to $4.40, while ADOBO PARA TODO 175 GRS shows minimal market engagement. A/O EN POLVO 175 GRS has dropped from $430.00 to $120.00, which is below our typical performance range for spice products.
 
-**COMPARATIVE ANALYSIS:**
-- Current State: Three SKUs showing catastrophic decline vs all other products
-- How We Got Here: ADOBO PARA TODO failed market acceptance testing but wasn't discontinued. ANIS ESTRELLA supply chain disrupted without backup sourcing. Performance monitoring gaps allowed 6-month deterioration.
-- What It Should Be: ADOBO should have been discontinued after 3 months of <50% performance. ANIS ESTRELLA should maintain $80+ with alternative suppliers. A/O EN POLVO should stay in $400+ range like similar spice products.
+**Understanding the Context**
+- Where we are: These three products are performing below our standard benchmarks compared to our successful lines
+- How this developed: ADOBO PARA TODO faced market acceptance challenges that weren't addressed quickly enough. ANIS ESTRELLA experienced supply chain disruptions without backup sourcing in place. Our monitoring systems didn't catch these declines early enough for preventive action.
+- Performance targets: Typically, ANIS ESTRELLA maintains around $80+ monthly performance, while A/O EN POLVO usually stays in the $400+ range similar to other spice products in our portfolio.
 
-**ROOT CAUSE ANALYSIS:**
-- Primary: Product lifecycle management failure - didn't exit failing products fast enough
-- Secondary: Supply chain single-point failures without redundancy planning
-- External: Competitors filled gaps during our supply disruptions
-- Internal: No SKU performance thresholds or automatic discontinuation triggers
+**Key Contributing Factors**
+- Primary: Our product lifecycle management process needs refinement to exit underperforming products more efficiently
+- Secondary: Supply chain resilience could be strengthened with alternative sourcing options
+- External: Competitors have filled some market gaps during our supply challenges
+- Internal: We can benefit from implementing performance monitoring with automated alerts
 
-**IMPACT:** $1,500+ monthly revenue loss from three SKUs. Carrying costs for dead inventory. Market share permanently lost to competitors who captured our shelf space.
+**Business Impact**
+These performance gaps represent approximately $1,500 in monthly revenue opportunity. We're also carrying inventory costs that could be better allocated to our higher-performing products.
 
-**ACTIONS:**
-- IMMEDIATE: Discontinue ADOBO PARA TODO production today - prevent further loss
-- SHORT-TERM: Establish backup suppliers for ANIS ESTRELLA within 48 hours
-- LONG-TERM: Implement SKU performance gates: <70% = review, <50% = discontinue
+**Recommended Path Forward**
+- Immediate focus: Redirect ADOBO PARA TODO production resources to more promising products
+- Near-term planning: Develop alternative supplier relationships for ANIS ESTRELLA within the next 48 hours
+- Strategic development: Create performance monitoring with review triggers at 70% and exit considerations at 50%
 
-**SUCCESS METRICS:** Achieve zero negative variance SKUs within 30 days. New product replacements must hit 90%+ of category benchmarks within first quarter.`;
+**Success Indicators**
+Target elimination of negative variance products within 30 days. New product introductions should achieve 90%+ of category performance standards in their first quarter.`;
   }
   
   // Financial performance queries
@@ -162,7 +165,7 @@ function getDirectBusinessResponse(question: string): string {
 - LONG-TERM: Install integrated early warning dashboard linking production capacity, inventory levels, sales performance, and customer satisfaction with automatic escalation triggers
 
 **SUCCESS METRICS:** Achieve 60% recovery across all metrics within 30 days. Restore billing to $3.5M+ monthly minimum. Increase sales achievement to 50%+. Eliminate all critical back-orders and establish 15-day minimum inventory buffers.`;
-}
+  }
 
 /**
  * Gets business insights based on a specific question
