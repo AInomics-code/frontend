@@ -31,66 +31,13 @@ export default function Chat() {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  // Push-to-talk voice functions
-  const startRecording = async () => {
-    if (!speechSupported) {
-      alert('Reconocimiento de voz no compatible con este navegador. Prueba con Chrome o Firefox.');
-      return;
-    }
-
-    if (!recognitionRef.current) {
-      alert('Error al inicializar el reconocimiento de voz. Recarga la página e intenta de nuevo.');
-      return;
-    }
-
-    if (isListening) return; // Already recording
-
-    try {
-      // Request microphone permission first
-      await navigator.mediaDevices.getUserMedia({ audio: true });
-      // Update language setting before starting
-      recognitionRef.current.lang = speechLanguage;
-      recognitionRef.current.start();
-    } catch (error) {
-      console.error('Speech recognition error:', error);
-      setIsListening(false);
-      alert('No se pudo acceder al micrófono. Verifica los permisos del navegador.');
-    }
-  };
-
-  const stopRecording = () => {
-    if (!isListening || !recognitionRef.current) return;
-
-    recognitionRef.current.stop();
-    if (speechTimeoutRef.current) {
-      clearTimeout(speechTimeoutRef.current);
-      speechTimeoutRef.current = null;
-    }
-  };
-
-  const toggleLanguage = () => {
-    const newLang = speechLanguage === 'es-ES' ? 'en-US' : 'es-ES';
-    setSpeechLanguage(newLang);
-    
-    // If currently listening, restart with new language
-    if (isListening && recognitionRef.current) {
-      recognitionRef.current.stop();
-      setTimeout(() => {
-        if (recognitionRef.current) {
-          recognitionRef.current.lang = newLang;
-          recognitionRef.current.start();
-        }
-      }, 100);
-    }
-  };
-
   // Keyboard shortcuts for voice control
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Ctrl/Cmd + M to start recording (hold)
-      if ((e.ctrlKey || e.metaKey) && e.key === 'm' && !e.repeat) {
+      // Ctrl/Cmd + M to toggle voice
+      if ((e.ctrlKey || e.metaKey) && e.key === 'm') {
         e.preventDefault();
-        startRecording();
+        toggleVoice();
       }
       // Ctrl/Cmd + L to toggle language
       if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
@@ -99,20 +46,8 @@ export default function Chat() {
       }
     };
 
-    const handleKeyUp = (e: KeyboardEvent) => {
-      // Release Ctrl/Cmd + M to stop recording
-      if ((e.ctrlKey || e.metaKey) && e.key === 'm') {
-        e.preventDefault();
-        stopRecording();
-      }
-    };
-
     window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
-    };
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [speechSupported, isListening, speechLanguage]);
 
   // Initialize speech recognition
@@ -164,14 +99,11 @@ export default function Chat() {
         setIsListening(false);
         setInterimTranscript("");
         
-        // Clear timeout
-        if (speechTimeoutRef.current) {
-          clearTimeout(speechTimeoutRef.current);
-          speechTimeoutRef.current = null;
-        }
-        
-        if (event.error === 'no-speech') {
-          // Automatically restart if no speech detected
+        // Handle specific errors with user-friendly messages
+        if (event.error === 'not-allowed') {
+          alert('Acceso al micrófono denegado. Por favor permite el acceso al micrófono e intenta de nuevo.');
+        } else if (event.error === 'no-speech') {
+          // Restart listening automatically if no speech detected
           setTimeout(() => {
             if (recognitionRef.current && isListening) {
               try {
@@ -272,6 +204,54 @@ export default function Chat() {
     }
   };
 
+  const toggleVoice = async () => {
+    if (!speechSupported) {
+      alert('Reconocimiento de voz no compatible con este navegador. Prueba con Chrome o Firefox.');
+      return;
+    }
+
+    if (!recognitionRef.current) {
+      alert('Error al inicializar el reconocimiento de voz. Recarga la página e intenta de nuevo.');
+      return;
+    }
+
+    if (isListening) {
+      recognitionRef.current.stop();
+      if (speechTimeoutRef.current) {
+        clearTimeout(speechTimeoutRef.current);
+        speechTimeoutRef.current = null;
+      }
+    } else {
+      try {
+        // Request microphone permission first
+        await navigator.mediaDevices.getUserMedia({ audio: true });
+        // Update language setting before starting
+        recognitionRef.current.lang = speechLanguage;
+        recognitionRef.current.start();
+      } catch (error) {
+        console.error('Speech recognition error:', error);
+        setIsListening(false);
+        alert('No se pudo acceder al micrófono. Verifica los permisos del navegador.');
+      }
+    }
+  };
+
+  const toggleLanguage = () => {
+    const newLang = speechLanguage === 'es-ES' ? 'en-US' : 'es-ES';
+    setSpeechLanguage(newLang);
+    
+    // If currently listening, restart with new language
+    if (isListening && recognitionRef.current) {
+      recognitionRef.current.stop();
+      setTimeout(() => {
+        if (recognitionRef.current) {
+          recognitionRef.current.lang = newLang;
+          recognitionRef.current.start();
+        }
+      }, 100);
+    }
+  };
+
   const toggleCard = (cardId: string) => {
     setExpandedCard(expandedCard === cardId ? null : cardId);
   };
@@ -285,212 +265,304 @@ export default function Chat() {
           {/* Performance Card */}
           <div 
             onClick={() => toggleCard('performance')}
-            className={`cursor-pointer flex-1 border bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 ${
-              expandedCard === 'performance' ? 'ring-2 ring-red-100 shadow-lg' : ''
+            className={`group bg-white rounded-lg shadow-sm hover:shadow-md p-2 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
+              expandedCard === 'performance' 
+                ? 'min-h-[200px] shadow-lg' 
+                : 'min-h-[50px]'
             }`}
           >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                  <BarChart2 size={20} className="text-green-600" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-gray-900">Performance</h3>
-                  <p className="text-xl font-bold text-green-600">94.2%</p>
-                </div>
+            <div className="flex items-center justify-between mb-1">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Performance Score</h4>
               </div>
               {expandedCard === 'performance' ? 
-                <ChevronUp size={16} className="text-gray-400" /> : 
-                <ChevronDown size={16} className="text-gray-400" />
+                <ChevronUp size={16} className="text-gray-600" /> : 
+                <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
               }
             </div>
-            {expandedCard === 'performance' && (
-              <div className="mt-4 pt-4 border-t border-gray-100">
-                <div className="grid grid-cols-2 gap-3 text-sm">
-                  <div>
-                    <span className="text-gray-500">Meta Mensual:</span>
-                    <div className="font-semibold text-gray-900">$2.1M</div>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">Actual:</span>
-                    <div className="font-semibold text-green-600">$1.98M</div>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">Días Restantes:</span>
-                    <div className="font-semibold text-gray-900">12</div>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">Proyección:</span>
-                    <div className="font-semibold text-green-600">$2.15M</div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Sales Card */}
-          <div 
-            onClick={() => toggleCard('sales')}
-            className={`cursor-pointer flex-1 border bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 ${
-              expandedCard === 'sales' ? 'ring-2 ring-blue-100 shadow-lg' : ''
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <Globe size={20} className="text-blue-600" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-gray-900">Ventas Hoy</h3>
-                  <p className="text-xl font-bold text-blue-600">$87,240</p>
-                </div>
-              </div>
-              {expandedCard === 'sales' ? 
-                <ChevronUp size={16} className="text-gray-400" /> : 
-                <ChevronDown size={16} className="text-gray-400" />
-              }
-            </div>
-            {expandedCard === 'sales' && (
-              <div className="mt-4 pt-4 border-t border-gray-100">
-                <div className="grid grid-cols-2 gap-3 text-sm">
-                  <div>
-                    <span className="text-gray-500">Nacional:</span>
-                    <div className="font-semibold text-gray-900">$62,180</div>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">Export:</span>
-                    <div className="font-semibold text-blue-600">$25,060</div>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">Órdenes:</span>
-                    <div className="font-semibold text-gray-900">143</div>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">Clientes:</span>
-                    <div className="font-semibold text-blue-600">89</div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Inventory Card */}
-          <div 
-            onClick={() => toggleCard('inventory')}
-            className={`cursor-pointer flex-1 border bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 ${
-              expandedCard === 'inventory' ? 'ring-2 ring-orange-100 shadow-lg' : ''
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <Search size={20} className="text-orange-600" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-gray-900">Stock Alerts</h3>
-                  <p className="text-xl font-bold text-orange-600">12</p>
-                </div>
-              </div>
-              {expandedCard === 'inventory' ? 
-                <ChevronUp size={16} className="text-gray-400" /> : 
-                <ChevronDown size={16} className="text-gray-400" />
-              }
-            </div>
-            {expandedCard === 'inventory' && (
-              <div className="mt-4 pt-4 border-t border-gray-100">
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Stock Bajo:</span>
-                    <span className="font-semibold text-orange-600">8 SKUs</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Agotado:</span>
-                    <span className="font-semibold text-red-600">4 SKUs</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Restock Urgente:</span>
-                    <span className="font-semibold text-gray-900">Condimento 500g</span>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Main Chat Interface */}
-      <div className="flex h-[calc(100vh-140px)]">
-        {/* Chat Section */}
-        <main className="flex-1 flex flex-col bg-white">
-          {/* Messages Area */}
-          <div className="flex-1 overflow-y-auto px-6 py-6 space-y-4">
-            {messages.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Mic size={24} className="text-red-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  La Doña AI Business Intelligence
-                </h3>
-                <p className="text-gray-600 mb-6 max-w-md mx-auto">
-                  Your intelligent business assistant. Ask about sales, inventory, clients, or any business data.
-                </p>
-                <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
-                  <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
-                    "¿Cómo van las ventas hoy?"
-                  </span>
-                  <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
-                    "Show me backorders"
-                  </span>
-                  <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
-                    "Análisis de inventario"
-                  </span>
-                  <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
-                    "Client performance report"
-                  </span>
-                </div>
-              </div>
+            
+            {expandedCard !== 'performance' ? (
+              <>
+                <p className="text-3xl font-semibold text-gray-900">88</p>
+                <p className="text-xs text-gray-500 mt-1">82% of sales target met</p>
+                <p className="text-xs text-gray-400 mt-2 italic">Click to view details</p>
+              </>
             ) : (
-              messages.map((message) => (
-                <div
-                  key={message.id}
-                  className={`flex ${message.isUser ? "justify-end" : "justify-start"}`}
-                >
-                  <div
-                    className={`max-w-[80%] p-4 rounded-2xl ${
-                      message.isUser
-                        ? "bg-red-500 text-white"
-                        : "bg-gray-50 text-gray-900 border border-gray-200"
-                    }`}
+              <div className="mt-4 space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div 
+                    className="bg-gray-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("What is our current sales performance and how close are we to target?")}
                   >
-                    <div 
-                      className="prose prose-sm max-w-none"
-                      dangerouslySetInnerHTML={{ __html: message.content }}
-                    />
-                    <div
-                      className={`text-xs mt-2 ${
-                        message.isUser ? "text-red-100" : "text-gray-500"
-                      }`}
-                    >
-                      {message.timestamp.toLocaleTimeString()}
+                    <h5 className="text-sm font-semibold text-gray-800 mb-2">Sales Performance</h5>
+                    <p className="text-2xl font-bold text-green-600">82%</p>
+                    <p className="text-sm text-gray-600">$369K of $450K target</p>
+                    <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+                      <div className="bg-green-500 h-2 rounded-full" style={{width: '82%'}}></div>
+                    </div>
+                  </div>
+                  <div 
+                    className="bg-gray-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("Which region, rep, and SKU are driving the strongest results and why?")}
+                  >
+                    <h5 className="text-sm font-semibold text-gray-800 mb-2">Top Performers</h5>
+                    <p className="text-sm text-gray-700 mb-1"><strong>Best SKU:</strong> SKU 183 – Bananas</p>
+                    <p className="text-sm text-gray-700 mb-1"><strong>Best Region:</strong> Chiriquí (+8%)</p>
+                    <p className="text-sm text-gray-700"><strong>Best Rep:</strong> Carlos Mendez</p>
+                  </div>
+                </div>
+                <div 
+                  className="bg-blue-50 rounded-lg p-3 intelligence-clickable"
+                  onClick={() => setInputValue("Explain this month's key insights and what actions we should take.")}
+                >
+                  <h5 className="text-sm font-semibold text-blue-800 mb-2">Key Insights</h5>
+                  <ul className="text-sm text-blue-700 space-y-1">
+                    <li>• Revenue up 12% vs last month</li>
+                    <li>• 5 new clients acquired this quarter</li>
+                    <li>• Premium products showing 15% growth</li>
+                    <li>• Export sales exceeding expectations by 18%</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Risk Card */}
+          <div 
+            onClick={() => toggleCard('risks')}
+            className={`group bg-white rounded-lg shadow-sm hover:shadow-md p-2 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
+              expandedCard === 'risks' 
+                ? 'min-h-[200px] shadow-lg' 
+                : 'min-h-[50px]'
+            }`}
+          >
+            <div className="flex items-center justify-between mb-1">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Zones at Risk</h4>
+              </div>
+              {expandedCard === 'risks' ? 
+                <ChevronUp size={16} className="text-gray-600" /> : 
+                <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
+              }
+            </div>
+            
+            {expandedCard !== 'risks' ? (
+              <>
+                <p className="text-2xl font-semibold text-gray-900">3 Zones</p>
+                <p className="text-xs text-gray-500">Chiriquí, Colón, San Miguelito</p>
+                <p className="text-xs text-gray-400 mt-2 italic">Click to view details</p>
+              </>
+            ) : (
+              <div className="mt-4 space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div 
+                    className="bg-red-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("What are our critical issues and backorders? How can we resolve them?")}
+                  >
+                    <h5 className="text-sm font-semibold text-red-800 mb-2">Critical Issues</h5>
+                    <p className="text-xl font-bold text-red-600">28</p>
+                    <p className="text-sm text-red-700">Total backorders</p>
+                  </div>
+                  <div 
+                    className="bg-orange-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("Which products are out of stock and what's the urgency level?")}
+                  >
+                    <h5 className="text-sm font-semibold text-orange-800 mb-2">Out of Stock</h5>
+                    <p className="text-xl font-bold text-orange-600">14</p>
+                    <p className="text-sm text-orange-700">Urgent items</p>
+                  </div>
+                  <div 
+                    className="bg-yellow-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("Show me details about overdue payments and recovery strategies.")}
+                  >
+                    <h5 className="text-sm font-semibold text-yellow-800 mb-2">Overdue</h5>
+                    <p className="text-lg font-bold text-yellow-700">$24.3K</p>
+                    <p className="text-sm text-yellow-700">120+ days</p>
+                  </div>
+                </div>
+                <div 
+                  className="bg-gray-50 rounded-lg p-3 intelligence-clickable"
+                  onClick={() => setInputValue("Analyze risk zones Chiriquí, Colón, and San Miguelito. What actions should we take?")}
+                >
+                  <h5 className="text-sm font-semibold text-gray-800 mb-2">Risk Zones Details</h5>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700">Chiriquí</span>
+                      <span className="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">High Risk</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700">Colón</span>
+                      <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">Medium Risk</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700">San Miguelito</span>
+                      <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Low Risk</span>
                     </div>
                   </div>
                 </div>
-              ))
+              </div>
             )}
+          </div>
 
-            {isTyping && (
-              <div className="flex justify-start">
-                <div className="bg-gray-50 text-gray-900 border border-gray-200 p-4 rounded-2xl max-w-[80%]">
-                  <TypingMessage />
+          {/* Opportunity Card */}
+          <div 
+            onClick={() => toggleCard('opportunities')}
+            className={`group bg-white rounded-lg shadow-sm hover:shadow-md p-2 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
+              expandedCard === 'opportunities' 
+                ? 'min-h-[200px] shadow-lg' 
+                : 'min-h-[50px]'
+            }`}
+          >
+            <div className="flex items-center justify-between mb-1">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">Product Opportunity</h4>
+              </div>
+              {expandedCard === 'opportunities' ? 
+                <ChevronUp size={16} className="text-gray-600" /> : 
+                <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
+              }
+            </div>
+            
+            {expandedCard !== 'opportunities' ? (
+              <>
+                <p className="text-lg font-semibold text-gray-900">Vinagre Premium</p>
+                <p className="text-xs text-gray-500">High potential • Poor: Mango Salsa</p>
+                <p className="text-xs text-gray-400 mt-2 italic">Click to view details</p>
+              </>
+            ) : (
+              <div className="mt-4 space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div 
+                    className="bg-green-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("Tell me about Vinagre Premium opportunity and how to maximize the $45K potential revenue.")}
+                  >
+                    <h5 className="text-sm font-semibold text-green-800 mb-2">High Opportunity</h5>
+                    <p className="text-lg font-bold text-green-600">Vinagre Premium</p>
+                    <p className="text-sm text-green-700 mb-2">+$45K potential revenue</p>
+                    <div className="text-xs text-green-600">
+                      <p>• Increase distribution to 15 new stores</p>
+                      <p>• Focus on premium market segment</p>
+                    </div>
+                  </div>
+                  <div 
+                    className="bg-red-50 rounded-lg p-3 intelligence-clickable"
+                    onClick={() => setInputValue("Analyze Mango Salsa underperformance and suggest solutions or discontinuation strategy.")}
+                  >
+                    <h5 className="text-sm font-semibold text-red-800 mb-2">Underperforming</h5>
+                    <p className="text-lg font-bold text-red-600">Mango Salsa</p>
+                    <p className="text-sm text-red-700 mb-2">-$12K revenue impact</p>
+                    <div className="text-xs text-red-600">
+                      <p>• Consider discontinuation</p>
+                      <p>• Low demand across all regions</p>
+                    </div>
+                  </div>
+                </div>
+                <div 
+                  className="bg-blue-50 rounded-lg p-3 intelligence-clickable"
+                  onClick={() => setInputValue("Detail the strategic actions for Vinagre Premium launch and Aceite de Coco promotion timeline.")}
+                >
+                  <h5 className="text-sm font-semibold text-blue-800 mb-2">Strategic Actions</h5>
+                  <div className="space-y-2 text-sm text-blue-700">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      <span>Launch Vinagre Premium in Panamá Centro (+8 stores)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      <span>Promotional campaign for Aceite de Coco</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      <span>Review Mango Salsa pricing strategy</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Input Area */}
-          <div className="p-6 bg-white border-t border-gray-100">
-            <div className={`flex items-center gap-3 bg-white border-2 rounded-2xl transition-all duration-200 min-h-[60px] ${
+        </div>
+      </div>
+      {/* Main Chat Interface */}
+      <div className="flex flex-col h-[calc(100vh-120px)]">
+        <main className="flex flex-col items-center justify-center p-8 flex-1 relative">
+          {/* Vorta Logo */}
+          {messages.length === 0 && !isTyping && (
+            <div className="vortex-icon mb-12" style={{ width: '60px', height: '60px', '--vortex-size': '60px', animation: 'vortex-slow-rotate 20s linear infinite' } as React.CSSProperties}>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+              <div className="vortex-blade"></div>
+            </div>
+          )}
+
+          {/* Messages Area */}
+          {messages.length > 0 && (
+            <div className="flex-1 w-full max-w-4xl overflow-y-auto mb-8 px-8">
+              <div className="space-y-3">
+                {messages.map((message) => (
+                  <div key={message.id} className="animate-[fadeIn_0.3s_ease-out]">
+                    {message.isUser ? (
+                      <div className="flex justify-end">
+                        <div className="user-bubble bg-gradient-to-br from-blue-600 to-blue-700 text-white px-4 py-2.5 rounded-2xl rounded-bl-md max-w-[70%] animate-[fadeInSlide_0.4s_ease-out_forwards] text-sm font-normal leading-relaxed shadow-sm">
+                          {message.content}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-2 text-sm text-gray-500">
+                          <div className="vortex-icon active" style={{ width: '14px', height: '14px', '--vortex-size': '14px' } as React.CSSProperties}>
+                            <div className="vortex-blade"></div>
+                            <div className="vortex-blade"></div>
+                            <div className="vortex-blade"></div>
+                            <div className="vortex-blade"></div>
+                            <div className="vortex-blade"></div>
+                          </div>
+                          <span>La Doña AI</span>
+                        </div>
+                        <TypingMessage 
+                          content={message.content}
+                          isLatestMessage={messages.indexOf(message) === messages.length - 1 && !message.isUser}
+                          messageId={message.id}
+                        />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Typing Indicator */}
+          {isTyping && (
+            <div className="mb-8 animate-[fadeIn_0.3s_ease-out]">
+              <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                <div className="vortex-icon active" style={{ width: '14px', height: '14px', '--vortex-size': '14px' } as React.CSSProperties}>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                </div>
+                <span>La Doña AI</span>
+              </div>
+              <div className="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          )}
+
+
+
+          {/* Chat Input Container */}
+          <div className="w-full max-w-4xl px-8 bg-gray-50 pb-8 pt-4">
+            <div className={`relative flex items-center bg-white rounded-3xl border transition-all duration-200 focus-within:bg-white p-2 ${
               isListening 
                 ? 'border-red-300 bg-red-50/30 shadow-lg shadow-red-100/50' 
                 : 'border-gray-200/60 hover:bg-gray-50/50'
@@ -548,18 +620,18 @@ export default function Chat() {
                     <Paperclip size={20} strokeWidth={1.5} />
                   </button>
 
-                  {/* Voice button with push-to-talk */}
+                  {/* Voice button */}
                   <button
-                    onMouseDown={startRecording}
-                    onMouseUp={stopRecording}
-                    onMouseLeave={stopRecording}
+                    onClick={toggleVoice}
                     title={
                       !speechSupported 
                         ? "Reconocimiento de voz no disponible" 
-                        : "Mantén presionado para grabar (como ChatGPT desktop)"
+                        : isListening 
+                          ? "Hacer clic para detener grabación (Ctrl+M)" 
+                          : "Hacer clic y hablar (Ctrl+M)"
                     }
                     disabled={!speechSupported}
-                    className={`relative p-3 transition-all duration-200 rounded-lg pl-[9px] pr-[9px] select-none ${
+                    className={`relative p-3 transition-all duration-200 rounded-lg pl-[9px] pr-[9px] ${
                       !speechSupported
                         ? 'text-gray-300 bg-gray-50 cursor-not-allowed'
                         : isListening 
