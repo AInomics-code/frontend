@@ -22,21 +22,21 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
     // High Priority - Critical Business Questions
     {
       id: 'cash-flow',
-      text: "What is our current cash flow situation and which clients pose the highest collection risk?",
+      text: "¿Cuál es nuestra situación actual de flujo de caja y qué clientes representan el mayor riesgo de cobranza?",
       category: 'financial',
       icon: <DollarSign size={14} className="text-gray-400" />,
       priority: 'high'
     },
     {
       id: 'stock-alerts',
-      text: "Which products are experiencing stockouts and what is the revenue impact?",
+      text: "¿Qué productos están experimentando desabastecimiento y cuál es el impacto en los ingresos?",
       category: 'inventory',
       icon: <AlertTriangle size={14} className="text-gray-400" />,
       priority: 'high'
     },
     {
       id: 'underperforming-regions',
-      text: "Which regions are underperforming and what specific actions should we take?",
+      text: "¿Qué regiones tienen bajo rendimiento y qué acciones específicas deberíamos tomar?",
       category: 'performance',
       icon: <TrendingUp size={14} className="text-gray-400" />,
       priority: 'high'
@@ -45,28 +45,28 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
     // Medium Priority - Strategic Analysis
     {
       id: 'top-performers',
-      text: "Which sales reps, products, and regions are driving our strongest results?",
+      text: "¿Qué representantes de ventas, productos y regiones están generando nuestros mejores resultados?",
       category: 'performance',
       icon: <Target size={14} className="text-gray-400" />,
       priority: 'medium'
     },
     {
       id: 'client-analysis',
-      text: "Analyze our top 5 clients by revenue and identify growth opportunities",
+      text: "Analiza nuestros top 5 clientes por ingresos e identifica oportunidades de crecimiento",
       category: 'clients',
       icon: <Users size={14} className="text-gray-400" />,
       priority: 'medium'
     },
     {
       id: 'product-margins',
-      text: "Which products have the highest profit margins and should we focus on promoting them?",
+      text: "¿Qué productos tienen los márgenes de ganancia más altos y deberíamos enfocarnos en promocionarlos?",
       category: 'products',
       icon: <Package size={14} className="text-gray-400" />,
       priority: 'medium'
     },
     {
       id: 'promotion-roi',
-      text: "What is the ROI of our current promotional campaigns and which should we expand?",
+      text: "¿Cuál es el ROI de nuestras campañas promocionales actuales y cuáles deberíamos expandir?",
       category: 'marketing',
       icon: <BarChart3 size={14} className="text-gray-400" />,
       priority: 'medium'
@@ -75,21 +75,21 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
     // Low Priority - Operational Insights
     {
       id: 'daily-summary',
-      text: "Give me a comprehensive summary of today's business performance",
+      text: "Dame un resumen integral del rendimiento empresarial de hoy",
       category: 'operations',
       icon: <Lightbulb size={14} className="text-gray-400" />,
       priority: 'low'
     },
     {
       id: 'territory-routes',
-      text: "How can we optimize sales rep routes to improve territory coverage?",
+      text: "¿Cómo podemos optimizar las rutas de los representantes de ventas para mejorar la cobertura territorial?",
       category: 'operations',
       icon: <Zap size={14} className="text-gray-400" />,
       priority: 'low'
     },
     {
       id: 'new-opportunities',
-      text: "What new market opportunities should La Doña consider based on current trends?",
+      text: "¿Qué nuevas oportunidades de mercado debería considerar La Doña basándose en las tendencias actuales?",
       category: 'strategy',
       icon: <TrendingUp size={14} className="text-gray-400" />,
       priority: 'low'
