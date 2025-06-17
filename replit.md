@@ -112,6 +112,11 @@ Changelog:
   * Enhanced Spanish keyword detection for business queries
   * Interface components completely localized (Performance Score, Zones at Risk, Product Opportunity)
   * All user interaction text translated to Spanish
+  * Spanish FAQ responses expanded to match English depth and analytical quality
+  * Three critical business questions now have comprehensive Spanish responses:
+    - Budget variance analysis with full financial breakdown
+    - Product rotation analysis with actionable recovery plans  
+    - Promotional performance analysis with strategic recommendations
 ```
 
 ## User Preferences

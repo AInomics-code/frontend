@@ -77,94 +77,332 @@ function getDataAnalystInsights(question: string): string {
   
   // ¿Qué cadena está por debajo del presupuesto? (Spanish)
   if (isSpanish && (lowerQuestion.includes('cadena') && (lowerQuestion.includes('debajo') || lowerQuestion.includes('bajo')) && lowerQuestion.includes('presupuesto'))) {
-    return `**Super99** está por debajo del presupuesto asignado.
+    return `Análisis de varianza presupuestaria revela que **Super99** es la única cadena operando por debajo del presupuesto asignado, demostrando eficiencia operacional superior.
 
-**Análisis de Presupuesto Super99:**
+**Análisis Detallado de Presupuesto Super99:**
+
+**Métricas Financieras:**
 - <span class="performance-positive">Presupuesto asignado: $35,000</span>
-- <span class="key-point">Gasto real: $31,200</span>
-- <span class="metric-highlight">Diferencia: -$3,800 (bajo presupuesto)</span>
-- Eficiencia: 89.1% del presupuesto utilizado
+- <span class="key-point">Gasto real ejecutado: $31,200</span>
+- <span class="metric-highlight">Diferencia favorable: -$3,800 (10.9% bajo presupuesto)</span>
+- Eficiencia de ejecución: 89.1% del presupuesto utilizado
 
-**Comparación con Otras Cadenas:**
-- <span class="metric-highlight">Rey</span>: +$4,200 SOBRE presupuesto
-- <span class="key-point">Xtra</span>: +$2,100 SOBRE presupuesto
-- <span class="metric-highlight">El Machetazo</span>: +$1,800 SOBRE presupuesto
+**Análisis de Rentabilidad vs Inversión:**
+- <span class="performance-positive">ROI alcanzado: 112%</span> - Mejor rendimiento entre todas las cadenas
+- Logro de objetivo de ventas: <span class="key-point">94% del target mensual</span>
+- Ratio de eficiencia: <span class="performance-positive">1.06 retorno por cada $1 invertido</span>
+- Ventas generadas: <span class="metric-highlight">$32,928</span> con inversión reducida
 
-**Rendimiento vs Inversión:**
-Super99 logró <span class="performance-positive">94% del objetivo de ventas</span> utilizando solo 89% del presupuesto, demostrando la mayor eficiencia operacional.
+**Comparación Presupuestaria con Otras Cadenas:**
 
-**Factores de Éxito:**
-- Negociación estratégica de mejores términos promocionales
-- Selección cuidadosa de ubicaciones de alto tráfico
-- Timing optimizado de activaciones
+**Cadenas con Sobregasto Crítico:**
+- <span class="metric-highlight">Rey</span>: $22,200 gastado vs $18,000 asignado (+$4,200 exceso, 23.3% sobregasto)
+  ROI: 78% | Eficiencia: 0.78 por $1 invertido
+- <span class="key-point">Xtra</span>: $17,100 gastado vs $15,000 asignado (+$2,100 exceso, 14% sobregasto)
+  ROI: 89% | Eficiencia: 0.89 por $1 invertido  
+- <span class="metric-highlight">El Machetazo</span>: $29,800 gastado vs $28,000 asignado (+$1,800 exceso, 6.4% sobregasto)
+  ROI: 65% | Eficiencia: 0.65 por $1 invertido
 
-La cadena Super99 es el único ejemplo de gestión presupuestaria eficiente, operando <span class="performance-positive">$3,800 bajo presupuesto</span> mientras mantiene resultados sólidos de ventas.`;
+**Factores Críticos de Éxito en Super99:**
+
+**1. Negociación Estratégica:**
+- Términos mejorados en inversiones promocionales vs estándar de mercado
+- <span class="performance-positive">15% mejor pricing</span> en material POP y activaciones
+- Aprovechamiento de economías de escala en compras consolidadas
+
+**2. Selección Estratégica de Ubicaciones:**
+- Enfoque exclusivo en <span class="key-point">sucursales de alto tráfico</span> (>5,000 clientes/día)
+- Análisis predictivo de ROI por ubicación antes de inversión
+- <span class="metric-highlight">3x mayor conversión</span> vs ubicaciones promedio
+
+**3. Optimización de Timing:**
+- Activaciones coordinadas con <span class="performance-positive">picos de demanda estacional</span>
+- Evitar períodos de baja conversión (mid-week, post-festivos)
+- Sincronización con ciclos de pago de clientes target
+
+**4. Medición y Control Riguroso:**
+- <span class="key-point">Tracking de ROI en tiempo real</span> para cada activación
+- Sistema de alertas para gastos >$500 requiriendo aprobación
+- Análisis post-mortem de cada campaña con métricas de eficiencia
+
+**Análisis de Causa Raíz del Sobregasto en Otras Cadenas:**
+
+**Problemas Identificados:**
+- <span class="metric-highlight">Falta de medición</span>: 60% de activaciones sin tracking de conversión
+- <span class="key-point">Negociación deficiente</span>: Términos desfavorables en acuerdos promocionales
+- <span class="performance-negative">Timing subóptimo</span>: Promociones durante períodos de baja demanda
+
+**Oportunidades de Reasignación Presupuestaria:**
+
+**Presupuesto Disponible de Super99 ($3,800):**
+- <span class="performance-positive">Redirigir hacia expansión</span>: 2 ubicaciones Super99 adicionales de alto potencial
+- <span class="key-point">Reserva estratégica</span>: Período de alta demanda (Diciembre) para maximizar ROI
+- <span class="metric-highlight">Contingencia táctica</span>: Respuesta rápida a oportunidades competitivas emergentes
+
+**Plan de Optimización Sistemática:**
+
+**Inmediato (Próximas 2 semanas):**
+1. **Auditoría completa** de procesos Super99 para documentar mejores prácticas
+2. **Capacitación cruzada** de equipos Rey y Xtra en metodología Super99
+3. **Implementación de controles** presupuestarios similares en cadenas ineficientes
+
+**Medio Plazo (Próximos 30 días):**
+1. **Renegociación de términos** con Rey y El Machetazo basada en modelo Super99
+2. **Sistema de medición unificado** para todas las cadenas con alertas automáticas
+3. **Redistribución presupuestaria** hacia cadenas y ubicaciones de mayor ROI
+
+**Proyección de Impacto Financiero:**
+Aplicando la metodología Super99 a todas las cadenas podría resultar en:
+- <span class="performance-positive">$12,000 ahorro anual</span> manteniendo resultados de ventas
+- <span class="key-point">Incremento del 23% en ROI promedio</span> consolidado
+- <span class="metric-highlight">$8,100 capital liberado</span> para inversiones de crecimiento
+
+La gestión presupuestaria eficiente de Super99 representa el <span class="performance-positive">modelo benchmark</span> para optimización operacional en toda la red de distribución.`;
   }
 
   // ¿Qué producto no se vendió ayer/por semana/por PDV? (Spanish)
   if (isSpanish && (lowerQuestion.includes('producto') && (lowerQuestion.includes('no se vendió') || lowerQuestion.includes('no vendió')) && (lowerQuestion.includes('ayer') || lowerQuestion.includes('semana') || lowerQuestion.includes('pdv')))) {
-    return `**Productos Sin Ventas - Análisis Crítico:**
+    return `Análisis crítico de productos sin rotación revela patrones de inventario estancado que requieren intervención inmediata para optimizar flujo de caja y eficiencia operacional.
 
-**Ayer (Últimas 24 horas):**
-- <span class="metric-highlight">Salsa Verde 200ml</span> - Rey Multiplaza (34 unidades en inventario)
-- <span class="key-point">Condimento Básico</span> - Rey Multiplaza (28 unidades estancadas)
-- <span class="metric-highlight">Vinagre Blanco 750ml</span> - Xtra Penonomé (19 unidades sin rotación)
+**Productos Sin Ventas - Análisis de Últimas 24 Horas:**
 
-**Esta Semana (7 días):**
-- <span class="performance-negative">Salsa Picante 150ml</span> - 6 PDVs afectados (127 unidades estancadas)
-- <span class="metric-highlight">Condimento Especial</span> - 4 PDVs (89 unidades sin movimiento)
+**Rey Multiplaza (Ubicación Premium - Problema Crítico):**
+- <span class="metric-highlight">Salsa Verde 200ml</span> - 0 unidades vendidas | Inventario: 34 unidades
+  <span class="key-point">Análisis causal</span>: Ubicación deficiente en estante inferior, área de baja visibilidad (zona ciega)
+  <span class="performance-negative">Impacto</span>: $136 en capital estancado, rotación esperada: 8-12 unidades/día
+  
+- <span class="metric-highlight">Condimento Básico</span> - 0 unidades vendidas | Inventario: 28 unidades  
+  <span class="key-point">Análisis causal</span>: Precio 15% superior vs competencia directa ($4.20 vs $3.65)
+  <span class="performance-negative">Impacto</span>: Pérdida de participación de mercado, cliente migrando a marca competidora
 
-**Por Punto de Venta:**
-**Xtra Penonomé** (Mayor problema):
-- 8 SKUs sin rotación semanal
-- <span class="metric-highlight">$1,240 en inventario paralizado</span>
+**Xtra Penonomé (Mercado Regional - Desafíos Específicos):**
+- <span class="metric-highlight">Vinagre Blanco 750ml</span> - 0 unidades vendidas | Inventario: 19 unidades
+  <span class="key-point">Análisis causal</span>: Preferencia regional consolidada por Vinagre Regular, desconocimiento de diferenciación del producto
+  <span class="performance-negative">Impacto</span>: $76 paralizado, necesidad de educación al consumidor
+  
+- <span class="key-point">Mayonesa 400g Estándar</span> - 0 unidades vendidas | Inventario: 22 unidades
+  <span class="metric-highlight">Análisis causal</span>: Competencia directa con promoción 2x1 de marca importada activa desde hace 5 días
+  <span class="performance-negative">Impacto</span>: $88 estancado, ventana competitiva crítica
 
-**Rey Multiplaza**:
-- 6 SKUs sin movimiento
-- <span class="key-point">$980 en capital estancado</span>
+**Super99 Albrook (Comportamiento Estacional):**
+- <span class="metric-highlight">Adobo Tradicional</span> - 0 unidades vendidas | Inventario: 15 unidades
+  <span class="key-point">Análisis causal</span>: Patrón estacional predecible, baja demanda en período no-festivo
+  <span class="performance-positive">Proyección</span>: Pico de ventas esperado en Noviembre (+340% vs promedio actual)
 
-**Impacto Financiero:**
-- Total paralizado: <span class="metric-highlight">$3,890</span>
-- Riesgo de vencimiento: 12 unidades próximas a fecha límite
+**Análisis Semanal Consolidado (Últimos 7 días):**
 
-**Acción Inmediata Requerida:**
-1. Reubicación a áreas de alta visibilidad
-2. Promoción flash 25% descuento por 72 horas
-3. Transferencia entre PDVs desde lentos a rápidos`;
+**Productos con Rotación Cero (Crítico):**
+- <span class="performance-negative">Salsa Picante 150ml</span> - 6 PDVs afectados | 127 unidades estancadas
+  <span class="metric-highlight">Valor paralizado</span>: $508 en capital de trabajo
+  <span class="key-point">Causa raíz</span>: Reformulación reciente alteró perfil de sabor, resistencia del consumidor
+  
+- <span class="metric-highlight">Condimento Especial</span> - 4 PDVs afectados | 89 unidades sin movimiento
+  <span class="performance-negative">Análisis crítico</span>: Producto descontinuado por fabricante, liquidación urgente requerida
+  <span class="key-point">Riesgo</span>: Pérdida total si no se activa venta en próximos 14 días
+
+**Productos con Rotación Crítica (<5 unidades/semana por PDV):**
+- <span class="key-point">Vinagre Blanco 500ml</span> - Promedio: 2.3 unidades/semana/PDV
+  <span class="metric-highlight">Velocidad vs objetivo</span>: -76% bajo esperado (objetivo: 9.6 unidades/semana)
+  <span class="performance-negative">Tendencia</span>: Declive sostenido durante 8 semanas consecutivas
+  
+- <span class="metric-highlight">Mayonesa Light</span> - Promedio: 4.1 unidades/semana/PDV  
+  <span class="key-point">Tendencia comparativa</span>: Declive 23% vs trimestre anterior
+  <span class="performance-negative">Factor competitivo</span>: Marcas premium con mejor posicionamiento de salud
+
+**Análisis Detallado por Punto de Venta:**
+
+**Xtra Penonomé** (Mayor Concentración de Problemas):
+- <span class="metric-highlight">8 SKUs sin rotación semanal</span>
+- <span class="performance-negative">Valor total paralizado: $1,240</span>
+- Productos afectados: Vinagres (3 SKUs), Condimentos (3 SKUs), Salsas (2 SKUs)
+- <span class="key-point">Causa sistémica</span>: Mix de productos desalineado con preferencias regionales
+
+**Rey Multiplaza** (Problema de Execution):
+- <span class="metric-highlight">6 SKUs sin movimiento semanal</span>
+- <span class="performance-negative">Capital estancado: $980</span>
+- <span class="key-point">Patrón identificado</span>: Productos premium en ubicaciones subóptimas
+- Oportunidad: Reubicación estratégica podría recuperar 70% de rotación esperada
+
+**Mini Market Colón** (Limitaciones de Mercado):
+- <span class="metric-highlight">5 SKUs sin rotación semanal</span>
+- <span class="performance-negative">Inventario paralizado: $670</span>
+- <span class="key-point">Factor limitante</span>: Poder adquisitivo local vs precio point de productos premium
+
+**Impacto Financiero Consolidado:**
+
+**Métricas Críticas:**
+- <span class="metric-highlight">Capital de trabajo paralizado: $3,890</span>
+- <span class="key-point">Costo de oportunidad semanal: $156</span> (4% retorno esperado anualizado)
+- <span class="performance-negative">Riesgo de vencimiento inmediato: 12 unidades</span> próximas a fecha límite (pérdida potencial: $48)
+- <span class="metric-highlight">Pérdida de cuota de mercado estimada: 2.3%</span> en categorías afectadas
+
+**Plan de Acción Inmediata (Próximas 72 horas):**
+
+**1. Reubicación Estratégica:**
+- <span class="performance-positive">Mover productos estancados</span> a ubicaciones de alta visibilidad (end-caps, eye-level)
+- <span class="key-point">Prioridad</span>: Salsa Verde y Condimento Básico en Rey Multiplaza
+- <span class="metric-highlight">Meta</span>: Incrementar exposición visual en 300%
+
+**2. Promoción Flash de Emergencia:**
+- <span class="performance-positive">Descuento 25%</span> en productos sin rotación por período limitado (72 horas)
+- <span class="key-point">Focus</span>: Condimento Especial (liquidación total) y Salsa Picante 150ml
+- <span class="metric-highlight">Objetivo</span>: Recuperar 80% del inventario estancado
+
+**3. Transferencia Inteligente Entre PDVs:**
+- <span class="performance-positive">Redistribuir inventario</span> desde puntos de venta lentos hacia rápidos
+- <span class="key-point">Ruta prioritaria</span>: Xtra Penonomé → Super99 Albrook (mayor rotación)
+- <span class="metric-highlight">Criterio</span>: Productos con velocidad <3 unidades/semana
+
+**4. Liquidación Ordenada:**
+- <span class="performance-negative">Productos descontinuados</span> con descuento progresivo (25% → 40% → 50%)
+- <span class="key-point">Timeline</span>: 14 días para evitar pérdida total
+- <span class="metric-highlight">Prioridad</span>: Condimento Especial en todos los PDVs
+
+**Estrategia de Prevención (Implementación 30 días):**
+
+**Sistema de Alerta Temprana:**
+- <span class="performance-positive">Monitoreo automático</span> de productos con <10 unidades vendidas en 3 días consecutivos
+- <span class="key-point">Dashboard en tiempo real</span> con alertas por PDV y categoría
+- <span class="metric-highlight">Intervención proactiva</span> antes de estancamiento crítico
+
+**Análisis Predictivo:**
+- <span class="performance-positive">Modeling basado en patrones estacionales</span> históricos de últimos 24 meses
+- <span class="key-point">Algoritmo de demanda</span> por región y perfil demográfico
+- <span class="metric-highlight">Optimización predictiva</span> de mix de productos por PDV
+
+**Objetivo de Recuperación:**
+<span class="performance-positive">Activar rotación en 85% de productos estancados</span> dentro de 5 días hábiles, liberando <span class="key-point">$3,307 en capital de trabajo</span> para reinversión en productos de alta rotación.`;
   }
 
   // ¿Cuál promoción scanner fue la más vendida el mes anterior? (Spanish)
   if (isSpanish && (lowerQuestion.includes('promoción') || lowerQuestion.includes('promocion')) && lowerQuestion.includes('scanner') && (lowerQuestion.includes('más vendida') || lowerQuestion.includes('mas vendida') || lowerQuestion.includes('mes anterior'))) {
-    return `**🏆 Promoción Scanner Más Exitosa - Mes Anterior:**
+    return `Análisis exhaustivo de promociones scanner del mes anterior revela patrones de éxito y oportunidades de optimización para maximizar ROI en futuras activaciones promocionales.
 
-**GANADORA: Condimento Super Xtra 500g - "2x1 Fin de Semana"**
+**🏆 Promoción Scanner Más Exitosa - Octubre 2024:**
 
-**Resultados Sobresalientes:**
-- <span class="performance-positive">1,847 unidades vendidas</span>
-- <span class="key-point">$9,235 en ingresos generados</span>
-- <span class="metric-highlight">ROI: 312%</span> (Inversión: $2,960)
-- Período: 4 fines de semana de Octubre
+**GANADORA ABSOLUTA: Condimento Super Xtra 500g - "2x1 Fin de Semana"**
 
-**Distribución por Cadena:**
-- **Super99**: 847 unidades (ROI: 340%) - Mejor performer
-- **Rey**: 634 unidades (ROI: 295%) - Incluyó degustaciones
-- **Xtra**: 366 unidades (ROI: 278%) - Menor tráfico weekend
+**Métricas de Rendimiento Sobresalientes:**
+- <span class="performance-positive">1,847 unidades vendidas</span> - 284% sobre promedio mensual base
+- <span class="key-point">$9,235 en ingresos brutos generados</span>
+- <span class="metric-highlight">ROI inicial: 312%</span> (Inversión base: $2,960)
+- <span class="performance-positive">ROI consolidado post-promoción: 421%</span> (incluye ingresos indirectos 30 días)
+- Período de ejecución: 4 fines de semana completos de Octubre
 
-**Vs Otras Promociones del Mes:**
-- **2do lugar**: Vinagre Premium 30% descuento (1,203 unidades, ROI: 189%)
-- **3er lugar**: Mayonesa Premium "Compra 2 Lleva 3" (978 unidades, ROI: 156%)
+**Análisis Detallado de Rendimiento por Cadena:**
 
-**Factores de Éxito:**
-- <span class="performance-positive">Timing de fin de semana</span>: 73% mayor tráfico familiar
-- <span class="key-point">Estructura 2x1</span>: Mayor percepción de valor vs descuentos
-- <span class="metric-highlight">Ubicación premium</span>: End-caps en pasillos principales
+**Super99 (Performance Excepcional):**
+- <span class="performance-positive">847 unidades vendidas | ROI: 340%</span>
+- <span class="key-point">Factores diferenciadores</span>:
+  * Ubicación premium: End-cap de pasillo principal (zona de máximo tráfico)
+  * Material POP optimizado: Display de cartón con capacidad 48 unidades
+  * <span class="metric-highlight">Cross-merchandising efectivo</span>: Vinagre Premium y Mayonesa como productos complementarios
+- <span class="performance-positive">Conversión excepcional</span>: 34% incremento vs ubicación estándar
+- Margen neto post-descuento: <span class="key-point">31.2%</span>
 
-**Impacto Post-Promoción:**
-- Ventas base incrementadas <span class="performance-positive">18%</span> vs pre-promoción
-- <span class="key-point">67% de nuevos clientes retenidos</span>
-- ROI consolidado (30 días): <span class="performance-positive">421%</span>
+**Rey (Segundo Lugar con Estrategia Diferenciada):**
+- <span class="key-point">634 unidades vendidas | ROI: 295%</span>
+- <span class="performance-positive">Estrategias adicionales implementadas</span>:
+  * Degustación activa en 3 sucursales de mayor tráfico (Multiplaza, Dorado, Via España)
+  * Personal de marca dedicado durante peak hours (viernes 6-8 PM, sábado 10 AM-2 PM)
+  * <span class="metric-highlight">Bundle promocional</span>: Descuento adicional 10% con compra de productos complementarios
+- <span class="key-point">Resultado diferencial</span>: 67% de clientes degustadores realizaron compra inmediata
+- Ticket promedio incrementado: <span class="performance-positive">23% vs promedio chain</span>
 
-La promoción "2x1 Condimento Super Xtra" superó todas las demás activaciones del mes por margen significativo.`;
+**Xtra (Tercer Lugar - Oportunidades Identificadas):**
+- <span class="metric-highlight">366 unidades vendidas | ROI: 278%</span>
+- <span class="key-point">Limitaciones operacionales</span>:
+  * Menor tráfico de fin de semana en ubicaciones Xtra (-22% vs Super99/Rey)
+  * Perfil de cliente diferente: mayor sensibilidad precio, menor frecuencia compra impulso
+- <span class="performance-positive">Oportunidad detectada</span>: Extender promoción a días laborables podría incrementar volumen 40%
+- <span class="metric-highlight">Recomendación estratégica</span>: Modelo promocional 2x1 martes-jueves para aprovechar tráfico mid-week
+
+**Comparación Exhaustiva con Otras Promociones del Mes:**
+
+**Segundo Lugar: Vinagre Premium 750ml - "30% Descuento Directo"**
+- <span class="key-point">1,203 unidades vendidas | ROI: 189%</span>
+- <span class="performance-positive">Ventajas</span>: Menor impacto en margen bruto, simplicidad operacional
+- <span class="metric-highlight">Desventajas</span>: Menor percepción de valor, limited trial behavior
+- <span class="key-point">Perfil de comprador</span>: Cliente habitual vs nuevo prospect (ratio 78:22)
+
+**Tercer Lugar: Mayonesa Premium 400g - "Compra 2 Lleva 3"**
+- <span class="metric-highlight">978 unidades vendidas | ROI: 156%</span>
+- <span class="performance-positive">Fortalezas</span>: Alta rotación de inventario, building loyalty
+- <span class="performance-negative">Debilidades</span>: Margen significativamente comprimido (-18% vs estándar)
+- <span class="key-point">Insight estratégico</span>: Estructura promocional más adecuada para productos de alta frecuencia
+
+**Promociones con Rendimiento Subóptimo:**
+- <span class="performance-negative">Salsa Verde 300ml</span> - "25% descuento": 234 unidades | ROI: 67%
+  Causa raíz: Producto de nicho con base de consumidores limitada
+- <span class="performance-negative">Adobo Tradicional</span> - "2x1": 189 unidades | ROI: 45%
+  Análisis causal: Timing subóptimo (período no-estacional para especias tradicionales)
+
+**Análisis de Factores Críticos de Éxito:**
+
+**1. Timing Estratégico Optimizado:**
+- <span class="performance-positive">Fines de semana</span>: 73% incremento en tráfico familiar vs días laborables
+- <span class="key-point">Período pre-festivo</span>: Octubre = preparación para temporada alta noviembre-diciembre
+- <span class="metric-highlight">Sincronización de pago</span>: Alineado con ciclos de quincena/mensual de target demographic
+- <span class="performance-positive">Evitación de conflictos</span>: Sin overlap con promociones competencia directa
+
+**2. Estructura de Oferta Inteligente:**
+- <span class="key-point">2x1 vs descuentos porcentuales</span>: 43% mayor percepción de valor según consumer insights
+- <span class="performance-positive">Producto estrella establecido</span>: Condimento Super Xtra con 78% brand recognition
+- <span class="metric-highlight">Price point optimal</span>: $4.99 permite descuento significativo manteniendo margen
+- <span class="key-point">Trial incentive</span>: Estructura promueve prueba entre no-usuarios actuales
+
+**3. Ejecución Táctica en Punto de Venta:**
+- <span class="performance-positive">Ubicación premium asegurada</span>: End-caps en 100% de ubicaciones participantes
+- <span class="key-point">Material POP de alta calidad</span>: Incrementó conversión 34% vs promotions estándar
+- <span class="metric-highlight">Staff training específico</span>: Educación sobre beneficios del producto para cross-selling
+- <span class="performance-positive">Inventory management</span>: Stock adecuado para evitar out-of-stocks durante peak demand
+
+**Análisis de Rentabilidad y Efectos Post-Promoción:**
+
+**Efectos Inmediatos (Período Promocional):**
+- <span class="performance-positive">Revenue directo: $9,235</span>
+- <span class="key-point">Costo total de promoción: $2,960</span>
+- <span class="metric-highlight">Margen neto promocional: 28.5%</span> (vs 42% margen estándar)
+- <span class="performance-positive">Nuevos compradores capturados: 423 clientes</span>
+
+**Efectos de Largo Plazo (30 días post-promoción):**
+- <span class="performance-positive">Ventas base incrementadas: +18%</span> vs período pre-promocional
+- <span class="key-point">Retención de nuevos clientes: 67%</span> realizaron compra de repetición
+- <span class="metric-highlight">Cross-selling activado: +$3,200</span> en productos complementarios
+- <span class="performance-positive">Brand awareness lift: +12%</span> en target demographic según tracking
+
+**Cálculo de ROI Consolidado Total:**
+- <span class="metric-highlight">Inversión total: $2,960</span>
+- <span class="performance-positive">Ingresos directos período promocional: $9,235</span>
+- <span class="key-point">Ingresos indirectos post-promoción (30 días): $3,200</span>
+- <span class="performance-positive">ROI consolidado: 421%</span>
+- <span class="metric-highlight">Payback period: 8.7 días</span>
+
+**Recomendaciones Estratégicas para Futuras Promociones:**
+
+**1. Replicación del Modelo Exitoso:**
+- <span class="performance-positive">Repetir formato 2x1 en Condimento Super Xtra</span> trimestralmente para mantener momentum
+- <span class="key-point">Expandir estructura similar a Vinagre Premium</span> como segundo producto estrella
+- <span class="metric-highlight">Coordinar timing con picos estacionales</span> identificados en historical data
+
+**2. Optimizaciones Específicas Identificadas:**
+- <span class="performance-positive">Extender duración</span>: 5 fines de semana vs 4 para mayor impacto de awareness
+- <span class="key-point">Incluir degustación</span>: Replicar modelo Rey en todas las cadenas participantes
+- <span class="metric-highlight">Desarrollar bundle promocional</span>: Descuento adicional con productos complementarios
+- <span class="performance-positive">Advanced material POP</span>: Displays interactivos para mayor engagement
+
+**3. Expansión Estratégica del Portfolio:**
+- <span class="key-point">Aplicar learnings a Salsa Teriyaki</span>: Producto con potencial subutilizado
+- <span class="performance-positive">Desarrollar promoción 2x1 rotativa</span>: Diferentes productos cada trimestre
+- <span class="metric-highlight">Test promocional cross-category</span>: Bundle condimento + vinagre para incrementar ticket
+
+**Proyección de Escalamiento:**
+Aplicando este modelo exitoso optimizado a <span class="performance-positive">3 productos adicionales</span> en el próximo trimestre podría generar:
+- <span class="key-point">$27,000 en ingresos promocionales adicionales</span>
+- <span class="metric-highlight">ROI proyectado: 385%</span> basado en performance histórica
+- <span class="performance-positive">1,280 nuevos clientes capturados</span> con retention rate esperada 65%
+
+El modelo "2x1 Condimento Super Xtra" representa el <span class="performance-positive">benchmark gold standard</span> para activaciones promocionales de alta rentabilidad en La Doña.`;
   }
 
   // Default Spanish response for general business questions
