@@ -6,19 +6,19 @@ type PanelType = 'performance' | 'risks' | 'opportunities' | null;
 
 const insights = {
   performance: [
-    { icon: <BarChart4 size={16} />, label: "Sales vs Budget (by Chain)" },
-    { icon: <Trophy size={16} />, label: "Top-Selling SKU (This Week)" },
-    { icon: <Target size={16} />, label: "Client Goal Progress" }
+    { icon: <BarChart4 size={16} />, label: "Ventas vs Presupuesto (por Cadena)" },
+    { icon: <Trophy size={16} />, label: "SKU Más Vendido (Esta Semana)" },
+    { icon: <Target size={16} />, label: "Progreso Objetivo Cliente" }
   ],
   risks: [
-    { icon: <AlertTriangle size={16} />, label: "Backorders Today" },
-    { icon: <ShieldAlert size={16} />, label: "Out-of-Stock Products (by Store)" },
-    { icon: <Users size={16} />, label: "Overdue Clients (120+ Days)" }
+    { icon: <AlertTriangle size={16} />, label: "Pedidos Pendientes Hoy" },
+    { icon: <ShieldAlert size={16} />, label: "Productos Agotados (por Tienda)" },
+    { icon: <Users size={16} />, label: "Clientes Vencidos (120+ Días)" }
   ],
   opportunities: [
-    { icon: <Target size={16} />, label: "Promo ROI (Scanner/Tonga)" },
-    { icon: <Users size={16} />, label: "Inactive Clients (30+ Days)" },
-    { icon: <Rocket size={16} />, label: "Rep Underperformance" }
+    { icon: <Target size={16} />, label: "ROI Promoción (Scanner/Tonga)" },
+    { icon: <Users size={16} />, label: "Clientes Inactivos (30+ Días)" },
+    { icon: <Rocket size={16} />, label: "Bajo Rendimiento Rep" }
   ]
 };
 

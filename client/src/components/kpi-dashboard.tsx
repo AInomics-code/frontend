@@ -66,28 +66,28 @@ export function KPIDashboard() {
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
             <Zap size={14} className="text-gray-400" />
-            <h4 className="text-sm text-yellow-500 font-semibold">Promo ROI (Scanner/Tonga)</h4>
+            <h4 className="text-sm text-yellow-500 font-semibold">ROI Promoción (Scanner/Tonga)</h4>
           </div>
           <p className="text-base font-semibold text-gray-800">+26% ROI</p>
-          <p className="text-xs text-gray-500">Campaign effectiveness</p>
+          <p className="text-xs text-gray-500">Efectividad de campaña</p>
         </div>
 
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
             <UserX size={14} className="text-gray-400" />
-            <h4 className="text-sm text-yellow-500 font-semibold">Inactive Clients (30+ Days)</h4>
+            <h4 className="text-sm text-yellow-500 font-semibold">Clientes Inactivos (30+ Días)</h4>
           </div>
-          <p className="text-base font-semibold text-gray-800">17 accounts</p>
-          <p className="text-xs text-gray-500">Ready for reactivation</p>
+          <p className="text-base font-semibold text-gray-800">17 cuentas</p>
+          <p className="text-xs text-gray-500">Listos para reactivación</p>
         </div>
 
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
             <Users size={14} className="text-gray-400" />
-            <h4 className="text-sm text-yellow-500 font-semibold">Rep Underperformance</h4>
+            <h4 className="text-sm text-yellow-500 font-semibold">Bajo Rendimiento Rep</h4>
           </div>
-          <p className="text-base font-semibold text-gray-800">3 reps below 70%</p>
-          <p className="text-xs text-gray-500">Field team support needed</p>
+          <p className="text-base font-semibold text-gray-800">3 reps bajo 70%</p>
+          <p className="text-xs text-gray-500">Soporte equipo de campo necesario</p>
         </div>
       </div>
     </div>
