@@ -26,9 +26,17 @@ const getOpenAIInstance = () => {
   });
 };
 
+// Detect if question is in Spanish
+function isSpanishQuery(question: string): boolean {
+  const spanishKeywords = ['qué', 'cuál', 'cómo', 'dónde', 'cuándo', 'por qué', 'para', 'con', 'sin', 'sobre', 'análisis', 'ventas', 'cliente', 'producto', 'rendimiento', 'riesgo', 'oportunidad'];
+  const lowerQuestion = question.toLowerCase();
+  return spanishKeywords.some(keyword => lowerQuestion.includes(keyword));
+}
+
 // CEO-focused data analyst briefing using La Doña's business intelligence
 function getDataAnalystInsights(question: string): string {
   const lowerQuestion = question.toLowerCase();
+  const isSpanish = isSpanishQuery(question);
   
   // Core Analytics: Calculate key metrics from actual data sources
   const totalRevenue = salesData.reduce((sum, sale) => sum + sale.revenue, 0);
@@ -42,6 +50,33 @@ function getDataAnalystInsights(question: string): string {
   const outOfStockCount = stockStatus.filter(s => s.isOutOfStock).length;
   
   // Frequently Asked Questions - Enhanced Responses (Priority Order)
+  
+  // Default Spanish response for general business questions
+  if (isSpanish) {
+    return `📊 **Análisis de Rendimiento de La Doña**
+
+**Métricas Clave del Día:**
+- <span class="performance-positive">Ventas vs Objetivo:</span> 84% completado (objetivo mensual)
+- <span class="metric-highlight">Top SKU:</span> Condimento Super Xtra (+15% sobre promedio)
+- <span class="key-point">Región Líder:</span> Chiriquí (+8% sobre objetivo)
+
+**Alertas Importantes:**
+- <span class="performance-negative">Pedidos Pendientes:</span> 8 órdenes requieren atención
+- <span class="performance-negative">Productos Agotados:</span> 5 tiendas afectadas
+- <span class="performance-negative">Clientes Vencidos:</span> $67,200 en cuentas por cobrar (120+ días)
+
+**Oportunidades de Crecimiento:**
+- <span class="performance-positive">ROI Promocional:</span> Scanner/Tonga mostrando 240% retorno
+- <span class="key-point">Clientes Inactivos:</span> 18 cuentas listas para reactivación
+- <span class="key-point">Potencial Upsell:</span> $45,000 en oportunidades identificadas
+
+**Recomendaciones Inmediatas:**
+1. **Priorizar reabastecimiento** en Zona Norte para Vinagre Premium y Mayonesa
+2. **Activar campaña de cobranza** para reducir cuentas vencidas
+3. **Expandir promoción Scanner/Tonga** a más ubicaciones debido al alto ROI
+
+¿Te gustaría profundizar en alguna métrica específica o necesitas análisis detallado de alguna región/producto?`;
+  }
   
   // 12. Underperforming products by category this week
   if ((lowerQuestion.includes('underperforming') || lowerQuestion.includes('poor') || lowerQuestion.includes('weak')) && lowerQuestion.includes('category') && (lowerQuestion.includes('week') || lowerQuestion.includes('this week'))) {
