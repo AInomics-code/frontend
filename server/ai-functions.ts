@@ -75,29 +75,193 @@ function getDataAnalystInsights(question: string): string {
   
   // Default Spanish response for general business questions
   if (isSpanish) {
-    return `📊 **Análisis de Rendimiento de La Doña**
+    return `Análisis exhaustivo de inteligencia de negocios para operaciones de La Doña utilizando métricas en tiempo real de múltiples fuentes de datos.
 
-**Métricas Clave del Día:**
-- <span class="performance-positive">Ventas vs Objetivo:</span> 84% completado (objetivo mensual)
-- <span class="metric-highlight">Top SKU:</span> Condimento Super Xtra (+15% sobre promedio)
-- <span class="key-point">Región Líder:</span> Chiriquí (+8% sobre objetivo)
+**Evaluación de Rendimiento Operacional:**
 
-**Alertas Importantes:**
-- <span class="performance-negative">Pedidos Pendientes:</span> 8 órdenes requieren atención
-- <span class="performance-negative">Productos Agotados:</span> 5 tiendas afectadas
-- <span class="performance-negative">Clientes Vencidos:</span> $67,200 en cuentas por cobrar (120+ días)
+**Métricas de Ventas:**
+- <span class="performance-positive">Ingresos totales:</span> $${totalRevenue.toLocaleString()} (datos consolidados)
+- <span class="key-point">Valor promedio de orden:</span> $${avgOrderValue.toFixed(0)} por transacción
+- <span class="metric-highlight">Productos de alto margen:</span> ${topMarginProducts.slice(0,3).map(p => p.name).join(', ')} liderando rentabilidad
 
-**Oportunidades de Crecimiento:**
-- <span class="performance-positive">ROI Promocional:</span> Scanner/Tonga mostrando 240% retorno
-- <span class="key-point">Clientes Inactivos:</span> 18 cuentas listas para reactivación
-- <span class="key-point">Potencial Upsell:</span> $45,000 en oportunidades identificadas
+**Análisis de Inventario:**
+- <span class="performance-negative">Productos con bajo stock:</span> ${lowStockProducts.length} SKUs requieren reorden inmediato
+  ${lowStockProducts.length > 0 ? `Crítico: ${lowStockProducts[0].name} (${lowStockProducts[0].currentStock} unidades vs objetivo ${lowStockProducts[0].targetStock})` : 'Niveles de inventario dentro de parámetros normales'}
+- <span class="metric-highlight">Situaciones de agotamiento:</span> ${outOfStockCount} ubicaciones experimentando faltantes
 
-**Recomendaciones Inmediatas:**
-1. **Priorizar reabastecimiento** en Zona Norte para Vinagre Premium y Mayonesa
-2. **Activar campaña de cobranza** para reducir cuentas vencidas
-3. **Expandir promoción Scanner/Tonga** a más ubicaciones debido al alto ROI
+**Gestión de Cuentas por Cobrar:**
+- <span class="performance-negative">Clientes vencidos:</span> ${overdueClients.length} cuentas con pagos atrasados
+- <span class="metric-highlight">Monto total vencido:</span> $${totalOverdue.toLocaleString()} requiere atención de cobranza
+- <span class="key-point">Cliente principal vencido:</span> ${overdueClients[0]?.name || 'N/A'} - $${overdueClients[0]?.overdueAmount.toLocaleString() || '0'} (${overdueClients[0]?.overdueDays || 0} días)
 
-¿Te gustaría profundizar en alguna métrica específica o necesitas análisis detallado de alguna región/producto?`;
+**Rendimiento del Equipo de Ventas:**
+- <span class="performance-positive">Representante destacado:</span> ${topPerformer.name} alcanzando ${topPerformer.performance}% del objetivo
+- <span class="key-point">Eficiencia promocional:</span> ${avgPromotionROI.toFixed(1)}% ROI promedio en campañas activas
+- <span class="metric-highlight">Territorio:</span> ${topPerformer.region} liderando métricas de rendimiento
+
+**Evaluación de Impacto Comercial:**
+Los faltantes diarios de inventario agravan las pérdidas de ingresos a través de la adquisición de clientes por parte de competidores. Los retrasos en cuentas por cobrar impiden el despliegue de capital para iniciativas de crecimiento. La empresa mantiene ${extendedClients.filter(c => !c.isActive).length} cuentas inactivas que representan oportunidades de reactivación.
+
+**Marco de Acción Estratégica:**
+1. **Inmediato:** ${lowStockProducts[0]?.name ? `Reabastecer ${lowStockProducts[0].name} (actual: ${lowStockProducts[0].currentStock} unidades vs objetivo: ${lowStockProducts[0].targetStock})` : 'Abordar faltantes críticos de inventario mediante adquisición expedita'}
+2. **Semana 1:** Iniciar procedimientos de cobranza para ${overdueClients[0]?.name || 'deudores principales'} respecto a saldo pendiente de $${overdueClients[0]?.overdueAmount.toLocaleString() || '24,300'}
+3. **Mes 1:** Implementar metodología de capacitación de ${topPerformer.name} en todo el equipo de ventas para potencial <span class="performance-positive">aumento de ingresos mensuales de $${((topPerformer.performance - 45) * salesReps.length * 1000).toFixed(0)}</span>
+
+**Potencial de Recuperación Financiera:**
+La optimización de la mezcla de productos podría generar <span class="performance-positive">$${(topMarginProducts.slice(0,3).reduce((sum, p) => sum + (p.sellingPrice * p.targetStock * 0.3), 0)).toFixed(0)} en ingresos adicionales mensuales</span>. La cobranza acelerada tiene como objetivo <span class="key-point">recuperación de $${(totalOverdue * 0.7).toFixed(0)}</span>. La reactivación de cuentas inactivas proporciona oportunidades de crecimiento suplementario a través del aprovechamiento de relaciones existentes.`;
+  }
+
+  // Productos con bajo rendimiento por categoría esta semana (Spanish version)
+  if (isSpanish && (lowerQuestion.includes('bajo') || lowerQuestion.includes('débil') || lowerQuestion.includes('mal') || lowerQuestion.includes('categoría') || lowerQuestion.includes('categoria') || lowerQuestion.includes('productos')) && (lowerQuestion.includes('semana') || lowerQuestion.includes('esta semana'))) {
+    return `Análisis de rendimiento semanal por categoría de productos identifica segmentos con bajo rendimiento que requieren atención inmediata.
+
+**Categorías con Bajo Rendimiento Esta Semana:**
+
+**Categoría Condimentos (−23% vs objetivo):**
+- <span class="metric-highlight">Condimento Básico</span>: 45 unidades vendidas vs 85 objetivo (−47%)
+  Sucursales afectadas: Rey Multiplaza, Xtra Penonomé
+- <span class="key-point">Adobo Tradicional</span>: 62 unidades vendidas vs 95 objetivo (−35%)
+  Problema: Resistencia del cliente al cambio de empaque
+
+**Categoría Vinagres (−18% vs objetivo):**
+- <span class="metric-highlight">Vinagre Regular 500ml</span>: 78 unidades vendidas vs 120 objetivo (−35%)
+  Problema: Impacto del aumento de precios en ventas por volumen
+- <span class="key-point">Vinagre Blanco</span>: 34 unidades vendidas vs 55 objetivo (−38%)
+  Desalineación de preferencias regionales
+
+**Categoría Mayonesa (−12% vs objetivo):**
+- <span class="key-point">Mayonesa 400g Estándar</span>: 156 unidades vendidas vs 190 objetivo (−18%)
+  Presión competitiva de marcas importadas
+
+**Análisis de Causa Raíz:**
+- <span class="metric-highlight">Sensibilidad al precio</span>: Aumentos recientes del 8% afectando volumen
+- <span class="key-point">Brecha promocional</span>: Promociones scanner de competidores capturando participación de mercado
+- <span class="key-point">Cambio estacional</span>: Productos tradicionales disminuyendo durante período de verano
+
+**Comparación de Rendimiento:**
+**Productos de Alto Rendimiento (Sobre objetivo):**
+- <span class="performance-positive">Condimento Super Xtra</span>: +15% vs objetivo
+- <span class="performance-positive">Vinagre Premium</span>: +22% vs objetivo
+- <span class="performance-positive">Mayonesa Premium</span>: +8% vs objetivo
+
+**Respuesta Estratégica:**
+1. **Inmediato:** Lanzar promoción 2x1 en Condimento Básico con bajo rendimiento
+2. **Ajuste de precios:** Revisar estrategia de precios de Vinagre Regular en 72 horas
+3. **Enfoque de capacitación:** Educación de representantes de ventas sobre beneficios de productos premium
+4. **Rebalanceo de inventario:** Reducir órdenes de SKUs de movimiento lento en 30% la próxima semana
+
+Objetivo de recuperación: <span class="performance-positive">Retornar a +5% crecimiento de categoría en 14 días</span> a través de intervención enfocada.`;
+  }
+
+  // Productos agotados por sucursal (Spanish version)  
+  if (isSpanish && (lowerQuestion.includes('agotado') || lowerQuestion.includes('sin stock') || lowerQuestion.includes('faltante') || lowerQuestion.includes('stockout') || lowerQuestion.includes('sucursal') || lowerQuestion.includes('tienda'))) {
+    return `Análisis crítico de escasez de inventario revela situaciones de agotamiento que afectan el rendimiento de ventas en múltiples ubicaciones.
+
+**Agotamientos Actuales por Sucursal:**
+
+**Super99 Costa Verde:**
+- <span class="metric-highlight">Condimento Super Xtra 500g</span> - Agotado desde: 3 días, Ventas perdidas: $420
+- <span class="key-point">Vinagre Premium 750ml</span> - Agotado desde: 1 día, Producto de alta demanda
+- <span class="key-point">Adobo Tradicional</span> - Agotado desde: 5 días, Período pico estacional
+
+**Xtra Albrook:**
+- <span class="metric-highlight">Mayonesa Premium 400g</span> - Agotado desde: 2 días, Ventas perdidas: $280
+- <span class="key-point">Salsa Verde 300ml</span> - Agotado desde: 4 días, Quejas de clientes recibidas
+
+**Rey Multiplaza:**
+- <span class="metric-highlight">Condimento Básico</span> - Agotado desde: 6 días, Reorden retrasado
+- <span class="key-point">Vinagre Regular 500ml</span> - Agotado desde: 2 días, Problema de cadena de suministro
+
+**Análisis de Impacto Crítico:**
+- Total estimado de ventas perdidas: <span class="metric-highlight">$1,240 esta semana</span>
+- Riesgo de satisfacción del cliente en <span class="key-point">3 ubicaciones principales</span>
+- Ventana de oportunidad competidora: 48-72 horas antes de pérdida permanente de cliente
+
+**Estado de Cadena de Suministro:**
+- <span class="performance-positive">Condimento Super Xtra</span>: Reabastecimiento llegando mañana
+- <span class="key-point">Vinagre Premium</span>: Lote de producción listo para despacho
+- <span class="metric-highlight">Mayonesa Premium</span>: Retraso en control de calidad, quedan 2 días
+
+**Plan de Acción Inmediata:**
+1. **Transferencia de emergencia** desde excedente de Xtra Penonomé a Albrook (Mayonesa Premium)
+2. **Entrega express** para Condimento Super Xtra a Costa Verde antes de las 6 AM
+3. **Comunicación al cliente** vía gerentes de tienda sobre cronograma de reabastecimiento
+4. **Monitoreo de inventario** diario durante los próximos 10 días para prevenir recurrencia
+
+Objetivo de prioridad de reabastecimiento: todos los SKUs críticos dentro de <span class="performance-positive">24-48 horas</span> para minimizar impacto en ingresos.`;
+  }
+
+  // Análisis de presupuesto de inversión por cadena (Spanish version)
+  if (isSpanish && (lowerQuestion.includes('presupuesto') || lowerQuestion.includes('inversión') || lowerQuestion.includes('inversion') || lowerQuestion.includes('cadena') || lowerQuestion.includes('gasto') || lowerQuestion.includes('sobregasto'))) {
+    return `Análisis de presupuesto de inversión revela sobregasto significativo en cadenas de retail clave con rendimiento deficiente de ROI.
+
+**Análisis de Varianza Presupuestaria:**
+
+**Sobregasto Crítico:**
+- <span class="metric-highlight">Cadena Xtra</span>: $52,000 gastado vs $45,000 asignado (+$7,000 exceso, 15.6% sobre presupuesto)
+  Rendimiento: 67% logro de objetivo = <span class="key-point">0.78 ratio de eficiencia</span>
+  
+- <span class="metric-highlight">El Machetazo</span>: $34,000 gastado vs $28,000 asignado (+$6,000 exceso, 21.4% sobre presupuesto)
+  Rendimiento: 45% logro de objetivo = <span class="key-point">0.65 ratio de eficiencia</span>
+
+**Inversión Eficiente:**
+- <span class="performance-positive">Super99</span>: $31,000 gastado vs $35,000 asignado (Bajo presupuesto por $4,000)
+  Rendimiento: 89% logro de objetivo = <span class="performance-positive">1.12 ratio de eficiencia</span>
+
+**Exceso Menor:**
+- <span class="key-point">Rey</span>: $41,500 gastado vs $40,000 asignado (+$1,500 exceso, 3.8% sobre presupuesto)
+  Rendimiento: 72% logro de objetivo = 0.86 ratio de eficiencia
+
+**Análisis de Causa Raíz:**
+El sobregasto de Xtra y El Machetazo proviene de inversiones promocionales excesivas sin resultados de ventas correspondientes. La ejecución deficiente y el posicionamiento de mercado impulsan ratios de eficiencia bajos.
+
+**Acciones Correctivas:**
+1. **Suspensión inmediata** de nuevos gastos promocionales en El Machetazo hasta revisión de estrategia
+2. **Reasignación de presupuesto** de $4,000 de Super99 no utilizado hacia iniciativas de alto ROI
+3. **Revisión de estrategia** Xtra: enfocar en ubicaciones de alto rendimiento únicamente
+4. **Implementación de controles** de aprobación para gastos >$1,000 en cadenas con bajo rendimiento
+
+**Optimización de Eficiencia Presupuestaria:**
+- Redirigir <span class="performance-positive">60% del presupuesto</span> hacia Super99 y ubicaciones Rey de alto rendimiento
+- Implementar <span class="key-point">sistema de seguimiento semanal</span> para todas las inversiones promocionales
+- Establecer <span class="metric-highlight">umbrales de ROI mínimo</span> de 0.85 para nuevas iniciativas
+
+Meta de recuperación presupuestaria: <span class="performance-positive">Retornar a 95% eficiencia promedio</span> dentro de 6 semanas a través de reasignación estratégica.`;
+  }
+
+  // Análisis de censo de clientes nacionales (Spanish version)
+  if (isSpanish && (lowerQuestion.includes('dichter') || lowerQuestion.includes('censo') || lowerQuestion.includes('clientes') || lowerQuestion.includes('nacionales') || lowerQuestion.includes('no vendemos') || lowerQuestion.includes('geolocalización') || lowerQuestion.includes('geolocalizacion'))) {
+    return `Basado en el censo nacional de clientes de Dichter & Neira, aquí están las oportunidades no aprovechadas que requieren atención inmediata.
+
+**Análisis de Cartera de Clientes Inactivos:**
+Tenemos <span class="metric-highlight">6 clientes principales</span> del censo nacional a los que actualmente no les vendemos, representando <span class="performance-positive">$179,000 de ingresos potenciales mensuales</span>.
+
+**Distribución Geográfica y Oportunidades:**
+**Área Metropolitana de Panamá:**
+- <span class="key-point">Supermercados Rey Metro</span> (8.9824°N, 79.5199°O) - <span class="performance-positive">$45,000 potencial mensual</span>
+- <span class="key-point">Farmacias Arrocha</span> (8.9537°N, 79.5026°O) - <span class="performance-positive">$28,000 potencial mensual</span>
+- <span class="key-point">Supermercados Metro Plus</span> (8.9482°N, 79.6635°O) - <span class="performance-positive">$31,000 potencial mensual</span>
+
+**Oportunidades Regionales:**
+- <span class="metric-highlight">Super Centro Colón</span> (9.3547°N, 79.9003°O) - Región Colón, $22,000 potencial
+- <span class="metric-highlight">Supermercados El Machetazo</span> (8.4177°N, 82.4392°O) - Región Chiriquí, $38,000 potencial  
+- <span class="metric-highlight">Mini Market La Familia</span> (8.1228°N, 80.8147°O) - Región Veraguas, $15,000 potencial
+
+**Ranking de Prioridad Estratégica:**
+1. **Supermercados Rey Metro** - Objetivo de mayor valor con ubicación prime en Panamá Centro
+2. **Supermercados El Machetazo** - Fuerte presencia regional en mercado creciente de Chiriquí
+3. **Supermercados Metro Plus** - Oportunidad estratégica de expansión en Panamá Oeste
+
+**Estrategia de Implementación:**
+Estas cuentas requieren desarrollo de negocios dedicado con carteras de productos personalizadas que coincidan con preferencias regionales y estructuras de precios competitivos alineadas con condiciones de mercado local.
+
+**Plan de Acción Inmediata:**
+1. **Contacto directo** con Rey Metro dentro de 48 horas para reunión de presentación
+2. **Análisis de precios competitivos** para cada ubicación regional
+3. **Desarrollo de propuestas** personalizadas por cadena dentro de 1 semana
+4. **Asignación de representantes** especializados para cada cuenta objetivo
+
+Potencial de ingresos de activación: <span class="performance-positive">$179,000 mensuales</span> a través de desarrollo sistemático de cuentas.`;
   }
   
   // 12. Underperforming products by category this week
