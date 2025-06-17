@@ -107,6 +107,9 @@ Changelog:
   * BI sidebar with Spanish translations for Performance/Risks/Opportunities
   * Prompt generator with Spanish business questions
   * Chat interface and message components localized
+  * AI response system configured for automatic Spanish detection and responses
+  * All KPI cards, metrics, and business insights fully translated
+  * Enhanced Spanish keyword detection for business queries
 ```
 
 ## User Preferences
