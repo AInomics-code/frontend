@@ -93,7 +93,7 @@ export function Sidebar({
             variant="outline"
           >
             <Plus className="h-4 w-4" />
-            New chat
+            Nuevo chat
           </Button>
         </div>
 
@@ -108,7 +108,7 @@ export function Sidebar({
               </div>
             ) : conversations.length === 0 ? (
               <div className="p-4 text-center text-gray-500 dark:text-gray-400 text-sm">
-                No conversations yet. Start a new chat to begin!
+                Aún no hay conversaciones. ¡Inicia un nuevo chat para comenzar!
               </div>
             ) : (
               conversations.map((conversation) => (
@@ -155,10 +155,10 @@ export function Sidebar({
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium truncate text-gray-800">
-                John Doe
+                Juan Pérez
               </p>
               <p className="text-xs text-gray-500">
-                Free plan
+                Plan gratuito
               </p>
             </div>
             <Button

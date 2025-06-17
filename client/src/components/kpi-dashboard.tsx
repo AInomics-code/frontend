@@ -3,26 +3,26 @@ import { BarChart2, TrendingUp, AlertTriangle, Users, Package, DollarSign, Targe
 export function KPIDashboard() {
   return (
     <div className="px-6 py-6">
-      <h2 className="text-lg font-semibold text-gray-700 mb-4">KPI Dashboard – La Doña (Top 9 Metrics)</h2>
+      <h2 className="text-lg font-semibold text-gray-700 mb-4">Panel de KPI – La Doña (Top 9 Métricas)</h2>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* Performance Section */}
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
             <BarChart2 size={14} className="text-gray-400" />
-            <h4 className="text-sm text-green-600 font-semibold">Sales vs Target</h4>
+            <h4 className="text-sm text-green-600 font-semibold">Ventas vs Objetivo</h4>
           </div>
           <p className="text-2xl font-bold text-gray-900">82%</p>
-          <p className="text-xs text-gray-500">Monthly goal progress</p>
+          <p className="text-xs text-gray-500">Progreso objetivo mensual</p>
         </div>
 
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
             <TrendingUp size={14} className="text-gray-400" />
-            <h4 className="text-sm text-green-600 font-semibold">Top-Selling SKU (This Week)</h4>
+            <h4 className="text-sm text-green-600 font-semibold">SKU Más Vendido (Esta Semana)</h4>
           </div>
           <p className="text-base font-semibold text-gray-800">SKU 183 – Bananas</p>
-          <p className="text-xs text-gray-500">Best product by region</p>
+          <p className="text-xs text-gray-500">Mejor producto por región</p>
         </div>
 
         <div className="bg-white rounded-xl shadow-md p-4">
