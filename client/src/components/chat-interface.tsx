@@ -149,7 +149,7 @@ export function ChatInterface() {
           {/* Text Input Field */}
           <input
             type="text"
-            placeholder="Ask about KPIs or performance..."
+            placeholder="Pregunta sobre KPIs o rendimiento..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -161,21 +161,21 @@ export function ChatInterface() {
             {/* Icon Buttons */}
             <button
               className="bg-none border-none text-lg text-gray-400 cursor-pointer transition-transform duration-200 hover:scale-110"
-              title="Attachment"
+              title="Adjuntar archivo"
             >
               <Paperclip className="w-[18px] h-[18px]" />
             </button>
 
             <button
               className="bg-none border-none text-lg text-gray-400 cursor-pointer transition-transform duration-200 hover:scale-110"
-              title="Globe"
+              title="Idioma"
             >
               <Globe className="w-[18px] h-[18px]" />
             </button>
 
             <button
               className="bg-none border-none text-lg text-gray-400 cursor-pointer transition-transform duration-200 hover:scale-110"
-              title="Voice"
+              title="Voz"
               onClick={() => setIsVoiceActive(!isVoiceActive)}
             >
               <Mic
@@ -193,7 +193,7 @@ export function ChatInterface() {
                   : "bg-rose-300 py-[10px] px-5 shadow-[0_4px_12px_rgba(249,168,168,0.3)] hover:bg-red-400"
               }`}
             >
-              {isProcessing ? "Processing..." : "Ask"}
+              {isProcessing ? "Procesando..." : "Preguntar"}
             </button>
           </div>
         </div>
@@ -210,7 +210,7 @@ export function ChatInterface() {
               <div className="vortex-blade"></div>
             </div>
             <p className="text-sm text-gray-400 italic animate-pulse">
-              Preparing insights…
+              Preparando insights…
             </p>
           </div>
         )}

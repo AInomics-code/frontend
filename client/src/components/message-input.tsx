@@ -96,7 +96,7 @@ export function MessageInput({ conversationId, onSendMessage }: MessageInputProp
                 value={message}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
-                placeholder="Message ChatGPT..."
+                placeholder="Mensaje a ChatGPT..."
                 className="w-full resize-none bg-transparent border-none outline-none text-sm leading-relaxed min-h-[20px] max-h-32 p-0 focus-visible:ring-0 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                 rows={1}
                 disabled={!conversationId || sendMessageMutation.isPending}
@@ -117,7 +117,7 @@ export function MessageInput({ conversationId, onSendMessage }: MessageInputProp
           </div>
           
           <div className="text-xs text-gray-500 dark:text-gray-400 text-center mt-2">
-            ChatGPT can make mistakes. Consider checking important information.
+            ChatGPT puede cometer errores. Considera verificar información importante.
           </div>
         </form>
       </div>
