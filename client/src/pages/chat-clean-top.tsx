@@ -468,7 +468,7 @@ export default function Chat() {
                   Chiriquí, Colón, San Miguelito
                 </p>
                 <p className="text-xs text-gray-400 mt-2 italic">
-                  Click to view details
+                  Haz clic para ver detalles
                 </p>
               </>
             ) : (
@@ -566,7 +566,7 @@ export default function Chat() {
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                 <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">
-                  Product Opportunity
+                  Oportunidad de Producto
                 </h4>
               </div>
               {expandedCard === "opportunities" ? (
@@ -585,10 +585,10 @@ export default function Chat() {
                   Vinagre Premium
                 </p>
                 <p className="text-xs text-gray-500">
-                  High potential • Poor: Mango Salsa
+                  Alto potencial • Débil: Mango Salsa
                 </p>
                 <p className="text-xs text-gray-400 mt-2 italic">
-                  Click to view details
+                  Haz clic para ver detalles
                 </p>
               </>
             ) : (
