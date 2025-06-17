@@ -341,7 +341,7 @@ export function BiSidebar() {
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
                 <p className="text-sm text-gray-500">Potencial Upsell</p>
-                <p className="text-lg font-semibold text-purple-600">$78K</p>
+                <p className="text-lg font-semibold text-purple-600">$45K</p>
               </div>
               <TrendingUp size={20} className="text-gray-400" />
             </div>
@@ -356,7 +356,7 @@ export function BiSidebar() {
 
           {/* Micro-insight */}
           <div className="text-sm text-yellow-700 bg-yellow-100 px-3 py-2 rounded-xl">
-            🔥 Scanner/Tonga mostrando +240% aumento ROI este trimestre
+            🔥 Scanner/Tonga mostrando +240% aumento ROI - campaña más exitosa del año
           </div>
 
           {/* CTA Button */}
