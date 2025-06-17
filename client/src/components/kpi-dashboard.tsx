@@ -28,38 +28,38 @@ export function KPIDashboard() {
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
             <Target size={14} className="text-gray-400" />
-            <h4 className="text-sm text-green-600 font-semibold">Client Goal Progress</h4>
+            <h4 className="text-sm text-green-600 font-semibold">Progreso Objetivo Cliente</h4>
           </div>
           <p className="text-base font-semibold text-gray-800">Chiriquí +8% above target</p>
-          <p className="text-xs text-gray-500">Top accounts vs their goals</p>
+          <p className="text-xs text-gray-500">Cuentas principales vs sus objetivos</p>
         </div>
 
         {/* Risks Section */}
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
             <AlertTriangle size={14} className="text-gray-400" />
-            <h4 className="text-sm text-red-600 font-semibold">Backorders Today</h4>
+            <h4 className="text-sm text-red-600 font-semibold">Pedidos Pendientes Hoy</h4>
           </div>
-          <p className="text-base font-semibold text-gray-800">28 orders pending</p>
-          <p className="text-xs text-gray-500">Most affected: Super Xtra</p>
+          <p className="text-base font-semibold text-gray-800">28 órdenes pendientes</p>
+          <p className="text-xs text-gray-500">Más afectado: Super Xtra</p>
         </div>
 
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
             <Package size={14} className="text-gray-400" />
-            <h4 className="text-sm text-red-600 font-semibold">Out-of-Stock Products</h4>
+            <h4 className="text-sm text-red-600 font-semibold">Productos Agotados</h4>
           </div>
-          <p className="text-base font-semibold text-gray-800">14 urgent items</p>
-          <p className="text-xs text-gray-500">Critical fulfillment gaps</p>
+          <p className="text-base font-semibold text-gray-800">14 artículos urgentes</p>
+          <p className="text-xs text-gray-500">Brechas críticas de cumplimiento</p>
         </div>
 
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex items-center gap-2 mb-1">
             <DollarSign size={14} className="text-gray-400" />
-            <h4 className="text-sm text-red-600 font-semibold">Overdue Clients (120+ Days)</h4>
+            <h4 className="text-sm text-red-600 font-semibold">Clientes Vencidos (120+ Días)</h4>
           </div>
-          <p className="text-base font-semibold text-gray-800">$24,300 unpaid</p>
-          <p className="text-xs text-gray-500">High-risk accounts flagged</p>
+          <p className="text-base font-semibold text-gray-800">$24,300 sin pagar</p>
+          <p className="text-xs text-gray-500">Cuentas de alto riesgo marcadas</p>
         </div>
 
         {/* Opportunities Section */}
