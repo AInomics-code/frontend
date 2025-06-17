@@ -144,7 +144,7 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
       <button
         onClick={onToggle}
         className="fixed bottom-6 left-6 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all duration-200 z-50 group"
-        title="AI Prompt Generator"
+        title="Generador de Preguntas AI"
       >
         <Lightbulb size={20} />
         <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white text-xs rounded-full flex items-center justify-center animate-pulse">
@@ -161,7 +161,7 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Lightbulb size={20} className="text-blue-600" />
-            <h3 className="font-semibold text-gray-900">AI Prompt Generator</h3>
+            <h3 className="font-semibold text-gray-900">Generador de Preguntas AI</h3>
           </div>
           <button
             onClick={onToggle}
@@ -170,7 +170,7 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
             ×
           </button>
         </div>
-        <p className="text-sm text-gray-600 mt-1">Smart business questions for La Doña</p>
+        <p className="text-sm text-gray-600 mt-1">Preguntas inteligentes de negocio para La Doña</p>
       </div>
 
       {/* Category Filters */}
@@ -228,7 +228,7 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
       {/* Footer */}
       <div className="p-3 border-t border-gray-100 bg-gray-50">
         <p className="text-xs text-gray-500 text-center">
-          Click any question to ask La Doña AI instantly
+          Haz clic en cualquier pregunta para consultar a La Doña AI al instante
         </p>
       </div>
     </div>
