@@ -209,7 +209,7 @@ export function BiSidebar() {
               <span className="h-2 w-2 bg-green-500 rounded-full animate-pulse" />
               Rendimiento
             </h2>
-            <span className="text-xs text-gray-500">🔘 65% of May complete</span>
+            <span className="text-xs text-gray-500">🔘 65% de Mayo completado</span>
           </div>
 
           {/* KPI Cards Grid */}
@@ -264,7 +264,7 @@ export function BiSidebar() {
               <span className="h-2 w-2 bg-red-500 rounded-full animate-pulse" />
               Riesgos
             </h2>
-            <span className="text-xs text-gray-500">🔘 65% of May complete</span>
+            <span className="text-xs text-gray-500">🔘 65% de Mayo completado</span>
           </div>
 
           {/* KPI Cards Grid */}
@@ -319,7 +319,7 @@ export function BiSidebar() {
               <span className="h-2 w-2 bg-yellow-500 rounded-full animate-pulse" />
               Oportunidades
             </h2>
-            <span className="text-xs text-gray-500">🔘 65% of May complete</span>
+            <span className="text-xs text-gray-500">🔘 65% de Mayo completado</span>
           </div>
 
           {/* KPI Cards Grid */}
