@@ -337,7 +337,7 @@ export default function Chat() {
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">
-                  Performance Score
+                  Puntuación de Rendimiento
                 </h4>
               </div>
               {expandedCard === "performance" ? (
@@ -357,13 +357,13 @@ export default function Chat() {
                 </p>
                 <div className="flex items-center gap-2 mt-1">
                   <p className="text-xs text-gray-500">
-                    <AnimatedCounter value={82} duration={1200} suffix="%" /> of
-                    sales target met
+                    <AnimatedCounter value={82} duration={1200} suffix="%" /> del
+                    objetivo de ventas cumplido
                   </p>
                   <PulseIndicator color="green" size="sm" />
                 </div>
                 <p className="text-xs text-gray-400 mt-2 italic">
-                  Click to view details
+                  Haz clic para ver detalles
                 </p>
               </>
             ) : (
@@ -448,7 +448,7 @@ export default function Chat() {
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                 <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">
-                  Zones at Risk
+                  Zonas en Riesgo
                 </h4>
               </div>
               {expandedCard === "risks" ? (
@@ -463,7 +463,7 @@ export default function Chat() {
 
             {expandedCard !== "risks" ? (
               <>
-                <p className="text-2xl font-semibold text-gray-900">3 Zones</p>
+                <p className="text-2xl font-semibold text-gray-900">3 Zonas</p>
                 <p className="text-xs text-gray-500">
                   Chiriquí, Colón, San Miguelito
                 </p>
