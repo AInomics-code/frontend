@@ -301,12 +301,12 @@ export function BiSidebar() {
 
           {/* Micro-insight */}
           <div className="text-sm text-red-700 bg-red-100 px-3 py-2 rounded-xl">
-            ⚠️ Zona Norte needs immediate reorder - 3 SKUs critical
+            ⚠️ Zona Norte necesita reorden inmediato - 3 SKUs críticos
           </div>
 
           {/* CTA Button */}
           <button className="w-full bg-rose-500 hover:bg-rose-600 text-white text-sm font-semibold rounded-xl py-3 mt-4 shadow">
-            Resolve high-risk issues
+            Resolver problemas de alto riesgo
           </button>
         </div>
       )}
@@ -317,7 +317,7 @@ export function BiSidebar() {
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
               <span className="h-2 w-2 bg-yellow-500 rounded-full animate-pulse" />
-              Opportunities
+              Oportunidades
             </h2>
             <span className="text-xs text-gray-500">🔘 65% of May complete</span>
           </div>
@@ -326,28 +326,28 @@ export function BiSidebar() {
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
-                <p className="text-sm text-gray-500">Promo ROI</p>
+                <p className="text-sm text-gray-500">ROI Promoción</p>
                 <p className="text-lg font-semibold text-green-600">340%</p>
               </div>
               <LineChart size={20} className="text-gray-400" />
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
-                <p className="text-sm text-gray-500">Inactive Clients</p>
+                <p className="text-sm text-gray-500">Clientes Inactivos</p>
                 <p className="text-lg font-semibold text-blue-600">23 leads</p>
               </div>
               <Users size={20} className="text-gray-400" />
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
-                <p className="text-sm text-gray-500">Upsell Potential</p>
+                <p className="text-sm text-gray-500">Potencial Upsell</p>
                 <p className="text-lg font-semibold text-purple-600">$78K</p>
               </div>
               <TrendingUp size={20} className="text-gray-400" />
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
-                <p className="text-sm text-gray-500">Market Share</p>
+                <p className="text-sm text-gray-500">Cuota Mercado</p>
                 <p className="text-lg font-semibold text-emerald-500">+2.4%</p>
               </div>
               <PieChart size={20} className="text-gray-400" />
@@ -356,12 +356,12 @@ export function BiSidebar() {
 
           {/* Micro-insight */}
           <div className="text-sm text-yellow-700 bg-yellow-100 px-3 py-2 rounded-xl">
-            🔥 Scanner/Tonga showing +240% ROI surge this quarter
+            🔥 Scanner/Tonga mostrando +240% aumento ROI este trimestre
           </div>
 
           {/* CTA Button */}
           <button className="w-full bg-rose-500 hover:bg-rose-600 text-white text-sm font-semibold rounded-xl py-3 mt-4 shadow">
-            Explore growth paths
+            Explorar rutas de crecimiento
           </button>
         </div>
       )}
