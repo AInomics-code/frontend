@@ -26,11 +26,33 @@ const getOpenAIInstance = () => {
   });
 };
 
-// Detect if question is in Spanish
+// Detect if question is in Spanish - Enhanced detection
 function isSpanishQuery(question: string): boolean {
-  const spanishKeywords = ['qué', 'cuál', 'cómo', 'dónde', 'cuándo', 'por qué', 'para', 'con', 'sin', 'sobre', 'análisis', 'ventas', 'cliente', 'producto', 'rendimiento', 'riesgo', 'oportunidad'];
+  const spanishKeywords = [
+    // Question words
+    'qué', 'cuál', 'cómo', 'dónde', 'cuándo', 'por qué', 'quién', 'cuánto', 'cuánta', 'cuántos', 'cuántas',
+    // Common Spanish words
+    'el', 'la', 'los', 'las', 'un', 'una', 'de', 'del', 'en', 'con', 'sin', 'para', 'por', 'sobre', 'entre',
+    // Business terms in Spanish
+    'análisis', 'ventas', 'cliente', 'producto', 'rendimiento', 'riesgo', 'oportunidad', 'empresa', 'negocio',
+    'datos', 'información', 'reporte', 'estado', 'situación', 'problema', 'solución', 'estrategia',
+    // Spanish verbs and actions
+    'mostrar', 'ver', 'revisar', 'analizar', 'explicar', 'decir', 'dar', 'hacer', 'tener', 'estar', 'ser',
+    'necesito', 'quiero', 'puedes', 'ayuda', 'favor', 'gracias', 'hola', 'buenos', 'días'
+  ];
+  
   const lowerQuestion = question.toLowerCase();
-  return spanishKeywords.some(keyword => lowerQuestion.includes(keyword));
+  
+  // Check for Spanish keywords
+  const hasSpanishKeywords = spanishKeywords.some(keyword => lowerQuestion.includes(keyword));
+  
+  // Check for Spanish accent marks and ñ
+  const hasSpanishChars = /[áéíóúüñ¿¡]/.test(lowerQuestion);
+  
+  // If it's a very short query, default to Spanish (for La Doña context)
+  const isShortQuery = question.trim().length < 10;
+  
+  return hasSpanishKeywords || hasSpanishChars || isShortQuery;
 }
 
 // CEO-focused data analyst briefing using La Doña's business intelligence
@@ -2103,7 +2125,7 @@ Product mix optimization could yield <span class="performance-positive">$${(topM
 export async function getBusinessInsights(question: string): Promise<string> {
   // First try the comprehensive pre-built intelligence for frequently asked questions
   const prebuiltResponse = getDataAnalystInsights(question);
-  if (prebuiltResponse && prebuiltResponse !== "I can provide specific insights about La Doña's business operations. Try asking about regional performance, client analysis, product profitability, sales rep performance, or inventory management.") {
+  if (prebuiltResponse && prebuiltResponse !== "Puedo proporcionar análisis específicos sobre las operaciones comerciales de La Doña. Pregunta sobre rendimiento regional, análisis de clientes, rentabilidad de productos, rendimiento de representantes de ventas, o gestión de inventario.") {
     return prebuiltResponse;
   }
 
@@ -2171,17 +2193,17 @@ Answer the following question with comprehensive business intelligence:`;
       max_tokens: 2000
     });
 
-    return response.choices[0]?.message?.content || "Unable to process the business intelligence request at this time.";
+    return response.choices[0]?.message?.content || "No se puede procesar la solicitud de inteligencia de negocios en este momento.";
   } catch (error) {
     console.error('Error generating AI insights:', error);
     
     // Check for API key configuration
     if (error instanceof Error && error.message.includes('OPENAI_API_KEY')) {
-      return "Advanced AI analysis requires OpenAI API configuration. The system provides comprehensive pre-built analysis for common business questions. For unlimited AI-powered insights, please provide the OpenAI API key.";
+      return "El análisis avanzado con IA requiere configuración de la API de OpenAI. El sistema proporciona análisis exhaustivo preconfigurado para preguntas comerciales comunes. Para insights ilimitados con IA, proporciona la clave API de OpenAI.";
     }
     
     // Fallback to suggesting specific topics
-    return "Connection issue with AI services. I can provide detailed analysis on specific topics: regional performance (Colón, Coclé, Chiriquí, Panamá), client analysis (Super99, Rey David, etc.), product profitability, sales rep performance, inventory management, or billing analysis.";
+    return "Problema de conexión con servicios de IA. Puedo proporcionar análisis detallado sobre temas específicos: rendimiento regional (Colón, Coclé, Chiriquí, Panamá), análisis de clientes (Super99, Rey David, etc.), rentabilidad de productos, rendimiento de representantes de ventas, gestión de inventario, o análisis de facturación.";
   }
 }
 
