@@ -246,12 +246,12 @@ export function BiSidebar() {
 
           {/* Micro-insight */}
           <div className="text-sm text-green-700 bg-green-100 px-3 py-2 rounded-xl">
-            ✅ Aderezo tracking +6% above chain avg
+            ✅ Aderezo rastreando +6% sobre promedio cadena
           </div>
 
           {/* CTA Button */}
           <button className="w-full bg-rose-500 hover:bg-rose-600 text-white text-sm font-semibold rounded-xl py-3 mt-4 shadow">
-            Explore performance insights
+            Explorar insights de rendimiento
           </button>
         </div>
       )}
@@ -262,7 +262,7 @@ export function BiSidebar() {
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
               <span className="h-2 w-2 bg-red-500 rounded-full animate-pulse" />
-              Risks
+              Riesgos
             </h2>
             <span className="text-xs text-gray-500">🔘 65% of May complete</span>
           </div>
@@ -271,29 +271,29 @@ export function BiSidebar() {
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
-                <p className="text-sm text-gray-500">Backorders</p>
-                <p className="text-lg font-semibold text-red-600">12 items</p>
+                <p className="text-sm text-gray-500">Pedidos Pendientes</p>
+                <p className="text-lg font-semibold text-red-600">12 artículos</p>
               </div>
               <AlertTriangle size={20} className="text-gray-400" />
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
-                <p className="text-sm text-gray-500">Out of Stock</p>
-                <p className="text-lg font-semibold text-orange-600">8 stores</p>
+                <p className="text-sm text-gray-500">Agotado</p>
+                <p className="text-lg font-semibold text-orange-600">8 tiendas</p>
               </div>
               <Package size={20} className="text-gray-400" />
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
-                <p className="text-sm text-gray-500">Overdue Clients</p>
+                <p className="text-sm text-gray-500">Clientes Vencidos</p>
                 <p className="text-lg font-semibold text-red-600">$45K</p>
               </div>
               <DollarSign size={20} className="text-gray-400" />
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
-                <p className="text-sm text-gray-500">Priority Level</p>
-                <p className="text-lg font-semibold text-yellow-600">Medium</p>
+                <p className="text-sm text-gray-500">Nivel Prioridad</p>
+                <p className="text-lg font-semibold text-yellow-600">Medio</p>
               </div>
               <ShieldAlert size={20} className="text-gray-400" />
             </div>
