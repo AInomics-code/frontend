@@ -96,14 +96,14 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
     },
     {
       id: 'competitive-analysis',
-      text: "How does La Doña's market position compare to our main competitors?",
+      text: "¿Cómo se compara la posición de mercado de La Doña con nuestros principales competidores?",
       category: 'strategy',
       icon: <BarChart3 size={14} className="text-gray-400" />,
       priority: 'low'
     },
     {
       id: 'backorder-impact',
-      text: "What is the impact of current backorders on customer satisfaction and revenue?",
+      text: "¿Cuál es el impacto de los pedidos pendientes actuales en la satisfacción del cliente y los ingresos?",
       category: 'inventory',
       icon: <Package size={14} className="text-gray-400" />,
       priority: 'medium'
@@ -111,12 +111,12 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
   ];
 
   const categories = [
-    { id: 'all', name: 'All Questions', count: promptSuggestions.length },
-    { id: 'financial', name: 'Financial', count: promptSuggestions.filter(p => p.category === 'financial').length },
-    { id: 'performance', name: 'Performance', count: promptSuggestions.filter(p => p.category === 'performance').length },
-    { id: 'clients', name: 'Clients', count: promptSuggestions.filter(p => p.category === 'clients').length },
-    { id: 'inventory', name: 'Inventory', count: promptSuggestions.filter(p => p.category === 'inventory').length },
-    { id: 'operations', name: 'Operations', count: promptSuggestions.filter(p => p.category === 'operations').length }
+    { id: 'all', name: 'Todas las Preguntas', count: promptSuggestions.length },
+    { id: 'financial', name: 'Financiero', count: promptSuggestions.filter(p => p.category === 'financial').length },
+    { id: 'performance', name: 'Rendimiento', count: promptSuggestions.filter(p => p.category === 'performance').length },
+    { id: 'clients', name: 'Clientes', count: promptSuggestions.filter(p => p.category === 'clients').length },
+    { id: 'inventory', name: 'Inventario', count: promptSuggestions.filter(p => p.category === 'inventory').length },
+    { id: 'operations', name: 'Operaciones', count: promptSuggestions.filter(p => p.category === 'operations').length }
   ];
 
   const filteredPrompts = selectedCategory === 'all' 
@@ -129,9 +129,9 @@ export function PromptGenerator({ onPromptSelect, isVisible, onToggle }: PromptG
   const getPriorityBadge = (priority: string) => {
     switch (priority) {
       case 'high':
-        return <span className="px-2 py-1 text-xs bg-red-100 text-red-700 rounded-full">Critical</span>;
+        return <span className="px-2 py-1 text-xs bg-red-100 text-red-700 rounded-full">Crítico</span>;
       case 'medium':
-        return <span className="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded-full">Strategic</span>;
+        return <span className="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded-full">Estratégico</span>;
       case 'low':
         return <span className="px-2 py-1 text-xs bg-green-100 text-green-700 rounded-full">Insight</span>;
       default:
