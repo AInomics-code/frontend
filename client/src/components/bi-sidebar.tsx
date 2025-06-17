@@ -168,7 +168,7 @@ export function BiSidebar() {
         <div className="flex flex-col gap-y-6">
           <SidebarItem 
             icon={<BarChart4 size={24} />}
-            label="Performance"
+            label="Rendimiento"
             isActive={activePanel === 'performance'}
             onClick={() => handlePanelClick('performance')}
             hoverColor="text-green-600"
@@ -176,7 +176,7 @@ export function BiSidebar() {
           
           <SidebarItem 
             icon={<ShieldAlert size={24} />}
-            label="Risks"
+            label="Riesgos"
             isActive={activePanel === 'risks'}
             onClick={() => handlePanelClick('risks')}
             hoverColor="text-red-600"
@@ -184,7 +184,7 @@ export function BiSidebar() {
           
           <SidebarItem 
             icon={<TrendingUp size={24} />}
-            label="Opportunities"
+            label="Oportunidades"
             isActive={activePanel === 'opportunities'}
             onClick={() => handlePanelClick('opportunities')}
             hoverColor="text-yellow-600"
@@ -207,7 +207,7 @@ export function BiSidebar() {
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
               <span className="h-2 w-2 bg-green-500 rounded-full animate-pulse" />
-              Performance
+              Rendimiento
             </h2>
             <span className="text-xs text-gray-500">🔘 65% of May complete</span>
           </div>
@@ -216,29 +216,29 @@ export function BiSidebar() {
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
-                <p className="text-sm text-gray-500">Sales vs Budget</p>
+                <p className="text-sm text-gray-500">Ventas vs Presupuesto</p>
                 <p className="text-lg font-semibold text-green-600">84%</p>
               </div>
               <BarChart4 size={20} className="text-gray-400" />
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
-                <p className="text-sm text-gray-500">Top SKU (Wk)</p>
+                <p className="text-sm text-gray-500">Top SKU (Sem)</p>
                 <p className="text-lg font-semibold text-amber-600">Aderezo</p>
               </div>
               <Trophy size={20} className="text-gray-400" />
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
-                <p className="text-sm text-gray-500">Client Progress</p>
+                <p className="text-sm text-gray-500">Progreso Cliente</p>
                 <p className="text-lg font-semibold text-blue-600">71%</p>
               </div>
               <Target size={20} className="text-gray-400" />
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
-                <p className="text-sm text-gray-500">Last Update</p>
-                <p className="text-lg font-semibold text-gray-600">Today</p>
+                <p className="text-sm text-gray-500">Última Actualización</p>
+                <p className="text-lg font-semibold text-gray-600">Hoy</p>
               </div>
               <Clock size={20} className="text-gray-400" />
             </div>
