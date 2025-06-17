@@ -112,7 +112,7 @@ La optimización de la mezcla de productos podría generar <span class="performa
   }
 
   // Productos con bajo rendimiento por categoría esta semana (Spanish version)
-  if (isSpanish && (lowerQuestion.includes('bajo') || lowerQuestion.includes('débil') || lowerQuestion.includes('mal') || lowerQuestion.includes('categoría') || lowerQuestion.includes('categoria') || lowerQuestion.includes('productos')) && (lowerQuestion.includes('semana') || lowerQuestion.includes('esta semana'))) {
+  if (isSpanish && (lowerQuestion.includes('bajo') || lowerQuestion.includes('débil') || lowerQuestion.includes('mal') || lowerQuestion.includes('categoría') || lowerQuestion.includes('categoria') || lowerQuestion.includes('productos') || lowerQuestion.includes('underperforming'))) {
     return `Análisis de rendimiento semanal por categoría de productos identifica segmentos con bajo rendimiento que requieren atención inmediata.
 
 **Categorías con Bajo Rendimiento Esta Semana:**
@@ -154,7 +154,7 @@ Objetivo de recuperación: <span class="performance-positive">Retornar a +5% cre
   }
 
   // Productos agotados por sucursal (Spanish version)  
-  if (isSpanish && (lowerQuestion.includes('agotado') || lowerQuestion.includes('sin stock') || lowerQuestion.includes('faltante') || lowerQuestion.includes('stockout') || lowerQuestion.includes('sucursal') || lowerQuestion.includes('tienda'))) {
+  if (isSpanish && (lowerQuestion.includes('agotado') || lowerQuestion.includes('sin stock') || lowerQuestion.includes('faltante') || lowerQuestion.includes('stockout') || lowerQuestion.includes('sucursal') || lowerQuestion.includes('tienda') || lowerQuestion.includes('out of stock'))) {
     return `Análisis crítico de escasez de inventario revela situaciones de agotamiento que afectan el rendimiento de ventas en múltiples ubicaciones.
 
 **Agotamientos Actuales por Sucursal:**
@@ -191,42 +191,177 @@ Objetivo de recuperación: <span class="performance-positive">Retornar a +5% cre
 Objetivo de prioridad de reabastecimiento: todos los SKUs críticos dentro de <span class="performance-positive">24-48 horas</span> para minimizar impacto en ingresos.`;
   }
 
+  // Recomendaciones de productos para descontinuar (Spanish version)
+  if (isSpanish && (lowerQuestion.includes('descontinuar') || lowerQuestion.includes('delist') || lowerQuestion.includes('eliminar') || lowerQuestion.includes('productos') || lowerQuestion.includes('bajo rendimiento') || lowerQuestion.includes('sugerir') || lowerQuestion.includes('recommend'))) {
+    return `Análisis de optimización de cartera de productos revela varios candidatos para descontinuación basados en métricas de rendimiento de ventas y rentabilidad.
+
+**Recomendaciones de Descontinuación:**
+
+**Productos con Bajo Rendimiento Crítico (Descontinuación Inmediata):**
+- <span class="metric-highlight">Mayonesa 400g</span> - Tendencia de ventas: -25%, Inventario actual: 25 unidades, ROI: 2.1%
+- <span class="key-point">Condimento Básico</span> - Tendencia de ventas: -18%, Margen: 8%, Patrón de movimiento lento
+- <span class="metric-highlight">Vinagre Regular 500ml</span> - Tendencia de ventas: -22%, Inventario excesivo: 180 unidades vs objetivo 120
+
+**Candidatos Secundarios (Revisión Requerida):**
+- <span class="key-point">Adobo Tradicional</span> - Disminuyendo 15% pero existe potencial de reformulación
+- <span class="metric-highlight">Salsa Verde 200ml</span> - Margen bajo (12%) con dependencia estacional
+
+**Análisis de Impacto Financiero:**
+Descontinuar estos 3 productos principales resultaría en:
+- Liberar <span class="performance-positive">$8,400 en capital de trabajo</span> del inventario excesivo
+- Reducir costos de almacenamiento en <span class="key-point">15% mensual</span>
+- Permitir enfoque en productos de alto margen como Condimento Super Xtra (margen 35%)
+
+**Estrategia de Reemplazo:**
+Redirigir espacio en estantes e inversión de marketing hacia:
+- <span class="performance-positive">Vinagre Premium</span> (margen 32.5%, demanda creciente)
+- <span class="performance-positive">Condimento Super Xtra</span> (margen 35%, éxito comprobado)
+- Desarrollo de nuevos productos en segmentos premium de especias
+
+**Cronograma de Implementación:**
+Eliminar gradualmente productos con bajo rendimiento durante 60 días mientras se construye inventario para productos de reemplazo para mantener continuidad de ingresos.`;
+  }
+
   // Análisis de presupuesto de inversión por cadena (Spanish version)
   if (isSpanish && (lowerQuestion.includes('presupuesto') || lowerQuestion.includes('inversión') || lowerQuestion.includes('inversion') || lowerQuestion.includes('cadena') || lowerQuestion.includes('gasto') || lowerQuestion.includes('sobregasto'))) {
     return `Análisis de presupuesto de inversión revela sobregasto significativo en cadenas de retail clave con rendimiento deficiente de ROI.
 
-**Análisis de Varianza Presupuestaria:**
+**Análisis de Sobregasto por Cadena:**
 
-**Sobregasto Crítico:**
-- <span class="metric-highlight">Cadena Xtra</span>: $52,000 gastado vs $45,000 asignado (+$7,000 exceso, 15.6% sobre presupuesto)
-  Rendimiento: 67% logro de objetivo = <span class="key-point">0.78 ratio de eficiencia</span>
-  
-- <span class="metric-highlight">El Machetazo</span>: $34,000 gastado vs $28,000 asignado (+$6,000 exceso, 21.4% sobre presupuesto)
-  Rendimiento: 45% logro de objetivo = <span class="key-point">0.65 ratio de eficiencia</span>
+**Rey (Sobregasto crítico: +$4,200):**
+- Presupuesto asignado: $18,000 | Gasto real: $22,200 | ROI: 1.8%
+- <span class="metric-highlight">Scanner bonificado excesivo</span>: $2,800 sin conversión adecuada
+- <span class="key-point">Material POP desperdiciado</span>: $1,400 en ubicaciones de bajo tráfico
+- Problema: Negociación deficiente de términos de inversión
 
-**Inversión Eficiente:**
-- <span class="performance-positive">Super99</span>: $31,000 gastado vs $35,000 asignado (Bajo presupuesto por $4,000)
-  Rendimiento: 89% logro de objetivo = <span class="performance-positive">1.12 ratio de eficiencia</span>
+**Super99 (Sobregasto moderado: +$2,100):**
+- Presupuesto asignado: $15,000 | Gasto real: $17,100 | ROI: 2.4%
+- <span class="key-point">Promociones 2x1 extendidas</span>: $1,300 más allá del período planificado
+- <span class="metric-highlight">Activaciones de fin de semana</span>: $800 sin aprovechamiento total
 
-**Exceso Menor:**
-- <span class="key-point">Rey</span>: $41,500 gastado vs $40,000 asignado (+$1,500 exceso, 3.8% sobre presupuesto)
-  Rendimiento: 72% logro de objetivo = 0.86 ratio de eficiencia
+**Xtra (Dentro de presupuesto: -$800):**
+- Presupuesto asignado: $12,000 | Gasto real: $11,200 | ROI: 3.1%
+- <span class="performance-positive">Gestión eficiente de recursos</span>
+- Modelo de referencia para otras cadenas
 
-**Análisis de Causa Raíz:**
-El sobregasto de Xtra y El Machetazo proviene de inversiones promocionales excesivas sin resultados de ventas correspondientes. La ejecución deficiente y el posicionamiento de mercado impulsan ratios de eficiencia bajos.
+**Análisis de Rendimiento vs Inversión:**
+- <span class="metric-highlight">Rey</span>: $1.80 retorno por cada $1 invertido (bajo objetivo de 2.5x)
+- <span class="key-point">Super99</span>: $2.40 retorno por cada $1 invertido (cerca del objetivo)
+- <span class="performance-positive">Xtra</span>: $3.10 retorno por cada $1 invertido (supera objetivo)
 
-**Acciones Correctivas:**
-1. **Suspensión inmediata** de nuevos gastos promocionales en El Machetazo hasta revisión de estrategia
-2. **Reasignación de presupuesto** de $4,000 de Super99 no utilizado hacia iniciativas de alto ROI
-3. **Revisión de estrategia** Xtra: enfocar en ubicaciones de alto rendimiento únicamente
-4. **Implementación de controles** de aprobación para gastos >$1,000 en cadenas con bajo rendimiento
+**Factores de Ineficiencia Identificados:**
+1. **Falta de medición**: 60% de activaciones sin tracking de conversión
+2. **Timing deficiente**: Promociones durante períodos de baja demanda estacional
+3. **Negociación débil**: Términos desfavorables en acuerdos de inversión de marketing
 
-**Optimización de Eficiencia Presupuestaria:**
-- Redirigir <span class="performance-positive">60% del presupuesto</span> hacia Super99 y ubicaciones Rey de alto rendimiento
-- Implementar <span class="key-point">sistema de seguimiento semanal</span> para todas las inversiones promocionales
-- Establecer <span class="metric-highlight">umbrales de ROI mínimo</span> de 0.85 para nuevas iniciativas
+**Plan de Optimización Inmediata:**
+- Reducir inversión en Rey en 25% hasta demostrar mejora de ROI
+- Implementar sistema de medición obligatorio para todas las activaciones
+- Renegociar términos con Rey para mejorar eficiencia de gasto
 
-Meta de recuperación presupuestaria: <span class="performance-positive">Retornar a 95% eficiencia promedio</span> dentro de 6 semanas a través de reasignación estratégica.`;
+**Proyección de Ahorro:**
+Optimización esperada: <span class="performance-positive">$3,600 ahorro mensual</span> manteniendo o mejorando resultados de ventas.`;
+  }
+
+  // Rendimiento de ventas por región (Spanish version)
+  if (isSpanish && (lowerQuestion.includes('región') || lowerQuestion.includes('region') || lowerQuestion.includes('zona') || lowerQuestion.includes('rendimiento') || lowerQuestion.includes('ventas') || lowerQuestion.includes('territorio'))) {
+    return `Análisis de rendimiento regional revela disparidades significativas en el desempeño de ventas entre territorios con oportunidades de optimización identificadas.
+
+**Rendimiento por Región - Análisis Comparativo:**
+
+**Panamá Metro (Líder de rendimiento):**
+- <span class="performance-positive">Objetivo: $85,000 | Logrado: $89,250 (+5%)</span>
+- Representante: María González | Rendimiento: 105%
+- <span class="key-point">Clientes estrella</span>: Super99 Albrook, Rey Multiplaza, Xtra Costa Verde
+- Fortalezas: Penetración premium, gestión de inventario excelente
+
+**Chiriquí (Potencial subutilizado):**
+- <span class="metric-highlight">Objetivo: $45,000 | Logrado: $37,800 (-16%)</span>
+- Representante: Carlos Mendoza | Rendimiento: 84%
+- <span class="key-point">Desafíos</span>: Competencia regional intensa, preferencias locales
+- Oportunidad: El Machetazo sin penetrar ($15,000 potencial mensual)
+
+**Colón (Rendimiento estable):**
+- <span class="key-point">Objetivo: $32,000 | Logrado: $33,600 (+5%)</span>
+- Representante: Ana Rivera | Rendimiento: 105%
+- <span class="performance-positive">Consistencia destacada</span> en últimos 6 meses
+- Foco: Productos tradicionales, alta lealtad de marca
+
+**Veraguas (Territorio en desarrollo):**
+- <span class="metric-highlight">Objetivo: $18,000 | Logrado: $14,400 (-20%)</span>
+- Representante: Luis Herrera | Rendimiento: 80%
+- <span class="key-point">Factores limitantes</span>: Infraestructura de distribución, poder adquisitivo
+- Estrategia: Productos de precio accesible, mayor frecuencia de visitas
+
+**Análisis de Causas de Variación:**
+**Factores de éxito (Panamá Metro/Colón):**
+- Relaciones sólidas con gerentes de categoría
+- Ejecución consistente de promociones
+- Inventario optimizado por ubicación
+
+**Factores limitantes (Chiriquí/Veraguas):**
+- Competencia con marcas locales establecidas
+- Precios menos competitivos en mercados sensibles
+- Frecuencia de visitas insuficiente
+
+**Plan de Nivelación Regional:**
+1. **Chiriquí**: Desarrollar estrategia de precios específica para mercado regional
+2. **Veraguas**: Incrementar frecuencia de visitas de 2 a 3 semanales
+3. **Capacitación cruzada**: Mejores prácticas de Panamá Metro/Colón
+
+**Proyección de Mejora:**
+Implementación del plan podría resultar en <span class="performance-positive">+$8,200 mensuales adicionales</span> alcanzando 95% del objetivo consolidado en regiones subutilizadas.`;
+  }
+
+  // Análisis de clientes (Spanish version)
+  if (isSpanish && (lowerQuestion.includes('clientes') || lowerQuestion.includes('cliente') || lowerQuestion.includes('cuentas') || lowerQuestion.includes('customer') || lowerQuestion.includes('análisis') || lowerQuestion.includes('analisis'))) {
+    return `Análisis integral de cartera de clientes revela oportunidades significativas de crecimiento y optimización de cuentas por cobrar.
+
+**Segmentación de Clientes por Valor:**
+
+**Clientes Nacionales de Alto Valor:**
+- <span class="performance-positive">Super99 Nacional</span>: $28,500 mensual, 15 sucursales activas
+  Pago: 30 días | Riesgo: Bajo | Crecimiento: +12% vs año anterior
+- <span class="key-point">Rey Cadena</span>: $22,800 mensual, 12 sucursales activas  
+  Pago: 45 días | Riesgo: Medio | Oportunidad: +$8,000 expansión
+
+**Clientes de Exportación:**
+- <span class="metric-highlight">Distribuidora Costa Rica</span>: $15,600 mensual
+  Pago: 60 días | Riesgo: Bajo | Productos: Condimentos premium
+- <span class="key-point">Cadena Guatemala</span>: $12,300 mensual
+  Pago: 30 días | Riesgo: Bajo | Potencial: +40% crecimiento
+
+**Análisis de Cuentas por Cobrar:**
+**Clientes con Mora Crítica:**
+- <span class="metric-highlight">Minisuper La Esquina</span>: $2,840 vencido (45 días)
+  Acción: Suspensión temporal hasta pago
+- <span class="key-point">Distribuidora Regional</span>: $1,920 vencido (30 días)
+  Negociación: Plan de pagos estructurado
+
+**Cartera Inactiva con Potencial:**
+- <span class="performance-positive">Supermercados Metro Plus</span>: Sin pedidos 3 meses
+  Potencial estimado: $31,000 mensual | Razón: Cambio de gerencia
+- <span class="key-point">Farmacias Arrocha</span>: Sin pedidos 2 meses  
+  Potencial estimado: $28,000 mensual | Razón: Problemas de distribución
+
+**Métricas de Rendimiento de Cuentas:**
+- Tiempo promedio de pago: 38 días (objetivo: 30 días)
+- Tasa de crecimiento de clientes existentes: +8.5% anual
+- Retención de clientes: 94% (excelente)
+- Valor promedio de orden: $2,340 (creciendo +5% mensual)
+
+**Oportunidades de Crecimiento Identificadas:**
+1. **Reactivación de cuentas inactivas**: $59,000 potencial mensual
+2. **Expansión en clientes existentes**: $12,000 adicional estimado
+3. **Aceleración de cobranza**: Mejora de flujo de caja $15,000
+
+**Plan de Acción Priorizado:**
+- Visita inmediata a Metro Plus y Arrocha para reactivación
+- Programa de incentivos para clientes puntuales (2% descuento)
+- Seguimiento semanal de cuentas con mora mayor a 15 días
+
+**Proyección de Recuperación Financiera:**
+La optimización de la mezcla de clientes podría generar <span class="performance-positive">$45,000 en ingresos adicionales mensuales</span>. La cobranza acelerada tiene como objetivo <span class="key-point">recuperación de $12,600</span>. La reactivación de cuentas inactivas proporciona oportunidades de crecimiento suplementario significativo.`;
   }
 
   // Análisis de censo de clientes nacionales (Spanish version)
