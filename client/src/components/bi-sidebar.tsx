@@ -224,14 +224,14 @@ export function BiSidebar() {
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
                 <p className="text-sm text-gray-500">Top SKU (Sem)</p>
-                <p className="text-lg font-semibold text-amber-600">Aderezo</p>
+                <p className="text-lg font-semibold text-amber-600">Condimento Super Xtra</p>
               </div>
               <Trophy size={20} className="text-gray-400" />
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
                 <p className="text-sm text-gray-500">Progreso Cliente</p>
-                <p className="text-lg font-semibold text-blue-600">71%</p>
+                <p className="text-lg font-semibold text-blue-600">78%</p>
               </div>
               <Target size={20} className="text-gray-400" />
             </div>
@@ -246,7 +246,7 @@ export function BiSidebar() {
 
           {/* Micro-insight */}
           <div className="text-sm text-green-700 bg-green-100 px-3 py-2 rounded-xl">
-            ✅ Aderezo rastreando +6% sobre promedio cadena
+            ✅ Condimento Super Xtra rastreando +15% sobre promedio cadena
           </div>
 
           {/* CTA Button */}
@@ -272,21 +272,21 @@ export function BiSidebar() {
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
                 <p className="text-sm text-gray-500">Pedidos Pendientes</p>
-                <p className="text-lg font-semibold text-red-600">12 artículos</p>
+                <p className="text-lg font-semibold text-red-600">8 artículos</p>
               </div>
               <AlertTriangle size={20} className="text-gray-400" />
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
                 <p className="text-sm text-gray-500">Agotado</p>
-                <p className="text-lg font-semibold text-orange-600">8 tiendas</p>
+                <p className="text-lg font-semibold text-orange-600">5 tiendas</p>
               </div>
               <Package size={20} className="text-gray-400" />
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
                 <p className="text-sm text-gray-500">Clientes Vencidos</p>
-                <p className="text-lg font-semibold text-red-600">$45K</p>
+                <p className="text-lg font-semibold text-red-600">$67K</p>
               </div>
               <DollarSign size={20} className="text-gray-400" />
             </div>
@@ -301,7 +301,7 @@ export function BiSidebar() {
 
           {/* Micro-insight */}
           <div className="text-sm text-red-700 bg-red-100 px-3 py-2 rounded-xl">
-            ⚠️ Zona Norte necesita reorden inmediato - 3 SKUs críticos
+            ⚠️ Zona Norte necesita reorden inmediato - Vinagre Premium y Mayonesa agotados
           </div>
 
           {/* CTA Button */}
@@ -327,14 +327,14 @@ export function BiSidebar() {
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
                 <p className="text-sm text-gray-500">ROI Promoción</p>
-                <p className="text-lg font-semibold text-green-600">340%</p>
+                <p className="text-lg font-semibold text-green-600">240%</p>
               </div>
               <LineChart size={20} className="text-gray-400" />
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <div>
                 <p className="text-sm text-gray-500">Clientes Inactivos</p>
-                <p className="text-lg font-semibold text-blue-600">23 leads</p>
+                <p className="text-lg font-semibold text-blue-600">18 cuentas</p>
               </div>
               <Users size={20} className="text-gray-400" />
             </div>
