@@ -9,9 +9,10 @@ import { cn } from "@/lib/utils";
 interface MessageInputProps {
   conversationId: number | null;
   onSendMessage: () => void;
+  language?: 'en' | 'es';
 }
 
-export function MessageInput({ conversationId, onSendMessage }: MessageInputProps) {
+export function MessageInput({ conversationId, onSendMessage, language }: MessageInputProps) {
   const [message, setMessage] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const queryClient = useQueryClient();
@@ -25,6 +26,7 @@ export function MessageInput({ conversationId, onSendMessage }: MessageInputProp
       const response = await apiRequest("POST", `/api/conversations/${conversationId}/messages`, {
         role: "user",
         content,
+        language,
       });
       return response.json();
     },

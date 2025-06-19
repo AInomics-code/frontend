@@ -56,9 +56,10 @@ function isSpanishQuery(question: string): boolean {
 }
 
 // CEO-focused data analyst briefing using La Doña's business intelligence
-function getDataAnalystInsights(question: string): string {
+function getDataAnalystInsights(question: string, forcedLanguage?: 'en' | 'es'): string {
   const lowerQuestion = question.toLowerCase();
-  const isSpanish = isSpanishQuery(question);
+  // If language is explicitly set, use that; otherwise detect from question
+  const isSpanish = forcedLanguage ? forcedLanguage === 'es' : isSpanishQuery(question);
   
   // Core Analytics: Calculate key metrics from actual data sources
   const totalRevenue = salesData.reduce((sum, sale) => sum + sale.revenue, 0);
@@ -2755,9 +2756,9 @@ Product mix optimization could yield <span class="performance-positive">$${(topM
 /**
  * Universal business intelligence function that can answer any question
  */
-export async function getBusinessInsights(question: string): Promise<string> {
+export async function getBusinessInsights(question: string, forcedLanguage?: 'en' | 'es'): Promise<string> {
   // First try the comprehensive pre-built intelligence for frequently asked questions
-  const prebuiltResponse = getDataAnalystInsights(question);
+  const prebuiltResponse = getDataAnalystInsights(question, forcedLanguage);
   if (prebuiltResponse && prebuiltResponse !== "Puedo proporcionar análisis específicos sobre las operaciones comerciales de La Doña. Pregunta sobre rendimiento regional, análisis de clientes, rentabilidad de productos, rendimiento de representantes de ventas, o gestión de inventario.") {
     return prebuiltResponse;
   }

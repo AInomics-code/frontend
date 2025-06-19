@@ -81,8 +81,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Generate AI response for user messages using authentic La Doña data
       if (validatedData.role === "user") {
         try {
+          // Extract language preference from request body
+          const language = req.body.language as 'en' | 'es' | undefined;
           // Use authentic business intelligence with real La Doña data
-          const aiResponse = await getBusinessInsights(validatedData.content);
+          const aiResponse = await getBusinessInsights(validatedData.content, language);
 
           const assistantMessage = {
             conversationId,

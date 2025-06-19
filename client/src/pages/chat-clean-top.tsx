@@ -191,6 +191,7 @@ export default function Chat() {
         body: JSON.stringify({
           content: messageContent,
           role: "user",
+          language: speechLanguage === "es-ES" ? "es" : "en",
         }),
       });
 
