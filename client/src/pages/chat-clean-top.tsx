@@ -36,6 +36,35 @@ export default function Chat() {
   const [speechSupported, setSpeechSupported] = useState(false);
   const [interimTranscript, setInterimTranscript] = useState("");
   const [speechLanguage, setSpeechLanguage] = useState("es-ES");
+  
+  // Language-dependent text content
+  const isEnglish = speechLanguage === "en-US";
+  const text = {
+    performanceScore: isEnglish ? "Performance Score" : "Puntuación de Rendimiento",
+    zonesAtRisk: isEnglish ? "Zones at Risk" : "Zonas en Riesgo", 
+    productOpportunity: isEnglish ? "Product Opportunity" : "Oportunidad de Producto",
+    salesTarget: isEnglish ? "of sales target achieved" : "del objetivo de ventas cumplido",
+    clickForDetails: isEnglish ? "Click for details" : "Haz clic para ver detalles",
+    salesPerformance: isEnglish ? "Sales Performance" : "Rendimiento de Ventas",
+    of: isEnglish ? "of" : "de",
+    target: isEnglish ? "target" : "objetivo",
+    topPerformers: isEnglish ? "Top Performers" : "Mejores Resultados",
+    regions: isEnglish ? "Regions" : "Regiones",
+    reps: isEnglish ? "Reps" : "Representantes",
+    products: isEnglish ? "Products" : "Productos",
+    criticalAlerts: isEnglish ? "Critical Alerts" : "Alertas Críticas",
+    stockouts: isEnglish ? "stockouts reported" : "agotamientos reportados",
+    overdueAccounts: isEnglish ? "overdue accounts" : "cuentas morosas",
+    lowInventory: isEnglish ? "low inventory alerts" : "alertas de inventario bajo",
+    opportunities: isEnglish ? "Opportunities" : "Oportunidades",
+    newClients: isEnglish ? "new client prospects" : "nuevos prospectos de clientes",
+    productLaunches: isEnglish ? "product launch opportunities" : "oportunidades de lanzamiento",
+    expansions: isEnglish ? "expansion territories" : "territorios de expansión",
+    listening: isEnglish ? "Listening..." : "Escuchando...",
+    askAnything: isEnglish ? "Ask anything..." : "Pregunta lo que quieras…",
+    sendMessage: isEnglish ? "Send message" : "Enviar mensaje",
+    language: isEnglish ? "Switch to Spanish" : "Cambiar idioma a Inglés"
+  };
   const [inputFeedback, setInputFeedback] = useState<
     "success" | "error" | null
   >(null);
@@ -338,7 +367,7 @@ export default function Chat() {
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">
-                  Puntuación de Rendimiento
+                  {text.performanceScore}
                 </h4>
               </div>
               {expandedCard === "performance" ? (
@@ -358,8 +387,7 @@ export default function Chat() {
                 </p>
                 <div className="flex items-center gap-2 mt-1">
                   <p className="text-xs text-gray-500">
-                    <AnimatedCounter value={82} duration={1200} suffix="%" /> del
-                    objetivo de ventas cumplido
+                    <AnimatedCounter value={82} duration={1200} suffix="%" /> {text.salesTarget}
                   </p>
                   <PulseIndicator color="green" size="sm" />
                 </div>
@@ -379,14 +407,13 @@ export default function Chat() {
                     }
                   >
                     <h5 className="text-sm font-semibold text-gray-800 mb-2">
-                      Sales Performance
+                      {text.salesPerformance}
                     </h5>
                     <p className="text-2xl font-bold text-green-600">
                       <AnimatedCounter value={82} duration={1300} suffix="%" />
                     </p>
                     <p className="text-sm text-gray-600">
-                      $<AnimatedCounter value={369} duration={1500} />K of $450K
-                      target
+                      $<AnimatedCounter value={369} duration={1500} />K {text.of} $450K {text.target}
                     </p>
                     <div className="mt-2">
                       <ProgressBar value={82} max={100} color="green" />
@@ -401,7 +428,7 @@ export default function Chat() {
                     }
                   >
                     <h5 className="text-sm font-semibold text-gray-800 mb-2">
-                      Top Performers
+                      {text.topPerformers}
                     </h5>
                     <p className="text-sm text-gray-700 mb-1">
                       <strong>Best SKU:</strong> SKU 183 – Bananas
@@ -449,7 +476,7 @@ export default function Chat() {
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                 <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">
-                  Zonas en Riesgo
+                  {text.zonesAtRisk}
                 </h4>
               </div>
               {expandedCard === "risks" ? (
@@ -464,7 +491,7 @@ export default function Chat() {
 
             {expandedCard !== "risks" ? (
               <>
-                <p className="text-2xl font-semibold text-gray-900">3 Zonas</p>
+                <p className="text-2xl font-semibold text-gray-900">3 {isEnglish ? "Zones" : "Zonas"}</p>
                 <p className="text-xs text-gray-500">
                   Chiriquí, Colón, San Miguelito
                 </p>
@@ -567,7 +594,7 @@ export default function Chat() {
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                 <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">
-                  Oportunidad de Producto
+                  {text.productOpportunity}
                 </h4>
               </div>
               {expandedCard === "opportunities" ? (
@@ -586,10 +613,10 @@ export default function Chat() {
                   Vinagre Premium
                 </p>
                 <p className="text-xs text-gray-500">
-                  Alto potencial • Débil: Mango Salsa
+                  {isEnglish ? "High potential • Weak: Mango Salsa" : "Alto potencial • Débil: Mango Salsa"}
                 </p>
                 <p className="text-xs text-gray-400 mt-2 italic">
-                  Haz clic para ver detalles
+                  {text.clickForDetails}
                 </p>
               </>
             ) : (
@@ -604,17 +631,17 @@ export default function Chat() {
                     }
                   >
                     <h5 className="text-sm font-semibold text-green-800 mb-2">
-                      High Opportunity
+                      {isEnglish ? "High Opportunity" : "Alta Oportunidad"}
                     </h5>
                     <p className="text-lg font-bold text-green-600">
                       Vinagre Premium
                     </p>
                     <p className="text-sm text-green-700 mb-2">
-                      +$45K potential revenue
+                      +$45K {isEnglish ? "potential revenue" : "ingresos potenciales"}
                     </p>
                     <div className="text-xs text-green-600">
-                      <p>• Increase distribution to 15 new stores</p>
-                      <p>• Focus on premium market segment</p>
+                      <p>• {isEnglish ? "Increase distribution to 15 new stores" : "Incrementar distribución a 15 tiendas nuevas"}</p>
+                      <p>• {isEnglish ? "Focus on premium market segment" : "Enfoque en segmento premium"}</p>
                     </div>
                   </div>
                   <div
@@ -626,17 +653,17 @@ export default function Chat() {
                     }
                   >
                     <h5 className="text-sm font-semibold text-red-800 mb-2">
-                      Underperforming
+                      {isEnglish ? "Underperforming" : "Bajo Rendimiento"}
                     </h5>
                     <p className="text-lg font-bold text-red-600">
                       Mango Salsa
                     </p>
                     <p className="text-sm text-red-700 mb-2">
-                      -$12K revenue impact
+                      -$12K {isEnglish ? "revenue impact" : "impacto en ingresos"}
                     </p>
                     <div className="text-xs text-red-600">
-                      <p>• Consider discontinuation</p>
-                      <p>• Low demand across all regions</p>
+                      <p>• {isEnglish ? "Consider discontinuation" : "Considerar descontinuación"}</p>
+                      <p>• {isEnglish ? "Low demand across all regions" : "Baja demanda en todas las regiones"}</p>
                     </div>
                   </div>
                 </div>
@@ -821,7 +848,7 @@ export default function Chat() {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder={
-                    isListening ? "Escuchando..." : "Pregunta lo que quieras…"
+                    isListening ? text.listening : text.askAnything
                   }
                   className="w-full bg-transparent border-none outline-none px-6 py-5 text-gray-800 placeholder-gray-400 text-lg resize-none"
                   disabled={isTyping}
@@ -865,7 +892,7 @@ export default function Chat() {
                 {speechSupported && (
                   <button
                     onClick={toggleLanguage}
-                    title={`Cambiar idioma a ${speechLanguage === "es-ES" ? "Inglés" : "Español"} (Ctrl+L)`}
+                    title={text.language}
                     className="px-2 py-1 text-xs font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md transition-all duration-150 button-press ripple-effect"
                   >
                     {speechLanguage === "es-ES" ? "ES" : "EN"}
@@ -908,7 +935,7 @@ export default function Chat() {
                 {/* Send arrow button */}
                 <button
                   onClick={handleSendMessage}
-                  title="Send message"
+                  title={text.sendMessage}
                   className={`p-3 transition-all duration-200 button-press ripple-effect ${
                     inputValue.trim() && !isTyping
                       ? "text-white bg-red-500 hover:bg-red-600 rounded-lg shadow-sm hover:shadow-md interactive-hover animate-pulse-success"

@@ -117,6 +117,10 @@ Changelog:
     - Budget variance analysis with full financial breakdown
     - Product rotation analysis with actionable recovery plans  
     - Promotional performance analysis with strategic recommendations
+  * Complete dynamic language switching implemented (ES/EN toggle)
+  * All interface elements update in real-time when language is switched
+  * Backend respects language preference for AI responses
+  * KPI cards, metrics, and all UI text fully responsive to language selection
 ```
 
 ## User Preferences
