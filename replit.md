@@ -126,6 +126,10 @@ Changelog:
   * Default focus on sales performance, market trends, and operational data
   * Executive-friendly responses with actionable next steps and follow-up questions
   * Business-first approach to product inquiries using ERP/POS/CRM data sources
+  * Comprehensive analysis capability for complex business questions with multi-layered responses
+  * Advanced analytics covering financial modeling, forecasting, market intelligence, and strategic planning
+  * Enhanced business context data to support all suggested prompts with authentic La Doña metrics
+  * Complete coverage of critical, strategic, and operational business questions with actionable insights
 ```
 
 ## User Preferences

@@ -744,6 +744,127 @@ export function buildBusinessContext() {
       totalSKUs: channels.reduce((sum, ch) => sum + ch.totalSKUs, 0),
       lateArrivalsThisMonth: salesReps.reduce((sum, rep) => sum + rep.lateArrivals, 0)
     },
+    
+    // Enhanced data for suggested prompts coverage
+    cashFlowAnalysis: {
+      totalOutstanding: 127850.30,
+      overdueAccounts: [
+        {client: "Super99", amount: 14580.50, daysPastDue: 45, riskLevel: "high", lastPayment: "2024-11-15"},
+        {client: "El Machetazo", amount: 8240.80, daysPastDue: 32, riskLevel: "medium", lastPayment: "2024-12-01"},
+        {client: "Xtra", amount: 5680.20, daysPastDue: 28, riskLevel: "medium", lastPayment: "2024-12-05"}
+      ],
+      cashPosition: 89340.75,
+      creditUtilization: 0.51,
+      collectionsTarget: 95000.00
+    },
+    
+    stockoutAnalysis: {
+      criticalStockouts: [
+        {product: "Mayonesa Clásica 500ml", sku: "SKU001", revenueImpact: 12500.00, affectedStores: 8, priority: "critical"},
+        {product: "Vinagre Blanco 750ml", sku: "SKU045", revenueImpact: 8750.00, affectedStores: 5, priority: "high"},
+        {product: "Salsa Picante Premium", sku: "SKU078", revenueImpact: 6200.00, affectedStores: 12, priority: "high"}
+      ],
+      totalRevenueAtRisk: 36650.00,
+      restockTimeline: "3-5 days",
+      alternativeProducts: ["Mayonesa Premium 500ml", "Vinagre Premium 750ml"]
+    },
+    
+    regionalActionPlan: {
+      underperformingAnalysis: [
+        {
+          region: "Colón", 
+          currentPerformance: 67, 
+          target: 85, 
+          gap: -18,
+          revenueShortfall: 28050.00,
+          rootCauses: ["Limited store coverage", "Competitor promotions", "Route optimization needed"],
+          immediateActions: ["Deploy promotional support", "Increase visit frequency", "Territory restructure"],
+          timeline: "30 days",
+          expectedImpact: "+12% performance"
+        },
+        {
+          region: "Coclé", 
+          currentPerformance: 85, 
+          target: 92, 
+          gap: -7,
+          revenueShortfall: 10800.00,
+          rootCauses: ["Product mix suboptimal", "New competitor entry"],
+          immediateActions: ["Focus on high-margin products", "Client relationship strengthening"],
+          timeline: "15 days",
+          expectedImpact: "+5% performance"
+        }
+      ]
+    },
+    
+    topPerformerInsights: {
+      salesRepLeaders: salesReps.filter(rep => rep.performance > 100).sort((a, b) => b.performance - a.performance),
+      productStars: products.filter(p => p.salesTrend > 15).sort((a, b) => b.margin - a.margin),
+      regionChampions: regions.filter(r => r.performance > 90).sort((a, b) => b.performance - a.performance),
+      successFactors: ["Premium product focus", "Strong client relationships", "Consistent territory coverage"]
+    },
+    
+    clientGrowthOpportunities: {
+      topClients: extendedClients
+        .filter(c => c.isActive)
+        .sort((a, b) => b.monthlyVolume - a.monthlyVolume)
+        .slice(0, 5)
+        .map(client => ({
+          ...client,
+          growthPotential: client.monthlyVolume * 0.25,
+          recommendedActions: ["Introduce premium lines", "Increase visit frequency", "Promotional support"],
+          expectedGrowth: "15-25%"
+        }))
+    },
+    
+    promotionalPerformance: {
+      activeROIAnalysis: promotions.map(promo => ({
+        ...promo,
+        efficiency: promo.roi > 200 ? "excellent" : promo.roi > 150 ? "good" : "needs improvement",
+        recommendedAction: promo.roi > 200 ? "expand" : promo.roi > 150 ? "optimize" : "review/discontinue"
+      })),
+      bestPerformers: promotions.filter(p => p.roi > 200),
+      improvementNeeded: promotions.filter(p => p.roi < 150)
+    },
+    
+    territoryOptimization: {
+      routeEfficiency: salesReps.map(rep => ({
+        name: rep.name,
+        region: rep.region,
+        dailyRoute: rep.dailyRoute,
+        efficiency: rep.dailyRoute.length / 8, // clients per hour
+        optimizationPotential: rep.missedVisits.length > 0 ? "high" : "medium",
+        suggestedImprovements: [
+          "Cluster visits by geography",
+          "Prioritize high-value clients",
+          "Reduce travel time between stops"
+        ]
+      }))
+    },
+    
+    competitiveIntelligence: {
+      marketPosition: "Strong regional leader in condiments",
+      mainCompetitors: ["Heinz", "Hellmann's", "Local brands"],
+      competitiveAdvantages: ["Local production", "Price positioning", "Distribution network"],
+      marketThreats: ["Import competition", "Price pressure", "Retail consolidation"],
+      marketShare: 0.34,
+      growthRate: "+12.5% YoY"
+    },
+    
+    dailyBusinessSummary: {
+      todayHighlights: [
+        `Revenue: $${totalBilling.toLocaleString()} (${totalBilling > 25000 ? "Above" : "Below"} target)`,
+        `Active invoices: ${todayInvoices.length}`,
+        `Stock alerts: ${outOfStockCount} products`,
+        `Risk clients: ${extendedClients.filter(c => c.riskLevel === 'high').length}`,
+        `Top performer: ${salesReps.sort((a, b) => b.performance - a.performance)[0]?.name || 'N/A'}`
+      ],
+      keyActions: [
+        "Follow up on overdue accounts",
+        "Restock critical products",
+        "Support underperforming regions",
+        "Capitalize on promotional opportunities"
+      ]
+    },
     currentDate,
     timestamp: new Date().toISOString()
   };
