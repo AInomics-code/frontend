@@ -60,19 +60,23 @@ export default function Login() {
             </svg>
           </div>
           
-          <div className="text-left mb-8">
-            <p className="text-xl mb-1 bg-gradient-to-r from-blue-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent font-bold" 
-               style={{ fontFamily: 'Inter, system-ui, -apple-system, sans-serif', fontWeight: '700', letterSpacing: '0.02em' }}>
-              Your AI Copilot
-            </p>
-            <p className="text-lg mb-4 bg-gradient-to-r from-blue-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent font-bold" 
-               style={{ fontFamily: 'Inter, system-ui, -apple-system, sans-serif', fontWeight: '700', letterSpacing: '0.02em' }}>
-              for Smarter Business Decisions
-            </p>
-            <h1 className="text-2xl font-semibold tracking-wider text-blue-200/80" 
-                style={{ fontFamily: '"Segoe UI", system-ui, -apple-system, sans-serif', letterSpacing: '0.12em', fontWeight: '600' }}>
-              VORTA
-            </h1>
+          <div className="mb-8">
+            <div className="text-left">
+              <p className="text-2xl mb-0 bg-gradient-to-r from-blue-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent font-black" 
+                 style={{ fontFamily: '"Comic Sans MS", "Chalkboard SE", "Bradley Hand", cursive', fontWeight: '900', letterSpacing: '0.02em' }}>
+                Your AI Copilot.
+              </p>
+              <p className="text-xl mb-6 bg-gradient-to-r from-blue-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent font-black" 
+                 style={{ fontFamily: '"Comic Sans MS", "Chalkboard SE", "Bradley Hand", cursive', fontWeight: '900', letterSpacing: '0.02em' }}>
+                for Smarter Business Decisions.
+              </p>
+            </div>
+            <div className="text-center">
+              <h1 className="text-lg font-medium tracking-wide text-blue-200/70" 
+                  style={{ fontFamily: '"Segoe UI", system-ui, -apple-system, sans-serif', letterSpacing: '0.1em', fontWeight: '500' }}>
+                VORTA
+              </h1>
+            </div>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
