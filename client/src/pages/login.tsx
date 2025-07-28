@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
+import { Mail, Lock } from "lucide-react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -27,29 +28,63 @@ export default function Login() {
         className="w-full md:w-1/2 bg-gradient-to-br from-[#1c2340] to-[#2a3b5c] rounded-3xl mr-3 flex flex-col justify-center px-8 md:px-12 shadow-2xl border border-blue-500/20"
       >
         <div className="max-w-md w-full mx-auto">
+          {/* Modern Abstract Shape */}
+          <div className="flex justify-center mb-6">
+            <svg width="80" height="60" viewBox="0 0 80 60" className="text-blue-400">
+              <defs>
+                <linearGradient id="abstractGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
+                  <stop offset="50%" style={{ stopColor: '#2563eb', stopOpacity: 0.8 }} />
+                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.6 }} />
+                </linearGradient>
+                <filter id="abstractGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="2" result="glow"/>
+                  <feMerge> 
+                    <feMergeNode in="glow"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              {/* Modern geometric shape */}
+              <path
+                d="M10,30 Q25,10 40,20 Q55,30 70,15 Q75,20 70,35 Q55,45 40,40 Q25,50 10,30 Z"
+                fill="url(#abstractGradient)"
+                filter="url(#abstractGlow)"
+              />
+              <circle cx="20" cy="25" r="3" fill="#60a5fa" opacity="0.8" />
+              <circle cx="60" cy="35" r="2" fill="#93c5fd" opacity="0.6" />
+            </svg>
+          </div>
+          
           <h1 className="text-3xl font-bold mb-2 tracking-tight">Welcome back to VORTA</h1>
           <p className="text-sm text-gray-300 mb-8">Log in to access your AI Copilot and make smarter decisions in real time.</p>
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-sm text-gray-400 mb-1">Email</label>
-              <input
-                type="email"
-                className="w-full px-4 py-3 rounded-xl bg-[#0f1629] border border-blue-400/30 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-400 w-5 h-5" />
+                <input
+                  type="email"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-[#0f1629] border border-blue-400/30 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
             </div>
             <div>
               <label className="block text-sm text-gray-400 mb-1">Password</label>
-              <input
-                type="password"
-                className="w-full px-4 py-3 rounded-xl bg-[#0f1629] border border-blue-400/30 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+              <div className="relative">
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-400 w-5 h-5" />
+                <input
+                  type="password"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-[#0f1629] border border-blue-400/30 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
             </div>
 
             {error && <p className="text-red-400 text-sm">{error}</p>}
@@ -90,16 +125,16 @@ export default function Login() {
             <defs>
               {/* Simple blue gradient for clean wave effect */}
               <radialGradient id="blueGlow" cx="50%" cy="50%" r="70%">
-                <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 0.8 }} />
-                <stop offset="50%" style={{ stopColor: '#1e40af', stopOpacity: 0.4 }} />
-                <stop offset="100%" style={{ stopColor: '#1e293b', stopOpacity: 0.1 }} />
+                <stop offset="0%" style={{ stopColor: '#2563eb', stopOpacity: 0.9 }} />
+                <stop offset="50%" style={{ stopColor: '#1e40af', stopOpacity: 0.6 }} />
+                <stop offset="100%" style={{ stopColor: '#0f172a', stopOpacity: 0.2 }} />
               </radialGradient>
               
               <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{ stopColor: '#000851', stopOpacity: 0.9 }} />
-                <stop offset="30%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.7 }} />
-                <stop offset="70%" style={{ stopColor: '#3b82f6', stopOpacity: 0.5 }} />
-                <stop offset="100%" style={{ stopColor: '#60a5fa', stopOpacity: 0.3 }} />
+                <stop offset="0%" style={{ stopColor: '#0c1e3f', stopOpacity: 0.95 }} />
+                <stop offset="30%" style={{ stopColor: '#1e40af', stopOpacity: 0.8 }} />
+                <stop offset="70%" style={{ stopColor: '#2563eb', stopOpacity: 0.6 }} />
+                <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 0.4 }} />
               </linearGradient>
               
               {/* Simple glow filter */}
