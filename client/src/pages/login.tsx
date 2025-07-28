@@ -260,53 +260,83 @@ export default function Login() {
         {/* Logo overlay */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <div className="text-center">
-            {/* V Logo */}
+            {/* Professional V Logo */}
             <div className="relative">
               <svg
-                width="120"
-                height="120"
-                viewBox="0 0 100 100"
+                width="140"
+                height="140"
+                viewBox="0 0 200 200"
                 className="drop-shadow-2xl"
               >
                 <defs>
-                  <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: '#60a5fa' }} />
-                    <stop offset="50%" style={{ stopColor: '#3b82f6' }} />
-                    <stop offset="100%" style={{ stopColor: '#2563eb' }} />
+                  <linearGradient id="vLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{ stopColor: '#00d4ff' }} />
+                    <stop offset="30%" style={{ stopColor: '#0ea5e9' }} />
+                    <stop offset="70%" style={{ stopColor: '#3b82f6' }} />
+                    <stop offset="100%" style={{ stopColor: '#1e40af' }} />
                   </linearGradient>
+                  
+                  <linearGradient id="vLogoGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 0.8 }} />
+                    <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 0.4 }} />
+                  </linearGradient>
+
+                  <filter id="logoGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                    <feMerge> 
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
                 </defs>
-                {/* Left part of V */}
+                
+                {/* Background glow */}
                 <path
-                  d="M15,20 L45,80 L35,80 L10,30 Z"
-                  fill="url(#logoGradient)"
-                  transform="skewX(-5)"
+                  d="M40,60 L100,170 L160,60 L140,60 L100,140 L60,60 Z"
+                  fill="url(#vLogoGlow)"
+                  opacity="0.3"
+                  filter="url(#logoGlow)"
                 />
-                {/* Right part of V */}
+                
+                {/* Main V shape - left stroke */}
                 <path
-                  d="M55,20 L85,30 L60,80 L50,80 Z"
-                  fill="url(#logoGradient)"
-                  transform="skewX(5)"
+                  d="M50,60 L100,150 L90,150 L45,60 Z"
+                  fill="url(#vLogoGradient)"
+                  stroke="none"
                 />
-                {/* Glow effect */}
+                
+                {/* Main V shape - right stroke */}
                 <path
-                  d="M15,20 L45,80 L35,80 L10,30 Z"
-                  fill="none"
-                  stroke="#60a5fa"
-                  strokeWidth="1"
+                  d="M150,60 L155,60 L110,150 L100,150 Z"
+                  fill="url(#vLogoGradient)"
+                  stroke="none"
+                />
+                
+                {/* Inner highlight for depth */}
+                <path
+                  d="M55,65 L100,145 L95,145 L52,65 Z"
+                  fill="url(#vLogoGlow)"
                   opacity="0.6"
-                  transform="skewX(-5)"
                 />
+                
                 <path
-                  d="M55,20 L85,30 L60,80 L50,80 Z"
-                  fill="none"
-                  stroke="#60a5fa"
-                  strokeWidth="1"
+                  d="M145,60 L148,60 L105,145 L100,145 Z"
+                  fill="url(#vLogoGlow)"
                   opacity="0.6"
-                  transform="skewX(5)"
+                />
+                
+                {/* Subtle outer glow */}
+                <path
+                  d="M50,60 L100,150 L150,60"
+                  fill="none"
+                  stroke="url(#vLogoGlow)"
+                  strokeWidth="2"
+                  opacity="0.4"
+                  filter="url(#logoGlow)"
                 />
               </svg>
             </div>
-            <p className="text-sm text-blue-200/60 font-light tracking-wider mt-4">AI Business Intelligence</p>
+            <p className="text-sm text-blue-200/70 font-light tracking-wider mt-6">AI Business Intelligence</p>
           </div>
         </div>
 
