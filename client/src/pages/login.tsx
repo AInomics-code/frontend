@@ -74,21 +74,23 @@ export default function Login() {
           
           <div className="mb-8">
             <div className="text-left">
-              <p className="text-3xl mb-1 bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent font-black leading-tight" 
+              <p className="text-4xl mb-0 bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent font-black leading-none" 
                  style={{ 
                    fontFamily: '"Arial Black", "Helvetica Neue", Arial, sans-serif', 
                    fontWeight: '900', 
                    letterSpacing: '0.02em',
-                   textShadow: '0 2px 4px rgba(59, 130, 246, 0.3)'
+                   textShadow: '0 2px 4px rgba(59, 130, 246, 0.3)',
+                   fontStretch: 'ultra-expanded'
                  }}>
                 Your AI Copilot.
               </p>
-              <p className="text-2xl mb-6 bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent font-black leading-tight" 
+              <p className="text-3xl mb-6 bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent font-black leading-none" 
                  style={{ 
                    fontFamily: '"Arial Black", "Helvetica Neue", Arial, sans-serif', 
                    fontWeight: '900', 
                    letterSpacing: '0.02em',
-                   textShadow: '0 2px 4px rgba(59, 130, 246, 0.3)'
+                   textShadow: '0 2px 4px rgba(59, 130, 246, 0.3)',
+                   fontStretch: 'ultra-expanded'
                  }}>
                 for Smarter Business Decisions.
               </p>
