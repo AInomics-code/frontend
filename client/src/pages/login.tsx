@@ -186,111 +186,74 @@ export default function Login() {
         {/* Logo overlay */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <div className="text-center">
-            {/* Modern Avant-garde V Logo */}
+            {/* Elegant Minimalist V Logo */}
             <div className="relative">
               <svg
-                width="160"
-                height="160"
-                viewBox="0 0 240 240"
+                width="120"
+                height="120"
+                viewBox="0 0 180 180"
                 className="drop-shadow-2xl"
               >
                 <defs>
-                  <linearGradient id="avantGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: '#60a5fa' }} />
-                    <stop offset="40%" style={{ stopColor: '#3b82f6' }} />
-                    <stop offset="80%" style={{ stopColor: '#1e40af' }} />
-                    <stop offset="100%" style={{ stopColor: '#1e3a8a' }} />
+                  <linearGradient id="elegantGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{ stopColor: '#93c5fd' }} />
+                    <stop offset="50%" style={{ stopColor: '#60a5fa' }} />
+                    <stop offset="100%" style={{ stopColor: '#3b82f6' }} />
                   </linearGradient>
                   
-                  <linearGradient id="modernGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: '#93c5fd', stopOpacity: 0.9 }} />
-                    <stop offset="50%" style={{ stopColor: '#60a5fa', stopOpacity: 0.6 }} />
-                    <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 0.3 }} />
+                  <linearGradient id="subtleGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{ stopColor: '#dbeafe', stopOpacity: 0.8 }} />
+                    <stop offset="100%" style={{ stopColor: '#60a5fa', stopOpacity: 0.4 }} />
                   </linearGradient>
 
-                  <filter id="modernGlowFilter" x="-100%" y="-100%" width="300%" height="300%">
-                    <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                  <filter id="elegantGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3" result="softBlur"/>
                     <feMerge> 
-                      <feMergeNode in="coloredBlur"/>
-                      <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                  </filter>
-                  
-                  <filter id="innerGlow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="2" result="softGlow"/>
-                    <feMerge> 
-                      <feMergeNode in="softGlow"/>
+                      <feMergeNode in="softBlur"/>
                       <feMergeNode in="SourceGraphic"/>
                     </feMerge>
                   </filter>
                 </defs>
                 
-                {/* Background ambient glow */}
-                <ellipse cx="120" cy="120" rx="90" ry="90" fill="url(#modernGlow)" opacity="0.2" filter="url(#modernGlowFilter)" />
+                {/* Subtle background glow */}
+                <ellipse cx="90" cy="90" rx="60" ry="60" fill="url(#subtleGlow)" opacity="0.15" filter="url(#elegantGlow)" />
                 
-                {/* Modern V - Left geometric stroke */}
+                {/* Clean V shape - Left side */}
                 <path
-                  d="M60,70 L120,170 L105,170 L50,80 Q50,70 60,70 Z"
-                  fill="url(#avantGradient)"
+                  d="M55,60 L90,130 L85,130 L52,65 Q52,60 55,60 Z"
+                  fill="url(#elegantGradient)"
                   stroke="none"
                 />
                 
-                {/* Modern V - Right geometric stroke */}
+                {/* Clean V shape - Right side */}
                 <path
-                  d="M180,70 Q190,70 190,80 L135,170 L120,170 L180,70 Z"
-                  fill="url(#avantGradient)"
+                  d="M125,60 Q128,60 128,65 L95,130 L90,130 L125,60 Z"
+                  fill="url(#elegantGradient)"
                   stroke="none"
                 />
                 
-                {/* Inner light reflections */}
+                {/* Minimal highlight strokes */}
                 <path
-                  d="M65,75 L120,165 L110,165 L58,82 Q58,75 65,75 Z"
-                  fill="url(#modernGlow)"
-                  opacity="0.7"
-                  filter="url(#innerGlow)"
-                />
-                
-                <path
-                  d="M175,70 Q182,70 182,77 L130,165 L120,165 L175,70 Z"
-                  fill="url(#modernGlow)"
-                  opacity="0.7"
-                  filter="url(#innerGlow)"
-                />
-                
-                {/* Avant-garde edge highlights */}
-                <path
-                  d="M60,70 L120,170"
-                  stroke="url(#modernGlow)"
-                  strokeWidth="1.5"
-                  opacity="0.8"
-                  filter="url(#innerGlow)"
-                />
-                
-                <path
-                  d="M180,70 L120,170"
-                  stroke="url(#modernGlow)"
-                  strokeWidth="1.5"
-                  opacity="0.8"
-                  filter="url(#innerGlow)"
-                />
-                
-                {/* Modern geometric accents */}
-                <circle cx="60" cy="70" r="3" fill="url(#modernGlow)" opacity="0.9" />
-                <circle cx="180" cy="70" r="3" fill="url(#modernGlow)" opacity="0.9" />
-                <circle cx="120" cy="170" r="4" fill="url(#modernGlow)" opacity="0.8" />
-                
-                {/* Subtle outer glow effect */}
-                <path
-                  d="M60,70 L120,170 L180,70"
-                  fill="none"
-                  stroke="url(#modernGlow)"
+                  d="M55,60 L90,130"
+                  stroke="url(#subtleGlow)"
                   strokeWidth="0.8"
-                  opacity="0.5"
-                  filter="url(#modernGlowFilter)"
+                  opacity="0.6"
                 />
+                
+                <path
+                  d="M125,60 L90,130"
+                  stroke="url(#subtleGlow)"
+                  strokeWidth="0.8"
+                  opacity="0.6"
+                />
+                
+                {/* Elegant corner accents */}
+                <circle cx="55" cy="60" r="1.5" fill="url(#subtleGlow)" opacity="0.8" />
+                <circle cx="125" cy="60" r="1.5" fill="url(#subtleGlow)" opacity="0.8" />
+                <circle cx="90" cy="130" r="2" fill="url(#subtleGlow)" opacity="0.7" />
               </svg>
             </div>
-            <p className="text-sm text-blue-200/80 font-light tracking-wider mt-6">AI Business Intelligence</p>
+            <p className="text-xs text-blue-200/70 font-light tracking-widest mt-4 uppercase">AI Business Intelligence</p>
           </div>
         </div>
 
