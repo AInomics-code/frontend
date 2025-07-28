@@ -82,9 +82,9 @@ export default function Login() {
                    textShadow: '0 2px 4px rgba(59, 130, 246, 0.3)',
                    fontStretch: 'ultra-expanded'
                  }}>
-                Your AI Copilot.
+                Your AI Copilot
               </p>
-              <p className="text-3xl mb-6 bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent font-black leading-none" 
+              <p className="text-4xl mb-6 bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent font-black leading-none" 
                  style={{ 
                    fontFamily: '"Arial Black", "Helvetica Neue", Arial, sans-serif', 
                    fontWeight: '900', 
@@ -92,7 +92,7 @@ export default function Login() {
                    textShadow: '0 2px 4px rgba(59, 130, 246, 0.3)',
                    fontStretch: 'ultra-expanded'
                  }}>
-                for Smarter Business Decisions.
+                for Business Intelligence.
               </p>
             </div>
           </div>
