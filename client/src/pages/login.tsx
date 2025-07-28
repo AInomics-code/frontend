@@ -133,10 +133,7 @@ export default function Login() {
             </button>
           </form>
 
-          <p className="text-sm text-gray-400 mt-6 text-center">
-            Don't have an account?{" "}
-            <a href="/signup" className="text-blue-400 underline hover:text-blue-300 transition-colors">Sign up</a>
-          </p>
+          
         </div>
       </motion.div>
 
