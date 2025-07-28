@@ -60,9 +60,12 @@ export default function Login() {
             </svg>
           </div>
           
+          <div className="text-center mb-2">
+            <p className="text-sm text-gray-400/80 mb-6">Your AI Copilot for Smarter Business Decisions</p>
+          </div>
+          
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold mb-1 tracking-tight">VORTA</h1>
-            <p className="text-lg text-gray-400/70">AI Copilot</p>
+            <h1 className="text-5xl font-light mb-1 tracking-widest" style={{ fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: '0.15em', fontWeight: '300' }}>VORTA</h1>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
