@@ -20,12 +20,12 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e] p-6 text-white">
+    <div className="min-h-screen flex bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e] p-4 text-white gap-2">
       {/* LEFT CARD */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="w-full md:w-1/2 bg-gradient-to-br from-[#1c2340] to-[#2a3b5c] rounded-3xl mr-3 flex flex-col justify-center px-8 md:px-12 shadow-2xl border border-blue-500/20"
+        className="w-full md:w-1/2 bg-gradient-to-br from-[#1c2340] to-[#2a3b5c] rounded-3xl flex flex-col justify-center px-8 md:px-12 shadow-2xl border border-blue-500/20"
       >
         <div className="max-w-md w-full mx-auto">
           {/* Modern Abstract Shape */}
@@ -109,7 +109,7 @@ export default function Login() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.1 }}
-        className="hidden md:block md:w-1/2 bg-gradient-to-br from-[#0a0a1a] to-[#1a1a2e] rounded-3xl ml-3 relative overflow-hidden shadow-2xl border border-blue-500/20"
+        className="hidden md:block md:w-1/2 bg-gradient-to-br from-[#0a0a1a] to-[#1a1a2e] rounded-3xl relative overflow-hidden shadow-2xl border border-blue-500/20"
       >
         {/* Simple Flowing Blue Wave Background */}
         <div className="absolute inset-0 overflow-hidden">
