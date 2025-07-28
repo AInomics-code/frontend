@@ -30,62 +30,45 @@ export default function Login() {
         <div className="max-w-md w-full mx-auto">
           {/* VORTA Vortex Logo */}
           <div className="flex justify-center mb-6">
-            <svg width="90" height="90" viewBox="0 0 90 90" className="text-blue-400">
+            <svg width="80" height="80" viewBox="0 0 100 100" className="text-blue-400">
               <defs>
-                <radialGradient id="sfumatura1" cx="30%" cy="30%" r="70%">
+                <radialGradient id="blueGrad1" cx="40%" cy="40%" r="60%">
                   <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
-                  <stop offset="40%" style={{ stopColor: '#3b82f6', stopOpacity: 0.9 }} />
-                  <stop offset="80%" style={{ stopColor: '#2563eb', stopOpacity: 0.7 }} />
-                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.3 }} />
+                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.6 }} />
                 </radialGradient>
-                <radialGradient id="sfumatura2" cx="70%" cy="70%" r="70%">
-                  <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
-                  <stop offset="40%" style={{ stopColor: '#3b82f6', stopOpacity: 0.9 }} />
-                  <stop offset="80%" style={{ stopColor: '#2563eb', stopOpacity: 0.7 }} />
-                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.3 }} />
+                <radialGradient id="blueGrad2" cx="60%" cy="60%" r="60%">
+                  <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.5 }} />
                 </radialGradient>
-                <radialGradient id="sfumatura3" cx="50%" cy="20%" r="80%">
-                  <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
-                  <stop offset="40%" style={{ stopColor: '#3b82f6', stopOpacity: 0.9 }} />
-                  <stop offset="80%" style={{ stopColor: '#2563eb', stopOpacity: 0.7 }} />
-                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.3 }} />
+                <radialGradient id="blueGrad3" cx="50%" cy="30%" r="60%">
+                  <stop offset="0%" style={{ stopColor: '#2563eb', stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.4 }} />
                 </radialGradient>
-                <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="1.5" result="glow"/>
-                  <feMerge> 
-                    <feMergeNode in="glow"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
               </defs>
               
-              {/* First curved blade - top left */}
+              {/* Blade 1 - top */}
               <path
-                d="M45,15 Q25,20 20,35 Q18,50 28,60 Q38,65 50,55 Q55,45 50,35 Q48,25 45,15 Z"
-                fill="url(#sfumatura1)"
-                filter="url(#softGlow)"
+                d="M50,20 C30,25 25,35 30,50 C35,65 50,70 65,60 C70,50 65,35 50,20 Z"
+                fill="url(#blueGrad1)"
               />
               
-              {/* Second curved blade - top right */}
+              {/* Blade 2 - bottom left */}
               <path
-                d="M45,15 Q65,20 70,35 Q72,50 62,60 Q52,65 40,55 Q35,45 40,35 Q42,25 45,15 Z"
-                fill="url(#sfumatura2)"
-                filter="url(#softGlow)"
+                d="M50,80 C35,65 30,50 40,35 C50,25 65,30 75,45 C75,60 65,75 50,80 Z"
+                fill="url(#blueGrad2)"
+                transform="rotate(120 50 50)"
               />
               
-              {/* Third curved blade - bottom */}
+              {/* Blade 3 - bottom right */}
               <path
-                d="M45,75 Q30,65 25,50 Q23,35 35,28 Q50,25 60,35 Q65,50 55,60 Q50,70 45,75 Z"
-                fill="url(#sfumatura3)"
-                filter="url(#softGlow)"
+                d="M50,80 C35,65 30,50 40,35 C50,25 65,30 75,45 C75,60 65,75 50,80 Z"
+                fill="url(#blueGrad3)"
+                transform="rotate(240 50 50)"
               />
               
-              {/* Central hole - creating the vortex effect */}
-              <circle cx="45" cy="45" r="12" fill="#0f1629" opacity="0.9" />
-              <circle cx="45" cy="45" r="8" fill="#1a1a2e" opacity="0.8" />
-              
-              {/* Inner glow in center */}
-              <circle cx="45" cy="45" r="6" fill="url(#sfumatura1)" opacity="0.4" />
+              {/* Center circle */}
+              <circle cx="50" cy="50" r="15" fill="#0f1629" />
+              <circle cx="50" cy="50" r="8" fill="url(#blueGrad1)" opacity="0.3" />
             </svg>
           </div>
           
