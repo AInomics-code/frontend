@@ -22,12 +22,12 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex bg-white p-4 text-gray-900 gap-2">
+    <div className="min-h-screen flex bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e] p-4 text-white gap-2">
       {/* LEFT CARD */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="w-full md:w-1/2 bg-white rounded-3xl flex flex-col justify-center px-8 md:px-12 shadow-2xl border border-gray-200"
+        className="w-full md:w-1/2 bg-gradient-to-br from-[#1c2340] to-[#2a3b5c] rounded-3xl flex flex-col justify-center px-8 md:px-12 shadow-2xl border border-blue-500/20"
       >
         <div className="max-w-md w-full mx-auto">
           {/* VORTA Atom Logo */}
@@ -64,7 +64,7 @@ export default function Login() {
           
           {/* VORTA Brand Name */}
           <div className="text-center mb-6">
-            <h1 className="text-lg font-medium text-blue-600" 
+            <h1 className="text-lg font-medium text-blue-200/70" 
                 style={{ 
                   fontFamily: '"Segoe UI", system-ui, -apple-system, sans-serif', 
                   fontWeight: '500', 
@@ -76,7 +76,7 @@ export default function Login() {
           
           <div className="mb-8">
             <div className="text-left">
-              <p className="text-4xl mb-0 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent font-bold leading-tight" 
+              <p className="text-4xl mb-0 bg-gradient-to-r from-blue-100 via-blue-200 to-cyan-100 bg-clip-text text-transparent font-bold leading-tight" 
                  style={{ 
                    fontFamily: '"Inter", "Helvetica Neue", "Segoe UI", system-ui, sans-serif', 
                    fontWeight: '700', 
@@ -85,7 +85,7 @@ export default function Login() {
                  }}>
                 Your AI Copilot
               </p>
-              <p className="text-4xl mb-6 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent font-bold leading-tight" 
+              <p className="text-4xl mb-6 bg-gradient-to-r from-blue-100 via-blue-200 to-cyan-100 bg-clip-text text-transparent font-bold leading-tight" 
                  style={{ 
                    fontFamily: '"Inter", "Helvetica Neue", "Segoe UI", system-ui, sans-serif', 
                    fontWeight: '700', 
@@ -99,12 +99,12 @@ export default function Login() {
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm text-gray-600 mb-1">Email</label>
+              <label className="block text-sm text-gray-400 mb-1">Email</label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 w-5 h-5" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-400 w-5 h-5" />
                 <input
                   type="email"
-                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-[#0f1629] border border-blue-400/30 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -112,12 +112,12 @@ export default function Login() {
               </div>
             </div>
             <div>
-              <label className="block text-sm text-gray-600 mb-1">Password</label>
+              <label className="block text-sm text-gray-400 mb-1">Password</label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 w-5 h-5" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-400 w-5 h-5" />
                 <input
                   type="password"
-                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-[#0f1629] border border-blue-400/30 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -125,11 +125,11 @@ export default function Login() {
               </div>
             </div>
 
-            {error && <p className="text-red-500 text-sm">{error}</p>}
+            {error && <p className="text-red-400 text-sm">{error}</p>}
 
             <button
               type="submit"
-              className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-xl hover:from-blue-500 hover:to-blue-400 transition-all font-medium shadow-lg hover:shadow-blue-500/25 text-white"
+              className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-xl hover:from-blue-500 hover:to-blue-400 transition-all font-medium shadow-lg hover:shadow-blue-500/25"
             >
               Log in
             </button>
@@ -144,12 +144,12 @@ export default function Login() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.1 }}
-        className="hidden md:block md:w-1/2 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl relative overflow-hidden shadow-2xl border border-gray-200"
+        className="hidden md:block md:w-1/2 bg-gradient-to-br from-[#0a0a1a] to-[#1a1a2e] rounded-3xl relative overflow-hidden shadow-2xl border border-blue-500/20"
       >
         {/* Simple Flowing Blue Wave Background */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* Light blue gradient backdrop */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-blue-200 to-cyan-100"></div>
+          {/* Dark navy to black gradient backdrop */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950 to-black"></div>
           
           <svg
             className="absolute inset-0 w-full h-full"
@@ -158,18 +158,18 @@ export default function Login() {
             preserveAspectRatio="xMidYMid slice"
           >
             <defs>
-              {/* Light blue gradient for clean wave effect */}
+              {/* Simple blue gradient for clean wave effect */}
               <radialGradient id="blueGlow" cx="50%" cy="50%" r="70%">
-                <stop offset="0%" style={{ stopColor: '#dbeafe', stopOpacity: 0.8 }} />
-                <stop offset="50%" style={{ stopColor: '#bfdbfe', stopOpacity: 0.6 }} />
-                <stop offset="100%" style={{ stopColor: '#93c5fd', stopOpacity: 0.4 }} />
+                <stop offset="0%" style={{ stopColor: '#2563eb', stopOpacity: 0.9 }} />
+                <stop offset="50%" style={{ stopColor: '#1e40af', stopOpacity: 0.6 }} />
+                <stop offset="100%" style={{ stopColor: '#0f172a', stopOpacity: 0.2 }} />
               </radialGradient>
               
               <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{ stopColor: '#dbeafe', stopOpacity: 0.7 }} />
-                <stop offset="30%" style={{ stopColor: '#bfdbfe', stopOpacity: 0.6 }} />
-                <stop offset="70%" style={{ stopColor: '#93c5fd', stopOpacity: 0.5 }} />
-                <stop offset="100%" style={{ stopColor: '#60a5fa', stopOpacity: 0.4 }} />
+                <stop offset="0%" style={{ stopColor: '#0c1e3f', stopOpacity: 0.95 }} />
+                <stop offset="30%" style={{ stopColor: '#1e40af', stopOpacity: 0.8 }} />
+                <stop offset="70%" style={{ stopColor: '#2563eb', stopOpacity: 0.6 }} />
+                <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 0.4 }} />
               </linearGradient>
               
               {/* Simple glow filter */}
@@ -202,18 +202,18 @@ export default function Login() {
             <ellipse cx="960" cy="540" rx="800" ry="400" fill="url(#blueGlow)" opacity="0.3" />
           </svg>
           
-          {/* Light finish overlay for polished look */}
+          {/* Enterprise finish overlay for polished look */}
           <div 
-            className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-transparent" 
+            className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent" 
             style={{ 
               backdropFilter: 'blur(0.2px)',
-              background: 'radial-gradient(ellipse at center, transparent 0%, rgba(255,255,255,0.1) 100%)'
+              background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.03) 100%)'
             }}
           ></div>
         </div>
 
-        {/* Subtle light glow effect */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/10 via-transparent to-cyan-200/10"></div>
+        {/* Subtle glow effect */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/5 via-transparent to-purple-500/5"></div>
       </motion.div>
     </div>
   );
