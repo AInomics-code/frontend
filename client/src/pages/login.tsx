@@ -76,79 +76,142 @@ export default function Login() {
         transition={{ delay: 0.1 }}
         className="hidden md:block md:w-1/2 bg-gradient-to-br from-[#0a0a1a] to-[#1a1a2e] rounded-3xl ml-3 relative overflow-hidden shadow-2xl border border-blue-500/20"
       >
-        {/* Modern Abstract Wave Background */}
+        {/* Ultra-Smooth Enterprise Wave Background */}
         <div className="absolute inset-0 overflow-hidden">
           <svg
             className="absolute inset-0 w-full h-full"
-            viewBox="0 0 1000 800"
+            viewBox="0 0 1400 1000"
             xmlns="http://www.w3.org/2000/svg"
+            style={{ filter: 'blur(0.5px)' }}
           >
             <defs>
-              {/* Advanced gradients for smooth lighting transitions */}
-              <radialGradient id="glowGradient" cx="30%" cy="40%">
-                <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 0.4 }} />
-                <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.2 }} />
-                <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.05 }} />
+              {/* Ultra-smooth gradient definitions for enterprise aesthetics */}
+              <radialGradient id="primaryGlow" cx="40%" cy="30%">
+                <stop offset="0%" style={{ stopColor: '#0ea5e9', stopOpacity: 0.6 }} />
+                <stop offset="25%" style={{ stopColor: '#3b82f6', stopOpacity: 0.4 }} />
+                <stop offset="50%" style={{ stopColor: '#1e40af', stopOpacity: 0.25 }} />
+                <stop offset="75%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.15 }} />
+                <stop offset="100%" style={{ stopColor: '#0f172a', stopOpacity: 0.05 }} />
               </radialGradient>
               
-              <linearGradient id="waveFlow1" x1="0%" y1="30%" x2="100%" y2="70%">
-                <stop offset="0%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.7 }} />
-                <stop offset="40%" style={{ stopColor: '#3b82f6', stopOpacity: 0.5 }} />
-                <stop offset="100%" style={{ stopColor: '#60a5fa', stopOpacity: 0.3 }} />
+              <radialGradient id="secondaryGlow" cx="70%" cy="60%">
+                <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 0.4 }} />
+                <stop offset="40%" style={{ stopColor: '#2563eb', stopOpacity: 0.3 }} />
+                <stop offset="80%" style={{ stopColor: '#1e40af', stopOpacity: 0.1 }} />
+                <stop offset="100%" style={{ stopColor: 'transparent', stopOpacity: 0 }} />
+              </radialGradient>
+
+              <linearGradient id="wave1" x1="0%" y1="20%" x2="100%" y2="80%">
+                <stop offset="0%" style={{ stopColor: '#0f172a', stopOpacity: 0.9 }} />
+                <stop offset="20%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.7 }} />
+                <stop offset="50%" style={{ stopColor: '#1e40af', stopOpacity: 0.5 }} />
+                <stop offset="80%" style={{ stopColor: '#3b82f6', stopOpacity: 0.3 }} />
+                <stop offset="100%" style={{ stopColor: '#60a5fa', stopOpacity: 0.15 }} />
               </linearGradient>
               
-              <linearGradient id="waveFlow2" x1="20%" y1="0%" x2="80%" y2="100%">
-                <stop offset="0%" style={{ stopColor: '#1e40af', stopOpacity: 0.6 }} />
-                <stop offset="60%" style={{ stopColor: '#2563eb', stopOpacity: 0.4 }} />
+              <linearGradient id="wave2" x1="10%" y1="0%" x2="90%" y2="100%">
+                <stop offset="0%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.8 }} />
+                <stop offset="30%" style={{ stopColor: '#1e40af', stopOpacity: 0.6 }} />
+                <stop offset="70%" style={{ stopColor: '#2563eb', stopOpacity: 0.4 }} />
                 <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 0.2 }} />
               </linearGradient>
               
-              <linearGradient id="accentFlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 0.3 }} />
-                <stop offset="100%" style={{ stopColor: '#93c5fd', stopOpacity: 0.1 }} />
+              <linearGradient id="wave3" x1="30%" y1="10%" x2="70%" y2="90%">
+                <stop offset="0%" style={{ stopColor: '#1e40af', stopOpacity: 0.6 }} />
+                <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.4 }} />
+                <stop offset="100%" style={{ stopColor: '#60a5fa', stopOpacity: 0.2 }} />
+              </linearGradient>
+
+              <linearGradient id="highlightStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style={{ stopColor: '#0ea5e9', stopOpacity: 0.6 }} />
+                <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.4 }} />
+                <stop offset="100%" style={{ stopColor: '#60a5fa', stopOpacity: 0.2 }} />
               </linearGradient>
             </defs>
             
-            {/* Background glow */}
-            <ellipse cx="400" cy="300" rx="600" ry="400" fill="url(#glowGradient)" />
+            {/* Ambient lighting base */}
+            <ellipse cx="500" cy="300" rx="800" ry="500" fill="url(#primaryGlow)" />
+            <ellipse cx="900" cy="600" rx="600" ry="400" fill="url(#secondaryGlow)" />
             
-            {/* Layered flowing curves */}
+            {/* Layered wave patterns for immersive depth */}
+            
+            {/* Background wave layer */}
             <path
-              d="M0,500 Q200,350 400,420 Q600,490 800,380 Q900,320 1000,360 L1000,800 L0,800 Z"
-              fill="url(#waveFlow1)"
+              d="M0,700 Q200,580 400,620 Q600,660 800,600 Q1000,540 1200,580 Q1300,600 1400,590 L1400,1000 L0,1000 Z"
+              fill="url(#wave1)"
+            />
+            
+            {/* Mid-layer waves */}
+            <path
+              d="M0,750 Q150,630 350,670 Q550,710 750,650 Q950,590 1150,630 Q1250,650 1400,640 L1400,1000 L0,1000 Z"
+              fill="url(#wave2)"
             />
             
             <path
-              d="M0,580 Q150,420 350,480 Q550,540 750,460 Q850,420 1000,440 L1000,800 L0,800 Z"
-              fill="url(#waveFlow2)"
+              d="M0,800 Q100,700 300,740 Q500,780 700,720 Q900,660 1100,700 Q1200,720 1400,710 L1400,1000 L0,1000 Z"
+              fill="url(#wave3)"
             />
             
+            {/* Foreground subtle wave */}
             <path
-              d="M0,650 Q100,550 300,600 Q500,650 700,580 Q850,530 1000,550 L1000,800 L0,800 Z"
-              fill="url(#accentFlow)"
+              d="M0,850 Q200,770 400,800 Q600,830 800,790 Q1000,750 1200,780 Q1300,790 1400,785 L1400,1000 L0,1000 Z"
+              fill="url(#wave2)"
+              opacity="0.7"
             />
             
-            {/* Elegant highlight curves */}
+            {/* Elegant flowing highlight curves */}
             <path
-              d="M0,400 Q200,280 400,340 Q600,400 800,300 Q900,250 1000,280"
-              stroke="url(#waveFlow1)"
+              d="M0,600 Q200,480 400,520 Q600,560 800,500 Q1000,440 1200,480 Q1300,500 1400,490"
+              stroke="url(#highlightStroke)"
               strokeWidth="1.5"
               fill="none"
               opacity="0.4"
             />
             
             <path
-              d="M50,450 Q250,320 450,380 Q650,440 850,340 Q950,290 1050,320"
-              stroke="url(#accentFlow)"
+              d="M100,650 Q300,530 500,570 Q700,610 900,550 Q1100,490 1300,530"
+              stroke="url(#highlightStroke)"
               strokeWidth="1"
               fill="none"
               opacity="0.3"
             />
             
-            {/* Soft glow highlights */}
-            <circle cx="300" cy="350" r="80" fill="url(#glowGradient)" opacity="0.2" />
-            <circle cx="700" cy="450" r="120" fill="url(#glowGradient)" opacity="0.15" />
+            <path
+              d="M50,700 Q250,580 450,620 Q650,660 850,600 Q1050,540 1250,580 Q1350,600 1450,590"
+              stroke="url(#highlightStroke)"
+              strokeWidth="0.8"
+              fill="none"
+              opacity="0.25"
+            />
+            
+            {/* Silky lighting transitions - soft glows */}
+            <ellipse cx="400" cy="500" rx="200" ry="150" fill="url(#primaryGlow)" opacity="0.3" />
+            <ellipse cx="800" cy="600" rx="180" ry="120" fill="url(#secondaryGlow)" opacity="0.25" />
+            <ellipse cx="1000" cy="450" rx="150" ry="100" fill="url(#primaryGlow)" opacity="0.2" />
+            
+            {/* Additional depth layers for enterprise feel */}
+            <path
+              d="M0,550 Q350,430 700,470 Q1050,510 1400,450"
+              stroke="url(#highlightStroke)"
+              strokeWidth="0.5"
+              fill="none"
+              opacity="0.2"
+            />
+            
+            <path
+              d="M200,580 Q500,460 800,500 Q1100,540 1400,480"
+              stroke="url(#highlightStroke)"
+              strokeWidth="0.5"
+              fill="none"
+              opacity="0.15"
+            />
           </svg>
+          
+          {/* Additional blur overlay for ultra-smooth effect */}
+          <div 
+            className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a1a]/20" 
+            style={{ backdropFilter: 'blur(0.25px)' }}
+          ></div>
         </div>
 
         {/* Logo overlay */}
