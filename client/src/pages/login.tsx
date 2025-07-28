@@ -76,80 +76,131 @@ export default function Login() {
         transition={{ delay: 0.1 }}
         className="hidden md:block md:w-1/2 bg-gradient-to-br from-[#0a0a1a] to-[#1a1a2e] rounded-3xl ml-3 relative overflow-hidden shadow-2xl border border-blue-500/20"
       >
-        {/* Static Wave Background */}
+        {/* Modern Abstract Wave Background */}
         <div className="absolute inset-0 overflow-hidden">
           <svg
             className="absolute inset-0 w-full h-full"
-            viewBox="0 0 800 600"
+            viewBox="0 0 1000 800"
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
-              <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{ stopColor: '#0ea5e9', stopOpacity: 0.8 }} />
-                <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.6 }} />
-                <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.3 }} />
+              {/* Advanced gradients for smooth lighting transitions */}
+              <radialGradient id="glowGradient" cx="30%" cy="40%">
+                <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 0.4 }} />
+                <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.2 }} />
+                <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.05 }} />
+              </radialGradient>
+              
+              <linearGradient id="waveFlow1" x1="0%" y1="30%" x2="100%" y2="70%">
+                <stop offset="0%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.7 }} />
+                <stop offset="40%" style={{ stopColor: '#3b82f6', stopOpacity: 0.5 }} />
+                <stop offset="100%" style={{ stopColor: '#60a5fa', stopOpacity: 0.3 }} />
               </linearGradient>
-              <linearGradient id="waveGradient2" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" style={{ stopColor: '#6366f1', stopOpacity: 0.5 }} />
-                <stop offset="100%" style={{ stopColor: '#8b5cf6', stopOpacity: 0.2 }} />
+              
+              <linearGradient id="waveFlow2" x1="20%" y1="0%" x2="80%" y2="100%">
+                <stop offset="0%" style={{ stopColor: '#1e40af', stopOpacity: 0.6 }} />
+                <stop offset="60%" style={{ stopColor: '#2563eb', stopOpacity: 0.4 }} />
+                <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 0.2 }} />
+              </linearGradient>
+              
+              <linearGradient id="accentFlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 0.3 }} />
+                <stop offset="100%" style={{ stopColor: '#93c5fd', stopOpacity: 0.1 }} />
               </linearGradient>
             </defs>
             
-            {/* Flowing wave paths - static */}
+            {/* Background glow */}
+            <ellipse cx="400" cy="300" rx="600" ry="400" fill="url(#glowGradient)" />
+            
+            {/* Layered flowing curves */}
             <path
-              d="M0,400 Q200,300 400,350 T800,320 L800,600 L0,600 Z"
-              fill="url(#waveGradient1)"
+              d="M0,500 Q200,350 400,420 Q600,490 800,380 Q900,320 1000,360 L1000,800 L0,800 Z"
+              fill="url(#waveFlow1)"
             />
             
             <path
-              d="M0,450 Q300,360 600,400 T1200,380 L1200,600 L0,600 Z"
-              fill="url(#waveGradient2)"
-            />
-            
-            {/* Additional flowing lines */}
-            <path
-              d="M0,300 Q150,200 300,250 Q450,300 600,220 Q750,140 900,180"
-              stroke="url(#waveGradient1)"
-              strokeWidth="2"
-              fill="none"
-              opacity="0.6"
+              d="M0,580 Q150,420 350,480 Q550,540 750,460 Q850,420 1000,440 L1000,800 L0,800 Z"
+              fill="url(#waveFlow2)"
             />
             
             <path
-              d="M100,350 Q250,280 400,320 Q550,360 700,290 Q850,220 1000,260"
-              stroke="url(#waveGradient2)"
+              d="M0,650 Q100,550 300,600 Q500,650 700,580 Q850,530 1000,550 L1000,800 L0,800 Z"
+              fill="url(#accentFlow)"
+            />
+            
+            {/* Elegant highlight curves */}
+            <path
+              d="M0,400 Q200,280 400,340 Q600,400 800,300 Q900,250 1000,280"
+              stroke="url(#waveFlow1)"
               strokeWidth="1.5"
               fill="none"
               opacity="0.4"
             />
+            
+            <path
+              d="M50,450 Q250,320 450,380 Q650,440 850,340 Q950,290 1050,320"
+              stroke="url(#accentFlow)"
+              strokeWidth="1"
+              fill="none"
+              opacity="0.3"
+            />
+            
+            {/* Soft glow highlights */}
+            <circle cx="300" cy="350" r="80" fill="url(#glowGradient)" opacity="0.2" />
+            <circle cx="700" cy="450" r="120" fill="url(#glowGradient)" opacity="0.15" />
           </svg>
-          
-          {/* Static particle dots */}
-          <div className="absolute inset-0">
-            {/* Large dots */}
-            <div className="absolute top-1/4 left-1/5 w-3 h-3 bg-cyan-400 rounded-full opacity-60"></div>
-            <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-50"></div>
-            <div className="absolute bottom-1/3 left-1/3 w-2.5 h-2.5 bg-blue-300 rounded-full opacity-40"></div>
-            <div className="absolute top-2/3 right-1/3 w-2 h-2 bg-purple-400 rounded-full opacity-45"></div>
-            
-            {/* Small dots */}
-            <div className="absolute top-1/2 left-1/6 w-1 h-1 bg-cyan-300 rounded-full opacity-30"></div>
-            <div className="absolute bottom-1/4 right-1/5 w-1.5 h-1.5 bg-blue-200 rounded-full opacity-35"></div>
-            <div className="absolute top-3/4 left-2/5 w-1 h-1 bg-purple-300 rounded-full opacity-25"></div>
-            <div className="absolute top-1/6 right-2/5 w-1 h-1 bg-blue-400 rounded-full opacity-40"></div>
-            
-            {/* Micro dots */}
-            <div className="absolute top-2/5 left-1/2 w-0.5 h-0.5 bg-cyan-200 rounded-full opacity-20"></div>
-            <div className="absolute bottom-2/5 right-1/6 w-0.5 h-0.5 bg-blue-300 rounded-full opacity-25"></div>
-            <div className="absolute top-5/6 left-1/4 w-0.5 h-0.5 bg-purple-200 rounded-full opacity-15"></div>
-          </div>
         </div>
 
-        {/* Content overlay */}
+        {/* Logo overlay */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <div className="text-center">
-            <h2 className="text-6xl font-bold tracking-tight text-white drop-shadow-2xl mb-4">VORTA</h2>
-            <p className="text-lg text-blue-200 font-light tracking-wide">AI Business Intelligence</p>
+            {/* V Logo */}
+            <div className="relative">
+              <svg
+                width="120"
+                height="120"
+                viewBox="0 0 100 100"
+                className="drop-shadow-2xl"
+              >
+                <defs>
+                  <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{ stopColor: '#60a5fa' }} />
+                    <stop offset="50%" style={{ stopColor: '#3b82f6' }} />
+                    <stop offset="100%" style={{ stopColor: '#2563eb' }} />
+                  </linearGradient>
+                </defs>
+                {/* Left part of V */}
+                <path
+                  d="M15,20 L45,80 L35,80 L10,30 Z"
+                  fill="url(#logoGradient)"
+                  transform="skewX(-5)"
+                />
+                {/* Right part of V */}
+                <path
+                  d="M55,20 L85,30 L60,80 L50,80 Z"
+                  fill="url(#logoGradient)"
+                  transform="skewX(5)"
+                />
+                {/* Glow effect */}
+                <path
+                  d="M15,20 L45,80 L35,80 L10,30 Z"
+                  fill="none"
+                  stroke="#60a5fa"
+                  strokeWidth="1"
+                  opacity="0.6"
+                  transform="skewX(-5)"
+                />
+                <path
+                  d="M55,20 L85,30 L60,80 L50,80 Z"
+                  fill="none"
+                  stroke="#60a5fa"
+                  strokeWidth="1"
+                  opacity="0.6"
+                  transform="skewX(5)"
+                />
+              </svg>
+            </div>
+            <p className="text-sm text-blue-200/60 font-light tracking-wider mt-4">AI Business Intelligence</p>
           </div>
         </div>
 
