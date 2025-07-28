@@ -28,31 +28,70 @@ export default function Login() {
         className="w-full md:w-1/2 bg-gradient-to-br from-[#1c2340] to-[#2a3b5c] rounded-3xl flex flex-col justify-center px-8 md:px-12 shadow-2xl border border-blue-500/20"
       >
         <div className="max-w-md w-full mx-auto">
-          {/* Modern Abstract Shape */}
+          {/* Sleek Vortex Shape */}
           <div className="flex justify-center mb-6">
-            <svg width="80" height="60" viewBox="0 0 80 60" className="text-blue-400">
+            <svg width="100" height="80" viewBox="0 0 100 80" className="text-blue-400">
               <defs>
-                <linearGradient id="abstractGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
-                  <stop offset="50%" style={{ stopColor: '#2563eb', stopOpacity: 0.8 }} />
-                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.6 }} />
+                <radialGradient id="vortexGradient" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
+                  <stop offset="30%" style={{ stopColor: '#3b82f6', stopOpacity: 0.9 }} />
+                  <stop offset="60%" style={{ stopColor: '#2563eb', stopOpacity: 0.7 }} />
+                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.3 }} />
+                </radialGradient>
+                <linearGradient id="spiralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 0.9 }} />
+                  <stop offset="50%" style={{ stopColor: '#2563eb', stopOpacity: 0.6 }} />
+                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.2 }} />
                 </linearGradient>
-                <filter id="abstractGlow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="2" result="glow"/>
+                <filter id="vortexGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="3" result="glow"/>
                   <feMerge> 
                     <feMergeNode in="glow"/>
                     <feMergeNode in="SourceGraphic"/>
                   </feMerge>
                 </filter>
               </defs>
-              {/* Modern geometric shape */}
+              
+              {/* Outer vortex ring */}
               <path
-                d="M10,30 Q25,10 40,20 Q55,30 70,15 Q75,20 70,35 Q55,45 40,40 Q25,50 10,30 Z"
-                fill="url(#abstractGradient)"
-                filter="url(#abstractGlow)"
+                d="M50,15 Q65,20 70,35 Q65,50 50,55 Q35,50 30,35 Q35,20 50,15 Z"
+                fill="none"
+                stroke="url(#spiralGradient)"
+                strokeWidth="2"
+                opacity="0.6"
+                filter="url(#vortexGlow)"
               />
-              <circle cx="20" cy="25" r="3" fill="#60a5fa" opacity="0.8" />
-              <circle cx="60" cy="35" r="2" fill="#93c5fd" opacity="0.6" />
+              
+              {/* Inner vortex spiral */}
+              <path
+                d="M50,25 Q58,30 60,40 Q58,50 50,52 Q42,50 40,40 Q42,30 50,25"
+                fill="url(#vortexGradient)"
+                filter="url(#vortexGlow)"
+              />
+              
+              {/* Central vortex core */}
+              <circle cx="50" cy="40" r="8" fill="url(#vortexGradient)" opacity="0.8" filter="url(#vortexGlow)" />
+              
+              {/* Spiral arms */}
+              <path
+                d="M50,40 Q60,35 65,45 Q60,55 50,50"
+                fill="none"
+                stroke="url(#spiralGradient)"
+                strokeWidth="1.5"
+                opacity="0.7"
+              />
+              <path
+                d="M50,40 Q40,45 35,35 Q40,25 50,30"
+                fill="none"
+                stroke="url(#spiralGradient)"
+                strokeWidth="1.5"
+                opacity="0.7"
+              />
+              
+              {/* Energy particles */}
+              <circle cx="65" cy="30" r="1.5" fill="#60a5fa" opacity="0.8" />
+              <circle cx="35" cy="50" r="1" fill="#93c5fd" opacity="0.6" />
+              <circle cx="55" cy="55" r="1" fill="#3b82f6" opacity="0.7" />
             </svg>
           </div>
           
