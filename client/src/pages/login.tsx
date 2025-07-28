@@ -11,11 +11,11 @@ export default function Login() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // TEMP: Replace with real auth
-    if (email === "test@vorta.ai" && password === "password") {
+    // Allow login with any password for demo purposes
+    if (email && password) {
       setLocation("/chat-clean-top");
     } else {
-      setError("Invalid email or password");
+      setError("Please enter both email and password");
     }
   };
 
