@@ -61,13 +61,12 @@ export default function Login() {
           </div>
           
           {/* VORTA Brand Name */}
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-black bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent" 
+          <div className="text-center mb-6">
+            <h1 className="text-lg font-medium text-blue-200/70" 
                 style={{ 
-                  fontFamily: '"Arial Black", "Helvetica Neue", Arial, sans-serif', 
-                  fontWeight: '900', 
-                  letterSpacing: '0.05em',
-                  textShadow: '0 2px 4px rgba(59, 130, 246, 0.3)'
+                  fontFamily: '"Segoe UI", system-ui, -apple-system, sans-serif', 
+                  fontWeight: '500', 
+                  letterSpacing: '0.1em'
                 }}>
               VORTA
             </h1>
@@ -75,12 +74,22 @@ export default function Login() {
           
           <div className="mb-8">
             <div className="text-left">
-              <p className="text-2xl mb-0 bg-gradient-to-r from-blue-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent font-black" 
-                 style={{ fontFamily: '"Comic Sans MS", "Chalkboard SE", "Bradley Hand", cursive', fontWeight: '900', letterSpacing: '0.02em' }}>
+              <p className="text-3xl mb-1 bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent font-black leading-tight" 
+                 style={{ 
+                   fontFamily: '"Arial Black", "Helvetica Neue", Arial, sans-serif', 
+                   fontWeight: '900', 
+                   letterSpacing: '0.02em',
+                   textShadow: '0 2px 4px rgba(59, 130, 246, 0.3)'
+                 }}>
                 Your AI Copilot.
               </p>
-              <p className="text-xl mb-6 bg-gradient-to-r from-blue-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent font-black" 
-                 style={{ fontFamily: '"Comic Sans MS", "Chalkboard SE", "Bradley Hand", cursive', fontWeight: '900', letterSpacing: '0.02em' }}>
+              <p className="text-2xl mb-6 bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent font-black leading-tight" 
+                 style={{ 
+                   fontFamily: '"Arial Black", "Helvetica Neue", Arial, sans-serif', 
+                   fontWeight: '900', 
+                   letterSpacing: '0.02em',
+                   textShadow: '0 2px 4px rgba(59, 130, 246, 0.3)'
+                 }}>
                 for Smarter Business Decisions.
               </p>
             </div>
