@@ -13,6 +13,8 @@ export default function Login() {
     e.preventDefault();
     // Allow login with any password for demo purposes
     if (email && password) {
+      // Store login state in sessionStorage (will be cleared on refresh)
+      sessionStorage.setItem("isLoggedIn", "true");
       setLocation("/chat-clean-top");
     } else {
       setError("Please enter both email and password");

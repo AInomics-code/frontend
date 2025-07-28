@@ -12,6 +12,7 @@ import Chat from "@/pages/chat-clean-top";
 import SmoothChat from "@/pages/chat-smooth";
 import SidebarLayout from "@/components/sidebar-layout";
 import NotFound from "@/pages/not-found";
+import ProtectedRoute from "@/components/protected-route";
 
 function Router() {
   return (
@@ -20,10 +21,26 @@ function Router() {
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
       <Route path="/onboarding" component={Onboarding} />
-      <Route path="/dashboard" component={Dashboard} />
-      <Route path="/chat-clean-top" component={Chat} />
-      <Route path="/sidebar" component={SidebarLayout} />
-      <Route path="/smooth" component={SmoothChat} />
+      <Route path="/dashboard">
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      </Route>
+      <Route path="/chat-clean-top">
+        <ProtectedRoute>
+          <Chat />
+        </ProtectedRoute>
+      </Route>
+      <Route path="/sidebar">
+        <ProtectedRoute>
+          <SidebarLayout />
+        </ProtectedRoute>
+      </Route>
+      <Route path="/smooth">
+        <ProtectedRoute>
+          <SmoothChat />
+        </ProtectedRoute>
+      </Route>
       <Route component={NotFound} />
     </Switch>
   );
