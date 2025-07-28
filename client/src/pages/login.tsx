@@ -30,21 +30,15 @@ export default function Login() {
         <div className="max-w-md w-full mx-auto">
           {/* Sleek Vortex Shape */}
           <div className="flex justify-center mb-6">
-            <svg width="100" height="80" viewBox="0 0 100 80" className="text-blue-400">
+            <svg width="80" height="80" viewBox="0 0 80 80" className="text-blue-400">
               <defs>
-                <radialGradient id="vortexGradient" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
-                  <stop offset="30%" style={{ stopColor: '#3b82f6', stopOpacity: 0.9 }} />
-                  <stop offset="60%" style={{ stopColor: '#2563eb', stopOpacity: 0.7 }} />
-                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.3 }} />
-                </radialGradient>
-                <linearGradient id="spiralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 0.9 }} />
-                  <stop offset="50%" style={{ stopColor: '#2563eb', stopOpacity: 0.6 }} />
+                <radialGradient id="vortexCore" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
+                  <stop offset="70%" style={{ stopColor: '#2563eb', stopOpacity: 0.8 }} />
                   <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.2 }} />
-                </linearGradient>
-                <filter id="vortexGlow" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="3" result="glow"/>
+                </radialGradient>
+                <filter id="vortexGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="2" result="glow"/>
                   <feMerge> 
                     <feMergeNode in="glow"/>
                     <feMergeNode in="SourceGraphic"/>
@@ -52,11 +46,21 @@ export default function Login() {
                 </filter>
               </defs>
               
-              {/* Outer vortex ring */}
+              {/* Outer spiral ring */}
               <path
-                d="M50,15 Q65,20 70,35 Q65,50 50,55 Q35,50 30,35 Q35,20 50,15 Z"
+                d="M40,10 Q60,15 65,35 Q60,55 40,60 Q20,55 15,35 Q20,15 40,10"
                 fill="none"
-                stroke="url(#spiralGradient)"
+                stroke="#3b82f6"
+                strokeWidth="1.5"
+                opacity="0.4"
+                filter="url(#vortexGlow)"
+              />
+              
+              {/* Middle spiral */}
+              <path
+                d="M40,20 Q55,25 58,40 Q55,55 40,50 Q25,45 22,30 Q25,25 40,20"
+                fill="none"
+                stroke="#2563eb"
                 strokeWidth="2"
                 opacity="0.6"
                 filter="url(#vortexGlow)"
@@ -64,34 +68,19 @@ export default function Login() {
               
               {/* Inner vortex spiral */}
               <path
-                d="M50,25 Q58,30 60,40 Q58,50 50,52 Q42,50 40,40 Q42,30 50,25"
-                fill="url(#vortexGradient)"
+                d="M40,30 Q48,32 50,40 Q48,48 40,45 Q32,42 30,35 Q32,32 40,30"
+                fill="none"
+                stroke="#60a5fa"
+                strokeWidth="2.5"
+                opacity="0.8"
                 filter="url(#vortexGlow)"
               />
               
-              {/* Central vortex core */}
-              <circle cx="50" cy="40" r="8" fill="url(#vortexGradient)" opacity="0.8" filter="url(#vortexGlow)" />
+              {/* Central core */}
+              <circle cx="40" cy="40" r="6" fill="url(#vortexCore)" filter="url(#vortexGlow)" />
               
-              {/* Spiral arms */}
-              <path
-                d="M50,40 Q60,35 65,45 Q60,55 50,50"
-                fill="none"
-                stroke="url(#spiralGradient)"
-                strokeWidth="1.5"
-                opacity="0.7"
-              />
-              <path
-                d="M50,40 Q40,45 35,35 Q40,25 50,30"
-                fill="none"
-                stroke="url(#spiralGradient)"
-                strokeWidth="1.5"
-                opacity="0.7"
-              />
-              
-              {/* Energy particles */}
-              <circle cx="65" cy="30" r="1.5" fill="#60a5fa" opacity="0.8" />
-              <circle cx="35" cy="50" r="1" fill="#93c5fd" opacity="0.6" />
-              <circle cx="55" cy="55" r="1" fill="#3b82f6" opacity="0.7" />
+              {/* Small accent dot */}
+              <circle cx="40" cy="40" r="2" fill="#60a5fa" opacity="0.9" />
             </svg>
           </div>
           
