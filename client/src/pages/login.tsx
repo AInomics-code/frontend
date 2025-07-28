@@ -61,9 +61,9 @@ export default function Login() {
           </div>
           
           <div className="text-center mb-8">
-            <p className="text-2xl mb-3 bg-gradient-to-r from-blue-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent" 
-               style={{ fontFamily: '"Brush Script MT", "Lucida Handwriting", "Apple Chancery", cursive', fontStyle: 'normal', fontWeight: '400' }}>
-              Your AI Copilot
+            <p className="text-xl mb-3 bg-gradient-to-r from-blue-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent font-bold" 
+               style={{ fontFamily: 'Inter, system-ui, -apple-system, sans-serif', fontWeight: '700', letterSpacing: '0.02em' }}>
+              Your AI Copilot for Smarter Business Decisions
             </p>
             <h1 className="text-3xl font-light tracking-wide text-white/90" 
                 style={{ fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: '0.1em', fontWeight: '300' }}>
