@@ -74,66 +74,74 @@ export default function Login() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.1 }}
-        className="hidden md:block md:w-1/2 bg-gradient-to-br from-[#1a1a2e] to-[#16213e] rounded-3xl ml-3 relative overflow-hidden shadow-2xl border border-blue-500/20"
+        className="hidden md:block md:w-1/2 bg-gradient-to-br from-[#0a0a1a] to-[#1a1a2e] rounded-3xl ml-3 relative overflow-hidden shadow-2xl border border-blue-500/20"
       >
-        {/* Animated Wave Background */}
+        {/* Static Wave Background */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* Primary Wave */}
           <svg
             className="absolute inset-0 w-full h-full"
-            viewBox="0 0 400 400"
+            viewBox="0 0 800 600"
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
               <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 0.6 }} />
-                <stop offset="50%" style={{ stopColor: '#1d4ed8', stopOpacity: 0.4 }} />
-                <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.2 }} />
+                <stop offset="0%" style={{ stopColor: '#0ea5e9', stopOpacity: 0.8 }} />
+                <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.6 }} />
+                <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.3 }} />
               </linearGradient>
-              <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{ stopColor: '#6366f1', stopOpacity: 0.4 }} />
-                <stop offset="100%" style={{ stopColor: '#4338ca', stopOpacity: 0.2 }} />
+              <linearGradient id="waveGradient2" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" style={{ stopColor: '#6366f1', stopOpacity: 0.5 }} />
+                <stop offset="100%" style={{ stopColor: '#8b5cf6', stopOpacity: 0.2 }} />
               </linearGradient>
             </defs>
             
-            {/* Animated flowing waves */}
+            {/* Flowing wave paths - static */}
             <path
-              d="M0,200 Q100,120 200,180 T400,160 L400,400 L0,400 Z"
+              d="M0,400 Q200,300 400,350 T800,320 L800,600 L0,600 Z"
               fill="url(#waveGradient1)"
-              className="animate-pulse"
-            >
-              <animateTransform
-                attributeName="transform"
-                attributeType="XML"
-                type="translate"
-                values="0,0; 20,10; 0,0"
-                dur="6s"
-                repeatCount="indefinite"
-              />
-            </path>
+            />
             
             <path
-              d="M0,240 Q150,160 300,200 T600,180 L600,400 L0,400 Z"
+              d="M0,450 Q300,360 600,400 T1200,380 L1200,600 L0,600 Z"
               fill="url(#waveGradient2)"
-              className="animate-pulse"
-            >
-              <animateTransform
-                attributeName="transform"
-                attributeType="XML"
-                type="translate"
-                values="0,0; -15,5; 0,0"
-                dur="8s"
-                repeatCount="indefinite"
-              />
-            </path>
+            />
+            
+            {/* Additional flowing lines */}
+            <path
+              d="M0,300 Q150,200 300,250 Q450,300 600,220 Q750,140 900,180"
+              stroke="url(#waveGradient1)"
+              strokeWidth="2"
+              fill="none"
+              opacity="0.6"
+            />
+            
+            <path
+              d="M100,350 Q250,280 400,320 Q550,360 700,290 Q850,220 1000,260"
+              stroke="url(#waveGradient2)"
+              strokeWidth="1.5"
+              fill="none"
+              opacity="0.4"
+            />
           </svg>
           
-          {/* Particle dots */}
+          {/* Static particle dots */}
           <div className="absolute inset-0">
-            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-ping" style={{ animationDelay: '0s' }}></div>
-            <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-blue-300 rounded-full opacity-40 animate-ping" style={{ animationDelay: '1s' }}></div>
-            <div className="absolute bottom-1/3 left-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full opacity-50 animate-ping" style={{ animationDelay: '2s' }}></div>
-            <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-blue-200 rounded-full opacity-30 animate-ping" style={{ animationDelay: '3s' }}></div>
+            {/* Large dots */}
+            <div className="absolute top-1/4 left-1/5 w-3 h-3 bg-cyan-400 rounded-full opacity-60"></div>
+            <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-50"></div>
+            <div className="absolute bottom-1/3 left-1/3 w-2.5 h-2.5 bg-blue-300 rounded-full opacity-40"></div>
+            <div className="absolute top-2/3 right-1/3 w-2 h-2 bg-purple-400 rounded-full opacity-45"></div>
+            
+            {/* Small dots */}
+            <div className="absolute top-1/2 left-1/6 w-1 h-1 bg-cyan-300 rounded-full opacity-30"></div>
+            <div className="absolute bottom-1/4 right-1/5 w-1.5 h-1.5 bg-blue-200 rounded-full opacity-35"></div>
+            <div className="absolute top-3/4 left-2/5 w-1 h-1 bg-purple-300 rounded-full opacity-25"></div>
+            <div className="absolute top-1/6 right-2/5 w-1 h-1 bg-blue-400 rounded-full opacity-40"></div>
+            
+            {/* Micro dots */}
+            <div className="absolute top-2/5 left-1/2 w-0.5 h-0.5 bg-cyan-200 rounded-full opacity-20"></div>
+            <div className="absolute bottom-2/5 right-1/6 w-0.5 h-0.5 bg-blue-300 rounded-full opacity-25"></div>
+            <div className="absolute top-5/6 left-1/4 w-0.5 h-0.5 bg-purple-200 rounded-full opacity-15"></div>
           </div>
         </div>
 
@@ -145,8 +153,8 @@ export default function Login() {
           </div>
         </div>
 
-        {/* Glow effect */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-purple-500/10"></div>
+        {/* Subtle glow effect */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/5 via-transparent to-purple-500/5"></div>
       </motion.div>
     </div>
   );
