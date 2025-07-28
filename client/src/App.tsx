@@ -21,7 +21,7 @@ function Router() {
       <Route path="/signup" component={Signup} />
       <Route path="/onboarding" component={Onboarding} />
       <Route path="/dashboard" component={Dashboard} />
-      <Route path="/chat" component={Chat} />
+      <Route path="/chat-clean-top" component={Chat} />
       <Route path="/sidebar" component={SidebarLayout} />
       <Route path="/smooth" component={SmoothChat} />
       <Route component={NotFound} />
