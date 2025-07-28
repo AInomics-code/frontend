@@ -74,25 +74,21 @@ export default function Login() {
           
           <div className="mb-8">
             <div className="text-left">
-              <p className="text-4xl mb-0 bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent font-black leading-none" 
+              <p className="text-4xl mb-0 bg-gradient-to-r from-blue-100 via-blue-200 to-cyan-100 bg-clip-text text-transparent font-bold leading-tight" 
                  style={{ 
-                   fontFamily: '"Montserrat Black", "Nunito Black", "Poppins Black", "Inter Black", sans-serif', 
-                   fontWeight: '900', 
-                   letterSpacing: '0.05em',
-                   textShadow: '0 2px 8px rgba(59, 130, 246, 0.4)',
-                   fontStretch: 'ultra-expanded',
-                   fontVariant: 'small-caps'
+                   fontFamily: '"Inter", "Helvetica Neue", "Segoe UI", system-ui, sans-serif', 
+                   fontWeight: '700', 
+                   letterSpacing: '-0.02em',
+                   textShadow: 'none'
                  }}>
                 Your AI Copilot
               </p>
-              <p className="text-4xl mb-6 bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent font-black leading-none" 
+              <p className="text-4xl mb-6 bg-gradient-to-r from-blue-100 via-blue-200 to-cyan-100 bg-clip-text text-transparent font-bold leading-tight" 
                  style={{ 
-                   fontFamily: '"Montserrat Black", "Nunito Black", "Poppins Black", "Inter Black", sans-serif', 
-                   fontWeight: '900', 
-                   letterSpacing: '0.05em',
-                   textShadow: '0 2px 8px rgba(59, 130, 246, 0.4)',
-                   fontStretch: 'ultra-expanded',
-                   fontVariant: 'small-caps'
+                   fontFamily: '"Inter", "Helvetica Neue", "Segoe UI", system-ui, sans-serif', 
+                   fontWeight: '700', 
+                   letterSpacing: '-0.02em',
+                   textShadow: 'none'
                  }}>
                 For Business Intelligence
               </p>
