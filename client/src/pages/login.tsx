@@ -76,190 +76,232 @@ export default function Login() {
         transition={{ delay: 0.1 }}
         className="hidden md:block md:w-1/2 bg-gradient-to-br from-[#0a0a1a] to-[#1a1a2e] rounded-3xl ml-3 relative overflow-hidden shadow-2xl border border-blue-500/20"
       >
-        {/* High-Resolution Enterprise Wave Background */}
+        {/* Portrait Luxurious Wave Background */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* Deep dark mode base with enterprise gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#000000] via-[#0a0f1c] via-[#0f1421] to-[#1a1a2e]"></div>
+          {/* Deep dark mode base with luxurious gradients */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#0a0f1c] via-[#0f1421] via-[#1a1a2e] to-[#0a0f1c]"></div>
           
           <svg
             className="absolute inset-0 w-full h-full"
-            viewBox="0 0 2560 1440"
+            viewBox="0 0 1080 1920"
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMid slice"
-            style={{ filter: 'contrast(1.1) saturate(1.05)' }}
+            style={{ filter: 'contrast(1.15) saturate(1.1) brightness(1.05)' }}
           >
             <defs>
-              {/* Enterprise-grade sfumatura gradients */}
-              <radialGradient id="enterpriseGlow1" cx="40%" cy="30%">
-                <stop offset="0%" style={{ stopColor: '#1e40af', stopOpacity: 0.9 }} />
-                <stop offset="20%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.75 }} />
-                <stop offset="45%" style={{ stopColor: '#1e293b', stopOpacity: 0.5 }} />
+              {/* Luxurious sfumato gradients for portrait mode */}
+              <radialGradient id="luxuryGlow1" cx="50%" cy="25%">
+                <stop offset="0%" style={{ stopColor: '#1e40af', stopOpacity: 0.95 }} />
+                <stop offset="15%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.8 }} />
+                <stop offset="35%" style={{ stopColor: '#1e293b', stopOpacity: 0.6 }} />
+                <stop offset="60%" style={{ stopColor: '#0f172a', stopOpacity: 0.35 }} />
+                <stop offset="80%" style={{ stopColor: '#000000', stopOpacity: 0.15 }} />
+                <stop offset="100%" style={{ stopColor: 'transparent', stopOpacity: 0 }} />
+              </radialGradient>
+              
+              <radialGradient id="luxuryGlow2" cx="30%" cy="70%">
+                <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 0.9 }} />
+                <stop offset="20%" style={{ stopColor: '#1e40af', stopOpacity: 0.75 }} />
+                <stop offset="45%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.5 }} />
                 <stop offset="70%" style={{ stopColor: '#0f172a', stopOpacity: 0.25 }} />
-                <stop offset="90%" style={{ stopColor: '#000000', stopOpacity: 0.1 }} />
                 <stop offset="100%" style={{ stopColor: 'transparent', stopOpacity: 0 }} />
               </radialGradient>
               
-              <radialGradient id="enterpriseGlow2" cx="70%" cy="60%">
+              <radialGradient id="electricCore" cx="70%" cy="50%">
+                <stop offset="0%" style={{ stopColor: '#0ea5e9', stopOpacity: 0.85 }} />
+                <stop offset="25%" style={{ stopColor: '#3b82f6', stopOpacity: 0.7 }} />
+                <stop offset="55%" style={{ stopColor: '#1e40af', stopOpacity: 0.45 }} />
+                <stop offset="80%" style={{ stopColor: '#1e293b', stopOpacity: 0.2 }} />
+                <stop offset="100%" style={{ stopColor: 'transparent', stopOpacity: 0 }} />
+              </radialGradient>
+
+              <linearGradient id="glassyWave1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style={{ stopColor: '#000000', stopOpacity: 0.98 }} />
+                <stop offset="12%" style={{ stopColor: '#0f172a', stopOpacity: 0.9 }} />
+                <stop offset="28%" style={{ stopColor: '#1e293b', stopOpacity: 0.8 }} />
+                <stop offset="45%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.7 }} />
+                <stop offset="65%" style={{ stopColor: '#1e40af', stopOpacity: 0.55 }} />
+                <stop offset="82%" style={{ stopColor: '#3b82f6', stopOpacity: 0.4 }} />
+                <stop offset="95%" style={{ stopColor: '#60a5fa', stopOpacity: 0.25 }} />
+                <stop offset="100%" style={{ stopColor: '#93c5fd', stopOpacity: 0.15 }} />
+              </linearGradient>
+              
+              <linearGradient id="glassyWave2" x1="10%" y1="10%" x2="90%" y2="90%">
+                <stop offset="0%" style={{ stopColor: '#0f172a', stopOpacity: 0.95 }} />
+                <stop offset="18%" style={{ stopColor: '#1e293b', stopOpacity: 0.85 }} />
+                <stop offset="38%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.7 }} />
+                <stop offset="60%" style={{ stopColor: '#1e40af', stopOpacity: 0.6 }} />
+                <stop offset="80%" style={{ stopColor: '#3b82f6', stopOpacity: 0.45 }} />
+                <stop offset="100%" style={{ stopColor: '#60a5fa', stopOpacity: 0.3 }} />
+              </linearGradient>
+              
+              <linearGradient id="glassyWave3" x1="20%" y1="15%" x2="80%" y2="85%">
+                <stop offset="0%" style={{ stopColor: '#1e293b', stopOpacity: 0.9 }} />
+                <stop offset="25%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.8 }} />
+                <stop offset="50%" style={{ stopColor: '#1e40af', stopOpacity: 0.65 }} />
+                <stop offset="75%" style={{ stopColor: '#3b82f6', stopOpacity: 0.5 }} />
+                <stop offset="100%" style={{ stopColor: '#60a5fa', stopOpacity: 0.35 }} />
+              </linearGradient>
+              
+              <linearGradient id="glassyWave4" x1="35%" y1="20%" x2="65%" y2="80%">
+                <stop offset="0%" style={{ stopColor: '#1e40af', stopOpacity: 0.85 }} />
+                <stop offset="30%" style={{ stopColor: '#3b82f6', stopOpacity: 0.7 }} />
+                <stop offset="60%" style={{ stopColor: '#60a5fa', stopOpacity: 0.55 }} />
+                <stop offset="85%" style={{ stopColor: '#93c5fd', stopOpacity: 0.4 }} />
+                <stop offset="100%" style={{ stopColor: '#dbeafe', stopOpacity: 0.25 }} />
+              </linearGradient>
+              
+              <linearGradient id="glassyWave5" x1="40%" y1="25%" x2="60%" y2="75%">
                 <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 0.8 }} />
-                <stop offset="25%" style={{ stopColor: '#1e40af', stopOpacity: 0.65 }} />
-                <stop offset="50%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.4 }} />
-                <stop offset="75%" style={{ stopColor: '#0f172a', stopOpacity: 0.2 }} />
-                <stop offset="100%" style={{ stopColor: 'transparent', stopOpacity: 0 }} />
-              </radialGradient>
-              
-              <radialGradient id="electricBlueCore" cx="60%" cy="40%">
-                <stop offset="0%" style={{ stopColor: '#0ea5e9', stopOpacity: 0.7 }} />
-                <stop offset="30%" style={{ stopColor: '#3b82f6', stopOpacity: 0.55 }} />
-                <stop offset="60%" style={{ stopColor: '#1e40af', stopOpacity: 0.35 }} />
-                <stop offset="85%" style={{ stopColor: '#1e293b', stopOpacity: 0.15 }} />
-                <stop offset="100%" style={{ stopColor: 'transparent', stopOpacity: 0 }} />
-              </radialGradient>
-
-              <linearGradient id="luminousWave1" x1="0%" y1="25%" x2="100%" y2="75%">
-                <stop offset="0%" style={{ stopColor: '#000000', stopOpacity: 0.95 }} />
-                <stop offset="15%" style={{ stopColor: '#0f172a', stopOpacity: 0.85 }} />
-                <stop offset="35%" style={{ stopColor: '#1e293b', stopOpacity: 0.7 }} />
-                <stop offset="55%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.6 }} />
-                <stop offset="75%" style={{ stopColor: '#1e40af', stopOpacity: 0.45 }} />
-                <stop offset="90%" style={{ stopColor: '#3b82f6', stopOpacity: 0.3 }} />
-                <stop offset="100%" style={{ stopColor: '#60a5fa', stopOpacity: 0.2 }} />
-              </linearGradient>
-              
-              <linearGradient id="luminousWave2" x1="15%" y1="5%" x2="85%" y2="95%">
-                <stop offset="0%" style={{ stopColor: '#0f172a', stopOpacity: 0.9 }} />
-                <stop offset="25%" style={{ stopColor: '#1e293b', stopOpacity: 0.75 }} />
-                <stop offset="50%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.6 }} />
-                <stop offset="75%" style={{ stopColor: '#1e40af', stopOpacity: 0.5 }} />
-                <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 0.35 }} />
-              </linearGradient>
-              
-              <linearGradient id="luminousWave3" x1="30%" y1="15%" x2="70%" y2="85%">
-                <stop offset="0%" style={{ stopColor: '#1e293b', stopOpacity: 0.8 }} />
-                <stop offset="30%" style={{ stopColor: '#1e3a8a', stopOpacity: 0.65 }} />
-                <stop offset="60%" style={{ stopColor: '#1e40af', stopOpacity: 0.5 }} />
-                <stop offset="85%" style={{ stopColor: '#3b82f6', stopOpacity: 0.4 }} />
-                <stop offset="100%" style={{ stopColor: '#60a5fa', stopOpacity: 0.25 }} />
-              </linearGradient>
-              
-              <linearGradient id="luminousWave4" x1="45%" y1="25%" x2="55%" y2="75%">
-                <stop offset="0%" style={{ stopColor: '#1e40af', stopOpacity: 0.7 }} />
-                <stop offset="40%" style={{ stopColor: '#3b82f6', stopOpacity: 0.55 }} />
-                <stop offset="70%" style={{ stopColor: '#60a5fa', stopOpacity: 0.4 }} />
-                <stop offset="100%" style={{ stopColor: '#93c5fd', stopOpacity: 0.25 }} />
+                <stop offset="40%" style={{ stopColor: '#60a5fa', stopOpacity: 0.65 }} />
+                <stop offset="70%" style={{ stopColor: '#93c5fd', stopOpacity: 0.5 }} />
+                <stop offset="100%" style={{ stopColor: '#dbeafe', stopOpacity: 0.3 }} />
               </linearGradient>
 
-              <linearGradient id="glowingEdge" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{ stopColor: '#0ea5e9', stopOpacity: 0.8 }} />
-                <stop offset="30%" style={{ stopColor: '#3b82f6', stopOpacity: 0.6 }} />
-                <stop offset="70%" style={{ stopColor: '#60a5fa', stopOpacity: 0.4 }} />
-                <stop offset="100%" style={{ stopColor: '#93c5fd', stopOpacity: 0.2 }} />
+              <linearGradient id="luxuryReflection" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style={{ stopColor: '#0ea5e9', stopOpacity: 0.9 }} />
+                <stop offset="25%" style={{ stopColor: '#3b82f6', stopOpacity: 0.7 }} />
+                <stop offset="50%" style={{ stopColor: '#60a5fa', stopOpacity: 0.5 }} />
+                <stop offset="75%" style={{ stopColor: '#93c5fd', stopOpacity: 0.35 }} />
+                <stop offset="100%" style={{ stopColor: '#dbeafe', stopOpacity: 0.2 }} />
               </linearGradient>
               
-              {/* Advanced glow filters for luminous effects */}
-              <filter id="subtleGlow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              {/* Advanced glass effects and light reflections */}
+              <filter id="glassyGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3" result="softBlur"/>
                 <feMerge> 
-                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="softBlur"/>
                   <feMergeNode in="SourceGraphic"/>
                 </feMerge>
               </filter>
               
-              <filter id="enterpriseGlow" x="-100%" y="-100%" width="300%" height="300%">
-                <feGaussianBlur stdDeviation="4" result="softGlow"/>
+              <filter id="luxuryBlur" x="-100%" y="-100%" width="300%" height="300%">
+                <feGaussianBlur stdDeviation="5" result="luxuryGlow"/>
                 <feMerge> 
-                  <feMergeNode in="softGlow"/>
+                  <feMergeNode in="luxuryGlow"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              
+              <filter id="reflectionGlow" x="-75%" y="-75%" width="250%" height="250%">
+                <feGaussianBlur stdDeviation="2.5" result="reflection"/>
+                <feMerge> 
+                  <feMergeNode in="reflection"/>
                   <feMergeNode in="SourceGraphic"/>
                 </feMerge>
               </filter>
             </defs>
             
-            {/* Enterprise ambient lighting foundation */}
-            <ellipse cx="1000" cy="400" rx="1400" ry="800" fill="url(#enterpriseGlow1)" />
-            <ellipse cx="1800" cy="900" rx="1200" ry="700" fill="url(#enterpriseGlow2)" />
-            <ellipse cx="600" cy="600" rx="900" ry="600" fill="url(#electricBlueCore)" />
+            {/* Luxurious ambient lighting foundation */}
+            <ellipse cx="540" cy="480" rx="700" ry="400" fill="url(#luxuryGlow1)" />
+            <ellipse cx="320" cy="1200" rx="600" ry="350" fill="url(#luxuryGlow2)" />
+            <ellipse cx="760" cy="960" rx="500" ry="300" fill="url(#electricCore)" />
             
-            {/* Elegant flowing wave layers with sfumatura blending */}
+            {/* Portrait glassy wave layers with sfumato blending */}
             
-            {/* Deep background wave layer */}
+            {/* Deep background glassy layer */}
             <path
-              d="M-300,600 Q200,350 600,450 Q1000,550 1400,400 Q1800,250 2200,300 Q2400,325 2600,315 Q2800,305 3000,295 L3000,1600 L-300,1600 Z"
-              fill="url(#luminousWave1)"
+              d="M-150,400 Q200,200 400,280 Q600,360 800,240 Q900,200 1000,220 Q1100,240 1230,200 L1230,2000 L-150,2000 Z"
+              fill="url(#glassyWave1)"
             />
             
-            {/* Mid-depth flowing wave */}
+            {/* Mid-depth luxurious wave */}
             <path
-              d="M-300,750 Q100,500 500,600 Q900,700 1300,550 Q1700,400 2100,450 Q2300,475 2500,465 Q2700,455 3000,445 L3000,1600 L-300,1600 Z"
-              fill="url(#luminousWave2)"
+              d="M-150,600 Q150,400 350,480 Q550,560 750,440 Q850,400 950,420 Q1050,440 1230,400 L1230,2000 L-150,2000 Z"
+              fill="url(#glassyWave2)"
             />
             
             {/* Enterprise foreground wave */}
             <path
-              d="M-300,900 Q0,650 400,750 Q800,850 1200,700 Q1600,550 2000,600 Q2200,625 2400,615 Q2600,605 3000,595 L3000,1600 L-300,1600 Z"
-              fill="url(#luminousWave3)"
+              d="M-150,800 Q100,600 300,680 Q500,760 700,640 Q800,600 900,620 Q1000,640 1230,600 L1230,2000 L-150,2000 Z"
+              fill="url(#glassyWave3)"
             />
             
-            {/* Luminous top layer */}
+            {/* Luminous glassy layer */}
             <path
-              d="M-300,1050 Q150,800 550,900 Q950,1000 1350,850 Q1750,700 2150,750 Q2350,775 2550,765 Q2750,755 3000,745 L3000,1600 L-300,1600 Z"
-              fill="url(#luminousWave4)"
+              d="M-150,1000 Q50,800 250,880 Q450,960 650,840 Q750,800 850,820 Q950,840 1230,800 L1230,2000 L-150,2000 Z"
+              fill="url(#glassyWave4)"
+            />
+            
+            {/* Top luxurious layer */}
+            <path
+              d="M-150,1200 Q0,1000 200,1080 Q400,1160 600,1040 Q700,1000 800,1020 Q900,1040 1230,1000 L1230,2000 L-150,2000 Z"
+              fill="url(#glassyWave5)"
             />
             
             {/* Additional depth layer for richness */}
             <path
-              d="M-300,1200 Q300,950 700,1050 Q1100,1150 1500,1000 Q1900,850 2300,900 Q2500,925 2700,915 Q2900,905 3000,895 L3000,1600 L-300,1600 Z"
-              fill="url(#luminousWave2)"
-              opacity="0.75"
+              d="M-150,1400 Q100,1200 300,1280 Q500,1360 700,1240 Q800,1200 900,1220 Q1000,1240 1230,1200 L1230,2000 L-150,2000 Z"
+              fill="url(#glassyWave3)"
+              opacity="0.7"
             />
             
-            {/* Glowing edge highlights for luminous effect */}
+            {/* Glassy light reflections for luxurious effect */}
             <path
-              d="M-300,550 Q250,300 650,400 Q1050,500 1450,350 Q1850,200 2250,250 Q2450,275 2650,265 Q2850,255 3000,245"
-              stroke="url(#glowingEdge)"
+              d="M-150,350 Q250,150 450,230 Q650,310 850,190 Q950,150 1050,170 Q1150,190 1230,150"
+              stroke="url(#luxuryReflection)"
+              strokeWidth="2.5"
+              fill="none"
+              opacity="0.6"
+              filter="url(#reflectionGlow)"
+            />
+            
+            <path
+              d="M-150,550 Q200,350 400,430 Q600,510 800,390 Q900,350 1000,370 Q1100,390 1230,350"
+              stroke="url(#luxuryReflection)"
               strokeWidth="2"
               fill="none"
               opacity="0.5"
-              filter="url(#subtileGlow)"
+              filter="url(#glassyGlow)"
             />
             
             <path
-              d="M-300,700 Q150,450 550,550 Q950,650 1350,500 Q1750,350 2150,400 Q2350,425 2550,415 Q2750,405 3000,395"
-              stroke="url(#glowingEdge)"
+              d="M-150,750 Q150,550 350,630 Q550,710 750,590 Q850,550 950,570 Q1050,590 1230,550"
+              stroke="url(#luxuryReflection)"
               strokeWidth="1.5"
               fill="none"
-              opacity="0.4"
-              filter="url(#subtleGlow)"
+              opacity="0.45"
+              filter="url(#glassyGlow)"
             />
             
             <path
-              d="M-300,850 Q50,600 450,700 Q850,800 1250,650 Q1650,500 2050,550 Q2250,575 2450,565 Q2650,555 3000,545"
-              stroke="url(#glowingEdge)"
-              strokeWidth="1"
+              d="M-150,950 Q100,750 300,830 Q500,910 700,790 Q800,750 900,770 Q1000,790 1230,750"
+              stroke="url(#luxuryReflection)"
+              strokeWidth="1.2"
               fill="none"
-              opacity="0.35"
+              opacity="0.4"
             />
             
-            {/* Enterprise-grade luminous accents */}
-            <ellipse cx="500" cy="600" rx="300" ry="200" fill="url(#enterpriseGlow1)" opacity="0.4" filter="url(#enterpriseGlow)" />
-            <ellipse cx="1300" cy="750" rx="350" ry="250" fill="url(#electricBlueCore)" opacity="0.35" filter="url(#enterpriseGlow)" />
-            <ellipse cx="2000" cy="600" rx="280" ry="180" fill="url(#enterpriseGlow2)" opacity="0.3" filter="url(#enterpriseGlow)" />
-            <ellipse cx="800" cy="900" rx="200" ry="140" fill="url(#electricBlueCore)" opacity="0.25" filter="url(#subtleGlow)" />
-            <ellipse cx="1600" cy="500" rx="220" ry="160" fill="url(#enterpriseGlow1)" opacity="0.28" filter="url(#subtleGlow)" />
+            {/* Luxurious glassy accents */}
+            <ellipse cx="300" cy="500" rx="180" ry="120" fill="url(#luxuryGlow1)" opacity="0.45" filter="url(#luxuryBlur)" />
+            <ellipse cx="700" cy="800" rx="200" ry="140" fill="url(#electricCore)" opacity="0.4" filter="url(#luxuryBlur)" />
+            <ellipse cx="500" cy="1100" rx="160" ry="100" fill="url(#luxuryGlow2)" opacity="0.35" filter="url(#glassyGlow)" />
+            <ellipse cx="800" cy="600" rx="140" ry="90" fill="url(#electricCore)" opacity="0.3" filter="url(#glassyGlow)" />
+            <ellipse cx="400" cy="900" rx="120" ry="80" fill="url(#luxuryGlow1)" opacity="0.32" filter="url(#reflectionGlow)" />
             
-            {/* Additional subtle flowing elements for depth */}
+            {/* Additional glassy flowing elements for depth */}
             <path
-              d="M-300,500 Q500,250 1000,350 Q1500,450 2000,300 Q2200,250 2400,275 Q2600,300 3000,275"
-              stroke="url(#glowingEdge)"
+              d="M-150,300 Q300,100 500,180 Q700,260 900,140 Q1000,100 1100,120 Q1200,140 1230,100"
+              stroke="url(#luxuryReflection)"
               strokeWidth="0.8"
+              fill="none"
+              opacity="0.3"
+            />
+            
+            <path
+              d="M-50,450 Q350,250 550,330 Q750,410 950,290 Q1050,250 1150,270 Q1250,290 1230,250"
+              stroke="url(#luxuryReflection)"
+              strokeWidth="0.6"
               fill="none"
               opacity="0.25"
             />
             
             <path
-              d="M-100,650 Q700,400 1200,500 Q1700,600 2200,450 Q2400,400 2600,425 Q2800,450 3000,425"
-              stroke="url(#glowingEdge)"
-              strokeWidth="0.6"
+              d="M-100,650 Q250,450 450,530 Q650,610 850,490 Q950,450 1050,470 Q1150,490 1230,450"
+              stroke="url(#luxuryReflection)"
+              strokeWidth="0.5"
               fill="none"
-              opacity="0.2"
+              opacity="0.22"
             />
           </svg>
           
