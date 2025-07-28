@@ -29,7 +29,7 @@ export default function Login() {
       >
         <div className="max-w-md w-full mx-auto">
           {/* VORTA Atom Logo */}
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-4">
             <svg width="70" height="70" viewBox="0 0 100 100" className="text-blue-400">
               <defs>
                 <radialGradient id="atomBlue" cx="30%" cy="30%" r="70%">
@@ -60,6 +60,19 @@ export default function Login() {
             </svg>
           </div>
           
+          {/* VORTA Brand Name */}
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-black bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent" 
+                style={{ 
+                  fontFamily: '"Arial Black", "Helvetica Neue", Arial, sans-serif', 
+                  fontWeight: '900', 
+                  letterSpacing: '0.05em',
+                  textShadow: '0 2px 4px rgba(59, 130, 246, 0.3)'
+                }}>
+              VORTA
+            </h1>
+          </div>
+          
           <div className="mb-8">
             <div className="text-left">
               <p className="text-2xl mb-0 bg-gradient-to-r from-blue-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent font-black" 
@@ -70,12 +83,6 @@ export default function Login() {
                  style={{ fontFamily: '"Comic Sans MS", "Chalkboard SE", "Bradley Hand", cursive', fontWeight: '900', letterSpacing: '0.02em' }}>
                 for Smarter Business Decisions.
               </p>
-            </div>
-            <div className="text-center">
-              <h1 className="text-lg font-medium tracking-wide text-blue-200/70" 
-                  style={{ fontFamily: '"Segoe UI", system-ui, -apple-system, sans-serif', letterSpacing: '0.1em', fontWeight: '500' }}>
-                VORTA
-              </h1>
             </div>
           </div>
 
