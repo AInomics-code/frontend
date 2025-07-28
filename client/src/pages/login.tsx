@@ -28,49 +28,35 @@ export default function Login() {
         className="w-full md:w-1/2 bg-gradient-to-br from-[#1c2340] to-[#2a3b5c] rounded-3xl flex flex-col justify-center px-8 md:px-12 shadow-2xl border border-blue-500/20"
       >
         <div className="max-w-md w-full mx-auto">
-          {/* VORTA Vortex Logo */}
+          {/* VORTA Atom Logo */}
           <div className="flex justify-center mb-6">
             <svg width="70" height="70" viewBox="0 0 100 100" className="text-blue-400">
               <defs>
-                <radialGradient id="vortexBlue1" cx="20%" cy="20%" r="80%">
+                <radialGradient id="atomBlue" cx="30%" cy="30%" r="70%">
                   <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
-                  <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.8 }} />
-                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.4 }} />
-                </radialGradient>
-                <radialGradient id="vortexBlue2" cx="80%" cy="80%" r="80%">
-                  <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
-                  <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.8 }} />
-                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.4 }} />
-                </radialGradient>
-                <radialGradient id="vortexBlue3" cx="50%" cy="50%" r="80%">
-                  <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
-                  <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.8 }} />
-                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.4 }} />
+                  <stop offset="60%" style={{ stopColor: '#3b82f6', stopOpacity: 0.8 }} />
+                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.3 }} />
                 </radialGradient>
               </defs>
               
-              {/* Top curved arm */}
-              <path
-                d="M35,15 C20,20 15,35 25,50 C35,60 50,55 60,45 C65,35 60,25 50,20 C45,18 40,16 35,15 Z"
-                fill="url(#vortexBlue1)"
-              />
+              {/* First orbital ring */}
+              <ellipse cx="50" cy="50" rx="35" ry="15" 
+                fill="none" stroke="url(#atomBlue)" stroke-width="8" 
+                transform="rotate(0 50 50)" opacity="0.8" />
               
-              {/* Bottom left curved arm */}
-              <path
-                d="M25,75 C15,65 20,50 35,45 C50,42 60,50 65,60 C68,70 60,80 45,82 C35,83 30,80 25,75 Z"
-                fill="url(#vortexBlue2)"
-              />
+              {/* Second orbital ring */}
+              <ellipse cx="50" cy="50" rx="35" ry="15" 
+                fill="none" stroke="url(#atomBlue)" stroke-width="8" 
+                transform="rotate(60 50 50)" opacity="0.8" />
               
-              {/* Bottom right curved arm */}
-              <path
-                d="M75,65 C80,50 70,40 55,45 C45,48 40,58 45,68 C50,75 60,78 70,75 C73,72 75,68 75,65 Z"
-                fill="url(#vortexBlue3)"
-              />
+              {/* Third orbital ring */}
+              <ellipse cx="50" cy="50" rx="35" ry="15" 
+                fill="none" stroke="url(#atomBlue)" stroke-width="8" 
+                transform="rotate(120 50 50)" opacity="0.8" />
               
-              {/* Center void */}
-              <circle cx="50" cy="50" r="18" fill="#0f1629" opacity="0.95" />
-              <circle cx="50" cy="50" r="12" fill="#1a1a2e" opacity="0.8" />
-              <circle cx="50" cy="50" r="6" fill="url(#vortexBlue1)" opacity="0.3" />
+              {/* Central nucleus */}
+              <circle cx="50" cy="50" r="8" fill="url(#atomBlue)" opacity="0.9" />
+              <circle cx="50" cy="50" r="4" fill="#60a5fa" opacity="1" />
             </svg>
           </div>
           
