@@ -41,17 +41,17 @@ export default function Login() {
               
               {/* First orbital ring */}
               <ellipse cx="50" cy="50" rx="35" ry="15" 
-                fill="none" stroke="url(#atomBlue)" stroke-width="8" 
+                fill="none" stroke="url(#atomBlue)" strokeWidth="8" 
                 transform="rotate(0 50 50)" opacity="0.8" />
               
               {/* Second orbital ring */}
               <ellipse cx="50" cy="50" rx="35" ry="15" 
-                fill="none" stroke="url(#atomBlue)" stroke-width="8" 
+                fill="none" stroke="url(#atomBlue)" strokeWidth="8" 
                 transform="rotate(60 50 50)" opacity="0.8" />
               
               {/* Third orbital ring */}
               <ellipse cx="50" cy="50" rx="35" ry="15" 
-                fill="none" stroke="url(#atomBlue)" stroke-width="8" 
+                fill="none" stroke="url(#atomBlue)" strokeWidth="8" 
                 transform="rotate(120 50 50)" opacity="0.8" />
               
               {/* Central nucleus */}
@@ -60,8 +60,10 @@ export default function Login() {
             </svg>
           </div>
           
-          <h1 className="text-3xl font-bold mb-2 tracking-tight">Welcome back to VORTA</h1>
-          <p className="text-sm text-gray-300 mb-8">Log in to access your AI Copilot and make smarter decisions in real time.</p>
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold mb-1 tracking-tight">VORTA</h1>
+            <p className="text-lg text-gray-400/70">AI Copilot</p>
+          </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
