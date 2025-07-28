@@ -30,45 +30,47 @@ export default function Login() {
         <div className="max-w-md w-full mx-auto">
           {/* VORTA Vortex Logo */}
           <div className="flex justify-center mb-6">
-            <svg width="80" height="80" viewBox="0 0 100 100" className="text-blue-400">
+            <svg width="70" height="70" viewBox="0 0 100 100" className="text-blue-400">
               <defs>
-                <radialGradient id="blueGrad1" cx="40%" cy="40%" r="60%">
+                <radialGradient id="vortexBlue1" cx="20%" cy="20%" r="80%">
                   <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
-                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.6 }} />
+                  <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.8 }} />
+                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.4 }} />
                 </radialGradient>
-                <radialGradient id="blueGrad2" cx="60%" cy="60%" r="60%">
-                  <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
-                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.5 }} />
+                <radialGradient id="vortexBlue2" cx="80%" cy="80%" r="80%">
+                  <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
+                  <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.8 }} />
+                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.4 }} />
                 </radialGradient>
-                <radialGradient id="blueGrad3" cx="50%" cy="30%" r="60%">
-                  <stop offset="0%" style={{ stopColor: '#2563eb', stopOpacity: 1 }} />
+                <radialGradient id="vortexBlue3" cx="50%" cy="50%" r="80%">
+                  <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
+                  <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.8 }} />
                   <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.4 }} />
                 </radialGradient>
               </defs>
               
-              {/* Blade 1 - top */}
+              {/* Top curved arm */}
               <path
-                d="M50,20 C30,25 25,35 30,50 C35,65 50,70 65,60 C70,50 65,35 50,20 Z"
-                fill="url(#blueGrad1)"
+                d="M35,15 C20,20 15,35 25,50 C35,60 50,55 60,45 C65,35 60,25 50,20 C45,18 40,16 35,15 Z"
+                fill="url(#vortexBlue1)"
               />
               
-              {/* Blade 2 - bottom left */}
+              {/* Bottom left curved arm */}
               <path
-                d="M50,80 C35,65 30,50 40,35 C50,25 65,30 75,45 C75,60 65,75 50,80 Z"
-                fill="url(#blueGrad2)"
-                transform="rotate(120 50 50)"
+                d="M25,75 C15,65 20,50 35,45 C50,42 60,50 65,60 C68,70 60,80 45,82 C35,83 30,80 25,75 Z"
+                fill="url(#vortexBlue2)"
               />
               
-              {/* Blade 3 - bottom right */}
+              {/* Bottom right curved arm */}
               <path
-                d="M50,80 C35,65 30,50 40,35 C50,25 65,30 75,45 C75,60 65,75 50,80 Z"
-                fill="url(#blueGrad3)"
-                transform="rotate(240 50 50)"
+                d="M75,65 C80,50 70,40 55,45 C45,48 40,58 45,68 C50,75 60,78 70,75 C73,72 75,68 75,65 Z"
+                fill="url(#vortexBlue3)"
               />
               
-              {/* Center circle */}
-              <circle cx="50" cy="50" r="15" fill="#0f1629" />
-              <circle cx="50" cy="50" r="8" fill="url(#blueGrad1)" opacity="0.3" />
+              {/* Center void */}
+              <circle cx="50" cy="50" r="18" fill="#0f1629" opacity="0.95" />
+              <circle cx="50" cy="50" r="12" fill="#1a1a2e" opacity="0.8" />
+              <circle cx="50" cy="50" r="6" fill="url(#vortexBlue1)" opacity="0.3" />
             </svg>
           </div>
           
