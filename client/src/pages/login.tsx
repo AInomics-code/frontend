@@ -85,30 +85,28 @@ export default function Login() {
             </div>
           </div>
 
-          {/* Compact Signup Form */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 mb-4 border border-white/10 shadow-xl">
-            <form onSubmit={handleLogin} className="space-y-3">
-              <div>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full px-4 py-3 rounded-2xl bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-300/50 focus:border-blue-300/50 transition-all duration-300 text-white placeholder-white/60 backdrop-blur-sm"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
+          {/* Clean Signup Form - No Container */}
+          <form onSubmit={handleLogin} className="space-y-3 mb-4">
+            <div>
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full px-4 py-3 rounded-2xl bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-300/50 focus:border-blue-300/50 transition-all duration-300 text-white placeholder-white/60 backdrop-blur-sm"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
 
-              {error && <p className="text-red-300/80 text-sm">{error}</p>}
+            {error && <p className="text-red-300/80 text-sm">{error}</p>}
 
-              <button
-                type="submit"
-                className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 font-medium text-white shadow-lg hover:shadow-xl"
-              >
-                Continue
-              </button>
-            </form>
-          </div>
+            <button
+              type="submit"
+              className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 font-medium text-white shadow-lg hover:shadow-xl"
+            >
+              Continue
+            </button>
+          </form>
 
           {/* Compact Or Divider */}
           <div className="flex items-center mb-4">
