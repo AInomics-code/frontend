@@ -1,5 +1,5 @@
-import SidebarLayout from "@/components/sidebar-layout";
+import Chat from "@/pages/chat-clean-top";
 
 export default function Dashboard() {
-  return <SidebarLayout />;
+  return <Chat />;
 }

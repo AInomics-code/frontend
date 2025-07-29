@@ -343,7 +343,7 @@ export default function Chat() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e]">
       {/* Feedback Toast */}
       <FeedbackToast
         type="error"
@@ -351,47 +351,47 @@ export default function Chat() {
         show={showToast}
         onHide={() => setShowToast(false)}
       />
-      {/* Top KPI Dashboard - Elegant Layout */}
-      <div className="bg-gray-50 px-6 py-1">
+      {/* Top KPI Dashboard - Dark Theme */}
+      <div className="bg-gradient-to-r from-[#1a1a2e]/80 to-[#16213e]/80 px-6 py-4 backdrop-blur-md border-b border-blue-500/20">
         <div className="flex flex-col md:flex-row gap-3 justify-between">
           {/* Performance Card */}
           <div
             onClick={() => toggleCard("performance")}
-            className={`group bg-white rounded-lg shadow-sm hover:shadow-md p-2 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 interactive-hover button-press ripple-effect ${
+            className={`group bg-gradient-to-br from-[#1c2340]/80 to-[#2a3b5c]/80 rounded-lg shadow-lg hover:shadow-xl p-2 cursor-pointer transition-all duration-500 border border-blue-500/20 hover:border-blue-400/30 flex-1 backdrop-blur-sm ${
               expandedCard === "performance"
-                ? "min-h-[200px] shadow-lg animate-scaleIn"
+                ? "min-h-[200px] shadow-xl animate-scaleIn"
                 : "min-h-[50px]"
             }`}
           >
             <div className="flex items-center justify-between mb-1">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">
+                <div className="w-3 h-3 bg-emerald-400 rounded-full shadow-sm"></div>
+                <h4 className="text-sm font-medium text-white group-hover:text-blue-200 transition">
                   {text.performanceScore}
                 </h4>
               </div>
               {expandedCard === "performance" ? (
-                <ChevronUp size={16} className="text-gray-600" />
+                <ChevronUp size={16} className="text-blue-300" />
               ) : (
                 <ChevronDown
                   size={14}
-                  className="text-gray-400 group-hover:text-gray-600 transition"
+                  className="text-blue-400/70 group-hover:text-blue-300 transition"
                 />
               )}
             </div>
 
             {expandedCard !== "performance" ? (
               <>
-                <p className="text-3xl font-semibold text-gray-900">
+                <p className="text-3xl font-semibold text-white">
                   <AnimatedCounter value={88} duration={1500} />
                 </p>
                 <div className="flex items-center gap-2 mt-1">
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-blue-200/70">
                     <AnimatedCounter value={82} duration={1200} suffix="%" /> {text.salesTarget}
                   </p>
                   <PulseIndicator color="green" size="sm" />
                 </div>
-                <p className="text-xs text-gray-400 mt-2 italic">
+                <p className="text-xs text-blue-300/60 mt-2 italic">
                   Haz clic para ver detalles
                 </p>
               </>
@@ -466,36 +466,36 @@ export default function Chat() {
           {/* Risk Card */}
           <div
             onClick={() => toggleCard("risks")}
-            className={`group bg-white rounded-lg shadow-sm hover:shadow-md p-2 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 interactive-hover button-press ripple-effect ${
+            className={`group bg-gradient-to-br from-[#1c2340]/80 to-[#2a3b5c]/80 rounded-lg shadow-lg hover:shadow-xl p-2 cursor-pointer transition-all duration-500 border border-blue-500/20 hover:border-red-400/30 flex-1 backdrop-blur-sm ${
               expandedCard === "risks"
-                ? "min-h-[200px] shadow-lg animate-scaleIn"
+                ? "min-h-[200px] shadow-xl animate-scaleIn"
                 : "min-h-[50px]"
             }`}
           >
             <div className="flex items-center justify-between mb-1">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">
+                <div className="w-3 h-3 bg-red-400 rounded-full shadow-sm"></div>
+                <h4 className="text-sm font-medium text-white group-hover:text-blue-200 transition">
                   {text.zonesAtRisk}
                 </h4>
               </div>
               {expandedCard === "risks" ? (
-                <ChevronUp size={16} className="text-gray-600" />
+                <ChevronUp size={16} className="text-blue-300" />
               ) : (
                 <ChevronDown
                   size={14}
-                  className="text-gray-400 group-hover:text-gray-600 transition"
+                  className="text-blue-400/70 group-hover:text-blue-300 transition"
                 />
               )}
             </div>
 
             {expandedCard !== "risks" ? (
               <>
-                <p className="text-2xl font-semibold text-gray-900">3 {isEnglish ? "Zones" : "Zonas"}</p>
-                <p className="text-xs text-gray-500">
+                <p className="text-2xl font-semibold text-white">3 {isEnglish ? "Zones" : "Zonas"}</p>
+                <p className="text-xs text-blue-200/70">
                   Chiriquí, Colón, San Miguelito
                 </p>
-                <p className="text-xs text-gray-400 mt-2 italic">
+                <p className="text-xs text-blue-300/60 mt-2 italic">
                   Haz clic para ver detalles
                 </p>
               </>
@@ -584,38 +584,38 @@ export default function Chat() {
           {/* Opportunity Card */}
           <div
             onClick={() => toggleCard("opportunities")}
-            className={`group bg-white rounded-lg shadow-sm hover:shadow-md p-2 cursor-pointer transition-all duration-500 border border-gray-100 hover:border-gray-200 flex-1 ${
+            className={`group bg-gradient-to-br from-[#1c2340]/80 to-[#2a3b5c]/80 rounded-lg shadow-lg hover:shadow-xl p-2 cursor-pointer transition-all duration-500 border border-blue-500/20 hover:border-yellow-400/30 flex-1 backdrop-blur-sm ${
               expandedCard === "opportunities"
-                ? "min-h-[200px] shadow-lg"
+                ? "min-h-[200px] shadow-xl"
                 : "min-h-[50px]"
             }`}
           >
             <div className="flex items-center justify-between mb-1">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                <h4 className="text-sm font-medium text-gray-700 group-hover:text-black transition">
+                <div className="w-3 h-3 bg-yellow-400 rounded-full shadow-sm"></div>
+                <h4 className="text-sm font-medium text-white group-hover:text-blue-200 transition">
                   {text.productOpportunity}
                 </h4>
               </div>
               {expandedCard === "opportunities" ? (
-                <ChevronUp size={16} className="text-gray-600" />
+                <ChevronUp size={16} className="text-blue-300" />
               ) : (
                 <ChevronDown
                   size={14}
-                  className="text-gray-400 group-hover:text-gray-600 transition"
+                  className="text-blue-400/70 group-hover:text-blue-300 transition"
                 />
               )}
             </div>
 
             {expandedCard !== "opportunities" ? (
               <>
-                <p className="text-lg font-semibold text-gray-900">
+                <p className="text-lg font-semibold text-white">
                   Vinagre Premium
                 </p>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-blue-200/70">
                   {isEnglish ? "High potential • Weak: Mango Salsa" : "Alto potencial • Débil: Mango Salsa"}
                 </p>
-                <p className="text-xs text-gray-400 mt-2 italic">
+                <p className="text-xs text-blue-300/60 mt-2 italic">
                   {text.clickForDetails}
                 </p>
               </>
@@ -751,7 +751,7 @@ export default function Chat() {
                       </div>
                     ) : (
                       <div className="space-y-3">
-                        <div className="flex items-center gap-2 text-sm text-gray-500">
+                        <div className="flex items-center gap-2 text-sm text-blue-200/70">
                           <div
                             className="vortex-icon active"
                             style={
@@ -789,7 +789,7 @@ export default function Chat() {
           {/* Enhanced Typing Indicator */}
           {isTyping && (
             <div className="mb-8 animate-bounceIn">
-              <div className="flex items-center gap-2 text-sm text-gray-500 mb-3 animate-slideInLeft">
+              <div className="flex items-center gap-2 text-sm text-blue-200/70 mb-3 animate-slideInLeft">
                 <div
                   className="vortex-icon active animate-glow"
                   style={
@@ -806,7 +806,7 @@ export default function Chat() {
                   <div className="vortex-blade"></div>
                   <div className="vortex-blade"></div>
                 </div>
-                <span className="shimmer-loading">
+                <span className="shimmer-loading text-blue-200">
                   La Doña AI está analizando...
                 </span>
               </div>
@@ -828,16 +828,16 @@ export default function Chat() {
           )}
 
           {/* Chat Input Container */}
-          <div className="w-full max-w-4xl px-8 bg-gray-50 pb-8 pt-4">
+          <div className="w-full max-w-4xl px-8 bg-gradient-to-b from-[#0f0f23]/20 to-[#1a1a2e]/20 pb-8 pt-4 backdrop-blur-sm">
             <div
-              className={`relative flex items-center bg-white rounded-3xl border transition-all duration-200 focus-within:bg-white p-2 interactive-hover ${
+              className={`relative flex items-center bg-gradient-to-br from-[#1c2340]/90 to-[#2a3b5c]/90 rounded-3xl border border-blue-500/20 transition-all duration-200 focus-within:bg-gradient-to-br focus-within:from-[#1c2340] focus-within:to-[#2a3b5c] p-2 backdrop-blur-md shadow-lg ${
                 inputFeedback === "success"
-                  ? "feedback-success border-green-300"
+                  ? "feedback-success border-green-400/50"
                   : inputFeedback === "error"
-                    ? "feedback-error border-red-300"
+                    ? "feedback-error border-red-400/50"
                     : isListening
-                      ? "border-red-300 bg-red-50/30 shadow-lg shadow-red-100/50 animate-glow"
-                      : "border-gray-200/60 hover:bg-gray-50/50"
+                      ? "border-red-400/70 bg-red-500/20 shadow-lg shadow-red-500/20 animate-glow"
+                      : "border-blue-500/20 hover:border-blue-400/30"
               }`}
             >
               {/* Input field with speech overlay */}
@@ -850,13 +850,13 @@ export default function Chat() {
                   placeholder={
                     isListening ? text.listening : text.askAnything
                   }
-                  className="w-full bg-transparent border-none outline-none px-6 py-5 text-gray-800 placeholder-gray-400 text-lg resize-none"
+                  className="w-full bg-transparent border-none outline-none px-6 py-5 text-white placeholder-blue-200/50 text-lg resize-none"
                   disabled={isTyping}
                 />
 
                 {/* Interim speech results overlay */}
                 {isListening && interimTranscript && (
-                  <div className="absolute inset-0 px-6 py-5 text-lg text-gray-400 italic pointer-events-none">
+                  <div className="absolute inset-0 px-6 py-5 text-lg text-blue-200/70 italic pointer-events-none">
                     {inputValue}
                     {interimTranscript}
                   </div>
@@ -893,7 +893,7 @@ export default function Chat() {
                   <button
                     onClick={toggleLanguage}
                     title={text.language}
-                    className="px-2 py-1 text-xs font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md transition-all duration-150 button-press ripple-effect"
+                    className="px-2 py-1 text-xs font-medium text-blue-200/70 hover:text-white hover:bg-blue-500/20 rounded-md transition-all duration-150 button-press ripple-effect"
                   >
                     {speechLanguage === "es-ES" ? "ES" : "EN"}
                   </button>
@@ -901,7 +901,7 @@ export default function Chat() {
 
                 {/* Attachment button */}
                 <button
-                  className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-150 pl-[0px] pr-[0px] button-press ripple-effect interactive-hover"
+                  className="p-3 text-blue-200/70 hover:text-white hover:bg-blue-500/20 rounded-lg transition-all duration-150 pl-[0px] pr-[0px] button-press ripple-effect interactive-hover"
                   title="Attach file"
                 >
                   <Paperclip size={20} strokeWidth={1.5} />
@@ -920,10 +920,10 @@ export default function Chat() {
                   disabled={!speechSupported}
                   className={`relative p-3 transition-all duration-200 rounded-lg pl-[9px] pr-[9px] button-press ripple-effect ${
                     !speechSupported
-                      ? "text-gray-300 bg-gray-50 cursor-not-allowed"
+                      ? "text-blue-200/30 bg-[#1c2340]/50 cursor-not-allowed"
                       : isListening
-                        ? "text-white bg-red-500 hover:bg-red-600 shadow-lg shadow-red-200/50 scale-105 animate-glow"
-                        : "text-gray-400 hover:text-gray-600 hover:bg-gray-50 interactive-hover"
+                        ? "text-white bg-red-500 hover:bg-red-600 shadow-lg shadow-red-500/50 scale-105 animate-glow"
+                        : "text-blue-200/70 hover:text-white hover:bg-blue-500/20 interactive-hover"
                   }`}
                 >
                   <Mic size={20} strokeWidth={1.5} />
@@ -938,8 +938,8 @@ export default function Chat() {
                   title={text.sendMessage}
                   className={`p-3 transition-all duration-200 button-press ripple-effect ${
                     inputValue.trim() && !isTyping
-                      ? "text-white bg-red-500 hover:bg-red-600 rounded-lg shadow-sm hover:shadow-md interactive-hover animate-pulse-success"
-                      : "text-gray-300 bg-gray-100 rounded-lg cursor-not-allowed"
+                      ? "text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 rounded-lg shadow-sm hover:shadow-md interactive-hover animate-pulse-success"
+                      : "text-blue-200/30 bg-[#1c2340]/50 rounded-lg cursor-not-allowed"
                   }`}
                   disabled={!inputValue.trim() || isTyping}
                 >
