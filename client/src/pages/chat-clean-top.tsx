@@ -399,20 +399,20 @@ export default function Chat() {
               <div className="mt-4 space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div
-                    className="bg-gray-50 rounded-lg p-3 intelligence-clickable"
+                    className="bg-slate-800 rounded-lg p-3 intelligence-clickable border border-slate-600"
                     onClick={() =>
                       setInputValue(
                         "What is our current sales performance and how close are we to target?",
                       )
                     }
                   >
-                    <h5 className="text-sm font-semibold text-gray-800 mb-2">
+                    <h5 className="text-sm font-semibold text-blue-200 mb-2">
                       {text.salesPerformance}
                     </h5>
-                    <p className="text-2xl font-bold text-green-600">
+                    <p className="text-2xl font-bold text-green-400">
                       <AnimatedCounter value={82} duration={1300} suffix="%" />
                     </p>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-blue-200">
                       $<AnimatedCounter value={369} duration={1500} />K {text.of} $450K {text.target}
                     </p>
                     <div className="mt-2">
@@ -420,39 +420,39 @@ export default function Chat() {
                     </div>
                   </div>
                   <div
-                    className="bg-gray-50 rounded-lg p-3 intelligence-clickable"
+                    className="bg-slate-800 rounded-lg p-3 intelligence-clickable border border-slate-600"
                     onClick={() =>
                       setInputValue(
                         "Which region, rep, and SKU are driving the strongest results and why?",
                       )
                     }
                   >
-                    <h5 className="text-sm font-semibold text-gray-800 mb-2">
+                    <h5 className="text-sm font-semibold text-blue-200 mb-2">
                       {text.topPerformers}
                     </h5>
-                    <p className="text-sm text-gray-700 mb-1">
+                    <p className="text-sm text-blue-200 mb-1">
                       <strong>Best SKU:</strong> SKU 183 – Bananas
                     </p>
-                    <p className="text-sm text-gray-700 mb-1">
+                    <p className="text-sm text-blue-200 mb-1">
                       <strong>Best Region:</strong> Chiriquí (+8%)
                     </p>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-blue-200">
                       <strong>Best Rep:</strong> Carlos Mendez
                     </p>
                   </div>
                 </div>
                 <div
-                  className="bg-blue-50 rounded-lg p-3 intelligence-clickable"
+                  className="bg-slate-800 rounded-lg p-3 intelligence-clickable border border-slate-600"
                   onClick={() =>
                     setInputValue(
                       "Explain this month's key insights and what actions we should take.",
                     )
                   }
                 >
-                  <h5 className="text-sm font-semibold text-blue-800 mb-2">
+                  <h5 className="text-sm font-semibold text-blue-200 mb-2">
                     Key Insights
                   </h5>
-                  <ul className="text-sm text-blue-700 space-y-1">
+                  <ul className="text-sm text-blue-200 space-y-1">
                     <li>• Revenue up 12% vs last month</li>
                     <li>• 5 new clients acquired this quarter</li>
                     <li>• Premium products showing 15% growth</li>
@@ -503,75 +503,75 @@ export default function Chat() {
               <div className="mt-4 space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div
-                    className="bg-red-50 rounded-lg p-3 intelligence-clickable"
+                    className="bg-slate-800 rounded-lg p-3 intelligence-clickable border border-red-500/30"
                     onClick={() =>
                       setInputValue(
                         "What are our critical issues and backorders? How can we resolve them?",
                       )
                     }
                   >
-                    <h5 className="text-sm font-semibold text-red-800 mb-2">
+                    <h5 className="text-sm font-semibold text-red-400 mb-2">
                       Critical Issues
                     </h5>
-                    <p className="text-xl font-bold text-red-600">28</p>
-                    <p className="text-sm text-red-700">Total backorders</p>
+                    <p className="text-xl font-bold text-red-400">28</p>
+                    <p className="text-sm text-red-300">Total backorders</p>
                   </div>
                   <div
-                    className="bg-orange-50 rounded-lg p-3 intelligence-clickable"
+                    className="bg-slate-800 rounded-lg p-3 intelligence-clickable border border-orange-500/30"
                     onClick={() =>
                       setInputValue(
                         "Which products are out of stock and what's the urgency level?",
                       )
                     }
                   >
-                    <h5 className="text-sm font-semibold text-orange-800 mb-2">
+                    <h5 className="text-sm font-semibold text-orange-400 mb-2">
                       Out of Stock
                     </h5>
-                    <p className="text-xl font-bold text-orange-600">14</p>
-                    <p className="text-sm text-orange-700">Urgent items</p>
+                    <p className="text-xl font-bold text-orange-400">14</p>
+                    <p className="text-sm text-orange-300">Urgent items</p>
                   </div>
                   <div
-                    className="bg-yellow-50 rounded-lg p-3 intelligence-clickable"
+                    className="bg-slate-800 rounded-lg p-3 intelligence-clickable border border-yellow-500/30"
                     onClick={() =>
                       setInputValue(
                         "Show me details about overdue payments and recovery strategies.",
                       )
                     }
                   >
-                    <h5 className="text-sm font-semibold text-yellow-800 mb-2">
+                    <h5 className="text-sm font-semibold text-yellow-400 mb-2">
                       Overdue
                     </h5>
-                    <p className="text-lg font-bold text-yellow-700">$24.3K</p>
-                    <p className="text-sm text-yellow-700">120+ days</p>
+                    <p className="text-lg font-bold text-yellow-400">$24.3K</p>
+                    <p className="text-sm text-yellow-300">120+ days</p>
                   </div>
                 </div>
                 <div
-                  className="bg-gray-50 rounded-lg p-3 intelligence-clickable"
+                  className="bg-slate-800 rounded-lg p-3 intelligence-clickable border border-slate-600"
                   onClick={() =>
                     setInputValue(
                       "Analyze risk zones Chiriquí, Colón, and San Miguelito. What actions should we take?",
                     )
                   }
                 >
-                  <h5 className="text-sm font-semibold text-gray-800 mb-2">
+                  <h5 className="text-sm font-semibold text-blue-200 mb-2">
                     Risk Zones Details
                   </h5>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-700">Chiriquí</span>
-                      <span className="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">
+                      <span className="text-blue-200">Chiriquí</span>
+                      <span className="bg-red-500/20 text-red-400 px-2 py-1 rounded-full text-xs border border-red-500/30">
                         High Risk
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-700">Colón</span>
-                      <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">
+                      <span className="text-blue-200">Colón</span>
+                      <span className="bg-orange-500/20 text-orange-400 px-2 py-1 rounded-full text-xs border border-orange-500/30">
                         Medium Risk
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-700">San Miguelito</span>
-                      <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">
+                      <span className="text-blue-200">San Miguelito</span>
+                      <span className="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded-full text-xs border border-yellow-500/30">
                         Low Risk
                       </span>
                     </div>
@@ -623,62 +623,62 @@ export default function Chat() {
               <div className="mt-4 space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div
-                    className="bg-green-50 rounded-lg p-3 intelligence-clickable"
+                    className="bg-slate-800 rounded-lg p-3 intelligence-clickable border border-green-500/30"
                     onClick={() =>
                       setInputValue(
                         "Tell me about Vinagre Premium opportunity and how to maximize the $45K potential revenue.",
                       )
                     }
                   >
-                    <h5 className="text-sm font-semibold text-green-800 mb-2">
+                    <h5 className="text-sm font-semibold text-green-400 mb-2">
                       {isEnglish ? "High Opportunity" : "Alta Oportunidad"}
                     </h5>
-                    <p className="text-lg font-bold text-green-600">
+                    <p className="text-lg font-bold text-green-400">
                       Vinagre Premium
                     </p>
-                    <p className="text-sm text-green-700 mb-2">
+                    <p className="text-sm text-green-300 mb-2">
                       +$45K {isEnglish ? "potential revenue" : "ingresos potenciales"}
                     </p>
-                    <div className="text-xs text-green-600">
+                    <div className="text-xs text-green-300">
                       <p>• {isEnglish ? "Increase distribution to 15 new stores" : "Incrementar distribución a 15 tiendas nuevas"}</p>
                       <p>• {isEnglish ? "Focus on premium market segment" : "Enfoque en segmento premium"}</p>
                     </div>
                   </div>
                   <div
-                    className="bg-red-50 rounded-lg p-3 intelligence-clickable"
+                    className="bg-slate-800 rounded-lg p-3 intelligence-clickable border border-red-500/30"
                     onClick={() =>
                       setInputValue(
                         "Analyze Mango Salsa underperformance and suggest solutions or discontinuation strategy.",
                       )
                     }
                   >
-                    <h5 className="text-sm font-semibold text-red-800 mb-2">
+                    <h5 className="text-sm font-semibold text-red-400 mb-2">
                       {isEnglish ? "Underperforming" : "Bajo Rendimiento"}
                     </h5>
-                    <p className="text-lg font-bold text-red-600">
+                    <p className="text-lg font-bold text-red-400">
                       Mango Salsa
                     </p>
-                    <p className="text-sm text-red-700 mb-2">
+                    <p className="text-sm text-red-300 mb-2">
                       -$12K {isEnglish ? "revenue impact" : "impacto en ingresos"}
                     </p>
-                    <div className="text-xs text-red-600">
+                    <div className="text-xs text-red-300">
                       <p>• {isEnglish ? "Consider discontinuation" : "Considerar descontinuación"}</p>
                       <p>• {isEnglish ? "Low demand across all regions" : "Baja demanda en todas las regiones"}</p>
                     </div>
                   </div>
                 </div>
                 <div
-                  className="bg-blue-50 rounded-lg p-3 intelligence-clickable"
+                  className="bg-slate-800 rounded-lg p-3 intelligence-clickable border border-slate-600"
                   onClick={() =>
                     setInputValue(
                       "Detail the strategic actions for Vinagre Premium launch and Aceite de Coco promotion timeline.",
                     )
                   }
                 >
-                  <h5 className="text-sm font-semibold text-blue-800 mb-2">
+                  <h5 className="text-sm font-semibold text-blue-200 mb-2">
                     Strategic Actions
                   </h5>
-                  <div className="space-y-2 text-sm text-blue-700">
+                  <div className="space-y-2 text-sm text-blue-200">
                     <div
                       className="flex items-center gap-2 animate-slideInLeft"
                       style={{ animationDelay: "0ms" }}
