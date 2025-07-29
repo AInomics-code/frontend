@@ -31,27 +31,27 @@ export const kpiData: KpiData[] = [
 
 export const promptData: PromptData[] = [
   {
-    title: "💡 What are my top performing regions?",
-    description: "Get a breakdown by performance",
+    title: "Analyze regional performance",
+    description: "Get a breakdown of sales performance by region",
   },
   {
-    title: "🧭 Where are we underperforming?",
-    description: "See KPIs not meeting targets",
+    title: "Identify underperforming areas",
+    description: "Show KPIs not meeting targets with action plans",
   },
   {
-    title: "📦 What products aren't moving?",
-    description: "Low SKU turnover detection",
+    title: "Review slow-moving inventory",
+    description: "Analyze products with low turnover rates",
   },
   {
-    title: "📈 Forecast next quarter",
-    description: "Predict based on current trend",
+    title: "Generate quarterly forecast",
+    description: "Predict performance based on current trends",
   },
   {
-    title: "💰 Budget variance analysis",
-    description: "Compare actual vs planned spending",
+    title: "Budget variance analysis",
+    description: "Compare actual vs planned spending across departments",
   },
   {
-    title: "🎯 Channel performance",
-    description: "Identify improvement opportunities",
+    title: "Channel performance review",
+    description: "Evaluate distribution channels and identify opportunities",
   },
 ];

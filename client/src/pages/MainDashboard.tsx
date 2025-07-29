@@ -56,71 +56,44 @@ export default function MainDashboard() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-32"
+        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 max-w-7xl mx-auto mb-32"
       >
         {activeTab === "KPIs"
           ? kpiData.map((card: KpiData, idx: number) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="group relative"
+                transition={{ duration: 0.2, delay: idx * 0.05 }}
               >
-                <Card className="bg-gradient-to-br from-slate-900/90 via-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/50 hover:border-blue-400/50 rounded-2xl p-6 h-full transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1">
-                  {/* Background gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Content */}
-                  <div className="relative z-10">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 shadow-lg shadow-blue-500/50" />
-                      <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
-                        <div className="w-3 h-3 rounded-full bg-blue-400" />
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-lg font-semibold mb-3 text-slate-200 leading-tight">{card.title}</h3>
-                    <p className="text-sm text-slate-400 mb-4 leading-relaxed">{card.description}</p>
-                    
-                    <div className="mt-auto">
-                      <div className="text-3xl font-bold text-white mb-1 tracking-tight">{card.value}</div>
-                      <div className="h-1 w-12 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full" />
-                    </div>
+                <Card className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/70 rounded-lg p-4 h-full transition-all duration-200 hover:bg-slate-800/80">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="w-2 h-2 rounded-full bg-blue-400" />
                   </div>
+                  <h3 className="text-sm font-medium text-slate-300 mb-2 leading-tight">{card.title}</h3>
+                  <div className="text-2xl font-semibold text-white mb-1">{card.value}</div>
+                  <p className="text-xs text-slate-400">{card.description}</p>
                 </Card>
               </motion.div>
             ))
           : promptData.map((prompt: PromptData, idx: number) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="group relative cursor-pointer"
+                transition={{ duration: 0.2, delay: idx * 0.05 }}
+                className="cursor-pointer"
               >
-                <Card className="bg-gradient-to-br from-slate-800/80 via-slate-700/80 to-slate-800/80 backdrop-blur-sm border border-slate-600/50 hover:border-blue-400/60 rounded-xl p-5 h-full transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-0.5 active:scale-[0.98]">
-                  {/* Background pattern */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/3 to-indigo-500/3 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Content */}
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-lg bg-slate-600/50 group-hover:bg-blue-500/20 flex items-center justify-center transition-colors duration-300">
-                        <div className="text-lg">{prompt.title.charAt(0)}</div>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-base font-medium text-white group-hover:text-blue-200 transition-colors leading-snug">{prompt.title}</h4>
-                      </div>
-                    </div>
-                    
-                    <p className="text-sm text-slate-400 leading-relaxed ml-11">{prompt.description}</p>
-                    
-                    {/* Hover indicator */}
-                    <div className="absolute bottom-3 right-3 w-6 h-6 rounded-full bg-blue-500/10 group-hover:bg-blue-500/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                      <svg className="w-3 h-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                <Card className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 hover:border-blue-400/40 hover:bg-slate-800/60 rounded-lg p-4 h-full transition-all duration-200 group">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center mt-0.5 flex-shrink-0">
+                      <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
                       </svg>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-medium text-white group-hover:text-blue-200 transition-colors mb-1 leading-tight">{prompt.title}</h4>
+                      <p className="text-xs text-slate-400 leading-relaxed">{prompt.description}</p>
                     </div>
                   </div>
                 </Card>
