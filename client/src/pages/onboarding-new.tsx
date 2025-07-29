@@ -105,7 +105,7 @@ export default function OnboardingNew() {
     if (source.type === 'file') {
       return (
         <div className="space-y-3">
-          <label className="block text-sm font-medium text-slate-300">
+          <label className="block text-sm font-medium text-blue-200">
             Upload File
           </label>
           <div className="relative">
@@ -120,9 +120,9 @@ export default function OnboardingNew() {
                 }
               }}
             />
-            <div className="flex items-center gap-3 p-4 border border-slate-600 rounded-xl bg-slate-800/30 backdrop-blur-sm hover:border-slate-500 transition-colors">
-              <Upload className="w-5 h-5 text-slate-400" />
-              <span className="text-slate-300">
+            <div className="flex items-center gap-3 p-4 border border-blue-500/30 rounded-xl bg-blue-900/20 backdrop-blur-sm hover:border-blue-400/40 transition-colors">
+              <Upload className="w-5 h-5 text-blue-300" />
+              <span className="text-blue-200">
                 {value || 'Choose file to upload'}
               </span>
             </div>
@@ -133,22 +133,22 @@ export default function OnboardingNew() {
 
     return (
       <div className="space-y-3">
-        <label className="block text-sm font-medium text-slate-300">
+        <label className="block text-sm font-medium text-blue-200">
           {source.type === 'url' ? 'Connection URL' : 'API Key'}
         </label>
         <div className="relative">
           {source.type === 'key' && (
-            <Key className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+            <Key className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-blue-300" />
           )}
           {source.type === 'url' && (
-            <Link2 className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+            <Link2 className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-blue-300" />
           )}
           <input
             type={source.type === 'key' ? 'password' : 'text'}
             value={value}
             onChange={(e) => setInputValues(prev => ({ ...prev, [source.id]: e.target.value }))}
             placeholder={source.placeholder}
-            className={`w-full ${source.type !== 'url' ? 'pl-12' : 'pl-12'} pr-4 py-4 bg-slate-800/30 backdrop-blur-sm border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all`}
+            className={`w-full ${source.type !== 'url' ? 'pl-12' : 'pl-12'} pr-4 py-4 bg-blue-900/20 backdrop-blur-sm border border-blue-500/30 rounded-xl text-white placeholder-blue-300/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all`}
           />
         </div>
       </div>
@@ -234,7 +234,7 @@ export default function OnboardingNew() {
           </div>
           
           <motion.p 
-            className="text-slate-400 max-w-[70%] leading-relaxed"
+            className="text-blue-200/70 max-w-[70%] leading-relaxed"
             style={{ 
               fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif',
               fontSize: '15px'
@@ -280,10 +280,10 @@ export default function OnboardingNew() {
                 {/* Enhanced Glass Card */}
                 <div className={`relative rounded-2xl backdrop-blur-md transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.25)] ${
                   isConnected 
-                    ? 'bg-green-500/8 border border-green-400/30 ring-2 ring-green-400/20' 
+                    ? 'bg-green-500/10 border border-green-400/30 ring-2 ring-green-400/20' 
                     : isSelected
-                    ? 'bg-blue-500/8 border border-blue-400/40 ring-2 ring-blue-400/30'
-                    : 'bg-slate-900/20 border border-slate-700/40 hover:bg-slate-800/30 hover:border-slate-600/50 hover:ring-2 hover:ring-cyan-400/20'
+                    ? 'bg-gradient-to-br from-[#1c2340] to-[#2a3b5c] border border-blue-400/40 ring-2 ring-blue-400/30'
+                    : 'bg-gradient-to-br from-[#1c2340]/60 to-[#2a3b5c]/60 border border-blue-500/20 hover:from-[#1c2340]/80 hover:to-[#2a3b5c]/80 hover:border-blue-400/30 hover:ring-2 hover:ring-blue-400/20'
                 }}`} 
                 style={{ padding: '18px 24px' }}>
                   
@@ -305,8 +305,8 @@ export default function OnboardingNew() {
                       isConnected
                         ? 'bg-green-500/15 text-green-400' 
                         : isSelected
-                        ? 'bg-blue-500/15 text-blue-400'
-                        : 'bg-slate-800/40 text-slate-400 group-hover:bg-slate-700/50 group-hover:text-cyan-400'
+                        ? 'bg-blue-500/20 text-blue-400'
+                        : 'bg-blue-500/10 text-blue-400 group-hover:bg-blue-500/20 group-hover:text-blue-300'
                     }`}>
                       <Icon className="w-7 h-7" strokeWidth={1.5} />
                     </div>
@@ -318,8 +318,8 @@ export default function OnboardingNew() {
                       </h3>
                       {/* Refined Status Indicator */}
                       <div className="flex items-center gap-2">
-                        <div className={`h-2 w-2 rounded-full ${isConnected ? 'bg-green-400' : 'bg-slate-400'}`} />
-                        <span className={`text-xs font-medium ${isConnected ? 'text-green-400' : 'text-slate-400'}`}>
+                        <div className={`h-2 w-2 rounded-full ${isConnected ? 'bg-green-400' : 'bg-blue-400/60'}`} />
+                        <span className={`text-xs font-medium ${isConnected ? 'text-green-400' : 'text-blue-400/80'}`}>
                           {isConnected ? 'Connected' : 'Not connected'}
                         </span>
                       </div>
@@ -333,7 +333,7 @@ export default function OnboardingNew() {
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
                     >
-                      <button className="w-full py-3 px-4 bg-slate-800/60 hover:bg-slate-700/60 rounded-xl text-sm font-medium text-slate-300 hover:text-white transition-all duration-200 border border-slate-600/30">
+                      <button className="w-full py-3 px-4 bg-blue-500/10 hover:bg-blue-500/20 rounded-xl text-sm font-medium text-blue-300 hover:text-blue-200 transition-all duration-200 border border-blue-500/30">
                         Connect
                       </button>
                     </motion.div>
@@ -347,7 +347,7 @@ export default function OnboardingNew() {
                         animate={{ opacity: 1, height: "auto", marginTop: 16 }}
                         exit={{ opacity: 0, height: 0, marginTop: 0 }}
                         transition={{ duration: 0.3, type: "spring", stiffness: 120 }}
-                        className="border-t border-slate-700/40 pt-5"
+                        className="border-t border-blue-500/30 pt-5"
                       >
                         {renderInputField(source)}
                         
@@ -357,7 +357,7 @@ export default function OnboardingNew() {
                               e.stopPropagation();
                               setSelectedSource(null);
                             }}
-                            className="px-4 py-2 text-slate-400 hover:text-white transition-all duration-200 font-medium"
+                            className="px-4 py-2 text-blue-300/70 hover:text-white transition-all duration-200 font-medium"
                             style={{ 
                               fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif'
                             }}
@@ -373,7 +373,7 @@ export default function OnboardingNew() {
                             className={`px-6 py-2 rounded-xl font-medium transition-all duration-200 shadow-lg ${
                               inputValues[source.id]?.trim()
                                 ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white hover:shadow-xl hover:shadow-blue-500/20'
-                                : 'bg-slate-700 text-slate-500 cursor-not-allowed'
+                                : 'bg-blue-900/50 text-blue-400/60 cursor-not-allowed'
                             }`}
                             style={{ 
                               fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif'
@@ -400,7 +400,7 @@ export default function OnboardingNew() {
         >
           <motion.button
             onClick={handleSkip}
-            className="text-slate-400 hover:text-white transition-all duration-200 font-medium opacity-60 hover:opacity-100 order-2 md:order-1"
+            className="text-blue-300/70 hover:text-white transition-all duration-200 font-medium opacity-60 hover:opacity-100 order-2 md:order-1"
             style={{ 
               fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif'
             }}
@@ -411,7 +411,7 @@ export default function OnboardingNew() {
           
           <motion.button
             onClick={handleContinue}
-            className="flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 border border-slate-700/50 order-1 md:order-2 w-full md:w-auto"
+            className="flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 border border-blue-500/50 order-1 md:order-2 w-full md:w-auto"
             style={{ 
               fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif'
             }}
