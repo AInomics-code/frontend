@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, Database, Building, Target } from "lucide-react";
+import { ArrowRight, ArrowLeft, Database, Building, Target, FileSpreadsheet, Globe, FileText } from "lucide-react";
 
 interface OnboardingStep {
   id: number;
@@ -27,8 +27,8 @@ const steps: OnboardingStep[] = [
   },
   {
     id: 4,
-    title: "Connect your data sources",
-    description: "Link your databases and systems to start getting insights immediately."
+    title: "Let's connect VORTA to your system",
+    description: "Select the data source(s) you use. VORTA will use these to automate and assist."
   }
 ];
 
@@ -54,10 +54,10 @@ const useCases = [
 const dataSources = [
   { name: "PostgreSQL", icon: Database },
   { name: "MySQL", icon: Database },
-  { name: "MongoDB", icon: Database },
-  { name: "Salesforce CRM", icon: Building },
-  { name: "Shopify", icon: Building },
-  { name: "Google Analytics", icon: Target }
+  { name: "Google Sheets", icon: FileSpreadsheet },
+  { name: "Custom API", icon: Globe },
+  { name: "Excel / CSV", icon: FileText },
+  { name: "MongoDB", icon: Database }
 ];
 
 export default function Onboarding() {
@@ -163,29 +163,52 @@ export default function Onboarding() {
 
       case 4:
         return (
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-3">
+          <div className="space-y-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
               {dataSources.map((source) => {
                 const Icon = source.icon;
+                const isSelected = selectedDataSources.includes(source.name);
                 return (
-                  <button
+                  <motion.div
                     key={source.name}
-                    onClick={() => toggleDataSource(source.name)}
-                    className={`p-4 rounded-xl border-2 transition-all ${
-                      selectedDataSources.includes(source.name)
-                        ? "border-black bg-black text-white"
-                        : "border-gray-200 hover:border-gray-300"
+                    className={`relative p-6 rounded-2xl border-2 transition-all cursor-pointer group ${
+                      isSelected
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
                     }`}
+                    onClick={() => toggleDataSource(source.name)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                   >
-                    <Icon className="w-6 h-6 mx-auto mb-2" />
-                    <div className="text-sm font-medium">{source.name}</div>
-                  </button>
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className={`p-3 rounded-xl ${
+                        isSelected 
+                          ? "bg-blue-500 text-white" 
+                          : "bg-gray-100 text-gray-600 group-hover:bg-gray-200"
+                      }`}>
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <h3 className={`font-medium ${
+                        isSelected ? "text-blue-700" : "text-gray-700"
+                      }`}>
+                        {source.name}
+                      </h3>
+                    </div>
+                    
+                    {/* Toggle indicator */}
+                    <div className={`absolute top-4 right-4 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      isSelected 
+                        ? "border-blue-500 bg-blue-500" 
+                        : "border-gray-300 bg-white"
+                    }`}>
+                      {isSelected && (
+                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                      )}
+                    </div>
+                  </motion.div>
                 );
               })}
             </div>
-            <p className="text-sm text-gray-500 text-center">
-              Select one or more data sources. You can add more later.
-            </p>
           </div>
         );
 
@@ -252,18 +275,40 @@ export default function Onboarding() {
               Back
             </button>
 
-            <button
-              onClick={handleNext}
-              disabled={!canProceed()}
-              className={`flex items-center px-6 py-2 rounded-xl transition ${
-                canProceed()
-                  ? "bg-black text-white hover:opacity-90"
-                  : "bg-gray-200 text-gray-400 cursor-not-allowed"
-              }`}
-            >
-              {currentStep === steps.length ? "Complete Setup" : "Next"}
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </button>
+            {currentStep === steps.length ? (
+              <div className="flex items-center space-x-4">
+                <button
+                  onClick={() => setLocation("/dashboard")}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  Skip for now
+                </button>
+                <button
+                  onClick={handleNext}
+                  disabled={!canProceed()}
+                  className={`flex items-center px-6 py-3 rounded-xl font-medium transition ${
+                    canProceed()
+                      ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white hover:opacity-90"
+                      : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  }`}
+                >
+                  Connect & Continue →
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={handleNext}
+                disabled={!canProceed()}
+                className={`flex items-center px-6 py-2 rounded-xl transition ${
+                  canProceed()
+                    ? "bg-black text-white hover:opacity-90"
+                    : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                }`}
+              >
+                Next
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </button>
+            )}
           </div>
         </motion.div>
       </div>
