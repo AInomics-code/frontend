@@ -56,7 +56,7 @@ export default function MainDashboard() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 max-w-7xl mx-auto mb-32"
+        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 max-w-7xl mx-auto mb-32"
       >
         {activeTab === "KPIs"
           ? kpiData.map((card: KpiData, idx: number) => (
@@ -66,13 +66,13 @@ export default function MainDashboard() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2, delay: idx * 0.05 }}
               >
-                <Card className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/70 rounded-lg p-4 h-full transition-all duration-200 hover:bg-slate-800/80">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="w-2 h-2 rounded-full bg-blue-400" />
+                <Card className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/70 rounded-lg p-3 h-full transition-all duration-200 hover:bg-slate-800/80">
+                  <div className="flex items-center mb-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
                   </div>
-                  <h3 className="text-sm font-medium text-slate-300 mb-2 leading-tight">{card.title}</h3>
-                  <div className="text-2xl font-semibold text-white mb-1">{card.value}</div>
-                  <p className="text-xs text-slate-400">{card.description}</p>
+                  <h3 className="text-xs font-medium text-slate-300 mb-1 leading-tight">{card.title}</h3>
+                  <div className="text-lg font-semibold text-white mb-0.5">{card.value}</div>
+                  <p className="text-xs text-slate-400 leading-tight">{card.description}</p>
                 </Card>
               </motion.div>
             ))
@@ -84,16 +84,16 @@ export default function MainDashboard() {
                 transition={{ duration: 0.2, delay: idx * 0.05 }}
                 className="cursor-pointer"
               >
-                <Card className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 hover:border-blue-400/40 hover:bg-slate-800/60 rounded-lg p-4 h-full transition-all duration-200 group">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center mt-0.5 flex-shrink-0">
-                      <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                <Card className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 hover:border-blue-400/40 hover:bg-slate-800/60 rounded-lg p-3 h-full transition-all duration-200 group">
+                  <div className="flex items-start gap-2">
+                    <div className="w-6 h-6 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-3 h-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
                       </svg>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-medium text-white group-hover:text-blue-200 transition-colors mb-1 leading-tight">{prompt.title}</h4>
-                      <p className="text-xs text-slate-400 leading-relaxed">{prompt.description}</p>
+                      <h4 className="text-xs font-medium text-white group-hover:text-blue-200 transition-colors mb-1 leading-tight">{prompt.title}</h4>
+                      <p className="text-xs text-slate-400 leading-tight">{prompt.description}</p>
                     </div>
                   </div>
                 </Card>
