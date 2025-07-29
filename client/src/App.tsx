@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Dashboard from "@/pages/dashboard";
 import Login from "@/pages/login";
 import Signup from "@/pages/signup";
-import Onboarding from "@/pages/onboarding";
+import OnboardingNew from "@/pages/onboarding-new";
 import Chat from "@/pages/chat-clean-top";
 import SmoothChat from "@/pages/chat-smooth";
 import SidebarLayout from "@/components/sidebar-layout";
@@ -20,7 +20,7 @@ function Router() {
       <Route path="/" component={Login} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
-      <Route path="/onboarding" component={Onboarding} />
+      <Route path="/onboarding" component={OnboardingNew} />
       <Route path="/dashboard">
         <ProtectedRoute>
           <Dashboard />

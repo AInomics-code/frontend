@@ -27,7 +27,7 @@ export default function Login() {
       // Store login state in sessionStorage (will be cleared on refresh)
       sessionStorage.setItem("isLoggedIn", "true");
       setTimeout(() => {
-        setLocation("/chat-clean-top");
+        setLocation("/onboarding");
       }, 300);
     } else {
       setError("Please create a password");
