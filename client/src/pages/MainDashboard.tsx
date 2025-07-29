@@ -56,7 +56,7 @@ export default function MainDashboard() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 max-w-7xl mx-auto mb-32"
+        className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto mb-32"
       >
         {activeTab === "KPIs"
           ? kpiData.map((card: KpiData, idx: number) => (
@@ -65,8 +65,9 @@ export default function MainDashboard() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2, delay: idx * 0.05 }}
+                className="w-48"
               >
-                <Card className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/70 rounded-lg p-3 h-full transition-all duration-200 hover:bg-slate-800/80">
+                <Card className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/70 rounded-lg p-4 h-full transition-all duration-200 hover:bg-slate-800/80">
                   <div className="flex items-center mb-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
                   </div>
@@ -82,9 +83,9 @@ export default function MainDashboard() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2, delay: idx * 0.05 }}
-                className="cursor-pointer"
+                className="cursor-pointer w-64"
               >
-                <Card className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 hover:border-blue-400/40 hover:bg-slate-800/60 rounded-lg p-3 h-full transition-all duration-200 group">
+                <Card className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 hover:border-blue-400/40 hover:bg-slate-800/60 rounded-lg p-4 h-full transition-all duration-200 group">
                   <div className="flex items-start gap-2">
                     <div className="w-6 h-6 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
                       <svg className="w-3 h-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
