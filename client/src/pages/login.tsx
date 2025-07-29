@@ -146,6 +146,22 @@ export default function Login() {
             </button>
           </div>
 
+          {/* Terms and Privacy Policy */}
+          <div className="mt-8 text-center">
+            <p className="text-xs text-white/40">
+              By proceeding, you agree to our{" "}
+              <span className="underline cursor-pointer hover:text-white/60 transition-colors">
+                Terms of use
+              </span>
+              .
+            </p>
+            <p className="text-xs text-white/40 mt-1">
+              Read our{" "}
+              <span className="underline cursor-pointer hover:text-white/60 transition-colors">
+                Privacy Policy
+              </span>
+            </p>
+          </div>
           
         </div>
       </motion.div>
