@@ -118,7 +118,7 @@ export default function Login() {
                       <input
                         type="email"
                         placeholder="you@company.com"
-                        className="w-full text-sm text-gray-100 placeholder:text-gray-400 focus:outline-none transition duration-200 bg-[#3675c900]"
+                        className="bg-transparent w-full text-sm text-gray-100 placeholder:text-gray-400 focus:outline-none transition duration-200"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
