@@ -103,7 +103,7 @@ export default function Login() {
 
               <button
                 type="submit"
-                className="w-full py-4 bg-gradient-to-r from-blue-400/80 to-purple-400/80 rounded-2xl hover:from-blue-400/90 hover:to-purple-400/90 transition-all duration-300 font-medium text-white shadow-lg backdrop-blur-sm border border-white/10"
+                className="w-full py-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 font-medium text-white/90 hover:text-white shadow-sm hover:shadow-md"
               >
                 Continue
               </button>
