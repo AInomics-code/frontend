@@ -673,14 +673,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 0 12px rgba(215, 25, 32, 0.35));
+  filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.4));
 }
 
 .vortex-blade {
   position: absolute;
   width: calc(var(--vortex-size, 48px) * 0.175); /* 8.5px for 48px base */
   height: calc(var(--vortex-size, 48px) * 0.375); /* 18px for 48px base */
-  background: #D71920;
+  background: #60A5FA;
   border-radius: 85% 15% 85% 15%;
   transform-origin: calc(var(--vortex-size, 48px) * 0.0875) calc(var(--vortex-size, 48px) * 0.458);
   top: 50%;
@@ -717,34 +717,34 @@ body {
 @keyframes vortex-gentle-pulse {
   0%, 100% { 
     transform: scale(1) rotate(0deg); 
-    filter: drop-shadow(0 0 8px rgba(215, 25, 32, 0.3));
+    filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.4));
   }
   50% { 
     transform: scale(1.05) rotate(30deg); 
-    filter: drop-shadow(0 0 12px rgba(215, 25, 32, 0.5));
+    filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.6));
   }
 }
 
 @keyframes vortex-thinking {
   0% { 
     transform: scale(1) rotate(0deg); 
-    filter: drop-shadow(0 0 8px rgba(215, 25, 32, 0.4)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.5)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   }
   25% { 
     transform: scale(1.08) rotate(90deg); 
-    filter: drop-shadow(0 0 16px rgba(215, 25, 32, 0.7)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 0 16px rgba(96, 165, 250, 0.8)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
   }
   50% { 
     transform: scale(1) rotate(180deg); 
-    filter: drop-shadow(0 0 12px rgba(215, 25, 32, 0.5)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.6)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   }
   75% { 
     transform: scale(1.08) rotate(270deg); 
-    filter: drop-shadow(0 0 16px rgba(215, 25, 32, 0.7)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 0 16px rgba(96, 165, 250, 0.8)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
   }
   100% { 
     transform: scale(1) rotate(360deg); 
-    filter: drop-shadow(0 0 8px rgba(215, 25, 32, 0.4)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.5)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   }
 }
 
