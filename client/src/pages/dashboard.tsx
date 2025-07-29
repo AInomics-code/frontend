@@ -1,5 +1,5 @@
-import { ChatInterface } from "@/components/chat-interface";
+import SidebarLayout from "@/components/sidebar-layout";
 
 export default function Dashboard() {
-  return <ChatInterface />;
+  return <SidebarLayout />;
 }
