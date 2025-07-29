@@ -13,19 +13,19 @@ export interface PromptData {
 
 export const kpiData: KpiData[] = [
   {
-    title: "Puntuación de Rendimiento",
-    description: "82% del objetivo de ventas cumplido",
+    title: "Performance Score",
+    description: "82% of sales target achieved",
     value: "88",
   },
   {
-    title: "Zonas en Riesgo",
+    title: "Risk Zones",
     description: "Chiriquí, Colón, San Miguelito",
-    value: "3 Zonas",
+    value: "3 Zones",
   },
   {
-    title: "Oportunidad de Producto",
-    description: "Alto potencial · Débil: Mango Salsa",
-    value: "Vinagre Premium",
+    title: "Product Opportunity",
+    description: "High potential · Weak: Mango Salsa",
+    value: "Premium Vinegar",
   },
 ];
 
