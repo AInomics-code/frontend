@@ -110,10 +110,10 @@ export default function Onboarding() {
       case 1:
         return (
           <div className="text-center space-y-6">
-            <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto">
+            <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center mx-auto">
               <span className="text-white text-2xl font-bold">V</span>
             </div>
-            <p className="text-gray-600 text-lg">
+            <p className="text-blue-200 text-lg">
               Your AI-powered business intelligence platform is ready to transform how you make decisions.
             </p>
           </div>
@@ -129,8 +129,8 @@ export default function Onboarding() {
                   onClick={() => setSelectedIndustry(industry)}
                   className={`p-4 rounded-xl border-2 transition-all ${
                     selectedIndustry === industry
-                      ? "border-black bg-black text-white"
-                      : "border-gray-200 hover:border-gray-300"
+                      ? "border-blue-500 bg-gradient-to-r from-blue-600 to-blue-700 text-white"
+                      : "border-slate-600 hover:border-blue-400 text-blue-200"
                   }`}
                 >
                   {industry}
@@ -150,8 +150,8 @@ export default function Onboarding() {
                   onClick={() => setSelectedUseCase(useCase)}
                   className={`p-4 rounded-xl border-2 transition-all text-left ${
                     selectedUseCase === useCase
-                      ? "border-black bg-black text-white"
-                      : "border-gray-200 hover:border-gray-300"
+                      ? "border-blue-500 bg-gradient-to-r from-blue-600 to-blue-700 text-white"
+                      : "border-slate-600 hover:border-blue-400 text-blue-200"
                   }`}
                 >
                   {useCase}
@@ -173,8 +173,8 @@ export default function Onboarding() {
                     key={source.name}
                     className={`relative p-6 rounded-2xl border-2 transition-all cursor-pointer group ${
                       isSelected
-                        ? "border-blue-500 bg-blue-50"
-                        : "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
+                        ? "border-blue-500 bg-blue-500/20"
+                        : "border-slate-600 hover:border-blue-400 hover:bg-slate-700"
                     }`}
                     onClick={() => toggleDataSource(source.name)}
                     whileHover={{ scale: 1.02 }}
@@ -184,12 +184,12 @@ export default function Onboarding() {
                       <div className={`p-3 rounded-xl ${
                         isSelected 
                           ? "bg-blue-500 text-white" 
-                          : "bg-gray-100 text-gray-600 group-hover:bg-gray-200"
+                          : "bg-slate-700 text-blue-200 group-hover:bg-slate-600"
                       }`}>
                         <Icon className="w-6 h-6" />
                       </div>
                       <h3 className={`font-medium ${
-                        isSelected ? "text-blue-700" : "text-gray-700"
+                        isSelected ? "text-blue-400" : "text-blue-200"
                       }`}>
                         {source.name}
                       </h3>
@@ -199,7 +199,7 @@ export default function Onboarding() {
                     <div className={`absolute top-4 right-4 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                       isSelected 
                         ? "border-blue-500 bg-blue-500" 
-                        : "border-gray-300 bg-white"
+                        : "border-slate-500 bg-slate-700"
                     }`}>
                       {isSelected && (
                         <div className="w-2 h-2 bg-white rounded-full"></div>
@@ -218,17 +218,17 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e] flex items-center justify-center px-4">
       <div className="w-full max-w-2xl">
         {/* Progress Bar */}
         <div className="mb-8">
-          <div className="flex justify-between text-sm text-gray-500 mb-2">
+          <div className="flex justify-between text-sm text-blue-200 mb-2">
             <span>Step {currentStep} of {steps.length}</span>
             <span>{Math.round((currentStep / steps.length) * 100)}% complete</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-slate-700 rounded-full h-2">
             <motion.div 
-              className="bg-black h-2 rounded-full"
+              className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full"
               initial={{ width: 0 }}
               animate={{ width: `${(currentStep / steps.length) * 100}%` }}
               transition={{ duration: 0.3 }}
@@ -237,7 +237,7 @@ export default function Onboarding() {
         </div>
 
         <motion.div 
-          className="bg-white p-8 rounded-2xl shadow-xl border border-gray-200"
+          className="bg-gradient-to-br from-[#1c2340] to-[#2a3b5c] p-8 rounded-2xl shadow-xl border border-blue-500/20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -249,10 +249,10 @@ export default function Onboarding() {
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <h1 className="text-2xl font-semibold text-gray-800 mb-4">
+              <h1 className="text-2xl font-semibold text-white mb-4">
                 {steps[currentStep - 1].title}
               </h1>
-              <p className="text-gray-600 mb-8">
+              <p className="text-blue-200 mb-8">
                 {steps[currentStep - 1].description}
               </p>
 
@@ -267,8 +267,8 @@ export default function Onboarding() {
               disabled={currentStep === 1}
               className={`flex items-center px-4 py-2 rounded-xl transition ${
                 currentStep === 1
-                  ? "text-gray-400 cursor-not-allowed"
-                  : "text-gray-600 hover:text-black"
+                  ? "text-slate-500 cursor-not-allowed"
+                  : "text-blue-200 hover:text-white"
               }`}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -279,7 +279,7 @@ export default function Onboarding() {
               <div className="flex items-center space-x-4">
                 <button
                   onClick={() => setLocation("/dashboard")}
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  className="text-slate-400 hover:text-blue-200 transition-colors"
                 >
                   Skip for now
                 </button>
@@ -288,8 +288,8 @@ export default function Onboarding() {
                   disabled={!canProceed()}
                   className={`flex items-center px-6 py-3 rounded-xl font-medium transition ${
                     canProceed()
-                      ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white hover:opacity-90"
-                      : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                      ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-500 hover:to-blue-600"
+                      : "bg-slate-600 text-slate-400 cursor-not-allowed"
                   }`}
                 >
                   Connect & Continue →
@@ -301,8 +301,8 @@ export default function Onboarding() {
                 disabled={!canProceed()}
                 className={`flex items-center px-6 py-2 rounded-xl transition ${
                   canProceed()
-                    ? "bg-black text-white hover:opacity-90"
-                    : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                    ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-500 hover:to-blue-600"
+                    : "bg-slate-600 text-slate-400 cursor-not-allowed"
                 }`}
               >
                 Next

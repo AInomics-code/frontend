@@ -59,7 +59,7 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex h-screen bg-white">
+    <div className="flex h-screen bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e]">
       
       {/* Fixed Vertical Sidebar - Perplexity Pro Style */}
       <aside className="fixed left-0 top-0 h-full w-20 bg-[#1E1E1E] border-r border-[#2C2C2C] flex flex-col items-center py-6 z-50">
@@ -67,7 +67,7 @@ export default function Chat() {
         {/* Top Section - Branding + Navigation */}
         <div className="flex flex-col items-center space-y-6">
           {/* La Doña Logo */}
-          <div className="w-10 h-10 rounded-full overflow-hidden bg-white/10 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-full overflow-hidden bg-blue-500/20 flex items-center justify-center">
             <img 
               src={laDonaLogo} 
               className="w-8 h-8 object-cover rounded-full" 
@@ -78,21 +78,21 @@ export default function Chat() {
           {/* Navigation Icons */}
           <div className="flex flex-col space-y-4">
             <button 
-              className="w-10 h-10 rounded-md bg-transparent hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200"
+              className="w-10 h-10 rounded-md bg-transparent hover:bg-blue-500/20 flex items-center justify-center text-blue-200 hover:text-white transition-all duration-200"
               title="Search"
             >
               <Search className="w-5 h-5" />
             </button>
             
             <button 
-              className="w-10 h-10 rounded-md bg-transparent hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200"
+              className="w-10 h-10 rounded-md bg-transparent hover:bg-blue-500/20 flex items-center justify-center text-blue-200 hover:text-white transition-all duration-200"
               title="Discover"
             >
               <Compass className="w-5 h-5" />
             </button>
             
             <button 
-              className="w-10 h-10 rounded-md bg-transparent hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200"
+              className="w-10 h-10 rounded-md bg-transparent hover:bg-blue-500/20 flex items-center justify-center text-blue-200 hover:text-white transition-all duration-200"
               title="Reports"
             >
               <BarChart2 className="w-5 h-5" />
@@ -109,7 +109,7 @@ export default function Chat() {
           
           {/* Dropdown Icon */}
           <button 
-            className="w-8 h-8 rounded-md bg-transparent hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200"
+            className="w-8 h-8 rounded-md bg-transparent hover:bg-blue-500/20 flex items-center justify-center text-blue-200 hover:text-white transition-all duration-200"
             title="Settings"
           >
             <ChevronDown className="w-4 h-4" />
@@ -143,12 +143,12 @@ export default function Chat() {
             {messages.map((message) => (
               <div key={message.id} className="animate-[fadeIn_0.3s_ease-out]">
                 {message.isUser ? (
-                  <div className="text-xl text-gray-800 font-medium mb-4">
+                  <div className="text-xl text-white font-medium mb-4">
                     {message.content}
                   </div>
                 ) : (
                   <div className="space-y-4">
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                    <div className="flex items-center gap-2 text-sm text-blue-200">
                       <div className="vortex-icon active" style={{ width: '14px', height: '14px' }}>
                         <div className="vortex-blade"></div>
                         <div className="vortex-blade"></div>
@@ -159,7 +159,7 @@ export default function Chat() {
                       </div>
                       <span>Vorta</span>
                     </div>
-                    <div className="text-gray-800 leading-relaxed">
+                    <div className="text-white leading-relaxed">
                       {message.content}
                     </div>
                   </div>
@@ -172,7 +172,7 @@ export default function Chat() {
         {/* Typing Indicator */}
         {isTyping && (
           <div className="mb-8 animate-[fadeIn_0.3s_ease-out]">
-            <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
+            <div className="flex items-center gap-2 text-sm text-blue-200 mb-2">
               <div className="vortex-icon active" style={{ width: '14px', height: '14px' }}>
                 <div className="vortex-blade"></div>
                 <div className="vortex-blade"></div>
@@ -184,32 +184,32 @@ export default function Chat() {
               <span>Vorta</span>
             </div>
             <div className="flex gap-1">
-              <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-              <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
             </div>
           </div>
         )}
 
         {/* Chat Input */}
-        <div className="w-full max-w-3xl bg-white border border-gray-200 shadow-md rounded-full px-6 py-4 flex items-center space-x-4">
+        <div className="w-full max-w-3xl bg-slate-800 border border-blue-500/30 shadow-md rounded-full px-6 py-4 flex items-center space-x-4">
           <input
             type="text"
             placeholder="Ask about KPIs or performance..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-1 outline-none text-gray-700 placeholder-gray-400"
+            className="flex-1 outline-none text-white placeholder-blue-200/50 bg-transparent"
           />
-          <button className="text-gray-500 hover:text-gray-700 transition-colors">
+          <button className="text-blue-200 hover:text-white transition-colors">
             <Globe className="w-5 h-5" />
           </button>
-          <button className="text-gray-500 hover:text-gray-700 transition-colors">
+          <button className="text-blue-200 hover:text-white transition-colors">
             <Paperclip className="w-5 h-5" />
           </button>
           <button 
             onClick={() => setIsVoiceActive(!isVoiceActive)}
-            className={`transition-colors ${isVoiceActive ? 'text-red-500' : 'text-gray-500 hover:text-gray-700'}`}
+            className={`transition-colors ${isVoiceActive ? 'text-red-500' : 'text-blue-200 hover:text-white'}`}
           >
             <Mic className="w-5 h-5" />
           </button>
@@ -218,8 +218,8 @@ export default function Chat() {
             disabled={!inputValue.trim() || isTyping}
             className={`ml-2 rounded-full px-4 py-2 transition-colors ${
               inputValue.trim() 
-                ? 'bg-red-500 hover:bg-red-600 text-white' 
-                : 'bg-red-300 text-white opacity-50 cursor-not-allowed'
+                ? 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white' 
+                : 'bg-slate-600 text-slate-400 opacity-50 cursor-not-allowed'
             }`}
           >
             Ask
