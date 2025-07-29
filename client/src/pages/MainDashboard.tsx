@@ -65,7 +65,7 @@ export default function MainDashboard() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2, delay: idx * 0.05 }}
-                className="w-48"
+                className="w-64"
               >
                 <Card className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/70 rounded-lg p-4 h-full transition-all duration-200 hover:bg-slate-800/80">
                   <div className="flex items-center mb-2">
