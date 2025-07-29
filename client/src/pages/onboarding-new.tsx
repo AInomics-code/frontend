@@ -105,7 +105,7 @@ export default function OnboardingNew() {
     if (source.type === 'file') {
       return (
         <div className="space-y-3">
-          <label className="block text-sm font-medium text-gray-300">
+          <label className="block text-sm font-medium text-slate-300">
             Upload File
           </label>
           <div className="relative">
@@ -120,9 +120,9 @@ export default function OnboardingNew() {
                 }
               }}
             />
-            <div className="flex items-center gap-3 p-4 border border-gray-600 rounded-xl bg-gray-800/30 backdrop-blur-sm hover:border-gray-500 transition-colors">
-              <Upload className="w-5 h-5 text-gray-400" />
-              <span className="text-gray-300">
+            <div className="flex items-center gap-3 p-4 border border-slate-600 rounded-xl bg-slate-800/30 backdrop-blur-sm hover:border-slate-500 transition-colors">
+              <Upload className="w-5 h-5 text-slate-400" />
+              <span className="text-slate-300">
                 {value || 'Choose file to upload'}
               </span>
             </div>
@@ -133,22 +133,22 @@ export default function OnboardingNew() {
 
     return (
       <div className="space-y-3">
-        <label className="block text-sm font-medium text-gray-300">
+        <label className="block text-sm font-medium text-slate-300">
           {source.type === 'url' ? 'Connection URL' : 'API Key'}
         </label>
         <div className="relative">
           {source.type === 'key' && (
-            <Key className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Key className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
           )}
           {source.type === 'url' && (
-            <Link2 className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Link2 className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
           )}
           <input
             type={source.type === 'key' ? 'password' : 'text'}
             value={value}
             onChange={(e) => setInputValues(prev => ({ ...prev, [source.id]: e.target.value }))}
             placeholder={source.placeholder}
-            className={`w-full ${source.type !== 'url' ? 'pl-12' : 'pl-12'} pr-4 py-4 bg-gray-800/30 backdrop-blur-sm border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all`}
+            className={`w-full ${source.type !== 'url' ? 'pl-12' : 'pl-12'} pr-4 py-4 bg-slate-800/30 backdrop-blur-sm border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all`}
           />
         </div>
       </div>
@@ -161,94 +161,98 @@ export default function OnboardingNew() {
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      {/* Background Pattern */}
+      {/* Background Pattern - Seamless across viewport */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 25px 25px, rgba(255,255,255,0.1) 2px, transparent 0)`,
+          backgroundImage: `radial-gradient(circle at 25px 25px, rgba(255,255,255,0.08) 2px, transparent 0)`,
           backgroundSize: '50px 50px',
           animation: 'grain 8s steps(10) infinite'
         }} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-24 relative z-10">
-        {/* Enterprise Header - Top Left */}
+      <div className="max-w-6xl mx-auto px-6 py-20 relative z-10">
+        {/* Refined Enterprise Header */}
         <motion.div 
-          className="mb-16"
+          className="mb-20"
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
         >
-          <div className="flex items-center gap-4 mb-6">
-            {/* VORTA Atom Logo */}
+          <div className="flex items-center gap-5 mb-4">
+            {/* VORTA Atom Logo - 20% larger with glow */}
             <motion.svg 
-              width="28" 
-              height="28" 
+              width="36" 
+              height="36" 
               viewBox="0 0 100 100" 
-              className="text-cyan-400"
+              className="text-cyan-400 cursor-pointer"
               initial={{ scale: 0, rotate: -90 }}
               animate={{ scale: 1, rotate: 0 }}
-              transition={{ delay: 0.4, duration: 0.6, type: "spring", stiffness: 200 }}
+              whileHover={{ 
+                scale: 1.1,
+                filter: "drop-shadow(0 0 12px rgba(103, 232, 249, 0.4))",
+                transition: { duration: 0.3 }
+              }}
+              transition={{ delay: 0.3, duration: 0.6, type: "spring", stiffness: 200 }}
             >
               <defs>
-                <radialGradient id="atomGradient" cx="30%" cy="30%" r="70%">
+                <radialGradient id="atomGradientOnboarding" cx="30%" cy="30%" r="70%">
                   <stop offset="0%" style={{ stopColor: '#67e8f9', stopOpacity: 1 }} />
-                  <stop offset="60%" style={{ stopColor: '#06b6d4', stopOpacity: 0.8 }} />
-                  <stop offset="100%" style={{ stopColor: '#0891b2', stopOpacity: 0.6 }} />
+                  <stop offset="60%" style={{ stopColor: '#06b6d4', stopOpacity: 0.9 }} />
+                  <stop offset="100%" style={{ stopColor: '#0891b2', stopOpacity: 0.7 }} />
                 </radialGradient>
               </defs>
               
               {/* Orbital rings */}
               <ellipse cx="50" cy="50" rx="32" ry="12" 
-                fill="none" stroke="url(#atomGradient)" strokeWidth="3" 
+                fill="none" stroke="url(#atomGradientOnboarding)" strokeWidth="3" 
                 transform="rotate(0 50 50)" opacity="0.9" />
               <ellipse cx="50" cy="50" rx="32" ry="12" 
-                fill="none" stroke="url(#atomGradient)" strokeWidth="3" 
+                fill="none" stroke="url(#atomGradientOnboarding)" strokeWidth="3" 
                 transform="rotate(60 50 50)" opacity="0.9" />
               <ellipse cx="50" cy="50" rx="32" ry="12" 
-                fill="none" stroke="url(#atomGradient)" strokeWidth="3" 
+                fill="none" stroke="url(#atomGradientOnboarding)" strokeWidth="3" 
                 transform="rotate(120 50 50)" opacity="0.9" />
               
               {/* Central nucleus */}
-              <circle cx="50" cy="50" r="4" fill="url(#atomGradient)" opacity="1" />
+              <circle cx="50" cy="50" r="4" fill="url(#atomGradientOnboarding)" opacity="1" />
             </motion.svg>
 
-            <div>
-              <motion.h1 
-                className="text-3xl font-semibold text-white tracking-tight"
-                style={{ 
-                  fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif',
-                  letterSpacing: '-0.01em'
-                }}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-              >
-                Let's get you set up
-              </motion.h1>
-            </div>
+            <motion.h1 
+              className="text-4xl font-medium text-white"
+              style={{ 
+                fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif',
+                letterSpacing: '-0.5px'
+              }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              Let's get you set up
+            </motion.h1>
           </div>
           
           <motion.p 
-            className="text-lg text-gray-400 max-w-2xl leading-relaxed"
+            className="text-slate-400 max-w-[70%] leading-relaxed"
             style={{ 
-              fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif'
+              fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif',
+              fontSize: '15px'
             }}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
           >
             Choose how to connect your business data below. You can skip and configure this later.
           </motion.p>
         </motion.div>
 
-        {/* Enterprise Glass Tiles Grid */}
+        {/* Refined Connection Cards Grid */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
         >
           {dataSources.map((source, index) => {
             const Icon = source.icon;
@@ -259,28 +263,29 @@ export default function OnboardingNew() {
               <motion.div
                 key={source.id}
                 className={`relative group cursor-pointer`}
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ 
-                  delay: 0.8 + index * 0.1, 
-                  duration: 0.6,
+                  delay: 0.7 + index * 0.05, 
+                  duration: 0.5,
                   type: "spring",
-                  stiffness: 100
+                  stiffness: 120
                 }}
                 whileHover={{ 
-                  scale: isConnected ? 1 : 1.02,
+                  scale: isConnected ? 1 : 1.05,
                   transition: { duration: 0.2 }
                 }}
                 onClick={() => !isConnected && handleSourceClick(source.id)}
               >
-                {/* Glass Tile */}
-                <div className={`relative p-6 rounded-2xl backdrop-blur-md transition-all duration-300 ${
+                {/* Enhanced Glass Card */}
+                <div className={`relative rounded-2xl backdrop-blur-md transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.25)] ${
                   isConnected 
-                    ? 'bg-green-500/10 border border-green-400/30 shadow-lg shadow-green-500/10' 
+                    ? 'bg-green-500/8 border border-green-400/30 ring-2 ring-green-400/20' 
                     : isSelected
-                    ? 'bg-blue-500/10 border border-blue-400/40 shadow-xl shadow-blue-500/20'
-                    : 'bg-white/5 border border-gray-700/50 hover:bg-white/10 hover:border-gray-600/50 hover:shadow-lg hover:shadow-cyan-500/10'
-                }`}>
+                    ? 'bg-blue-500/8 border border-blue-400/40 ring-2 ring-blue-400/30'
+                    : 'bg-slate-900/20 border border-slate-700/40 hover:bg-slate-800/30 hover:border-slate-600/50 hover:ring-2 hover:ring-cyan-400/20'
+                }}`} 
+                style={{ padding: '18px 24px' }}>
                   
                   {/* Connected Indicator */}
                   {isConnected && (
@@ -294,41 +299,41 @@ export default function OnboardingNew() {
                     </motion.div>
                   )}
 
-                  {/* Icon and Title */}
+                  {/* Enhanced Icon and Title Section */}
                   <div className="flex items-center gap-4 mb-4">
                     <div className={`p-3 rounded-xl transition-all duration-300 ${
                       isConnected
-                        ? 'bg-green-500/20 text-green-400' 
+                        ? 'bg-green-500/15 text-green-400' 
                         : isSelected
-                        ? 'bg-blue-500/20 text-blue-400'
-                        : 'bg-gray-800/40 text-gray-400 group-hover:bg-gray-700/40 group-hover:text-cyan-400'
+                        ? 'bg-blue-500/15 text-blue-400'
+                        : 'bg-slate-800/40 text-slate-400 group-hover:bg-slate-700/50 group-hover:text-cyan-400'
                     }`}>
-                      <Icon className="w-6 h-6" strokeWidth={1.5} />
+                      <Icon className="w-7 h-7" strokeWidth={1.5} />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h3 className="text-lg font-medium text-white mb-1" style={{ 
                         fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif'
                       }}>
                         {source.name}
                       </h3>
-                      {/* Status Pill */}
+                      {/* Refined Status Indicator */}
                       <div className="flex items-center gap-2">
-                        <Circle className={`w-2 h-2 ${isConnected ? 'text-green-400 fill-green-400' : 'text-gray-500 fill-gray-500'}`} />
-                        <span className={`text-xs font-medium ${isConnected ? 'text-green-400' : 'text-gray-500'}`}>
+                        <div className={`h-2 w-2 rounded-full ${isConnected ? 'bg-green-400' : 'bg-slate-400'}`} />
+                        <span className={`text-xs font-medium ${isConnected ? 'text-green-400' : 'text-slate-400'}`}>
                           {isConnected ? 'Connected' : 'Not connected'}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Hover Connect Button */}
+                  {/* Refined Hover Connect Button */}
                   {!isConnected && !isSelected && (
                     <motion.div 
-                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
                     >
-                      <button className="w-full py-2 px-4 bg-gray-800/50 hover:bg-gray-700/50 rounded-lg text-sm font-medium text-gray-300 hover:text-white transition-all duration-200">
+                      <button className="w-full py-3 px-4 bg-slate-800/60 hover:bg-slate-700/60 rounded-xl text-sm font-medium text-slate-300 hover:text-white transition-all duration-200 border border-slate-600/30">
                         Connect
                       </button>
                     </motion.div>
@@ -341,18 +346,21 @@ export default function OnboardingNew() {
                         initial={{ opacity: 0, height: 0, marginTop: 0 }}
                         animate={{ opacity: 1, height: "auto", marginTop: 16 }}
                         exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                        transition={{ duration: 0.4, type: "spring", stiffness: 100 }}
-                        className="border-t border-gray-700/30 pt-4"
+                        transition={{ duration: 0.3, type: "spring", stiffness: 120 }}
+                        className="border-t border-slate-700/40 pt-5"
                       >
                         {renderInputField(source)}
                         
-                        <div className="flex justify-end space-x-3 mt-4">
+                        <div className="flex justify-end space-x-3 mt-5">
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
                               setSelectedSource(null);
                             }}
-                            className="px-4 py-2 text-gray-400 hover:text-white transition-all duration-200 font-medium"
+                            className="px-4 py-2 text-slate-400 hover:text-white transition-all duration-200 font-medium"
+                            style={{ 
+                              fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif'
+                            }}
                           >
                             Cancel
                           </button>
@@ -365,8 +373,11 @@ export default function OnboardingNew() {
                             className={`px-6 py-2 rounded-xl font-medium transition-all duration-200 shadow-lg ${
                               inputValues[source.id]?.trim()
                                 ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white hover:shadow-xl hover:shadow-blue-500/20'
-                                : 'bg-gray-700 text-gray-500 cursor-not-allowed'
+                                : 'bg-slate-700 text-slate-500 cursor-not-allowed'
                             }`}
+                            style={{ 
+                              fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif'
+                            }}
                           >
                             Connect
                           </button>
@@ -380,33 +391,39 @@ export default function OnboardingNew() {
           })}
         </motion.div>
 
-        {/* Bottom CTAs */}
+        {/* Enhanced Footer CTAs */}
         <motion.div 
-          className="flex justify-between items-center"
+          className="flex flex-col md:flex-row justify-between items-center gap-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4, duration: 0.8 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
         >
-          <button
+          <motion.button
             onClick={handleSkip}
-            className="text-gray-400 hover:text-white transition-all duration-200 font-medium opacity-70 hover:opacity-100"
+            className="text-slate-400 hover:text-white transition-all duration-200 font-medium opacity-60 hover:opacity-100 order-2 md:order-1"
             style={{ 
               fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif'
             }}
+            whileHover={{ x: 2 }}
           >
-            Skip setup
-          </button>
+            Skip for now
+          </motion.button>
           
-          <button
+          <motion.button
             onClick={handleContinue}
-            className="flex items-center space-x-3 px-8 py-3 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-200 border border-gray-700/50"
+            className="flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 border border-slate-700/50 order-1 md:order-2 w-full md:w-auto"
             style={{ 
               fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif'
+            }}
+            whileHover={{ 
+              x: 3,
+              boxShadow: "0 0 25px rgba(6, 182, 212, 0.15)",
+              transition: { duration: 0.2 }
             }}
           >
             <span>Connect & Continue</span>
             <ArrowRight className="w-5 h-5" />
-          </button>
+          </motion.button>
         </motion.div>
       </div>
     </motion.section>
