@@ -113,16 +113,12 @@ export default function Login() {
                 <form onSubmit={handleContinue} className="space-y-3">
                   <div>
                     <label className="block text-sm text-white/60 mb-2">Email</label>
-                    <div className="flex items-center">
+                    <div className="flex items-center bg-white/10 border border-white/20 px-4 py-3 rounded-2xl backdrop-blur-sm focus-within:ring-2 focus-within:ring-blue-300/50 focus-within:border-blue-300/50 transition-all duration-300">
                       <Mail className="w-5 h-5 text-blue-400 mr-3" />
                       <input
                         type="email"
                         placeholder="you@company.com"
-                        className="w-full text-sm px-3 py-2 rounded-xl 
-                          bg-[#0f1c3a] text-gray-100 placeholder:text-gray-400 
-                          border border-blue-600 
-                          focus:outline-none focus:ring-2 focus:ring-blue-500 
-                          transition duration-200"
+                        className="bg-transparent w-full text-sm text-gray-100 placeholder:text-gray-400 focus:outline-none transition duration-200"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -192,16 +188,12 @@ export default function Login() {
                 <form onSubmit={handleCreateAccount} className="space-y-3">
                   <div>
                     <label className="block text-sm text-white/60 mb-2">Create Password</label>
-                    <div className="flex items-center">
+                    <div className="flex items-center bg-white/10 border border-white/20 px-4 py-3 rounded-2xl backdrop-blur-sm focus-within:ring-2 focus-within:ring-blue-300/50 focus-within:border-blue-300/50 transition-all duration-300">
                       <Lock className="w-5 h-5 text-blue-400 mr-3" />
                       <input
                         type="password"
                         placeholder="••••••••"
-                        className="w-full text-sm px-3 py-2 rounded-xl 
-                          bg-[#0f1c3a] text-gray-100 placeholder:text-gray-400 
-                          border border-blue-600 
-                          focus:outline-none focus:ring-2 focus:ring-blue-500 
-                          transition duration-200"
+                        className="bg-transparent w-full text-sm text-gray-100 placeholder:text-gray-400 focus:outline-none transition duration-200"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
