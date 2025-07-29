@@ -118,7 +118,11 @@ export default function Login() {
                       <input
                         type="email"
                         placeholder="you@company.com"
-                        className="w-full text-sm px-2 py-1 bg-[#0e1a35] text-white placeholder:text-gray-400 border border-blue-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                        className="w-full text-sm px-3 py-2 rounded-xl 
+                          bg-[#0f1c3a] text-gray-100 placeholder:text-gray-400 
+                          border border-blue-600 
+                          focus:outline-none focus:ring-2 focus:ring-blue-500 
+                          transition duration-200"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -193,7 +197,11 @@ export default function Login() {
                       <input
                         type="password"
                         placeholder="••••••••"
-                        className="w-full text-sm px-2 py-1 bg-[#0e1a35] text-white placeholder:text-gray-400 border border-blue-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                        className="w-full text-sm px-3 py-2 rounded-xl 
+                          bg-[#0f1c3a] text-gray-100 placeholder:text-gray-400 
+                          border border-blue-600 
+                          focus:outline-none focus:ring-2 focus:ring-blue-500 
+                          transition duration-200"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
