@@ -5,6 +5,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Autofill styling override */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  -webkit-text-fill-color: #f3f4f6 !important;
+  background-color: transparent !important;
+}
+
 :root {
   --background: 0 0% 100%;
   --foreground: 220 13% 18%; /* #2D3748 - Gray-800 instead of pure black */

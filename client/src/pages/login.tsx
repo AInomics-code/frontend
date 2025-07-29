@@ -119,10 +119,6 @@ export default function Login() {
                         type="email"
                         placeholder="you@company.com"
                         className="bg-transparent w-full text-sm text-gray-100 placeholder:text-gray-400 focus:outline-none transition duration-200"
-                        style={{
-                          WebkitTextFillColor: '#f3f4f6',
-                          WebkitBoxShadow: '0 0 0 1000px transparent inset'
-                        }}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -198,10 +194,6 @@ export default function Login() {
                         type="password"
                         placeholder="••••••••"
                         className="bg-transparent w-full text-sm text-gray-100 placeholder:text-gray-400 focus:outline-none transition duration-200"
-                        style={{
-                          WebkitTextFillColor: '#f3f4f6',
-                          WebkitBoxShadow: '0 0 0 1000px transparent inset'
-                        }}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
