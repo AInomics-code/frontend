@@ -711,26 +711,103 @@ export default function Chat() {
       </div>
       {/* Main Chat Interface */}
       <div className="flex flex-col h-[calc(100vh-120px)]">
-        <main className="flex flex-col items-center justify-center p-8 flex-1 relative">
-          {/* Vorta Logo */}
+        <main className="flex flex-col items-center p-8 flex-1 relative">
+          {/* 1. BRAND SECTION (Top Centered) */}
           {messages.length === 0 && !isTyping && (
-            <div
-              className="vortex-icon mb-12"
-              style={
-                {
-                  width: "60px",
-                  height: "60px",
-                  "--vortex-size": "60px",
-                  animation: "vortex-slow-rotate 20s linear infinite",
-                } as React.CSSProperties
-              }
-            >
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-              <div className="vortex-blade"></div>
-            </div>
+            <>
+              <div className="flex flex-col items-center mt-8 mb-4">
+                <div
+                  className="vortex-icon mb-2"
+                  style={
+                    {
+                      width: "32px",
+                      height: "32px",
+                      "--vortex-size": "32px",
+                      animation: "vortex-slow-rotate 20s linear infinite",
+                    } as React.CSSProperties
+                  }
+                >
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                  <div className="vortex-blade"></div>
+                </div>
+                <h1 className="text-xl font-semibold tracking-wide text-[#CBD5E1]">VORTA</h1>
+                <p className="text-xs tracking-widest text-slate-400 uppercase">Ainomics</p>
+              </div>
+
+              {/* 2. PAGE TITLE + SUBTITLE */}
+              <div className="text-center mt-6">
+                <h2 className="text-3xl font-bold text-white mb-1">KPIs</h2>
+                <h3 className="text-xl font-medium text-slate-300">Try these prompts</h3>
+              </div>
+
+              {/* 3. PROMPTS SECTION (4-6 tiles, like Copilot) */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 max-w-4xl mx-auto">
+                <div 
+                  className="bg-slate-800 rounded-2xl p-4 hover:bg-slate-700 transition cursor-pointer"
+                  onClick={() => setInputValue("What are my top performing regions?")}
+                >
+                  <p className="text-white font-semibold">💡 What are my top performing regions?</p>
+                  <p className="text-slate-400 text-sm">Get a breakdown by performance</p>
+                </div>
+                <div 
+                  className="bg-slate-800 rounded-2xl p-4 hover:bg-slate-700 transition cursor-pointer"
+                  onClick={() => setInputValue("Where are we underperforming?")}
+                >
+                  <p className="text-white font-semibold">📉 Where are we underperforming?</p>
+                  <p className="text-slate-400 text-sm">See KPIs not meeting targets</p>
+                </div>
+                <div 
+                  className="bg-slate-800 rounded-2xl p-4 hover:bg-slate-700 transition cursor-pointer"
+                  onClick={() => setInputValue("What products aren't moving?")}
+                >
+                  <p className="text-white font-semibold">📦 What products aren't moving?</p>
+                  <p className="text-slate-400 text-sm">Low SKU turnover detection</p>
+                </div>
+                <div 
+                  className="bg-slate-800 rounded-2xl p-4 hover:bg-slate-700 transition cursor-pointer"
+                  onClick={() => setInputValue("Forecast next quarter")}
+                >
+                  <p className="text-white font-semibold">📊 Forecast next quarter</p>
+                  <p className="text-slate-400 text-sm">Predict based on current trend</p>
+                </div>
+                <div 
+                  className="bg-slate-800 rounded-2xl p-4 hover:bg-slate-700 transition cursor-pointer"
+                  onClick={() => setInputValue("Show me budget variance analysis")}
+                >
+                  <p className="text-white font-semibold">💰 Budget variance analysis</p>
+                  <p className="text-slate-400 text-sm">Compare actual vs planned spending</p>
+                </div>
+                <div 
+                  className="bg-slate-800 rounded-2xl p-4 hover:bg-slate-700 transition cursor-pointer"
+                  onClick={() => setInputValue("Which channels need attention?")}
+                >
+                  <p className="text-white font-semibold">🎯 Channel performance</p>
+                  <p className="text-slate-400 text-sm">Identify improvement opportunities</p>
+                </div>
+              </div>
+
+              {/* 4. KPI CARDS GRID (cleaner spacing) */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 px-6 w-full max-w-4xl">
+                <div className="bg-slate-900 rounded-xl p-4 border border-slate-700 shadow-sm">
+                  <p className="text-slate-400 text-sm">Puntuación de Rendimiento</p>
+                  <h2 className="text-white text-3xl font-bold mt-1">88</h2>
+                  <p className="text-slate-500 text-sm">82% del objetivo de ventas cumplido</p>
+                </div>
+                <div className="bg-slate-900 rounded-xl p-4 border border-slate-700 shadow-sm">
+                  <p className="text-red-400 text-sm">Zonas en Riesgo</p>
+                  <h2 className="text-white text-2xl font-semibold mt-1">3 Zonas</h2>
+                  <p className="text-slate-500 text-sm">Chiriquí, Colón, San Miguelito</p>
+                </div>
+                <div className="bg-slate-900 rounded-xl p-4 border border-slate-700 shadow-sm">
+                  <p className="text-yellow-400 text-sm">Oportunidad de Producto</p>
+                  <h2 className="text-white text-md font-semibold mt-1">Vinagre Premium</h2>
+                  <p className="text-slate-500 text-sm">Alto potencial · Débil: Mango Salsa</p>
+                </div>
+              </div>
+            </>
           )}
 
           {/* Messages Area */}
@@ -827,17 +904,17 @@ export default function Chat() {
             </div>
           )}
 
-          {/* Chat Input Container */}
-          <div className="w-full max-w-4xl px-8 bg-gradient-to-b from-[#0f0f23]/20 to-[#1a1a2e]/20 pb-8 pt-4 backdrop-blur-sm">
-            <div
-              className={`relative flex items-center bg-gradient-to-br from-[#1c2340]/90 to-[#2a3b5c]/90 rounded-3xl border border-blue-500/20 transition-all duration-200 focus-within:bg-gradient-to-br focus-within:from-[#1c2340] focus-within:to-[#2a3b5c] p-2 backdrop-blur-md shadow-lg ${
+          {/* 5. TEXT INPUT SECTION (Copilot-style) */}
+          <div className="mt-12 flex justify-center w-full">
+            <div 
+              className={`bg-slate-800 rounded-full flex items-center px-4 py-2 w-[600px] max-w-full shadow-inner transition-all duration-200 ${
                 inputFeedback === "success"
                   ? "feedback-success border-green-400/50"
                   : inputFeedback === "error"
                     ? "feedback-error border-red-400/50"
                     : isListening
-                      ? "border-red-400/70 bg-red-500/20 shadow-lg shadow-red-500/20 animate-glow"
-                      : "border-blue-500/20 hover:border-blue-400/30"
+                      ? "bg-red-500/20 shadow-lg shadow-red-500/20 animate-glow"
+                      : ""
               }`}
             >
               {/* Input field with speech overlay */}
@@ -848,15 +925,15 @@ export default function Chat() {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder={
-                    isListening ? text.listening : text.askAnything
+                    isListening ? text.listening : "Ask anything about your business..."
                   }
-                  className="w-full bg-transparent border-none outline-none px-6 py-5 text-white placeholder-blue-200/50 text-lg resize-none"
+                  className="flex-grow bg-transparent outline-none text-white placeholder-slate-400 px-2 text-lg"
                   disabled={isTyping}
                 />
 
                 {/* Interim speech results overlay */}
                 {isListening && interimTranscript && (
-                  <div className="absolute inset-0 px-6 py-5 text-lg text-blue-200/70 italic pointer-events-none">
+                  <div className="absolute inset-0 px-2 py-2 text-lg text-slate-300 italic pointer-events-none">
                     {inputValue}
                     {interimTranscript}
                   </div>
@@ -886,14 +963,13 @@ export default function Chat() {
                 )}
               </div>
 
-              {/* Action buttons */}
-              <div className="flex items-center gap-2 pr-4">
+              <div className="flex gap-2">
                 {/* Language toggle for speech recognition */}
                 {speechSupported && (
                   <button
                     onClick={toggleLanguage}
                     title={text.language}
-                    className="px-2 py-1 text-xs font-medium text-blue-200/70 hover:text-white hover:bg-blue-500/20 rounded-md transition-all duration-150 button-press ripple-effect"
+                    className="px-2 py-1 text-xs font-medium text-slate-400 hover:text-white rounded-md transition-all duration-150 button-press ripple-effect"
                   >
                     {speechLanguage === "es-ES" ? "ES" : "EN"}
                   </button>
@@ -901,10 +977,10 @@ export default function Chat() {
 
                 {/* Attachment button */}
                 <button
-                  className="p-3 text-blue-200/70 hover:text-white hover:bg-blue-500/20 rounded-lg transition-all duration-150 pl-[0px] pr-[0px] button-press ripple-effect interactive-hover"
+                  className="text-slate-400 hover:text-white transition-colors"
                   title="Attach file"
                 >
-                  <Paperclip size={20} strokeWidth={1.5} />
+                  <Paperclip className="w-5 h-5" />
                 </button>
 
                 {/* Voice button */}
@@ -918,15 +994,15 @@ export default function Chat() {
                         : "Hacer clic y hablar (Ctrl+M)"
                   }
                   disabled={!speechSupported}
-                  className={`relative p-3 transition-all duration-200 rounded-lg pl-[9px] pr-[9px] button-press ripple-effect ${
+                  className={`relative transition-colors ${
                     !speechSupported
-                      ? "text-blue-200/30 bg-[#1c2340]/50 cursor-not-allowed"
+                      ? "text-slate-600 cursor-not-allowed"
                       : isListening
-                        ? "text-white bg-red-500 hover:bg-red-600 shadow-lg shadow-red-500/50 scale-105 animate-glow"
-                        : "text-blue-200/70 hover:text-white hover:bg-blue-500/20 interactive-hover"
+                        ? "text-white bg-red-500 rounded-full p-1 shadow-lg shadow-red-500/50 scale-105 animate-glow"
+                        : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  <Mic size={20} strokeWidth={1.5} />
+                  <Mic className="w-5 h-5" />
                   {isListening && (
                     <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-600 rounded-full animate-ping"></div>
                   )}
@@ -936,14 +1012,14 @@ export default function Chat() {
                 <button
                   onClick={handleSendMessage}
                   title={text.sendMessage}
-                  className={`p-3 transition-all duration-200 button-press ripple-effect ${
+                  className={`transition-colors ${
                     inputValue.trim() && !isTyping
-                      ? "text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 rounded-lg shadow-sm hover:shadow-md interactive-hover animate-pulse-success"
-                      : "text-blue-200/30 bg-[#1c2340]/50 rounded-lg cursor-not-allowed"
+                      ? "text-blue-500 hover:text-blue-400"
+                      : "text-slate-600 cursor-not-allowed"
                   }`}
                   disabled={!inputValue.trim() || isTyping}
                 >
-                  <ArrowUp size={20} strokeWidth={1.5} />
+                  <ArrowUp className="w-5 h-5" />
                 </button>
               </div>
             </div>
