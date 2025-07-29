@@ -118,7 +118,7 @@ export default function Login() {
                       <input
                         type="email"
                         placeholder="you@company.com"
-                        className="bg-transparent w-full text-sm text-gray-100 placeholder:text-gray-400 focus:outline-none transition duration-200"
+                        className="w-full text-sm text-gray-100 placeholder:text-gray-400 focus:outline-none transition duration-200 bg-[#2a2c37]"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -233,7 +233,6 @@ export default function Login() {
           
         </div>
       </motion.div>
-
       {/* RIGHT CARD */}
       <motion.div
         initial={{ opacity: 0, x: 20 }}
