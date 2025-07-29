@@ -146,6 +146,8 @@ Changelog:
   * Modified 404 page to use dark theme with blue card styling
   * Applied consistent color scheme: dark blue gradients for backgrounds, slate colors for cards, blue accents for interactive elements
   * All text colors updated to white/blue-200 for optimal contrast on dark backgrounds
+  * Created simplified MainDashboard with Microsoft Copilot-style structure: brand section, toggle buttons, KPI cards, and input bar
+  * Implemented clean dashboard with mock data for KPIs and prompts, maintaining dark blue theme consistency
 ```
 
 ## User Preferences

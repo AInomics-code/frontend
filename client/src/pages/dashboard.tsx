@@ -1,5 +1,5 @@
-import Chat from "@/pages/chat-clean-top";
+import MainDashboard from "@/pages/MainDashboard";
 
 export default function Dashboard() {
-  return <Chat />;
+  return <MainDashboard />;
 }
