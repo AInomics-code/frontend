@@ -5,6 +5,27 @@ import { kpiData, promptData, type KpiData, type PromptData } from "@/lib/mockDa
 
 export default function MainDashboard() {
   const [activeTab, setActiveTab] = useState("KPIs");
+  const [inputValue, setInputValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [response, setResponse] = useState("");
+
+  const handlePromptClick = (prompt: PromptData) => {
+    const question = `${prompt.title}: ${prompt.description}`;
+    setInputValue(question);
+  };
+
+  const handleSubmit = async () => {
+    if (!inputValue.trim() || isLoading) return;
+    
+    setIsLoading(true);
+    setResponse("");
+    
+    // Simulate AI response
+    setTimeout(() => {
+      setResponse(`Based on your query "${inputValue}", here's a comprehensive business intelligence analysis...`);
+      setIsLoading(false);
+    }, 2000);
+  };
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e] px-6 py-10 text-white font-sans">
@@ -113,6 +134,7 @@ export default function MainDashboard() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.2, delay: idx * 0.05 }}
                   className="cursor-pointer w-80"
+                  onClick={() => handlePromptClick(prompt)}
                 >
                   <Card className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 hover:border-blue-400/40 hover:bg-slate-800/60 rounded-lg p-4 h-full transition-all duration-200 group">
                     <div className="flex items-start gap-2">
@@ -130,12 +152,40 @@ export default function MainDashboard() {
             })}
       </motion.div>
 
+      {/* Response Display */}
+      {response && (
+        <div className="fixed top-20 left-1/2 transform -translate-x-1/2 w-full max-w-4xl px-4 z-40">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-slate-800/95 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-6 shadow-2xl"
+          >
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-sm font-medium text-blue-200">AI Response</h3>
+              <button 
+                onClick={() => setResponse("")}
+                className="text-slate-400 hover:text-white transition-colors"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+            </div>
+            <p className="text-slate-200 text-sm leading-relaxed">{response}</p>
+          </motion.div>
+        </div>
+      )}
+
       {/* Enhanced Input bar */}
       <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-3xl px-4">
         <div className="bg-gradient-to-r from-slate-800/95 via-slate-800/98 to-slate-800/95 backdrop-blur-xl border border-slate-600/50 rounded-2xl px-6 py-4 flex items-center gap-4 shadow-2xl shadow-black/20 hover:border-blue-400/50 transition-all duration-300">
           <input
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
             placeholder="Ask anything about your business..."
             className="flex-1 bg-transparent outline-none text-white placeholder-slate-400 text-base"
+            disabled={isLoading}
           />
           <div className="flex gap-3 items-center">
             <button className="w-9 h-9 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center text-slate-400 hover:text-slate-300 transition-all duration-200 hover:scale-105">
@@ -148,10 +198,21 @@ export default function MainDashboard() {
                 <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
               </svg>
             </button>
-            <button className="w-9 h-9 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 flex items-center justify-center text-white transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
+            <button 
+              onClick={handleSubmit}
+              disabled={!inputValue.trim() || isLoading}
+              className="w-9 h-9 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 disabled:from-slate-600 disabled:to-slate-600 flex items-center justify-center text-white transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 disabled:hover:scale-100 disabled:hover:shadow-none"
+            >
+              {isLoading ? (
+                <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+              ) : (
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
