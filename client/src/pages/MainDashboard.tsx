@@ -7,25 +7,167 @@ export default function MainDashboard() {
   const [activeTab, setActiveTab] = useState("KPIs");
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [response, setResponse] = useState("");
+  const [chatMode, setChatMode] = useState(false);
+  const [messages, setMessages] = useState<Array<{role: 'user' | 'assistant', content: string}>>([]);
 
   const handlePromptClick = (prompt: PromptData) => {
     const question = `${prompt.title}: ${prompt.description}`;
     setInputValue(question);
+    handleSubmit(question);
   };
 
-  const handleSubmit = async () => {
-    if (!inputValue.trim() || isLoading) return;
+  const handleSubmit = async (customInput?: string) => {
+    const currentInput = customInput || inputValue;
+    if (!currentInput.trim() || isLoading) return;
     
     setIsLoading(true);
-    setResponse("");
+    setChatMode(true);
+    
+    // Add user message
+    const userMessage = { role: 'user' as const, content: currentInput };
+    setMessages(prev => [...prev, userMessage]);
+    setInputValue("");
     
     // Simulate AI response
     setTimeout(() => {
-      setResponse(`Based on your query "${inputValue}", here's a comprehensive business intelligence analysis...`);
+      const aiResponse = {
+        role: 'assistant' as const,
+        content: `Based on your query "${currentInput}", here's a comprehensive business intelligence analysis. This would include detailed insights, metrics, and actionable recommendations specific to your business needs. The analysis covers performance indicators, trend analysis, and strategic suggestions for improvement.`
+      };
+      setMessages(prev => [...prev, aiResponse]);
       setIsLoading(false);
     }, 2000);
   };
+
+  const handleBackToDashboard = () => {
+    setChatMode(false);
+    setMessages([]);
+  };
+
+  if (chatMode) {
+    return (
+      <div className="min-h-screen w-full bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e] px-6 py-10 text-white font-sans">
+        {/* Chat Header */}
+        <div className="flex items-center justify-between mb-6">
+          <button
+            onClick={handleBackToDashboard}
+            className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+            </svg>
+            Back to Dashboard
+          </button>
+          <div className="flex flex-col items-center">
+            <h1 className="text-lg font-semibold tracking-wide text-[#CBD5E1]">VORTA</h1>
+            <p className="text-xs text-slate-400 tracking-wide uppercase">AI Assistant</p>
+          </div>
+          <div className="w-20"></div>
+        </div>
+
+        {/* Chat Messages */}
+        <div className="max-w-4xl mx-auto">
+          <div className="space-y-6 mb-32">
+            {messages.map((message, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+              >
+                <div className={`max-w-3xl ${message.role === 'user' ? 'order-2' : 'order-1'}`}>
+                  <div className={`flex items-start gap-3 ${message.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                      message.role === 'user' 
+                        ? 'bg-blue-600' 
+                        : 'bg-slate-700'
+                    }`}>
+                      {message.role === 'user' ? (
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                        </svg>
+                      ) : (
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      )}
+                    </div>
+                    <div className={`${
+                      message.role === 'user'
+                        ? 'bg-blue-600/20 border-blue-500/30'
+                        : 'bg-slate-800/60 border-slate-700/50'
+                    } border backdrop-blur-sm rounded-2xl px-4 py-3`}>
+                      <p className="text-sm text-white leading-relaxed">{message.content}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+            
+            {/* Loading Message */}
+            {isLoading && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex justify-start"
+              >
+                <div className="max-w-3xl">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div className="bg-slate-800/60 border border-slate-700/50 backdrop-blur-sm rounded-2xl px-4 py-3">
+                      <div className="flex items-center gap-2">
+                        <div className="flex space-x-1">
+                          <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                          <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                          <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                        </div>
+                        <span className="text-sm text-slate-400">Analyzing...</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </div>
+        </div>
+
+        {/* Chat Input */}
+        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-4xl px-6">
+          <div className="bg-gradient-to-r from-slate-800/95 via-slate-800/98 to-slate-800/95 backdrop-blur-xl border border-slate-600/50 rounded-2xl px-6 py-4 flex items-center gap-4 shadow-2xl shadow-black/20">
+            <input
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSubmit()}
+              placeholder="Ask anything about your business..."
+              className="flex-1 bg-transparent outline-none text-white placeholder-slate-400 text-base"
+              disabled={isLoading}
+            />
+            <button 
+              onClick={() => handleSubmit()}
+              disabled={!inputValue.trim() || isLoading}
+              className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 disabled:from-slate-600 disabled:to-slate-600 flex items-center justify-center text-white transition-all duration-200 hover:scale-105 disabled:hover:scale-100"
+            >
+              {isLoading ? (
+                <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+              ) : (
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e] px-6 py-10 text-white font-sans">
@@ -152,37 +294,13 @@ export default function MainDashboard() {
             })}
       </motion.div>
 
-      {/* Response Display */}
-      {response && (
-        <div className="fixed top-20 left-1/2 transform -translate-x-1/2 w-full max-w-4xl px-4 z-40">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-slate-800/95 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-6 shadow-2xl"
-          >
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-sm font-medium text-blue-200">AI Response</h3>
-              <button 
-                onClick={() => setResponse("")}
-                className="text-slate-400 hover:text-white transition-colors"
-              >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </button>
-            </div>
-            <p className="text-slate-200 text-sm leading-relaxed">{response}</p>
-          </motion.div>
-        </div>
-      )}
-
       {/* Enhanced Input bar */}
       <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-3xl px-4">
         <div className="bg-gradient-to-r from-slate-800/95 via-slate-800/98 to-slate-800/95 backdrop-blur-xl border border-slate-600/50 rounded-2xl px-6 py-4 flex items-center gap-4 shadow-2xl shadow-black/20 hover:border-blue-400/50 transition-all duration-300">
           <input
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
+            onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSubmit()}
             placeholder="Ask anything about your business..."
             className="flex-1 bg-transparent outline-none text-white placeholder-slate-400 text-base"
             disabled={isLoading}
@@ -199,7 +317,7 @@ export default function MainDashboard() {
               </svg>
             </button>
             <button 
-              onClick={handleSubmit}
+              onClick={() => handleSubmit()}
               disabled={!inputValue.trim() || isLoading}
               className="w-9 h-9 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 disabled:from-slate-600 disabled:to-slate-600 flex items-center justify-center text-white transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 disabled:hover:scale-100 disabled:hover:shadow-none"
             >
