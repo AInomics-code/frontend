@@ -96,7 +96,7 @@ export default function OnboardingNew() {
       // Show micro toast
       alert("You'll be able to connect sources later from your dashboard.");
     }
-    setLocation('/dashboard');
+    setLocation('/onboarding/data');
   };
 
   const renderInputField = (source: DataSource) => {
