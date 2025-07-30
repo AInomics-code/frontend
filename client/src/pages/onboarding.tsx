@@ -983,7 +983,7 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center px-6 py-8">
+    <div className="min-h-screen bg-slate-900 flex items-center justify-center px-6 py-8">
       <div className="w-full max-w-2xl">
         {/* Enterprise Progress Indicator */}
         <motion.div 
@@ -992,12 +992,12 @@ export default function Onboarding() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="flex justify-between text-sm text-gray-600 mb-3">
+          <div className="flex justify-between text-sm text-slate-400 mb-3">
             <span className="font-medium">Step {currentStep} of {steps.length}</span>
           </div>
-          <div className="relative w-full bg-gray-200 rounded-sm h-1 overflow-hidden">
+          <div className="relative w-full bg-slate-800 rounded-sm h-1 overflow-hidden">
             <motion.div 
-              className="bg-gray-900 h-full"
+              className="bg-slate-300 h-full"
               initial={{ width: 0 }}
               animate={{ width: `${(currentStep / steps.length) * 100}%` }}
               transition={{ duration: 0.4, ease: "easeOut" }}
@@ -1006,7 +1006,7 @@ export default function Onboarding() {
         </motion.div>
 
         <motion.div 
-          className="relative bg-white border border-gray-200 rounded-lg shadow-sm p-8"
+          className="relative bg-slate-800 border border-slate-700 rounded-lg shadow-xl p-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
@@ -1021,7 +1021,7 @@ export default function Onboarding() {
             >
               <div className="mb-8">
                 <motion.h1 
-                  className="text-2xl font-semibold text-gray-900 mb-2"
+                  className="text-2xl font-semibold text-white mb-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.1, duration: 0.3 }}
@@ -1030,7 +1030,7 @@ export default function Onboarding() {
                   {steps[currentStep - 1].title}
                 </motion.h1>
                 <motion.p 
-                  className="text-gray-600 text-base leading-relaxed"
+                  className="text-slate-400 text-base leading-relaxed"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.3 }}
@@ -1044,67 +1044,59 @@ export default function Onboarding() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Enhanced Navigation Buttons */}
+          {/* Enterprise Navigation */}
           <motion.div 
-            className="flex justify-between mt-12 pt-8 border-t border-cyan-500/10"
+            className="flex justify-between mt-8 pt-6 border-t border-slate-700"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
+            transition={{ delay: 0.3, duration: 0.3 }}
           >
-            <motion.button
+            <button
               onClick={handleBack}
               disabled={currentStep === 1}
-              className={`flex items-center px-6 py-3 rounded-xl transition-all duration-200 ${
+              className={`flex items-center px-4 py-2 text-sm font-medium transition-colors ${
                 currentStep === 1
-                  ? "text-slate-500 cursor-not-allowed opacity-50"
-                  : "text-cyan-300 hover:text-white hover:bg-cyan-500/10 hover:border-cyan-400/30 border border-transparent"
+                  ? "text-slate-500 cursor-not-allowed"
+                  : "text-slate-300 hover:text-white"
               }`}
-              whileHover={currentStep === 1 ? {} : { scale: 1.02 }}
-              whileTap={currentStep === 1 ? {} : { scale: 0.98 }}
-              style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+              style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back
-            </motion.button>
+            </button>
 
             {currentStep === 4 ? (
-              <motion.button
+              <button
                 onClick={handleContinueToCredentials}
                 disabled={!canProceed()}
-                className={`flex items-center px-8 py-4 rounded-xl font-medium transition-all duration-200 ${
+                className={`flex items-center px-6 py-2 text-sm font-medium rounded border transition-colors ${
                   canProceed()
-                    ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-500 hover:to-blue-500 shadow-lg hover:shadow-cyan-500/25"
-                    : "bg-slate-700/50 text-slate-400 cursor-not-allowed"
+                    ? "bg-slate-600 border-slate-500 text-white hover:bg-slate-500"
+                    : "bg-slate-700 border-slate-600 text-slate-400 cursor-not-allowed"
                 }`}
-                whileHover={canProceed() ? { scale: 1.02, y: -1 } : {}}
-                whileTap={canProceed() ? { scale: 0.98 } : {}}
-                style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
               >
                 Continue
                 <ArrowRight className="w-4 h-4 ml-2" />
-              </motion.button>
+              </button>
             ) : currentStep === 5 ? (
-              <div className="flex items-center space-x-6">
-                <motion.button
+              <div className="flex items-center space-x-4">
+                <button
                   onClick={() => setLocation("/dashboard")}
-                  className="text-slate-400 hover:text-cyan-300 transition-colors px-4 py-2 rounded-lg hover:bg-slate-800/50"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                  className="text-slate-400 hover:text-slate-300 text-sm font-medium transition-colors"
+                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
                 >
                   Skip for now
-                </motion.button>
-                <motion.button
+                </button>
+                <button
                   onClick={handleCredentialsSubmit}
                   disabled={!canProceed() || isConnecting}
-                  className={`flex items-center px-8 py-4 rounded-xl font-medium transition-all duration-200 ${
+                  className={`flex items-center px-6 py-2 text-sm font-medium rounded border transition-colors ${
                     canProceed() && !isConnecting
-                      ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-500 hover:to-blue-500 shadow-lg hover:shadow-cyan-500/25"
-                      : "bg-slate-700/50 text-slate-400 cursor-not-allowed"
+                      ? "bg-slate-600 border-slate-500 text-white hover:bg-slate-500"
+                      : "bg-slate-700 border-slate-600 text-slate-400 cursor-not-allowed"
                   }`}
-                  whileHover={canProceed() && !isConnecting ? { scale: 1.02, y: -1 } : {}}
-                  whileTap={canProceed() && !isConnecting ? { scale: 0.98 } : {}}
-                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
                 >
                   {isConnecting ? (
                     <>
@@ -1116,51 +1108,46 @@ export default function Onboarding() {
                     </>
                   ) : (
                     <>
-                      Connect & Continue →
+                      Connect & Continue
+                      <ArrowRight className="w-4 h-4 ml-2" />
                     </>
                   )}
-                </motion.button>
+                </button>
               </div>
             ) : currentStep === 6 ? (
-              <div className="flex items-center space-x-6">
-                <motion.button
+              <div className="flex items-center space-x-4">
+                <button
                   onClick={() => setLocation("/dashboard")}
-                  className="text-slate-400 hover:text-cyan-300 transition-colors px-4 py-2 rounded-lg hover:bg-slate-800/50"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                  className="text-slate-400 hover:text-slate-300 text-sm font-medium transition-colors"
+                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
                 >
                   Skip for now
-                </motion.button>
-                <motion.button
+                </button>
+                <button
                   onClick={handleNext}
                   disabled={!canProceed()}
-                  className={`flex items-center px-8 py-4 rounded-xl font-medium transition-all duration-200 ${
+                  className={`flex items-center px-6 py-2 text-sm font-medium rounded border transition-colors ${
                     canProceed()
-                      ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-500 hover:to-blue-500 shadow-lg hover:shadow-cyan-500/25"
-                      : "bg-slate-700/50 text-slate-400 cursor-not-allowed"
+                      ? "bg-slate-600 border-slate-500 text-white hover:bg-slate-500"
+                      : "bg-slate-700 border-slate-600 text-slate-400 cursor-not-allowed"
                   }`}
-                  whileHover={canProceed() ? { scale: 1.02, y: -1 } : {}}
-                  whileTap={canProceed() ? { scale: 0.98 } : {}}
-                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
                 >
-                  Continue to Business Questions →
-                </motion.button>
+                  Continue to Business Questions
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </button>
               </div>
             ) : currentStep === 7 ? (
-              <div className="flex items-center space-x-6">
-                <motion.button
+              <div className="flex items-center space-x-4">
+                <button
                   onClick={() => setLocation("/dashboard")}
-                  className="text-slate-400 hover:text-cyan-300 transition-colors px-4 py-2 rounded-lg hover:bg-slate-800/50"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                  className="text-slate-400 hover:text-slate-300 text-sm font-medium transition-colors"
+                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
                 >
                   Skip for now
-                </motion.button>
-                <motion.button
+                </button>
+                <button
                   onClick={() => {
-                    // Log final configuration for debugging/development
                     console.log("Final Onboarding Configuration:", {
                       selectedTables,
                       tableConfigs,
@@ -1171,34 +1158,31 @@ export default function Onboarding() {
                     setLocation("/dashboard");
                   }}
                   disabled={!canProceed()}
-                  className={`flex items-center px-8 py-4 rounded-xl font-medium transition-all duration-200 ${
+                  className={`flex items-center px-6 py-2 text-sm font-medium rounded border transition-colors ${
                     canProceed()
-                      ? "bg-gradient-to-r from-emerald-600 to-cyan-600 text-white hover:from-emerald-500 hover:to-cyan-500 shadow-lg hover:shadow-emerald-500/25"
-                      : "bg-slate-700/50 text-slate-400 cursor-not-allowed"
+                      ? "bg-slate-600 border-slate-500 text-white hover:bg-slate-500"
+                      : "bg-slate-700 border-slate-600 text-slate-400 cursor-not-allowed"
                   }`}
-                  whileHover={canProceed() ? { scale: 1.02, y: -1 } : {}}
-                  whileTap={canProceed() ? { scale: 0.98 } : {}}
-                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
                 >
-                  Complete Setup →
-                </motion.button>
+                  Complete Setup
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </button>
               </div>
             ) : (
-              <motion.button
+              <button
                 onClick={handleNext}
                 disabled={!canProceed()}
-                className={`flex items-center px-8 py-4 rounded-xl font-medium transition-all duration-200 ${
+                className={`flex items-center px-6 py-2 text-sm font-medium rounded border transition-colors ${
                   canProceed()
-                    ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-500 hover:to-blue-500 shadow-lg hover:shadow-cyan-500/25"
-                    : "bg-slate-700/50 text-slate-400 cursor-not-allowed"
+                    ? "bg-slate-600 border-slate-500 text-white hover:bg-slate-500"
+                    : "bg-slate-700 border-slate-600 text-slate-400 cursor-not-allowed"
                 }`}
-                whileHover={canProceed() ? { scale: 1.02, y: -1 } : {}}
-                whileTap={canProceed() ? { scale: 0.98 } : {}}
-                style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
               >
                 Next
                 <ArrowRight className="w-4 h-4 ml-2" />
-              </motion.button>
+              </button>
             )}
           </motion.div>
         </motion.div>
