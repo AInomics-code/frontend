@@ -992,6 +992,26 @@ export default function Onboarding() {
                   )}
                 </button>
               </div>
+            ) : currentStep === 6 ? (
+              <div className="flex items-center space-x-4">
+                <button
+                  onClick={() => setLocation("/dashboard")}
+                  className="text-slate-400 hover:text-blue-200 transition-colors"
+                >
+                  Skip for now
+                </button>
+                <button
+                  onClick={handleNext}
+                  disabled={!canProceed()}
+                  className={`flex items-center px-6 py-3 rounded-xl font-medium transition ${
+                    canProceed()
+                      ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-500 hover:to-blue-600"
+                      : "bg-slate-600 text-slate-400 cursor-not-allowed"
+                  }`}
+                >
+                  Continue to Business Questions →
+                </button>
+              </div>
             ) : currentStep === 7 ? (
               <div className="flex items-center space-x-4">
                 <button
