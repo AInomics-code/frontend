@@ -372,13 +372,106 @@ export default function Onboarding() {
     switch (currentStep) {
       case 1:
         return (
-          <div className="text-center space-y-6">
-            <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center mx-auto">
-              <span className="text-white text-2xl font-bold">V</span>
+          <div className="text-center space-y-8">
+            {/* VORTA Atom Logo */}
+            <motion.div
+              initial={{ scale: 0, rotate: -90 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ duration: 0.8, type: "spring", stiffness: 120 }}
+              className="mx-auto"
+            >
+              <motion.svg 
+                width="80" 
+                height="80" 
+                viewBox="0 0 100 100" 
+                className="text-cyan-400 mx-auto"
+                whileHover={{ 
+                  scale: 1.1,
+                  filter: "drop-shadow(0 0 20px rgba(103, 232, 249, 0.5))",
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <defs>
+                  <radialGradient id="atomGradientWelcome" cx="30%" cy="30%" r="70%">
+                    <stop offset="0%" style={{ stopColor: '#67e8f9', stopOpacity: 1 }} />
+                    <stop offset="60%" style={{ stopColor: '#06b6d4', stopOpacity: 0.9 }} />
+                    <stop offset="100%" style={{ stopColor: '#0891b2', stopOpacity: 0.7 }} />
+                  </radialGradient>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge> 
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                
+                {/* Orbital rings with animation */}
+                <motion.ellipse 
+                  cx="50" cy="50" rx="35" ry="15" 
+                  fill="none" stroke="url(#atomGradientWelcome)" strokeWidth="2.5" 
+                  transform="rotate(0 50 50)" opacity="0.9"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.ellipse 
+                  cx="50" cy="50" rx="35" ry="15" 
+                  fill="none" stroke="url(#atomGradientWelcome)" strokeWidth="2.5" 
+                  transform="rotate(60 50 50)" opacity="0.9"
+                  animate={{ rotate: 420 }}
+                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.ellipse 
+                  cx="50" cy="50" rx="35" ry="15" 
+                  fill="none" stroke="url(#atomGradientWelcome)" strokeWidth="2.5" 
+                  transform="rotate(120 50 50)" opacity="0.9"
+                  animate={{ rotate: 480 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                />
+                
+                {/* Central nucleus with pulse */}
+                <motion.circle 
+                  cx="50" cy="50" r="5" 
+                  fill="url(#atomGradientWelcome)" 
+                  filter="url(#glow)"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </motion.svg>
+            </motion.div>
+
+            {/* Enhanced Welcome Text */}
+            <div className="space-y-4">
+              <motion.h2 
+                className="text-3xl font-light text-white"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+              >
+                Welcome to <span className="font-medium text-cyan-400">VORTA</span>
+              </motion.h2>
+              
+              <motion.p 
+                className="text-blue-200/80 text-lg leading-relaxed max-w-md mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.6 }}
+                style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+              >
+                Your AI-powered business intelligence platform is ready to transform how you make decisions.
+              </motion.p>
+
+              <motion.div 
+                className="flex items-center justify-center space-x-2 mt-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 0.6 }}
+              >
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <span className="text-cyan-400/80 text-sm font-medium">Enterprise-Ready Intelligence</span>
+              </motion.div>
             </div>
-            <p className="text-blue-200 text-lg">
-              Your AI-powered business intelligence platform is ready to transform how you make decisions.
-            </p>
           </div>
         );
 
@@ -890,28 +983,40 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e] flex items-center justify-center px-4">
-      <div className="w-full max-w-2xl">
-        {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="flex justify-between text-sm text-blue-200 mb-2">
-            <span>Step {currentStep} of {steps.length}</span>
-            <span>{Math.round((currentStep / steps.length) * 100)}% complete</span>
+    <div className="min-h-screen bg-gradient-to-br from-[#0a0b1e] via-[#141b2e] to-[#1a2332] flex items-center justify-center px-6 py-8">
+      <div className="w-full max-w-3xl">
+        {/* Enhanced Progress Bar */}
+        <motion.div 
+          className="mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex justify-between text-sm text-cyan-300/70 mb-4">
+            <span className="font-medium">Step {currentStep} of {steps.length}</span>
+            <span className="font-medium">{Math.round((currentStep / steps.length) * 100)}% complete</span>
           </div>
-          <div className="w-full bg-slate-700 rounded-full h-2">
+          <div className="relative w-full bg-slate-800/50 rounded-full h-3 overflow-hidden backdrop-blur-sm border border-slate-700/50">
             <motion.div 
-              className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full"
+              className="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 h-full rounded-full shadow-lg"
               initial={{ width: 0 }}
               animate={{ width: `${(currentStep / steps.length) * 100}%` }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              style={{
+                boxShadow: "0 0 20px rgba(6, 182, 212, 0.4)"
+              }}
             />
           </div>
-        </div>
+        </motion.div>
 
         <motion.div 
-          className="bg-gradient-to-br from-[#1c2340] to-[#2a3b5c] p-8 rounded-2xl shadow-xl border border-blue-500/20"
-          initial={{ opacity: 0, y: 20 }}
+          className="relative bg-gradient-to-br from-[#1e2951]/80 to-[#2a3b5c]/70 p-12 rounded-3xl shadow-2xl border border-cyan-500/10 backdrop-blur-xl"
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          style={{
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(103, 232, 249, 0.05)"
+          }}
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -921,61 +1026,92 @@ export default function Onboarding() {
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <h1 className="text-2xl font-semibold text-white mb-4">
-                {steps[currentStep - 1].title}
-              </h1>
-              <p className="text-blue-200 mb-8">
-                {steps[currentStep - 1].description}
-              </p>
+              <div className="text-center mb-10">
+                <motion.h1 
+                  className="text-3xl font-light text-white mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.6 }}
+                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                >
+                  {steps[currentStep - 1].title}
+                </motion.h1>
+                <motion.p 
+                  className="text-cyan-200/70 text-lg leading-relaxed max-w-2xl mx-auto"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                >
+                  {steps[currentStep - 1].description}
+                </motion.p>
+              </div>
 
               {renderStepContent()}
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation Buttons */}
-          <div className="flex justify-between mt-8">
-            <button
+          {/* Enhanced Navigation Buttons */}
+          <motion.div 
+            className="flex justify-between mt-12 pt-8 border-t border-cyan-500/10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+          >
+            <motion.button
               onClick={handleBack}
               disabled={currentStep === 1}
-              className={`flex items-center px-4 py-2 rounded-xl transition ${
+              className={`flex items-center px-6 py-3 rounded-xl transition-all duration-200 ${
                 currentStep === 1
-                  ? "text-slate-500 cursor-not-allowed"
-                  : "text-blue-200 hover:text-white"
+                  ? "text-slate-500 cursor-not-allowed opacity-50"
+                  : "text-cyan-300 hover:text-white hover:bg-cyan-500/10 hover:border-cyan-400/30 border border-transparent"
               }`}
+              whileHover={currentStep === 1 ? {} : { scale: 1.02 }}
+              whileTap={currentStep === 1 ? {} : { scale: 0.98 }}
+              style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back
-            </button>
+            </motion.button>
 
             {currentStep === 4 ? (
-              <button
+              <motion.button
                 onClick={handleContinueToCredentials}
                 disabled={!canProceed()}
-                className={`flex items-center px-6 py-2 rounded-xl transition ${
+                className={`flex items-center px-8 py-4 rounded-xl font-medium transition-all duration-200 ${
                   canProceed()
-                    ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-500 hover:to-blue-600"
-                    : "bg-slate-600 text-slate-400 cursor-not-allowed"
+                    ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-500 hover:to-blue-500 shadow-lg hover:shadow-cyan-500/25"
+                    : "bg-slate-700/50 text-slate-400 cursor-not-allowed"
                 }`}
+                whileHover={canProceed() ? { scale: 1.02, y: -1 } : {}}
+                whileTap={canProceed() ? { scale: 0.98 } : {}}
+                style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
               >
                 Continue
                 <ArrowRight className="w-4 h-4 ml-2" />
-              </button>
+              </motion.button>
             ) : currentStep === 5 ? (
-              <div className="flex items-center space-x-4">
-                <button
+              <div className="flex items-center space-x-6">
+                <motion.button
                   onClick={() => setLocation("/dashboard")}
-                  className="text-slate-400 hover:text-blue-200 transition-colors"
+                  className="text-slate-400 hover:text-cyan-300 transition-colors px-4 py-2 rounded-lg hover:bg-slate-800/50"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
                 >
                   Skip for now
-                </button>
-                <button
+                </motion.button>
+                <motion.button
                   onClick={handleCredentialsSubmit}
                   disabled={!canProceed() || isConnecting}
-                  className={`flex items-center px-6 py-3 rounded-xl font-medium transition ${
+                  className={`flex items-center px-8 py-4 rounded-xl font-medium transition-all duration-200 ${
                     canProceed() && !isConnecting
-                      ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-500 hover:to-blue-600"
-                      : "bg-slate-600 text-slate-400 cursor-not-allowed"
+                      ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-500 hover:to-blue-500 shadow-lg hover:shadow-cyan-500/25"
+                      : "bg-slate-700/50 text-slate-400 cursor-not-allowed"
                   }`}
+                  whileHover={canProceed() && !isConnecting ? { scale: 1.02, y: -1 } : {}}
+                  whileTap={canProceed() && !isConnecting ? { scale: 0.98 } : {}}
+                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
                 >
                   {isConnecting ? (
                     <>
@@ -990,37 +1126,46 @@ export default function Onboarding() {
                       Connect & Continue →
                     </>
                   )}
-                </button>
+                </motion.button>
               </div>
             ) : currentStep === 6 ? (
-              <div className="flex items-center space-x-4">
-                <button
+              <div className="flex items-center space-x-6">
+                <motion.button
                   onClick={() => setLocation("/dashboard")}
-                  className="text-slate-400 hover:text-blue-200 transition-colors"
+                  className="text-slate-400 hover:text-cyan-300 transition-colors px-4 py-2 rounded-lg hover:bg-slate-800/50"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
                 >
                   Skip for now
-                </button>
-                <button
+                </motion.button>
+                <motion.button
                   onClick={handleNext}
                   disabled={!canProceed()}
-                  className={`flex items-center px-6 py-3 rounded-xl font-medium transition ${
+                  className={`flex items-center px-8 py-4 rounded-xl font-medium transition-all duration-200 ${
                     canProceed()
-                      ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-500 hover:to-blue-600"
-                      : "bg-slate-600 text-slate-400 cursor-not-allowed"
+                      ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-500 hover:to-blue-500 shadow-lg hover:shadow-cyan-500/25"
+                      : "bg-slate-700/50 text-slate-400 cursor-not-allowed"
                   }`}
+                  whileHover={canProceed() ? { scale: 1.02, y: -1 } : {}}
+                  whileTap={canProceed() ? { scale: 0.98 } : {}}
+                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
                 >
                   Continue to Business Questions →
-                </button>
+                </motion.button>
               </div>
             ) : currentStep === 7 ? (
-              <div className="flex items-center space-x-4">
-                <button
+              <div className="flex items-center space-x-6">
+                <motion.button
                   onClick={() => setLocation("/dashboard")}
-                  className="text-slate-400 hover:text-blue-200 transition-colors"
+                  className="text-slate-400 hover:text-cyan-300 transition-colors px-4 py-2 rounded-lg hover:bg-slate-800/50"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
                 >
                   Skip for now
-                </button>
-                <button
+                </motion.button>
+                <motion.button
                   onClick={() => {
                     // Log final configuration for debugging/development
                     console.log("Final Onboarding Configuration:", {
@@ -1033,30 +1178,36 @@ export default function Onboarding() {
                     setLocation("/dashboard");
                   }}
                   disabled={!canProceed()}
-                  className={`flex items-center px-6 py-3 rounded-xl font-medium transition ${
+                  className={`flex items-center px-8 py-4 rounded-xl font-medium transition-all duration-200 ${
                     canProceed()
-                      ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-500 hover:to-blue-600"
-                      : "bg-slate-600 text-slate-400 cursor-not-allowed"
+                      ? "bg-gradient-to-r from-emerald-600 to-cyan-600 text-white hover:from-emerald-500 hover:to-cyan-500 shadow-lg hover:shadow-emerald-500/25"
+                      : "bg-slate-700/50 text-slate-400 cursor-not-allowed"
                   }`}
+                  whileHover={canProceed() ? { scale: 1.02, y: -1 } : {}}
+                  whileTap={canProceed() ? { scale: 0.98 } : {}}
+                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
                 >
                   Complete Setup →
-                </button>
+                </motion.button>
               </div>
             ) : (
-              <button
+              <motion.button
                 onClick={handleNext}
                 disabled={!canProceed()}
-                className={`flex items-center px-6 py-2 rounded-xl transition ${
+                className={`flex items-center px-8 py-4 rounded-xl font-medium transition-all duration-200 ${
                   canProceed()
-                    ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-500 hover:to-blue-600"
-                    : "bg-slate-600 text-slate-400 cursor-not-allowed"
+                    ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-500 hover:to-blue-500 shadow-lg hover:shadow-cyan-500/25"
+                    : "bg-slate-700/50 text-slate-400 cursor-not-allowed"
                 }`}
+                whileHover={canProceed() ? { scale: 1.02, y: -1 } : {}}
+                whileTap={canProceed() ? { scale: 0.98 } : {}}
+                style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
               >
                 Next
                 <ArrowRight className="w-4 h-4 ml-2" />
-              </button>
+              </motion.button>
             )}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>
