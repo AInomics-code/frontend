@@ -39,6 +39,11 @@ const steps: OnboardingStep[] = [
     id: 6,
     title: "Configure Schema",
     description: "Help VORTA understand your data structure for better insights."
+  },
+  {
+    id: 7,
+    title: "Business Context Questions",
+    description: "Define key business questions to help VORTA understand your goals and priorities."
   }
 ];
 
@@ -128,6 +133,11 @@ export default function Onboarding() {
     columnDescriptions: Record<string, string>;
     businessQuestions: string[];
   }>>({});
+  const [businessPrompts, setBusinessPrompts] = useState([
+    { id: 1, question: '', tag: '' },
+    { id: 2, question: '', tag: '' },
+    { id: 3, question: '', tag: '' }
+  ]);
   const [, setLocation] = useLocation();
 
   const mockTables = [
@@ -195,6 +205,8 @@ export default function Onboarding() {
           const config = tableConfigs[tableName];
           return config && config.businessQuestions.some(q => q.trim().length > 0);
         });
+      case 7:
+        return businessPrompts.some(p => p.question.trim().length > 0);
       default:
         return false;
     }
@@ -308,6 +320,52 @@ export default function Onboarding() {
   const handleCredentialsSubmit = () => {
     setAutoConnecting(true);
     connectToDatabase();
+  };
+
+  // Business prompts helper functions
+  const updateBusinessPrompt = (id: number, field: 'question' | 'tag', value: string) => {
+    setBusinessPrompts(prev => 
+      prev.map(p => p.id === id ? { ...p, [field]: value } : p)
+    );
+  };
+
+  const addBusinessPrompt = () => {
+    if (businessPrompts.length < 5) {
+      const newId = Math.max(...businessPrompts.map(p => p.id)) + 1;
+      setBusinessPrompts(prev => [...prev, { id: newId, question: '', tag: '' }]);
+    }
+  };
+
+  const removeBusinessPrompt = (id: number) => {
+    if (businessPrompts.length > 1) {
+      setBusinessPrompts(prev => prev.filter(p => p.id !== id));
+    }
+  };
+
+  const generateBusinessSuggestions = () => {
+    const suggestions = [
+      "What are our top-performing SKUs this quarter?",
+      "Which stores are lagging behind in Q2?",
+      "Where are we losing margin and why?",
+      "Which campaigns drove the highest ROI last month?",
+      "Which customers stopped ordering this month?",
+      "What SKUs aren't moving by region?"
+    ];
+    
+    const shuffled = [...suggestions].sort(() => 0.5 - Math.random());
+    setBusinessPrompts(prev => 
+      prev.map((p, idx) => ({
+        ...p,
+        question: p.question || shuffled[idx] || ''
+      }))
+    );
+  };
+
+  const hasValidBusinessQuestions = () => {
+    return selectedTables.some(tableName => {
+      const config = tableConfigs[tableName];
+      return config && config.businessQuestions.some(q => q.trim().length > 0);
+    });
   };
 
   const renderStepContent = () => {
@@ -717,6 +775,115 @@ export default function Onboarding() {
           </div>
         );
 
+      case 7:
+        return (
+          <div className="space-y-6">
+            {/* Header Section */}
+            <div className="text-center space-y-4 mb-8">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center mx-auto">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h2 className="text-xl font-semibold text-white mb-2">Define Your Business Focus</h2>
+                <p className="text-slate-300 text-sm">
+                  Help VORTA understand your key business priorities by defining 3-5 critical questions you need answered regularly.
+                </p>
+              </div>
+            </div>
+
+            {/* Business Prompts Section */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-lg font-medium text-white">Business Questions</span>
+                </div>
+                <button
+                  onClick={generateBusinessSuggestions}
+                  className="px-3 py-2 bg-blue-600/20 border border-blue-500/30 rounded-lg text-blue-300 hover:bg-blue-600/30 transition-colors text-sm"
+                >
+                  ✨ Generate Ideas
+                </button>
+              </div>
+
+              <div className="space-y-3">
+                {businessPrompts.map((prompt, index) => (
+                  <motion.div
+                    key={prompt.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-gradient-to-br from-slate-800/50 to-slate-800/30 border border-slate-600/30 rounded-xl p-4 shadow-lg backdrop-blur-sm"
+                  >
+                    <div className="flex items-start space-x-4">
+                      <div className="w-8 h-8 bg-gradient-to-br from-blue-600/50 to-blue-700/50 rounded-lg flex items-center justify-center border border-blue-500/30 flex-shrink-0 mt-1">
+                        <span className="text-blue-200 text-sm font-medium">{index + 1}</span>
+                      </div>
+                      <div className="flex-1 space-y-3">
+                        <div>
+                          <input
+                            value={prompt.question}
+                            onChange={(e) => updateBusinessPrompt(prompt.id, 'question', e.target.value)}
+                            placeholder="e.g., What are our top-performing products this quarter?"
+                            className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                          />
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <input
+                            value={prompt.tag}
+                            onChange={(e) => updateBusinessPrompt(prompt.id, 'tag', e.target.value)}
+                            placeholder="Tag (e.g., Performance, Sales, Inventory)"
+                            className="flex-1 px-3 py-2 bg-slate-700/30 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none text-sm"
+                          />
+                          {businessPrompts.length > 1 && (
+                            <button
+                              onClick={() => removeBusinessPrompt(prompt.id)}
+                              className="p-2 text-slate-400 hover:text-red-400 transition-colors"
+                            >
+                              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                              </svg>
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {businessPrompts.length < 5 && (
+                <button
+                  onClick={addBusinessPrompt}
+                  className="w-full py-3 border-2 border-dashed border-slate-600 rounded-xl text-slate-400 hover:border-blue-500 hover:text-blue-300 transition-colors flex items-center justify-center space-x-2"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+                  </svg>
+                  <span>Add Another Question</span>
+                </button>
+              )}
+            </div>
+
+            {/* Progress Indicator */}
+            <div className="bg-slate-800/40 border border-slate-700/50 rounded-lg p-4">
+              <div className="flex items-center space-x-3">
+                <div className={`w-3 h-3 rounded-full ${
+                  businessPrompts.some(p => p.question.trim().length > 0) 
+                    ? "bg-emerald-400" 
+                    : "bg-amber-400"
+                }`}></div>
+                <span className="text-sm text-slate-300">
+                  {businessPrompts.filter(p => p.question.trim().length > 0).length} of {businessPrompts.length} questions defined
+                </span>
+              </div>
+            </div>
+          </div>
+        );
+
       default:
         return null;
     }
@@ -825,7 +992,7 @@ export default function Onboarding() {
                   )}
                 </button>
               </div>
-            ) : currentStep === 6 ? (
+            ) : currentStep === 7 ? (
               <div className="flex items-center space-x-4">
                 <button
                   onClick={() => setLocation("/dashboard")}
@@ -836,13 +1003,14 @@ export default function Onboarding() {
                 <button
                   onClick={() => {
                     // Log final configuration for debugging/development
-                    console.log("Final Table Configuration:", {
+                    console.log("Final Onboarding Configuration:", {
                       selectedTables,
                       tableConfigs,
+                      businessPrompts,
                       database: selectedDB,
                       credentials: { ...credentials, password: '[REDACTED]' }
                     });
-                    setLocation("/onboarding/context");
+                    setLocation("/dashboard");
                   }}
                   disabled={!canProceed()}
                   className={`flex items-center px-6 py-3 rounded-xl font-medium transition ${
@@ -851,7 +1019,7 @@ export default function Onboarding() {
                       : "bg-slate-600 text-slate-400 cursor-not-allowed"
                   }`}
                 >
-                  Continue to Business Questions →
+                  Complete Setup →
                 </button>
               </div>
             ) : (
