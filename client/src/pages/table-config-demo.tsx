@@ -197,15 +197,11 @@ export default function TableConfigDemo() {
                     {/* Table Header */}
                     <div className="flex items-start justify-between mb-8">
                       <div className="flex items-start space-x-5">
-                        <div className="relative">
-                          <div className="w-12 h-12 bg-gradient-to-br from-slate-600/80 to-slate-700/80 rounded-xl flex items-center justify-center border border-slate-500/30 shadow-lg">
-                            <svg className="w-5 h-5 text-slate-200" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                          <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400/20 border border-emerald-400/30 rounded-full flex items-center justify-center">
-                            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                          </div>
+                        <div className="w-12 h-12 bg-gradient-to-br from-slate-600/80 to-slate-700/80 rounded-xl flex items-center justify-center border border-slate-500/30 shadow-lg">
+                          {/* Modern database icon with interconnected nodes */}
+                          <svg className="w-6 h-6 text-slate-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0-2.278-3.694-4.125-8.25-4.125s-8.25 1.847-8.25 4.125" />
+                          </svg>
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="group">
@@ -244,9 +240,10 @@ export default function TableConfigDemo() {
                     <div className="mb-8">
                       <div className="flex items-center justify-between mb-6">
                         <div className="flex items-center space-x-3">
-                          <div className="w-8 h-8 bg-slate-600/50 rounded-lg flex items-center justify-center border border-slate-500/30">
-                            <svg className="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+                          <div className="w-8 h-8 bg-gradient-to-br from-slate-600/60 to-slate-700/60 rounded-lg flex items-center justify-center border border-slate-500/30">
+                            {/* Modern lightbulb/insights icon */}
+                            <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m4.5 0a12.06 12.06 0 00-1.5-1.5m0 0L12 21m0 0l-2.5-2.5m0 0a12.06 12.06 0 01-1.5 1.5M12 18l2.5-2.5m0 0V15.75a6 6 0 10-1.5-1.5m0 0V12m0 6.75a6 6 0 011.5 1.5" />
                             </svg>
                           </div>
                           <div>
@@ -288,9 +285,10 @@ export default function TableConfigDemo() {
                     <div className="border-t border-slate-600/20 pt-8">
                       <div className="flex items-center justify-between mb-6">
                         <div className="flex items-center space-x-3">
-                          <div className="w-8 h-8 bg-slate-600/50 rounded-lg flex items-center justify-center border border-slate-500/30">
-                            <svg className="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                          <div className="w-8 h-8 bg-gradient-to-br from-slate-600/60 to-slate-700/60 rounded-lg flex items-center justify-center border border-slate-500/30">
+                            {/* Modern mapping/transformation icon */}
+                            <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
                             </svg>
                           </div>
                           <div>
