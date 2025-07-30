@@ -9,6 +9,7 @@ import Login from "@/pages/login";
 import Signup from "@/pages/signup";
 import OnboardingNew from "@/pages/onboarding-new";
 import OnboardingDataForm from "@/pages/OnboardingDataForm";
+import TableConfigDemo from "@/pages/table-config-demo";
 import Chat from "@/pages/chat-clean-top";
 import SmoothChat from "@/pages/chat-smooth";
 import SidebarLayout from "@/components/sidebar-layout";
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/signup" component={Signup} />
       <Route path="/onboarding" component={OnboardingNew} />
       <Route path="/onboarding/data" component={OnboardingDataForm} />
+      <Route path="/table-demo" component={TableConfigDemo} />
       <Route path="/dashboard">
         <ProtectedRoute>
           <Dashboard />
