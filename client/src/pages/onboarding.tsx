@@ -871,70 +871,48 @@ export default function Onboarding() {
       case 7:
         return (
           <div className="space-y-6">
-            {/* Header Section */}
-            <div className="text-center space-y-4 mb-8">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center mx-auto">
-                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h2 className="text-xl font-semibold text-white mb-2">Define Your Business Focus</h2>
-                <p className="text-slate-300 text-sm">
-                  Help VORTA understand your key business priorities by defining 3-5 critical questions you need answered regularly.
-                </p>
-              </div>
-            </div>
-
-            {/* Business Prompts Section */}
+            {/* Business Questions Section */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-lg font-medium text-white">Business Questions</span>
-                </div>
+                <h3 className="text-lg font-medium text-white">Key Business Questions</h3>
                 <button
                   onClick={generateBusinessSuggestions}
-                  className="px-3 py-2 bg-blue-600/20 border border-blue-500/30 rounded-lg text-blue-300 hover:bg-blue-600/30 transition-colors text-sm"
+                  className="px-3 py-1 bg-slate-700 border border-slate-600 rounded text-slate-300 hover:bg-slate-600 transition-colors text-sm"
                 >
-                  ✨ Generate Ideas
+                  Generate Suggestions
                 </button>
               </div>
 
               <div className="space-y-3">
                 {businessPrompts.map((prompt, index) => (
-                  <motion.div
+                  <div
                     key={prompt.id}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="bg-gradient-to-br from-slate-800/50 to-slate-800/30 border border-slate-600/30 rounded-xl p-4 shadow-lg backdrop-blur-sm"
+                    className="bg-slate-700 border border-slate-600 rounded p-4"
                   >
-                    <div className="flex items-start space-x-4">
-                      <div className="w-8 h-8 bg-gradient-to-br from-blue-600/50 to-blue-700/50 rounded-lg flex items-center justify-center border border-blue-500/30 flex-shrink-0 mt-1">
-                        <span className="text-blue-200 text-sm font-medium">{index + 1}</span>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-6 h-6 bg-slate-600 rounded flex items-center justify-center flex-shrink-0 mt-2">
+                        <span className="text-slate-300 text-sm font-medium">{index + 1}</span>
                       </div>
                       <div className="flex-1 space-y-3">
                         <div>
                           <input
                             value={prompt.question}
                             onChange={(e) => updateBusinessPrompt(prompt.id, 'question', e.target.value)}
-                            placeholder="e.g., What are our top-performing products this quarter?"
-                            className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                            placeholder="Enter your business question"
+                            className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded text-white placeholder-slate-400 focus:border-slate-500 focus:outline-none"
                           />
                         </div>
                         <div className="flex items-center space-x-2">
                           <input
                             value={prompt.tag}
                             onChange={(e) => updateBusinessPrompt(prompt.id, 'tag', e.target.value)}
-                            placeholder="Tag (e.g., Performance, Sales, Inventory)"
-                            className="flex-1 px-3 py-2 bg-slate-700/30 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none text-sm"
+                            placeholder="Category (e.g., Sales, Operations)"
+                            className="flex-1 px-3 py-2 bg-slate-800 border border-slate-600 rounded text-white placeholder-slate-400 focus:border-slate-500 focus:outline-none text-sm"
                           />
                           {businessPrompts.length > 1 && (
                             <button
                               onClick={() => removeBusinessPrompt(prompt.id)}
-                              className="p-2 text-slate-400 hover:text-red-400 transition-colors"
+                              className="p-2 text-slate-400 hover:text-slate-300 transition-colors"
                             >
                               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -944,33 +922,33 @@ export default function Onboarding() {
                         </div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
 
               {businessPrompts.length < 5 && (
                 <button
                   onClick={addBusinessPrompt}
-                  className="w-full py-3 border-2 border-dashed border-slate-600 rounded-xl text-slate-400 hover:border-blue-500 hover:text-blue-300 transition-colors flex items-center justify-center space-x-2"
+                  className="w-full py-3 border border-dashed border-slate-600 rounded text-slate-400 hover:border-slate-500 hover:text-slate-300 transition-colors flex items-center justify-center space-x-2"
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
                   </svg>
-                  <span>Add Another Question</span>
+                  <span>Add Question</span>
                 </button>
               )}
             </div>
 
-            {/* Progress Indicator */}
-            <div className="bg-slate-800/40 border border-slate-700/50 rounded-lg p-4">
+            {/* Status */}
+            <div className="bg-slate-700 border border-slate-600 rounded p-3">
               <div className="flex items-center space-x-3">
-                <div className={`w-3 h-3 rounded-full ${
+                <div className={`w-2 h-2 rounded-full ${
                   businessPrompts.some(p => p.question.trim().length > 0) 
-                    ? "bg-emerald-400" 
-                    : "bg-amber-400"
+                    ? "bg-slate-400" 
+                    : "bg-slate-500"
                 }`}></div>
                 <span className="text-sm text-slate-300">
-                  {businessPrompts.filter(p => p.question.trim().length > 0).length} of {businessPrompts.length} questions defined
+                  {businessPrompts.filter(p => p.question.trim().length > 0).length} of {businessPrompts.length} questions configured
                 </span>
               </div>
             </div>
