@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Dashboard from "@/pages/dashboard";
 import Login from "@/pages/login";
 import Signup from "@/pages/signup";
-import OnboardingNew from "@/pages/onboarding-new";
+import Onboarding from "@/pages/onboarding";
 import OnboardingDataForm from "@/pages/OnboardingDataForm";
 import TableConfigDemo from "@/pages/table-config-demo";
 import BusinessContextPrompts from "@/pages/BusinessContextPrompts";
@@ -23,7 +23,7 @@ function Router() {
       <Route path="/" component={Login} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
-      <Route path="/onboarding" component={OnboardingNew} />
+      <Route path="/onboarding" component={Onboarding} />
       <Route path="/onboarding/data" component={OnboardingDataForm} />
       <Route path="/onboarding/context" component={BusinessContextPrompts} />
       <Route path="/table-demo" component={TableConfigDemo} />
