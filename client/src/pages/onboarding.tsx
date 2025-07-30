@@ -515,63 +515,70 @@ export default function Onboarding() {
 
       case 6:
         return (
-          <div className="space-y-6">
-            <div className="text-center mb-6">
-              <div className="flex items-center justify-center space-x-2 mb-4">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-green-400 text-sm font-medium">Connected to {selectedDB}</span>
+          <div className="space-y-8">
+            <div className="mb-8">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-xl font-semibold text-slate-100 mb-2">Database Schema Configuration</h2>
+                  <p className="text-slate-400 text-sm leading-relaxed max-w-2xl">
+                    Configure your database tables to help VORTA understand your business context and provide more accurate insights.
+                  </p>
+                </div>
+                <div className="flex items-center space-x-3 px-4 py-2 bg-slate-800/60 border border-slate-700/40 rounded-lg">
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                  <span className="text-slate-300 text-sm font-medium">{selectedDB} Connected</span>
+                </div>
               </div>
-              <p className="text-slate-400 text-sm">
-                Configure your database tables to help VORTA understand your business context
-              </p>
             </div>
 
-            {/* Table Selection Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
-              {mockTables.map((table) => {
-                const isSelected = selectedTables.includes(table.name);
-                return (
-                  <motion.div
-                    key={table.name}
-                    className={`p-3 rounded-lg border transition-all cursor-pointer group ${
-                      isSelected
-                        ? "border-blue-500 bg-blue-500/10"
-                        : "border-slate-600 hover:border-blue-400 hover:bg-slate-700/30"
-                    }`}
-                    onClick={() => toggleTable(table.name)}
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
-                        <div className={`w-6 h-6 rounded flex items-center justify-center ${
-                          isSelected 
-                            ? "bg-blue-500 text-white" 
-                            : "bg-slate-700 text-slate-400"
-                        }`}>
-                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8z" clipRule="evenodd" />
-                          </svg>
+            {/* Table Selection Section */}
+            <div className="mb-8">
+              <div className="flex items-center space-x-2 mb-4">
+                <svg className="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8z" clipRule="evenodd" />
+                </svg>
+                <h3 className="text-lg font-medium text-slate-200">Available Tables</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {mockTables.map((table) => {
+                  const isSelected = selectedTables.includes(table.name);
+                  return (
+                    <motion.button
+                      key={table.name}
+                      className={`p-4 rounded-lg border text-left transition-all group focus:outline-none focus:ring-2 focus:ring-slate-600 ${
+                        isSelected
+                          ? "border-slate-600 bg-slate-800/60"
+                          : "border-slate-700/60 hover:border-slate-600 hover:bg-slate-800/40"
+                      }`}
+                      onClick={() => toggleTable(table.name)}
+                      whileHover={{ scale: 1.005 }}
+                      whileTap={{ scale: 0.995 }}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center space-x-3">
+                          <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${
+                            isSelected 
+                              ? "border-slate-500 bg-slate-600" 
+                              : "border-slate-600 bg-slate-700/60"
+                          }`}>
+                            {isSelected && (
+                              <svg className="w-3 h-3 text-slate-200" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                              </svg>
+                            )}
+                          </div>
+                          <span className="text-sm font-medium text-slate-200">
+                            {formatTableName(table.name)}
+                          </span>
                         </div>
-                        <span className={`text-sm font-medium ${
-                          isSelected ? "text-blue-300" : "text-slate-300"
-                        }`}>
-                          {formatTableName(table.name)}
-                        </span>
                       </div>
-                      <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                        isSelected 
-                          ? "border-blue-500 bg-blue-500" 
-                          : "border-slate-500"
-                      }`}>
-                        {isSelected && (
-                          <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                        )}
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
+                      <p className="text-xs text-slate-500 leading-relaxed">
+                        {table.description}
+                      </p>
+                    </motion.button>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Selected Tables Configuration */}
