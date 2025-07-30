@@ -588,13 +588,25 @@ export default function Onboarding() {
                 animate={{ opacity: 1, y: 0 }}
                 className="space-y-4"
               >
-                <div className="flex items-center space-x-2 mb-4">
-                  <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span className="text-blue-400 text-sm font-medium">
-                    Configure {selectedTables.length} selected table{selectedTables.length !== 1 ? 's' : ''}
-                  </span>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-slate-600/50 rounded-lg flex items-center justify-center border border-slate-500/30">
+                      <svg className="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-medium text-slate-200">Table Configuration</h3>
+                      <p className="text-xs text-slate-500 mt-0.5">{selectedTables.length} tables selected for AI training</p>
+                    </div>
+                  </div>
+                  <div className={`px-3 py-1.5 rounded-full text-xs font-medium border ${
+                    hasValidBusinessQuestions() 
+                      ? "bg-emerald-400/10 border-emerald-400/30 text-emerald-400" 
+                      : "bg-amber-400/10 border-amber-400/30 text-amber-400"
+                  }`}>
+                    {hasValidBusinessQuestions() ? "✓ Complete" : "⚠ Questions Required"}
+                  </div>
                 </div>
 
                 {selectedTables.map((tableName) => {
@@ -608,7 +620,7 @@ export default function Onboarding() {
                       key={tableName}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="bg-slate-800/30 border border-slate-700/50 rounded-xl p-5"
+                      className="bg-gradient-to-br from-slate-800/50 to-slate-800/30 border border-slate-600/30 rounded-xl p-6 shadow-lg backdrop-blur-sm"
                     >
                       {/* Table Header */}
                       <div className="flex items-center justify-between mb-4">

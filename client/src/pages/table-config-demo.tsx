@@ -192,109 +192,156 @@ export default function TableConfigDemo() {
                     key={tableName}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-slate-800/40 border border-slate-700/30 rounded-lg p-6"
+                    className="bg-gradient-to-br from-slate-800/50 to-slate-800/30 border border-slate-600/30 rounded-xl p-8 shadow-xl backdrop-blur-sm"
                   >
                     {/* Table Header */}
-                    <div className="flex items-start justify-between mb-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-10 h-10 bg-slate-700/60 rounded-lg flex items-center justify-center border border-slate-600/40">
-                          <svg className="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8z" clipRule="evenodd" />
-                          </svg>
+                    <div className="flex items-start justify-between mb-8">
+                      <div className="flex items-start space-x-5">
+                        <div className="relative">
+                          <div className="w-12 h-12 bg-gradient-to-br from-slate-600/80 to-slate-700/80 rounded-xl flex items-center justify-center border border-slate-500/30 shadow-lg">
+                            <svg className="w-5 h-5 text-slate-200" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400/20 border border-emerald-400/30 rounded-full flex items-center justify-center">
+                            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                          </div>
                         </div>
-                        <div className="flex-1">
-                          <input
-                            value={config.displayName}
-                            onChange={(e) => updateTableConfig(tableName, 'displayName', e.target.value)}
-                            className="text-lg font-medium text-slate-100 bg-transparent border-none outline-none focus:bg-slate-700/30 rounded px-2 py-1 w-full"
-                            placeholder="Table display name"
-                          />
-                          <p className="text-xs text-slate-500 mt-1 px-2">
-                            {tableName} • {table.columns.length} columns
-                          </p>
-                        </div>
-                      </div>
-                      <button
-                        onClick={() => toggleTable(tableName)}
-                        className="text-slate-500 hover:text-slate-400 transition-colors p-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-600"
-                        title="Remove table"
-                      >
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                        </svg>
-                      </button>
-                    </div>
-
-                    {/* Business Questions Section */}
-                    <div className="mb-6">
-                      <div className="flex items-center space-x-2 mb-4">
-                        <svg className="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
-                        </svg>
-                        <span className="text-sm font-medium text-slate-300">Business Context Questions</span>
-                        <div className="group relative">
-                          <svg className="w-3 h-3 text-slate-500 hover:text-slate-400 cursor-help" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                          </svg>
-                          <div className="invisible group-hover:visible absolute bottom-full left-0 mb-2 p-3 bg-slate-800 border border-slate-700 text-xs text-slate-300 rounded-lg shadow-lg whitespace-nowrap z-10">
-                            Define common questions to improve AI accuracy
+                        <div className="flex-1 min-w-0">
+                          <div className="group">
+                            <input
+                              value={config.displayName}
+                              onChange={(e) => updateTableConfig(tableName, 'displayName', e.target.value)}
+                              className="text-xl font-semibold text-slate-50 bg-transparent border-none outline-none focus:bg-slate-700/20 rounded-lg px-3 py-2 w-full group-hover:bg-slate-700/10 transition-all duration-200"
+                              placeholder="Table display name"
+                            />
+                          </div>
+                          <div className="flex items-center space-x-3 mt-2 px-3">
+                            <span className="text-xs font-medium text-slate-400 bg-slate-700/40 px-2 py-1 rounded-md border border-slate-600/30">
+                              {tableName}
+                            </span>
+                            <span className="text-xs text-slate-500">•</span>
+                            <span className="text-xs text-slate-500">
+                              {table.columns.length} columns
+                            </span>
                           </div>
                         </div>
                       </div>
-                      <div className="space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <button
+                          onClick={() => toggleTable(tableName)}
+                          className="text-slate-500 hover:text-slate-400 hover:bg-slate-700/40 transition-all duration-200 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500/50"
+                          title="Remove table"
+                        >
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Business Questions Section */}
+                    <div className="mb-8">
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-slate-600/50 rounded-lg flex items-center justify-center border border-slate-500/30">
+                            <svg className="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h4 className="text-base font-medium text-slate-200">Business Context Questions</h4>
+                            <p className="text-xs text-slate-500 mt-0.5">Help VORTA understand your data patterns</p>
+                          </div>
+                        </div>
+                        <div className="group relative">
+                          <button className="w-6 h-6 bg-slate-700/40 hover:bg-slate-600/50 rounded-full flex items-center justify-center border border-slate-600/40 transition-colors">
+                            <svg className="w-3 h-3 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                            </svg>
+                          </button>
+                          <div className="invisible group-hover:visible absolute bottom-full right-0 mb-2 p-3 bg-slate-800/90 border border-slate-600/50 text-xs text-slate-300 rounded-lg shadow-xl whitespace-nowrap z-10 backdrop-blur-sm">
+                            Define questions to train AI for better insights
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
                         {config.businessQuestions.map((question, idx) => (
-                          <div key={idx} className="relative">
-                            <span className="absolute left-3 top-2.5 text-xs text-slate-500 font-medium">
-                              {idx + 1}.
-                            </span>
-                            <input
-                              value={question}
-                              onChange={(e) => updateBusinessQuestion(tableName, idx, e.target.value)}
-                              placeholder="e.g., Which customers haven't ordered this month?"
-                              className="w-full pl-8 pr-4 py-2.5 bg-slate-700/30 border border-slate-600/50 rounded-lg text-sm text-slate-200 placeholder-slate-500 focus:border-slate-500 focus:bg-slate-700/50 focus:outline-none transition-colors"
-                            />
+                          <div key={idx} className="group">
+                            <div className="relative">
+                              <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 bg-slate-600/40 border border-slate-500/30 rounded-full">
+                                <span className="text-xs text-slate-400 font-medium">{idx + 1}</span>
+                              </div>
+                              <input
+                                value={question}
+                                onChange={(e) => updateBusinessQuestion(tableName, idx, e.target.value)}
+                                placeholder="e.g., Which customers haven't ordered this month?"
+                                className="w-full pl-12 pr-4 py-3.5 bg-slate-700/20 border border-slate-600/40 rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:border-slate-500/60 focus:bg-slate-700/30 focus:outline-none focus:ring-2 focus:ring-slate-500/20 transition-all duration-200 group-hover:bg-slate-700/25"
+                              />
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     {/* Column Mapping Section */}
-                    <div className="border-t border-slate-700/40 pt-6">
-                      <div className="flex items-center space-x-2 mb-4">
-                        <svg className="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-                        </svg>
-                        <span className="text-sm font-medium text-slate-300">Column Mapping</span>
-                        <span className="text-xs text-slate-500">({table.columns.length} columns)</span>
+                    <div className="border-t border-slate-600/20 pt-8">
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-slate-600/50 rounded-lg flex items-center justify-center border border-slate-500/30">
+                            <svg className="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h4 className="text-base font-medium text-slate-200">Column Mapping</h4>
+                            <p className="text-xs text-slate-500 mt-0.5">Map database fields to business terminology</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <span className="text-xs text-slate-500 bg-slate-700/40 px-2 py-1 rounded-md border border-slate-600/30">
+                            {table.columns.length} fields
+                          </span>
+                        </div>
                       </div>
-                      <div className="space-y-2">
+                      <div className="space-y-3">
                         {table.columns.slice(0, 6).map((column) => (
-                          <div key={column} className="grid grid-cols-5 gap-3 items-center">
-                            <div className="col-span-2">
-                              <span className="text-xs font-mono text-slate-400 bg-slate-700/30 px-2 py-1 rounded border border-slate-600/30">
-                                {column}
-                              </span>
-                            </div>
-                            <div className="col-span-3">
-                              <input
-                                value={config.columnDescriptions[column] || ''}
-                                onChange={(e) => {
-                                  const newDescriptions = { ...config.columnDescriptions };
-                                  newDescriptions[column] = e.target.value;
-                                  updateTableConfig(tableName, 'columnDescriptions', newDescriptions);
-                                }}
-                                placeholder="Business-friendly description..."
-                                className="w-full px-3 py-1.5 bg-slate-700/30 border border-slate-600/50 rounded text-xs text-slate-200 placeholder-slate-500 focus:border-slate-500 focus:bg-slate-700/50 focus:outline-none transition-colors"
-                              />
+                          <div key={column} className="group">
+                            <div className="flex items-center space-x-4 p-3 bg-slate-700/10 hover:bg-slate-700/20 rounded-lg border border-slate-600/20 transition-all duration-200">
+                              <div className="flex-shrink-0">
+                                <div className="flex items-center space-x-2">
+                                  <div className="w-2 h-2 bg-slate-500 rounded-full"></div>
+                                  <span className="text-xs font-mono text-slate-400 bg-slate-700/40 px-2 py-1 rounded-md border border-slate-600/30 min-w-0">
+                                    {column}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <input
+                                  value={config.columnDescriptions[column] || ''}
+                                  onChange={(e) => {
+                                    const newDescriptions = { ...config.columnDescriptions };
+                                    newDescriptions[column] = e.target.value;
+                                    updateTableConfig(tableName, 'columnDescriptions', newDescriptions);
+                                  }}
+                                  placeholder="Describe this field for business users..."
+                                  className="w-full px-3 py-2 bg-slate-700/20 border border-slate-600/40 rounded-lg text-sm text-slate-200 placeholder-slate-500 focus:border-slate-500/60 focus:bg-slate-700/30 focus:outline-none focus:ring-2 focus:ring-slate-500/20 transition-all duration-200"
+                                />
+                              </div>
                             </div>
                           </div>
                         ))}
                       </div>
                       {table.columns.length > 6 && (
-                        <div className="mt-3 pt-2 border-t border-slate-700/30">
-                          <p className="text-xs text-slate-500">
-                            + {table.columns.length - 6} additional columns available for mapping
-                          </p>
+                        <div className="mt-6 pt-4 border-t border-slate-700/20">
+                          <div className="flex items-center justify-center p-3 bg-slate-700/10 rounded-lg border border-slate-600/20">
+                            <p className="text-sm text-slate-400 flex items-center space-x-2">
+                              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+                              </svg>
+                              <span>{table.columns.length - 6} additional columns available for mapping</span>
+                            </p>
+                          </div>
                         </div>
                       )}
                     </div>
