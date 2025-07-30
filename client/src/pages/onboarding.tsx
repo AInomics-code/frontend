@@ -34,6 +34,11 @@ const steps: OnboardingStep[] = [
     id: 5,
     title: "Database Connection",
     description: "Enter your database credentials to establish the connection."
+  },
+  {
+    id: 6,
+    title: "Configure Schema",
+    description: "Help VORTA understand your data structure for better insights."
   }
 ];
 
@@ -116,7 +121,18 @@ export default function Onboarding() {
   const [isConnecting, setIsConnecting] = useState(false);
   const [dbConnectionSuccess, setDbConnectionSuccess] = useState(false);
   const [showCredentialsForm, setShowCredentialsForm] = useState(false);
+  const [autoConnecting, setAutoConnecting] = useState(false);
+  const [selectedTables, setSelectedTables] = useState<string[]>([]);
   const [, setLocation] = useLocation();
+
+  const mockTables = [
+    { name: "customers", description: "Customer information and contact details" },
+    { name: "orders", description: "Order history and transaction data" },
+    { name: "products", description: "Product catalog and inventory" },
+    { name: "sales_reps", description: "Sales team member information" },
+    { name: "territories", description: "Regional sales territories" },
+    { name: "invoices", description: "Billing and payment records" }
+  ];
 
   const handleNext = () => {
     if (currentStep < steps.length) {
@@ -145,9 +161,19 @@ export default function Onboarding() {
         return selectedDB !== null;
       case 5:
         return credentials.host && credentials.port && credentials.username && credentials.database;
+      case 6:
+        return selectedTables.length > 0;
       default:
         return false;
     }
+  };
+
+  const toggleTable = (tableName: string) => {
+    setSelectedTables(prev => 
+      prev.includes(tableName) 
+        ? prev.filter(t => t !== tableName)
+        : [...prev, tableName]
+    );
   };
 
   const handleDatabaseSelect = (dbName: string) => {
@@ -180,7 +206,17 @@ export default function Onboarding() {
         username: credentials.username,
         password: credentials.password
       });
+      
+      // Auto-proceed to next step after successful connection
+      setTimeout(() => {
+        setCurrentStep(6); // Move to Table Schema Cards
+      }, 1000);
     }, 2000);
+  };
+
+  const handleCredentialsSubmit = () => {
+    setAutoConnecting(true);
+    connectToDatabase();
   };
 
   const renderStepContent = () => {
@@ -386,6 +422,93 @@ export default function Onboarding() {
           </AnimatePresence>
         );
 
+      case 6:
+        return (
+          <div className="space-y-6">
+            <div className="text-center mb-8">
+              <div className="flex items-center justify-center space-x-2 mb-4">
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-green-400 text-sm font-medium">Connected to {selectedDB}</span>
+              </div>
+              <p className="text-slate-400 text-sm">
+                Select the tables VORTA should analyze for business insights
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {mockTables.map((table) => {
+                const isSelected = selectedTables.includes(table.name);
+                return (
+                  <motion.div
+                    key={table.name}
+                    className={`p-4 rounded-xl border-2 transition-all cursor-pointer group ${
+                      isSelected
+                        ? "border-blue-500 bg-blue-500/20"
+                        : "border-slate-600 hover:border-blue-400 hover:bg-slate-700/50"
+                    }`}
+                    onClick={() => toggleTable(table.name)}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <div className="flex items-center space-x-3 mb-2">
+                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                            isSelected 
+                              ? "bg-blue-500 text-white" 
+                              : "bg-slate-700 text-blue-200 group-hover:bg-slate-600"
+                          }`}>
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm4 2a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <h3 className={`font-medium ${
+                            isSelected ? "text-blue-400" : "text-blue-200"
+                          }`}>
+                            {table.name}
+                          </h3>
+                        </div>
+                        <p className="text-sm text-slate-400 ml-11">
+                          {table.description}
+                        </p>
+                      </div>
+                      <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+                        isSelected 
+                          ? "border-blue-500 bg-blue-500" 
+                          : "border-slate-500 bg-slate-700"
+                      }`}>
+                        {isSelected && (
+                          <div className="w-2 h-2 bg-white rounded-full"></div>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {selectedTables.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4"
+              >
+                <div className="flex items-center space-x-2 mb-2">
+                  <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-blue-400 text-sm font-medium">
+                    {selectedTables.length} table{selectedTables.length !== 1 ? 's' : ''} selected
+                  </span>
+                </div>
+                <p className="text-slate-400 text-sm">
+                  VORTA will analyze these tables to provide business insights and answer your questions.
+                </p>
+              </motion.div>
+            )}
+          </div>
+        );
+
       default:
         return null;
     }
@@ -471,7 +594,7 @@ export default function Onboarding() {
                   Skip for now
                 </button>
                 <button
-                  onClick={connectToDatabase}
+                  onClick={handleCredentialsSubmit}
                   disabled={!canProceed() || isConnecting}
                   className={`flex items-center px-6 py-3 rounded-xl font-medium transition ${
                     canProceed() && !isConnecting
@@ -487,24 +610,32 @@ export default function Onboarding() {
                       </svg>
                       Connecting...
                     </>
-                  ) : dbConnectionSuccess ? (
-                    <>
-                      Complete Setup →
-                    </>
                   ) : (
                     <>
-                      Connect Database
+                      Connect & Continue →
                     </>
                   )}
                 </button>
-                {dbConnectionSuccess && (
-                  <button
-                    onClick={() => setLocation("/dashboard")}
-                    className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-xl font-medium transition"
-                  >
-                    Go to Dashboard →
-                  </button>
-                )}
+              </div>
+            ) : currentStep === 6 ? (
+              <div className="flex items-center space-x-4">
+                <button
+                  onClick={() => setLocation("/dashboard")}
+                  className="text-slate-400 hover:text-blue-200 transition-colors"
+                >
+                  Skip for now
+                </button>
+                <button
+                  onClick={() => setLocation("/dashboard")}
+                  disabled={!canProceed()}
+                  className={`flex items-center px-6 py-3 rounded-xl font-medium transition ${
+                    canProceed()
+                      ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-500 hover:to-blue-600"
+                      : "bg-slate-600 text-slate-400 cursor-not-allowed"
+                  }`}
+                >
+                  Complete Setup →
+                </button>
               </div>
             ) : (
               <button
