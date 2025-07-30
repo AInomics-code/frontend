@@ -13,37 +13,37 @@ const steps: OnboardingStep[] = [
   {
     id: 1,
     title: "Welcome to VORTA",
-    description: "Let's get your business intelligence platform set up in just a few steps."
+    description: "Enterprise Business Intelligence Platform"
   },
   {
     id: 2,
-    title: "What's your industry?",
-    description: "This helps us customize your experience with relevant insights and metrics."
+    title: "Industry Classification",
+    description: "Select your organization's primary industry for optimized analytics"
   },
   {
     id: 3,
-    title: "What's your primary use case?",
-    description: "Tell us how you plan to use VORTA to get the most relevant features."
+    title: "Use Case Configuration",
+    description: "Define your primary analytical requirements and objectives"
   },
   {
     id: 4,
-    title: "Select Your Database",
-    description: "Choose your primary database to connect VORTA with your business data."
+    title: "Data Source Selection",
+    description: "Connect your enterprise database systems"
   },
   {
     id: 5,
-    title: "Database Connection",
-    description: "Enter your database credentials to establish the connection."
+    title: "Database Configuration",
+    description: "Establish secure connection to your data infrastructure"
   },
   {
     id: 6,
-    title: "Configure Schema",
-    description: "Help VORTA understand your data structure for better insights."
+    title: "Schema Configuration",
+    description: "Map your database structure for optimal performance"
   },
   {
     id: 7,
-    title: "Business Context Questions",
-    description: "Define key business questions to help VORTA understand your goals and priorities."
+    title: "Business Intelligence Setup",
+    description: "Configure critical business metrics and KPIs"
   }
 ];
 
@@ -983,65 +983,58 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a0b1e] via-[#141b2e] to-[#1a2332] flex items-center justify-center px-6 py-8">
-      <div className="w-full max-w-3xl">
-        {/* Enhanced Progress Bar */}
+    <div className="min-h-screen bg-white flex items-center justify-center px-6 py-8">
+      <div className="w-full max-w-2xl">
+        {/* Enterprise Progress Indicator */}
         <motion.div 
-          className="mb-12"
+          className="mb-8"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.3 }}
         >
-          <div className="flex justify-between text-sm text-cyan-300/70 mb-4">
+          <div className="flex justify-between text-sm text-gray-600 mb-3">
             <span className="font-medium">Step {currentStep} of {steps.length}</span>
-            <span className="font-medium">{Math.round((currentStep / steps.length) * 100)}% complete</span>
           </div>
-          <div className="relative w-full bg-slate-800/50 rounded-full h-3 overflow-hidden backdrop-blur-sm border border-slate-700/50">
+          <div className="relative w-full bg-gray-200 rounded-sm h-1 overflow-hidden">
             <motion.div 
-              className="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 h-full rounded-full shadow-lg"
+              className="bg-gray-900 h-full"
               initial={{ width: 0 }}
               animate={{ width: `${(currentStep / steps.length) * 100}%` }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              style={{
-                boxShadow: "0 0 20px rgba(6, 182, 212, 0.4)"
-              }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             />
           </div>
         </motion.div>
 
         <motion.div 
-          className="relative bg-gradient-to-br from-[#1e2951]/80 to-[#2a3b5c]/70 p-12 rounded-3xl shadow-2xl border border-cyan-500/10 backdrop-blur-xl"
-          initial={{ opacity: 0, y: 30 }}
+          className="relative bg-white border border-gray-200 rounded-lg shadow-sm p-8"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          style={{
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(103, 232, 249, 0.05)"
-          }}
+          transition={{ duration: 0.4 }}
         >
           <AnimatePresence mode="wait">
             <motion.div
               key={currentStep}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
             >
-              <div className="text-center mb-10">
+              <div className="mb-8">
                 <motion.h1 
-                  className="text-3xl font-light text-white mb-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.6 }}
-                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                  className="text-2xl font-semibold text-gray-900 mb-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1, duration: 0.3 }}
+                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
                 >
                   {steps[currentStep - 1].title}
                 </motion.h1>
                 <motion.p 
-                  className="text-cyan-200/70 text-lg leading-relaxed max-w-2xl mx-auto"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
-                  style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                  className="text-gray-600 text-base leading-relaxed"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2, duration: 0.3 }}
+                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
                 >
                   {steps[currentStep - 1].description}
                 </motion.p>
