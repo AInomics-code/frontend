@@ -842,7 +842,7 @@ export default function Onboarding() {
                       database: selectedDB,
                       credentials: { ...credentials, password: '[REDACTED]' }
                     });
-                    setLocation("/dashboard");
+                    setLocation("/onboarding/context");
                   }}
                   disabled={!canProceed()}
                   className={`flex items-center px-6 py-3 rounded-xl font-medium transition ${
@@ -851,7 +851,7 @@ export default function Onboarding() {
                       : "bg-slate-600 text-slate-400 cursor-not-allowed"
                   }`}
                 >
-                  Complete Setup →
+                  Continue to Business Questions →
                 </button>
               </div>
             ) : (
