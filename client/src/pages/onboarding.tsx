@@ -27,8 +27,13 @@ const steps: OnboardingStep[] = [
   },
   {
     id: 4,
-    title: "Let's connect VORTA to your system",
-    description: "Select the data source(s) you use. VORTA will use these to automate and assist."
+    title: "Select Your Database",
+    description: "Choose your primary database to connect VORTA with your business data."
+  },
+  {
+    id: 5,
+    title: "Database Connection",
+    description: "Enter your database credentials to establish the connection."
   }
 ];
 
@@ -51,20 +56,66 @@ const useCases = [
   "Executive Reporting"
 ];
 
+const databases = [
+  { 
+    name: "PostgreSQL", 
+    icon: Database, 
+    defaultPort: "5432",
+    description: "Open source relational database"
+  },
+  { 
+    name: "MySQL", 
+    icon: Database, 
+    defaultPort: "3306",
+    description: "Popular relational database system"
+  },
+  { 
+    name: "Microsoft SQL Server", 
+    icon: Database, 
+    defaultPort: "1433",
+    description: "Enterprise database platform"
+  },
+  { 
+    name: "Oracle", 
+    icon: Database, 
+    defaultPort: "1521",
+    description: "Enterprise-grade database system"
+  },
+  { 
+    name: "MongoDB", 
+    icon: Database, 
+    defaultPort: "27017",
+    description: "NoSQL document database"
+  },
+  { 
+    name: "Redis", 
+    icon: Database, 
+    defaultPort: "6379",
+    description: "In-memory data store"
+  }
+];
+
 const dataSources = [
-  { name: "PostgreSQL", icon: Database },
-  { name: "MySQL", icon: Database },
   { name: "Google Sheets", icon: FileSpreadsheet },
   { name: "Custom API", icon: Globe },
-  { name: "Excel / CSV", icon: FileText },
-  { name: "MongoDB", icon: Database }
+  { name: "Excel / CSV", icon: FileText }
 ];
 
 export default function Onboarding() {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedIndustry, setSelectedIndustry] = useState("");
   const [selectedUseCase, setSelectedUseCase] = useState("");
-  const [selectedDataSources, setSelectedDataSources] = useState<string[]>([]);
+  const [selectedDB, setSelectedDB] = useState<string | null>(null);
+  const [credentials, setCredentials] = useState({
+    host: '',
+    port: '',
+    username: '',
+    password: '',
+    database: ''
+  });
+  const [isConnecting, setIsConnecting] = useState(false);
+  const [dbConnectionSuccess, setDbConnectionSuccess] = useState(false);
+  const [showCredentialsForm, setShowCredentialsForm] = useState(false);
   const [, setLocation] = useLocation();
 
   const handleNext = () => {
@@ -91,18 +142,45 @@ export default function Onboarding() {
       case 3:
         return selectedUseCase !== "";
       case 4:
-        return selectedDataSources.length > 0;
+        return selectedDB !== null;
+      case 5:
+        return credentials.host && credentials.port && credentials.username && credentials.database;
       default:
         return false;
     }
   };
 
-  const toggleDataSource = (source: string) => {
-    setSelectedDataSources(prev => 
-      prev.includes(source) 
-        ? prev.filter(s => s !== source)
-        : [...prev, source]
-    );
+  const handleDatabaseSelect = (dbName: string) => {
+    setSelectedDB(dbName);
+    const selectedDatabase = databases.find(db => db.name === dbName);
+    if (selectedDatabase) {
+      setCredentials({
+        ...credentials,
+        port: selectedDatabase.defaultPort
+      });
+    }
+  };
+
+  const handleContinueToCredentials = () => {
+    setShowCredentialsForm(true);
+    setCurrentStep(5);
+  };
+
+  const connectToDatabase = async () => {
+    setIsConnecting(true);
+    // Mock API call
+    setTimeout(() => {
+      setDbConnectionSuccess(true);
+      setIsConnecting(false);
+      console.log('Database Config:', {
+        engine: selectedDB,
+        host: credentials.host,
+        port: credentials.port,
+        database: credentials.database,
+        username: credentials.username,
+        password: credentials.password
+      });
+    }, 2000);
   };
 
   const renderStepContent = () => {
@@ -164,52 +242,148 @@ export default function Onboarding() {
       case 4:
         return (
           <div className="space-y-6">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-              {dataSources.map((source) => {
-                const Icon = source.icon;
-                const isSelected = selectedDataSources.includes(source.name);
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {databases.map((database) => {
+                const Icon = database.icon;
+                const isSelected = selectedDB === database.name;
                 return (
                   <motion.div
-                    key={source.name}
-                    className={`relative p-6 rounded-2xl border-2 transition-all cursor-pointer group ${
+                    key={database.name}
+                    className={`p-6 rounded-2xl border-2 transition-all cursor-pointer group ${
                       isSelected
                         ? "border-blue-500 bg-blue-500/20"
-                        : "border-slate-600 hover:border-blue-400 hover:bg-slate-700"
+                        : "border-slate-600 hover:border-blue-400 hover:bg-slate-700/50"
                     }`}
-                    onClick={() => toggleDataSource(source.name)}
+                    onClick={() => handleDatabaseSelect(database.name)}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <div className="flex flex-col items-center text-center space-y-3">
-                      <div className={`p-3 rounded-xl ${
+                    <div className="flex items-start space-x-4">
+                      <div className={`p-3 rounded-xl flex-shrink-0 ${
                         isSelected 
                           ? "bg-blue-500 text-white" 
                           : "bg-slate-700 text-blue-200 group-hover:bg-slate-600"
                       }`}>
                         <Icon className="w-6 h-6" />
                       </div>
-                      <h3 className={`font-medium ${
-                        isSelected ? "text-blue-400" : "text-blue-200"
+                      <div className="flex-1">
+                        <h3 className={`font-medium mb-1 ${
+                          isSelected ? "text-blue-400" : "text-blue-200"
+                        }`}>
+                          {database.name}
+                        </h3>
+                        <p className="text-sm text-slate-400">
+                          {database.description}
+                        </p>
+                      </div>
+                      <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+                        isSelected 
+                          ? "border-blue-500 bg-blue-500" 
+                          : "border-slate-500 bg-slate-700"
                       }`}>
-                        {source.name}
-                      </h3>
-                    </div>
-                    
-                    {/* Toggle indicator */}
-                    <div className={`absolute top-4 right-4 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                      isSelected 
-                        ? "border-blue-500 bg-blue-500" 
-                        : "border-slate-500 bg-slate-700"
-                    }`}>
-                      {isSelected && (
-                        <div className="w-2 h-2 bg-white rounded-full"></div>
-                      )}
+                        {isSelected && (
+                          <div className="w-2 h-2 bg-white rounded-full"></div>
+                        )}
+                      </div>
                     </div>
                   </motion.div>
                 );
               })}
             </div>
           </div>
+        );
+
+      case 5:
+        return (
+          <AnimatePresence mode="wait">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-6"
+            >
+              {selectedDB && (
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className="p-2 bg-blue-500 rounded-lg">
+                    <Database className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-blue-200 font-medium">{selectedDB}</h3>
+                    <p className="text-sm text-slate-400">Database Connection</p>
+                  </div>
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-blue-200 mb-2">Host</label>
+                  <input
+                    type="text"
+                    value={credentials.host}
+                    onChange={(e) => setCredentials({...credentials, host: e.target.value})}
+                    placeholder="localhost"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-blue-200 mb-2">Port</label>
+                  <input
+                    type="text"
+                    value={credentials.port}
+                    onChange={(e) => setCredentials({...credentials, port: e.target.value})}
+                    placeholder="5432"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-blue-200 mb-2">Username</label>
+                  <input
+                    type="text"
+                    value={credentials.username}
+                    onChange={(e) => setCredentials({...credentials, username: e.target.value})}
+                    placeholder="admin"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-blue-200 mb-2">Password</label>
+                  <input
+                    type="password"
+                    value={credentials.password}
+                    onChange={(e) => setCredentials({...credentials, password: e.target.value})}
+                    placeholder="••••••••"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-blue-200 mb-2">Database Name</label>
+                  <input
+                    type="text"
+                    value={credentials.database}
+                    onChange={(e) => setCredentials({...credentials, database: e.target.value})}
+                    placeholder="my_database"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              {dbConnectionSuccess && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center space-x-3 p-4 bg-green-500/20 border border-green-500/50 rounded-xl"
+                >
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 12 12">
+                      <path d="M10 3L4.5 8.5 2 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <span className="text-green-400 font-medium">Connection successful!</span>
+                </motion.div>
+              )}
+            </motion.div>
+          </AnimatePresence>
         );
 
       default:
@@ -275,7 +449,20 @@ export default function Onboarding() {
               Back
             </button>
 
-            {currentStep === steps.length ? (
+            {currentStep === 4 ? (
+              <button
+                onClick={handleContinueToCredentials}
+                disabled={!canProceed()}
+                className={`flex items-center px-6 py-2 rounded-xl transition ${
+                  canProceed()
+                    ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-500 hover:to-blue-600"
+                    : "bg-slate-600 text-slate-400 cursor-not-allowed"
+                }`}
+              >
+                Continue
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </button>
+            ) : currentStep === 5 ? (
               <div className="flex items-center space-x-4">
                 <button
                   onClick={() => setLocation("/dashboard")}
@@ -284,16 +471,40 @@ export default function Onboarding() {
                   Skip for now
                 </button>
                 <button
-                  onClick={handleNext}
-                  disabled={!canProceed()}
+                  onClick={connectToDatabase}
+                  disabled={!canProceed() || isConnecting}
                   className={`flex items-center px-6 py-3 rounded-xl font-medium transition ${
-                    canProceed()
+                    canProceed() && !isConnecting
                       ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-500 hover:to-blue-600"
                       : "bg-slate-600 text-slate-400 cursor-not-allowed"
                   }`}
                 >
-                  Connect & Continue →
+                  {isConnecting ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-3 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Connecting...
+                    </>
+                  ) : dbConnectionSuccess ? (
+                    <>
+                      Complete Setup →
+                    </>
+                  ) : (
+                    <>
+                      Connect Database
+                    </>
+                  )}
                 </button>
+                {dbConnectionSuccess && (
+                  <button
+                    onClick={() => setLocation("/dashboard")}
+                    className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-xl font-medium transition"
+                  >
+                    Go to Dashboard →
+                  </button>
+                )}
               </div>
             ) : (
               <button
