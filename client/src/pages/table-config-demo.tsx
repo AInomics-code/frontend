@@ -241,9 +241,9 @@ export default function TableConfigDemo() {
                       <div className="flex items-center justify-between mb-6">
                         <div className="flex items-center space-x-3">
                           <div className="w-8 h-8 bg-gradient-to-br from-slate-600/60 to-slate-700/60 rounded-lg flex items-center justify-center border border-slate-500/30">
-                            {/* Modern lightbulb/insights icon */}
-                            <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m4.5 0a12.06 12.06 0 00-1.5-1.5m0 0L12 21m0 0l-2.5-2.5m0 0a12.06 12.06 0 01-1.5 1.5M12 18l2.5-2.5m0 0V15.75a6 6 0 10-1.5-1.5m0 0V12m0 6.75a6 6 0 011.5 1.5" />
+                            {/* Simple question mark icon */}
+                            <svg className="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
                             </svg>
                           </div>
                           <div>
