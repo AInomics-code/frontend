@@ -123,15 +123,44 @@ export default function Onboarding() {
   const [showCredentialsForm, setShowCredentialsForm] = useState(false);
   const [autoConnecting, setAutoConnecting] = useState(false);
   const [selectedTables, setSelectedTables] = useState<string[]>([]);
+  const [tableConfigs, setTableConfigs] = useState<Record<string, {
+    displayName: string;
+    columnDescriptions: Record<string, string>;
+    businessQuestions: string[];
+  }>>({});
   const [, setLocation] = useLocation();
 
   const mockTables = [
-    { name: "customers", description: "Customer information and contact details" },
-    { name: "orders", description: "Order history and transaction data" },
-    { name: "products", description: "Product catalog and inventory" },
-    { name: "sales_reps", description: "Sales team member information" },
-    { name: "territories", description: "Regional sales territories" },
-    { name: "invoices", description: "Billing and payment records" }
+    { 
+      name: "customers", 
+      columns: ["customer_id", "company_name", "contact_email", "territory_id", "created_date", "status"],
+      description: "Customer information and contact details" 
+    },
+    { 
+      name: "orders", 
+      columns: ["order_id", "customer_id", "product_id", "quantity", "order_date", "total_amount", "status"],
+      description: "Order history and transaction data" 
+    },
+    { 
+      name: "products", 
+      columns: ["product_id", "product_name", "category", "price", "stock_quantity", "supplier_id"],
+      description: "Product catalog and inventory" 
+    },
+    { 
+      name: "sales_reps", 
+      columns: ["rep_id", "full_name", "territory_id", "hire_date", "commission_rate", "status"],
+      description: "Sales team member information" 
+    },
+    { 
+      name: "territories", 
+      columns: ["territory_id", "territory_name", "region", "manager_id", "target_revenue"],
+      description: "Regional sales territories" 
+    },
+    { 
+      name: "invoices", 
+      columns: ["invoice_id", "order_id", "amount", "tax", "invoice_date", "due_date", "payment_status"],
+      description: "Billing and payment records" 
+    }
   ];
 
   const handleNext = () => {
@@ -162,18 +191,80 @@ export default function Onboarding() {
       case 5:
         return credentials.host && credentials.port && credentials.username && credentials.database;
       case 6:
-        return selectedTables.length > 0;
+        return selectedTables.length > 0 && selectedTables.some(tableName => {
+          const config = tableConfigs[tableName];
+          return config && config.businessQuestions.some(q => q.trim().length > 0);
+        });
       default:
         return false;
     }
   };
 
   const toggleTable = (tableName: string) => {
-    setSelectedTables(prev => 
-      prev.includes(tableName) 
-        ? prev.filter(t => t !== tableName)
-        : [...prev, tableName]
-    );
+    setSelectedTables(prev => {
+      const isCurrentlySelected = prev.includes(tableName);
+      
+      if (isCurrentlySelected) {
+        // Remove table and its config
+        const newTableConfigs = { ...tableConfigs };
+        delete newTableConfigs[tableName];
+        setTableConfigs(newTableConfigs);
+        return prev.filter(t => t !== tableName);
+      } else {
+        // Add table and initialize its config
+        const table = mockTables.find(t => t.name === tableName);
+        if (table) {
+          const displayName = formatTableName(tableName);
+          const columnDescriptions: Record<string, string> = {};
+          table.columns.forEach(col => {
+            columnDescriptions[col] = formatColumnName(col);
+          });
+          
+          setTableConfigs(prev => ({
+            ...prev,
+            [tableName]: {
+              displayName,
+              columnDescriptions,
+              businessQuestions: ["", "", ""]
+            }
+          }));
+        }
+        return [...prev, tableName];
+      }
+    });
+  };
+
+  const formatTableName = (tableName: string): string => {
+    return tableName
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
+  const formatColumnName = (columnName: string): string => {
+    return columnName
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
+  const updateTableConfig = (tableName: string, field: keyof typeof tableConfigs[string], value: any) => {
+    setTableConfigs(prev => ({
+      ...prev,
+      [tableName]: {
+        ...prev[tableName],
+        [field]: value
+      }
+    }));
+  };
+
+  const updateBusinessQuestion = (tableName: string, questionIndex: number, question: string) => {
+    const config = tableConfigs[tableName];
+    if (config) {
+      const newQuestions = [...config.businessQuestions];
+      newQuestions[questionIndex] = question;
+      updateTableConfig(tableName, 'businessQuestions', newQuestions);
+    }
   };
 
   const handleDatabaseSelect = (dbName: string) => {
@@ -425,60 +516,56 @@ export default function Onboarding() {
       case 6:
         return (
           <div className="space-y-6">
-            <div className="text-center mb-8">
+            <div className="text-center mb-6">
               <div className="flex items-center justify-center space-x-2 mb-4">
                 <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                 <span className="text-green-400 text-sm font-medium">Connected to {selectedDB}</span>
               </div>
               <p className="text-slate-400 text-sm">
-                Select the tables VORTA should analyze for business insights
+                Configure your database tables to help VORTA understand your business context
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Table Selection Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
               {mockTables.map((table) => {
                 const isSelected = selectedTables.includes(table.name);
                 return (
                   <motion.div
                     key={table.name}
-                    className={`p-4 rounded-xl border-2 transition-all cursor-pointer group ${
+                    className={`p-3 rounded-lg border transition-all cursor-pointer group ${
                       isSelected
-                        ? "border-blue-500 bg-blue-500/20"
-                        : "border-slate-600 hover:border-blue-400 hover:bg-slate-700/50"
+                        ? "border-blue-500 bg-blue-500/10"
+                        : "border-slate-600 hover:border-blue-400 hover:bg-slate-700/30"
                     }`}
                     onClick={() => toggleTable(table.name)}
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
                   >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-3 mb-2">
-                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                            isSelected 
-                              ? "bg-blue-500 text-white" 
-                              : "bg-slate-700 text-blue-200 group-hover:bg-slate-600"
-                          }`}>
-                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm4 2a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                          <h3 className={`font-medium ${
-                            isSelected ? "text-blue-400" : "text-blue-200"
-                          }`}>
-                            {table.name}
-                          </h3>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <div className={`w-6 h-6 rounded flex items-center justify-center ${
+                          isSelected 
+                            ? "bg-blue-500 text-white" 
+                            : "bg-slate-700 text-slate-400"
+                        }`}>
+                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8z" clipRule="evenodd" />
+                          </svg>
                         </div>
-                        <p className="text-sm text-slate-400 ml-11">
-                          {table.description}
-                        </p>
+                        <span className={`text-sm font-medium ${
+                          isSelected ? "text-blue-300" : "text-slate-300"
+                        }`}>
+                          {formatTableName(table.name)}
+                        </span>
                       </div>
-                      <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+                      <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${
                         isSelected 
                           ? "border-blue-500 bg-blue-500" 
-                          : "border-slate-500 bg-slate-700"
+                          : "border-slate-500"
                       }`}>
                         {isSelected && (
-                          <div className="w-2 h-2 bg-white rounded-full"></div>
+                          <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
                         )}
                       </div>
                     </div>
@@ -487,23 +574,125 @@ export default function Onboarding() {
               })}
             </div>
 
+            {/* Selected Tables Configuration */}
             {selectedTables.length > 0 && (
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4"
+                className="space-y-4"
               >
-                <div className="flex items-center space-x-2 mb-2">
+                <div className="flex items-center space-x-2 mb-4">
                   <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span className="text-blue-400 text-sm font-medium">
-                    {selectedTables.length} table{selectedTables.length !== 1 ? 's' : ''} selected
+                    Configure {selectedTables.length} selected table{selectedTables.length !== 1 ? 's' : ''}
                   </span>
                 </div>
-                <p className="text-slate-400 text-sm">
-                  VORTA will analyze these tables to provide business insights and answer your questions.
-                </p>
+
+                {selectedTables.map((tableName) => {
+                  const table = mockTables.find(t => t.name === tableName);
+                  const config = tableConfigs[tableName];
+                  
+                  if (!table || !config) return null;
+
+                  return (
+                    <motion.div
+                      key={tableName}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="bg-slate-800/30 border border-slate-700/50 rounded-xl p-5"
+                    >
+                      {/* Table Header */}
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <div>
+                            <input
+                              value={config.displayName}
+                              onChange={(e) => updateTableConfig(tableName, 'displayName', e.target.value)}
+                              className="text-lg font-semibold text-white bg-transparent border-none outline-none focus:bg-slate-700/50 rounded px-2 py-1"
+                            />
+                            <p className="text-xs text-slate-400">{tableName} • {table.columns.length} columns</p>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => toggleTable(tableName)}
+                          className="text-slate-400 hover:text-red-400 transition-colors"
+                        >
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </button>
+                      </div>
+
+                      {/* Business Questions Section */}
+                      <div className="mb-4">
+                        <div className="flex items-center space-x-2 mb-3">
+                          <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+                          </svg>
+                          <span className="text-sm font-medium text-blue-300">Common Business Questions</span>
+                          <div className="group relative">
+                            <svg className="w-3 h-3 text-slate-500 hover:text-slate-300 cursor-help" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                            </svg>
+                            <div className="invisible group-hover:visible absolute bottom-full left-0 mb-2 p-2 bg-slate-800 text-xs text-white rounded shadow-lg whitespace-nowrap">
+                              Help VORTA understand your business context
+                            </div>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          {config.businessQuestions.map((question, idx) => (
+                            <input
+                              key={idx}
+                              value={question}
+                              onChange={(e) => updateBusinessQuestion(tableName, idx, e.target.value)}
+                              placeholder={`Question ${idx + 1}: e.g., "Which customers haven't ordered this month?"`}
+                              className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none text-sm"
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Column Mapping Section */}
+                      <div>
+                        <div className="flex items-center space-x-2 mb-3">
+                          <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                          </svg>
+                          <span className="text-sm font-medium text-blue-300">Column Descriptions</span>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                          {table.columns.slice(0, 6).map((column) => (
+                            <div key={column} className="flex items-center space-x-2">
+                              <span className="text-xs text-slate-400 font-mono w-20 truncate">{column}</span>
+                              <input
+                                value={config.columnDescriptions[column] || ''}
+                                onChange={(e) => {
+                                  const newDescriptions = { ...config.columnDescriptions };
+                                  newDescriptions[column] = e.target.value;
+                                  updateTableConfig(tableName, 'columnDescriptions', newDescriptions);
+                                }}
+                                placeholder="Description..."
+                                className="flex-1 px-2 py-1 bg-slate-700/30 border border-slate-600/50 rounded text-xs text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                        {table.columns.length > 6 && (
+                          <p className="text-xs text-slate-500 mt-2">
+                            + {table.columns.length - 6} more columns...
+                          </p>
+                        )}
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
             )}
           </div>
@@ -626,7 +815,16 @@ export default function Onboarding() {
                   Skip for now
                 </button>
                 <button
-                  onClick={() => setLocation("/dashboard")}
+                  onClick={() => {
+                    // Log final configuration for debugging/development
+                    console.log("Final Table Configuration:", {
+                      selectedTables,
+                      tableConfigs,
+                      database: selectedDB,
+                      credentials: { ...credentials, password: '[REDACTED]' }
+                    });
+                    setLocation("/dashboard");
+                  }}
                   disabled={!canProceed()}
                   className={`flex items-center px-6 py-3 rounded-xl font-medium transition ${
                     canProceed()
