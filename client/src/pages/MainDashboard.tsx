@@ -58,47 +58,57 @@ export default function MainDashboard() {
 <div class="space-y-3">
 <h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">1. METRIC DETECTION</h3>
 <div class="space-y-2">
-<p>• Chiriquí Central Store - Salsa Verde 500ml stockout anomaly detected</p>
-<p>• <strong style="color: #9bb1ff;">89% out-of-stock</strong> rate over 12-day period, lost <strong style="color: #9bb1ff;">2,400 units</strong> during peak demand</p>
+<p>• Anomaly: Chiriquí Central Store - Salsa Verde 500ml critical stockout detected via automated monitoring</p>
+<p>• Severity metrics: <strong style="color: #9bb1ff;">89% out-of-stock</strong> rate over 12-day period (normal threshold: <20%)</p>
+<p>• Volume impact: Lost <strong style="color: #9bb1ff;">2,400 units</strong> against expected sales of <strong style="color: #9bb1ff;">2,700 units</strong> (baseline demand)</p>
+<p>• Timeline: Peak occurred during days 7-10 when competitor promotions were running</p>
 </div>
 </div>
 
 <div class="space-y-3">
 <h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">2. ANALYSIS (AINOMICS)</h3>
 <div class="space-y-2">
-<p>• Revenue loss calculation: <strong style="color: #9bb1ff;">2,400 units</strong> × <strong style="color: #9bb1ff;">$3.20</strong> = <strong style="color: #9bb1ff;">$7,680</strong> lost sales</p>
-<p>• Market share impact: <strong style="color: #9bb1ff;">78%</strong> of displaced demand captured by competitors</p>
+<p>• Direct revenue loss: <strong style="color: #9bb1ff;">2,400 units</strong> × <strong style="color: #9bb1ff;">$3.20</strong> (retail price) = <strong style="color: #9bb1ff;">$7,680</strong> in missed sales</p>
+<p>• Margin impact: <strong style="color: #9bb1ff;">$7,680</strong> × <strong style="color: #9bb1ff;">35%</strong> (gross margin) = <strong style="color: #9bb1ff;">$2,688</strong> profit lost</p>
+<p>• Market displacement: <strong style="color: #9bb1ff;">78%</strong> of customers switched to competitor brands during outage</p>
+<p>• Opportunity cost: <strong style="color: #9bb1ff;">$7,680</strong> + (<strong style="color: #9bb1ff;">$1,200</strong> promotional uplift missed) = <strong style="color: #9bb1ff;">$8,880</strong> total impact</p>
 </div>
 </div>
 
 <div class="space-y-3">
 <h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">3. ROOT CAUSE</h3>
 <div class="space-y-2">
-<p>• Distribution center failed automated replenishment trigger during high-velocity sales period</p>
-<p>• Inventory forecasting system underestimated seasonal demand surge by <strong style="color: #9bb1ff;">45%</strong></p>
+<p>• Primary issue: Distribution center's automated replenishment system failed due to outdated velocity parameters</p>
+<p>• Contributing factor: Demand forecasting algorithm used pre-promotion baseline (<strong style="color: #9bb1ff;">220 units/day</strong>) instead of adjusted rate (<strong style="color: #9bb1ff;">400 units/day</strong>)</p>
+<p>• System gap: Safety stock calculation missed seasonal demand surge by <strong style="color: #9bb1ff;">45%</strong> (set at 180 units vs. required 325 units)</p>
+<p>• Process failure: Manual override alerts were disabled during weekend period when surge began</p>
 </div>
 </div>
 
 <div class="space-y-3">
 <h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">4. RECOMMENDED ACTION</h3>
 <div class="space-y-2">
-<p>• Emergency stock transfer: Reallocate <strong style="color: #9bb1ff;">3,200 units</strong> from David warehouse to Chiriquí Central within 24 hours</p>
-<p>• Implement daily inventory reconciliation system for top <strong style="color: #9bb1ff;">50 SKUs</strong> across all Chiriquí stores</p>
+<p>• Immediate response: Emergency transfer of <strong style="color: #9bb1ff;">3,200 units</strong> from David warehouse (current stock: 4,800 units) to Chiriquí Central within 24 hours</p>
+<p>• Transfer logistics: Use expedited route (David → Chiriquí = 6-hour transit) to restore shelf availability by tomorrow morning</p>
+<p>• System fix: Recalibrate forecasting parameters for Salsa Verde 500ml to include promotional velocity multiplier (<strong style="color: #9bb1ff;">1.8x baseline</strong>)</p>
+<p>• Process improvement: Implement daily inventory reconciliation for top <strong style="color: #9bb1ff;">50 SKUs</strong> across all Chiriquí province stores with real-time alerts</p>
 </div>
 </div>
 
 <div class="space-y-3">
 <h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">5. BUSINESS VALUE</h3>
 <div class="space-y-2">
-<p>• Revenue recovery: <strong style="color: #9bb1ff;">+$32K/month</strong> margin protected from lost sales prevention</p>
-<p>• Customer retention improvement: <strong style="color: #9bb1ff;">+12%</strong> loyalty recovery within 60 days</p>
+<p>• Revenue protection: <strong style="color: #9bb1ff;">+$32K/month</strong> margin secured by preventing future stockouts (based on 4 similar incidents/month)</p>
+<p>• Value calculation: <strong style="color: #9bb1ff;">$8,880</strong> (per incident) × <strong style="color: #9bb1ff;">4 incidents</strong> × <strong style="color: #9bb1ff;">35%</strong> margin = <strong style="color: #9bb1ff;">$12,400</strong> monthly profit protected</p>
+<p>• Customer retention: <strong style="color: #9bb1ff;">+12%</strong> loyalty recovery within 60 days (estimated <strong style="color: #9bb1ff;">290 customers</strong> returning to brand)</p>
+<p>• Competitive advantage: Reduce competitor market share gain from <strong style="color: #9bb1ff;">78%</strong> displacement to <strong style="color: #9bb1ff;"><15%</strong> through improved availability</p>
 </div>
 </div>
 
 <div class="mt-4 pt-3 border-t border-slate-700/30">
 <div class="flex items-center text-blue-300/80 text-xs">
 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
 </svg>
 <span>Presented by VORTA using real-time AInomics analysis</span>
 </div>
