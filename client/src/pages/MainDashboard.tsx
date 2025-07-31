@@ -1,7 +1,34 @@
 import { motion } from 'framer-motion';
 import { Card } from "@/components/ui/card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { kpiData, promptData, type KpiData, type PromptData } from "@/lib/mockData";
+
+function TypewriterText({ text, speed = 20 }: { text: string; speed?: number }) {
+  const [displayedText, setDisplayedText] = useState("");
+  
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      setDisplayedText(text.slice(0, i));
+      i++;
+      if (i > text.length) clearInterval(interval);
+    }, speed);
+    return () => clearInterval(interval);
+  }, [text, speed]);
+
+  return (
+    <div 
+      className="text-sm text-white leading-relaxed prose prose-invert prose-sm max-w-none transition-all duration-500 ease-out"
+      dangerouslySetInnerHTML={{
+        __html: displayedText
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/^• /gm, '• ')
+          .replace(/^> (.*)/gm, '<blockquote class="text-blue-200 italic border-l-2 border-blue-400 pl-3 my-2">$1</blockquote>')
+          .replace(/\n/g, '<br>')
+      }}
+    />
+  );
+}
 
 export default function MainDashboard() {
   const [activeTab, setActiveTab] = useState("KPIs");
@@ -48,7 +75,7 @@ ${currentQuery}
 **4. Business Value**
 Potential revenue recovery of **$32,000-48,000 monthly** through improved availability and reduced stockouts.
 
-> ✨ Presented by VORTA using real-time AInomics analysis.`
+> <svg class="inline w-4 h-4 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>Presented by VORTA using real-time AInomics analysis.`
       };
       setMessages(prev => [...prev, aiResponse]);
       setIsLoading(false);
@@ -99,16 +126,7 @@ Potential revenue recovery of **$32,000-48,000 monthly** through improved availa
                     </div>
                   ) : (
                     <div className="py-2">
-                      <div 
-                        className="text-sm text-white leading-relaxed prose prose-invert prose-sm max-w-none"
-                        dangerouslySetInnerHTML={{
-                          __html: message.content
-                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                            .replace(/^• /gm, '• ')
-                            .replace(/^> (.*)/gm, '<blockquote class="text-blue-200 italic border-l-2 border-blue-400 pl-3 my-2">$1</blockquote>')
-                            .replace(/\n/g, '<br>')
-                        }}
-                      />
+                      <TypewriterText text={message.content} speed={15} />
                     </div>
                   )}
                 </div>
