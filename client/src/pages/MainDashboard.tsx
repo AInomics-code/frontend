@@ -329,8 +329,8 @@ export default function MainDashboard() {
                   onClick={() => handlePromptClick(prompt)}
                 >
                   <Card className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 hover:border-blue-400/40 hover:bg-slate-800/60 rounded-lg p-4 h-24 transition-all duration-200 group">
-                    <div className="flex items-center gap-3 h-full">
-                      <div className="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                    <div className="flex items-start gap-3 h-full">
+                      <div className="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                         {icons[idx]}
                       </div>
                       <div className="flex flex-col justify-center flex-1 min-w-0 gap-1">
