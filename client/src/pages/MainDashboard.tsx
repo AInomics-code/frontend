@@ -56,28 +56,28 @@ export default function MainDashboard() {
         role: 'assistant' as const,
         content: `<div class="space-y-6">
 <div class="space-y-3">
-<h3 class="text-sm font-bold" style="color: #a1b9ff;">🟥 <strong>Metric Detected</strong></h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟥 METRIC DETECTED</h3>
 <div class="space-y-2">
 <p>Mumbai Central Store - Maggi 2-Minute Noodles 70g: <strong style="color: #9bb1ff;">87% stockout</strong> rate over 14 days. Lost <strong style="color: #9bb1ff;">3,200 units</strong> during Diwali season peak demand.</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-sm font-bold" style="color: #a1b9ff;">🟧 <strong>Analysis</strong></h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟧 ANALYSIS</h3>
 <div class="space-y-2">
 <p>Revenue impact: <strong style="color: #9bb1ff;">3,200 units</strong> × <strong style="color: #9bb1ff;">₹12</strong> = <strong style="color: #9bb1ff;">₹38,400</strong> lost sales. Distributor miscalculated festival demand surge. Competitor brands captured <strong style="color: #9bb1ff;">73%</strong> of displaced sales.</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-sm font-bold" style="color: #a1b9ff;">🟩 <strong>Action</strong></h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟩 ACTION</h3>
 <div class="space-y-2">
 <p>Emergency stock transfer: Move <strong style="color: #9bb1ff;">5,000 units</strong> from Pune warehouse to Mumbai Central within 24 hours. Implement automated demand sensing for top 20 festival SKUs.</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-sm font-bold" style="color: #a1b9ff;">🟦 <strong>Value</strong></h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟦 VALUE</h3>
 <div class="space-y-2">
 <p>Revenue recovery: <strong style="color: #9bb1ff;">₹60,000/month</strong> protected sales. Margin improvement: <strong style="color: #9bb1ff;">₹18,000</strong> additional gross profit at 30% margin rate.</p>
 </div>
@@ -85,7 +85,7 @@ export default function MainDashboard() {
 
 <div class="mt-6 pt-4 border-t border-slate-700/50">
 <div class="space-y-3">
-<h3 class="text-sm font-bold" style="color: #a1b9ff;">⚡ <strong>Key Visual</strong></h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">⚡ KEY VISUAL</h3>
 <div class="text-center bg-slate-800/50 rounded-lg py-3 px-4">
 <span class="text-sm font-mono" style="color: #9bb1ff;">[Stockout 87% ↓] → [Emergency Transfer 5K units] → [₹60K Monthly Protected]</span>
 </div>
@@ -93,7 +93,7 @@ export default function MainDashboard() {
 </div>
 
 <div class="mt-4 pt-3 border-t border-slate-700/30">
-<div class="flex items-center text-blue-300/70 text-xs">
+<div class="flex items-center text-blue-300/80 text-xs">
 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
