@@ -55,53 +55,153 @@ export default function MainDashboard() {
       const aiResponse = {
         role: 'assistant' as const,
         content: `<div class="space-y-6">
-<div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">1. METRIC DETECTION</h3>
-<div class="space-y-2">
-<p>• Anomaly: Chiriquí Central Store - Salsa Verde 500ml critical stockout detected via automated monitoring</p>
-<p>• Severity metrics: <strong style="color: #9bb1ff;">89% out-of-stock</strong> rate over 12-day period (normal threshold: <20%)</p>
-<p>• Volume impact: Lost <strong style="color: #9bb1ff;">2,400 units</strong> against expected sales of <strong style="color: #9bb1ff;">2,700 units</strong> (baseline demand)</p>
-<p>• Timeline: Peak occurred during days 7-10 when competitor promotions were running</p>
+<!-- METRIC DETECTION SECTION -->
+<div class="bg-slate-800/40 rounded-lg p-4 border border-slate-700/30">
+<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">1. METRIC DETECTION</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-slate-900/50 rounded p-3">
+<div class="text-xs text-slate-400 mb-1">Location & Product</div>
+<div class="text-sm">Chiriquí Central Store</div>
+<div class="text-sm font-medium" style="color: #9bb1ff;">Salsa Verde 500ml</div>
+</div>
+<div class="bg-slate-900/50 rounded p-3">
+<div class="text-xs text-slate-400 mb-1">Anomaly Severity</div>
+<div class="text-lg font-bold" style="color: #dc2626;">89%</div>
+<div class="text-xs text-slate-300">out-of-stock (12 days)</div>
+</div>
+</div>
+<div class="mt-3 text-sm text-slate-300">
+Critical stockout detected via automated monitoring. Lost <strong style="color: #9bb1ff;">2,400 units</strong> against baseline demand of <strong style="color: #9bb1ff;">2,700 units</strong> during competitor promotion period.
 </div>
 </div>
 
-<div class="space-y-3">
+<!-- ANALYSIS SECTION -->
+<div class="space-y-4">
 <h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">2. ANALYSIS (AINOMICS)</h3>
-<div class="space-y-2">
-<p>• Direct revenue loss: <strong style="color: #9bb1ff;">2,400 units</strong> × <strong style="color: #9bb1ff;">$3.20</strong> (retail price) = <strong style="color: #9bb1ff;">$7,680</strong> in missed sales</p>
-<p>• Margin impact: <strong style="color: #9bb1ff;">$7,680</strong> × <strong style="color: #9bb1ff;">35%</strong> (gross margin) = <strong style="color: #9bb1ff;">$2,688</strong> profit lost</p>
-<p>• Market displacement: <strong style="color: #9bb1ff;">78%</strong> of customers switched to competitor brands during outage</p>
-<p>• Opportunity cost: <strong style="color: #9bb1ff;">$7,680</strong> + (<strong style="color: #9bb1ff;">$1,200</strong> promotional uplift missed) = <strong style="color: #9bb1ff;">$8,880</strong> total impact</p>
+<div class="bg-gradient-to-r from-slate-800/60 to-slate-800/30 rounded-lg p-4 border border-slate-700/30">
+<div class="grid grid-cols-3 gap-4 mb-4">
+<div class="text-center">
+<div class="text-xs text-slate-400">Units Lost</div>
+<div class="text-xl font-bold" style="color: #9bb1ff;">2,400</div>
+</div>
+<div class="text-center">
+<div class="text-xs text-slate-400">Unit Price</div>
+<div class="text-xl font-bold" style="color: #9bb1ff;">$3.20</div>
+</div>
+<div class="text-center">
+<div class="text-xs text-slate-400">Revenue Loss</div>
+<div class="text-xl font-bold" style="color: #dc2626;">$7,680</div>
+</div>
+</div>
+<div class="border-t border-slate-700/30 pt-3">
+<div class="text-sm text-slate-300 mb-2">
+<strong>Margin Impact:</strong> $7,680 × 35% gross margin = <strong style="color: #9bb1ff;">$2,688</strong> profit lost
+</div>
+<div class="text-sm text-slate-300">
+<strong>Market Impact:</strong> <strong style="color: #dc2626;">78%</strong> customer displacement to competitors during outage
+</div>
+</div>
 </div>
 </div>
 
+<!-- ROOT CAUSE SECTION -->
+<div class="bg-slate-800/40 rounded-lg p-4 border border-slate-700/30">
+<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">3. ROOT CAUSE</h3>
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">3. ROOT CAUSE</h3>
-<div class="space-y-2">
-<p>• Primary issue: Distribution center's automated replenishment system failed due to outdated velocity parameters</p>
-<p>• Contributing factor: Demand forecasting algorithm used pre-promotion baseline (<strong style="color: #9bb1ff;">220 units/day</strong>) instead of adjusted rate (<strong style="color: #9bb1ff;">400 units/day</strong>)</p>
-<p>• System gap: Safety stock calculation missed seasonal demand surge by <strong style="color: #9bb1ff;">45%</strong> (set at 180 units vs. required 325 units)</p>
-<p>• Process failure: Manual override alerts were disabled during weekend period when surge began</p>
+<div class="flex items-start gap-3">
+<div class="w-2 h-2 rounded-full bg-red-500 mt-2 flex-shrink-0"></div>
+<div>
+<div class="text-sm font-medium text-slate-200">System Failure</div>
+<div class="text-sm text-slate-400">Distribution center's automated replenishment system used outdated velocity parameters</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-2 h-2 rounded-full bg-orange-500 mt-2 flex-shrink-0"></div>
+<div>
+<div class="text-sm font-medium text-slate-200">Forecasting Gap</div>
+<div class="text-sm text-slate-400">Algorithm missed demand surge: <strong style="color: #9bb1ff;">220 units/day</strong> baseline vs <strong style="color: #9bb1ff;">400 units/day</strong> actual</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-2 h-2 rounded-full bg-yellow-500 mt-2 flex-shrink-0"></div>
+<div>
+<div class="text-sm font-medium text-slate-200">Safety Stock Error</div>
+<div class="text-sm text-slate-400">Required 325 units buffer but only had 180 units (<strong style="color: #dc2626;">45% shortfall</strong>)</div>
+</div>
+</div>
 </div>
 </div>
 
+<!-- ACTION SECTION -->
 <div class="space-y-3">
 <h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">4. RECOMMENDED ACTION</h3>
-<div class="space-y-2">
-<p>• Immediate response: Emergency transfer of <strong style="color: #9bb1ff;">3,200 units</strong> from David warehouse (current stock: 4,800 units) to Chiriquí Central within 24 hours</p>
-<p>• Transfer logistics: Use expedited route (David → Chiriquí = 6-hour transit) to restore shelf availability by tomorrow morning</p>
-<p>• System fix: Recalibrate forecasting parameters for Salsa Verde 500ml to include promotional velocity multiplier (<strong style="color: #9bb1ff;">1.8x baseline</strong>)</p>
-<p>• Process improvement: Implement daily inventory reconciliation for top <strong style="color: #9bb1ff;">50 SKUs</strong> across all Chiriquí province stores with real-time alerts</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-green-900/20 border border-green-700/30 rounded-lg p-4">
+<div class="text-sm font-medium text-green-300 mb-2">IMMEDIATE (24 hours)</div>
+<div class="text-sm text-slate-300">Emergency transfer: <strong style="color: #9bb1ff;">3,200 units</strong> from David warehouse</div>
+<div class="text-xs text-slate-400 mt-1">Route: David → Chiriquí (6-hour transit)</div>
+</div>
+<div class="bg-blue-900/20 border border-blue-700/30 rounded-lg p-4">
+<div class="text-sm font-medium text-blue-300 mb-2">SYSTEMATIC (7 days)</div>
+<div class="text-sm text-slate-300">Recalibrate forecasting with <strong style="color: #9bb1ff;">1.8x</strong> promotional multiplier</div>
+<div class="text-xs text-slate-400 mt-1">Implement daily reconciliation for top 50 SKUs</div>
+</div>
 </div>
 </div>
 
-<div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">5. BUSINESS VALUE</h3>
-<div class="space-y-2">
-<p>• Revenue protection: <strong style="color: #9bb1ff;">+$32K/month</strong> margin secured by preventing future stockouts (based on 4 similar incidents/month)</p>
-<p>• Value calculation: <strong style="color: #9bb1ff;">$8,880</strong> (per incident) × <strong style="color: #9bb1ff;">4 incidents</strong> × <strong style="color: #9bb1ff;">35%</strong> margin = <strong style="color: #9bb1ff;">$12,400</strong> monthly profit protected</p>
-<p>• Customer retention: <strong style="color: #9bb1ff;">+12%</strong> loyalty recovery within 60 days (estimated <strong style="color: #9bb1ff;">290 customers</strong> returning to brand)</p>
-<p>• Competitive advantage: Reduce competitor market share gain from <strong style="color: #9bb1ff;">78%</strong> displacement to <strong style="color: #9bb1ff;"><15%</strong> through improved availability</p>
+<!-- BUSINESS VALUE SECTION -->
+<div class="bg-gradient-to-br from-green-900/20 to-blue-900/20 rounded-lg p-4 border border-green-700/30">
+<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">5. BUSINESS VALUE</h3>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div class="text-center">
+<div class="text-xs text-slate-400">Monthly Protection</div>
+<div class="text-2xl font-bold" style="color: #16a34a;">+$32K</div>
+<div class="text-xs text-slate-400">margin secured</div>
+</div>
+<div class="text-center">
+<div class="text-xs text-slate-400">Customer Recovery</div>
+<div class="text-2xl font-bold" style="color: #16a34a;">+12%</div>
+<div class="text-xs text-slate-400">loyalty improvement</div>
+</div>
+</div>
+<div class="bg-slate-900/30 rounded p-3">
+<div class="text-xs text-slate-400 mb-1">Value Calculation</div>
+<div class="text-sm text-slate-300">$8,880 per incident × 4 monthly incidents × 35% margin = <strong style="color: #16a34a;">$12,400</strong> profit protected</div>
+</div>
+</div>
+
+<!-- VISUAL FLOW -->
+<div class="bg-slate-800/30 rounded-lg p-4 border border-slate-700/30">
+<div class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">PROCESS FLOW</div>
+<div class="flex items-center justify-between text-center">
+<div class="flex-1">
+<div class="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+<span class="text-red-400 font-bold">89%</span>
+</div>
+<div class="text-xs text-slate-400">Stockout</div>
+</div>
+<div class="flex-1 flex justify-center">
+<svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+</svg>
+</div>
+<div class="flex-1">
+<div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+<span class="text-blue-400 font-bold">3.2K</span>
+</div>
+<div class="text-xs text-slate-400">Emergency Transfer</div>
+</div>
+<div class="flex-1 flex justify-center">
+<svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+</svg>
+</div>
+<div class="flex-1">
+<div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+<span class="text-green-400 font-bold">$32K</span>
+</div>
+<div class="text-xs text-slate-400">Monthly Protection</div>
+</div>
 </div>
 </div>
 
