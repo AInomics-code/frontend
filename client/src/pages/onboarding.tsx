@@ -17,31 +17,26 @@ const steps: OnboardingStep[] = [
   },
   {
     id: 2,
-    title: "Industry Classification",
-    description: "Select your organization's primary industry for optimized analytics"
-  },
-  {
-    id: 3,
     title: "Use Case Configuration",
     description: "Define your primary analytical requirements and objectives"
   },
   {
-    id: 4,
+    id: 3,
     title: "Data Source Selection",
     description: "Connect your enterprise database systems"
   },
   {
-    id: 5,
+    id: 4,
     title: "Database Configuration",
     description: "Establish secure connection to your data infrastructure"
   },
   {
-    id: 6,
+    id: 5,
     title: "Schema Configuration",
     description: "Map your database structure for optimal performance"
   },
   {
-    id: 7,
+    id: 6,
     title: "Business Intelligence Setup",
     description: "Configure critical business metrics and KPIs"
   }
@@ -193,19 +188,17 @@ export default function Onboarding() {
       case 1:
         return true;
       case 2:
-        return selectedIndustry !== "";
-      case 3:
         return selectedUseCase !== "";
-      case 4:
+      case 3:
         return selectedDB !== null;
-      case 5:
+      case 4:
         return credentials.host && credentials.port && credentials.username && credentials.database;
-      case 6:
+      case 5:
         return selectedTables.length > 0 && selectedTables.some(tableName => {
           const config = tableConfigs[tableName];
           return config && config.businessQuestions.some(q => q.trim().length > 0);
         });
-      case 7:
+      case 6:
         return businessPrompts.some(p => p.question.trim().length > 0);
       default:
         return false;
@@ -292,7 +285,7 @@ export default function Onboarding() {
 
   const handleContinueToCredentials = () => {
     setShowCredentialsForm(true);
-    setCurrentStep(5);
+    setCurrentStep(4);
   };
 
   const connectToDatabase = async () => {
@@ -312,7 +305,7 @@ export default function Onboarding() {
       
       // Auto-proceed to next step after successful connection
       setTimeout(() => {
-        setCurrentStep(6); // Move to Table Schema Cards
+        setCurrentStep(5); // Move to Table Schema Cards
       }, 1000);
     }, 2000);
   };
@@ -441,27 +434,6 @@ export default function Onboarding() {
       case 2:
         return (
           <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-3">
-              {industries.map((industry) => (
-                <button
-                  key={industry}
-                  onClick={() => setSelectedIndustry(industry)}
-                  className={`p-4 rounded-xl border-2 transition-all ${
-                    selectedIndustry === industry
-                      ? "border-blue-500 bg-gradient-to-r from-blue-600 to-blue-700 text-white"
-                      : "border-slate-600 hover:border-blue-400 text-blue-200"
-                  }`}
-                >
-                  {industry}
-                </button>
-              ))}
-            </div>
-          </div>
-        );
-
-      case 3:
-        return (
-          <div className="space-y-4">
             <div className="grid grid-cols-1 gap-3">
               {useCases.map((useCase) => (
                 <button
@@ -480,7 +452,7 @@ export default function Onboarding() {
           </div>
         );
 
-      case 4:
+      case 3:
         return (
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -627,7 +599,99 @@ export default function Onboarding() {
           </AnimatePresence>
         );
 
-      case 6:
+      case 4:
+        return (
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`credentials-${autoConnecting}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-6"
+            >
+              {selectedDB && (
+                <div className="flex items-center space-x-4 p-4 bg-slate-800/50 border border-slate-700 rounded-xl">
+                  <Database className="w-8 h-8 text-blue-400" />
+                  <div>
+                    <h3 className="text-blue-200 font-medium">{selectedDB}</h3>
+                    <p className="text-sm text-slate-400">Database Connection</p>
+                  </div>
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-blue-200 mb-2">Host</label>
+                  <input
+                    type="text"
+                    value={credentials.host}
+                    onChange={(e) => setCredentials({...credentials, host: e.target.value})}
+                    placeholder="localhost"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-blue-200 mb-2">Port</label>
+                  <input
+                    type="text"
+                    value={credentials.port}
+                    onChange={(e) => setCredentials({...credentials, port: e.target.value})}
+                    placeholder="5432"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-blue-200 mb-2">Username</label>
+                  <input
+                    type="text"
+                    value={credentials.username}
+                    onChange={(e) => setCredentials({...credentials, username: e.target.value})}
+                    placeholder="admin"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-blue-200 mb-2">Password</label>
+                  <input
+                    type="password"
+                    value={credentials.password}
+                    onChange={(e) => setCredentials({...credentials, password: e.target.value})}
+                    placeholder="••••••••"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-blue-200 mb-2">Database Name</label>
+                  <input
+                    type="text"
+                    value={credentials.database}
+                    onChange={(e) => setCredentials({...credentials, database: e.target.value})}
+                    placeholder="my_database"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              {dbConnectionSuccess && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center space-x-3 p-4 bg-green-500/20 border border-green-500/50 rounded-xl"
+                >
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 12 12">
+                      <path d="M10 3L4.5 8.5 2 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <span className="text-green-400 font-medium">Connection successful!</span>
+                </motion.div>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        );
+
+      case 5:
         return (
           <div className="space-y-8">
             <div className="mb-8">
@@ -831,7 +895,7 @@ export default function Onboarding() {
           </div>
         );
 
-      case 7:
+      case 6:
         return (
           <div className="space-y-6">
             {/* Business Questions Section */}
@@ -1014,7 +1078,7 @@ export default function Onboarding() {
               </button>
             )}
 
-            {currentStep === 4 ? (
+            {currentStep === 3 ? (
               <button
                 onClick={handleContinueToCredentials}
                 disabled={!canProceed()}
@@ -1028,7 +1092,7 @@ export default function Onboarding() {
                 Continue
                 <ArrowRight className="w-4 h-4 ml-2" />
               </button>
-            ) : currentStep === 5 ? (
+            ) : currentStep === 4 ? (
               <div className="flex items-center space-x-4">
                 <button
                   onClick={() => setLocation("/dashboard")}
@@ -1063,7 +1127,7 @@ export default function Onboarding() {
                   )}
                 </button>
               </div>
-            ) : currentStep === 6 ? (
+            ) : currentStep === 5 ? (
               <div className="flex items-center space-x-4">
                 <button
                   onClick={() => setLocation("/dashboard")}
@@ -1086,7 +1150,7 @@ export default function Onboarding() {
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </button>
               </div>
-            ) : currentStep === 7 ? (
+            ) : currentStep === 6 ? (
               <div className="flex items-center space-x-4">
                 <button
                   onClick={() => setLocation("/dashboard")}
