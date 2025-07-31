@@ -56,39 +56,42 @@ export default function MainDashboard() {
         role: 'assistant' as const,
         content: `<div class="space-y-6">
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">METRIC DETECTED</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">1. METRIC DETECTION</h3>
 <div class="space-y-2">
-<p>Chiriquí Central Store - Salsa Verde 500ml: <strong style="color: #9bb1ff;">89% stockout</strong> rate over 12 days. Lost <strong style="color: #9bb1ff;">2,400 units</strong> during peak demand period.</p>
+<p>• Chiriquí Central Store - Salsa Verde 500ml stockout anomaly detected</p>
+<p>• <strong style="color: #9bb1ff;">89% out-of-stock</strong> rate over 12-day period, lost <strong style="color: #9bb1ff;">2,400 units</strong> during peak demand</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">ANALYSIS</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">2. ANALYSIS (AINOMICS)</h3>
 <div class="space-y-2">
-<p>Revenue impact: <strong style="color: #9bb1ff;">2,400 units</strong> × <strong style="color: #9bb1ff;">$3.20</strong> = <strong style="color: #9bb1ff;">$7,680</strong> lost sales. Distribution center failed replenishment. Competitors captured <strong style="color: #9bb1ff;">78%</strong> of displaced demand.</p>
+<p>• Revenue loss calculation: <strong style="color: #9bb1ff;">2,400 units</strong> × <strong style="color: #9bb1ff;">$3.20</strong> = <strong style="color: #9bb1ff;">$7,680</strong> lost sales</p>
+<p>• Market share impact: <strong style="color: #9bb1ff;">78%</strong> of displaced demand captured by competitors</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">ACTION</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">3. ROOT CAUSE</h3>
 <div class="space-y-2">
-<p>Emergency reallocation: Transfer <strong style="color: #9bb1ff;">3,200 units</strong> from David warehouse to Chiriquí Central. Implement daily inventory reconciliation for top <strong style="color: #9bb1ff;">50 SKUs</strong>.</p>
+<p>• Distribution center failed automated replenishment trigger during high-velocity sales period</p>
+<p>• Inventory forecasting system underestimated seasonal demand surge by <strong style="color: #9bb1ff;">45%</strong></p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">VALUE</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">4. RECOMMENDED ACTION</h3>
 <div class="space-y-2">
-<p>Revenue protection: <strong style="color: #9bb1ff;">$32,000/month</strong> margin secured. Customer retention improvement: <strong style="color: #9bb1ff;">+12%</strong> loyalty recovery within 60 days.</p>
+<p>• Emergency stock transfer: Reallocate <strong style="color: #9bb1ff;">3,200 units</strong> from David warehouse to Chiriquí Central within 24 hours</p>
+<p>• Implement daily inventory reconciliation system for top <strong style="color: #9bb1ff;">50 SKUs</strong> across all Chiriquí stores</p>
 </div>
 </div>
 
-<div class="mt-6 pt-4 border-t border-slate-700/50">
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">KEY VISUAL</h3>
-<div class="text-center bg-slate-800/50 rounded-lg py-3 px-4">
-<span class="text-sm font-mono" style="color: #9bb1ff;">[Stockout 89% ↓] → [Emergency Transfer 3.2K units] → [$32K Monthly Protected]</span>
-</div>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">5. BUSINESS VALUE</h3>
+<div class="space-y-2">
+<p>• Revenue recovery: <strong style="color: #9bb1ff;">+$32K/month</strong> margin protected from lost sales prevention</p>
+<p>• Customer retention improvement: <strong style="color: #9bb1ff;">+12%</strong> loyalty recovery within 60 days</p>
 </div>
 </div>
 
