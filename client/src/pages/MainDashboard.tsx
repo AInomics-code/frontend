@@ -56,28 +56,28 @@ export default function MainDashboard() {
         role: 'assistant' as const,
         content: `<div class="space-y-6">
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟥 METRIC DETECTED</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">METRIC DETECTED</h3>
 <div class="space-y-2">
 <p>Chiriquí Central Store - Salsa Verde 500ml: <strong style="color: #9bb1ff;">89% stockout</strong> rate over 12 days. Lost <strong style="color: #9bb1ff;">2,400 units</strong> during peak demand period.</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟧 ANALYSIS</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">ANALYSIS</h3>
 <div class="space-y-2">
 <p>Revenue impact: <strong style="color: #9bb1ff;">2,400 units</strong> × <strong style="color: #9bb1ff;">$3.20</strong> = <strong style="color: #9bb1ff;">$7,680</strong> lost sales. Distribution center failed replenishment. Competitors captured <strong style="color: #9bb1ff;">78%</strong> of displaced demand.</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟩 ACTION</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">ACTION</h3>
 <div class="space-y-2">
 <p>Emergency reallocation: Transfer <strong style="color: #9bb1ff;">3,200 units</strong> from David warehouse to Chiriquí Central. Implement daily inventory reconciliation for top <strong style="color: #9bb1ff;">50 SKUs</strong>.</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟦 VALUE</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">VALUE</h3>
 <div class="space-y-2">
 <p>Revenue protection: <strong style="color: #9bb1ff;">$32,000/month</strong> margin secured. Customer retention improvement: <strong style="color: #9bb1ff;">+12%</strong> loyalty recovery within 60 days.</p>
 </div>
@@ -85,7 +85,7 @@ export default function MainDashboard() {
 
 <div class="mt-6 pt-4 border-t border-slate-700/50">
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">⚡ KEY VISUAL</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">KEY VISUAL</h3>
 <div class="text-center bg-slate-800/50 rounded-lg py-3 px-4">
 <span class="text-sm font-mono" style="color: #9bb1ff;">[Stockout 89% ↓] → [Emergency Transfer 3.2K units] → [$32K Monthly Protected]</span>
 </div>
