@@ -11,28 +11,27 @@ export default function MainDashboard() {
   const [messages, setMessages] = useState<Array<{role: 'user' | 'assistant', content: string}>>([]);
 
   const handlePromptClick = (prompt: PromptData) => {
-    const question = `${prompt.title}: ${prompt.description}`;
+    const question = `${prompt.title}`;
     setInputValue(question);
-    handleSubmit(question);
   };
 
-  const handleSubmit = async (customInput?: string) => {
-    const currentInput = customInput || inputValue;
-    if (!currentInput.trim() || isLoading) return;
+  const handleSubmit = async () => {
+    if (!inputValue.trim() || isLoading) return;
     
     setIsLoading(true);
     setChatMode(true);
     
     // Add user message
-    const userMessage = { role: 'user' as const, content: currentInput };
+    const userMessage = { role: 'user' as const, content: inputValue };
     setMessages(prev => [...prev, userMessage]);
+    const currentQuery = inputValue;
     setInputValue("");
     
     // Simulate AI response
     setTimeout(() => {
       const aiResponse = {
         role: 'assistant' as const,
-        content: `Based on your query "${currentInput}", here's a comprehensive business intelligence analysis. This would include detailed insights, metrics, and actionable recommendations specific to your business needs. The analysis covers performance indicators, trend analysis, and strategic suggestions for improvement.`
+        content: `Based on your query "${currentQuery}", here's a comprehensive business intelligence analysis. This would include detailed insights, metrics, and actionable recommendations specific to your business needs. The analysis covers performance indicators, trend analysis, and strategic suggestions for improvement.`
       };
       setMessages(prev => [...prev, aiResponse]);
       setIsLoading(false);
