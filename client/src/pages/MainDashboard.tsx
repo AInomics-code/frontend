@@ -18,13 +18,9 @@ function TypewriterText({ text, speed = 20 }: { text: string; speed?: number }) 
 
   return (
     <div 
-      className="text-sm text-white leading-relaxed prose prose-invert prose-sm max-w-none transition-all duration-500 ease-out"
+      className="text-sm text-white leading-relaxed transition-all duration-500 ease-out"
       dangerouslySetInnerHTML={{
         __html: displayedText
-          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-          .replace(/^• /gm, '• ')
-          .replace(/^> (.*)/gm, '<blockquote class="text-blue-200 italic border-l-2 border-blue-400 pl-3 my-2">$1</blockquote>')
-          .replace(/\n/g, '<br>')
       }}
     />
   );
@@ -58,24 +54,53 @@ export default function MainDashboard() {
     setTimeout(() => {
       const aiResponse = {
         role: 'assistant' as const,
-        content: `**1. Question**
-${currentQuery}
+        content: `<div class="space-y-6">
+<div class="space-y-3">
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">1. QUESTION</h3>
+<div class="space-y-2">
+<p>${currentQuery}</p>
+</div>
+</div>
 
-**2. Analysis (AInomics)**
-• Regional performance shows variance across 3 key markets with availability rates between **72-89%**
-• Sales velocity indicates **$45,000 monthly** revenue at risk from stockout scenarios
-• Demand forecasting accuracy at **78%** vs industry benchmark of **85%**
-• Cost leakage identified in supply chain efficiency metrics
+<div class="space-y-3">
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">2. ANALYSIS (AINOMICS)</h3>
+<div class="space-y-3">
+<ul class="space-y-1 ml-4">
+<li>• Regional performance shows variance across 3 key markets with availability rates between <strong style="color: #9bb1ff;">72-89%</strong></li>
+<li>• Sales velocity indicates <strong style="color: #9bb1ff;">$45,000 monthly</strong> revenue at risk from stockout scenarios</li>
+<li>• Demand forecasting accuracy at <strong style="color: #9bb1ff;">78%</strong> vs industry benchmark of <strong style="color: #9bb1ff;">85%</strong></li>
+<li>• Cost leakage identified in supply chain efficiency metrics</li>
+</ul>
+</div>
+</div>
 
-**3. Recommended Action**
-• Implement dynamic inventory rebalancing across underperforming regions
-• Review and adjust safety stock levels for top **15 SKUs**
-• Optimize procurement cycles based on real-time demand signals
+<div class="space-y-3">
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">3. RECOMMENDED ACTION</h3>
+<div class="space-y-2">
+<ul class="space-y-1 ml-4">
+<li>• Implement dynamic inventory rebalancing across underperforming regions</li>
+<li>• Review and adjust safety stock levels for top <strong style="color: #9bb1ff;">15 SKUs</strong></li>
+<li>• Optimize procurement cycles based on real-time demand signals</li>
+</ul>
+</div>
+</div>
 
-**4. Business Value**
-Potential revenue recovery of **$32,000-48,000 monthly** through improved availability and reduced stockouts.
+<div class="space-y-3">
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">4. BUSINESS VALUE</h3>
+<div class="space-y-2">
+<p>Potential revenue recovery of <strong style="color: #9bb1ff;">$32,000-48,000 monthly</strong> through improved availability and reduced stockouts.</p>
+</div>
+</div>
 
-> <svg class="inline w-4 h-4 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>Presented by VORTA using real-time AInomics analysis.`
+<div class="mt-6 pt-4 border-t border-slate-700/50">
+<div class="flex items-center text-blue-300/80 text-xs">
+<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+</svg>
+<span>Presented by VORTA using real-time AInomics analysis</span>
+</div>
+</div>
+</div>`
       };
       setMessages(prev => [...prev, aiResponse]);
       setIsLoading(false);
