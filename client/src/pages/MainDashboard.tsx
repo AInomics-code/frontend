@@ -55,9 +55,11 @@ export default function MainDashboard() {
       const aiResponse = {
         role: 'assistant' as const,
         content: `<div class="space-y-6">
-<!-- METRIC DETECTION SECTION -->
-<div class="bg-slate-800/40 rounded-lg p-4 border border-slate-700/30">
 <h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">1. METRIC DETECTION</h3>
+<div class="text-sm text-slate-300 mb-3">
+Anomaly: Chiriquí Central Store - Salsa Verde 500ml critical stockout detected via automated monitoring
+</div>
+<div class="bg-slate-800/40 rounded-lg p-4 border border-slate-700/30">
 <div class="grid grid-cols-2 gap-4">
 <div class="bg-slate-900/50 rounded p-3">
 <div class="text-xs text-slate-400 mb-1">Location & Product</div>
@@ -71,7 +73,7 @@ export default function MainDashboard() {
 </div>
 </div>
 <div class="mt-3 text-sm text-slate-300">
-Critical stockout detected via automated monitoring. Lost <strong style="color: #9bb1ff;">2,400 units</strong> against baseline demand of <strong style="color: #9bb1ff;">2,700 units</strong> during competitor promotion period.
+Lost <strong style="color: #9bb1ff;">2,400 units</strong> against baseline demand of <strong style="color: #9bb1ff;">2,700 units</strong> during competitor promotion period.
 </div>
 </div>
 
@@ -104,48 +106,42 @@ Critical stockout detected via automated monitoring. Lost <strong style="color: 
 </div>
 </div>
 
-<!-- ROOT CAUSE SECTION -->
-<div class="bg-slate-800/40 rounded-lg p-4 border border-slate-700/30">
 <h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">3. ROOT CAUSE</h3>
-<div class="space-y-3">
+<div class="space-y-3 text-sm text-slate-300">
 <div class="flex items-start gap-3">
 <div class="w-2 h-2 rounded-full bg-red-500 mt-2 flex-shrink-0"></div>
 <div>
-<div class="text-sm font-medium text-slate-200">System Failure</div>
-<div class="text-sm text-slate-400">Distribution center's automated replenishment system used outdated velocity parameters</div>
+<div class="font-medium text-slate-200">System Failure:</div>
+<div>Distribution center's automated replenishment system used outdated velocity parameters</div>
 </div>
 </div>
 <div class="flex items-start gap-3">
 <div class="w-2 h-2 rounded-full bg-orange-500 mt-2 flex-shrink-0"></div>
 <div>
-<div class="text-sm font-medium text-slate-200">Forecasting Gap</div>
-<div class="text-sm text-slate-400">Algorithm missed demand surge: <strong style="color: #9bb1ff;">220 units/day</strong> baseline vs <strong style="color: #9bb1ff;">400 units/day</strong> actual</div>
+<div class="font-medium text-slate-200">Forecasting Gap:</div>
+<div>Algorithm missed demand surge: <strong style="color: #9bb1ff;">220 units/day</strong> baseline vs <strong style="color: #9bb1ff;">400 units/day</strong> actual</div>
 </div>
 </div>
 <div class="flex items-start gap-3">
 <div class="w-2 h-2 rounded-full bg-yellow-500 mt-2 flex-shrink-0"></div>
 <div>
-<div class="text-sm font-medium text-slate-200">Safety Stock Error</div>
-<div class="text-sm text-slate-400">Required 325 units buffer but only had 180 units (<strong style="color: #dc2626;">45% shortfall</strong>)</div>
-</div>
+<div class="font-medium text-slate-200">Safety Stock Error:</div>
+<div>Required 325 units buffer but only had 180 units (<strong style="color: #dc2626;">45% shortfall</strong>)</div>
 </div>
 </div>
 </div>
 
-<!-- ACTION SECTION -->
-<div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">4. RECOMMENDED ACTION</h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="bg-green-900/20 border border-green-700/30 rounded-lg p-4">
-<div class="text-sm font-medium text-green-300 mb-2">IMMEDIATE (24 hours)</div>
-<div class="text-sm text-slate-300">Emergency transfer: <strong style="color: #9bb1ff;">3,200 units</strong> from David warehouse</div>
+<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">4. RECOMMENDED ACTION</h3>
+<div class="space-y-4 text-sm text-slate-300">
+<div>
+<div class="font-medium text-green-300 mb-1">IMMEDIATE (24 hours):</div>
+<div>Emergency transfer of <strong style="color: #9bb1ff;">3,200 units</strong> from David warehouse to Chiriquí Central</div>
 <div class="text-xs text-slate-400 mt-1">Route: David → Chiriquí (6-hour transit)</div>
 </div>
-<div class="bg-blue-900/20 border border-blue-700/30 rounded-lg p-4">
-<div class="text-sm font-medium text-blue-300 mb-2">SYSTEMATIC (7 days)</div>
-<div class="text-sm text-slate-300">Recalibrate forecasting with <strong style="color: #9bb1ff;">1.8x</strong> promotional multiplier</div>
-<div class="text-xs text-slate-400 mt-1">Implement daily reconciliation for top 50 SKUs</div>
-</div>
+<div>
+<div class="font-medium text-blue-300 mb-1">SYSTEMATIC (7 days):</div>
+<div>Recalibrate forecasting parameters with <strong style="color: #9bb1ff;">1.8x</strong> promotional multiplier</div>
+<div>Implement daily inventory reconciliation for top <strong style="color: #9bb1ff;">50 SKUs</strong> with real-time alerts</div>
 </div>
 </div>
 
