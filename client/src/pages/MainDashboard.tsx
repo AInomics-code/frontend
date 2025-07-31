@@ -56,9 +56,13 @@ export default function MainDashboard() {
         role: 'assistant' as const,
         content: `<div class="space-y-6">
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">1. QUESTION</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">1. METRIC DETECTION</h3>
 <div class="space-y-2">
-<p>${currentQuery}</p>
+<ul class="space-y-1 ml-4">
+<li>• <strong>Store:</strong> Chiriquí Central - Product SKU #CH-2847 (Salsa Verde 500ml)</li>
+<li>• <strong>Issue:</strong> Stockout detected for <strong style="color: #9bb1ff;">12 consecutive days</strong> (Nov 15-27)</li>
+<li>• <strong>Impact:</strong> Lost sales volume of <strong style="color: #9bb1ff;">2,400 units</strong> during peak demand period</li>
+</ul>
 </div>
 </div>
 
@@ -66,36 +70,43 @@ export default function MainDashboard() {
 <h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">2. ANALYSIS (AINOMICS)</h3>
 <div class="space-y-3">
 <ul class="space-y-1 ml-4">
-<li>• Regional performance shows variance across 3 key markets with availability rates between <strong style="color: #9bb1ff;">72-89%</strong></li>
-<li>• Sales velocity indicates <strong style="color: #9bb1ff;">$45,000 monthly</strong> revenue at risk from stockout scenarios</li>
-<li>• Demand forecasting accuracy at <strong style="color: #9bb1ff;">78%</strong> vs industry benchmark of <strong style="color: #9bb1ff;">85%</strong></li>
-<li>• Cost leakage identified in supply chain efficiency metrics</li>
+<li>• Revenue Loss: <strong style="color: #9bb1ff;">2,400 units</strong> × <strong style="color: #9bb1ff;">$3.20</strong> = <strong style="color: #9bb1ff;">$7,680</strong> direct impact</li>
+<li>• Market Share: Competitors captured <strong style="color: #9bb1ff;">78%</strong> of displaced demand</li>
+<li>• Customer Retention: <strong style="color: #9bb1ff;">-15%</strong> loyalty score drop in affected region</li>
+<li>• Margin Impact: <strong style="color: #9bb1ff;">$4,500</strong> gross profit lost at <strong style="color: #9bb1ff;">58.5%</strong> margin</li>
 </ul>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">3. RECOMMENDED ACTION</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">3. ROOT CAUSE</h3>
+<div class="space-y-2">
+<p>Distribution center failed to execute scheduled replenishment due to inventory miscounting. Safety stock threshold of <strong style="color: #9bb1ff;">800 units</strong> was breached without triggering automatic reorder protocols.</p>
+</div>
+</div>
+
+<div class="space-y-3">
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">4. RECOMMENDED ACTION</h3>
 <div class="space-y-2">
 <ul class="space-y-1 ml-4">
-<li>• Implement dynamic inventory rebalancing across underperforming regions</li>
-<li>• Review and adjust safety stock levels for top <strong style="color: #9bb1ff;">15 SKUs</strong></li>
-<li>• Optimize procurement cycles based on real-time demand signals</li>
+<li>• Immediate: Reallocate <strong style="color: #9bb1ff;">3,200 units</strong> from David warehouse to Chiriquí Central</li>
+<li>• System Fix: Implement daily inventory reconciliation for top <strong style="color: #9bb1ff;">50 SKUs</strong></li>
+<li>• Prevention: Increase safety stock to <strong style="color: #9bb1ff;">1,200 units</strong> for seasonal products</li>
 </ul>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">4. BUSINESS VALUE</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">5. BUSINESS VALUE</h3>
 <div class="space-y-2">
-<p>Potential revenue recovery of <strong style="color: #9bb1ff;">$32,000-48,000 monthly</strong> through improved availability and reduced stockouts.</p>
+<p>Revenue protection: <strong style="color: #9bb1ff;">+$32K/month</strong> margin secured. Customer retention improvement: <strong style="color: #9bb1ff;">+12%</strong> loyalty recovery within 60 days.</p>
 </div>
 </div>
 
 <div class="mt-6 pt-4 border-t border-slate-700/50">
 <div class="flex items-center text-blue-300/80 text-xs">
 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 002 2zM9 9h6v6H9V9z"></path>
 </svg>
 <span>Presented by VORTA using real-time AInomics analysis</span>
 </div>
@@ -151,7 +162,7 @@ export default function MainDashboard() {
                     </div>
                   ) : (
                     <div className="py-2">
-                      <TypewriterText text={message.content} speed={15} />
+                      <TypewriterText text={message.content} speed={10} />
                     </div>
                   )}
                 </div>
