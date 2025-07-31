@@ -56,28 +56,49 @@ export default function MainDashboard() {
         role: 'assistant' as const,
         content: `<div class="space-y-6">
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟥 METRIC DETECTED</h3>
+<div class="flex items-center gap-2 mb-2">
+<svg class="w-4 h-4" style="color: #dc2626;" fill="currentColor" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+</svg>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">METRIC DETECTED</h3>
+</div>
 <div class="space-y-2">
 <p>Mumbai Central Store - Maggi 2-Minute Noodles 70g: <strong style="color: #9bb1ff;">87% stockout</strong> rate over 14 days. Lost <strong style="color: #9bb1ff;">3,200 units</strong> during Diwali season peak demand.</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟧 ANALYSIS</h3>
+<div class="flex items-center gap-2 mb-2">
+<svg class="w-4 h-4" style="color: #ea580c;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+</svg>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">ANALYSIS</h3>
+</div>
 <div class="space-y-2">
 <p>Revenue impact: <strong style="color: #9bb1ff;">3,200 units</strong> × <strong style="color: #9bb1ff;">₹12</strong> = <strong style="color: #9bb1ff;">₹38,400</strong> lost sales. Distributor miscalculated festival demand surge. Competitor brands captured <strong style="color: #9bb1ff;">73%</strong> of displaced sales.</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟩 ACTION</h3>
+<div class="flex items-center gap-2 mb-2">
+<svg class="w-4 h-4" style="color: #16a34a;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+</svg>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">ACTION</h3>
+</div>
 <div class="space-y-2">
 <p>Emergency stock transfer: Move <strong style="color: #9bb1ff;">5,000 units</strong> from Pune warehouse to Mumbai Central within 24 hours. Implement automated demand sensing for top 20 festival SKUs.</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟦 VALUE</h3>
+<div class="flex items-center gap-2 mb-2">
+<svg class="w-4 h-4" style="color: #2563eb;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+</svg>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">VALUE</h3>
+</div>
 <div class="space-y-2">
 <p>Revenue recovery: <strong style="color: #9bb1ff;">₹60,000/month</strong> protected sales. Margin improvement: <strong style="color: #9bb1ff;">₹18,000</strong> additional gross profit at 30% margin rate.</p>
 </div>
@@ -85,7 +106,12 @@ export default function MainDashboard() {
 
 <div class="mt-6 pt-4 border-t border-slate-700/50">
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">⚡ KEY VISUAL</h3>
+<div class="flex items-center gap-2 mb-2">
+<svg class="w-4 h-4" style="color: #eab308;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+</svg>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">KEY VISUAL</h3>
+</div>
 <div class="text-center bg-slate-800/50 rounded-lg py-3 px-4">
 <span class="text-sm font-mono" style="color: #9bb1ff;">[Stockout 87% ↓] → [Emergency Transfer 5K units] → [₹60K Monthly Protected]</span>
 </div>
