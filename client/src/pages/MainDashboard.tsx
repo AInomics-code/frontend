@@ -328,14 +328,14 @@ export default function MainDashboard() {
                   className="cursor-pointer w-[420px]"
                   onClick={() => handlePromptClick(prompt)}
                 >
-                  <Card className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 hover:border-blue-400/40 hover:bg-slate-800/60 rounded-lg p-5 h-24 transition-all duration-200 group">
-                    <div className="flex items-start gap-3 h-full">
-                      <div className="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Card className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 hover:border-blue-400/40 hover:bg-slate-800/60 rounded-lg p-4 h-24 transition-all duration-200 group">
+                    <div className="flex items-center gap-3 h-full">
+                      <div className="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
                         {icons[idx]}
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <h4 className="text-base font-medium text-white group-hover:text-blue-200 transition-colors mb-0.5 leading-relaxed">{prompt.title}</h4>
-                        <p className="text-sm text-slate-400 leading-relaxed">{prompt.description}</p>
+                      <div className="flex flex-col justify-center flex-1 min-w-0 gap-1">
+                        <h4 className="text-base font-medium text-white group-hover:text-blue-200 transition-colors leading-tight">{prompt.title}</h4>
+                        <p className="text-sm text-slate-400 leading-snug">{prompt.description}</p>
                       </div>
                     </div>
                   </Card>
