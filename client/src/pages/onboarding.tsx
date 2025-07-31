@@ -372,97 +372,67 @@ export default function Onboarding() {
     switch (currentStep) {
       case 1:
         return (
-          <div className="text-center space-y-8">
-            {/* VORTA Atom Logo */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="mx-auto mb-8"
-            >
-              <svg 
-                width="64" 
-                height="64" 
-                viewBox="0 0 100 100" 
-                className="mx-auto"
-              >
-                {/* Orbital rings */}
-                <ellipse 
-                  cx="50" cy="50" rx="35" ry="15" 
-                  fill="none" stroke="#60a5fa" strokeWidth="2" 
-                  transform="rotate(0 50 50)" opacity="0.6"
-                />
-                <ellipse 
-                  cx="50" cy="50" rx="35" ry="15" 
-                  fill="none" stroke="#60a5fa" strokeWidth="2" 
-                  transform="rotate(60 50 50)" opacity="0.6"
-                />
-                <ellipse 
-                  cx="50" cy="50" rx="35" ry="15" 
-                  fill="none" stroke="#60a5fa" strokeWidth="2" 
-                  transform="rotate(120 50 50)" opacity="0.6"
-                />
-                
-                {/* Central nucleus */}
-                <circle 
-                  cx="50" cy="50" r="4" 
-                  fill="#60a5fa"
-                />
-              </svg>
-            </motion.div>
-
-            {/* Welcome Content */}
+          <div className="space-y-8">
+            {/* Welcome Content - Left Aligned */}
             <div className="space-y-6">
-              <motion.h1 
-                className="text-3xl font-light text-white tracking-wide"
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
-                Welcome to VORTA
-              </motion.h1>
-              
-              <motion.p 
-                className="text-white text-lg leading-relaxed max-w-md mx-auto tracking-wide"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-              >
-                Your AI-powered business intelligence platform is ready to transform how you make decisions.
-              </motion.p>
+                <h1 
+                  className="text-3xl font-bold text-white mb-2"
+                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
+                >
+                  Welcome to VORTA
+                </h1>
+                <p 
+                  className="text-slate-400 text-lg leading-relaxed"
+                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
+                >
+                  Your AI-powered business intelligence platform is ready to transform how you make decisions.
+                </p>
+              </motion.div>
 
               {/* Trust Badge */}
               <motion.div 
-                className="flex items-center justify-center space-x-2 py-3"
+                className="flex items-center space-x-2 py-3"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
               >
-                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
-                <span className="text-white text-sm tracking-wide font-light">Enterprise-Ready Intelligence</span>
+                <span 
+                  className="text-slate-300 text-sm font-medium"
+                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
+                >
+                  Enterprise-Ready Intelligence
+                </span>
               </motion.div>
 
               {/* CTA Button */}
               <motion.button
                 onClick={handleNext}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl text-lg font-medium tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-base font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+                style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
               >
-                Get Started →
+                Get Started
               </motion.button>
 
               {/* Footer Microcopy */}
               <motion.p 
-                className="text-gray-400 text-sm tracking-wide font-light mt-8"
+                className="text-slate-500 text-sm mt-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 0.6 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
               >
-                🔒 Your data remains secure — VORTA never stores credentials.
+                Your data remains secure — VORTA never stores credentials.
               </motion.p>
             </div>
           </div>
@@ -954,7 +924,7 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0D1117] flex items-center justify-center px-6 py-8">
+    <div className="min-h-screen bg-slate-900 flex items-center justify-center px-6 py-8">
       <div className="w-full max-w-[600px]">
         {/* Progress Bar */}
         <motion.div 
@@ -963,8 +933,13 @@ export default function Onboarding() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="flex justify-between text-sm text-white mb-3 tracking-wide">
-            <span className="font-light">Step {currentStep} of {steps.length}</span>
+          <div className="flex justify-between text-sm text-slate-400 mb-3">
+            <span 
+              className="font-medium"
+              style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
+            >
+              Step {currentStep} of {steps.length}
+            </span>
           </div>
           <div className="relative w-full bg-slate-700 rounded-full h-2 overflow-hidden">
             <motion.div 
