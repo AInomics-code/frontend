@@ -375,102 +375,102 @@ export default function Onboarding() {
           <div className="text-center space-y-8">
             {/* VORTA Atom Logo */}
             <motion.div
-              initial={{ scale: 0, rotate: -90 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 0.8, type: "spring", stiffness: 120 }}
-              className="mx-auto"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="mx-auto mb-8"
             >
-              <motion.svg 
-                width="80" 
-                height="80" 
+              <svg 
+                width="64" 
+                height="64" 
                 viewBox="0 0 100 100" 
-                className="text-cyan-400 mx-auto"
-                whileHover={{ 
-                  scale: 1.1,
-                  filter: "drop-shadow(0 0 20px rgba(103, 232, 249, 0.5))",
-                  transition: { duration: 0.3 }
-                }}
+                className="mx-auto"
               >
                 <defs>
-                  <radialGradient id="atomGradientWelcome" cx="30%" cy="30%" r="70%">
-                    <stop offset="0%" style={{ stopColor: '#67e8f9', stopOpacity: 1 }} />
-                    <stop offset="60%" style={{ stopColor: '#06b6d4', stopOpacity: 0.9 }} />
-                    <stop offset="100%" style={{ stopColor: '#0891b2', stopOpacity: 0.7 }} />
+                  <radialGradient id="atomGradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
+                    <stop offset="100%" style={{ stopColor: '#1d4ed8', stopOpacity: 0.8 }} />
                   </radialGradient>
-                  <filter id="glow">
-                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                    <feMerge> 
-                      <feMergeNode in="coloredBlur"/>
-                      <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                  </filter>
                 </defs>
                 
-                {/* Orbital rings with animation */}
-                <motion.ellipse 
+                {/* Orbital rings */}
+                <ellipse 
                   cx="50" cy="50" rx="35" ry="15" 
-                  fill="none" stroke="url(#atomGradientWelcome)" strokeWidth="2.5" 
-                  transform="rotate(0 50 50)" opacity="0.9"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  fill="none" stroke="#3b82f6" strokeWidth="2" 
+                  transform="rotate(0 50 50)" opacity="0.7"
                 />
-                <motion.ellipse 
+                <ellipse 
                   cx="50" cy="50" rx="35" ry="15" 
-                  fill="none" stroke="url(#atomGradientWelcome)" strokeWidth="2.5" 
-                  transform="rotate(60 50 50)" opacity="0.9"
-                  animate={{ rotate: 420 }}
-                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                  fill="none" stroke="#3b82f6" strokeWidth="2" 
+                  transform="rotate(60 50 50)" opacity="0.7"
                 />
-                <motion.ellipse 
+                <ellipse 
                   cx="50" cy="50" rx="35" ry="15" 
-                  fill="none" stroke="url(#atomGradientWelcome)" strokeWidth="2.5" 
-                  transform="rotate(120 50 50)" opacity="0.9"
-                  animate={{ rotate: 480 }}
-                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                  fill="none" stroke="#3b82f6" strokeWidth="2" 
+                  transform="rotate(120 50 50)" opacity="0.7"
                 />
                 
-                {/* Central nucleus with pulse */}
-                <motion.circle 
-                  cx="50" cy="50" r="5" 
-                  fill="url(#atomGradientWelcome)" 
-                  filter="url(#glow)"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                {/* Central nucleus */}
+                <circle 
+                  cx="50" cy="50" r="4" 
+                  fill="url(#atomGradient)"
                 />
-              </motion.svg>
+              </svg>
             </motion.div>
 
-            {/* Enhanced Welcome Text */}
-            <div className="space-y-4">
-              <motion.h2 
-                className="text-3xl font-light text-white"
+            {/* Welcome Content */}
+            <div className="space-y-6">
+              <motion.h1 
+                className="text-3xl font-light text-white tracking-wide"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                transition={{ delay: 0.2, duration: 0.6 }}
               >
-                Welcome to <span className="font-medium text-cyan-400">VORTA</span>
-              </motion.h2>
+                Welcome to VORTA
+              </motion.h1>
               
               <motion.p 
-                className="text-blue-200/80 text-lg leading-relaxed max-w-md mx-auto"
+                className="text-white text-lg leading-relaxed max-w-md mx-auto tracking-wide"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.6 }}
-                style={{ fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif' }}
+                transition={{ delay: 0.4, duration: 0.6 }}
               >
                 Your AI-powered business intelligence platform is ready to transform how you make decisions.
               </motion.p>
 
+              {/* Trust Badge */}
               <motion.div 
-                className="flex items-center justify-center space-x-2 mt-6"
+                className="flex items-center justify-center space-x-2 py-3"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+              >
+                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span className="text-white text-sm tracking-wide font-light">Enterprise-Ready Intelligence</span>
+              </motion.div>
+
+              {/* CTA Button */}
+              <motion.button
+                onClick={handleNext}
+                className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-8 py-3 rounded-xl text-lg font-medium tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+              >
+                Get Started →
+              </motion.button>
+
+              {/* Footer Microcopy */}
+              <motion.p 
+                className="text-gray-400 text-sm tracking-wide font-light mt-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.6 }}
               >
-                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                <span className="text-cyan-400/80 text-sm font-medium">Enterprise-Ready Intelligence</span>
-              </motion.div>
+                🔒 Your data remains secure — VORTA never stores credentials.
+              </motion.p>
             </div>
           </div>
         );
@@ -961,21 +961,21 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center px-6 py-8">
-      <div className="w-full max-w-2xl">
-        {/* Enterprise Progress Indicator */}
+    <div className="min-h-screen bg-[#0D1117] flex items-center justify-center px-6 py-8">
+      <div className="w-full max-w-[600px]">
+        {/* Progress Bar */}
         <motion.div 
           className="mb-8"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="flex justify-between text-sm text-slate-400 mb-3">
-            <span className="font-medium">Step {currentStep} of {steps.length}</span>
+          <div className="flex justify-between text-sm text-white mb-3 tracking-wide">
+            <span className="font-light">Step {currentStep} of {steps.length}</span>
           </div>
-          <div className="relative w-full bg-slate-800 rounded-sm h-1 overflow-hidden">
+          <div className="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden">
             <motion.div 
-              className="bg-slate-300 h-full"
+              className="bg-gradient-to-r from-blue-500 to-indigo-600 h-full rounded-full"
               initial={{ width: 0 }}
               animate={{ width: `${(currentStep / steps.length) * 100}%` }}
               transition={{ duration: 0.4, ease: "easeOut" }}
@@ -984,10 +984,10 @@ export default function Onboarding() {
         </motion.div>
 
         <motion.div 
-          className="relative bg-slate-800 border border-slate-700 rounded-lg shadow-xl p-8"
-          initial={{ opacity: 0, y: 20 }}
+          className="relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-slate-700/50"
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -997,51 +997,54 @@ export default function Onboarding() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="mb-8">
-                <motion.h1 
-                  className="text-2xl font-semibold text-white mb-2"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.1, duration: 0.3 }}
-                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
-                >
-                  {steps[currentStep - 1].title}
-                </motion.h1>
-                <motion.p 
-                  className="text-slate-400 text-base leading-relaxed"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 0.3 }}
-                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
-                >
-                  {steps[currentStep - 1].description}
-                </motion.p>
-              </div>
-
-              {renderStepContent()}
+              {currentStep === 1 ? (
+                // Welcome screen has its own title
+                renderStepContent()
+              ) : (
+                <>
+                  <div className="mb-8">
+                    <motion.h1 
+                      className="text-2xl font-semibold text-white mb-2"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.1, duration: 0.3 }}
+                      style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
+                    >
+                      {steps[currentStep - 1].title}
+                    </motion.h1>
+                    <motion.p 
+                      className="text-slate-400 text-base leading-relaxed"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.2, duration: 0.3 }}
+                      style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
+                    >
+                      {steps[currentStep - 1].description}
+                    </motion.p>
+                  </div>
+                  {renderStepContent()}
+                </>
+              )}
             </motion.div>
           </AnimatePresence>
 
           {/* Enterprise Navigation */}
           <motion.div 
-            className="flex justify-between mt-8 pt-6 border-t border-slate-700"
+            className={`flex ${currentStep === 1 ? 'justify-center' : 'justify-between'} mt-8 pt-6 border-t border-slate-700`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.3 }}
           >
-            <button
-              onClick={handleBack}
-              disabled={currentStep === 1}
-              className={`flex items-center px-4 py-2 text-sm font-medium transition-colors ${
-                currentStep === 1
-                  ? "text-slate-500 cursor-not-allowed"
-                  : "text-slate-300 hover:text-white"
-              }`}
-              style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back
-            </button>
+            {currentStep > 1 && (
+              <button
+                onClick={handleBack}
+                className="flex items-center px-4 py-2 text-sm font-medium transition-colors text-slate-300 hover:text-white"
+                style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back
+              </button>
+            )}
 
             {currentStep === 4 ? (
               <button
@@ -1147,7 +1150,7 @@ export default function Onboarding() {
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </button>
               </div>
-            ) : (
+            ) : currentStep > 1 ? (
               <button
                 onClick={handleNext}
                 disabled={!canProceed()}
@@ -1161,7 +1164,7 @@ export default function Onboarding() {
                 Next
                 <ArrowRight className="w-4 h-4 ml-2" />
               </button>
-            )}
+            ) : null}
           </motion.div>
         </motion.div>
       </div>
