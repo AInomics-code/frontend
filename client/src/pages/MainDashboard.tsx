@@ -278,7 +278,7 @@ export default function MainDashboard() {
                   className="cursor-pointer w-96"
                   onClick={() => handlePromptClick(prompt)}
                 >
-                  <Card className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 hover:border-blue-400/40 hover:bg-slate-800/60 rounded-lg p-5 h-full transition-all duration-200 group">
+                  <Card className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 hover:border-blue-400/40 hover:bg-slate-800/60 rounded-lg p-5 h-20 transition-all duration-200 group">
                     <div className="flex items-start gap-2">
                       <div className="w-6 h-6 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
                         {icons[idx]}
