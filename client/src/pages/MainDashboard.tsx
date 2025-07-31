@@ -178,9 +178,9 @@ export default function MainDashboard() {
           className="vortex-icon mb-1"
           style={
             {
-              width: "56px",
-              height: "56px",
-              "--vortex-size": "56px",
+              width: "72px",
+              height: "72px",
+              "--vortex-size": "72px",
               animation: "vortex-slow-rotate 20s linear infinite",
               opacity: "0.7",
             } as React.CSSProperties
