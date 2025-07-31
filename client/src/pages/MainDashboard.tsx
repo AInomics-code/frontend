@@ -173,14 +173,14 @@ export default function MainDashboard() {
     <div className="min-h-screen w-full bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e] px-6 py-10 text-white font-sans">
       
       {/* Logo & Brand */}
-      <div className="flex flex-col items-center gap-2 mb-8">
+      <div className="flex flex-col items-center gap-1 mb-8">
         <div
-          className="vortex-icon mb-3"
+          className="vortex-icon mb-1"
           style={
             {
-              width: "48px",
-              height: "48px",
-              "--vortex-size": "48px",
+              width: "56px",
+              height: "56px",
+              "--vortex-size": "56px",
               animation: "vortex-slow-rotate 20s linear infinite",
               opacity: "0.7",
             } as React.CSSProperties
@@ -192,7 +192,7 @@ export default function MainDashboard() {
           <div className="vortex-blade"></div>
           <div className="vortex-blade"></div>
         </div>
-        <h1 className="text-xl font-semibold tracking-wide text-slate-300 opacity-80">VORTA</h1>
+        <h1 className="text-lg font-semibold tracking-wide text-slate-300 opacity-80">VORTA</h1>
       </div>
 
       {/* Toggle Buttons */}
