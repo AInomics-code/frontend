@@ -988,8 +988,8 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center px-6 py-8">
-      <div className="w-full max-w-[600px]">
+    <div className="min-h-screen bg-slate-900 flex items-center justify-center px-6 py-4">
+      <div className="w-full max-w-4xl">
         {/* Progress Bar */}
         <motion.div 
           className="mb-8"
@@ -1016,7 +1016,7 @@ export default function Onboarding() {
         </motion.div>
 
         <motion.div 
-          className="relative bg-slate-800 rounded-2xl shadow-2xl p-8 border border-slate-700"
+          className="relative bg-slate-800 rounded-2xl shadow-2xl p-10 border border-slate-700"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
