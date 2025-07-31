@@ -102,7 +102,6 @@ Lost <strong style="color: #9bb1ff;">2,400 units</strong> against baseline deman
 </div>
 </div>
 </div>
-</div>
 
 <h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">3. ROOT CAUSE</h3>
 <div class="space-y-3 text-sm text-slate-300">
