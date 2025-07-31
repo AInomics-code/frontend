@@ -77,7 +77,7 @@ Critical stockout detected via automated monitoring. Lost <strong style="color: 
 
 <!-- ANALYSIS SECTION -->
 <div class="space-y-4">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">2. ANALYSIS (AINOMICS)</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">2. ANALYSIS</h3>
 <div class="bg-gradient-to-r from-slate-800/60 to-slate-800/30 rounded-lg p-4 border border-slate-700/30">
 <div class="grid grid-cols-3 gap-4 mb-4">
 <div class="text-center">
