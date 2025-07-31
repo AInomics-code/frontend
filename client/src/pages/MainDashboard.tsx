@@ -58,28 +58,28 @@ export default function MainDashboard() {
 <div class="space-y-3">
 <h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟥 METRIC DETECTED</h3>
 <div class="space-y-2">
-<p>Mumbai Central Store - Maggi 2-Minute Noodles 70g: <strong style="color: #9bb1ff;">87% stockout</strong> rate over 14 days. Lost <strong style="color: #9bb1ff;">3,200 units</strong> during Diwali season peak demand.</p>
+<p>Chiriquí Central Store - Salsa Verde 500ml: <strong style="color: #9bb1ff;">89% stockout</strong> rate over 12 days. Lost <strong style="color: #9bb1ff;">2,400 units</strong> during peak demand period.</p>
 </div>
 </div>
 
 <div class="space-y-3">
 <h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟧 ANALYSIS</h3>
 <div class="space-y-2">
-<p>Revenue impact: <strong style="color: #9bb1ff;">3,200 units</strong> × <strong style="color: #9bb1ff;">₹12</strong> = <strong style="color: #9bb1ff;">₹38,400</strong> lost sales. Distributor miscalculated festival demand surge. Competitor brands captured <strong style="color: #9bb1ff;">73%</strong> of displaced sales.</p>
+<p>Revenue impact: <strong style="color: #9bb1ff;">2,400 units</strong> × <strong style="color: #9bb1ff;">$3.20</strong> = <strong style="color: #9bb1ff;">$7,680</strong> lost sales. Distribution center failed replenishment. Competitors captured <strong style="color: #9bb1ff;">78%</strong> of displaced demand.</p>
 </div>
 </div>
 
 <div class="space-y-3">
 <h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟩 ACTION</h3>
 <div class="space-y-2">
-<p>Emergency stock transfer: Move <strong style="color: #9bb1ff;">5,000 units</strong> from Pune warehouse to Mumbai Central within 24 hours. Implement automated demand sensing for top 20 festival SKUs.</p>
+<p>Emergency reallocation: Transfer <strong style="color: #9bb1ff;">3,200 units</strong> from David warehouse to Chiriquí Central. Implement daily inventory reconciliation for top <strong style="color: #9bb1ff;">50 SKUs</strong>.</p>
 </div>
 </div>
 
 <div class="space-y-3">
 <h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">🟦 VALUE</h3>
 <div class="space-y-2">
-<p>Revenue recovery: <strong style="color: #9bb1ff;">₹60,000/month</strong> protected sales. Margin improvement: <strong style="color: #9bb1ff;">₹18,000</strong> additional gross profit at 30% margin rate.</p>
+<p>Revenue protection: <strong style="color: #9bb1ff;">$32,000/month</strong> margin secured. Customer retention improvement: <strong style="color: #9bb1ff;">+12%</strong> loyalty recovery within 60 days.</p>
 </div>
 </div>
 
@@ -87,7 +87,7 @@ export default function MainDashboard() {
 <div class="space-y-3">
 <h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">⚡ KEY VISUAL</h3>
 <div class="text-center bg-slate-800/50 rounded-lg py-3 px-4">
-<span class="text-sm font-mono" style="color: #9bb1ff;">[Stockout 87% ↓] → [Emergency Transfer 5K units] → [₹60K Monthly Protected]</span>
+<span class="text-sm font-mono" style="color: #9bb1ff;">[Stockout 89% ↓] → [Emergency Transfer 3.2K units] → [$32K Monthly Protected]</span>
 </div>
 </div>
 </div>
@@ -95,9 +95,9 @@ export default function MainDashboard() {
 <div class="mt-4 pt-3 border-t border-slate-700/30">
 <div class="flex items-center text-blue-300/80 text-xs">
 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
 </svg>
-<span>VORTA AI Analysis • FMCG Retail Intelligence</span>
+<span>Presented by VORTA using real-time AInomics analysis</span>
 </div>
 </div>
 </div>`
