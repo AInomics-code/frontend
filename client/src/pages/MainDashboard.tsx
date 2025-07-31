@@ -27,11 +27,30 @@ export default function MainDashboard() {
     const currentQuery = inputValue;
     setInputValue("");
     
-    // Simulate AI response
+    // Simulate AI response with AInomics structure
     setTimeout(() => {
       const aiResponse = {
         role: 'assistant' as const,
-        content: `Based on your query "${currentQuery}", here's a comprehensive business intelligence analysis. This would include detailed insights, metrics, and actionable recommendations specific to your business needs. The analysis covers performance indicators, trend analysis, and strategic suggestions for improvement.`
+        content: `⸻
+
+1. Question
+${currentQuery}
+
+2. Analysis (AInomics)
+• Regional performance shows variance across 3 key markets with availability rates between 72-89%
+• Sales velocity indicates $45,000 monthly revenue at risk from stockout scenarios
+• Demand forecasting accuracy at 78% vs industry benchmark of 85%
+• Cost leakage identified in supply chain efficiency metrics
+
+3. Recommended Action
+• Implement dynamic inventory rebalancing across underperforming regions
+• Review and adjust safety stock levels for top 15 SKUs
+• Optimize procurement cycles based on real-time demand signals
+
+4. Business Value
+Potential revenue recovery of $32,000-48,000 monthly through improved availability and reduced stockouts.
+
+⸻`
       };
       setMessages(prev => [...prev, aiResponse]);
       setIsLoading(false);
