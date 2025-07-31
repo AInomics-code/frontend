@@ -56,59 +56,48 @@ export default function MainDashboard() {
         role: 'assistant' as const,
         content: `<div class="space-y-6">
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">1. METRIC DETECTION</h3>
+<h3 class="text-sm font-bold" style="color: #a1b9ff;">🟥 <strong>Metric Detected</strong></h3>
 <div class="space-y-2">
-<ul class="space-y-1 ml-4">
-<li>• <strong>Store:</strong> Chiriquí Central - Product SKU #CH-2847 (Salsa Verde 500ml)</li>
-<li>• <strong>Issue:</strong> Stockout detected for <strong style="color: #9bb1ff;">12 consecutive days</strong> (Nov 15-27)</li>
-<li>• <strong>Impact:</strong> Lost sales volume of <strong style="color: #9bb1ff;">2,400 units</strong> during peak demand period</li>
-</ul>
+<p>Mumbai Central Store - Maggi 2-Minute Noodles 70g: <strong style="color: #9bb1ff;">87% stockout</strong> rate over 14 days. Lost <strong style="color: #9bb1ff;">3,200 units</strong> during Diwali season peak demand.</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">2. ANALYSIS (AINOMICS)</h3>
-<div class="space-y-3">
-<ul class="space-y-1 ml-4">
-<li>• Revenue Loss: <strong style="color: #9bb1ff;">2,400 units</strong> × <strong style="color: #9bb1ff;">$3.20</strong> = <strong style="color: #9bb1ff;">$7,680</strong> direct impact</li>
-<li>• Market Share: Competitors captured <strong style="color: #9bb1ff;">78%</strong> of displaced demand</li>
-<li>• Customer Retention: <strong style="color: #9bb1ff;">-15%</strong> loyalty score drop in affected region</li>
-<li>• Margin Impact: <strong style="color: #9bb1ff;">$4,500</strong> gross profit lost at <strong style="color: #9bb1ff;">58.5%</strong> margin</li>
-</ul>
+<h3 class="text-sm font-bold" style="color: #a1b9ff;">🟧 <strong>Analysis</strong></h3>
+<div class="space-y-2">
+<p>Revenue impact: <strong style="color: #9bb1ff;">3,200 units</strong> × <strong style="color: #9bb1ff;">₹12</strong> = <strong style="color: #9bb1ff;">₹38,400</strong> lost sales. Distributor miscalculated festival demand surge. Competitor brands captured <strong style="color: #9bb1ff;">73%</strong> of displaced sales.</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">3. ROOT CAUSE</h3>
+<h3 class="text-sm font-bold" style="color: #a1b9ff;">🟩 <strong>Action</strong></h3>
 <div class="space-y-2">
-<p>Distribution center failed to execute scheduled replenishment due to inventory miscounting. Safety stock threshold of <strong style="color: #9bb1ff;">800 units</strong> was breached without triggering automatic reorder protocols.</p>
+<p>Emergency stock transfer: Move <strong style="color: #9bb1ff;">5,000 units</strong> from Pune warehouse to Mumbai Central within 24 hours. Implement automated demand sensing for top 20 festival SKUs.</p>
 </div>
 </div>
 
 <div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">4. RECOMMENDED ACTION</h3>
+<h3 class="text-sm font-bold" style="color: #a1b9ff;">🟦 <strong>Value</strong></h3>
 <div class="space-y-2">
-<ul class="space-y-1 ml-4">
-<li>• Immediate: Reallocate <strong style="color: #9bb1ff;">3,200 units</strong> from David warehouse to Chiriquí Central</li>
-<li>• System Fix: Implement daily inventory reconciliation for top <strong style="color: #9bb1ff;">50 SKUs</strong></li>
-<li>• Prevention: Increase safety stock to <strong style="color: #9bb1ff;">1,200 units</strong> for seasonal products</li>
-</ul>
-</div>
-</div>
-
-<div class="space-y-3">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">5. BUSINESS VALUE</h3>
-<div class="space-y-2">
-<p>Revenue protection: <strong style="color: #9bb1ff;">+$32K/month</strong> margin secured. Customer retention improvement: <strong style="color: #9bb1ff;">+12%</strong> loyalty recovery within 60 days.</p>
+<p>Revenue recovery: <strong style="color: #9bb1ff;">₹60,000/month</strong> protected sales. Margin improvement: <strong style="color: #9bb1ff;">₹18,000</strong> additional gross profit at 30% margin rate.</p>
 </div>
 </div>
 
 <div class="mt-6 pt-4 border-t border-slate-700/50">
-<div class="flex items-center text-blue-300/80 text-xs">
+<div class="space-y-3">
+<h3 class="text-sm font-bold" style="color: #a1b9ff;">⚡ <strong>Key Visual</strong></h3>
+<div class="text-center bg-slate-800/50 rounded-lg py-3 px-4">
+<span class="text-sm font-mono" style="color: #9bb1ff;">[Stockout 87% ↓] → [Emergency Transfer 5K units] → [₹60K Monthly Protected]</span>
+</div>
+</div>
+</div>
+
+<div class="mt-4 pt-3 border-t border-slate-700/30">
+<div class="flex items-center text-blue-300/70 text-xs">
 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
-<span>Presented by VORTA using real-time AInomics analysis</span>
+<span>VORTA AI Analysis • FMCG Retail Intelligence</span>
 </div>
 </div>
 </div>`
