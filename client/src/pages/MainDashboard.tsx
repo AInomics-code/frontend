@@ -77,9 +77,7 @@ Lost <strong style="color: #9bb1ff;">2,400 units</strong> against baseline deman
 </div>
 </div>
 
-<!-- ANALYSIS SECTION -->
-<div class="space-y-4">
-<h3 class="text-xs uppercase tracking-wider font-semibold" style="color: #a1b9ff;">2. ANALYSIS</h3>
+<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">2. ANALYSIS</h3>
 <div class="bg-gradient-to-r from-slate-800/60 to-slate-800/30 rounded-lg p-4 border border-slate-700/30">
 <div class="grid grid-cols-3 gap-4 mb-4">
 <div class="text-center">
@@ -145,9 +143,8 @@ Lost <strong style="color: #9bb1ff;">2,400 units</strong> against baseline deman
 </div>
 </div>
 
-<!-- BUSINESS VALUE SECTION -->
-<div class="bg-gradient-to-br from-green-900/20 to-blue-900/20 rounded-lg p-4 border border-green-700/30">
 <h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">5. BUSINESS VALUE</h3>
+<div class="bg-gradient-to-br from-green-900/20 to-blue-900/20 rounded-lg p-4 border border-green-700/30">
 <div class="grid grid-cols-2 gap-4 mb-4">
 <div class="text-center">
 <div class="text-xs text-slate-400">Monthly Protection</div>
@@ -166,9 +163,8 @@ Lost <strong style="color: #9bb1ff;">2,400 units</strong> against baseline deman
 </div>
 </div>
 
-<!-- VISUAL FLOW -->
-<div class="bg-slate-800/30 rounded-lg p-4 border border-slate-700/30">
 <div class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">PROCESS FLOW</div>
+<div class="bg-slate-800/30 rounded-lg p-4 border border-slate-700/30">
 <div class="flex items-center justify-between text-center">
 <div class="flex-1">
 <div class="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
