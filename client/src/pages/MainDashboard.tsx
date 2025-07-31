@@ -220,7 +220,7 @@ export default function MainDashboard() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 pl-24 py-10">
+      <div className="flex-1 pl-24 pr-8 py-10">
         
         {/* Logo & Brand */}
       <div className="flex flex-col items-center gap-1 mb-8">
