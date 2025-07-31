@@ -128,7 +128,7 @@ export default function MainDashboard() {
           </button>
           <div className="flex flex-col items-center">
             <h1 className="text-lg font-semibold tracking-wide text-[#CBD5E1]">VORTA</h1>
-            <p className="text-xs text-slate-400 tracking-wide uppercase">Copilot</p>
+            <p className="text-xs text-slate-400 tracking-wide uppercase">AI Copilot</p>
           </div>
           <div className="w-20"></div>
         </div>
@@ -287,6 +287,7 @@ export default function MainDashboard() {
           <div className="vortex-blade"></div>
         </div>
         <h1 className="text-lg font-semibold tracking-wide text-slate-300 opacity-80">VORTA</h1>
+        <p className="text-xs text-slate-400 tracking-wide uppercase">AI Copilot</p>
       </div>
 
       {/* Toggle Buttons */}
