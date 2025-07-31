@@ -209,10 +209,7 @@ export default function Onboarding() {
       case 4:
         return credentials.host && credentials.port && credentials.username && credentials.database;
       case 5:
-        return selectedTables.length > 0 && selectedTables.some(tableName => {
-          const config = tableConfigs[tableName];
-          return config && config.businessQuestions.some(q => q.trim().length > 0);
-        });
+        return selectedTables.length > 0;
       case 6:
         return businessPrompts.some(p => p.question.trim().length > 0);
       default:
@@ -469,12 +466,12 @@ export default function Onboarding() {
                     key={useCase}
                     onClick={() => handleUseCaseToggle(useCase)}
                     disabled={isDisabled}
-                    className={`p-4 rounded-xl border-2 transition-all text-left relative ${
+                    className={`p-4 rounded-xl border-2 transition-all duration-200 text-left relative ${
                       isSelected
-                        ? "border-blue-500 bg-blue-500/20 text-white"
+                        ? "border-blue-500 bg-blue-500/20 text-white shadow-lg shadow-blue-500/25"
                         : isDisabled
                         ? "border-slate-700 bg-slate-800/50 text-slate-500 cursor-not-allowed"
-                        : "border-slate-600 hover:border-blue-400 text-blue-200 hover:bg-slate-700/30"
+                        : "border-slate-600 hover:border-blue-400 text-blue-200 hover:bg-slate-700/30 hover:shadow-md hover:-translate-y-0.5"
                     }`}
                     style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
                   >
@@ -862,7 +859,7 @@ export default function Onboarding() {
                         </div>
                         <button
                           onClick={() => toggleTable(tableName)}
-                          className="text-slate-400 hover:text-red-400 transition-colors"
+                          className="text-slate-400 hover:text-red-400 transition-all duration-200 hover:scale-110 hover:bg-red-400/10 rounded p-1"
                         >
                           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -893,7 +890,7 @@ export default function Onboarding() {
                               value={question}
                               onChange={(e) => updateBusinessQuestion(tableName, idx, e.target.value)}
                               placeholder={`Question ${idx + 1}: e.g., "Which customers haven't ordered this month?"`}
-                              className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none text-sm"
+                              className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none text-sm transition-all duration-200 focus:bg-slate-700/70 focus:shadow-lg focus:shadow-blue-500/10"
                             />
                           ))}
                         </div>
@@ -1036,9 +1033,9 @@ export default function Onboarding() {
         {/* Visual Stepper */}
         <motion.div 
           className="mb-8"
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
         >
           <div className="flex items-center justify-center max-w-lg mx-auto">
             {/* Step indicators */}
@@ -1084,17 +1081,17 @@ export default function Onboarding() {
 
         <motion.div 
           className="relative bg-slate-800 rounded-2xl shadow-2xl p-10 border border-slate-700"
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
         >
           <AnimatePresence mode="wait">
             <motion.div
               key={currentStep}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             >
               {currentStep === 1 ? (
                 // Welcome screen has its own title
@@ -1130,9 +1127,9 @@ export default function Onboarding() {
           {/* Enterprise Navigation */}
           <motion.div 
             className={`flex ${currentStep === 1 ? 'justify-center' : 'justify-between'} mt-8 pt-6 border-t border-slate-700`}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.3 }}
+            transition={{ delay: 0.1, duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
           >
             {currentStep > 1 && (
               <button
@@ -1149,9 +1146,9 @@ export default function Onboarding() {
               <button
                 onClick={handleContinueToCredentials}
                 disabled={!canProceed()}
-                className={`flex items-center px-6 py-2 text-sm font-medium rounded border transition-colors ${
+                className={`flex items-center px-6 py-2 text-sm font-medium rounded border transition-all duration-200 ${
                   canProceed()
-                    ? "bg-slate-600 border-slate-500 text-white hover:bg-slate-500"
+                    ? "bg-slate-600 border-slate-500 text-white hover:bg-slate-500 hover:shadow-lg hover:shadow-slate-500/25 hover:-translate-y-0.5"
                     : "bg-slate-700 border-slate-600 text-slate-400 cursor-not-allowed"
                 }`}
                 style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
@@ -1171,9 +1168,9 @@ export default function Onboarding() {
                 <button
                   onClick={handleCredentialsSubmit}
                   disabled={!canProceed() || isConnecting}
-                  className={`flex items-center px-6 py-2 text-sm font-medium rounded border transition-colors ${
+                  className={`flex items-center px-6 py-2 text-sm font-medium rounded border transition-all duration-200 ${
                     canProceed() && !isConnecting
-                      ? "bg-slate-600 border-slate-500 text-white hover:bg-slate-500"
+                      ? "bg-slate-600 border-slate-500 text-white hover:bg-slate-500 hover:shadow-lg hover:shadow-slate-500/25 hover:-translate-y-0.5"
                       : "bg-slate-700 border-slate-600 text-slate-400 cursor-not-allowed"
                   }`}
                   style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
@@ -1206,9 +1203,9 @@ export default function Onboarding() {
                 <button
                   onClick={handleNext}
                   disabled={!canProceed()}
-                  className={`flex items-center px-6 py-2 text-sm font-medium rounded border transition-colors ${
+                  className={`flex items-center px-6 py-2 text-sm font-medium rounded border transition-all duration-200 ${
                     canProceed()
-                      ? "bg-slate-600 border-slate-500 text-white hover:bg-slate-500"
+                      ? "bg-slate-600 border-slate-500 text-white hover:bg-slate-500 hover:shadow-lg hover:shadow-slate-500/25 hover:-translate-y-0.5"
                       : "bg-slate-700 border-slate-600 text-slate-400 cursor-not-allowed"
                   }`}
                   style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
@@ -1238,9 +1235,9 @@ export default function Onboarding() {
                     setLocation("/dashboard");
                   }}
                   disabled={!canProceed()}
-                  className={`flex items-center px-6 py-2 text-sm font-medium rounded border transition-colors ${
+                  className={`flex items-center px-6 py-2 text-sm font-medium rounded border transition-all duration-200 ${
                     canProceed()
-                      ? "bg-slate-600 border-slate-500 text-white hover:bg-slate-500"
+                      ? "bg-slate-600 border-slate-500 text-white hover:bg-slate-500 hover:shadow-lg hover:shadow-slate-500/25 hover:-translate-y-0.5"
                       : "bg-slate-700 border-slate-600 text-slate-400 cursor-not-allowed"
                   }`}
                   style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
