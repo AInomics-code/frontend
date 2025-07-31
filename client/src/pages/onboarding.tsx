@@ -997,135 +997,32 @@ export default function Onboarding() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <div className="flex items-center justify-between max-w-2xl mx-auto">
-            {/* Step 1: Welcome */}
-            <div className="flex items-center">
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full border-2 transition-all duration-300 ${
-                currentStep >= 1 
-                  ? 'bg-blue-600 border-blue-600 text-white' 
-                  : 'border-slate-600 text-slate-400'
-              }`}>
-                {currentStep > 1 ? (
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                ) : (
-                  <div className={`w-3 h-3 rounded-full ${currentStep === 1 ? 'bg-white' : 'bg-slate-600'}`}></div>
-                )}
-              </div>
-              <span className={`ml-2 text-xs font-medium transition-colors ${
-                currentStep >= 1 ? 'text-white' : 'text-slate-400'
-              }`} style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}>
-                Welcome
-              </span>
+          <div className="flex items-center justify-center space-x-1 max-w-md mx-auto">
+            {/* Step indicators */}
+            <div className="flex items-center space-x-1">
+              {[1, 2, 3, 4, 5, 6].map((step, index) => (
+                <div key={step} className="flex items-center">
+                  <div 
+                    className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                      currentStep >= step ? 'bg-slate-300' : 'bg-slate-700'
+                    }`}
+                  />
+                  {index < 5 && (
+                    <div className={`w-4 h-px transition-colors duration-200 ${
+                      currentStep > step ? 'bg-slate-400' : 'bg-slate-700'
+                    }`} />
+                  )}
+                </div>
+              ))}
             </div>
-
-            {/* Connector Line */}
-            <div className={`flex-1 h-0.5 mx-3 transition-colors duration-300 ${
-              currentStep > 1 ? 'bg-blue-600' : 'bg-slate-600'
-            }`}></div>
-
-            {/* Step 2: Use Case */}
-            <div className="flex items-center">
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full border-2 transition-all duration-300 ${
-                currentStep >= 2 
-                  ? 'bg-blue-600 border-blue-600 text-white' 
-                  : 'border-slate-600 text-slate-400'
-              }`}>
-                {currentStep > 2 ? (
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                ) : (
-                  <div className={`w-3 h-3 rounded-full ${currentStep === 2 ? 'bg-white' : 'bg-slate-600'}`}></div>
-                )}
-              </div>
-              <span className={`ml-2 text-xs font-medium transition-colors ${
-                currentStep >= 2 ? 'text-white' : 'text-slate-400'
-              }`} style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}>
-                Use Case
-              </span>
-            </div>
-
-            {/* Connector Line */}
-            <div className={`flex-1 h-0.5 mx-3 transition-colors duration-300 ${
-              currentStep > 2 ? 'bg-blue-600' : 'bg-slate-600'
-            }`}></div>
-
-            {/* Step 3-4: Connect DB */}
-            <div className="flex items-center">
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full border-2 transition-all duration-300 ${
-                currentStep >= 3 
-                  ? 'bg-blue-600 border-blue-600 text-white' 
-                  : 'border-slate-600 text-slate-400'
-              }`}>
-                {currentStep > 4 ? (
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                ) : (
-                  <div className={`w-3 h-3 rounded-full ${(currentStep === 3 || currentStep === 4) ? 'bg-white' : 'bg-slate-600'}`}></div>
-                )}
-              </div>
-              <span className={`ml-2 text-xs font-medium transition-colors ${
-                currentStep >= 3 ? 'text-white' : 'text-slate-400'
-              }`} style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}>
-                Connect DB
-              </span>
-            </div>
-
-            {/* Connector Line */}
-            <div className={`flex-1 h-0.5 mx-3 transition-colors duration-300 ${
-              currentStep > 4 ? 'bg-blue-600' : 'bg-slate-600'
-            }`}></div>
-
-            {/* Step 5: Add Context */}
-            <div className="flex items-center">
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full border-2 transition-all duration-300 ${
-                currentStep >= 5 
-                  ? 'bg-blue-600 border-blue-600 text-white' 
-                  : 'border-slate-600 text-slate-400'
-              }`}>
-                {currentStep > 5 ? (
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                ) : (
-                  <div className={`w-3 h-3 rounded-full ${currentStep === 5 ? 'bg-white' : 'bg-slate-600'}`}></div>
-                )}
-              </div>
-              <span className={`ml-2 text-xs font-medium transition-colors ${
-                currentStep >= 5 ? 'text-white' : 'text-slate-400'
-              }`} style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}>
-                Add Context
-              </span>
-            </div>
-
-            {/* Connector Line */}
-            <div className={`flex-1 h-0.5 mx-3 transition-colors duration-300 ${
-              currentStep > 5 ? 'bg-blue-600' : 'bg-slate-600'
-            }`}></div>
-
-            {/* Step 6: Finish Setup */}
-            <div className="flex items-center">
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full border-2 transition-all duration-300 ${
-                currentStep >= 6 
-                  ? 'bg-blue-600 border-blue-600 text-white' 
-                  : 'border-slate-600 text-slate-400'
-              }`}>
-                {currentStep > 6 ? (
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                ) : (
-                  <div className={`w-3 h-3 rounded-full ${currentStep === 6 ? 'bg-white' : 'bg-slate-600'}`}></div>
-                )}
-              </div>
-              <span className={`ml-2 text-xs font-medium transition-colors ${
-                currentStep >= 6 ? 'text-white' : 'text-slate-400'
-              }`} style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}>
-                Finish Setup
-              </span>
+            
+            {/* Current step label */}
+            <div className="ml-4 text-xs text-slate-400 font-medium" style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}>
+              {currentStep === 1 && "Welcome"}
+              {currentStep === 2 && "Use Case"}
+              {(currentStep === 3 || currentStep === 4) && "Connect Database"}
+              {currentStep === 5 && "Add Context"}
+              {currentStep === 6 && "Finish Setup"}
             </div>
           </div>
         </motion.div>
