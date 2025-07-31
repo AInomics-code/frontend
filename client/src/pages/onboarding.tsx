@@ -997,32 +997,44 @@ export default function Onboarding() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <div className="flex items-center justify-center space-x-1 max-w-md mx-auto">
+          <div className="flex items-center justify-center max-w-lg mx-auto">
             {/* Step indicators */}
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center space-x-3">
               {[1, 2, 3, 4, 5, 6].map((step, index) => (
                 <div key={step} className="flex items-center">
-                  <div 
-                    className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                      currentStep >= step ? 'bg-slate-300' : 'bg-slate-700'
-                    }`}
-                  />
+                  <div className="relative flex items-center justify-center">
+                    <div 
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        currentStep >= step 
+                          ? 'bg-blue-500 shadow-md' 
+                          : 'bg-slate-600 border border-slate-500'
+                      }`}
+                    />
+                    {currentStep === step && (
+                      <div className="absolute w-5 h-5 rounded-full border border-blue-400/40 animate-pulse" />
+                    )}
+                  </div>
                   {index < 5 && (
-                    <div className={`w-4 h-px transition-colors duration-200 ${
-                      currentStep > step ? 'bg-slate-400' : 'bg-slate-700'
+                    <div className={`w-8 h-0.5 mx-2 transition-colors duration-300 ${
+                      currentStep > step ? 'bg-blue-500/60' : 'bg-slate-600'
                     }`} />
                   )}
                 </div>
               ))}
             </div>
             
-            {/* Current step label */}
-            <div className="ml-4 text-xs text-slate-400 font-medium" style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}>
-              {currentStep === 1 && "Welcome"}
-              {currentStep === 2 && "Use Case"}
-              {(currentStep === 3 || currentStep === 4) && "Connect Database"}
-              {currentStep === 5 && "Add Context"}
-              {currentStep === 6 && "Finish Setup"}
+            {/* Step counter and label */}
+            <div className="ml-6 flex flex-col items-start">
+              <div className="text-xs text-slate-500 font-medium mb-0.5" style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}>
+                Step {currentStep} of 6
+              </div>
+              <div className="text-sm text-slate-300 font-medium" style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}>
+                {currentStep === 1 && "Welcome"}
+                {currentStep === 2 && "Use Case"}
+                {(currentStep === 3 || currentStep === 4) && "Connect Database"}
+                {currentStep === 5 && "Add Context"}
+                {currentStep === 6 && "Finish Setup"}
+              </div>
             </div>
           </div>
         </motion.div>
