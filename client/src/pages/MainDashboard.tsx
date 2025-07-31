@@ -278,7 +278,7 @@ export default function MainDashboard() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2, delay: idx * 0.05 }}
-                className="w-80"
+                className="w-96"
               >
                 <Card className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/70 rounded-lg p-4 h-full transition-all duration-200 hover:bg-slate-800/80">
                   <div className="flex items-center mb-2">
@@ -325,10 +325,10 @@ export default function MainDashboard() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.2, delay: idx * 0.05 }}
-                  className="cursor-pointer w-96"
+                  className="cursor-pointer w-[420px]"
                   onClick={() => handlePromptClick(prompt)}
                 >
-                  <Card className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 hover:border-blue-400/40 hover:bg-slate-800/60 rounded-lg p-5 h-20 transition-all duration-200 group">
+                  <Card className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 hover:border-blue-400/40 hover:bg-slate-800/60 rounded-lg p-5 h-24 transition-all duration-200 group">
                     <div className="flex items-start gap-2">
                       <div className="w-6 h-6 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
                         {icons[idx]}
