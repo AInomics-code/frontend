@@ -334,7 +334,7 @@ export default function MainDashboard() {
                         {icons[idx]}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h4 className="text-xs font-medium text-white group-hover:text-blue-200 transition-colors mb-1 leading-tight">{prompt.title}</h4>
+                        <h4 className="text-sm font-medium text-white group-hover:text-blue-200 transition-colors mb-1 leading-tight">{prompt.title}</h4>
                         <p className="text-xs text-slate-400 leading-tight">{prompt.description}</p>
                       </div>
                     </div>
