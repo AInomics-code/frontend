@@ -386,34 +386,27 @@ export default function Onboarding() {
                 viewBox="0 0 100 100" 
                 className="mx-auto"
               >
-                <defs>
-                  <radialGradient id="atomGradient" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
-                    <stop offset="100%" style={{ stopColor: '#1d4ed8', stopOpacity: 0.8 }} />
-                  </radialGradient>
-                </defs>
-                
                 {/* Orbital rings */}
                 <ellipse 
                   cx="50" cy="50" rx="35" ry="15" 
-                  fill="none" stroke="#3b82f6" strokeWidth="2" 
-                  transform="rotate(0 50 50)" opacity="0.7"
+                  fill="none" stroke="#60a5fa" strokeWidth="2" 
+                  transform="rotate(0 50 50)" opacity="0.6"
                 />
                 <ellipse 
                   cx="50" cy="50" rx="35" ry="15" 
-                  fill="none" stroke="#3b82f6" strokeWidth="2" 
-                  transform="rotate(60 50 50)" opacity="0.7"
+                  fill="none" stroke="#60a5fa" strokeWidth="2" 
+                  transform="rotate(60 50 50)" opacity="0.6"
                 />
                 <ellipse 
                   cx="50" cy="50" rx="35" ry="15" 
-                  fill="none" stroke="#3b82f6" strokeWidth="2" 
-                  transform="rotate(120 50 50)" opacity="0.7"
+                  fill="none" stroke="#60a5fa" strokeWidth="2" 
+                  transform="rotate(120 50 50)" opacity="0.6"
                 />
                 
                 {/* Central nucleus */}
                 <circle 
                   cx="50" cy="50" r="4" 
-                  fill="url(#atomGradient)"
+                  fill="#60a5fa"
                 />
               </svg>
             </motion.div>
@@ -454,7 +447,7 @@ export default function Onboarding() {
               {/* CTA Button */}
               <motion.button
                 onClick={handleNext}
-                className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-8 py-3 rounded-xl text-lg font-medium tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl text-lg font-medium tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
@@ -973,9 +966,9 @@ export default function Onboarding() {
           <div className="flex justify-between text-sm text-white mb-3 tracking-wide">
             <span className="font-light">Step {currentStep} of {steps.length}</span>
           </div>
-          <div className="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden">
+          <div className="relative w-full bg-slate-700 rounded-full h-2 overflow-hidden">
             <motion.div 
-              className="bg-gradient-to-r from-blue-500 to-indigo-600 h-full rounded-full"
+              className="bg-blue-600 h-full rounded-full"
               initial={{ width: 0 }}
               animate={{ width: `${(currentStep / steps.length) * 100}%` }}
               transition={{ duration: 0.4, ease: "easeOut" }}
@@ -984,7 +977,7 @@ export default function Onboarding() {
         </motion.div>
 
         <motion.div 
-          className="relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-slate-700/50"
+          className="relative bg-slate-800 rounded-2xl shadow-2xl p-8 border border-slate-700"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
