@@ -31,26 +31,24 @@ export default function MainDashboard() {
     setTimeout(() => {
       const aiResponse = {
         role: 'assistant' as const,
-        content: `⸻
-
-1. Question
+        content: `**1. Question**
 ${currentQuery}
 
-2. Analysis (AInomics)
-• Regional performance shows variance across 3 key markets with availability rates between 72-89%
-• Sales velocity indicates $45,000 monthly revenue at risk from stockout scenarios
-• Demand forecasting accuracy at 78% vs industry benchmark of 85%
+**2. Analysis (AInomics)**
+• Regional performance shows variance across 3 key markets with availability rates between **72-89%**
+• Sales velocity indicates **$45,000 monthly** revenue at risk from stockout scenarios
+• Demand forecasting accuracy at **78%** vs industry benchmark of **85%**
 • Cost leakage identified in supply chain efficiency metrics
 
-3. Recommended Action
+**3. Recommended Action**
 • Implement dynamic inventory rebalancing across underperforming regions
-• Review and adjust safety stock levels for top 15 SKUs
+• Review and adjust safety stock levels for top **15 SKUs**
 • Optimize procurement cycles based on real-time demand signals
 
-4. Business Value
-Potential revenue recovery of $32,000-48,000 monthly through improved availability and reduced stockouts.
+**4. Business Value**
+Potential revenue recovery of **$32,000-48,000 monthly** through improved availability and reduced stockouts.
 
-⸻`
+> ✨ Presented by VORTA using real-time AInomics analysis.`
       };
       setMessages(prev => [...prev, aiResponse]);
       setIsLoading(false);
@@ -101,7 +99,16 @@ Potential revenue recovery of $32,000-48,000 monthly through improved availabili
                     </div>
                   ) : (
                     <div className="py-2">
-                      <p className="text-sm text-white leading-relaxed">{message.content}</p>
+                      <div 
+                        className="text-sm text-white leading-relaxed prose prose-invert prose-sm max-w-none"
+                        dangerouslySetInnerHTML={{
+                          __html: message.content
+                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/^• /gm, '• ')
+                            .replace(/^> (.*)/gm, '<blockquote class="text-blue-200 italic border-l-2 border-blue-400 pl-3 my-2">$1</blockquote>')
+                            .replace(/\n/g, '<br>')
+                        }}
+                      />
                     </div>
                   )}
                 </div>
