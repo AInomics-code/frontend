@@ -109,7 +109,7 @@ const dataSources = [
 export default function Onboarding() {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedIndustry, setSelectedIndustry] = useState("");
-  const [selectedUseCase, setSelectedUseCase] = useState("");
+  const [selectedUseCases, setSelectedUseCases] = useState<string[]>([]);
   const [selectedDB, setSelectedDB] = useState<string | null>(null);
   const [credentials, setCredentials] = useState({
     host: '',
@@ -168,6 +168,21 @@ export default function Onboarding() {
     }
   ];
 
+  const handleUseCaseToggle = (useCase: string) => {
+    setSelectedUseCases(prev => {
+      if (prev.includes(useCase)) {
+        // Remove if already selected
+        return prev.filter(item => item !== useCase);
+      } else if (prev.length < 3) {
+        // Add if less than 3 selected
+        return [...prev, useCase];
+      } else {
+        // Already have 3, don't add more
+        return prev;
+      }
+    });
+  };
+
   const handleNext = () => {
     if (currentStep < steps.length) {
       setCurrentStep(currentStep + 1);
@@ -188,7 +203,7 @@ export default function Onboarding() {
       case 1:
         return true;
       case 2:
-        return selectedUseCase !== "";
+        return selectedUseCases.length > 0;
       case 3:
         return selectedDB !== null;
       case 4:
@@ -433,21 +448,49 @@ export default function Onboarding() {
 
       case 2:
         return (
-          <div className="space-y-4">
+          <div className="space-y-6">
+            {/* Selection Counter */}
+            <div className="flex items-center justify-between">
+              <div className="text-sm text-slate-400" style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}>
+                Select up to 3 primary use cases
+              </div>
+              <div className="text-sm text-slate-300 font-medium" style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}>
+                {selectedUseCases.length} of 3 selected
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 gap-3">
-              {useCases.map((useCase) => (
-                <button
-                  key={useCase}
-                  onClick={() => setSelectedUseCase(useCase)}
-                  className={`p-4 rounded-xl border-2 transition-all text-left ${
-                    selectedUseCase === useCase
-                      ? "border-blue-500 bg-gradient-to-r from-blue-600 to-blue-700 text-white"
-                      : "border-slate-600 hover:border-blue-400 text-blue-200"
-                  }`}
-                >
-                  {useCase}
-                </button>
-              ))}
+              {useCases.map((useCase) => {
+                const isSelected = selectedUseCases.includes(useCase);
+                const isDisabled = !isSelected && selectedUseCases.length >= 3;
+                
+                return (
+                  <button
+                    key={useCase}
+                    onClick={() => handleUseCaseToggle(useCase)}
+                    disabled={isDisabled}
+                    className={`p-4 rounded-xl border-2 transition-all text-left relative ${
+                      isSelected
+                        ? "border-blue-500 bg-blue-500/20 text-white"
+                        : isDisabled
+                        ? "border-slate-700 bg-slate-800/50 text-slate-500 cursor-not-allowed"
+                        : "border-slate-600 hover:border-blue-400 text-blue-200 hover:bg-slate-700/30"
+                    }`}
+                    style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium">{useCase}</span>
+                      {isSelected && (
+                        <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
         );
