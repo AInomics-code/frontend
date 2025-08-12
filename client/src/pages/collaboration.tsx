@@ -463,9 +463,9 @@ export default function Collaboration() {
               </div>
             )}
 
-            <div className="space-y-4">
-              {/* Textarea */}
-              <div className="relative">
+            <div className="flex gap-4">
+              {/* Textarea container */}
+              <div className="flex-1 relative">
                 <textarea
                   ref={inputRef}
                   value={newComment}
@@ -491,8 +491,8 @@ export default function Collaboration() {
                 </div>
               </div>
               
-              {/* Send button row */}
-              <div className="flex justify-end">
+              {/* Send button - aligned with textarea */}
+              <div className="flex items-end">
                 <button
                   onClick={handleSendComment}
                   className="px-6 py-3 bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/30 rounded-xl text-blue-300 font-medium transition-all duration-200 hover:scale-105 flex items-center space-x-2"
