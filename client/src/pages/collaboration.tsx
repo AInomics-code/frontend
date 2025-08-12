@@ -3,6 +3,8 @@ import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { Search, Filter, Send, AtSign, Hash } from 'lucide-react';
 import ContextPanel from '@/components/ContextPanel';
+import ReportPanel from '@/components/ReportPanel';
+import KPIDrawer from '@/components/KPIDrawer';
 import { ToastContainer } from '@/components/Toast';
 import { parseChips, teamMembers } from '@/data/entities';
 
@@ -33,7 +35,11 @@ const EntityTag = ({ type, value, id, onClick }: { type: string; value: string; 
 };
 
 // Refined comment card with luxury styling
-const CommentCard = ({ comment, onOpenContext }: { comment: any; onOpenContext: (type: string, id: string) => void }) => {
+const CommentCard = ({ comment, openReportPanel, openKpiDrawer }: { 
+  comment: any; 
+  openReportPanel: (id: string) => void;
+  openKpiDrawer: (id: string) => void;
+}) => {
   const member = teamMembers.find(m => m.name === comment.author);
   
   // Extract entities for clean display
@@ -91,7 +97,10 @@ const CommentCard = ({ comment, onOpenContext }: { comment: any; onOpenContext: 
               type={entity.type}
               value={entity.value}
               id={entity.id}
-              onClick={() => onOpenContext(entity.type, entity.id)}
+              onClick={() => {
+                if (entity.type === 'report') openReportPanel(entity.id);
+                else if (entity.type === 'kpi') openKpiDrawer(entity.id);
+              }}
             />
           ))}
         </div>
@@ -100,14 +109,26 @@ const CommentCard = ({ comment, onOpenContext }: { comment: any; onOpenContext: 
         <div className="flex items-center justify-between pt-4 border-t border-slate-700/30">
           <div className="flex items-center space-x-3">
             <button
-              onClick={() => onOpenContext('report', 'q3-forecast')}
-              className="text-xs px-4 py-2 bg-slate-700/40 hover:bg-slate-600/50 rounded-lg text-slate-300 hover:text-white transition-all duration-200"
+              onClick={() => openReportPanel('q3-forecast')}
+              className="text-xs px-4 py-2 bg-slate-700/40 hover:bg-slate-600/50 rounded-lg text-slate-300 hover:text-white transition-all duration-200 hover:scale-105"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.02)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
             >
               Open Report
             </button>
             <button
-              onClick={() => onOpenContext('kpi', 'performance-score')}
-              className="text-xs px-4 py-2 bg-slate-700/40 hover:bg-slate-600/50 rounded-lg text-slate-300 hover:text-white transition-all duration-200"
+              onClick={() => openKpiDrawer('performance-score')}
+              className="text-xs px-4 py-2 bg-slate-700/40 hover:bg-slate-600/50 rounded-lg text-slate-300 hover:text-white transition-all duration-200 hover:scale-105"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.02)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
             >
               Open KPI
             </button>
@@ -124,10 +145,18 @@ const CommentCard = ({ comment, onOpenContext }: { comment: any; onOpenContext: 
           
           <button
             onClick={() => {
-              window.dispatchEvent(new CustomEvent('simulate', { detail: { entity: 'comment', id: comment.id } }));
-              window.dispatchEvent(new CustomEvent('show-toast', { detail: { message: 'Scenario queued', type: 'info' } }));
+              window.location.href = '/scenario-simulator';
+              window.dispatchEvent(new CustomEvent('show-toast', { detail: { message: 'Opening AI Scenario Simulator', type: 'info' } }));
             }}
-            className="text-xs px-4 py-2 bg-amber-500/15 hover:bg-amber-500/25 rounded-lg text-amber-300 hover:text-amber-200 transition-all duration-200 border border-amber-500/25"
+            className="text-xs px-4 py-2 bg-amber-500/15 hover:bg-amber-500/25 rounded-lg text-amber-300 hover:text-amber-200 transition-all duration-200 border border-amber-500/25 hover:scale-105"
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.02)';
+              e.currentTarget.style.boxShadow = '0 0 16px rgba(245,158,11,0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.boxShadow = '0 0 0 rgba(245,158,11,0)';
+            }}
           >
             Simulate
           </button>
@@ -144,6 +173,16 @@ export default function Collaboration() {
     isOpen: false,
     entityId: null,
     activeTab: 'overview'
+  });
+
+  const [reportPanel, setReportPanel] = useState({
+    isOpen: false,
+    reportId: null as string | null
+  });
+
+  const [kpiDrawer, setKpiDrawer] = useState({
+    isOpen: false,
+    kpiId: null as string | null
   });
   const [showMentions, setShowMentions] = useState(false);
   const [mentionQuery, setMentionQuery] = useState('');
@@ -179,12 +218,30 @@ export default function Collaboration() {
     }
   ]);
 
+  // Panel handler functions
+
   const openContextPanel = (type: string, id: string, tab = 'overview') => {
     setContextPanel({ isOpen: true, entityId: id, activeTab: tab });
   };
 
   const closeContextPanel = () => {
     setContextPanel({ isOpen: false, entityId: null, activeTab: 'overview' });
+  };
+
+  const openReportPanel = (reportId: string) => {
+    setReportPanel({ isOpen: true, reportId });
+  };
+
+  const closeReportPanel = () => {
+    setReportPanel({ isOpen: false, reportId: null });
+  };
+
+  const openKpiDrawer = (kpiId: string) => {
+    setKpiDrawer({ isOpen: true, kpiId });
+  };
+
+  const closeKpiDrawer = () => {
+    setKpiDrawer({ isOpen: false, kpiId: null });
   };
 
   const handleSendComment = () => {
@@ -351,7 +408,8 @@ export default function Collaboration() {
               <CommentCard
                 key={comment.id}
                 comment={comment}
-                onOpenContext={openContextPanel}
+                openReportPanel={openReportPanel}
+                openKpiDrawer={openKpiDrawer}
               />
             ))}
           </div>
@@ -454,6 +512,20 @@ export default function Collaboration() {
         onClose={closeContextPanel}
         entityId={contextPanel.entityId}
         activeTab={contextPanel.activeTab}
+      />
+
+      {/* Report Panel */}
+      <ReportPanel
+        isOpen={reportPanel.isOpen}
+        onClose={closeReportPanel}
+        reportId={reportPanel.reportId || ''}
+      />
+
+      {/* KPI Drawer */}
+      <KPIDrawer
+        isOpen={kpiDrawer.isOpen}
+        onClose={closeKpiDrawer}
+        kpiId={kpiDrawer.kpiId || ''}
       />
 
       {/* Toast Container */}

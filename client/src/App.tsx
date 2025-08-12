@@ -14,6 +14,7 @@ import TableConfigDemo from "@/pages/table-config-demo";
 import BusinessContextPrompts from "@/pages/BusinessContextPrompts";
 import Chat from "@/pages/chat-clean-top";
 import SmoothChat from "@/pages/chat-smooth";
+import ScenarioSimulator from "@/pages/scenario-simulator";
 import SidebarLayout from "@/components/sidebar-layout";
 import Collaboration from "@/pages/collaboration";
 import NotFound from "@/pages/not-found";
@@ -52,6 +53,11 @@ function Router() {
       <Route path="/smooth">
         <ProtectedRoute>
           <SmoothChat />
+        </ProtectedRoute>
+      </Route>
+      <Route path="/scenario-simulator">
+        <ProtectedRoute>
+          <ScenarioSimulator />
         </ProtectedRoute>
       </Route>
       <Route component={NotFound} />
