@@ -49,11 +49,13 @@ const CommentCard = ({ comment, onOpenContext }: { comment: any; onOpenContext: 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(0,0,0,.4)' }}
-      className="bg-slate-800/30 backdrop-blur-md rounded-2xl p-6 shadow-lg transition-all duration-300"
+      className="bg-slate-800/30 backdrop-blur-md rounded-2xl shadow-lg transition-all duration-300"
       style={{
         background: 'rgba(30,41,59,.4)',
         backdropFilter: 'blur(12px)',
-        boxShadow: '0 4px 16px rgba(0,0,0,.2)'
+        boxShadow: '0 4px 16px rgba(0,0,0,.2)',
+        padding: '28px',
+        minHeight: '200px'
       }}
     >
       {/* Header with avatar and info */}
@@ -286,7 +288,7 @@ export default function Collaboration() {
 
       {/* Main Content */}
       <div className="flex-1 ml-24">
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 40px' }}>
+        <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '32px' }}>
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -393,26 +395,27 @@ export default function Collaboration() {
               </div>
             )}
 
-            <div className="flex items-end space-x-4">
-              <div className="flex-1 relative">
+            <div className="space-y-4">
+              {/* Textarea */}
+              <div className="relative">
                 <textarea
                   ref={inputRef}
                   value={newComment}
                   onChange={(e) => handleInputChange(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Share insights, mention @teammates, discuss findings..."
-                  className="w-full bg-slate-700/50 border border-slate-600/50 rounded-lg p-4 text-white placeholder-slate-400 resize-none focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 min-h-[100px]"
+                  className="w-full bg-slate-700/50 border border-slate-600/50 rounded-xl p-4 pb-12 text-white placeholder-slate-400 resize-none focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 min-h-[120px]"
                 />
                 
-                {/* Suggestion chips */}
-                <div className="absolute bottom-3 left-3 flex items-center space-x-2">
-                  <button className="text-xs text-slate-500 hover:text-slate-400 transition-colors">
-                    <AtSign className="w-3 h-3 inline mr-1" />
-                    @mention
+                {/* Suggestion chips - positioned properly at bottom */}
+                <div className="absolute bottom-4 left-4 flex items-center space-x-4">
+                  <button className="text-xs text-slate-500 hover:text-slate-400 transition-colors flex items-center space-x-1">
+                    <AtSign className="w-3 h-3" />
+                    <span>@mention</span>
                   </button>
-                  <button className="text-xs text-slate-500 hover:text-slate-400 transition-colors">
-                    <Hash className="w-3 h-3 inline mr-1" />
-                    #tag
+                  <button className="text-xs text-slate-500 hover:text-slate-400 transition-colors flex items-center space-x-1">
+                    <Hash className="w-3 h-3" />
+                    <span>#tag</span>
                   </button>
                   <button className="text-xs text-slate-500 hover:text-slate-400 transition-colors">
                     /commands
@@ -420,23 +423,26 @@ export default function Collaboration() {
                 </div>
               </div>
               
-              <button
-                onClick={handleSendComment}
-                className="px-6 py-4 bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/30 rounded-lg text-blue-300 font-medium transition-all duration-200 hover:scale-105 hover:shadow-glow-blue flex items-center space-x-2"
-                style={{
-                  boxShadow: '0 0 0 rgba(77,163,255,0)',
-                  transition: 'all 180ms ease-out'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 0 24px rgba(77,163,255,0.25)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 0 0 rgba(77,163,255,0)';
-                }}
-              >
-                <Send className="w-4 h-4" />
-                <span>Send</span>
-              </button>
+              {/* Send button row */}
+              <div className="flex justify-end">
+                <button
+                  onClick={handleSendComment}
+                  className="px-6 py-3 bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/30 rounded-xl text-blue-300 font-medium transition-all duration-200 hover:scale-105 flex items-center space-x-2"
+                  style={{
+                    boxShadow: '0 0 0 rgba(77,163,255,0)',
+                    transition: 'all 180ms ease-out'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.boxShadow = '0 0 24px rgba(77,163,255,0.25)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.boxShadow = '0 0 0 rgba(77,163,255,0)';
+                  }}
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Send</span>
+                </button>
+              </div>
             </div>
           </motion.div>
         </div>
