@@ -6,109 +6,126 @@ import ContextPanel from '@/components/ContextPanel';
 import { ToastContainer } from '@/components/Toast';
 import { parseChips, teamMembers } from '@/data/entities';
 
-// Smart chip component
-const SmartChip = ({ type, value, id, onClick }: { type: string; value: string; id: string; onClick: () => void }) => (
-  <button
-    onClick={onClick}
-    className="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-blue-500/12 border border-blue-500/35 text-blue-200 hover:bg-blue-500/20 hover:border-blue-500/50 transition-all duration-200 hover:shadow-glow-blue"
-    style={{
-      boxShadow: '0 0 0 rgba(77,163,255,0)',
-      transition: 'box-shadow 180ms ease-out'
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.boxShadow = '0 0 24px rgba(77,163,255,0.25)';
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.boxShadow = '0 0 0 rgba(77,163,255,0)';
-    }}
-  >
-    #{type}:{value}
-  </button>
-);
+// Refined tag component with readable format
+const EntityTag = ({ type, value, id, onClick }: { type: string; value: string; id: string; onClick: () => void }) => {
+  const typeLabels = {
+    kpi: 'KPI',
+    zone: 'Zone',
+    product: 'Product',
+    report: 'Report'
+  };
+  
+  const typeColors = {
+    kpi: 'bg-blue-500/10 text-blue-300 border-blue-500/20',
+    zone: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
+    product: 'bg-amber-500/10 text-amber-300 border-amber-500/20',
+    report: 'bg-purple-500/10 text-purple-300 border-purple-500/20'
+  };
 
-// Comment thread card component
+  return (
+    <button
+      onClick={onClick}
+      className={`inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full border transition-all duration-200 hover:scale-105 ${typeColors[type as keyof typeof typeColors] || typeColors.kpi}`}
+    >
+      {typeLabels[type as keyof typeof typeLabels] || type}: {value}
+    </button>
+  );
+};
+
+// Refined comment card with luxury styling
 const CommentCard = ({ comment, onOpenContext }: { comment: any; onOpenContext: (type: string, id: string) => void }) => {
-  const chips = parseChips(comment.content);
   const member = teamMembers.find(m => m.name === comment.author);
+  
+  // Extract entities for clean display
+  const entities = [
+    { type: 'zone', value: 'Chiriquí Central', id: 'chiriqui' },
+    { type: 'product', value: 'Mango Salsa', id: 'mango-salsa' },
+    { type: 'kpi', value: 'Performance Score', id: 'performance-score' },
+    { type: 'report', value: 'Q3 Forecast', id: 'q3-forecast' }
+  ];
   
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-slate-900/68 backdrop-blur-sm border border-white/6 rounded-2xl p-6 shadow-2xl"
+      whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(0,0,0,.4)' }}
+      className="bg-slate-800/30 backdrop-blur-md rounded-2xl p-6 shadow-lg transition-all duration-300"
       style={{
-        background: 'rgba(16,24,43,.68)',
-        backdropFilter: 'blur(8px)',
-        boxShadow: '0 8px 24px rgba(0,0,0,.35)'
+        background: 'rgba(30,41,59,.4)',
+        backdropFilter: 'blur(12px)',
+        boxShadow: '0 4px 16px rgba(0,0,0,.2)'
       }}
     >
       {/* Header with avatar and info */}
-      <div className="flex items-start space-x-4 mb-4">
+      <div className="flex items-start space-x-4 mb-6">
         <div className="relative">
-          <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center border border-blue-500/30">
-            <span className="text-sm font-semibold text-blue-300">{comment.avatar}</span>
+          <div className="w-12 h-12 bg-slate-700/40 rounded-full flex items-center justify-center shadow-sm">
+            <span className="text-sm font-semibold text-slate-300">{comment.avatar}</span>
           </div>
           {member?.online && (
-            <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full border-2 border-slate-900"></div>
+            <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-slate-800"></div>
           )}
         </div>
-        <div className="flex-1">
-          <div className="flex items-center space-x-2">
-            <h4 className="font-semibold text-white tracking-wide">{comment.author}</h4>
-            <span className="text-xs text-blue-300 font-medium">{comment.role}</span>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center space-x-3 mb-1">
+            <h4 className="font-medium text-white">{comment.author}</h4>
+            <span className="text-xs text-slate-400 font-medium">{comment.role}</span>
           </div>
-          <p className="text-xs text-slate-400 mt-1">{comment.time}</p>
+          <p className="text-xs text-slate-500">{comment.time}</p>
         </div>
       </div>
 
       {/* Content */}
-      <div className="space-y-4">
-        <p className="text-slate-300 leading-relaxed">{comment.content}</p>
+      <div className="space-y-6">
+        <p className="text-slate-300 leading-relaxed text-sm">
+          {comment.content.replace(/#(kpi|zone|product|report):([^#\s,]+)/g, '')}
+        </p>
         
-        {/* Smart chips */}
-        {chips.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {chips.map((chip, index) => (
-              <SmartChip
-                key={index}
-                type={chip.type}
-                value={chip.value}
-                id={chip.id}
-                onClick={() => onOpenContext(chip.type, chip.id)}
-              />
-            ))}
-          </div>
-        )}
+        {/* Entity tags */}
+        <div className="flex flex-wrap gap-2">
+          {entities.slice(0, comment.id).map((entity, index) => (
+            <EntityTag
+              key={index}
+              type={entity.type}
+              value={entity.value}
+              id={entity.id}
+              onClick={() => onOpenContext(entity.type, entity.id)}
+            />
+          ))}
+        </div>
 
-        {/* Quick actions */}
-        <div className="flex items-center space-x-2 pt-2">
-          <button
-            onClick={() => onOpenContext('report', 'q3-forecast')}
-            className="text-xs px-3 py-1.5 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg text-slate-300 hover:text-white transition-all duration-200 hover:scale-105"
-          >
-            Open Report
-          </button>
-          <button
-            onClick={() => onOpenContext('kpi', 'performance-score')}
-            className="text-xs px-3 py-1.5 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg text-slate-300 hover:text-white transition-all duration-200 hover:scale-105"
-          >
-            Open KPI
-          </button>
-          <button
-            onClick={() => {
-              window.dispatchEvent(new CustomEvent('create-task', { detail: { title: `Follow up on ${comment.author}'s comment` } }));
-              window.dispatchEvent(new CustomEvent('show-toast', { detail: { message: 'Task created', type: 'success' } }));
-            }}
-            className="text-xs px-3 py-1.5 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg text-slate-300 hover:text-white transition-all duration-200 hover:scale-105"
-          >
-            Create Task
-          </button>
+        {/* Action buttons row */}
+        <div className="flex items-center justify-between pt-4 border-t border-slate-700/30">
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={() => onOpenContext('report', 'q3-forecast')}
+              className="text-xs px-4 py-2 bg-slate-700/40 hover:bg-slate-600/50 rounded-lg text-slate-300 hover:text-white transition-all duration-200"
+            >
+              Open Report
+            </button>
+            <button
+              onClick={() => onOpenContext('kpi', 'performance-score')}
+              className="text-xs px-4 py-2 bg-slate-700/40 hover:bg-slate-600/50 rounded-lg text-slate-300 hover:text-white transition-all duration-200"
+            >
+              Open KPI
+            </button>
+            <button
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent('create-task', { detail: { title: `Follow up on ${comment.author}'s comment` } }));
+                window.dispatchEvent(new CustomEvent('show-toast', { detail: { message: 'Task created', type: 'success' } }));
+              }}
+              className="text-xs px-4 py-2 bg-slate-700/40 hover:bg-slate-600/50 rounded-lg text-slate-300 hover:text-white transition-all duration-200"
+            >
+              Create Task
+            </button>
+          </div>
+          
           <button
             onClick={() => {
               window.dispatchEvent(new CustomEvent('simulate', { detail: { entity: 'comment', id: comment.id } }));
               window.dispatchEvent(new CustomEvent('show-toast', { detail: { message: 'Scenario queued', type: 'info' } }));
             }}
-            className="text-xs px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 rounded-lg text-amber-300 hover:text-amber-200 transition-all duration-200 hover:scale-105 border border-amber-500/30"
+            className="text-xs px-4 py-2 bg-amber-500/15 hover:bg-amber-500/25 rounded-lg text-amber-300 hover:text-amber-200 transition-all duration-200 border border-amber-500/25"
           >
             Simulate
           </button>
@@ -132,14 +149,14 @@ export default function Collaboration() {
   const [searchQuery, setSearchQuery] = useState('');
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  // Enhanced sample comments with smart chips
+  // Clean sample comments without hashtags
   const [comments] = useState([
     {
       id: 1,
       author: 'Elena Rodriguez',
       role: 'Sales Director',
       time: '2 hours ago',
-      content: 'The #kpi:Performance Score analysis for #zone:Chiriquí looks concerning. We need to prioritize emergency transfer for #product:Mango Salsa tomorrow morning. Can we review the #report:Q3 Forecast impact?',
+      content: 'The performance analysis for Chiriquí Central looks concerning. We need to prioritize emergency transfer for Mango Salsa tomorrow morning. Can we review the Q3 forecast impact?',
       avatar: 'ER'
     },
     {
@@ -147,7 +164,7 @@ export default function Collaboration() {
       author: 'Miguel Santos',
       role: 'Operations Manager',
       time: '1 hour ago',
-      content: '@elena The David warehouse has confirmed 4,800 units available. I can coordinate the 6-hour transit route. Should we also review #kpi:Inventory Turnover levels for other locations?',
+      content: '@elena The David warehouse has confirmed 4,800 units available. I can coordinate the 6-hour transit route. Should we also review inventory turnover levels for other locations?',
       avatar: 'MS'
     },
     {
@@ -155,7 +172,7 @@ export default function Collaboration() {
       author: 'Sofia Chen',
       role: 'Analytics Lead',
       time: '45 minutes ago',
-      content: 'I\'ve updated the forecasting parameters for #product:Mango Salsa. The 1.8x promotional multiplier has been applied to #zone:Chiriquí. We should see better predictions for similar seasonal events.',
+      content: 'I\'ve updated the forecasting parameters for Mango Salsa. The 1.8x promotional multiplier has been applied to Chiriquí Central. We should see better predictions for similar seasonal events.',
       avatar: 'SC'
     }
   ]);
@@ -276,7 +293,7 @@ export default function Collaboration() {
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
           >
-            <h1 className="text-3xl font-semibold text-white mb-2 tracking-wide" style={{ color: '#4DA3FF', letterSpacing: '1px', fontWeight: 600 }}>
+            <h1 className="text-3xl font-semibold mb-2 tracking-wide bg-gradient-to-r from-slate-200 to-blue-300 bg-clip-text text-transparent" style={{ letterSpacing: '1px', fontWeight: 600 }}>
               Collaboration Hub
             </h1>
             <p className="text-slate-400">Connect insights to action through intelligent team collaboration</p>
@@ -286,18 +303,21 @@ export default function Collaboration() {
           <div className="sticky top-0 z-20 bg-slate-900/95 backdrop-blur-sm rounded-xl border border-white/10 p-4 mb-8">
             <div className="flex items-center justify-between gap-4">
               {/* Filters */}
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-1">
                 {['All', 'Mentions', 'Unread'].map((filter) => (
                   <button
                     key={filter}
                     onClick={() => setActiveFilter(filter)}
-                    className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-all duration-200 ${
+                    className={`px-4 py-2 text-sm font-medium transition-all duration-200 relative ${
                       activeFilter === filter
-                        ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
-                        : 'text-slate-400 hover:text-slate-300 hover:bg-slate-700/30'
+                        ? 'text-white'
+                        : 'text-slate-400 hover:text-slate-300'
                     }`}
                   >
                     {filter}
+                    {activeFilter === filter && (
+                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-400 rounded-full"></div>
+                    )}
                   </button>
                 ))}
               </div>
@@ -324,7 +344,7 @@ export default function Collaboration() {
           </div>
 
           {/* Comments Section */}
-          <div className="space-y-6 mb-8">
+          <div className="space-y-8 mb-12">
             {comments.map((comment, index) => (
               <CommentCard
                 key={comment.id}
@@ -380,7 +400,7 @@ export default function Collaboration() {
                   value={newComment}
                   onChange={(e) => handleInputChange(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Share insights, tag entities with #kpi:name, mention @teammates..."
+                  placeholder="Share insights, mention @teammates, discuss findings..."
                   className="w-full bg-slate-700/50 border border-slate-600/50 rounded-lg p-4 text-white placeholder-slate-400 resize-none focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 min-h-[100px]"
                 />
                 
