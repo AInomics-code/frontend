@@ -14,6 +14,7 @@ import BusinessContextPrompts from "@/pages/BusinessContextPrompts";
 import Chat from "@/pages/chat-clean-top";
 import SmoothChat from "@/pages/chat-smooth";
 import SidebarLayout from "@/components/sidebar-layout";
+import Collaboration from "@/pages/collaboration";
 import NotFound from "@/pages/not-found";
 import ProtectedRoute from "@/components/protected-route";
 
@@ -30,6 +31,11 @@ function Router() {
       <Route path="/dashboard">
         <ProtectedRoute>
           <Dashboard />
+        </ProtectedRoute>
+      </Route>
+      <Route path="/collaboration">
+        <ProtectedRoute>
+          <Collaboration />
         </ProtectedRoute>
       </Route>
       <Route path="/chat-clean-top">
