@@ -5,6 +5,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom slider styling */
+.slider-thumb {
+  background: linear-gradient(90deg, #475569 0%, #64748b 100%);
+}
+
+.slider-thumb::-webkit-slider-thumb {
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  cursor: pointer;
+  border: 2px solid #1e293b;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.slider-thumb::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  cursor: pointer;
+  border: 2px solid #1e293b;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
 /* Autofill styling override - remove all backgrounds */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
