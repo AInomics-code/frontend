@@ -1,38 +1,172 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'wouter';
+import { Search, Filter, Send, AtSign, Hash } from 'lucide-react';
+import ContextPanel from '@/components/ContextPanel';
+import { ToastContainer } from '@/components/Toast';
+import { parseChips, teamMembers } from '@/data/entities';
+
+// Smart chip component
+const SmartChip = ({ type, value, id, onClick }: { type: string; value: string; id: string; onClick: () => void }) => (
+  <button
+    onClick={onClick}
+    className="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-blue-500/12 border border-blue-500/35 text-blue-200 hover:bg-blue-500/20 hover:border-blue-500/50 transition-all duration-200 hover:shadow-glow-blue"
+    style={{
+      boxShadow: '0 0 0 rgba(77,163,255,0)',
+      transition: 'box-shadow 180ms ease-out'
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.boxShadow = '0 0 24px rgba(77,163,255,0.25)';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.boxShadow = '0 0 0 rgba(77,163,255,0)';
+    }}
+  >
+    #{type}:{value}
+  </button>
+);
+
+// Comment thread card component
+const CommentCard = ({ comment, onOpenContext }: { comment: any; onOpenContext: (type: string, id: string) => void }) => {
+  const chips = parseChips(comment.content);
+  const member = teamMembers.find(m => m.name === comment.author);
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="bg-slate-900/68 backdrop-blur-sm border border-white/6 rounded-2xl p-6 shadow-2xl"
+      style={{
+        background: 'rgba(16,24,43,.68)',
+        backdropFilter: 'blur(8px)',
+        boxShadow: '0 8px 24px rgba(0,0,0,.35)'
+      }}
+    >
+      {/* Header with avatar and info */}
+      <div className="flex items-start space-x-4 mb-4">
+        <div className="relative">
+          <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center border border-blue-500/30">
+            <span className="text-sm font-semibold text-blue-300">{comment.avatar}</span>
+          </div>
+          {member?.online && (
+            <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full border-2 border-slate-900"></div>
+          )}
+        </div>
+        <div className="flex-1">
+          <div className="flex items-center space-x-2">
+            <h4 className="font-semibold text-white tracking-wide">{comment.author}</h4>
+            <span className="text-xs text-blue-300 font-medium">{comment.role}</span>
+          </div>
+          <p className="text-xs text-slate-400 mt-1">{comment.time}</p>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="space-y-4">
+        <p className="text-slate-300 leading-relaxed">{comment.content}</p>
+        
+        {/* Smart chips */}
+        {chips.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {chips.map((chip, index) => (
+              <SmartChip
+                key={index}
+                type={chip.type}
+                value={chip.value}
+                id={chip.id}
+                onClick={() => onOpenContext(chip.type, chip.id)}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Quick actions */}
+        <div className="flex items-center space-x-2 pt-2">
+          <button
+            onClick={() => onOpenContext('report', 'q3-forecast')}
+            className="text-xs px-3 py-1.5 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg text-slate-300 hover:text-white transition-all duration-200 hover:scale-105"
+          >
+            Open Report
+          </button>
+          <button
+            onClick={() => onOpenContext('kpi', 'performance-score')}
+            className="text-xs px-3 py-1.5 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg text-slate-300 hover:text-white transition-all duration-200 hover:scale-105"
+          >
+            Open KPI
+          </button>
+          <button
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('create-task', { detail: { title: `Follow up on ${comment.author}'s comment` } }));
+              window.dispatchEvent(new CustomEvent('show-toast', { detail: { message: 'Task created', type: 'success' } }));
+            }}
+            className="text-xs px-3 py-1.5 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg text-slate-300 hover:text-white transition-all duration-200 hover:scale-105"
+          >
+            Create Task
+          </button>
+          <button
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('simulate', { detail: { entity: 'comment', id: comment.id } }));
+              window.dispatchEvent(new CustomEvent('show-toast', { detail: { message: 'Scenario queued', type: 'info' } }));
+            }}
+            className="text-xs px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 rounded-lg text-amber-300 hover:text-amber-200 transition-all duration-200 hover:scale-105 border border-amber-500/30"
+          >
+            Simulate
+          </button>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 export default function Collaboration() {
   const [, setLocation] = useLocation();
   const [newComment, setNewComment] = useState('');
+  const [contextPanel, setContextPanel] = useState<{ isOpen: boolean; entityId: string | null; activeTab: string }>({
+    isOpen: false,
+    entityId: null,
+    activeTab: 'overview'
+  });
+  const [showMentions, setShowMentions] = useState(false);
+  const [mentionQuery, setMentionQuery] = useState('');
+  const [activeFilter, setActiveFilter] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  // Sample comments data
+  // Enhanced sample comments with smart chips
   const [comments] = useState([
     {
       id: 1,
       author: 'Elena Rodriguez',
       role: 'Sales Director',
       time: '2 hours ago',
-      content: 'The stockout analysis for Chiriquí Central looks concerning. We need to prioritize the emergency transfer tomorrow morning.',
-      avatar: 'E'
+      content: 'The #kpi:Performance Score analysis for #zone:Chiriquí looks concerning. We need to prioritize emergency transfer for #product:Mango Salsa tomorrow morning. Can we review the #report:Q3 Forecast impact?',
+      avatar: 'ER'
     },
     {
       id: 2,
       author: 'Miguel Santos',
       role: 'Operations Manager',
       time: '1 hour ago',
-      content: '@elena The David warehouse has confirmed 4,800 units available. I can coordinate the 6-hour transit route. Should we also review safety stock levels for other locations?',
-      avatar: 'M'
+      content: '@elena The David warehouse has confirmed 4,800 units available. I can coordinate the 6-hour transit route. Should we also review #kpi:Inventory Turnover levels for other locations?',
+      avatar: 'MS'
     },
     {
       id: 3,
       author: 'Sofia Chen',
-      role: 'Business Analyst',
+      role: 'Analytics Lead',
       time: '45 minutes ago',
-      content: 'I\'ve updated the forecasting parameters. The 1.8x promotional multiplier has been applied. We should see better predictions for similar seasonal events.',
-      avatar: 'S'
+      content: 'I\'ve updated the forecasting parameters for #product:Mango Salsa. The 1.8x promotional multiplier has been applied to #zone:Chiriquí. We should see better predictions for similar seasonal events.',
+      avatar: 'SC'
     }
   ]);
+
+  const openContextPanel = (type: string, id: string, tab = 'overview') => {
+    setContextPanel({ isOpen: true, entityId: id, activeTab: tab });
+  };
+
+  const closeContextPanel = () => {
+    setContextPanel({ isOpen: false, entityId: null, activeTab: 'overview' });
+  };
 
   const handleSendComment = () => {
     if (!newComment.trim()) return;
@@ -46,6 +180,32 @@ export default function Collaboration() {
       handleSendComment();
     }
   };
+
+  const handleInputChange = (value: string) => {
+    setNewComment(value);
+    
+    // Check for mentions
+    const mentionMatch = value.match(/@([a-zA-Z]*)$/);
+    if (mentionMatch) {
+      setMentionQuery(mentionMatch[1]);
+      setShowMentions(true);
+    } else {
+      setShowMentions(false);
+      setMentionQuery('');
+    }
+  };
+
+  const insertMention = (member: any) => {
+    const mentionText = `@${member.name.toLowerCase().replace(' ', '')} `;
+    const beforeMention = newComment.replace(/@[a-zA-Z]*$/, '');
+    setNewComment(beforeMention + mentionText);
+    setShowMentions(false);
+    inputRef.current?.focus();
+  };
+
+  const filteredMembers = teamMembers.filter(member =>
+    member.name.toLowerCase().includes(mentionQuery.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e] text-white font-sans flex">
@@ -108,95 +268,170 @@ export default function Collaboration() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 pl-24 pr-8 py-10">
-        
-        {/* Header */}
-        <div className="flex flex-col items-center gap-1 mb-8">
-          <div className="text-center space-y-2">
-            <h1 className="text-2xl font-bold tracking-wide text-[#CBD5E1]">Collaboration Hub</h1>
-            <p className="text-slate-400 text-base leading-relaxed max-w-2xl">
-              Discuss insights, tag team members, and assign tasks — all within the same space.
-            </p>
-          </div>
-        </div>
+      <div className="flex-1 ml-24">
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 40px' }}>
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-8"
+          >
+            <h1 className="text-3xl font-semibold text-white mb-2 tracking-wide" style={{ color: '#4DA3FF', letterSpacing: '1px', fontWeight: 600 }}>
+              Collaboration Hub
+            </h1>
+            <p className="text-slate-400">Connect insights to action through intelligent team collaboration</p>
+          </motion.div>
 
-        {/* Comments Section */}
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 rounded-2xl p-6">
-            
-            {/* Comments Header */}
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-slate-200">Team Discussion</h2>
-              <div className="text-sm text-slate-400">{comments.length} comments</div>
-            </div>
+          {/* Sticky Sub-Header */}
+          <div className="sticky top-0 z-20 bg-slate-900/95 backdrop-blur-sm rounded-xl border border-white/10 p-4 mb-8">
+            <div className="flex items-center justify-between gap-4">
+              {/* Filters */}
+              <div className="flex items-center space-x-2">
+                {['All', 'Mentions', 'Unread'].map((filter) => (
+                  <button
+                    key={filter}
+                    onClick={() => setActiveFilter(filter)}
+                    className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-all duration-200 ${
+                      activeFilter === filter
+                        ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
+                        : 'text-slate-400 hover:text-slate-300 hover:bg-slate-700/30'
+                    }`}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
 
-            {/* Comments List */}
-            <div className="space-y-6 mb-6">
-              {comments.map((comment, index) => (
-                <motion.div
-                  key={comment.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="bg-slate-900/50 rounded-xl p-4 border border-slate-700/30"
-                >
-                  <div className="flex items-start gap-3">
-                    {/* Avatar */}
-                    <div className="w-10 h-10 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-300 font-semibold">
-                      {comment.avatar}
-                    </div>
-                    
-                    {/* Comment Content */}
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <h3 className="text-slate-200 font-medium">{comment.author}</h3>
-                        <span className="text-xs text-slate-400">•</span>
-                        <span className="text-xs text-slate-400">{comment.role}</span>
-                        <span className="text-xs text-slate-400">•</span>
-                        <span className="text-xs text-slate-400">{comment.time}</span>
-                      </div>
-                      <p className="text-slate-300 leading-relaxed">{comment.content}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* New Comment Input */}
-            <div className="border-t border-slate-700/30 pt-6">
-              <div className="flex items-start gap-3">
-                {/* User Avatar */}
-                <div className="w-10 h-10 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center text-green-300 font-semibold">
-                  U
-                </div>
-                
-                {/* Input Section */}
-                <div className="flex-1">
-                  <textarea
-                    value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    placeholder="Add a comment..."
-                    rows={3}
-                    className="w-full bg-slate-800/50 border border-slate-600/50 rounded-lg px-4 py-3 text-slate-200 placeholder-slate-400 resize-none focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 transition-all duration-200"
+              {/* Search */}
+              <div className="flex items-center space-x-3">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <input
+                    type="text"
+                    placeholder="Search messages..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-10 pr-4 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 w-64"
                   />
-                  
-                  {/* Send Button */}
-                  <div className="flex justify-end mt-3">
-                    <button
-                      onClick={handleSendComment}
-                      disabled={!newComment.trim()}
-                      className="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 disabled:from-slate-600 disabled:to-slate-600 rounded-lg text-white font-medium transition-all duration-200 hover:scale-105 disabled:hover:scale-100 disabled:opacity-50"
-                    >
-                      Send
-                    </button>
-                  </div>
+                </div>
+
+                {/* Counter */}
+                <div className="px-3 py-1.5 bg-blue-500/20 border border-blue-500/30 rounded-lg">
+                  <span className="text-sm font-medium text-blue-300">3 new</span>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Comments Section */}
+          <div className="space-y-6 mb-8">
+            {comments.map((comment, index) => (
+              <CommentCard
+                key={comment.id}
+                comment={comment}
+                onOpenContext={openContextPanel}
+              />
+            ))}
+          </div>
+
+          {/* Enhanced Composer */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="relative"
+            style={{
+              background: 'rgba(16,24,43,.68)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(255,255,255,.06)',
+              borderRadius: '16px',
+              boxShadow: '0 8px 24px rgba(0,0,0,.35)',
+              padding: '24px'
+            }}
+          >
+            {/* Mention Dropdown */}
+            {showMentions && (
+              <div className="absolute bottom-full left-6 mb-2 w-64 bg-slate-800/95 backdrop-blur-sm border border-white/10 rounded-lg shadow-xl z-30">
+                <div className="p-2">
+                  <div className="text-xs text-slate-400 mb-2 px-2">Mention team member</div>
+                  {filteredMembers.map((member) => (
+                    <button
+                      key={member.id}
+                      onClick={() => insertMention(member)}
+                      className="w-full flex items-center space-x-3 p-2 hover:bg-slate-700/50 rounded-lg transition-colors"
+                    >
+                      <div className="w-6 h-6 bg-blue-500/20 rounded-full flex items-center justify-center">
+                        <span className="text-xs font-semibold text-blue-300">{member.avatar}</span>
+                      </div>
+                      <div className="text-left">
+                        <div className="text-sm font-medium text-white">{member.name}</div>
+                        <div className="text-xs text-slate-400">{member.role}</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="flex items-end space-x-4">
+              <div className="flex-1 relative">
+                <textarea
+                  ref={inputRef}
+                  value={newComment}
+                  onChange={(e) => handleInputChange(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Share insights, tag entities with #kpi:name, mention @teammates..."
+                  className="w-full bg-slate-700/50 border border-slate-600/50 rounded-lg p-4 text-white placeholder-slate-400 resize-none focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 min-h-[100px]"
+                />
+                
+                {/* Suggestion chips */}
+                <div className="absolute bottom-3 left-3 flex items-center space-x-2">
+                  <button className="text-xs text-slate-500 hover:text-slate-400 transition-colors">
+                    <AtSign className="w-3 h-3 inline mr-1" />
+                    @mention
+                  </button>
+                  <button className="text-xs text-slate-500 hover:text-slate-400 transition-colors">
+                    <Hash className="w-3 h-3 inline mr-1" />
+                    #tag
+                  </button>
+                  <button className="text-xs text-slate-500 hover:text-slate-400 transition-colors">
+                    /commands
+                  </button>
+                </div>
+              </div>
+              
+              <button
+                onClick={handleSendComment}
+                className="px-6 py-4 bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/30 rounded-lg text-blue-300 font-medium transition-all duration-200 hover:scale-105 hover:shadow-glow-blue flex items-center space-x-2"
+                style={{
+                  boxShadow: '0 0 0 rgba(77,163,255,0)',
+                  transition: 'all 180ms ease-out'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 0 24px rgba(77,163,255,0.25)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 0 0 rgba(77,163,255,0)';
+                }}
+              >
+                <Send className="w-4 h-4" />
+                <span>Send</span>
+              </button>
+            </div>
+          </motion.div>
         </div>
       </div>
+
+      {/* Context Panel */}
+      <ContextPanel
+        isOpen={contextPanel.isOpen}
+        onClose={closeContextPanel}
+        entityId={contextPanel.entityId}
+        activeTab={contextPanel.activeTab}
+      />
+
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 }
