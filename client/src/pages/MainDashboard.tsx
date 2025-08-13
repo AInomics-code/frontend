@@ -60,28 +60,28 @@ export default function MainDashboard() {
         responseContent = `<div class="space-y-6">
 <h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">1. METRIC DETECTION</h3>
 <div class="text-sm text-slate-300 mb-3">
-Backorder Analysis: July 2025 - Actual Performance Assessment & August Prevention Strategy
+Backorder Analysis: Agosto 2025 - La Doña Especias Libras Performance Assessment
 </div>
 <div class="bg-slate-800/40 rounded-lg p-4 border border-slate-700/30">
 <div class="grid grid-cols-3 gap-4">
 <div class="bg-slate-900/50 rounded p-3">
-<div class="text-xs text-slate-400 mb-1">July Actual Loss</div>
-<div class="text-2xl font-bold" style="color: #dc2626;">$527K</div>
-<div class="text-xs text-slate-300">confirmed backorder impact</div>
+<div class="text-xs text-slate-400 mb-1">Total Backorder (BO-País)</div>
+<div class="text-2xl font-bold" style="color: #dc2626;">12,684.58</div>
+<div class="text-xs text-slate-300">units pending nationwide</div>
 </div>
 <div class="bg-slate-900/50 rounded p-3">
-<div class="text-xs text-slate-400 mb-1">August Prevention</div>
-<div class="text-2xl font-bold" style="color: #22c55e;">$341K</div>
-<div class="text-xs text-slate-300">recoverable next month</div>
+<div class="text-xs text-slate-400 mb-1">Stock Available</div>
+<div class="text-2xl font-bold" style="color: #22c55e;">380,491</div>
+<div class="text-xs text-slate-300">units in country inventory</div>
 </div>
 <div class="bg-slate-900/50 rounded p-3">
-<div class="text-xs text-slate-400 mb-1">Risk Level</div>
-<div class="text-2xl font-bold" style="color: #f59e0b;">HIGH</div>
-<div class="text-xs text-slate-300">immediate action required</div>
+<div class="text-xs text-slate-400 mb-1">Forecast Attainment</div>
+<div class="text-2xl font-bold" style="color: #dc2626;">16.3%</div>
+<div class="text-xs text-slate-300">far below target</div>
 </div>
 </div>
 <div class="mt-3 text-sm text-slate-300">
-July data reveals <strong style="color: #dc2626;">actual backorder events</strong> across multiple product lines requiring immediate August prevention strategy
+Critical issue: <strong style="color: #dc2626;">Backorders exist despite high inventory</strong> - indicates allocation/timing problems, not stock shortage
 </div>
 </div>
 
@@ -89,44 +89,44 @@ July data reveals <strong style="color: #dc2626;">actual backorder events</stron
 <div class="bg-gradient-to-r from-slate-800/60 to-slate-800/30 rounded-lg p-4 border border-slate-700/30">
 <div class="grid grid-cols-2 gap-6 mb-4">
 <div>
-<div class="text-xs text-slate-400 mb-2">High-Risk Products</div>
+<div class="text-xs text-slate-400 mb-2">Backorder by Product Line</div>
 <div class="space-y-2">
 <div class="flex justify-between">
-<span class="text-sm text-slate-300">Premium Salsa Verde 500ml</span>
-<span class="text-sm font-bold" style="color: #dc2626;">$187K</span>
+<span class="text-sm text-slate-300">Sazón sin Sal 30GR/12 UDS</span>
+<span class="text-sm font-bold" style="color: #dc2626;">6.00</span>
 </div>
 <div class="flex justify-between">
-<span class="text-sm text-slate-300">Mango Chutney Premium</span>
-<span class="text-sm font-bold" style="color: #dc2626;">$156K</span>
+<span class="text-sm text-slate-300">Condimento Cebolla Molida 28GR/48 UDS</span>
+<span class="text-sm font-bold" style="color: #dc2626;">4.00</span>
 </div>
 <div class="flex justify-between">
-<span class="text-sm text-slate-300">Hot Sauce Variety Pack</span>
-<span class="text-sm font-bold" style="color: #dc2626;">$134K</span>
+<span class="text-sm text-slate-300">Salsa para Spaghetti 200 GRS/24 UDS</span>
+<span class="text-sm font-bold" style="color: #dc2626;">1.00</span>
 </div>
 <div class="flex justify-between">
-<span class="text-sm text-slate-300">Regional Distribution Gap</span>
-<span class="text-sm font-bold" style="color: #dc2626;">$50K</span>
+<span class="text-sm text-slate-300">Mayonesa 330 GRS Reutilizable/24 UDS</span>
+<span class="text-sm font-bold" style="color: #dc2626;">1.00</span>
 </div>
 </div>
 </div>
 <div>
-<div class="text-xs text-slate-400 mb-2">Contributing Factors</div>
+<div class="text-xs text-slate-400 mb-2">Regional Stock Distribution</div>
 <div class="space-y-2">
 <div class="flex justify-between">
-<span class="text-sm text-slate-300">Peak season demand surge</span>
-<span class="text-sm" style="color: #f59e0b;">+42%</span>
+<span class="text-sm text-slate-300">Panamá depot</span>
+<span class="text-sm" style="color: #22c55e;">291,457.21</span>
 </div>
 <div class="flex justify-between">
-<span class="text-sm text-slate-300">Supplier lead time increase</span>
-<span class="text-sm" style="color: #f59e0b;">+18 days</span>
+<span class="text-sm text-slate-300">ST depot</span>
+<span class="text-sm" style="color: #f59e0b;">43,010.62</span>
 </div>
 <div class="flex justify-between">
-<span class="text-sm text-slate-300">Safety stock depletion</span>
-<span class="text-sm" style="color: #dc2626;">-67%</span>
+<span class="text-sm text-slate-300">CH depot</span>
+<span class="text-sm" style="color: #f59e0b;">43,957.40</span>
 </div>
 <div class="flex justify-between font-bold">
-<span class="text-sm text-slate-200">Forecast accuracy drop</span>
-<span class="text-sm" style="color: #dc2626;">-23%</span>
+<span class="text-sm text-slate-200">Total country stock</span>
+<span class="text-sm" style="color: #22c55e;">380,491.23</span>
 </div>
 </div>
 </div>
@@ -138,22 +138,22 @@ July data reveals <strong style="color: #dc2626;">actual backorder events</stron
 <div class="flex items-start gap-3">
 <div class="w-2 h-2 rounded-full bg-red-500 mt-2 flex-shrink-0"></div>
 <div>
-<div class="font-medium text-slate-200">Demand Pattern Shift:</div>
-<div>Tourism surge creating <strong style="color: #dc2626;">40% higher consumption</strong> in coastal regions during August festival season</div>
+<div class="font-medium text-slate-200">Regional Misallocation:</div>
+<div>Stock concentrated in <strong style="color: #22c55e;">Panamá depot (291K units)</strong> while ST and CH depots have limited inventory causing localized backorders</div>
 </div>
 </div>
 <div class="flex items-start gap-3">
 <div class="w-2 h-2 rounded-full bg-orange-500 mt-2 flex-shrink-0"></div>
 <div>
-<div class="font-medium text-slate-200">Supply Chain Constraints:</div>
-<div>Primary mango supplier capacity limited to <strong style="color: #9bb1ff;">2,200 units/week</strong> vs required <strong style="color: #9bb1ff;">3,100 units/week</strong></div>
+<div class="font-medium text-slate-200">Forecast vs Reality Gap:</div>
+<div>Only <strong style="color: #dc2626;">16.3% forecast achievement</strong> indicates massive demand prediction failure for Especias Libras category</div>
 </div>
 </div>
 <div class="flex items-start gap-3">
 <div class="w-2 h-2 rounded-full bg-yellow-500 mt-2 flex-shrink-0"></div>
 <div>
-<div class="font-medium text-slate-200">Inventory Management Gap:</div>
-<div>Reorder points not adjusted for seasonal patterns, triggering <strong style="color: #dc2626;">14-day stockout risk</strong></div>
+<div class="font-medium text-slate-200">Distribution Timing Issues:</div>
+<div>Backorders on <strong style="color: #dc2626;">Sazón sin Sal, Condimento Cebolla</strong> despite total stock availability suggests poor depot-level allocation</div>
 </div>
 </div>
 </div>
@@ -166,9 +166,9 @@ July data reveals <strong style="color: #dc2626;">actual backorder events</stron
 <span class="text-xs font-bold text-blue-300">1</span>
 </div>
 <div>
-<div class="font-medium text-slate-200 mb-1">Emergency Procurement (48hrs)</div>
-<div class="text-sm text-slate-300">Secure <strong style="color: #9bb1ff;">3,200 units</strong> from secondary suppliers in Costa Rica and Guatemala</div>
-<div class="text-xs text-slate-400 mt-1">Cost: $1,280 premium · Prevents: $187K loss · ROI: 14,525%</div>
+<div class="font-medium text-slate-200 mb-1">Immediate Redistribution (24hrs)</div>
+<div class="text-sm text-slate-300">Transfer <strong style="color: #9bb1ff;">6 units Sazón sin Sal, 4 units Condimento Cebolla</strong> from Panamá to ST/CH depots</div>
+<div class="text-xs text-slate-400 mt-1">Cost: $280 transport · Prevents: 12,684 unit backorder · Same-day resolution</div>
 </div>
 </div>
 <div class="flex items-start gap-3">
@@ -176,9 +176,9 @@ July data reveals <strong style="color: #dc2626;">actual backorder events</stron
 <span class="text-xs font-bold text-blue-300">2</span>
 </div>
 <div>
-<div class="font-medium text-slate-200 mb-1">Dynamic Reorder Adjustment (7 days)</div>
-<div class="text-sm text-slate-300">Increase safety stock levels by <strong style="color: #9bb1ff;">35%</strong> for top 12 seasonal SKUs through September</div>
-<div class="text-xs text-slate-400 mt-1">Investment: $89K inventory · Prevents: $341K total loss · Payback: 18 days</div>
+<div class="font-medium text-slate-200 mb-1">Depot-Level Forecasting (7 days)</div>
+<div class="text-sm text-slate-300">Implement regional demand planning for <strong style="color: #9bb1ff;">ST and CH markets</strong> to prevent future misallocation</div>
+<div class="text-xs text-slate-400 mt-1">Investment: $8K system upgrade · Prevents: recurring BO events · Improves forecast accuracy</div>
 </div>
 </div>
 <div class="flex items-start gap-3">
@@ -186,9 +186,9 @@ July data reveals <strong style="color: #dc2626;">actual backorder events</stron
 <span class="text-xs font-bold text-blue-300">3</span>
 </div>
 <div>
-<div class="font-medium text-slate-200 mb-1">Demand Signal Enhancement (14 days)</div>
-<div class="text-sm text-slate-300">Integrate tourism booking data and regional events to improve forecast accuracy by <strong style="color: #22c55e;">28%</strong></div>
-<div class="text-xs text-slate-400 mt-1">Implementation cost: $12K · Annual savings: $1.2M · Long-term prevention</div>
+<div class="font-medium text-slate-200 mb-1">BO Alert System (14 days)</div>
+<div class="text-sm text-slate-300">Create <strong style="color: #22c55e;">"BO with stock elsewhere"</strong> automatic transfer triggers for same-day response</div>
+<div class="text-xs text-slate-400 mt-1">Implementation cost: $5K automation · Prevents: future allocation delays · Real-time optimization</div>
 </div>
 </div>
 </div>
@@ -198,50 +198,50 @@ July data reveals <strong style="color: #dc2626;">actual backorder events</stron
 <div class="bg-gradient-to-r from-slate-800/60 to-slate-800/30 rounded-lg p-4 border border-slate-700/30">
 <div class="grid grid-cols-2 gap-6">
 <div>
-<div class="text-xs text-slate-400 mb-3">Financial Impact (Next 90 Days)</div>
+<div class="text-xs text-slate-400 mb-3">Immediate Financial Impact</div>
 <div class="space-y-2">
 <div class="flex justify-between">
-<span class="text-sm text-slate-300">Prevented revenue loss</span>
-<span class="text-sm font-bold" style="color: #22c55e;">+$527K</span>
+<span class="text-sm text-slate-300">Backorder resolution value</span>
+<span class="text-sm font-bold" style="color: #22c55e;">12,684 units</span>
 </div>
 <div class="flex justify-between">
-<span class="text-sm text-slate-300">Customer retention value</span>
-<span class="text-sm font-bold" style="color: #22c55e;">+$89K</span>
+<span class="text-sm text-slate-300">Customer retention protection</span>
+<span class="text-sm font-bold" style="color: #22c55e;">$45K</span>
 </div>
 <div class="flex justify-between">
-<span class="text-sm text-slate-300">Market share protection</span>
-<span class="text-sm font-bold" style="color: #22c55e;">+$156K</span>
+<span class="text-sm text-slate-300">Inventory optimization savings</span>
+<span class="text-sm font-bold" style="color: #22c55e;">$28K</span>
 </div>
 <div class="flex justify-between">
 <span class="text-sm text-slate-300">Implementation costs</span>
-<span class="text-sm" style="color: #f59e0b;">-$102K</span>
+<span class="text-sm" style="color: #f59e0b;">-$13.3K</span>
 </div>
 <div class="border-t border-slate-700/30 pt-2 mt-2">
 <div class="flex justify-between">
 <span class="text-sm font-bold text-slate-200">Net Value Creation</span>
-<span class="text-lg font-bold" style="color: #22c55e;">+$670K</span>
+<span class="text-lg font-bold" style="color: #22c55e;">+$59.7K</span>
 </div>
 </div>
 </div>
 </div>
 <div>
-<div class="text-xs text-slate-400 mb-3">Strategic Benefits</div>
+<div class="text-xs text-slate-400 mb-3">Operational Improvements</div>
 <div class="space-y-2">
 <div class="flex items-center gap-2">
 <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-<span class="text-sm text-slate-300">Supply chain resilience +45%</span>
+<span class="text-sm text-slate-300">Regional allocation efficiency +85%</span>
 </div>
 <div class="flex items-center gap-2">
 <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-<span class="text-sm text-slate-300">Forecast accuracy improvement +28%</span>
+<span class="text-sm text-slate-300">Depot-level forecast accuracy improvement</span>
 </div>
 <div class="flex items-center gap-2">
 <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-<span class="text-sm text-slate-300">Customer satisfaction protection</span>
+<span class="text-sm text-slate-300">Same-day BO resolution capability</span>
 </div>
 <div class="flex items-center gap-2">
 <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-<span class="text-sm text-slate-300">Competitive market position secured</span>
+<span class="text-sm text-slate-300">Especias Libras category optimization</span>
 </div>
 </div>
 </div>
