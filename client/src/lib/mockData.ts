@@ -24,8 +24,8 @@ export const kpiData: KpiData[] = [
   },
   {
     title: "Product Opportunity",
-    description: "High potential · Weak: Mango Salsa",
-    value: "Premium Vinegar",
+    description: "High potential · Weak: Condimento Cebolla",
+    value: "Sazón sin Sal",
   },
 ];
 
