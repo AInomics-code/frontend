@@ -417,17 +417,30 @@ export default function Onboarding() {
                 </span>
               </motion.div>
 
-              {/* CTA Button */}
-              <motion.button
-                onClick={handleNext}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-base font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
-              >
-                Get Started
-              </motion.button>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.button
+                  onClick={handleNext}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-base font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6, duration: 0.6 }}
+                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
+                >
+                  Get Started
+                </motion.button>
+                
+                <motion.button
+                  onClick={() => setLocation("/dashboard")}
+                  className="border border-slate-600 hover:border-slate-500 text-slate-300 hover:text-white px-8 py-3 rounded-lg text-base font-medium transition-all duration-200 hover:bg-slate-700/30"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7, duration: 0.6 }}
+                  style={{ fontFamily: '"Segoe UI", "San Francisco", system-ui, sans-serif' }}
+                >
+                  Skip to Dashboard
+                </motion.button>
+              </div>
 
               {/* Footer Microcopy */}
               <motion.p 
