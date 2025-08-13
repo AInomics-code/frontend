@@ -60,28 +60,191 @@ export default function MainDashboard() {
         responseContent = `<div class="space-y-6">
 <h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">1. METRIC DETECTION</h3>
 <div class="text-sm text-slate-300 mb-3">
-Backorder Loss Analysis: July 2025 - Predicted vs Actual Performance Review
+Backorder Risk Analysis: August 2025 - Predictive Loss Assessment & Prevention Strategy
 </div>
 <div class="bg-slate-800/40 rounded-lg p-4 border border-slate-700/30">
 <div class="grid grid-cols-3 gap-4">
 <div class="bg-slate-900/50 rounded p-3">
-<div class="text-xs text-slate-400 mb-1">AI Prediction (July)</div>
-<div class="text-2xl font-bold" style="color: #9bb1ff;">$527K</div>
-<div class="text-xs text-slate-300">backorder loss forecast</div>
+<div class="text-xs text-slate-400 mb-1">Expected Loss (August)</div>
+<div class="text-2xl font-bold" style="color: #dc2626;">$527K</div>
+<div class="text-xs text-slate-300">projected backorder impact</div>
 </div>
 <div class="bg-slate-900/50 rounded p-3">
-<div class="text-xs text-slate-400 mb-1">Actual Performance</div>
-<div class="text-2xl font-bold" style="color: #dc2626;">$612K</div>
-<div class="text-xs text-slate-300">actual backorder loss</div>
+<div class="text-xs text-slate-400 mb-1">Prevention Potential</div>
+<div class="text-2xl font-bold" style="color: #22c55e;">$341K</div>
+<div class="text-xs text-slate-300">recoverable through action</div>
 </div>
 <div class="bg-slate-900/50 rounded p-3">
-<div class="text-xs text-slate-400 mb-1">Variance</div>
-<div class="text-2xl font-bold" style="color: #dc2626;">+$85K</div>
-<div class="text-xs text-slate-300">16.1% over prediction</div>
+<div class="text-xs text-slate-400 mb-1">Risk Level</div>
+<div class="text-2xl font-bold" style="color: #f59e0b;">HIGH</div>
+<div class="text-xs text-slate-300">immediate action required</div>
 </div>
 </div>
 <div class="mt-3 text-sm text-slate-300">
-Model accuracy: <strong style="color: #9bb1ff;">83.9%</strong> - High confidence prediction with unexpected supply chain disruptions
+Analysis shows <strong style="color: #dc2626;">73% probability</strong> of significant stock shortages across 12 critical SKUs without intervention
+</div>
+</div>
+
+<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">2. ANALYSIS</h3>
+<div class="bg-gradient-to-r from-slate-800/60 to-slate-800/30 rounded-lg p-4 border border-slate-700/30">
+<div class="grid grid-cols-2 gap-6 mb-4">
+<div>
+<div class="text-xs text-slate-400 mb-2">High-Risk Products</div>
+<div class="space-y-2">
+<div class="flex justify-between">
+<span class="text-sm text-slate-300">Premium Salsa Verde 500ml</span>
+<span class="text-sm font-bold" style="color: #dc2626;">$187K</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sm text-slate-300">Mango Chutney Premium</span>
+<span class="text-sm font-bold" style="color: #dc2626;">$156K</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sm text-slate-300">Hot Sauce Variety Pack</span>
+<span class="text-sm font-bold" style="color: #dc2626;">$134K</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sm text-slate-300">Regional Distribution Gap</span>
+<span class="text-sm font-bold" style="color: #dc2626;">$50K</span>
+</div>
+</div>
+</div>
+<div>
+<div class="text-xs text-slate-400 mb-2">Contributing Factors</div>
+<div class="space-y-2">
+<div class="flex justify-between">
+<span class="text-sm text-slate-300">Peak season demand surge</span>
+<span class="text-sm" style="color: #f59e0b;">+42%</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sm text-slate-300">Supplier lead time increase</span>
+<span class="text-sm" style="color: #f59e0b;">+18 days</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sm text-slate-300">Safety stock depletion</span>
+<span class="text-sm" style="color: #dc2626;">-67%</span>
+</div>
+<div class="flex justify-between font-bold">
+<span class="text-sm text-slate-200">Forecast accuracy drop</span>
+<span class="text-sm" style="color: #dc2626;">-23%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">3. ROOT CAUSE</h3>
+<div class="space-y-3 text-sm text-slate-300">
+<div class="flex items-start gap-3">
+<div class="w-2 h-2 rounded-full bg-red-500 mt-2 flex-shrink-0"></div>
+<div>
+<div class="font-medium text-slate-200">Demand Pattern Shift:</div>
+<div>Tourism surge creating <strong style="color: #dc2626;">40% higher consumption</strong> in coastal regions during August festival season</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-2 h-2 rounded-full bg-orange-500 mt-2 flex-shrink-0"></div>
+<div>
+<div class="font-medium text-slate-200">Supply Chain Constraints:</div>
+<div>Primary mango supplier capacity limited to <strong style="color: #9bb1ff;">2,200 units/week</strong> vs required <strong style="color: #9bb1ff;">3,100 units/week</strong></div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-2 h-2 rounded-full bg-yellow-500 mt-2 flex-shrink-0"></div>
+<div>
+<div class="font-medium text-slate-200">Inventory Management Gap:</div>
+<div>Reorder points not adjusted for seasonal patterns, triggering <strong style="color: #dc2626;">14-day stockout risk</strong></div>
+</div>
+</div>
+</div>
+
+<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">4. RECOMMENDED ACTION</h3>
+<div class="bg-slate-800/40 rounded-lg p-4 border border-slate-700/30">
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+<span class="text-xs font-bold text-blue-300">1</span>
+</div>
+<div>
+<div class="font-medium text-slate-200 mb-1">Emergency Procurement (48hrs)</div>
+<div class="text-sm text-slate-300">Secure <strong style="color: #9bb1ff;">3,200 units</strong> from secondary suppliers in Costa Rica and Guatemala</div>
+<div class="text-xs text-slate-400 mt-1">Cost: $1,280 premium · Prevents: $187K loss · ROI: 14,525%</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+<span class="text-xs font-bold text-blue-300">2</span>
+</div>
+<div>
+<div class="font-medium text-slate-200 mb-1">Dynamic Reorder Adjustment (7 days)</div>
+<div class="text-sm text-slate-300">Increase safety stock levels by <strong style="color: #9bb1ff;">35%</strong> for top 12 seasonal SKUs through September</div>
+<div class="text-xs text-slate-400 mt-1">Investment: $89K inventory · Prevents: $341K total loss · Payback: 18 days</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+<span class="text-xs font-bold text-blue-300">3</span>
+</div>
+<div>
+<div class="font-medium text-slate-200 mb-1">Demand Signal Enhancement (14 days)</div>
+<div class="text-sm text-slate-300">Integrate tourism booking data and regional events to improve forecast accuracy by <strong style="color: #22c55e;">28%</strong></div>
+<div class="text-xs text-slate-400 mt-1">Implementation cost: $12K · Annual savings: $1.2M · Long-term prevention</div>
+</div>
+</div>
+</div>
+</div>
+
+<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">5. BUSINESS VALUE</h3>
+<div class="bg-gradient-to-r from-slate-800/60 to-slate-800/30 rounded-lg p-4 border border-slate-700/30">
+<div class="grid grid-cols-2 gap-6">
+<div>
+<div class="text-xs text-slate-400 mb-3">Financial Impact (Next 90 Days)</div>
+<div class="space-y-2">
+<div class="flex justify-between">
+<span class="text-sm text-slate-300">Prevented revenue loss</span>
+<span class="text-sm font-bold" style="color: #22c55e;">+$527K</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sm text-slate-300">Customer retention value</span>
+<span class="text-sm font-bold" style="color: #22c55e;">+$89K</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sm text-slate-300">Market share protection</span>
+<span class="text-sm font-bold" style="color: #22c55e;">+$156K</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sm text-slate-300">Implementation costs</span>
+<span class="text-sm" style="color: #f59e0b;">-$102K</span>
+</div>
+<div class="border-t border-slate-700/30 pt-2 mt-2">
+<div class="flex justify-between">
+<span class="text-sm font-bold text-slate-200">Net Value Creation</span>
+<span class="text-lg font-bold" style="color: #22c55e;">+$670K</span>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="text-xs text-slate-400 mb-3">Strategic Benefits</div>
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-sm text-slate-300">Supply chain resilience +45%</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-sm text-slate-300">Forecast accuracy improvement +28%</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-sm text-slate-300">Customer satisfaction protection</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-sm text-slate-300">Competitive market position secured</span>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>`;
