@@ -172,6 +172,16 @@ export default function Login() {
                     </svg>
                   </button>
                 </div>
+
+                {/* Skip to Dashboard Button */}
+                <div className="mt-6 pt-4 border-t border-white/10">
+                  <button
+                    onClick={() => setLocation("/dashboard")}
+                    className="w-full py-3 bg-transparent border border-white/20 rounded-2xl hover:bg-white/5 hover:border-white/30 transition-all duration-300 font-medium text-white/80 hover:text-white"
+                  >
+                    Skip to Dashboard
+                  </button>
+                </div>
               </motion.div>
             )}
 
