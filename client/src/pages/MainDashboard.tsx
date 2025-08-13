@@ -60,19 +60,19 @@ export default function MainDashboard() {
         responseContent = `<div class="space-y-6">
 <h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">1. METRIC DETECTION</h3>
 <div class="text-sm text-slate-300 mb-3">
-Backorder Risk Analysis: August 2025 - Predictive Loss Assessment & Prevention Strategy
+Backorder Analysis: July 2025 - Actual Performance Assessment & August Prevention Strategy
 </div>
 <div class="bg-slate-800/40 rounded-lg p-4 border border-slate-700/30">
 <div class="grid grid-cols-3 gap-4">
 <div class="bg-slate-900/50 rounded p-3">
-<div class="text-xs text-slate-400 mb-1">Expected Loss (August)</div>
+<div class="text-xs text-slate-400 mb-1">July Actual Loss</div>
 <div class="text-2xl font-bold" style="color: #dc2626;">$527K</div>
-<div class="text-xs text-slate-300">projected backorder impact</div>
+<div class="text-xs text-slate-300">confirmed backorder impact</div>
 </div>
 <div class="bg-slate-900/50 rounded p-3">
-<div class="text-xs text-slate-400 mb-1">Prevention Potential</div>
+<div class="text-xs text-slate-400 mb-1">August Prevention</div>
 <div class="text-2xl font-bold" style="color: #22c55e;">$341K</div>
-<div class="text-xs text-slate-300">recoverable through action</div>
+<div class="text-xs text-slate-300">recoverable next month</div>
 </div>
 <div class="bg-slate-900/50 rounded p-3">
 <div class="text-xs text-slate-400 mb-1">Risk Level</div>
@@ -81,7 +81,7 @@ Backorder Risk Analysis: August 2025 - Predictive Loss Assessment & Prevention S
 </div>
 </div>
 <div class="mt-3 text-sm text-slate-300">
-Analysis shows <strong style="color: #dc2626;">73% probability</strong> of significant stock shortages across 12 critical SKUs without intervention
+July data reveals <strong style="color: #dc2626;">actual backorder events</strong> across multiple product lines requiring immediate August prevention strategy
 </div>
 </div>
 
