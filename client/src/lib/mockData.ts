@@ -31,6 +31,10 @@ export const kpiData: KpiData[] = [
 
 export const promptData: PromptData[] = [
   {
+    title: "Calculate estimated backorder loss",
+    description: "Predicted $527K in July - analyze actual vs forecast with recovery plan",
+  },
+  {
     title: "Analyze regional performance",
     description: "Get a breakdown of sales performance by region",
   },

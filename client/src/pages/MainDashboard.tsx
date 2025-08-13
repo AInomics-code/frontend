@@ -52,162 +52,54 @@ export default function MainDashboard() {
     const currentQuery = inputValue;
     setInputValue("");
     
-    // Simulate AI response with AInomics structure
+    // Simulate AI response with specialized content for backorder loss calculation
     setTimeout(() => {
-      const aiResponse = {
-        role: 'assistant' as const,
-        content: `<div class="space-y-6">
+      let responseContent = '';
+      
+      if (currentQuery.toLowerCase().includes('backorder') || currentQuery.toLowerCase().includes('527k')) {
+        responseContent = `<div class="space-y-6">
 <h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">1. METRIC DETECTION</h3>
 <div class="text-sm text-slate-300 mb-3">
-Anomaly: Chiriquí Central Store - Salsa Verde 500ml critical stockout detected via automated monitoring
+Backorder Loss Analysis: July 2025 - Predicted vs Actual Performance Review
 </div>
 <div class="bg-slate-800/40 rounded-lg p-4 border border-slate-700/30">
-<div class="grid grid-cols-2 gap-4">
+<div class="grid grid-cols-3 gap-4">
 <div class="bg-slate-900/50 rounded p-3">
-<div class="text-xs text-slate-400 mb-1">Location & Product</div>
-<div class="text-sm">Chiriquí Central Store</div>
-<div class="text-sm font-medium" style="color: #9bb1ff;">Salsa Verde 500ml</div>
+<div class="text-xs text-slate-400 mb-1">AI Prediction (July)</div>
+<div class="text-2xl font-bold" style="color: #9bb1ff;">$527K</div>
+<div class="text-xs text-slate-300">backorder loss forecast</div>
 </div>
 <div class="bg-slate-900/50 rounded p-3">
-<div class="text-xs text-slate-400 mb-1">Anomaly Severity</div>
-<div class="text-lg font-bold" style="color: #dc2626;">89%</div>
-<div class="text-xs text-slate-300">out-of-stock (12 days)</div>
+<div class="text-xs text-slate-400 mb-1">Actual Performance</div>
+<div class="text-2xl font-bold" style="color: #dc2626;">$612K</div>
+<div class="text-xs text-slate-300">actual backorder loss</div>
+</div>
+<div class="bg-slate-900/50 rounded p-3">
+<div class="text-xs text-slate-400 mb-1">Variance</div>
+<div class="text-2xl font-bold" style="color: #dc2626;">+$85K</div>
+<div class="text-xs text-slate-300">16.1% over prediction</div>
 </div>
 </div>
 <div class="mt-3 text-sm text-slate-300">
-Lost <strong style="color: #9bb1ff;">2,400 units</strong> against baseline demand of <strong style="color: #9bb1ff;">2,700 units</strong> during competitor promotion period.
+Model accuracy: <strong style="color: #9bb1ff;">83.9%</strong> - High confidence prediction with unexpected supply chain disruptions
 </div>
 </div>
-
-<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">2. ANALYSIS</h3>
-<div class="bg-gradient-to-r from-slate-800/60 to-slate-800/30 rounded-lg p-4 border border-slate-700/30">
-<div class="grid grid-cols-3 gap-4 mb-4">
-<div class="text-center">
-<div class="text-xs text-slate-400">Units Lost</div>
-<div class="text-xl font-bold" style="color: #9bb1ff;">2,400</div>
+</div>`;
+      } else {
+        responseContent = `<div class="space-y-6">
+<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">1. METRIC DETECTION</h3>
+<div class="text-sm text-slate-300 mb-3">General business analysis response</div>
+<div class="bg-slate-800/40 rounded-lg p-4 border border-slate-700/30">
+<div class="text-sm text-slate-300">Business insights will be displayed here.</div>
 </div>
-<div class="text-center">
-<div class="text-xs text-slate-400">Unit Price</div>
-<div class="text-xl font-bold" style="color: #9bb1ff;">$3.20</div>
-</div>
-<div class="text-center">
-<div class="text-xs text-slate-400">Revenue Loss</div>
-<div class="text-xl font-bold" style="color: #dc2626;">$7,680</div>
-</div>
-</div>
-<div class="border-t border-slate-700/30 pt-3">
-<div class="text-sm text-slate-300 mb-2">
-<strong>Margin Impact:</strong> $7,680 × 35% gross margin = <strong style="color: #9bb1ff;">$2,688</strong> profit lost
-</div>
-<div class="text-sm text-slate-300">
-<strong>Market Impact:</strong> <strong style="color: #dc2626;">78%</strong> customer displacement to competitors during outage
-</div>
-</div>
-</div>
-
-<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">3. ROOT CAUSE</h3>
-<div class="space-y-3 text-sm text-slate-300">
-<div class="flex items-start gap-3">
-<div class="w-2 h-2 rounded-full bg-red-500 mt-2 flex-shrink-0"></div>
-<div>
-<div class="font-medium text-slate-200">System Failure:</div>
-<div>Distribution center's automated replenishment system used outdated velocity parameters</div>
-</div>
-</div>
-<div class="flex items-start gap-3">
-<div class="w-2 h-2 rounded-full bg-orange-500 mt-2 flex-shrink-0"></div>
-<div>
-<div class="font-medium text-slate-200">Forecasting Gap:</div>
-<div>Algorithm missed demand surge: <strong style="color: #9bb1ff;">220 units/day</strong> baseline vs <strong style="color: #9bb1ff;">400 units/day</strong> actual</div>
-</div>
-</div>
-<div class="flex items-start gap-3">
-<div class="w-2 h-2 rounded-full bg-yellow-500 mt-2 flex-shrink-0"></div>
-<div>
-<div class="font-medium text-slate-200">Safety Stock Error:</div>
-<div>Required 325 units buffer but only had 180 units (<strong style="color: #dc2626;">45% shortfall</strong>)</div>
-</div>
-</div>
-</div>
-
-<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">4. RECOMMENDED ACTION</h3>
-<div class="space-y-4 text-sm text-slate-300">
-<div>
-<div class="font-medium text-green-300 mb-1">IMMEDIATE (24 hours):</div>
-<div>Emergency transfer of <strong style="color: #9bb1ff;">3,200 units</strong> from David warehouse to Chiriquí Central</div>
-<div class="text-xs text-slate-400 mt-1">Route: David → Chiriquí (6-hour transit)</div>
-</div>
-<div>
-<div class="font-medium text-blue-300 mb-1">SYSTEMATIC (7 days):</div>
-<div>Recalibrate forecasting parameters with <strong style="color: #9bb1ff;">1.8x</strong> promotional multiplier</div>
-<div>Implement daily inventory reconciliation for top <strong style="color: #9bb1ff;">50 SKUs</strong> with real-time alerts</div>
-</div>
-</div>
-
-<h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">5. BUSINESS VALUE</h3>
-<div class="bg-gradient-to-br from-green-900/20 to-blue-900/20 rounded-lg p-4 border border-green-700/30">
-<div class="grid grid-cols-2 gap-4 mb-4">
-<div class="text-center">
-<div class="text-xs text-slate-400">Monthly Protection</div>
-<div class="text-2xl font-bold" style="color: #16a34a;">+$32K</div>
-<div class="text-xs text-slate-400">margin secured</div>
-</div>
-<div class="text-center">
-<div class="text-xs text-slate-400">Customer Recovery</div>
-<div class="text-2xl font-bold" style="color: #16a34a;">+12%</div>
-<div class="text-xs text-slate-400">loyalty improvement</div>
-</div>
-</div>
-<div class="bg-slate-900/30 rounded p-3">
-<div class="text-xs text-slate-400 mb-1">Value Calculation</div>
-<div class="text-sm text-slate-300">$8,880 per incident × 4 monthly incidents × 35% margin = <strong style="color: #16a34a;">$12,400</strong> profit protected</div>
-</div>
-</div>
-
-<div class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: #a1b9ff;">PROCESS FLOW</div>
-<div class="bg-slate-800/30 rounded-lg p-4 border border-slate-700/30">
-<div class="flex items-center justify-between text-center">
-<div class="flex-1">
-<div class="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
-<span class="text-red-400 font-bold">89%</span>
-</div>
-<div class="text-xs text-slate-400">Stockout</div>
-</div>
-<div class="flex-1 flex justify-center">
-<svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-</svg>
-</div>
-<div class="flex-1">
-<div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
-<span class="text-blue-400 font-bold">3.2K</span>
-</div>
-<div class="text-xs text-slate-400">Emergency Transfer</div>
-</div>
-<div class="flex-1 flex justify-center">
-<svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-</svg>
-</div>
-<div class="flex-1">
-<div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
-<span class="text-green-400 font-bold">$32K</span>
-</div>
-<div class="text-xs text-slate-400">Monthly Protection</div>
-</div>
-</div>
-</div>
-
-<div class="mt-4 pt-3 border-t border-slate-700/30">
-<div class="flex items-center text-blue-300/80 text-xs">
-<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
-</svg>
-<span>Presented by VORTA using real-time AInomics analysis</span>
-</div>
-</div>
-</div>`
+</div>`;
+      }
+      
+      const aiResponse = {
+        role: 'assistant' as const,
+        content: responseContent
       };
+      
       setMessages(prev => [...prev, aiResponse]);
       setIsLoading(false);
     }, 2000);
@@ -247,47 +139,23 @@ Lost <strong style="color: #9bb1ff;">2,400 units</strong> against baseline deman
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.3, delay: idx * 0.1 }}
                 className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                <div className="max-w-3xl">
+                <div className={`max-w-3xl ${message.role === 'user' ? 'bg-blue-600/20 ml-16' : 'bg-slate-800/40 mr-16'} rounded-2xl p-6 border ${message.role === 'user' ? 'border-blue-500/30' : 'border-slate-700/30'}`}>
                   {message.role === 'user' ? (
-                    <div className="bg-blue-600/20 border border-blue-500/30 backdrop-blur-sm rounded-2xl px-4 py-3">
-                      <p className="text-sm text-white leading-relaxed">{message.content}</p>
-                    </div>
+                    <div className="text-white text-sm">{message.content}</div>
                   ) : (
-                    <div className="py-2">
-                      <TypewriterText text={message.content} speed={10} />
-                    </div>
+                    <TypewriterText text={message.content} speed={15} />
                   )}
                 </div>
               </motion.div>
             ))}
-            
-            {/* Loading Message */}
-            {isLoading && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="flex justify-start"
-              >
-                <div className="max-w-3xl py-2">
-                  <div className="flex items-center gap-2">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                      <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                      <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                    </div>
-                    <span className="text-sm text-slate-400">Analyzing...</span>
-                  </div>
-                </div>
-              </motion.div>
-            )}
           </div>
         </div>
 
         {/* Chat Input */}
-        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-4xl px-6">
+        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-3xl px-4">
           <div className="bg-gradient-to-r from-slate-800/95 via-slate-800/98 to-slate-800/95 backdrop-blur-xl border border-slate-600/50 rounded-2xl px-6 py-4 flex items-center gap-4 shadow-2xl shadow-black/20">
             <input
               value={inputValue}
@@ -300,7 +168,7 @@ Lost <strong style="color: #9bb1ff;">2,400 units</strong> against baseline deman
             <button 
               onClick={() => handleSubmit()}
               disabled={!inputValue.trim() || isLoading}
-              className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 disabled:from-slate-600 disabled:to-slate-600 flex items-center justify-center text-white transition-all duration-200 hover:scale-105 disabled:hover:scale-100"
+              className="w-9 h-9 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 disabled:from-slate-600 disabled:to-slate-600 flex items-center justify-center text-white transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 disabled:hover:scale-100 disabled:hover:shadow-none"
             >
               {isLoading ? (
                 <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -338,8 +206,6 @@ Lost <strong style="color: #9bb1ff;">2,400 units</strong> against baseline deman
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
           </button>
-
-          
 
           <button 
             onClick={() => setLocation('/collaboration')}
@@ -458,6 +324,10 @@ Lost <strong style="color: #9bb1ff;">2,400 units</strong> against baseline deman
             ))
           : promptData.map((prompt: PromptData, idx: number) => {
               const icons = [
+                // Backorder analysis icon
+                <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>,
                 // Business chart for regional performance
                 <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -480,7 +350,7 @@ Lost <strong style="color: #9bb1ff;">2,400 units</strong> against baseline deman
                 </svg>,
                 // Global network for channel performance
                 <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9 3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                 </svg>
               ];
               
