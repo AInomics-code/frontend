@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { kpiData, promptData, type KpiData, type PromptData } from "@/lib/mockData";
 import { apiService } from "@/services/apiService";
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 
 function TypewriterText({ text, speed = 20 }: { text: string; speed?: number }) {
   const [displayedText, setDisplayedText] = useState("");
@@ -85,22 +86,12 @@ export default function MainDashboard() {
     return (
       <div className="min-h-screen w-full bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e] px-6 py-10 text-white font-sans">
         {/* Chat Header */}
-        {/* <div className="flex items-center justify-between mb-6">
-          <button
-            onClick={handleBackToDashboard}
-            className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
-            </svg>
-            Back to Dashboard
-          </button>
+        <div className="flex items-center justify-center mb-6">
           <div className="flex flex-col items-center">
             <h1 className="text-lg font-semibold tracking-wide text-[#CBD5E1]">VORTA</h1>
             <p className="text-xs text-slate-400 tracking-wide uppercase">AI Copilot</p>
           </div>
-          <div className="w-20"></div>
-        </div> */}
+        </div>
 
         {/* Chat Messages */}
         <div className="max-w-4xl mx-auto">
@@ -117,7 +108,7 @@ export default function MainDashboard() {
                   {message.role === 'user' ? (
                     <div className="text-white text-sm">{message.content}</div>
                   ) : (
-                    <TypewriterText text={message.content} speed={15} />
+                    <MarkdownRenderer content={message.content} />
                   )}
                 </div>
               </motion.div>
