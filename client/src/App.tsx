@@ -19,11 +19,43 @@ import SidebarLayout from "@/components/sidebar-layout";
 import Collaboration from "@/pages/collaboration";
 import NotFound from "@/pages/not-found";
 import ProtectedRoute from "@/components/protected-route";
+import { useEffect, useState } from "react";
+import { useLocation } from "wouter";
+
+// Componente para manejar la ruta raíz con lógica de autenticación
+function RootRoute() {
+  const [, setLocation] = useLocation();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setLocation("/dashboard");
+    // const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+
+    // if (isLoggedIn) {
+    //   setLocation("/dashboard");
+    // } else {
+    //   setLocation("/login");
+    // }
+
+    setIsLoading(false);
+  }, []);
+
+  // Mostrar un loading mientras se decide la redirección
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e]">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    );
+  }
+
+  return null;
+}
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Login} />
+      <Route path="/" component={RootRoute} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
       <Route path="/onboarding" component={Onboarding} />
