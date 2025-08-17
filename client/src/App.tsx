@@ -21,6 +21,7 @@ import NotFound from "@/pages/not-found";
 import ProtectedRoute from "@/components/protected-route";
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
+import "./utils/env-check";
 
 // Componente para manejar la ruta raíz con lógica de autenticación
 function RootRoute() {
