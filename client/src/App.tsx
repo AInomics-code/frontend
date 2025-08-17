@@ -63,11 +63,7 @@ function Router() {
       <Route path="/onboarding/data" component={OnboardingDataForm} />
       <Route path="/onboarding/context" component={BusinessContextPrompts} />
       <Route path="/table-demo" component={TableConfigDemo} />
-      <Route path="/dashboard">
-        <ProtectedRoute>
-          <Dashboard />
-        </ProtectedRoute>
-      </Route>
+      <Route path="/dashboard" component={Dashboard} />
       <Route path="/collaboration">
         <ProtectedRoute>
           <Collaboration />
