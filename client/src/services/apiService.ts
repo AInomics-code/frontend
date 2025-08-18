@@ -6,9 +6,9 @@ export interface InvokeRequest {
 
 export interface InvokeResponse {
     input: string;
-    schema_context: string;
     plan: string[];
     response: string;
+    sources: string[];
     execution_successful: boolean;
 }
 

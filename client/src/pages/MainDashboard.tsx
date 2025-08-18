@@ -29,12 +29,64 @@ function TypewriterText({ text, speed = 20 }: { text: string; speed?: number }) 
   );
 }
 
+function SourcesDisplay({ sources, responseTime }: { sources: string[], responseTime?: number }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const hasSources = sources && sources.length > 0;
+  const hasResponseTime = responseTime !== undefined;
+
+  if (!hasSources && !hasResponseTime) {
+    return null;
+  }
+
+  return (
+    <div className="mt-4 border-t border-slate-600/30 pt-3">
+      <div className="flex items-center justify-between">
+        {hasSources && (
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex items-center gap-2 text-xs text-slate-400 hover:text-slate-300 transition-colors"
+          >
+            <svg
+              className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-90' : ''}`}
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+            </svg>
+            Mostrar fuentes ({sources.length})
+          </button>
+        )}
+
+        {hasResponseTime && (
+          <div className="text-xs text-slate-500">
+            Respuesta en {responseTime < 1000 ? `${responseTime}ms` : `${(responseTime / 1000).toFixed(1)}s`}
+          </div>
+        )}
+      </div>
+
+      {hasSources && isOpen && (
+        <div className="mt-2 space-y-2">
+          {sources.map((sql, index) => (
+            <div key={index} className="bg-slate-900/50 rounded-lg p-3 border border-slate-700/30">
+              <div className="text-xs text-slate-400 mb-1">Query #{index + 1}</div>
+              <code className="text-xs text-slate-300 font-mono break-all">
+                {sql}
+              </code>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function MainDashboard() {
   const [activeTab, setActiveTab] = useState("KPIs");
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [chatMode, setChatMode] = useState(false);
-  const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant', content: string }>>([]);
+  const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant', content: string, sources?: string[], responseTime?: number }>>([]);
   const [, setLocation] = useLocation();
 
   const handlePromptClick = (prompt: PromptData) => {
@@ -55,13 +107,21 @@ export default function MainDashboard() {
     setInputValue("");
 
     try {
+      // Measure response time
+      const startTime = Date.now();
+
       // Call the backend API
       const response = await apiService.invokeAI(currentQuery);
+
+      const endTime = Date.now();
+      const responseTime = endTime - startTime;
 
       // Add AI response
       const aiResponse = {
         role: 'assistant' as const,
-        content: response.response
+        content: response.response,
+        sources: response.sources || [],
+        responseTime: responseTime
       };
 
       setMessages(prev => [...prev, aiResponse]);
@@ -69,7 +129,7 @@ export default function MainDashboard() {
       // Handle error
       const errorResponse = {
         role: 'assistant' as const,
-        content: `<div class="text-red-400">Error: ${error instanceof Error ? error.message : 'Unknown error occurred'}</div>`
+        content: `Error: ${error instanceof Error ? error.message : 'Unknown error occurred'}`
       };
       setMessages(prev => [...prev, errorResponse]);
     } finally {
@@ -108,11 +168,32 @@ export default function MainDashboard() {
                   {message.role === 'user' ? (
                     <div className="text-white text-sm">{message.content}</div>
                   ) : (
-                    <MarkdownRenderer content={message.content} />
+                    <>
+                      <MarkdownRenderer content={message.content} />
+                      <SourcesDisplay sources={message.sources || []} responseTime={message.responseTime} />
+                    </>
                   )}
                 </div>
               </motion.div>
             ))}
+
+            {/* Loading Message - Separate from messages */}
+            {isLoading && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="flex justify-start"
+              >
+                <div className="max-w-3xl bg-slate-800/40 mr-16 rounded-2xl p-6 border border-slate-700/30">
+                  <div className="flex items-center gap-2 text-slate-400">
+                    <span className="animate-pulse">●</span>
+                    <span className="animate-pulse" style={{ animationDelay: '0.2s' }}>●</span>
+                    <span className="animate-pulse" style={{ animationDelay: '0.4s' }}>●</span>
+                  </div>
+                </div>
+              </motion.div>
+            )}
           </div>
         </div>
 
