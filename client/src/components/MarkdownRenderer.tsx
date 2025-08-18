@@ -35,13 +35,13 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
             <pre className="bg-slate-800 border border-slate-600 rounded-lg p-4 overflow-x-auto mb-4">{children}</pre>
           ),
           ul: ({ children }) => (
-            <ul className="list-disc list-inside text-sm text-slate-300 mb-4 space-y-1">{children}</ul>
+            <ul className="list-disc ml-6 text-sm text-slate-300 mb-4 space-y-1 marker:text-slate-500">{children}</ul>
           ),
           ol: ({ children }) => (
-            <ol className="list-decimal list-inside text-sm text-slate-300 mb-4 space-y-1">{children}</ol>
+            <ol className="list-decimal ml-6 text-sm text-slate-300 mb-4 space-y-1 marker:text-slate-500">{children}</ol>
           ),
           li: ({ children }) => (
-            <li className="text-sm text-slate-300">{children}</li>
+            <li className="text-sm text-slate-300 pl-2">{children}</li>
           ),
           blockquote: ({ children }) => (
             <blockquote className="border-l-4 border-blue-500 pl-4 italic text-slate-300 mb-4">{children}</blockquote>
