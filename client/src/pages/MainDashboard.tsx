@@ -144,86 +144,90 @@ export default function MainDashboard() {
 
   if (chatMode) {
     return (
-      <div className="min-h-screen w-full bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e] px-6 py-10 text-white font-sans">
+      <div className="h-screen w-full bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e] text-white font-sans flex flex-col">
         {/* Chat Header */}
-        <div className="flex items-center justify-center mb-6">
+        <div className="flex items-center justify-center py-6 px-6 flex-shrink-0">
           <div className="flex flex-col items-center">
             <h1 className="text-lg font-semibold tracking-wide text-[#CBD5E1]">VORTA</h1>
             <p className="text-xs text-slate-400 tracking-wide uppercase">AI Copilot</p>
           </div>
         </div>
 
-        {/* Chat Messages */}
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-6 mb-32">
-            {messages.map((message, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: idx * 0.1 }}
-                className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                <div className={`max-w-3xl ${message.role === 'user' ? 'bg-blue-600/20 ml-16' : 'bg-slate-800/40 mr-16'} rounded-2xl p-3 border ${message.role === 'user' ? 'border-blue-500/30' : 'border-slate-700/30'}`}>
-                  {message.role === 'user' ? (
-                    <div className="text-white text-sm">{message.content}</div>
-                  ) : (
-                    <>
-                      <MarkdownRenderer content={message.content} />
-                      <SourcesDisplay sources={message.sources || []} responseTime={message.responseTime} />
-                    </>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-
-            {/* Loading Message - Separate from messages */}
-            {isLoading && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="flex justify-start"
-              >
-                <div className="max-w-3xl bg-slate-800/40 mr-16 rounded-2xl p-6 border border-slate-700/30">
-                  <div className="flex items-center gap-2 text-slate-400">
-                    <span className="animate-pulse">●</span>
-                    <span className="animate-pulse" style={{ animationDelay: '0.2s' }}>●</span>
-                    <span className="animate-pulse" style={{ animationDelay: '0.4s' }}>●</span>
+        {/* Chat Messages Container */}
+        <div className="flex-1 overflow-y-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-6 pb-6">
+              {messages.map((message, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: idx * 0.1 }}
+                  className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div className={`max-w-3xl ${message.role === 'user' ? 'bg-blue-600/20 ml-16' : 'bg-slate-800/40 mr-16'} rounded-2xl p-3 border ${message.role === 'user' ? 'border-blue-500/30' : 'border-slate-700/30'}`}>
+                    {message.role === 'user' ? (
+                      <div className="text-white text-sm">{message.content}</div>
+                    ) : (
+                      <>
+                        <MarkdownRenderer content={message.content} />
+                        <SourcesDisplay sources={message.sources || []} responseTime={message.responseTime} />
+                      </>
+                    )}
                   </div>
-                </div>
-              </motion.div>
-            )}
+                </motion.div>
+              ))}
+
+              {/* Loading Message - Separate from messages */}
+              {isLoading && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex justify-start"
+                >
+                  <div className="max-w-3xl bg-slate-800/40 mr-16 rounded-2xl p-6 border border-slate-700/30">
+                    <div className="flex items-center gap-2 text-slate-400">
+                      <span className="animate-pulse">●</span>
+                      <span className="animate-pulse" style={{ animationDelay: '0.2s' }}>●</span>
+                      <span className="animate-pulse" style={{ animationDelay: '0.4s' }}>●</span>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Chat Input */}
-        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-3xl px-4">
-          <div className="bg-gradient-to-r from-slate-800/95 via-slate-800/98 to-slate-800/95 backdrop-blur-xl border border-slate-600/50 rounded-2xl px-6 py-4 flex items-center gap-4 shadow-2xl shadow-black/20">
-            <input
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSubmit()}
-              placeholder="Ask anything about your business..."
-              className="flex-1 bg-transparent outline-none text-white placeholder-slate-400 text-base"
-              disabled={isLoading}
-            />
-            <button
-              onClick={() => handleSubmit()}
-              disabled={!inputValue.trim() || isLoading}
-              className="w-9 h-9 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 disabled:from-slate-600 disabled:to-slate-600 flex items-center justify-center text-white transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 disabled:hover:scale-100 disabled:hover:shadow-none"
-            >
-              {isLoading ? (
-                <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-              ) : (
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              )}
-            </button>
+        {/* Chat Input Container */}
+        <div className="flex-shrink-0 p-6">
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-gradient-to-r from-slate-800/95 via-slate-800/98 to-slate-800/95 backdrop-blur-xl border border-slate-600/50 rounded-2xl px-6 py-4 flex items-center gap-4 shadow-2xl shadow-black/20">
+              <input
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSubmit()}
+                placeholder="Ask anything about your business..."
+                className="flex-1 bg-transparent outline-none text-white placeholder-slate-400 text-base"
+                disabled={isLoading}
+              />
+              <button
+                onClick={() => handleSubmit()}
+                disabled={!inputValue.trim() || isLoading}
+                className="w-9 h-9 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 disabled:from-slate-600 disabled:to-slate-600 flex items-center justify-center text-white transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 disabled:hover:scale-100 disabled:hover:shadow-none"
+              >
+                {isLoading ? (
+                  <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                ) : (
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>
