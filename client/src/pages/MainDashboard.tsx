@@ -164,7 +164,7 @@ export default function MainDashboard() {
                 transition={{ duration: 0.3, delay: idx * 0.1 }}
                 className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                <div className={`max-w-3xl ${message.role === 'user' ? 'bg-blue-600/20 ml-16' : 'bg-slate-800/40 mr-16'} rounded-2xl p-6 border ${message.role === 'user' ? 'border-blue-500/30' : 'border-slate-700/30'}`}>
+                <div className={`max-w-3xl ${message.role === 'user' ? 'bg-blue-600/20 ml-16' : 'bg-slate-800/40 mr-16'} rounded-2xl p-3 border ${message.role === 'user' ? 'border-blue-500/30' : 'border-slate-700/30'}`}>
                   {message.role === 'user' ? (
                     <div className="text-white text-sm">{message.content}</div>
                   ) : (
