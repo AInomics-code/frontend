@@ -149,7 +149,7 @@ export default function MainDashboard() {
         <div className="flex items-center justify-center py-6 px-6 flex-shrink-0">
           <div className="flex flex-col items-center">
             <h1 className="text-lg font-semibold tracking-wide text-[#CBD5E1]">VORTA</h1>
-            <p className="text-xs text-slate-400 tracking-wide uppercase">AI Copilot - Demo</p>
+            <p className="text-xs text-slate-400 tracking-wide uppercase">AI Copilot</p>
           </div>
         </div>
 
